@@ -1,8 +1,8 @@
 # Project Name
 
-Developer Names:
+Developer Names: Nawaal Fatima, Dhruv Sardana, Fiza Sehar, Moly Mikhail, Casey Francine Bulaclac 
 
-Date of project start:
+Date of project start: Sept 15 2025
 
 This project is ...
 
