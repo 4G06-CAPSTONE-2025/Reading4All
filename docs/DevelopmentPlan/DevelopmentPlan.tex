@@ -38,24 +38,16 @@ what is contained in the report.}
 \href{https://gitlab.cas.mcmaster.ca/courses/capstone/-/blob/main/Lectures/L02b_POCAndDevPlan/POCAndDevPlan.pdf?ref_type=heads}
 {lecture slides}.}
 
-\section{Confidential Information?}
+\section{Confidential Information}
 
-\wss{State whether your project has confidential information from industry, or
-not.  If there is confidential information, point to the agreement you have in
-place.}
+This project doesn't contain any confidential information.
 
-\wss{For most teams this section will just state that there is no confidential
-information to protect.}
+
 \section{IP to Protect}
-
-\wss{State whether there is IP to protect.  If there is, point to the agreement.
-All students who are working on a project that requires an IP agreement are also
-required to sign the ``Intellectual Property Guide Acknowledgement.''}
-
+This project doesn't contain any IP to protect. 
 \section{Copyright License}
 
-\wss{What copyright license is your team adopting.  Point to the license in your
-repo.}
+Our team is adopting the MIT License.
 
 \section{Team Meeting Plan}
 
@@ -73,6 +65,14 @@ in-person.}
 
 \section{Team Communication Plan}
 
+\begin{itemize}
+    \item \textbf{Discord}: Our main method of communication between group members. It will be used to discuss detailed deliverable and any code questions. Additionally, group meetings will be hosted on discord. 
+    \item \textbf{Instagram}: Our secondary method of communication between group members. It will be used to discuss less technical details and for any urgent messages that require a quicker response. 
+    \item \textbf{Teams}: Our main method of communication with our Supervisor. We will utilize our group chat with our supervisor for any quick questions or updates. Online meetings with our supervisor will be hosted on teams.
+    \item \textbf{GitHub}: The issues feature will be utilized to communicate any bugs observed and meeting attendance. Additionally, as a week to see what other team members are working on.
+\end{itemize}
+
+
 \wss{Issues on GitHub should be part of your communication plan.}
 
 \section{Team Member Roles}
@@ -85,11 +85,43 @@ likely change throughout the year.}
 \section{Workflow Plan}
 
 \begin{itemize}
-	\item How will you be using git, including branches, pull request, etc.?
-	\item How will you be managing issues, including template issues, issue
-	classification, etc.?
-  \item Use of CI/CD
-\end{itemize}
+	\item\textbf{How will you be using git, including branches, pull request, etc.?}
+	 We will be using git, branches and pull requests in order to divide work between group members and complete tasks concurrently. 
+   Furthermore, we will follow a feature-branch based approach, our process will follow these steps:
+   \begin{itemize}
+    \item \textbf{Branch Creation} Group member will create a branch from the develop branch for each feature they work on and follow this naming convention: \newline
+    \textit{feature\_[contributorName]/D\#\_[featureDescription]} \newline
+    Similarly, for bugs the following naming convention will be followed: \newline
+   \textit{bug\_[contributorName]/D\#\_[bugDescription]} \newline
+    Beyond feature branches, we will also have \textit{develop} and \textit{main} branches. The develop branch will be used to integrate different features and once
+    tested, as well as reviewed by the majority of group members can be merged into main. 
+    \end{itemize}
+    \begin{itemize}
+      \item \textbf{Pull Request} Once a group member is done working on their feature, they will open a pull request to merge into the develop branch. Group members will use the Github comment feature to connect their feature to any applicable issue numbers.
+    \end{itemize}
+	\item\textbf{Continuous Integration\ Continuous Development}
+	
+  For continuous integration (CI), we will be using Github actions to automatically trigger a project build and run unit tests 
+  whenever a commit occurs or pull requests are opened. This ensures errors are discovered as early as possible and that the project remains in a working state during development. 
+
+  \item \textbf{Managing issues}\newline
+  We will utilize the capTemplate template issues for tracking attendance, peer review, supervisor, TA, and team meetings. Furthermore, issues that fall outside these categories will utilize the labels mentioned below to ensure they are easily understood and managed. 
+  \item \textbf{Use of Labels:} \newline
+  The team will utilize issue tags to help us organize ongoing work as well as work that needs to be completed. The tags will enable us to see the status of ongoing work and their respective priority. 
+    The issue tags we will have available are:
+     \begin{itemize} 
+        \item Bug, feature, question, in-progress, review needed, changes needed, ready for merge, done, high priority, low priority, meeting, frontend, backend, feedback 
+    \end{itemize}
+    \item \textbf{Use of Checklists:} \newline
+  The group will utilize the deliverable checklists to ensure our work meets the expectations. 
+  We will also have checklists in the Pull Request templates to ensure that all required items are completed prior to merging. The checklist will include the following items: 
+  \begin{itemize}
+    \item Unit Tests Passed
+    \item Coding Standard is followed 
+    \item Code Compiles without errors
+    \item Reviewed by 2 team members
+  \end{itemize}
+  \end{itemize}
 
 \section{Project Decomposition and Scheduling}
 
