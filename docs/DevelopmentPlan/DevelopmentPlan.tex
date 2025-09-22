@@ -104,6 +104,42 @@ for deadlines.}
 
 \section{Proof of Concept Demonstration Plan}
 
+Our Proof Of Concept(POC) will consist of roughly the following steps:
+\begin{enumerate}
+    \item Identify the types of technical diagrams to target for alt text generation.
+    \begin{itemize}
+        \item Such as but not limited to flowcharts, circuit diagrams, graphs, UML diagrams, and mathematical figures.
+    \end{itemize}
+
+    \item Determine the accessibility requirements and standards for alt text.
+    \begin{itemize}
+        \item These requirements will be based on AODA and Web Content Accessibility Guidelines (WCAG) 2.1 guidelines, focusing on clarity, conciseness, and compatibility with screen readers.
+    \end{itemize}
+
+    \item Develop and evaluate the model’s ability to generate alt text for a selected set of diagrams.
+    \begin{itemize}
+        \item We will test outputs using a curated dataset of diagrams.
+        \item Evaluation will include both automated metrics (e.g., text length, keyword coverage) and qualitative user testing with screen reader compatibility checks.
+    \end{itemize}
+
+    \item Incorporate user feedback to refine the generated descriptions.
+    \begin{itemize}
+        \item Feedback will be collected from users using metrics defined in the STEM Alt Text User Testing Project conducted by Ms. Jing in January 2025.
+        \item A human-in-the-loop process will validate and correct outputs to increase trustworthiness and usability.
+    \end{itemize}
+
+    \item Compare generated alt text against baseline approaches.
+    \begin{itemize}
+        \item We will benchmark our tool’s outputs against existing alt text practices (manual descriptions, generic auto-generation) and results from the STEM Alt Text User Testing Project.
+        \item The goal is to show measurable improvements in accessibility and user comprehension.
+    \end{itemize}
+
+    \item Demonstrate proof of integration with assistive technologies.
+    \begin{itemize}
+        \item Final validation will involve testing with screen readers (e.g., NVDA, JAWS) to ensure proper reading order and interpretability.
+    \end{itemize}
+\end{enumerate}
+
 The following is a brief list of primary risks to our success and how the POC results can mitigate them: 
 \begin{itemize}
     \item \textbf{Risk:} The model may not be able to accurately generate alternative text that is considered accessible. \\
