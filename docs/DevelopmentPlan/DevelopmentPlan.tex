@@ -3,7 +3,7 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage[hidelinks]{hyperref} 
-
+\usepackage{placeins}
 \usepackage{float}
 
 \title{Development Plan\\\progname}
@@ -204,7 +204,9 @@ demonstrate during your proof of concept demonstration to convince yourself that
 you will be able to overcome this risk?
 
 \section{Expected Technology}
+
 \begin{table}[!htbp]
+  \centering
   \caption{Expected Technologies}
   \begin{tabular}{|p{4cm}|p{4cm}|p{5cm}|}
   \hline
@@ -234,9 +236,9 @@ you will be able to overcome this risk?
   \hline 
 
 \end{tabular}
-
 \end{table}
 
+\FloatBarrier 
 
 \section{Coding Standard}
 The team will be adopting the \href{https://peps.python.org/pep-0008/}{PEP8} (Python Enhancement Proposal 8) 
