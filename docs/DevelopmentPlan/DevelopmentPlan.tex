@@ -25,7 +25,7 @@
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-Date1 & Name(s) & Description of changes\\
+September 22, 2025 & All & Initial version of document\\
 Date2 & Name(s) & Description of changes\\
 ... & ... & ...\\
 \bottomrule
@@ -211,9 +211,56 @@ The project planner will have items to track and manage including:
 
 \section{Proof of Concept Demonstration Plan}
 
-What is the main risk, or risks, for the success of your project?  What will you
-demonstrate during your proof of concept demonstration to convince yourself that
-you will be able to overcome this risk?
+Our Proof Of Concept(POC) will consist of roughly the following steps:
+\begin{enumerate}
+    \item Identify the types of technical diagrams to target for alt text generation.
+    \begin{itemize}
+        \item Such as but not limited to flowcharts, circuit diagrams, graphs, UML diagrams, and mathematical figures.
+    \end{itemize}
+
+    \item Determine the accessibility requirements and standards for alt text.
+    \begin{itemize}
+        \item These requirements will be based on AODA and Web Content Accessibility Guidelines (WCAG) 2.1 guidelines, focusing on clarity, conciseness, and compatibility with screen readers.
+    \end{itemize}
+
+    \item Develop and evaluate the model’s ability to generate alt text for a selected set of diagrams.
+    \begin{itemize}
+        \item We will test outputs using a curated dataset of diagrams.
+        \item Evaluation will include both automated metrics (e.g., text length, keyword coverage) and qualitative user testing with screen reader compatibility checks.
+    \end{itemize}
+
+    \item Incorporate user feedback to refine the generated descriptions.
+    \begin{itemize}
+        \item Feedback will be collected from users using metrics defined in the STEM Alt Text User Testing Project conducted by Ms. Jing in January 2025.
+        \item A human-in-the-loop process will validate and correct outputs to increase trustworthiness and usability.
+    \end{itemize}
+
+    \item Compare generated alt text against baseline approaches.
+    \begin{itemize}
+        \item We will benchmark our tool’s outputs against existing alt text practices (manual descriptions, generic auto-generation) and results from the STEM Alt Text User Testing Project.
+        \item The goal is to show measurable improvements in accessibility and user comprehension.
+    \end{itemize}
+
+    \item Demonstrate proof of integration with assistive technologies.
+    \begin{itemize}
+        \item Final validation will involve testing with screen readers (e.g., NVDA, JAWS) to ensure proper reading order and interpretability.
+    \end{itemize}
+\end{enumerate}
+
+The following is a brief list of primary risks to our success and how the POC results can mitigate them: 
+\begin{itemize}
+    \item \textbf{Risk:} The model may not be able to accurately generate alternative text that is considered accessible. \\
+    \textbf{Mitigation:} The POC will include testing for the model on a diverse set of diagrams to evaluate its performance and regulate according to  Accessibility for Ontarians with Disabilities Act (AODA) standards.
+      
+    \item \textbf{Risk:} The tool may not integrate smoothly with assistive technologies (e.g., screen readers).  \\
+    \textbf{Mitigation:} The POC will explicitly test generated alt text with standard screen readers to confirm compatibility and usability.  
+
+    \item \textbf{Risk:} End-users may perceive the generated alt text as inaccurate or misleading, reducing trust in the tool.  \\
+    \textbf{Mitigation:} The POC will incorporate a human-in-the-loop feedback mechanism, enabling iterative validation and correction of generated text.  
+    
+    \item \textbf{Risk:} The project may face time constraints that could impact the depth of development. \\
+    \textbf{Mitigation:} The POC will prioritize essential features and functionalities, allowing for a focused approach that can be expanded upon in future iterations.
+\end{itemize}
 
 \section{Expected Technology}
 
@@ -345,68 +392,119 @@ also assist in highlighting any style and quality issues.
 
 \subsection*{External Goals}
 
-\wss{What are your team's external goals for this project? These are not the
-goals related to the functionality or quality fo the project.  These are the
-goals on what the team wishes to achieve with the project.  Potential goals are
-to win a prize at the Capstone EXPO, or to have something to talk about in
-interviews, or to get an A+, etc.}
+Our team’s primary external goal is to gain valuable, workforce-relevant experience by 
+developing a project that enhances our technical and professional skills, particularly 
+in machine learning, natural language processing, accessibility standards (AODA), and inclusive design. We aim
+to create a portfolio-worthy project that could be showcased in interviews, 
+highlighting our ability to address real-world accessibility challenges. Our goals also 
+include achieving an A+ in the course, presenting our work at the Capstone EXPO for a chance 
+to win a prize, and contributing to McMaster's commitment to accessibility by creating a tool to 
+improve inclusion for students with disabilities.  
 
 \subsection*{Attendance}
+This section explains rules and expectations regarding team member attendance.
 
 \subsubsection*{Expectations}
 
-\wss{What are your team's expectations regarding meeting attendance (being on
-time, leaving early, missing meetings, etc.)?}
-
+Our team expects all members to attend weekly meetings consistently and arrive 
+on time to ensure productive collaboration and effective communication. Members 
+are expected to stay for the entire duration of the meeting. If someone must 
+leave early or miss a meeting, they should notify the team at least 24 hours 
+in advance and take responsibility for catching up on any missed discussions 
+or tasks by reviewing the meeting notes. We prioritize respect for each other’s time and aim to keep meetings efficient, 
+focused, and adaptable to everyone’s schedule. If any team member misses two 
+meetings in a row, they must treat the rest of the team to timbits. For every 
+meeting missed after that, the member must bring a snack for each team member.
+If a team member is consistently late or misses a meeting, they must provide an 
+appropriate reason. Failure to do so will result in escalation to the TA and 
+then the instructor. To stay organized, the team will use a discord event bot to 
+schedule meetings and send reminders to ensure everyone is aware of upcoming 
+sessions. 
 \subsubsection*{Acceptable Excuse}
 
-\wss{What constitutes an acceptable excuse for missing a meeting or a deadline?
-What types of excuses will not be considered acceptable?}
+An acceptable excuse for missing a meeting or deadline includes unavoidable circumstances 
+such as illness, family emergencies, technical issues, work events or unavoidable academic conflicts (midterms/exams) beyond one’s control,
+that are communicated to the team in advance.
+Excuses such as forgetting, poor time management, lack of preparation, or not informing the team
+ahead of time are not acceptable. We anticipate clear and timely communication to alter duties as
+appropriate to ensure the project stays on schedule. 
 
 \subsubsection*{In Case of Emergency}
 
-\wss{What process will team members follow if they have an emergency and cannot
-attend a team meeting or complete their individual work promised for a team
-deliverable?}
+If a team member has an emergency and cannot attend a meeting or complete their assigned work, they 
+are expected to notify the team as soon as possible through the group’s discord channel or teams channel. In the event, 
+a team member cannot complete their assigned duties, they should inform the team atleast 72-96 hours prior to submission deadlines.
+The member should clearly explain the situation, indicate whether they will need support or a change 
+of tasks, and provide any available progress or notes so others can continue the work if necessary. In the case where tasks are redistributed,
+the team member must update the progress board on Github to reflect the changes. 
+The team will then adjust responsibilities collaboratively to ensure that deadlines and deliverables are still met.
 
 \subsection*{Accountability and Teamwork}
 
 \subsubsection*{Quality} 
 
-\wss{What are your team's expectations regarding the quality
-of team members' preparation for team meetings and the quality of the
-deliverables that members bring to the team?}
+Every member of the team is expected to produce high-quality work that meets the agreed-upon standards and contributes positively to the 
+overall project. All members should prepare for weekly check-ins and meetings by doing the
+following:
+
+\begin{itemize}
+  \item Before every meeting, the team members must review meeting notes from the last meeting and be up-to-date on the meeting agenda.
+  \item The team members must review all the relevant materials and documents related to the project. Team members must create a list of questions to ask at the biweekly meeting with supervisor in order to gain more clarity towards the final goal.
+  \item Assigned tasks should be completed in advance so that meetings can focus on collaboration and decision-making rather than catching up on unfinished work.
+  \item Every team member must provide status updates on their assigned tasks during meetings, highlighting any challenges or roadblocks they are facing.
+  \item All team members should actively participate in discussions, offering constructive feedback and suggestions to improve the project.
+  \item In case any team members require any assistance or support, they should communicate this to the team promptly so that help can be provided.
+\end{itemize}
+
+\noindent In order to ensure high-quality work, the team will implement the following practices:
+
+\begin{itemize}
+  \item All code contributions must adhere to the team's coding standards and be reviewed by at least one other team member before being merged 
+  into the main branch.
+  \item Issues must be created on the Github progress board for all tasks, and team members should update the status of their tasks regularly.
+  \item All tasks should be completed on the time agreed by the team and the quality of the work should adhere to the rubric of the given deliverable.
+  \item Each team member is responsible for getting their work reviewed and approved by the team before submission.
+  \item All the team members must actively participate in revieweing as well as sincerly and honestly considering feedback provided by other team members.
+  \item If challenges arise that may affect quality, members should communicate early so that the team can provide support or make adjustments.
+  \item The standard of the work should be well documented, well comunicated, well tested and reviewed by the team to ensure it meets the coding standards set by the team.
+\end{itemize}
 
 \subsubsection*{Attitude}
 
-\wss{What are your team's expectations regarding team members' ideas,
-interactions with the team, cooperation, attitudes, and anything else regarding
-team member contributions?  Do you want to introduce a code of conduct?  Do you
-want a conflict resolution plan?  Can adopt existing codes of conduct.}
+Our team expects all members to approach the project professionally, respectfully, and open to new ideas. Ideas should be openly shared, and all contributions
+will be carefully considered to foster an environment creativity and innovation. Team interactions should be collaborative and helpful, with members working together to 
+achieve a common goal rather than focusing on individual accomplishments. A positive and accountable attitude is required, in which each individual accepts
+responsibility for their task while respecting the time and efforts of others. The team will follow the standard code of conduct to ensure respect, diversity and a no discrimination/harassement policy.
+In case of disagreements/conflicts, the team will address them constructively and professionally, seeking to understand different perspectives and finding common ground internally in a team meeting.
+If the issue rises, we will inform the TA and then escalate the issue to instructor defining the problem.
 
 \subsubsection*{Stay on Track}
 
-\wss{What methods will be used to keep the team on track? How will your team
-ensure that members contribute as expected to the team and that the team
-performs as expected? How will your team reward members who do well and manage
-members whose performance is below expectations?  What are the consequences for
-someone not contributing their fair share?}
+In order to stay track on the project and have effective teamwork, the team will implement the following strategies:
 
-\wss{You may wish to use the project management metrics collected for the TA and
-instructor for this.}
 
-\wss{You can set target metrics for attendance, commits, etc.  What are the
-consequences if someone doesn't hit their targets?  Do they need to bring the
-coffee to the next team meeting?  Does the team need to make an appointment with
-their TA, or the instructor?  Are there incentives for reaching targets early?}
+\noindent For each weekly meeting, attendance will be tracked and recorded by the meeting notes. The team will be tracking issues and tasks for each member using 
+github projects and github kanban board. Each team member will be assigned weekly tasks and will be expected to complete them by the agreed-upon deadlines. 
+The team will also track individual contributions through git commits and pull requests. The team will track participation in meetings and discussions, 
+ensuring that all members are actively engaged and contributing to the team's progress.
+
+\noindent Each week weekly status updates will be given by each team member. We will be evaluating member's contributions through various factors such as 
+attendance, task completion, code contributions, helping team members, complexity of the tasks completed, ideation, code quality, research as well as the number of tickets closed. These
+factors will be discussed before every deliverable and used as performance indicators. The team will be maintain a folder and using a weighted matrix with the above mentioned factors, a team champion will be declared every 2 weeks to recogonise the work
+\noindent If a team member is not contributing their fair share, the team will first address the issue internally by discussing it with the member and understanding any challenges they may be facing.
+The main focus is to maintain open communication and provide support to help the member get back on track. In this internal meeting, every member should be understanding and offer solutions to maintain a positive and fair environment.
+. If the issue persists, the team will escalate the matter to the TA and then to the instructor if necessary. A performance improvement plan may be implemented to help the member improve their contributions. In the case if there is still no improvement,
+the team may consider reassigning tasks or redistributing workload to ensure the project's success. The team will document any actions taken to address the issue and ensure that all members are aware of the expectations and consequences of not contributing their fair share.
+In order to maintain equitable work and fairshare, the team member might be subject to disciplinary action such as removal from the group or grade adjustment.
 
 \subsubsection*{Team Building}
 
-\wss{How will you build team cohesion (fun time, group rituals, etc.)? }
+We plan on building a harmonious team by organizing regular team-building activities, such as team lunches once every month and celebrating birthdays or special occassions. 
+To recogonise good work, we will be giving a team medal to the best contributor every other week and celebrating small wins together. 
 
 \subsubsection*{Decision Making} 
 
-\wss{How will you make decisions in your group? Consensus?  Vote? How will you
-handle disagreements? }
+Decisions will be made collaboratively, with all team members having an equal say in the decision-making process. The team will strive to reach consensus on major decisions,
+but if consensus cannot be reached, a majority vote will be used to make the final decision. In case of a tie, the team supervisor will have the deciding vote.
 
 \end{document}
