@@ -136,10 +136,11 @@ The defined roles and responsibilities per team member is as follows:
   \item \textbf{Step 3: Pull Request} Once a group member is done working on their feature, they will open a pull request to merge into the develop branch. Group members will use the Github comment feature to connect their feature to any applicable issue numbers. They will also assign a group member to review their code.
     \end{itemize}
 
-	\item\textbf{Continuous Integration\ Continuous Development}
+	\item\textbf{Continuous Integration(CI) and Continuous Deployment (CD)}
 	
-  For continuous integration (CI), we will be using Github actions to automatically trigger a project build and run unit tests 
-  whenever a commit occurs or pull requests are opened. This ensures errors are discovered as early as possible and that the project remains in a working state during development. 
+  For CI and CD, we will be using Github actions to automatically trigger a project build and run unit tests 
+  whenever a commit occurs or pull requests are opened. This ensures errors are discovered as early as possible 
+  and that the project remains in a working state during development. 
 
   \item \textbf{Use of Labels} \newline
   The team will utilize labels to help us organize ongoing work as well as work that needs to be completed. The tags will enable us to see the status of ongoing work and their respective priority. 
@@ -159,6 +160,17 @@ The defined roles and responsibilities per team member is as follows:
     \item Code Compiles without errors
     \item Reviewed by 2 team members
   \end{itemize}
+  \item \textbf{Quality Standards for Contribution}\newline
+  The following criteria must be met in order to merge any changes into the \textit{Reading4All} Repository
+  \begin{itemize}
+    \item All unit tests pass (CI pipeline is successful)
+    \item Test coverage is \textbf{95}\%
+    \item Linting passes with zero warnings or errors. 
+    \item At least one team member has reviewed and approved the PR
+    \item User interface(UI) changes meet accessibility Standards
+    \item ReadMe is updated with any necessary changes. 
+  \end{itemize}
+  
   \end{itemize}
 
 \section{Project Decomposition and Scheduling}
@@ -183,7 +195,7 @@ The project planner will have items to track and manage including:
     \textbf{Deliverables} & \textbf{Due Date} \\
     \midrule
     Problem Statement, Proof of Concept, and Development Plan & Week  04 \\
-    Software Requirements Specificaiton and Hazards Analysis (Revision 0) & Week 06 \\
+    Software Requirements Specifications and Hazards Analysis (Revision 0) & Week 06 \\
     Verification \& Validation Plan (Revision 0) & Week 08 \\
     Design Document (Rev-1) & Week 10 \\
     Proof of Concept Demonstration & Week 11 + 12 \\
@@ -222,7 +234,7 @@ you will be able to overcome this risk?
   \hline
   Pre-trained models & None & We will be making our own model and not used a pre-trained model.\\
   \hline 
-  Linter & Pylint(Python) and ESLint (JavaScript) &  We will use these linters as they are free tools that will allow us to detect potential errors early on and follows a consistent coding style. \\
+  Linter & Flake8(Python) and ESLint (JavaScript) &  We will use these linters as they are free tools that will allow us to detect potential errors early on and follows a consistent coding style. \\
   \hline
   Unit Testing Framework & Pytest(Python) and Jest (Javascript) & These unit testing frameworks will allow us to easily write and run unit tests. \newline They also support parameterized unit tests, allowing us to run the same test with different data. \\
   \hline
@@ -230,7 +242,7 @@ you will be able to overcome this risk?
   \hline
   Version Control & Git and GitHub & Git and GitHub will allow the team to easily collaborate and present our code. \\
   \hline 
-  Continuous Integration & GitHub Actions & GitHub Actions will allow us to automates builds and unit tests on commits. \\
+  CI and CD & GitHub Actions & GitHub Actions will allow us to automate builds and run unit tests after a commit occurs. \\
   \hline 
   Project Management Tool & GitHub Projects & GitHub Projects will be used to plan and organize tasks as well as track progress in order to meet deadlines.\\
   \hline 
@@ -280,8 +292,8 @@ also assist in highlighting any style and quality issues.
     experienced individual or a specialist to investigate the reason for the failure.
 
     \item \textbf{What disagreements did your group have in this deliverable, if any,
-    and how did you resolve them?}
-    We didn't face any disagreements when completing this deliverable. 
+    and how did you resolve them?}\newline
+    We didn't face any disagreements when completing this deliverable. All group members were very open minded to other members ideas. Additionally, having meetings throughout the week and easily being able to communicate through discord ensured that everyone was aligned and on the same page. 
 
 \end{enumerate}
 
