@@ -2,6 +2,9 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage[hidelinks]{hyperref} 
+\usepackage{placeins}
+\usepackage{float}
 
 \title{Development Plan\\\progname}
 
@@ -38,69 +41,173 @@ what is contained in the report.}
 \href{https://gitlab.cas.mcmaster.ca/courses/capstone/-/blob/main/Lectures/L02b_POCAndDevPlan/POCAndDevPlan.pdf?ref_type=heads}
 {lecture slides}.}
 
-\section{Confidential Information?}
+\section{Confidential Information}
 
-\wss{State whether your project has confidential information from industry, or
-not.  If there is confidential information, point to the agreement you have in
-place.}
+This project does not contain any confidential information.
 
-\wss{For most teams this section will just state that there is no confidential
-information to protect.}
+
 \section{IP to Protect}
-
-\wss{State whether there is IP to protect.  If there is, point to the agreement.
-All students who are working on a project that requires an IP agreement are also
-required to sign the ``Intellectual Property Guide Acknowledgement.''}
-
+This project does not contain any IP to protect. 
 \section{Copyright License}
 
-\wss{What copyright license is your team adopting.  Point to the license in your
-repo.}
+Our team is adopting the MIT License, which can be found \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/blob/main/LICENSE} {here}
 
 \section{Team Meeting Plan}
 
-\wss{How often will you meet? where?}
-
-\wss{If the meeting is a physical location (not virtual), out of an abundance of
-caution for safety reasons you shouldn't put the location online}
-
-\wss{How often will you meet with your industry advisor?  when?  where?}
-
-\wss{Will meetings be virtual?  At least some meetings should likely be
-in-person.}
-
-\wss{How will the meetings be structured?  There should be a chair for all meetings.  There should be an agenda for all meetings.}
+The team will meet weekly on Tuesdays from 3:00pm to 4:00pm virtually on Discord or in person on campus if needed. 
+The team will meet with the industry advisor biweekly on Thursdays from 2:30pm to 3:30pm. These meetings with the industry advisor will 
+be conducted either online on Microsoft Teams or in person on campus. \\[1ex]
+The meetings will be structured as follows: 
+\begin{enumerate}
+	\item An agenda prepared by the meeting chair (who rotates among team members each week) 
+  will be made to use as a guide for the meeting.
+	\item The team will go over any announcements or completed To-Dos from the previous week's 
+  meeting if needed.
+  \item Each member will present what they have worked on so far and ask the remaining group 
+  members for feedback or any questions if needed.
+  \item The team will discuss and document any decisions needed about the deliverables 
+  or the project. 
+  \item Any concerns/questions will be documented for the next team meeting or for the next 
+  industry advisor meeting.
+\end{enumerate}
 
 \section{Team Communication Plan}
 
-\wss{Issues on GitHub should be part of your communication plan.}
+\begin{itemize}
+    \item \textbf{Discord}: Our main method of communication between group members. It will be used to discuss detailed deliverable and any code questions. Additionally, group meetings will be hosted on discord. 
+    \item \textbf{Instagram}: Our secondary method of communication between group members. It will be used to discuss less technical details and for any urgent messages that require a quicker response. 
+    \item \textbf{Teams}: Our main method of communication with our Supervisor. We will utilize our group chat with our supervisor for any quick questions or updates. Online meetings with our supervisor will be hosted on teams.
+    \item \textbf{GitHub}: The issues feature will be utilized to communicate any bugs observed and meeting attendances. Additionally, as a way to see what feature each team member is working on and their progress. 
+\end{itemize}
+
+
 
 \section{Team Member Roles}
 
-\wss{You should identify the types of roles you anticipate, like notetaker,
-leader, meeting chair, reviewer.  Assigning specific people to those roles is
-not necessary at this stage.  In a student team the role of the individuals will
-likely change throughout the year.}
+The team will work collaboratively to develop and refine this project. To ensure a clear 
+division of tasks, each team member have been assigned roles that 
+align with their areas of expertise and contribute to achieving the goals 
+of this project. These roles will rotate throughout the year to prevent overspecialization
+and to ensure that all members can gain experience and knowledge in 
+every aspect of the project. \\[1ex]
+The defined roles and responsibilities per team member is as follows: 
+\begin{itemize}
+	\item \textbf{Fiza Sehar}: \textit{Developer, Documentation, Model Training Specialist} \\
+	Fiza will be responsible for developing features and maintaining documentation for the 
+  project. She will also be leading the model training for the project to ensure 
+  efficient and accurate performance.
+	\item \textbf{Dhruv Sardana}: \textit{Developer, Documentation, Full-Stack Specialist} \\
+	Dhruv will work across both frontend and backend development, and in ensuring a 
+  seamless integration and functionality. He will also support in writing documentation
+  for this project. 
+	\item \textbf{Nawaal Fatima}: \textit{Developer, Documentation, Data Specialist} \\
+	Nawaal will also work on developing features with a 
+  focus on data management, pre-processing, and analysis in this project. She 
+  will also contribute in the documentation of the project.
+	\item \textbf{Moly Mikhail}: \textit{Developer, Documentation, Backend Specialist} \\
+	Moly will be handling the APIs, database management, and system logic focusing on 
+  the backend of the project. She will also support in the documentation of the project.
+	\item \textbf{Casey Francine Bulaclac}: \textit{Developer, Documentation, Frontend Specialist} \\
+	Francine will be responsible for the design and implementation of the user interface, 
+  ensuring correct usability and accessibility while assisting in the project 
+  documentation.
+\end{itemize}
 
 \section{Workflow Plan}
 
 \begin{itemize}
-	\item How will you be using git, including branches, pull request, etc.?
-	\item How will you be managing issues, including template issues, issue
-	classification, etc.?
-  \item Use of CI/CD
-\end{itemize}
+	\item\textbf{Git Workflow \newline}
+	 We will be using git, branches and pull requests in order to divide work between group members and complete tasks concurrently. 
+   Furthermore, we will follow a feature-branch based approach, our process will follow these steps:
+   \begin{itemize}
+    \item \textbf{Step 1: Permanent Branches}: The project repository will have two permanent branches. 
+   \begin{itemize}
+      \item \textbf{Develop}: This branch will be used integrate different features and ensure that they work successfully together. Code can only be merged into the develop branch after being reviewed by one other team member who wasn't working on the feature. 
+      \item \textbf{Main}: This branch will be used to maintain the most stable version of the application. Code in the develop branch can only merged into the main branch after its been extensively tested and been reviewed and approved by a majority of team members. 
+    \end{itemize}
+
+    \item \textbf{Step 2: Feature/Bug Branches} Group member will create a branch from the \texttt{develop} branch (after pulling the most recent changes) for each feature they work on. \newline
+    \textbf{Naming Conventions:}
+    \begin{itemize}
+      \item \textbf{Features: }\texttt{feature\_[contributorName]/D\#\_[featureDescription]} 
+      \item \textbf{Bugs: }  \texttt{bug\_[contributorName]/D\#\_[bugDescription]}
+    \end{itemize}
+
+  \item \textbf{Step 3: Pull Request} Once a group member is done working on their feature, they will open a pull request to merge into the develop branch. Group members will use the Github comment feature to connect their feature to any applicable issue numbers. They will also assign a group member to review their code.
+    \end{itemize}
+
+	\item\textbf{Continuous Integration(CI) and Continuous Deployment (CD)}
+	
+  For CI and CD, we will be using Github actions to automatically trigger a project build and run unit tests 
+  whenever a commit occurs or pull requests are opened. This ensures errors are discovered as early as possible 
+  and that the project remains in a working state during development. 
+
+  \item \textbf{Use of Labels} \newline
+  The team will utilize labels to help us organize ongoing work as well as work that needs to be completed. The tags will enable us to see the status of ongoing work and their respective priority. 
+    The issue tags we will have available are:
+     \begin{itemize} 
+        \item Bug, feature, question, in-progress, review needed, changes needed, ready for merge, done, high priority, low priority, meeting, frontend, backend, feedback 
+    \end{itemize}
+   \item \textbf{Managing issues}\newline
+  We will utilize the capTemplate template issues for tracking attendance, peer review, supervisor, TA, and team meetings. Furthermore, issues that fall outside these categories will utilize the blank issue and the labels mentioned above. \newline
+  The issue will have a clear title, description and an owner to be responsible for the issue. This will ensure issues are easily identified and managed. Once an issue has been resolved, it will be linked to the PR containing the code, allowing the team to keep track of the issues status.
+  \item \textbf{Use of Checklists} \newline
+  The group will utilize the deliverable checklists to ensure our work meets the expectations. 
+  We will also have checklists in the Pull Request templates to ensure that all required items are completed prior to merging. The checklist will include the following items: 
+  \begin{itemize}
+    \item Unit Tests Passed
+    \item Coding Standard is followed 
+    \item Code Compiles without errors
+    \item Reviewed by 2 team members
+  \end{itemize}
+  \item \textbf{Quality Standards for Contribution}\newline
+  The following criteria must be met in order to merge any changes into the \textit{Reading4All} Repository
+  \begin{itemize}
+    \item All unit tests pass (CI pipeline is successful)
+    \item Test coverage is \textbf{95}\%
+    \item Linting passes with zero warnings or errors. 
+    \item At least one team member has reviewed and approved the PR
+    \item User interface(UI) changes meet accessibility Standards
+    \item ReadMe is updated with any necessary changes. 
+  \end{itemize}
+  
+  \end{itemize}
 
 \section{Project Decomposition and Scheduling}
 
+The project is hosted under the 4G06-CAPSTONE-2025 organization. The repository can be 
+accessed here: \href{https://github.com/4G06-CAPSTONE-2025/Reading4All}{Reading4All Repository}. \\[1ex]
+The team will use a Github Project to track and manage the project deliverables and tasks, as well 
+as to ensure accountability for each team member's assigned tasks. The GitHub 
+project is named ``Reading4All Project Planner'' which can be accessed here: 
+\href{https://github.com/orgs/4G06-CAPSTONE-2025/projects/4}{Reading4All GitHub Project}. \\[1ex]
+The project planner will have items to track and manage including:
 \begin{itemize}
-  \item How will you be using GitHub projects?
-  \item Include a link to your GitHub project
+  \item Issues for project deliverables
+  \item Supervisor and team meeting logs 
+  \item Pull requests 
+  \item Draft items as placeholders for future issues
 \end{itemize}
-
-\wss{How will the project be scheduled?  This is the big picture schedule, not
-details. You will need to reproduce information that is in the course outline
-for deadlines.}
+\subsection{Project Schedule}
+\begin{center}
+  \begin{tabularx}{\textwidth}{Xc}
+    \toprule
+    \textbf{Deliverables} & \textbf{Due Date} \\
+    \midrule
+    Problem Statement, Proof of Concept, and Development Plan & Week  04 \\
+    Software Requirements Specifications and Hazards Analysis (Revision 0) & Week 06 \\
+    Verification \& Validation Plan (Revision 0) & Week 08 \\
+    Design Document (Rev-1) & Week 10 \\
+    Proof of Concept Demonstration & Week 11 + 12 \\
+    Design Document (Revision 0) & Week 16 \\
+    Project Demonstration (Revision 0) & Week 18 + 19 \\
+    Verification \& Validation Report (Revision 0) & Week 22 \\
+    Final Demonstration (Revision 1) & Week 24 \\
+    Final Documentation & Week 26 \\
+    Capstone EXPO & Week 26 \\
+    \bottomrule
+  \end{tabularx}
+\end{center}
 
 \section{Proof of Concept Demonstration Plan}
 
@@ -157,41 +264,49 @@ The following is a brief list of primary risks to our success and how the POC re
 
 \section{Expected Technology}
 
-\wss{What programming language or languages do you expect to use?  What external
-libraries?  What frameworks?  What technologies.  Are there major components of
-the implementation that you expect you will implement, despite the existence of
-libraries that provide the required functionality.  For projects with machine
-learning, will you use pre-trained models, or be training your own model?  }
+\begin{table}[!htbp]
+  \centering
+  \caption{Expected Technologies}
+  \begin{tabular}{|p{4cm}|p{4cm}|p{5cm}|}
+  \hline
+  \textbf{Technology} & \textbf{Choice} & \textbf{Reasoning} \\ 
+  \hline
+  Backend Language & Python & The team is most familiar with this language and it provides many free and easy to use machine learning (ML) libraries.\\
+  \hline 
+  Frontend Language and Framework & JavaScript with React & The team is also familiar with using JavaScript and React. The combination allows you to make interactive and maintainable interfaces through components. \\
+  \hline
+  UI Design & Figma & Figma will allow us to design and visualize our UI prior to building it. Figma also allows collaboration.\\ 
+  \hline
+  Libraries & Pandas, Tensorflow or Pytorch & These Python libraries will be utilized to build our own ML model. \\
+  \hline
+  Pre-trained models & None & We will be making our own model and not used a pre-trained model.\\
+  \hline 
+  Linter & Flake8(Python) and ESLint (JavaScript) &  We will use these linters as they are free tools that will allow us to detect potential errors early on and follows a consistent coding style. \\
+  \hline
+  Unit Testing Framework & Pytest(Python) and Jest (Javascript) & These unit testing frameworks will allow us to easily write and run unit tests. \newline They also support parameterized unit tests, allowing us to run the same test with different data. \\
+  \hline
+  Coverage Tools & Coverage.py (Python) and JSover(JavaScript) & We will use these these free tools to confirm that our unit tests reach all possible code paths.\\
+  \hline
+  Version Control & Git and GitHub & Git and GitHub will allow the team to easily collaborate and present our code. \\
+  \hline 
+  CI and CD & GitHub Actions & GitHub Actions will allow us to automate builds and run unit tests after a commit occurs. \\
+  \hline 
+  Project Management Tool & GitHub Projects & GitHub Projects will be used to plan and organize tasks as well as track progress in order to meet deadlines.\\
+  \hline 
 
-\wss{The implementation decisions can, and likely will, change over the course
-of the project.  The initial documentation should be written in an abstract way;
-it should be agnostic of the implementation choices, unless the implementation
-choices are project constraints.  However, recording our initial thoughts on
-implementation helps understand the challenge level and feasibility of a
-project.  It may also help with early identification of areas where project
-members will need to augment their training.}
+\end{tabular}
+\end{table}
 
-Topics to discuss include the following:
-
-\begin{itemize}
-\item Specific programming language
-\item Specific libraries
-\item Pre-trained models
-\item Specific linter tool (if appropriate)
-\item Specific unit testing framework
-\item Investigation of code coverage measuring tools
-\item Specific plans for Continuous Integration (CI), or an explanation that CI
-  is not being done
-\item Specific performance measuring tools (like Valgrind), if
-  appropriate
-\item Tools you will likely be using?
-\end{itemize}
-
-\wss{git, GitHub and GitHub projects should be part of your technology.}
+\FloatBarrier 
 
 \section{Coding Standard}
-
-\wss{What coding standard will you adopt?}
+The team will be adopting the \href{https://peps.python.org/pep-0008/}{PEP8} (Python Enhancement Proposal 8) 
+coding standard for the project. This coding standard is commonly used in the 
+Python community and ensures that the team's code remains 
+consistent and readable across the entire project.\\
+To support this, the team will also use the Flake8 linter tool to automate the 
+checking of the adherance of the team's code to the PEP8 standard. The tool will
+also assist in highlighting any style and quality issues.
 
 \newpage{}
 
@@ -201,13 +316,70 @@ Topics to discuss include the following:
 
 \input{../Reflection.tex}
 
+
+\textbf{Moly Mikhail Reflection}
+\begin{enumerate}
+    \item  \textbf{Why is it important to create a development plan prior to starting the
+    project?} \newline
+    I believe it is important to create a development prior to starting a project as it lets you consider ahead of time the different 
+    components. It allows you to plan out the work to be done and the different technologies that will be required. Furthermore, if a technology 
+    is needed such as machine learning or a python library that some team members are not familiar with, planning prior to starting the project will give
+    them a chance to schedule time to learn and practice with the technology. Another reason it is important to create a development plan is that it ensures that the project begins with a strong foundation.
+    For example, discussing unit testing, code coverage and git practices prior to starting the project will ensure the project remains organized and stable throughout the development process. It also sets 
+    expectations between group members of the code quality expected and the pull request review process to be completed.
+    
+    \item \textbf{In your opinion, what are the advantages and disadvantages of using
+    CI/CD?} \newline
+    I believe there are many advantages and disadvantages to using CI/CD. One advantage is that it ensures that the project remains stable and behaves as expected when new features are implemented. 
+    For example, when a developer completes a feature, CI/CD checks that all previously functioning application features remain working as expected and no bugs are introduced. Another advantage
+    is that when the application is in production and being used by customers, CI/CD will help ensure that releases only contain code that has passed all written tests.  This improves customer experiences
+    as it reduces the chance of them encountering bugs or errors.  
+    One disadvantage of CI/CD is that it can be very time-consuming and require many resources. For example, if a project is hosted on AWS, continuously redeploying the application
+    can require many resources and increase cost. Another disadvantage of CI/CD is that when the CI/CD pipeline fails, it often requires a more 
+    experienced individual or a specialist to investigate the reason for the failure.
+
+    \item \textbf{What disagreements did your group have in this deliverable, if any,
+    and how did you resolve them?}\newline
+    We didn't face any disagreements when completing this deliverable. All group members were very open minded to other members ideas. Additionally, having meetings throughout the week and easily being able to communicate through discord ensured that everyone was aligned and on the same page. 
+
+\end{enumerate}
+
+
+\textbf{Casey Francine Bulaclac Reflection}
+
 \begin{enumerate}
     \item Why is it important to create a development plan prior to starting the
-    project?
-    \item In your opinion, what are the advantages and disadvantages of using
-    CI/CD?
+    project? \\[1ex]
+    It is important to create a development plan before starting the project to ensure that 
+    the team is on the same page and working on the same objectives. The development helps to establish 
+    the team's goals and outlines how to meet these goals through components such as the workflow plan. 
+    It also establishes clear project timelines and individual accountability by 
+    defining the team member roles and meeting plans, and project scheduling.
+    Overall, creating a development plan provides a strong foundation for achieving the goals
+    of the project which the team can refer to throughout the process of working on this project.
+    \item In your opinion, what are the advantages and disadvantages of using CI/CD? \\[1ex]
+    Continuous Integration (CI) allows multiple users to merge frequently in a shared repository by 
+    implementing an automated pipeline consisting of build, unit tests, and more to 
+    ensure that the new code does not break the system. Therefore, an advantage to CI is 
+    that it benefits these users by making the integration of their code safer and 
+    more efficient. A disadvantage, however, is that it demands time and complex automation such as 
+    setting up the pipelines. Another disadvantage is that CI highly depends on having a 
+    strong test coverage, therefore, having weak tests can decrease reliability. \\
+    Continuous Deployment (CD) allows users to automatically release changes that have 
+    passed automated tests and checks, delivering new features, bug fixes, and more into 
+    production reliably and quickly. Therefore, an advantage to CD is that it speeds up 
+    the delivery of new features or fixes but a disadvantage to this is that there are 
+    high requirements for testing to ensure quality. Additionally, it requires a reliable 
+    monitoring system to ensure that no defects or bugs reach production.
+
     \item What disagreements did your group have in this deliverable, if any,
-    and how did you resolve them?
+    and how did you resolve them? \\[1ex]
+    Our group had no disagreements in this deliverable as we ensured proper 
+    and consistent communciation from the start of this project. The team made
+    sure to stay organized and on track in this deliverable 
+    by holding meetings to assign individual tasks, keeping each other up to date with 
+    the progress of these tasks, and providing support when needed. 
+
 \end{enumerate}
 
 \newpage{}
