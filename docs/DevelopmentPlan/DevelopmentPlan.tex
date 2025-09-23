@@ -32,12 +32,15 @@ September 22, 2025 & All & Initial version of document\\
 
 \newpage{}
 
-\wss{Put your introductory blurb here.  Often the blurb is a brief roadmap of
-what is contained in the report.}
-
-\wss{Additional information on the development plan can be found in the
-\href{https://gitlab.cas.mcmaster.ca/courses/capstone/-/blob/main/Lectures/L02b_POCAndDevPlan/POCAndDevPlan.pdf?ref_type=heads}
-{lecture slides}.}
+This document outlines the development plan for Team 22's Capstone Project ``Reading4All''. 
+First, it highlights the confidential information, intellectual property to protect, and copyright 
+license. It also details information about the team such as team meeting plans, communication,
+and roles. The workflow plan for the project is also established, along with the project 
+decomposition and scheduling. A proof of concept demonstration plan is outlined in the document to 
+identify risks and risk mitigation strategies. The expected technologies and coding standards are 
+also highlighted in the demonstration plan followed by the appendix which contains the 
+team charter and team reflection. Overall, this document provides the foundational structure 
+and serves as the blueprint for the team's collaboration and technical direction for the project.
 
 \section{Confidential Information}
 
@@ -136,19 +139,42 @@ The defined roles and responsibilities per team member is as follows:
 
 	\item\textbf{Continuous Integration(CI) and Continuous Deployment (CD)}
 	
-  For CI and CD, we will be using Github actions to automatically trigger a project build and run unit tests 
+  For CI and CD, we will be using Github Actions to automatically trigger a project build and run unit tests 
   whenever a commit occurs or pull requests are opened. This ensures errors are discovered as early as possible 
   and that the project remains in a working state during development. 
 
   \item \textbf{Use of Labels} \newline
   The team will utilize labels to help us organize ongoing work as well as work that needs to be completed. The tags will enable us to see the status of ongoing work and their respective priority. 
-    The issue tags we will have available are:
-     \begin{itemize} 
-        \item Bug, feature, question, in-progress, review needed, changes needed, ready for merge, done, high priority, low priority, meeting, frontend, backend, feedback 
-    \end{itemize}
+    The additional issue tags we will have available are:
+
+    \begin{table}[!htbp]
+      \centering
+      \caption{Labels and Their Usage}
+      \begin{tabular}{|p{4cm}|p{4cm}|}
+      \hline
+      \textbf{Labels} & \textbf{Usage} \\
+      \hline
+      High-Priority & This will be used on issues that need to be urgently completed.\\
+      \hline
+      Low-Priority & This will be used on issues that are not urgent and can be addressed at a later time.\\
+      \hline
+      In-Progress & This will be used to indicate that an issue is being worked on.\\
+      \hline 
+      Review Needed & This will be used to indicate that the PR needs a review.\\
+      \hline
+      Feedback & This will be used to indicate that a feature is based on feedback \\ 
+      \hline
+      Testing Needed & This indicates that testing is needed prior to completing the issue or feature\\
+      \hline
+      \end{tabular}
+    \end{table}
+
+
    \item \textbf{Managing Issues}\newline
   We will utilize the capTemplate template issues for tracking attendance, peer review, supervisor, TA, and team meetings. Furthermore, issues that fall outside these categories will utilize the blank issue and the labels mentioned above. \newline
-  The issue will have a clear title, description and an owner to be responsible for the issue. This will ensure issues are easily identified and managed. Once an issue has been resolved, it will be linked to the PR containing the code, allowing the team to keep track of the issue's status.
+  The issue will have a clear title, description and an owner to be responsible for the issue. This will ensure issues are easily identified and managed. Once an issue has been resolved, it will be linked to the PR containing the code, allowing the team to keep track of the issue's status.  
+  \item \textbf{Use of Milestones}\newline
+  Milestones will be used to represent our deliverables. Each milestone will group the related issue that compose the deliverable and as issues are closed, we can track our progress and the additional effort needed to submit the deliverable.
   \item \textbf{Use of Checklists} \newline
   The group will utilize the deliverable checklists to ensure our work meets the expectations. 
   We will also have checklists in the Pull Request templates to ensure that all required items are completed prior to merging. The checklist will include the following items: 
