@@ -26,8 +26,6 @@
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
 September 22, 2025 & All & Initial version of document\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -117,7 +115,7 @@ The defined roles and responsibilities per team member is as follows:
 
 \begin{itemize}
 	\item\textbf{Git Workflow \newline}
-	 We will be using git, branches and pull requests in order to divide work between group members and complete tasks concurrently. 
+	 We will be using git, branches and pull requests (PR) in order to divide work between group members and complete tasks concurrently. 
    Furthermore, we will follow a feature-branch based approach, our process will follow these steps:
    \begin{itemize}
     \item \textbf{Step 1: Permanent Branches}: The project repository will have two permanent branches. 
@@ -148,9 +146,9 @@ The defined roles and responsibilities per team member is as follows:
      \begin{itemize} 
         \item Bug, feature, question, in-progress, review needed, changes needed, ready for merge, done, high priority, low priority, meeting, frontend, backend, feedback 
     \end{itemize}
-   \item \textbf{Managing issues}\newline
+   \item \textbf{Managing Issues}\newline
   We will utilize the capTemplate template issues for tracking attendance, peer review, supervisor, TA, and team meetings. Furthermore, issues that fall outside these categories will utilize the blank issue and the labels mentioned above. \newline
-  The issue will have a clear title, description and an owner to be responsible for the issue. This will ensure issues are easily identified and managed. Once an issue has been resolved, it will be linked to the PR containing the code, allowing the team to keep track of the issues status.
+  The issue will have a clear title, description and an owner to be responsible for the issue. This will ensure issues are easily identified and managed. Once an issue has been resolved, it will be linked to the PR containing the code, allowing the team to keep track of the issue's status.
   \item \textbf{Use of Checklists} \newline
   The group will utilize the deliverable checklists to ensure our work meets the expectations. 
   We will also have checklists in the Pull Request templates to ensure that all required items are completed prior to merging. The checklist will include the following items: 
@@ -158,7 +156,7 @@ The defined roles and responsibilities per team member is as follows:
     \item Unit Tests Passed
     \item Coding Standard is followed 
     \item Code Compiles without errors
-    \item Reviewed by 2 team members
+    \item Reviewed by one team members
   \end{itemize}
   \item \textbf{Quality Standards for Contribution}\newline
   The following criteria must be met in order to merge any changes into the \textit{Reading4All} Repository
@@ -167,7 +165,7 @@ The defined roles and responsibilities per team member is as follows:
     \item Test coverage is \textbf{95}\%
     \item Linting passes with zero warnings or errors. 
     \item At least one team member has reviewed and approved the PR
-    \item User interface(UI) changes meet accessibility Standards
+    \item User interface (UI) changes meet the Accessibility for Ontarians with Disabilities Act (AODA) and Web Content Accessibility Guidelines 2.1 (WCAG)
     \item ReadMe is updated with any necessary changes. 
   \end{itemize}
   
@@ -220,7 +218,7 @@ Our Proof Of Concept(POC) will consist of roughly the following steps:
 
     \item Determine the accessibility requirements and standards for alt text.
     \begin{itemize}
-        \item These requirements will be based on AODA and Web Content Accessibility Guidelines (WCAG) 2.1 guidelines, focusing on clarity, conciseness, and compatibility with screen readers.
+        \item These requirements will be based on AODA and Web Content Accessibility Guidelines (WCAG) 2.1, focusing on clarity, conciseness, and compatibility with screen readers.
     \end{itemize}
 
     \item Develop and evaluate the model’s ability to generate alt text for a selected set of diagrams.
@@ -277,7 +275,7 @@ The following is a brief list of primary risks to our success and how the POC re
   \hline
   UI Design & Figma & Figma will allow us to design and visualize our UI prior to building it. Figma also allows collaboration.\\ 
   \hline
-  Libraries & Pandas, Tensorflow or Pytorch & These Python libraries will be utilized to build our own ML model. \\
+  Python Libraries & Pandas, Numpy, Tensorflow or Pytorch & These Python libraries will be utilized to build our own ML model. \\
   \hline
   Pre-trained models & None & We will be making our own model and not used a pre-trained model.\\
   \hline 
