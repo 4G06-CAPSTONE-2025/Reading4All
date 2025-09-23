@@ -21,20 +21,19 @@
 
 \begin{table}[hp]
 \caption{Revision History} \label{TblRevisionHistory}
-\begin{tabularx}{\textwidth}{llX}
+\begin{tabularx}{\textwidth}{lXl}
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-September 22, 2025 & All & Initial version of document\\
+September 22, 2025 & Dhruv Sardana, Moly Mikhail, Nawaal Fatima, Casey Francine Bulaclac & Initial version of document\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \newpage{}
 
-This document outlines the development plan for Team 22's Capstone Project ``Reading4All''. 
-First, it highlights the confidential information, intellectual property to protect, and copyright 
-license. It also details information about the team such as team meeting plans, communication,
+This document outlines the development plan for Team 22's Capstone Project ``Reading4All''. First, it highlights the confidential information, intellectual property to protect, and copyright 
+license. It also explains team detail information such as team meeting plans, communication,
 and roles. The workflow plan for the project is also established, along with the project 
 decomposition and scheduling. A proof of concept demonstration plan is outlined in the document to 
 identify risks and risk mitigation strategies. The expected technologies and coding standards are 
@@ -75,9 +74,9 @@ The meetings will be structured as follows:
 \section{Team Communication Plan}
 
 \begin{itemize}
-    \item \textbf{Discord}: Our main method of communication between group members. It will be used to discuss detailed deliverable and any code questions. Additionally, group meetings will be hosted on discord. 
+    \item \textbf{Discord}: Our main method of communication between group members. It will be used to discuss detailed deliverable and any code related questions. Additionally, online group meetings will be hosted on discord. 
     \item \textbf{Instagram}: Our secondary method of communication between group members. It will be used to discuss less technical details and for any urgent messages that require a quicker response. 
-    \item \textbf{Teams}: Our main method of communication with our Supervisor. We will utilize our group chat with our supervisor for any quick questions or updates. Online meetings with our supervisor will be hosted on teams.
+    \item \textbf{Microsoft Teams}: Our main method of communication with our Supervisor. We will utilize our group chat with our supervisor for any quick questions or updates. Online meetings with our supervisor will be hosted on teams.
     \item \textbf{GitHub}: The issues feature will be utilized to communicate any bugs observed and meeting attendances. Additionally, as a way to see what feature each team member is working on and their progress. 
 \end{itemize}
 
@@ -86,12 +85,13 @@ The meetings will be structured as follows:
 \section{Team Member Roles}
 
 The team will work collaboratively to develop and refine this project. To ensure a clear 
-division of tasks, each team member have been assigned roles that 
+division of tasks, team members have been assigned roles that 
 align with their areas of expertise and contribute to achieving the goals 
 of this project. These roles will rotate throughout the year to prevent overspecialization
 and to ensure that all members can gain experience and knowledge in 
-every aspect of the project. \\[1ex]
-The defined roles and responsibilities per team member is as follows: 
+every aspect of the project. The roles and responsibilities will rotate every two deliverables 
+providing each member an opportunity to be assigned each role.\\[1ex]
+The defined roles and current responsibilities per team member is as follows: 
 \begin{itemize}
 	\item \textbf{Fiza Sehar}: \textit{Developer, Documentation, Model Training Specialist} \\
 	Fiza will be responsible for developing features and maintaining documentation for the 
@@ -106,7 +106,7 @@ The defined roles and responsibilities per team member is as follows:
   focus on data management, pre-processing, and analysis in this project. She 
   will also contribute in the documentation of the project.
 	\item \textbf{Moly Mikhail}: \textit{Developer, Documentation, Backend Specialist} \\
-	Moly will be handling the APIs, database management, and system logic focusing on 
+	Moly will lead in the handling of the Application Programming Interfaces (API), database management, and system logic, focusing on 
   the backend of the project. She will also support in the documentation of the project.
 	\item \textbf{Casey Francine Bulaclac}: \textit{Developer, Documentation, Frontend Specialist} \\
 	Francine will be responsible for the design and implementation of the user interface, 
@@ -123,27 +123,27 @@ The defined roles and responsibilities per team member is as follows:
    \begin{itemize}
     \item \textbf{Step 1: Permanent Branches}: The project repository will have two permanent branches. 
    \begin{itemize}
-      \item \textbf{Develop}: This branch will be used integrate different features and ensure that they work successfully together. Code can only be merged into the develop branch after being reviewed by one other team member who wasn't working on the feature. 
-      \item \textbf{Main}: This branch will be used to maintain the most stable version of the application. Code in the develop branch can only merged into the main branch after its been extensively tested and been reviewed and approved by a majority of team members. 
+      \item \textbf{Develop}: This branch will be used integrate different features and ensure that they work successfully together. Code can only be merged into the \texttt{dev} branch after being reviewed by one other team member who wasn't working on the feature. 
+      \item \textbf{Main}: This branch will be used to maintain the most stable version of the application. Code in the develop branch can only merged into the \texttt{main} branch after its been extensively tested and been reviewed and approved by a majority of team members. 
     \end{itemize}
 
-    \item \textbf{Step 2: Feature/Bug Branches} Group member will create a branch from the \texttt{develop} branch (after pulling the most recent changes) for each feature they work on. \newline
+    \item \textbf{Step 2: Feature/Bug Branches} Group member will create a branch from the \texttt{dev} branch (after pulling the most recent changes) for each feature they work on. \newline
     \textbf{Naming Conventions:}
     \begin{itemize}
       \item \textbf{Features: }\texttt{feature\_[contributorName]/D\#\_[featureDescription]} 
       \item \textbf{Bugs: }  \texttt{bug\_[contributorName]/D\#\_[bugDescription]}
     \end{itemize}
 
-  \item \textbf{Step 3: Pull Request} Once a group member is done working on their feature, they will open a pull request to merge into the develop branch. Group members will use the Github comment feature to connect their feature to any applicable issue numbers. They will also assign a group member to review their code.
+  \item \textbf{Step 3: Pull Request} Once a group member is done working on their feature, they will open a pull request to merge into the \texttt{dev} branch. Group members will use the Github comment feature to connect their feature to any applicable issue numbers. They will also assign a group member to review their code.
     \end{itemize}
 
-	\item\textbf{Continuous Integration(CI) and Continuous Deployment (CD)}
+	\item\textbf{Continuous Integration (CI) and Continuous Deployment (CD)}
 	
   For CI and CD, we will be using Github Actions to automatically trigger a project build and run unit tests 
   whenever a commit occurs or pull requests are opened. This ensures errors are discovered as early as possible 
   and that the project remains in a working state during development. 
 
-  \item \textbf{Use of Labels} \newline
+  \item \textbf{Use of Labels/Tags} \newline
   The team will utilize labels to help us organize ongoing work as well as work that needs to be completed. The tags will enable us to see the status of ongoing work and their respective priority. 
     The additional issue tags we will have available are:
 
@@ -171,10 +171,10 @@ The defined roles and responsibilities per team member is as follows:
 
 
    \item \textbf{Managing Issues}\newline
-  We will utilize the capTemplate template issues for tracking attendance, peer review, supervisor, TA, and team meetings. Furthermore, issues that fall outside these categories will utilize the blank issue and the labels mentioned above. \newline
+  We will utilize the ``capTemplate" template issues for tracking attendance, peer review, supervisor, teaching assistant (TA), and team meetings. Furthermore, issues that fall outside these categories will utilize the blank issue and the labels mentioned above. \newline
   The issue will have a clear title, description and an owner to be responsible for the issue. This will ensure issues are easily identified and managed. Once an issue has been resolved, it will be linked to the PR containing the code, allowing the team to keep track of the issue's status.  
   \item \textbf{Use of Milestones}\newline
-  Milestones will be used to represent our deliverables. Each milestone will group the related issue that compose the deliverable and as issues are closed, we can track our progress and the additional effort needed to submit the deliverable.
+  Milestones will be used to represent our deliverables. Each milestone will group the related issues that compose the deliverable and as issues are closed, we can track our progress and the additional effort needed to submit the deliverable.
   \item \textbf{Use of Checklists} \newline
   The group will utilize the deliverable checklists to ensure our work meets the expectations. 
   We will also have checklists in the Pull Request templates to ensure that all required items are completed prior to merging. The checklist will include the following items: 
@@ -182,17 +182,17 @@ The defined roles and responsibilities per team member is as follows:
     \item Unit Tests Passed
     \item Coding Standard is followed 
     \item Code Compiles without errors
-    \item Reviewed by one team members
+    \item Reviewed by one team member (\texttt{dev} branch) or majority of team members (\texttt{main} branch)
   \end{itemize}
   \item \textbf{Quality Standards for Contribution}\newline
-  The following criteria must be met in order to merge any changes into the \textit{Reading4All} Repository
+  The following criteria must be met in order to merge any changes into the ``Reading4All'' Repository
   \begin{itemize}
     \item All unit tests pass (CI pipeline is successful)
     \item Test coverage is \textbf{95}\%
-    \item Linting passes with zero warnings or errors. 
+    \item Linting passes with zero warnings or errors
     \item At least one team member has reviewed and approved the PR
     \item User interface (UI) changes meet the Accessibility for Ontarians with Disabilities Act (AODA) and Web Content Accessibility Guidelines 2.1 (WCAG)
-    \item ReadMe is updated with any necessary changes. 
+    \item \texttt{README.md} is updated with any necessary changes
   \end{itemize}
   
   \end{itemize}
@@ -210,7 +210,6 @@ The project planner will have items to track and manage including:
   \item Issues for project deliverables
   \item Supervisor and team meeting logs 
   \item Pull requests 
-  \item Draft items as placeholders for future issues
 \end{itemize}
 \subsection{Project Schedule}
 \begin{center}
@@ -297,6 +296,8 @@ The following is a brief list of primary risks to our success and how the POC re
   \hline
   Backend Language & Python & The team is most familiar with this language and it provides many free and easy to use machine learning (ML) libraries.\\
   \hline 
+  Database and Server Management & McMaster Database and Servers & The technology used for user authentication and verification is currently unknown and will be further investigated upon discussing with McMaster University\\
+  \hline 
   Frontend Language and Framework & JavaScript with React & The team is also familiar with using JavaScript and React. The combination allows you to make interactive and maintainable interfaces through components. \\
   \hline
   UI Design & Figma & Figma will allow us to design and visualize our UI prior to building it. Figma also allows collaboration.\\ 
@@ -305,11 +306,11 @@ The following is a brief list of primary risks to our success and how the POC re
   \hline
   Pre-trained models & None & We will be making our own model and not used a pre-trained model.\\
   \hline 
-  Linter & Flake8(Python) and ESLint (JavaScript) &  We will use these linters as they are free tools that will allow us to detect potential errors early on and follows a consistent coding style. \\
+  Linter & Flake8 (Python) and ESLint (JavaScript) &  We will use these linters as they are free tools that will allow us to detect potential errors early on and follows a consistent coding style. \\
   \hline
-  Unit Testing Framework & Pytest(Python) and Jest (Javascript) & These unit testing frameworks will allow us to easily write and run unit tests. \newline They also support parameterized unit tests, allowing us to run the same test with different data. \\
+  Unit Testing Framework & Pytest (Python) and Jest (Javascript) & These unit testing frameworks will allow us to easily write and run unit tests. \newline They also support parameterized unit tests, allowing us to run the same test with different data. \\
   \hline
-  Coverage Tools & Coverage.py (Python) and JSover(JavaScript) & We will use these these free tools to confirm that our unit tests reach all possible code paths.\\
+  Coverage Tools & Coverage.py (Python) and JSover (JavaScript) & We will use these these free tools to confirm that our unit tests reach all possible code paths.\\
   \hline
   Version Control & Git and GitHub & Git and GitHub will allow the team to easily collaborate and present our code. \\
   \hline 
@@ -317,6 +318,7 @@ The following is a brief list of primary risks to our success and how the POC re
   \hline 
   Project Management Tool & GitHub Projects & GitHub Projects will be used to plan and organize tasks as well as track progress in order to meet deadlines.\\
   \hline 
+  
 
 \end{tabular}
 \end{table}
@@ -324,7 +326,7 @@ The following is a brief list of primary risks to our success and how the POC re
 \FloatBarrier 
 
 \section{Coding Standard}
-The team will be adopting the \href{https://peps.python.org/pep-0008/}{PEP8} (Python Enhancement Proposal 8) 
+The team will be adopting the Python Enhancement Proposal 8 (\href{https://peps.python.org/pep-0008/}{PEP8}) 
 coding standard for the project. This coding standard is commonly used in the 
 Python community and ensures that the team's code remains 
 consistent and readable across the entire project.\\
@@ -336,7 +338,6 @@ also assist in highlighting any style and quality issues.
 
 \section*{Appendix --- Reflection}
 
-\wss{Not required for CAS 741}
 
 \input{../Reflection.tex}
 
