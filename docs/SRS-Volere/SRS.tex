@@ -80,17 +80,25 @@ Date 2 & 1.1 & Notes\\
 \section{Mandated Constraints}
 \subsection{Solution Constraints}
 \begin{enumerate}[label=MD-SL \arabic*., wide=0pt, leftmargin=*]
-  \item \emph{The solution design must comply with the Web Content Accessibility Guidelines (WCAG) 2.1 standards}\\[2mm]
+  \item \emph{The solution design must comply with at least the Level AA of the Web Content Accessibility Guidelines (WCAG) 2.1 standards}\\[2mm]
     {\bf Rationale:} This ensures that the solution ensures inclusivity for users with visual, auditory, or cognitive impairments\\
-    {\bf Fit Criterion:} Fit Criterion here.\\
+    {\bf Fit Criterion:} The solution must past all tests using WCAG automated testing tools and manual tests.\\
     {\bf Priority:} High
 \end{enumerate}
 \begin{enumerate}[label=MD-SL \arabic*., wide=0pt, leftmargin=*]
-  \item \emph{The solution must be implemented as a web extension}\\[2mm]
-    {\bf Rationale:} Web extensions make it easier for users to easily install and access the product directly from their 
-    preferred browsers without having to install any additional software. \\
-    {\bf Fit Criterion:} The extension must be installable and fully functional in any major web browsers 
-    (e.g. Chrome, Firefox, Safari) and pass compatibility testing across these platforms\\
+  \item \emph{The solution must be implemented as a website}\\[2mm]
+    {\bf Rationale:} A website will allow for automated testing against the WCAG standards which ensures accesibility for users 
+    and allow users to upload images/figures to generate alternative text\\
+    {\bf Fit Criterion:} The website must be functional and allow users to generate alternative text by uploading
+    images and figures\\
+    {\bf Priority:} High
+\end{enumerate}
+\begin{enumerate}[label=MD-SL \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The solution must support common image formats (e.g. JPEG, PNG, etc.)}\\[2mm]
+    {\bf Rationale:} The website will enable users to upload images or figures to generate the alternative text, therefore the solution must be able 
+    to handle the different types of image formats\\
+    {\bf Fit Criterion:} The product must successfully process at least one image of each required format including JPEG and PNG
+    images and figures\\
     {\bf Priority:} High
 \end{enumerate}
 
@@ -106,7 +114,7 @@ Date 2 & 1.1 & Notes\\
 \end{enumerate}
 \subsection{Partner or Collaborative Applications}
 \begin{enumerate}[label=MD-PA \arabic*., wide=0pt, leftmargin=*]
-  \item \emph{The product must not conflict with other accessibility tools (e.g. screen magnifiers, dictation software)}\\[2mm]
+  \item \emph{The product must not conflict with other accessibility tools (e.g. screen readers, screen magnifiers, dictation software)}\\[2mm]
     {\bf Rationale:} This is to ensure that the product does not limit or intefere with other accessibility tools that 
     meets the users' needs \\
     {\bf Fit Criterion:} The product must operate simultaneously with at least one other accessibility tool,
@@ -132,7 +140,8 @@ Date 2 & 1.1 & Notes\\
   \item \emph{The product must comply with the Accessibility for Ontarians with Disabilities Act (AODA)}\\[2mm]
     {\bf Rationale:} This ensures that the product meets the legal requirements in Ontario and guarantees that 
     the product is accessible to users with diverse needs\\
-    {\bf Fit Criterion:} Fit Criterion \\
+    {\bf Fit Criterion:} AODA requires compliance with WCAG standards, which ensures that the product meets AODA regulations. 
+    Compliance must be verified through both automated WCAG testing tools and manual accessibility testing.\\
     {\bf Priority:} High
 \end{enumerate}
 
@@ -145,7 +154,7 @@ involved in the Project}
 \subsection{Relevant Facts}
 \begin{itemize}
   \item This project is being developed for a Software Engineering Capstone course with a fixed timeline
-  \item The solution is targeted primarily for laptop and/or desktop environments 
+  \item The solution is targeted primarily for laptop and/or desktop environments, but can later be extended for mobile platforms use
 \end{itemize}
 \subsection{Business Rules}
 The business rules established among the team are as follows: 
