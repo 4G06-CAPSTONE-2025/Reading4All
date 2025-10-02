@@ -22,68 +22,125 @@
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
+September 17th 2025 & Fiza Sehar & First draft of document\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \section{Problem Statement}
 
-\wss{You should check your problem statement with the
-\href{https://github.com/smiths/capTemplate/blob/main/docs/Checklists/ProbState-Checklist.pdf}
-{problem statement checklist}.} 
-
-\wss{You can change the section headings, as long as you include the required
-information.}
-
 \subsection{Problem}
+Students with disabilities face barriers to equitable education, with access to technical diagrams being a major challenge. These diagrams are often distributed as static images, making them unreadable by assistive technologies such as screen readers. Manually creating detailed alternative (alt) text is time-consuming, resource-intensive, and inconsistently implemented, resulting in inequitable access to learning materials across courses. This project aims to develop a machine learning(ML)/artificial intelligence(AI) driven tool that automatically generates clear, descriptive alternative text for technical diagrams, ensuring compatibility with screen readers, compliance with AODA standards, and improved inclusion within post-secondary education.
 
 \subsection{Inputs and Outputs}
-
-\wss{Characterize the problem in terms of ``high level'' inputs and outputs.  
-Use abstraction so that you can avoid details.}
-
+\textbf{Inputs:} Technical diagrams/images requiring alternative (alt) text descriptions.\\
+\textbf{Outputs:} Automatically generated descriptive alt text suitable for screen readers.
 \subsection{Stakeholders}
+
+\textbf{Direct Stakeholders}
+\begin{enumerate}
+    \item \textbf{Students with Disabilities:} Primary beneficiaries who will gain access to previously inaccessible technical diagrams. 
+    \item \textbf{Instructors and TAs:} Use the tool to generate accurate alt text for course materials. 
+    \item \textbf{Accessibility Services Staff:} Ensure that generated descriptions meet AODA standards and institutional accessibility requirements.
+\end{enumerate}
+
+\textbf{Indirect Stakeholders}
+\begin{enumerate}
+    \item \textbf{University Administration:} Interested in improving overall accessibility compliance across courses.
+    \item \textbf{Curriculum Designers:} Can integrate the tool into course development workflows for consistent accessibility.
+    \item \textbf{Assistive Technology Vendors:} Benefit from improved compatibility and user experience when screen readers are used with accessible diagrams.
+\end{enumerate}
 
 \subsection{Environment}
 
-\wss{Hardware and Software Environment}
+\textbf{Development Frameworks and Tools:}
+\begin{enumerate}
+    \item \textit{GitHub} will be used for version control and collaboration.
+    \item \textit{Visual Studio Code} will be used as the \textbf{IDE (Integrated Development Environment)} for development.
+    \item \textit{Python and Machine Learning Libraries} will be used to implement and train the alt text generation model.
+\end{enumerate}
 
 \section{Goals}
 
+Our goal is to make technical diagrams accessible by generating high-quality alternative text. 
+We plan to achieve this through the following goals:
+
+\begin{enumerate}
+    \item \textbf{Generate Clear and Concise Descriptions:} Produce alt text that captures details of the diagram while remaining easy to read and understand.
+    \item \textbf{User Satisfaction and Learning Outcomes:} Improve using metrics defined in the STEM Alt Text User Testing Project, conducted by Ms. Jing in January 2025.
+    \item \textbf{Browser Extension:} Provide a easy-to-use web browser extension to generate alt text directly within the user's workflow.
+    \item \textbf{Hotkeys:} Allow users to navigate, review, and swap between descriptions using customizable keyboard shortcuts.
+\end{enumerate}
+
+
 \section{Stretch Goals}
 
+\begin{enumerate}
+    \item \textbf{Multi-Language Support:}  
+    Extend the alt-text generation model to support multiple languages, improving accessibility for a broader range of students. This feature would include:
+    \begin{itemize}
+        \item \textbf{Language Coverage:} Add support for languages such as French to meet bilingual education requirements.
+        \item \textbf{Localization:} Ensure that generated descriptions maintain context, clarity, and technical accuracy across languages.
+    \end{itemize}
+
+    \item \textbf{Batch Processing:}  
+    Allow students to process multiple diagrams or entire sets of study materials at once, making it faster to generate alt text for all content they need to review. This goal would involve:
+    \begin{itemize}
+        \item \textbf{Bulk Upload:} Provide an option for students to select multiple images or documents and generate alt text for all of them in one step.
+        \item \textbf{Performance Optimization:} Ensure smooth handling of large batches so students can access their study materials without delays.
+    \end{itemize}
+
+\end{enumerate}
 \section{Extras}
 
-\wss{For CAS 741: State whether the project is a research project. This
-designation, with the approval (or request) of the instructor, can be modified
-over the course of the term.}
+\noindent
+The overall challenge level of this project is moderate. While developing an
+ML-based system for generating alt text involves model design, training, and
+evaluation, there are well-established frameworks and research papers that guide
+these processes, making them approachable for our team. Our collective
+experience with Python and machine learning from coursework provides a solid
+foundation for completing this work successfully. The project will require balancing technical development with accessibility
+considerations, but its scope remains feasible within the given timeline.
 
-\wss{For SE Capstone: List your extras.  Potential extras include usability
-testing, code walkthroughs, user documentation, formal proof, GenderMag
-personas, Design Thinking, etc.  (The full list is on the course outline and in
-Lecture 02.) Normally the number of extras will be two.  Approval of the extras
-will be part of the discussion with the instructor for approving the project.
-The extras, with the approval (or request) of the instructor, can be modified
-over the course of the term.}
+\vspace{0.75em}
+
+\noindent
+To strengthen the project, we will include two additional deliverables:
+
+\vspace{0.5em}
+
+\begin{itemize}
+    \setlength\itemsep{0.5em}
+    \item \textbf{Norman’s Principles Report:} An evaluation of the tool against
+    Norman’s design principles to ensure usability.
+    \item \textbf{User Manual:} Comprehensive documentation to guide students in
+    using the tool effectively and to support long-term adoption.
+\end{itemize}
+
+\vspace{0.5em}
+
+\noindent
+These deliverables will help ensure that the final tool is both usable and
+well-documented for future use.
 
 \newpage{}
 
 \section*{Appendix --- Reflection}
 
-\wss{Not required for CAS 741}
+\noindent\textbf{Note:} The following reflection represents the collective input of our entire group.
 
-\input{../Reflection.tex}
 
 \begin{enumerate}
-    \item What went well while writing this deliverable? 
-    \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
-    \item How did you and your team adjust the scope of your goals to ensure
-    they are suitable for a Capstone project (not overly ambitious but also of
-    appropriate complexity for a senior design project)?
+    \item \textit{What went well while writing this deliverable?}\\
+    Our team collaborated smoothly and was able to create a clear plan of action early on. We held multiple meetings to discuss the problem, inputs, and outputs, as well as the overall vision for what our product should look like. Work was divided efficiently, and we supported each other by sharing ideas and reviewing one another’s contributions. Our supervisor provided us with useful information and previously researched data, which was particularly insightful and helped shape the initial proof of concept for our project.
+
+
+    \item \textit{What pain points did you experience during this deliverable, and how did you resolve them?}\\
+    We did not struggle with defining the problem itself, as we quickly aligned on the key issue of improving accessibility for technical diagrams. The main challenge we faced was uncertainty about the implementation details, particularly what kind of self-training ML model to use and how we would gather or prepare input data (e.g., whether we would use real diagrams for training). There were still many unknowns about the exact approach, but we had enough foundational information to proceed confidently. Meeting with our supervisor was very helpful in this stage as we were introduced to a data analysis study they had conducted, which provided valuable insight into the ideal length of alt text and highlighted weaknesses in e
+
+    \item \textit{How did you and your team adjust the scope of your goals to ensure they are suitable for a Capstone project (not overly ambitious but also of appropriate complexity for a senior design project)?}\\
+    We intentionally avoided designing an overly complex solution by leveraging existing technology as a foundation. Instead of building everything from scratch, we chose to use a web browser extension framework as our baseline, since extensions are widely used and well-documented, making information and implementation examples easy to find. This allowed us to spend less time reinventing the wheel and more time focusing on the core technical challenge of integrating and training the ML model to generate high-quality alt text. This approach keeps the project achievable within the timeline while still providing significant technical depth through model development and accessibility considerations. By leaving advanced features such as multi-language support and batch processing as stretch goals, we ensured that our scope remains realistic but still challenging enough for a senior design project.
+
 \end{enumerate}  
 
 \end{document}
