@@ -10,6 +10,7 @@
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{enumitem}
+\usepackage{graphicx}
 
 \hypersetup{
     bookmarks=true,         % show bookmarks bar?
@@ -188,9 +189,33 @@ The following assumptions are made when using the product:
 \end{itemize}
 \section{The Scope of the Work}
 \subsection{The Current Situation}
-\lips
+Currently, alternative text generation tools are able to provide sufficient descriptions for simple images and figures. However, for more complex visuals 
+such as engineering diagrams, the generated alt text is often misleading, incomplete, or inefficient at conveying the intended meaning.\\
+Accurate alternative text is particularly essential for individuals with visual or cognitive impairments, as it enables fair access to academic content. Without 
+reliable descriptions, students may experience barriers to learning and miss critical information conveyed in diagrams and figures.\\
+The current limitations of existing generated alternative text tools are as follows:
+\begin{itemize}
+  \item \textbf{Inaccurate Alternative Text}: Generated alt text may emphasize unimportant details and overlook key elements, 
+  resulting in misleading or confusing interpretations.
+  \item \textbf{Oversimplification of Complex Figures}: Current tools frequently oversimplify technical or academic diagrams, 
+  failing to capture essential details required for learning.
+  \item \textbf{High Manual Effort}: In many cases, subject matter experts must manually create alt text, 
+  which is time-intensive and not scalable across large volumes of academic content.
+\end{itemize}
 \subsection{The Context of the Work}
-\lips
+The product will be in the form of a website that integrates into existing accessibility workflows
+by providing accurate descriptions from images that can be read aloud by screen readers. The product 
+will complement existing screen readers by ensuring accurate generated alternative text from 
+uploaded images and figures of academic work are available. \href{fig:work-context}{Figure1} shows 
+how the product will integrate with existing screen readers.\\
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1.0\textwidth]{images/work-context-diagram.png}
+  \caption{Work Context Diagram}
+  \label{fig:work-context}
+\end{figure}
+
 \subsection{Work Partitioning}
 \lips
 \subsection{Specifying a Business Use Case (BUC)}
