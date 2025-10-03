@@ -9,6 +9,8 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{enumitem}
+
 \hypersetup{
     bookmarks=true,         % show bookmarks bar?
       colorlinks=true,      % false: boxed links; true: colored links
@@ -133,6 +135,33 @@ involved in the Project}
 \section{Functional Requirements}
 \subsection{Functional Requirements}
 \lips
+\begin{enumerate}[label=FR \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The system must accept technical diagrams in the format of JPEG and PNG.}\\[2mm]
+    {\bf Rationale:} The system must process JPEG/PNG images in order to output alternative text. \\
+    {\bf Fit Criterion:} The system successfully takes as accepts JPEG/PNG images and provides feedback to users when an invalid file type is inputted.  \\
+    {\bf Priority:} High
+  \item \emph{The system shall generate alternative text of uploaded gyms.}\\[2mm]
+    {\bf Rationale:} The main purpose of the system is to make scientific diagrams more accessible by generating better alternative-text. \\
+    {\bf Fit Criterion:} For a set of test diagrams, the alternative text generated must meet the pre-determined criteria.\\
+    {\bf Priority:} High
+  \item \emph{The system shall output alternative text in a format readable by screen readers.}\\[2mm]
+    {\bf Rationale:} Students with disabilities utilize screen readers to access digital content; therefore, the alternative text must be displayed in away that enables screen readers to read it correctly. Furthermore, if the alternative text output format is not compatible with screen readers, then students cannot benefit from the application output.\\
+    {\bf Fit Criterion:} The alternative text output must be readable by at least three commonly used screen readers.\\
+    {\bf Priority:} High
+  \item \emph{The system shall allow users to edit the outputted alternative texts.}\\[2mm] 
+    {\bf Rationale:} Providing users with an option to edit the outputted text, enables them to adjust the output to better meet their needs if needed.\\
+    {\bf Fit Criterion:} Users can add or delete text in any part of the outputted alternative text and save their changes.\\
+    {\bf Priority:} High
+  \item \emph{The system shall store and display all inputted images and their generated alternative texts within a session.}\\[2mm] 
+    {\bf Rationale:} Storing previously inputted images and their generated alternative texts, allows users to easily review or reuse them without re-uploading. \\
+    {\bf Fit Criterion:} Users can see view all previously inputted images with their generated alternative texts during the same session. \\
+    {\bf Priority:} Medium
+  \item \emph{The system must accept keyboard input for navigation.}\\[2mm] 
+    {\bf Rationale:} Many users, including those with disabilities, use keyboard inputs to navigate through applications, the system must support this as a way to navigate.\\
+    {\bf Fit Criterion:} Users can navigate to all the main functions and areas of the system using their keyboard. \\
+    {\bf Priority:} High
+
+\end{enumerate}
 
 \section{Look and Feel Requirements}
 \subsection{Appearance Requirements}
