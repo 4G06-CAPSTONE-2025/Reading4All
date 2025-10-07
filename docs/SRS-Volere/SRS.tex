@@ -241,9 +241,28 @@ their inputs and outputs, and the summary of the event.
   \end{tabular}
 \end{table}
 
-
 \subsection{Specifying a Business Use Case (BUC)}
-\lips
+The project has one primary business use case, which aims to achieve the goal of providing users with visual and cognitive impairments an efficient 
+and accessible way to generate accurate alternative text for academic images and figures.\\[1ex]
+\textbf{Preconditions:}
+\begin{itemize}
+  \item The user has access to the website
+  \item The user has files containing diagrams or images requiring alternative text
+\end{itemize}
+\textbf{Scenario:}
+\begin{enumerate}
+  \item The user logs into the system using their McMaster student credentials
+  \item The user uploads one or more files (PNG, JPEG) containing diagrams 
+  \item The AI model analyzes the uploaded file(s), performs OCR to extract any visible text, and generates 
+  alternative text describing each image/figure accurately
+  \item Screen readers use the generated alternative text to read aloud and convey the uploaded image
+  \item The generated alternative text can be copied to clipboard or dowloaded as a \texttt{.txt} file by the user if needed
+  \item The user can view previously uploaded files and generated alternative text for future reference
+\end{enumerate}
+\textbf{Postcondition:}
+\begin{itemize}
+  \item The user obtains accurate and accessible alternative text that complies with AODA and WCAG 2.1 standards.
+\end{itemize}
 
 \section{Business Data Model and Data Dictionary}
 \subsection{Business Data Model}
