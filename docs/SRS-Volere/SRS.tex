@@ -160,26 +160,104 @@ involved in the Project}
     {\bf Rationale:} Many users, including those with disabilities, use keyboard inputs to navigate through applications, the system must support this as a way to navigate.\\
     {\bf Fit Criterion:} Users can navigate to all the main functions and areas of the system using their keyboard. \\
     {\bf Priority:} High
-
+ \item \emph{The system must validate users during login to confirm they are McMaster University students.}\\[2mm] 
+    {\bf Rationale:} User verification will ensure that only McMaster University students have access to the system, ensuring that the system is used by the intended users.  \\
+    {\bf Fit Criterion:} Users can only gain access to the system features after their McMaster University credentials are successfully validated.  \\
+    {\bf Priority:} High
 \end{enumerate}
 
 \section{Look and Feel Requirements}
 \subsection{Appearance Requirements}
-\lips
+\begin{enumerate}[label=LFR-AR \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The system must allow all text on the interface to be resized up to 200 \%, without any loss of functionality or content. }\\[2mm] 
+    {\bf Rationale:} Allowing text resizing will enable users with low vision to more easily utilize the system. This also ensures the system meets WCAG Success Criterion 1.4.4 Resize Text.
+    User verification will ensure that only McMaster University students have access to the system, ensuring that the system is used by the intended users.  \\
+    {\bf Fit Criterion:} All text, excluding any captions and images of text can be enlarged to 200 \% on a standard browser zoom (ex. Google Chrome) without any overlapping, hidden content, or broken features.  \\
+    {\bf Priority:} High
+  \item \emph{The system must not use color as the only method to provide information, indicate actions or prompt user input.}\\[2mm] 
+    {\bf Rationale:} Users with color vision deficiencies or other visual impairments may not detect color differences accurately. This also ensures the system meets WCAG Success Criterion 1.4.1 Use of Color.\\
+    {\bf Fit Criterion:} Any use of color communicates information to the user or requests information from he user must be appear with text.  \\
+    {\bf Priority:} High
+  \item \emph{The system must ensure sufficient contrasts of text and images of text.}\\[2mm] 
+    {\bf Rationale:} Sufficient color contrast is important as it enables users with low vision or color vision deficiencies to easily read any system text. This also ensures the system meets WCAG Success Criterion 1.4.3 Contrast (Minimum)\\
+    {\bf Fit Criterion:}  All text and images of text in the system interfaces has a contrast ratio of at least 4.5:1  \\
+    {\bf Priority:} High
+  \item \emph{The system must provide alternative text for all non-text content..}\\[2mm] 
+    {\bf Rationale:} Users with visual impairment often use screen readers to navigate through software systems; therefore, it is essential that all images have sufficient alternative text, so that the purpose of the images can understood. This also ensures the system meets WCAG Success Criterion 1.1.1 Non-text Content  .\\
+    {\bf Fit Criterion:} All images and non-text element are joined with descriptive alternative text that communicate their meaning. \\
+    {\bf Priority:} High
+\end{enumerate}
+
 \subsection{Style Requirements}
-\lips
+\begin{enumerate}[label=LFR-SR \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The system interface must follow a simple and modern design style.}\\[2mm] 
+    {\bf Rationale:} A simple interface will improve the systems usability as it better highlights the system's features, while also ensuring the system is visually appealing.\\
+    {\bf Fit Criterion:} The system uses a clean layout with a maximum of three colors, consistent font styles and sizes, as well as only has key design elements that support usability. \\
+    {\bf Priority:} High
+\item \emph{The system interface must use McMaster University branding while maintaining accessibility standards and a modern style.}\\[2mm] 
+    {\bf Rationale:} As the system is targeted towards McMaster University students, using the schools branding will build trust with users and ensure the system aligns with McMaster's identify. However, using McMaster branding must not interfere with usability and accessibility criteria..\\
+    {\bf Fit Criterion:} The system interface includes McMaster University' official logo and meets the WCAG 2.1 contrast and non-text content success criteria. \\
+    {\bf Priority:} High
+\end{enumerate}
+
 
 \section{Usability and Humanity Requirements}
 \subsection{Ease of Use Requirements}
-\lips
+\begin{enumerate}[label=UHR-EUR \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The system interface must allow users to efficiently use the system features.}\\[2mm] 
+    {\bf Rationale:} It is important the users can quickly access and use the system features, as they may be generating multiple alternative text outputs in a single session. \\
+    {\bf Fit Criterion:} Users can upload images to the system and generate alternative text in 5 steps or fewer. \\
+    {\bf Priority:} High
+\item \emph{The system interface must be easy for users to remember how to use after not using it for some time.}\\[2mm] 
+    {\bf Rationale:} Users should be able to quickly recall how to use the system without needing to relearn the features. An intuitive design will make it easier for returning users to find and use key features.  \\
+    {\bf Fit Criterion:} Users who have not used the system in a month, can successfully login, upload an image and generate alternative text within 5 minutes, without needing any assistance. \\
+    {\bf Priority:} Medium
+\item \emph{The system interface must provide users with clear and immediate feedback for all actions.}\\[2mm] 
+    {\bf Rationale:} Providing the users with feedback ensures they understand of the outcome of their actions and whether they are using the system correctly. This reduces confusion and makes users more confident while using the system. \\
+    {\bf Fit Criterion:} The system provides textual feedback within 1 second after a user interaction, such as uploading an image.  \\
+    {\bf Priority:} High 
+\item \emph{The system interface must provide clear instructions, prevent common errors and allow users to easily correct them.}\\[2mm] 
+    {\bf Rationale:} Providing easy to follow instructions will help ensure that users can easily use the system features and prevent errors. Additionally, if a user makes a mistake, they should easily be able to revert it.  \\
+    {\bf Fit Criterion:} In user testing, at least 80\% of users can complete tasks without errors. When a user error occurs, the system explains the issue and how to recover within 2 seconds.\\
+    {\bf Priority:} High 
+\end{enumerate}
+
+
 \subsection{Personalization and Internationalization Requirements}
-\lips
+\begin{enumerate}[label=UHR-PIR \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The system interface must allow users to choose how generated alternative text is stored or copied.}\\[2mm] 
+    {\bf Rationale:} Providing users with the option to either copy generated text to their clipboard or download it as file, helps tailor the output to the users specific needs.  \\
+    {\bf Fit Criterion:} After generating the alternative text users can choose to "Copy to Clipboard" or "Download as .txt" from the interface and system successfully completes the chosen option.\\
+    {\bf Priority:} High
+\end{enumerate}
+
+
 \subsection{Learning Requirements}
-\lips
+\begin{enumerate}[label=UHR-LR \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The system must be easy for low-vision users to learn and operate with screen readers.}\\[2mm] 
+    {\bf Rationale:} The system should be intuitive for users with low vision to use without prior training. Additionally, the system being highly compatible with screen readers, allows users to more easily navigate and use the system.  \\
+    {\bf Fit Criterion:} In user testing, at least 90\% of first time users with low vision using a screen reader can upload an image and generate alternative text within 5 minutes without assistance. \\
+    {\bf Priority:} High
+\end{enumerate}
+
+
 \subsection{Understandability and Politeness Requirements}
-\lips
+\begin{enumerate}[label=UHR-LR \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The system must be only display essential information and hide all technical details.}\\[2mm] 
+    {\bf Rationale:} The system should only communicate the information needed to use the system. Displaying any technical details may cause the user to be confused and make the system less usable.   \\
+    {\bf Fit Criterion:} In user testing, users do not encounter any technical terms, code outputs or information that is not relevant to them.  \\
+    {\bf Priority:} High
+\end{enumerate}
+
+
 \subsection{Accessibility Requirements}
-\lips
+\begin{enumerate}[label=UHR-AR \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The system must meet the WCAG 2.1 Level AA accessibility standards.}\\[2mm] 
+    {\bf Rationale:} The Accessibility for Ontarians with Disabilities Act (AODA) requires organizations to meet WCAG 2.0 Level AA for websites. Therefore, meeting WCAG 2.1 Level AA ensures the system meets AODA standards and is accessible for users with disabilities.  \\
+    {\bf Fit Criterion:} The system will be evaluated using an accessibility testing tool such as Pope Tech and Wave Web Aim to ensure WCAG 2.1 criteria is met.\\
+    {\bf Priority:} High
+\end{enumerate}
+
 
 \section{Performance Requirements}
 \subsection{Speed and Latency Requirements}
