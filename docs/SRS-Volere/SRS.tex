@@ -11,6 +11,7 @@
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{graphicx}
+\usepackage{float} 
 
 \hypersetup{
     bookmarks=true,         % show bookmarks bar?
@@ -208,7 +209,6 @@ by providing accurate descriptions from images that can be read aloud by screen 
 will complement existing screen readers by ensuring accurate generated alternative text from 
 uploaded images and figures of academic work are available. \href{fig:work-context}{Figure1} shows 
 how the product will integrate with existing screen readers.\\
-
 \begin{figure}[h]
   \centering
   \includegraphics[width=1.0\textwidth]{images/work-context-diagram.png}
@@ -217,7 +217,31 @@ how the product will integrate with existing screen readers.\\
 \end{figure}
 
 \subsection{Work Partitioning}
-\lips
+\href{tab:work-partition}{Table 1} shows the work partitioning for completing the project. It includes major events, 
+their inputs and outputs, and the summary of the event.
+
+\begin{table}[H]
+  \centering
+  \caption{Work Partition for the System}
+  \label{tab:work-partition}
+  \begin{tabular}{ |p{3cm}|p{3cm}|p{3cm}|p{4cm}| }
+    \hline
+    \textbf{Event Name} & \textbf{Input} & \textbf{Output} & \textbf{Summary} \\
+    \hline
+    Login & Username, Password & & User logs in using their McMaster account \\
+    \hline
+    Upload  \mbox{Images/Figures} & PNG/JPEG files & Uploaded File Reference & User uploads their files to generate alternative text \\
+    \hline
+    \mbox{OCR Text} \mbox{Extraction} & Uploaded \mbox{Images/Figures} & Detected Text & System reads the text embedded in the uploaded files \\
+    \hline
+    Generate \mbox{Alternative Text} & Uploaded  \mbox{Images/Figures}, Extracted OCR, Model Parameters & Generated Alt Text, Quality Metric from ML Model & System analyzes the image and extracted OCR data to generate accurate alternative text \\
+    \hline
+    View History & \mbox{User Login,} Stored Uploads and Generated Alt Text & List of Previously Generated Alt Text & The system retrieves and displays a user’s history of uploaded images along with their associated generated alt text \\
+    \hline
+  \end{tabular}
+\end{table}
+
+
 \subsection{Specifying a Business Use Case (BUC)}
 \lips
 
