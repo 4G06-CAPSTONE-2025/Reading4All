@@ -153,21 +153,103 @@ involved in the Project}
 \lips
 
 \section{Performance Requirements}
-\subsection{Speed and Latency Requirements}
-\lips
-\subsection{Safety-Critical Requirements}
-\lips
-\subsection{Precision or Accuracy Requirements}
-\lips
-\subsection{Robustness or Fault-Tolerance Requirements}
-\lips
-\subsection{Capacity Requirements}
-\lips
-\subsection{Scalability or Extensibility Requirements}
-\lips
-\subsection{Longevity Requirements}
-\lips
 
+\subsection{Speed and Latency Requirements}
+\begin{itemize}
+    \item[\textbf{PR-SL 1.}] \textit{The tool shall generate alt-text for uploaded images within a reasonable time frame.}\\
+    \textbf{Rationale:} Ensures users, including those using assistive technologies, do not experience delays that hinder accessibility.\\
+    \textbf{Fit Criterion:} The system shall return generated alt-text within \textbf{3 seconds} for images $\leq$2 MB and within \textbf{8 seconds} for images $\leq$10 MB under normal load conditions.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{PR-SL 2.}] \textit{The web interface shall load and render accessibility components efficiently.}\\
+    \textbf{Rationale:} Improves user experience and responsiveness for screen-reader users and keyboard navigation.\\
+    \textbf{Fit Criterion:} All interactive elements shall respond within \textbf{300 ms} of user input under typical conditions.\\
+    \textbf{Priority:} Medium
+\end{itemize}
+
+\subsection{Safety-Critical Requirements}
+\begin{itemize}
+    \item[\textbf{PR-SCR 1.}] \textit{The tool shall ensure that no personally identifiable data from uploaded images is stored or shared without consent.}\\
+    \textbf{Rationale:} Protects user privacy and adheres to ethical AI standards.\\
+    \textbf{Fit Criterion:} Uploaded images are deleted from temporary storage within \textbf{60 seconds} of processing unless explicitly saved by the user.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{PR-SCR 2.}] \textit{The tool shall not produce alt-text containing offensive, biased, or harmful language.}\\
+    \textbf{Rationale:} Ensures ethical AI output and inclusivity.\\
+    \textbf{Fit Criterion:} 0 \% of generated outputs shall contain content flagged by moderation filters as offensive or biased.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{PR-SCR 3.}] \textit{The interface shall adhere to WCAG 2.1 Level A accessibility guidelines to prevent stress or strain on users’ eyes and ensure comfortable interaction.}\\
+    \textbf{Rationale:} Provides a visually safe, inclusive experience for all users, including those with visual or cognitive impairments.\\
+    \textbf{Fit Criterion:} Verified through front-end accessibility testing that confirms conformance with WCAG 2.1 Level A success criteria.\\
+    \textbf{Priority:} High
+\end{itemize}
+
+\subsection{Precision or Accuracy Requirements}
+\label{sec:PrecisionAccuracy}
+\begin{itemize}
+    \item[\textbf{PR-PAR 1.}] \textit{The generated alt-text shall adequately describe the image content with minimal omissions or irrelevant details.}\\
+    \textbf{Rationale:} Ensures the description fulfills its accessibility purpose.\\
+    \textbf{Fit Criterion:} At least \textbf{85 \%} of outputs rated “Sufficient” or better on the sufficiency scale by testers.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{PR-PAR 2.}] \textit{The alt-text shall maintain appropriate length and readability.}\\
+    \textbf{Rationale:} Prevents overly short or verbose outputs that reduce usability.\\
+    \textbf{Fit Criterion:} $\geq$ 90 \% of outputs rated “Proper Length” on the user-testing scale.\\
+    \textbf{Priority:} Medium
+
+    \item[\textbf{PR-PAR 3.}] \textit{The overall accessibility and usability of the alt-text shall be acceptable to testers.}\\
+    \textbf{Rationale:} Evaluates real-world effectiveness of generated descriptions.\\
+    \textbf{Fit Criterion:} Median user rating $\geq$ 3 (“Mostly Accessible/Usable”) on the 0–3 or 0–4 scales; no outputs below 2.\\
+    \textbf{Priority:} Medium
+\end{itemize}
+
+\subsection{Robustness or Fault-Tolerance Requirements}
+\begin{itemize}
+    \item[\textbf{PR-RFT 1.}] \textit{The system shall gracefully handle unsupported or corrupted image inputs.}\\
+    \textbf{Rationale:} Prevents crashes and maintains system stability.\\
+    \textbf{Fit Criterion:} Invalid files trigger a clear error message within 2 seconds without interrupting service.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{PR-RFT 2.}] \textit{The backend shall recover automatically from isolated process failures.}\\
+    \textbf{Rationale:} Ensures continued operation without developer intervention.\\
+    \textbf{Fit Criterion:} System recovers within 5 seconds after fault detection.\\
+    \textbf{Priority:} High
+\end{itemize}
+
+\subsection{Capacity Requirements}
+\begin{itemize}
+    \item[\textbf{PR-CR 1.}] \textit{The system shall support limited concurrent usage suitable for a proof-of-concept deployment.}\\
+    \textbf{Rationale:} Demonstrates feasibility and reliability for initial testing without production-level scaling.\\
+    \textbf{Fit Criterion:} Supports at least \textbf{5 simultaneous requests} with response times $\leq$ 10 seconds.\\
+    \textbf{Priority:} Medium
+
+    \item[\textbf{PR-CR 2.}] \textit{Storage shall accommodate pilot testing datasets.}\\
+    \textbf{Rationale:} Ensures smooth prototype validation without capacity issues.\\
+    \textbf{Fit Criterion:} The system can temporarily store metadata for up to \textbf{500 images per day} without data loss.\\
+    \textbf{Priority:} Low
+\end{itemize}
+
+\subsection{Scalability or Extensibility Requirements}
+\begin{itemize}
+    \item[\textbf{PR-SER 1.}] \textit{The architecture shall allow integration of improved ML models or multilingual capabilities in future phases.}\\
+    \textbf{Rationale:} Enables progressive enhancement and future accessibility expansion.\\
+    \textbf{Fit Criterion:} New models or language modules can be incorporated without restructuring existing components.\\
+    \textbf{Priority:} Medium
+\end{itemize}
+
+\subsection{Longevity Requirements}
+\begin{itemize}
+    \item[\textbf{PR-LR 1.}] \textit{The codebase shall be maintainable and adaptable to updates in WCAG guidelines, Python libraries, and ML frameworks.}\\
+    \textbf{Rationale:} Ensures long-term usability and compliance even after the pilot phase.\\
+    \textbf{Fit Criterion:} Minor updates or migrations require $\leq$ 2 person-days per quarter.\\
+    \textbf{Priority:} Medium
+
+    \item[\textbf{PR-LR 2.}] \textit{The prototype shall maintain compatibility with at least the next two Python releases.}\\
+    \textbf{Rationale:} Ensures sustainability of the pilot for educational and testing purposes.\\
+    \textbf{Fit Criterion:} Verified through annual testing on supported Python versions.\\
+    \textbf{Priority:} Low
+\end{itemize}
 \section{Operational and Environmental Requirements}
 \subsection{Expected Physical Environment}
 \lips
@@ -179,7 +261,6 @@ involved in the Project}
 \lips
 \subsection{Release Requirements}
 \lips
-
 \section{Maintainability and Support Requirements}
 \subsection{Maintenance Requirements}
 \lips
@@ -189,16 +270,71 @@ involved in the Project}
 \lips
 
 \section{Security Requirements}
+
 \subsection{Access Requirements}
-\lips
+\begin{itemize}
+    \item[\textbf{SR-AR 1.}] \textit{The system shall restrict access exclusively to McMaster University users through institutional Single Sign-On (SSO) authentication.}\\
+    \textbf{Rationale:} Restricting access ensures only authorized users within McMaster can use the system during the pilot phase, reducing the risk of unauthorized use or data exposure.\\
+    \textbf{Fit Criterion:} All users must log in using verified McMaster SSO credentials before accessing the platform. Unauthenticated requests are automatically rejected.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{SR-AR 2.}] \textit{All actions performed by users shall be tied to their authenticated session.}\\
+    \textbf{Rationale:} Linking actions to a user’s authenticated identity enables traceability and controlled access to system features.\\
+    \textbf{Fit Criterion:} Each upload or alt-text generation event is associated with a unique McMaster user ID through SSO session tracking.\\
+    \textbf{Priority:} Medium
+\end{itemize}
+
 \subsection{Integrity Requirements}
-\lips
+\begin{itemize}
+    \item[\textbf{SR-IR 1.}] \textit{All communication between the frontend, backend, and machine learning services shall use encrypted HTTPS (TLS 1.2 or higher).}\\
+    \textbf{Rationale:} Encryption prevents interception and tampering of sensitive data such as authentication tokens or image files.\\
+    \textbf{Fit Criterion:} All HTTP requests must be redirected to HTTPS; unencrypted requests are rejected by the web server.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{SR-IR 2.}] \textit{Uploaded images shall remain unmodified during processing and analysis.}\\
+    \textbf{Rationale:} Preserving file integrity ensures consistent and accurate generation of alt-text.\\
+    \textbf{Fit Criterion:} File hash comparison verifies that image files remain identical throughout the upload and analysis process.\\
+    \textbf{Priority:} High
+\end{itemize}
+
 \subsection{Privacy Requirements}
-\lips
+\begin{itemize}
+    \item[\textbf{SR-PR 1.}] \textit{Uploaded images shall be deleted immediately after processing is complete.}\\
+    \textbf{Rationale:} Protects user privacy and ensures compliance with institutional data governance policies.\\
+    \textbf{Fit Criterion:} Uploaded files are stored temporarily in memory or on a secure local directory and deleted within 60 seconds after alt-text generation.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{SR-PR 2.}] \textit{Generated alt-text shall not contain personally identifiable information (PII) or sensitive content.}\\
+    \textbf{Rationale:} Prevents disclosure of private information and ensures responsible AI usage.\\
+    \textbf{Fit Criterion:} The model output is passed through a content moderation filter that rejects or flags any alt-text containing PII or inappropriate language.\\
+    \textbf{Priority:} Medium
+\end{itemize}
+
 \subsection{Audit Requirements}
-\lips
+\begin{itemize}
+    \item[\textbf{SR-AU 1.}] \textit{System usage logs shall record authentication events, uploads, and generation activities for accountability and debugging.}\\
+    \textbf{Rationale:} Audit logs enable traceability, assist in debugging, and ensure ethical research practices.\\
+    \textbf{Fit Criterion:} Logs record timestamps, user IDs, and non-sensitive metadata while excluding image or generated text content.\\
+    \textbf{Priority:} Medium
+
+    \item[\textbf{SR-AU 2.}] \textit{Access to audit logs shall be restricted to authorized project administrators.}\\
+    \textbf{Rationale:} Limits access to potentially sensitive operational data and protects user confidentiality.\\
+    \textbf{Fit Criterion:} Logs are stored in a restricted-access directory with read permissions granted only to administrators.\\
+    \textbf{Priority:} Medium
+\end{itemize}
+
 \subsection{Immunity Requirements}
-\lips
+\begin{itemize}
+    \item[\textbf{SR-IM 1.}] \textit{The system shall validate and sanitize all uploaded files to prevent malicious or unsupported file types.}\\
+    \textbf{Rationale:} Protects against injection attacks, corrupted uploads, or execution of non-image files.\\
+    \textbf{Fit Criterion:} Only files with valid image types (.png, .jpg, .jpeg, .svg, .webp) are accepted; unsupported or script files are automatically rejected.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{SR-IM 2.}] \textit{The system shall block access from networks or domains outside McMaster University’s infrastructure.}\\
+    \textbf{Rationale:} Restricting network access minimizes exposure to external threats during the proof-of-concept phase.\\
+    \textbf{Fit Criterion:} Requests must originate from verified McMaster SSO tokens or IP ranges associated with university networks.\\
+    \textbf{Priority:} High
+\end{itemize}
 
 \section{Cultural Requirements}
 \subsection{Cultural Requirements}
@@ -247,7 +383,55 @@ Inhibit the New Product}
 \lips
 
 \section{Costs}
-\lips
+
+The total cost of developing this project is primarily based on the effort contributed by the student development team and faculty supervisors. As the project utilizes open-source technologies (e.g., Python, TensorFlow, Flask, and React) and university-hosted infrastructure, no direct monetary expenditure is incurred. The project is scheduled to be completed within the academic term (MVP ready by April 2026), and resource allocation is focused on efficient time management and workload balancing rather than financial cost.
+
+\subsection{Metrics for Estimation}
+
+To estimate overall development cost in terms of time and effort, the following key metrics have been considered:
+\begin{itemize}
+    \item Number of image input/output workflows supported by the tool.
+    \item Number of core functional requirements (e.g., image upload, alt-text generation, user authentication, evaluation metrics).
+    \item Number of non-functional requirements (e.g., accessibility compliance, latency, privacy, and scalability).
+    \item Number of deliverables and milestones within the development timeline.
+    \item Team size and individual role distribution (frontend, backend, model integration, documentation).
+\end{itemize}
+
+\subsection{Estimation Approach}
+
+Each deliverable has been estimated based on the effort required to implement, test, and document it within the given academic term.  
+The estimates are derived from prior experience with similar web-based machine learning projects and adjusted for the learning and research effort required to integrate accessibility and WCAG compliance features.  
+Time allocation also accounts for model fine-tuning, front-end accessibility testing, and usability evaluation with pilot users.
+
+\subsection{Cost Breakdown}
+
+\noindent\textbf{• Development Effort:} Based on a team of four student developers and one faculty supervisor, the estimated time allocation per team member is as follows:
+\begin{itemize}
+    \item Initial research, planning, and requirement analysis: \textbf{40 hours per team member.}
+    \item Model integration and backend implementation: \textbf{120 hours per team member.}
+    \item Frontend development and accessibility compliance: \textbf{80 hours per team member.}
+    \item Testing, debugging, and refinement: \textbf{60 hours per team member.}
+    \item Documentation and presentation preparation: \textbf{30 hours per team member.}
+\end{itemize}
+\noindent\textbf{Total estimated effort: 330 hours per team member.}
+
+\noindent\textbf{• Tools and Software:}  
+All software components used in the project (Python, Flask, React, TensorFlow, Machine Learning Models, and GitHub) are open-source or free for academic use.  
+Therefore, there are no direct licensing or software procurement costs.
+
+\noindent\textbf{• Testing Environment:}  
+Testing will be conducted using McMaster-hosted or open-source platforms for model inference and user testing.
+The team might decide to conduct user testing and award attendees 10 dollar Amazon.com gift cards as a reward for participation.  
+No additional hardware purchases are required beyond existing student laptops and cloud compute credits provided for academic purposes.
+
+\subsection{Estimated Cost}
+
+The total development effort is estimated at approximately \textbf{1,320 person-hours} across all team members (4 × 330 hours).  
+Assuming an average academic hourly equivalent of \textbf{\$20 per hour} for estimation purposes, the notional cost of development would be approximately \textbf{\$26,400 CAD}.  
+
+However, as this project is conducted as part of a capstone academic course and leverages free university and open-source resources, the \textbf{actual monetary cost is \$0 CAD}.  
+The effective cost of the project lies entirely in time, research, and human effort required to meet the performance, accessibility, and security requirements outlined in previous sections.
+
 \section{User Documentation and Training}
 \subsection{User Documentation Requirements}
 \lips
