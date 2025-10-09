@@ -452,9 +452,21 @@ Inhibit the New Product}
 \lips
 
 \section{Ideas for Solution}
-\lips
-
-\newpage{}
+This section outlindes potential ways to implement some of the functionality discussed throughout this report, 
+including image upload and processing, alternative text generation and session history. 
+These ideas have been documented so they can be referenced later during development.\\
+\\
+\textbf{Image Upload and Processing}
+This functionality can be achieved through a front-end interface, where users are prompted to upload an image using an upload button or by dragging their file into the drop box. Furthermore, to minimize errors, this will only allow JPEG and PNG image files. 
+Once the image has been uploaded, it will be displayed to the user with the image file name, so users can confirm the correct file was chosen. 
+If the upload fails, the system will display an error message explaining the issue. Furthermore, this can be achieved using the HTML5 File API, which supports reading and processing file data, specifically obtained through input or drag and drop. \\
+\\
+\textbf{Alternative Text Generation}
+This functionality can be implemented using a vision-language model (VLM), which combines natural language models with computer vision. 
+The model can learn from both images and text to solve various problems. The model can be trained using sample scientific images, paired with examples of descriptive alternative text, allow it to generate accurate and high quality descriptions for new images.\\
+\\
+\textbf{Session History}
+After the user is satisfied with the generated alternative text, the system will store the image and its final description in the browser's session storage as a JSON record. This allows the data to be stored temporarily and can easily be displayed to the user when they request their history. \\
 \section*{Appendix --- Reflection}
 
 \input{../Reflection.tex}
