@@ -49,6 +49,17 @@
 \pagenumbering{roman}
 
 \tableofcontents
+~\newpage
+
+\section*{Symbolic Constants}
+\begin{tabularx}{\textwidth}{|X|X|}
+\toprule {\textbf{Name}} & {\textbf{Value}}\\
+\midrule
+Symbol & 1.0 \\
+Symbol & 1.1 \\
+\bottomrule
+\end{tabularx}
+
 
 ~\newpage
 
@@ -321,7 +332,7 @@ their inputs and outputs, and the summary of the event.
     \hline
     \mbox{OCR Text} \mbox{Extraction} & Uploaded \mbox{Images/Figures} & Detected Text & System reads the text embedded in the uploaded files \\
     \hline
-    Generate \mbox{Alternative Text} & Uploaded \mbox{Images/Figures}, Extracted OCR, Model Parameters & Generated Alt Text, Quality Metric from ML Model & System analyzes the image and extracted OCR data to generate accurate alternative text \\
+    Generate \mbox{Alternative Text} & Uploaded \mbox{Images/Figures}, Extracted OCR, Model Parameters & Generated Alt Text, Quality Metric from Machine Learning (ML) Model & System analyzes the image and extracted OCR data to generate accurate alternative text \\
     \hline
     View History & \mbox{User Login,} Stored Uploads and Generated Alt Text & List of Previously Generated Alt Text & The system retrieves and displays a user’s history of uploaded images along with their associated generated alt text \\
     \hline
@@ -369,7 +380,8 @@ The diagram below shows the components within the system and how they connect. T
 \end{figure}
 
 \subsection{Product Use Case Table}
-The table below discusses the different use cases. 
+\href{tab:product-use}{Table 2} summarizes the main product use cases for the systems. For each use case it describes the actors involved, inputs and outputs to the system and the related requirements. 
+  \label{tab:product-use}
     \begin{table}[H]
       \centering
       \caption{Labels and Their Usage}
@@ -391,7 +403,8 @@ The table below discusses the different use cases.
 \end{table}
 
 \subsection{Individual Product Use Cases (PUC's)}
-\textbf{PUC 1: Login Using McMaster Credentials }\\
+\textbf{PUC 1: Login Using McMaster Credentials } 
+\begin{quote}
 \textbf{Trigger:} User selects "Login" and is directed to McMaster sign in page.\\
 \textbf{Preconditions:}
 \begin{itemize}
@@ -400,9 +413,10 @@ The table below discusses the different use cases.
 \textbf{Actors:} McMaster Student or Faculty, McMaster Authentication System.\\
 \textbf{Outcome:} McMaster validates user's credentials are validated and they are given access to system.\\
 \textbf{Input:} McMaster System username and password. \\
-\textbf{Output:} User enters system or an error message is displayed.\\
-\\
-\textbf{PUC 2: Upload Image }\\
+\textbf{Output:} User enters system or an error message is displayed.
+\end{quote}
+\textbf{PUC 2: Upload Image }
+\begin{quote}
 \textbf{Trigger:} User selects "Upload Image" and chooses a file\\
 \textbf{Preconditions:}
 \begin{itemize}
@@ -411,9 +425,10 @@ The table below discusses the different use cases.
 \textbf{Actors:} McMaster Student or Faculty \\
 \textbf{Outcome:} The selected image is uploaded and stored for later text generation.\\
 \textbf{Input:} Image file (JPEG or PNG) \\
-\textbf{Output:} A confirmation message is displayed if the image was successfully uploaded, or an error message otherwise is displayed.\\
-\\
-\textbf{PUC 3: Generate Alternative Text}\\
+\textbf{Output:} A confirmation message is displayed if the image was successfully uploaded, or an error message otherwise is displayed.
+\end{quote}
+\textbf{PUC 3: Generate Alternative Text}
+\begin{quote}
 \textbf{Trigger:} User selects \textit{Generate Alternative Text} for an uploaded image.\\
 \textbf{Preconditions:}
 \begin{itemize}
@@ -422,10 +437,11 @@ The table below discusses the different use cases.
 \textbf{Actors:} McMaster Student or Faculty.\\
 \textbf{Outcome:} The system generates a descriptive alternative text for the uploaded image.\\
 \textbf{Input:} User selection to generate alternative text\\
-\textbf{Output:} Generated alternative text is displayed to the user.\\
-\\
-\textbf{PUC 4: Copy or Download Generated Alternative Text }\\
-\textbf{Trigger:} User selects \textit{Copy} to clipboard or \textit{Download} .txt after generating alternative text.\\
+\textbf{Output:} Generated alternative text is displayed to the user.
+\end{quote}
+\textbf{PUC 4: Copy or Download Generated Alternative Text }
+\begin{quote}
+\textbf{Trigger:} User selects copy or download .txt after generating alternative text.\\
 \textbf{Preconditions:}
 \begin{itemize}
   \item System has successfully generated alternative text.
@@ -434,10 +450,11 @@ The table below discusses the different use cases.
 \textbf{Actors:} McMaster Student or Faculty. \\
 \textbf{Outcome:} The user receives the alternative text through their preferred method. \\
 \textbf{Input:} User decision to copy or download.\\
-\textbf{Output:} Text is copied to clipboard or downloaded as .txt file on the users device.\\
-\\
-\textbf{PUC 5: View History of Uploaded Images and Generated Alternative Text}\\
-\textbf{Trigger:} User selects \textit{View History} option.\\
+\textbf{Output:} Text is copied or downloaded as .txt file on the users device.
+\end{quote}
+\textbf{PUC 5: View History of Uploaded Images and Generated Alternative Text}
+\begin{quote}
+\textbf{Trigger:} User selects the view history option.\\
 \textbf{Preconditions:}
 \begin{itemize}
   \item User is logged in with an active session. 
@@ -447,6 +464,7 @@ The table below discusses the different use cases.
 \textbf{Outcome:} The user views a list of their images and the corresponding generated alternative text within the current session. \\
 \textbf{Input:} User request to view session history.\\
 \textbf{Output:} Display of uploaded images and their corresponding generated alternative text.\\
+\end{quote}
 
 
 
@@ -457,11 +475,11 @@ The table below discusses the different use cases.
     {\bf Rationale:} The system must process JPEG/PNG images in order to output alternative text. \\
     {\bf Fit Criterion:} The system successfully takes as accepts JPEG/PNG images and provides feedback to users when an invalid file type is inputted.  \\
     {\bf Priority:} High
-  \item \emph{The system shall generate alternative text of uploaded gyms.}\\[2mm]
+  \item \emph{The system shall generate alternative text of uploaded images.}\\[2mm]
     {\bf Rationale:} The main purpose of the system is to make scientific diagrams more accessible by generating better alternative-text. \\
     {\bf Fit Criterion:} For a set of test diagrams, the alternative text generated must meet the pre-determined criteria.\\
     {\bf Priority:} High
-  \item \emph{The system shall output alternative text in a format readable by screen readers.}\\[2mm]
+  \item \emph{The system shall output alternative text in a format compatible with screen readers.}\\[2mm]
     {\bf Rationale:} Students with disabilities utilize screen readers to access digital content; therefore, the alternative text must be displayed in away that enables screen readers to read it correctly. Furthermore, if the alternative text output format is not compatible with screen readers, then students cannot benefit from the application output.\\
     {\bf Fit Criterion:} The alternative text output must be readable by at least three commonly used screen readers.\\
     {\bf Priority:} High
@@ -473,10 +491,6 @@ The table below discusses the different use cases.
     {\bf Rationale:} Storing previously inputted images and their generated alternative texts, allows users to easily review or reuse them without re-uploading. \\
     {\bf Fit Criterion:} Users can see view all previously inputted images with their generated alternative texts during the same session. \\
     {\bf Priority:} Medium
-  \item \emph{The system must accept keyboard input for navigation.}\\[2mm] 
-    {\bf Rationale:} Many users, including those with disabilities, use keyboard inputs to navigate through applications, the system must support this as a way to navigate.\\
-    {\bf Fit Criterion:} Users can navigate to all the main functions and areas of the system using their keyboard. \\
-    {\bf Priority:} High
  \item \emph{The system must validate users during login to confirm they are McMaster University students.}\\[2mm] 
     {\bf Rationale:} User verification will ensure that only McMaster University students have access to the system, ensuring that the system is used by the intended users.  \\
     {\bf Fit Criterion:} Users can only gain access to the system features after their McMaster University credentials are successfully validated.  \\
@@ -487,21 +501,21 @@ The table below discusses the different use cases.
 \subsection{Appearance Requirements}
 \begin{enumerate}[label=LFR-AR \arabic*., wide=0pt, leftmargin=*]
   \item \emph{The system must allow all text on the interface to be resized up to 200 \%, without any loss of functionality or content. }\\[2mm] 
-    {\bf Rationale:} Allowing text resizing will enable users with low vision to more easily utilize the system. This also ensures the system meets WCAG Success Criterion 1.4.4 Resize Text.
+    {\bf Rationale:} Allowing text resizing will enable users with low vision to more easily utilize the system. This also ensures the system meets WCAG 2.1 Success Criterion 1.4.4 Resize Text.
     User verification will ensure that only McMaster University students have access to the system, ensuring that the system is used by the intended users.  \\
     {\bf Fit Criterion:} All text, excluding any captions and images of text can be enlarged to 200 \% on a standard browser zoom (ex. Google Chrome) without any overlapping, hidden content, or broken features.  \\
     {\bf Priority:} High
   \item \emph{The system must not use color as the only method to provide information, indicate actions or prompt user input.}\\[2mm] 
-    {\bf Rationale:} Users with color vision deficiencies or other visual impairments may not detect color differences accurately. This also ensures the system meets WCAG Success Criterion 1.4.1 Use of Color.\\
+    {\bf Rationale:} Users with color vision deficiencies or other visual impairments may not detect color differences accurately. This also ensures the system meets WCAG 2.1 Success Criterion 1.4.1 Use of Color.\\
     {\bf Fit Criterion:} Any use of color communicates information to the user or requests information from he user must be appear with text.  \\
     {\bf Priority:} High
   \item \emph{The system must ensure sufficient contrasts of text and images of text.}\\[2mm] 
     {\bf Rationale:} Sufficient color contrast is important as it enables users with low vision or color vision deficiencies to easily read any system text. This also ensures the system meets WCAG Success Criterion 1.4.3 Contrast (Minimum)\\
     {\bf Fit Criterion:}  All text and images of text in the system interfaces has a contrast ratio of at least 4.5:1  \\
     {\bf Priority:} High
-  \item \emph{The system must provide alternative text for all non-text content..}\\[2mm] 
+  \item \emph{The system must provide alternative text for all non-text content.}\\[2mm] 
     {\bf Rationale:} Users with visual impairment often use screen readers to navigate through software systems; therefore, it is essential that all images have sufficient alternative text, so that the purpose of the images can understood. This also ensures the system meets WCAG Success Criterion 1.1.1 Non-text Content  .\\
-    {\bf Fit Criterion:} All images and non-text element are joined with descriptive alternative text that communicate their meaning. \\
+    {\bf Fit Criterion:} All decorative images and non-text elements have alternative text that communicate their meaning. \\
     {\bf Priority:} High
 \end{enumerate}
 
@@ -560,7 +574,7 @@ The table below discusses the different use cases.
 
 \subsection{Understandability and Politeness Requirements}
 \begin{enumerate}[label=UHR-LR \arabic*., wide=0pt, leftmargin=*]
-\item \emph{The system must be only display essential information and hide all technical details.}\\[2mm] 
+\item \emph{The system must only display essential information and hide all technical details.}\\[2mm] 
     {\bf Rationale:} The system should only communicate the information needed to use the system. Displaying any technical details may cause the user to be confused and make the system less usable.   \\
     {\bf Fit Criterion:} In user testing, users do not encounter any technical terms, code outputs or information that is not relevant to them.  \\
     {\bf Priority:} High
@@ -572,6 +586,10 @@ The table below discusses the different use cases.
 \item \emph{The system must meet the WCAG 2.1 Level AA accessibility standards.}\\[2mm] 
     {\bf Rationale:} The Accessibility for Ontarians with Disabilities Act (AODA) requires organizations to meet WCAG 2.0 Level AA for web tools. Therefore, meeting WCAG 2.1 Level AA ensures the system meets AODA standards and is accessible for users with disabilities.  \\
     {\bf Fit Criterion:} The system will be evaluated using an accessibility testing tool such as Pope Tech and Wave Web Aim to ensure WCAG 2.1 criteria is met.\\
+    {\bf Priority:} High
+\item \emph{The system must accept keyboard input for navigation.}\\[2mm] 
+    {\bf Rationale:} Many users, including those with disabilities, use keyboard inputs to navigate through applications, the system must support this as a way to navigate.\\
+    {\bf Fit Criterion:} Users can navigate to all the main functions and areas of the system using their keyboard. \\
     {\bf Priority:} High
 \end{enumerate}
 
