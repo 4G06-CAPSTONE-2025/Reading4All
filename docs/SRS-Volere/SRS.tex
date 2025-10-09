@@ -10,10 +10,8 @@
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{enumitem}
-\usepackage{float}
 \usepackage{graphicx}
-
-
+\usepackage{float} 
 
 \hypersetup{
     bookmarks=true,         % show bookmarks bar?
@@ -83,21 +81,93 @@ Date 2 & 1.1 & Notes\\
 
 \section{Mandated Constraints}
 \subsection{Solution Constraints}
-\lips
+\begin{enumerate}[label=MD-SL \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The solution design must comply with at least the Level AA of the Web Content Accessibility Guidelines (WCAG) 2.1 standards}\\[2mm]
+    {\bf Rationale:} This ensures that the solution ensures inclusivity for users with visual, auditory, or cognitive impairments\\
+    {\bf Fit Criterion:} The solution must past all tests using WCAG automated testing tools and manual tests.\\
+    {\bf Priority:} High
+\end{enumerate}
+\begin{enumerate}[label=MD-SL \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The solution must be implemented as a website}\\[2mm]
+    {\bf Rationale:} A website will allow for automated testing against the WCAG standards which ensures accesibility for users 
+    and allow users to upload images/figures to generate alternative text\\
+    {\bf Fit Criterion:} The website must be functional and allow users to generate alternative text by uploading
+    images and figures\\
+    {\bf Priority:} High
+\end{enumerate}
+\begin{enumerate}[label=MD-SL \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The solution must support common image formats (e.g. JPEG, PNG, etc.)}\\[2mm]
+    {\bf Rationale:} The website will enable users to upload images or figures to generate the alternative text, therefore the solution must be able 
+    to handle the different types of image formats\\
+    {\bf Fit Criterion:} The product must successfully process at least one image of each required format including JPEG and PNG
+    images and figures\\
+    {\bf Priority:} High
+\end{enumerate}
+
 \subsection{Implementation Environment of the Current System}
-\lips
+\begin{enumerate}[label=MD-IE \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The product must be able to run on standard laptop environments, including operatins systems (OS) such as 
+  macOS, Windows, and Linux}\\[2mm]
+    {\bf Rationale:} This ensures that the product is compatible with major operating systems to allow the product to be 
+    accessible to users, regardless of their laptop environment\\
+    {\bf Fit Criterion:} The product must successfully install and operate on the latest releases of macOS, Windows, and Linux,
+    verified through installation and functionality testing on each OS\\
+    {\bf Priority:} High
+\end{enumerate}
 \subsection{Partner or Collaborative Applications}
-\lips
+\begin{enumerate}[label=MD-PA \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The product must not conflict with other accessibility tools (e.g. screen readers, screen magnifiers, dictation software)}\\[2mm]
+    {\bf Rationale:} This is to ensure that the product does not limit or intefere with other accessibility tools that 
+    meets the users' needs \\
+    {\bf Fit Criterion:} The product must operate simultaneously with at least one other accessibility tool,
+    verified through interoperability testing \\
+    {\bf Priority:} High
+\end{enumerate}
 \subsection{Off-the-Shelf Software}
-\lips
+There are a number of existing AI generated alternative text off-the-shelf software in the market today. The following 
+highlights a few of these tools, including their functions, benefits, and limitations: 
+\begin{enumerate}
+  \item \textbf{Azure AI Vision Image Analysis}: This service by Microsoft can extract a wide variety of 
+  visual features from images. Image Analysis offers image captioning models that generate one-sentence descriptions of an image's visual content.
+  Limitations of this product is that it only generates one simple sentence, and that the image
+  captions are only available in English.
+  \item \textbf{ALTTEXT.AI}: This service allows users to upload images and generate alternative text. The website supports
+  over 100 languages and many modern image formats. A significant limitation of this project
+  is that it doesn't guarantee compliance with WCAG which limits accessibility.
+  \item \textbf{accessiBe}: This service is an accessibility platform built for developers and engineers that plugs into their SDLC to detect and 
+  remediate WCAG issues at code level. The tools offers AI alt-text descriptions for images and allows users to review 
+  and edit the alt text. A limitiation of this tool is that it uses overlays that sit on top of a website to fix issues at run-time. This is an issue 
+  because overlays can conflict with assistive technologies and miss context-specific WCAG requirements creating a false sense of real accessibility compliance.
+\end{enumerate}
 \subsection{Anticipated Workplace Environment}
-\lips
+The anticipated workplace environment for this product is academic settings such as universities, where students may 
+require alternative text to interpret images and figures within their coursework and study materials. 
 \subsection{Schedule Constraints}
-\lips
+\begin{enumerate}[label=MD-SC \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The final product must be completed and tested by the end of the academic term (April 2026)}\\[2mm]
+    {\bf Rationale:} This is to ensure that the final product is functional and meets all requirements
+    at the end of the academic year\\
+    {\bf Fit Criterion:} All deliverables are submitted, and the final product is tested and operable by April 2026 \\
+    {\bf Priority:} High
+\end{enumerate}
 \subsection{Budget Constraints}
-\lips
+\begin{enumerate}[label=MD-BC \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The project budget must include compensation for user testers, set at maximum \$150 per participant for two rounds of usability testing.}\\[2mm]
+    {\bf Rationale:} This is to ensure that user testers are compensated for their meaningful feedback, 
+    and that our testing aligns with ethical practices\\
+    {\bf Fit Criterion:} There must be record of participants being compensated between the range of \$100 and \$150 for
+    two rounds of testing. \\
+    {\bf Priority:} High
+\end{enumerate}
 \subsection{Enterprise Constraints}
-\lips
+\begin{enumerate}[label=MD-EC \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The product must comply with the Accessibility for Ontarians with Disabilities Act (AODA)}\\[2mm]
+    {\bf Rationale:} This ensures that the product meets the legal requirements in Ontario and guarantees that 
+    the product is accessible to users with diverse needs\\
+    {\bf Fit Criterion:} AODA requires compliance with WCAG standards, which ensures that the product meets AODA regulations. 
+    Compliance must be verified through both automated WCAG testing tools and manual accessibility testing.\\
+    {\bf Priority:} High
+\end{enumerate}
 
 \section{Naming Conventions and Terminology}
 \subsection{Glossary of All Terms, Including Acronyms, Used by Stakeholders
@@ -106,21 +176,107 @@ involved in the Project}
 
 \section{Relevant Facts And Assumptions}
 \subsection{Relevant Facts}
-\lips
+\begin{itemize}
+  \item This project is being developed for a Software Engineering Capstone course with a fixed timeline
+  \item The solution is targeted primarily for laptop and/or desktop environments, but can later be extended for mobile platforms use
+\end{itemize}
 \subsection{Business Rules}
-\lips
+The business rules established among the team are as follows: 
+\begin{itemize}
+  \item \textbf{Adherence to Project Schedule}: All deliverables and milestones must be 
+  completed according to the established project schedule. Any anticipated delays must be communicated
+  in advance.
+  \item \textbf{Pull Request Requirement}: All pull requests made by a team member must be reviewed by 
+  three other members before being merged into the \texttt{main} branch. The reviewers must provide approval
+  or feedback within 24 hours of the pull request.
+  \item \textbf{Team Communication Standard}: All team members must communicate respectfully and professionally during 
+  all discussions, meetings, and written communication. 
+  \item \textbf{Testing Requirements}: All code contributions must include appropriate unit, intergration, and 
+  functionality tests to ensure correctness and reliability. Accessibility testing must also be performed for all
+  product features. 
+\end{itemize}
 \subsection{Assumptions}
-\lips
-
+The following assumptions are made when using the product:
+\begin{itemize}
+  \item Users will be operating on modern browsers such as Chrome, Safari, and Firefox
+  \item Users will have access to stable internet connection when installing and using the product
+  \item Users will have basic knowledge of installing and enabling web extensions
+\end{itemize}
 \section{The Scope of the Work}
 \subsection{The Current Situation}
-\lips
+Currently, alternative text generation tools are able to provide sufficient descriptions for simple images and figures. However, for more complex visuals 
+such as engineering diagrams, the generated alt text is often misleading, incomplete, or inefficient at conveying the intended meaning.\\
+Accurate alternative text is particularly essential for individuals with visual or cognitive impairments, as it enables fair access to academic content. Without 
+reliable descriptions, students may experience barriers to learning and miss critical information conveyed in diagrams and figures.\\
+The current limitations of existing generated alternative text tools are as follows:
+\begin{itemize}
+  \item \textbf{Inaccurate Alternative Text}: Generated alt text may emphasize unimportant details and overlook key elements, 
+  resulting in misleading or confusing interpretations.
+  \item \textbf{Oversimplification of Complex Figures}: Current tools frequently oversimplify technical or academic diagrams, 
+  failing to capture essential details required for learning.
+  \item \textbf{High Manual Effort}: In many cases, subject matter experts must manually create alt text, 
+  which is time-intensive and not scalable across large volumes of academic content.
+\end{itemize}
 \subsection{The Context of the Work}
-\lips
+The product will be in the form of a website that integrates into existing accessibility workflows
+by providing accurate descriptions from images that can be read aloud by screen readers. The product 
+will complement existing screen readers by ensuring accurate generated alternative text from 
+uploaded images and figures of academic work are available. \href{fig:work-context}{Figure1} shows 
+how the product will integrate with existing screen readers.\\
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1.0\textwidth]{images/work-context-diagram.png}
+  \caption{Work Context Diagram}
+  \label{fig:work-context}
+\end{figure}
+
 \subsection{Work Partitioning}
-\lips
+\href{tab:work-partition}{Table 1} shows the work partitioning for completing the project. It includes major events, 
+their inputs and outputs, and the summary of the event.
+
+\begin{table}[H]
+  \centering
+  \caption{Work Partition for the System}
+  \label{tab:work-partition}
+  \begin{tabular}{ |p{3cm}|p{3cm}|p{3cm}|p{4cm}| }
+    \hline
+    \textbf{Event Name} & \textbf{Input} & \textbf{Output} & \textbf{Summary} \\
+    \hline
+    Login & Username, Password & & User logs in using their McMaster account \\
+    \hline
+    Upload  \mbox{Images/Figures} & PNG/JPEG files & Uploaded File Reference & User uploads their files to generate alternative text \\
+    \hline
+    \mbox{OCR Text} \mbox{Extraction} & Uploaded \mbox{Images/Figures} & Detected Text & System reads the text embedded in the uploaded files \\
+    \hline
+    Generate \mbox{Alternative Text} & Uploaded  \mbox{Images/Figures}, Extracted OCR, Model Parameters & Generated Alt Text, Quality Metric from ML Model & System analyzes the image and extracted OCR data to generate accurate alternative text \\
+    \hline
+    View History & \mbox{User Login,} Stored Uploads and Generated Alt Text & List of Previously Generated Alt Text & The system retrieves and displays a user’s history of uploaded images along with their associated generated alt text \\
+    \hline
+  \end{tabular}
+\end{table}
+
 \subsection{Specifying a Business Use Case (BUC)}
-\lips
+The project has one primary business use case, which aims to achieve the goal of providing users with visual and cognitive impairments an efficient 
+and accessible way to generate accurate alternative text for academic images and figures.\\[1ex]
+\textbf{Preconditions:}
+\begin{itemize}
+  \item The user has access to the website
+  \item The user has files containing diagrams or images requiring alternative text
+\end{itemize}
+\textbf{Scenario:}
+\begin{enumerate}
+  \item The user logs into the system using their McMaster student credentials
+  \item The user uploads one or more files (PNG, JPEG) containing diagrams 
+  \item The AI model analyzes the uploaded file(s), performs OCR to extract any visible text, and generates 
+  alternative text describing each image/figure accurately
+  \item Screen readers use the generated alternative text to read aloud and convey the uploaded image
+  \item The generated alternative text can be copied to clipboard or dowloaded as a \texttt{.txt} file by the user if needed
+  \item The user can view previously uploaded files and generated alternative text for future reference
+\end{enumerate}
+\textbf{Postcondition:}
+\begin{itemize}
+  \item The user obtains accurate and accessible alternative text that complies with AODA and WCAG 2.1 standards.
+\end{itemize}
 
 \section{Business Data Model and Data Dictionary}
 \subsection{Business Data Model}
@@ -347,21 +503,103 @@ The table below discusses the different use cases.
 
 
 \section{Performance Requirements}
-\subsection{Speed and Latency Requirements}
-\lips
-\subsection{Safety-Critical Requirements}
-\lips
-\subsection{Precision or Accuracy Requirements}
-\lips
-\subsection{Robustness or Fault-Tolerance Requirements}
-\lips
-\subsection{Capacity Requirements}
-\lips
-\subsection{Scalability or Extensibility Requirements}
-\lips
-\subsection{Longevity Requirements}
-\lips
 
+\subsection{Speed and Latency Requirements}
+\begin{itemize}
+    \item[\textbf{PR-SL 1.}] \textit{The tool shall generate alt-text for uploaded images within a reasonable time frame.}\\
+    \textbf{Rationale:} Ensures users, including those using assistive technologies, do not experience delays that hinder accessibility.\\
+    \textbf{Fit Criterion:} The system shall return generated alt-text within \textbf{3 seconds} for images $\leq$2 MB and within \textbf{8 seconds} for images $\leq$10 MB under normal load conditions.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{PR-SL 2.}] \textit{The web interface shall load and render accessibility components efficiently.}\\
+    \textbf{Rationale:} Improves user experience and responsiveness for screen-reader users and keyboard navigation.\\
+    \textbf{Fit Criterion:} All interactive elements shall respond within \textbf{300 ms} of user input under typical conditions.\\
+    \textbf{Priority:} Medium
+\end{itemize}
+
+\subsection{Safety-Critical Requirements}
+\begin{itemize}
+    \item[\textbf{PR-SCR 1.}] \textit{The tool shall ensure that no personally identifiable data from uploaded images is stored or shared without consent.}\\
+    \textbf{Rationale:} Protects user privacy and adheres to ethical AI standards.\\
+    \textbf{Fit Criterion:} Uploaded images are deleted from temporary storage within \textbf{60 seconds} of processing unless explicitly saved by the user.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{PR-SCR 2.}] \textit{The tool shall not produce alt-text containing offensive, biased, or harmful language.}\\
+    \textbf{Rationale:} Ensures ethical AI output and inclusivity.\\
+    \textbf{Fit Criterion:} 0 \% of generated outputs shall contain content flagged by moderation filters as offensive or biased.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{PR-SCR 3.}] \textit{The interface shall adhere to WCAG 2.1 Level A accessibility guidelines to prevent stress or strain on users’ eyes and ensure comfortable interaction.}\\
+    \textbf{Rationale:} Provides a visually safe, inclusive experience for all users, including those with visual or cognitive impairments.\\
+    \textbf{Fit Criterion:} Verified through front-end accessibility testing that confirms conformance with WCAG 2.1 Level A success criteria.\\
+    \textbf{Priority:} High
+\end{itemize}
+
+\subsection{Precision or Accuracy Requirements}
+\label{sec:PrecisionAccuracy}
+\begin{itemize}
+    \item[\textbf{PR-PAR 1.}] \textit{The generated alt-text shall adequately describe the image content with minimal omissions or irrelevant details.}\\
+    \textbf{Rationale:} Ensures the description fulfills its accessibility purpose.\\
+    \textbf{Fit Criterion:} At least \textbf{85 \%} of outputs rated “Sufficient” or better on the sufficiency scale by testers.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{PR-PAR 2.}] \textit{The alt-text shall maintain appropriate length and readability.}\\
+    \textbf{Rationale:} Prevents overly short or verbose outputs that reduce usability.\\
+    \textbf{Fit Criterion:} $\geq$ 90 \% of outputs rated “Proper Length” on the user-testing scale.\\
+    \textbf{Priority:} Medium
+
+    \item[\textbf{PR-PAR 3.}] \textit{The overall accessibility and usability of the alt-text shall be acceptable to testers.}\\
+    \textbf{Rationale:} Evaluates real-world effectiveness of generated descriptions.\\
+    \textbf{Fit Criterion:} Median user rating $\geq$ 3 (“Mostly Accessible/Usable”) on the 0–3 or 0–4 scales; no outputs below 2.\\
+    \textbf{Priority:} Medium
+\end{itemize}
+
+\subsection{Robustness or Fault-Tolerance Requirements}
+\begin{itemize}
+    \item[\textbf{PR-RFT 1.}] \textit{The system shall gracefully handle unsupported or corrupted image inputs.}\\
+    \textbf{Rationale:} Prevents crashes and maintains system stability.\\
+    \textbf{Fit Criterion:} Invalid files trigger a clear error message within 2 seconds without interrupting service.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{PR-RFT 2.}] \textit{The backend shall recover automatically from isolated process failures.}\\
+    \textbf{Rationale:} Ensures continued operation without developer intervention.\\
+    \textbf{Fit Criterion:} System recovers within 5 seconds after fault detection.\\
+    \textbf{Priority:} High
+\end{itemize}
+
+\subsection{Capacity Requirements}
+\begin{itemize}
+    \item[\textbf{PR-CR 1.}] \textit{The system shall support limited concurrent usage suitable for a proof-of-concept deployment.}\\
+    \textbf{Rationale:} Demonstrates feasibility and reliability for initial testing without production-level scaling.\\
+    \textbf{Fit Criterion:} Supports at least \textbf{5 simultaneous requests} with response times $\leq$ 10 seconds.\\
+    \textbf{Priority:} Medium
+
+    \item[\textbf{PR-CR 2.}] \textit{Storage shall accommodate pilot testing datasets.}\\
+    \textbf{Rationale:} Ensures smooth prototype validation without capacity issues.\\
+    \textbf{Fit Criterion:} The system can temporarily store metadata for up to \textbf{500 images per day} without data loss.\\
+    \textbf{Priority:} Low
+\end{itemize}
+
+\subsection{Scalability or Extensibility Requirements}
+\begin{itemize}
+    \item[\textbf{PR-SER 1.}] \textit{The architecture shall allow integration of improved ML models or multilingual capabilities in future phases.}\\
+    \textbf{Rationale:} Enables progressive enhancement and future accessibility expansion.\\
+    \textbf{Fit Criterion:} New models or language modules can be incorporated without restructuring existing components.\\
+    \textbf{Priority:} Medium
+\end{itemize}
+
+\subsection{Longevity Requirements}
+\begin{itemize}
+    \item[\textbf{PR-LR 1.}] \textit{The codebase shall be maintainable and adaptable to updates in WCAG guidelines, Python libraries, and ML frameworks.}\\
+    \textbf{Rationale:} Ensures long-term usability and compliance even after the pilot phase.\\
+    \textbf{Fit Criterion:} Minor updates or migrations require $\leq$ 2 person-days per quarter.\\
+    \textbf{Priority:} Medium
+
+    \item[\textbf{PR-LR 2.}] \textit{The prototype shall maintain compatibility with at least the next two Python releases.}\\
+    \textbf{Rationale:} Ensures sustainability of the pilot for educational and testing purposes.\\
+    \textbf{Fit Criterion:} Verified through annual testing on supported Python versions.\\
+    \textbf{Priority:} Low
+\end{itemize}
 \section{Operational and Environmental Requirements}
 \subsection{Expected Physical Environment}
 \lips
@@ -373,7 +611,6 @@ The table below discusses the different use cases.
 \lips
 \subsection{Release Requirements}
 \lips
-
 \section{Maintainability and Support Requirements}
 \subsection{Maintenance Requirements}
 \lips
@@ -383,16 +620,71 @@ The table below discusses the different use cases.
 \lips
 
 \section{Security Requirements}
+
 \subsection{Access Requirements}
-\lips
+\begin{itemize}
+    \item[\textbf{SR-AR 1.}] \textit{The system shall restrict access exclusively to McMaster University users through institutional Single Sign-On (SSO) authentication.}\\
+    \textbf{Rationale:} Restricting access ensures only authorized users within McMaster can use the system during the pilot phase, reducing the risk of unauthorized use or data exposure.\\
+    \textbf{Fit Criterion:} All users must log in using verified McMaster SSO credentials before accessing the platform. Unauthenticated requests are automatically rejected.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{SR-AR 2.}] \textit{All actions performed by users shall be tied to their authenticated session.}\\
+    \textbf{Rationale:} Linking actions to a user’s authenticated identity enables traceability and controlled access to system features.\\
+    \textbf{Fit Criterion:} Each upload or alt-text generation event is associated with a unique McMaster user ID through SSO session tracking.\\
+    \textbf{Priority:} Medium
+\end{itemize}
+
 \subsection{Integrity Requirements}
-\lips
+\begin{itemize}
+    \item[\textbf{SR-IR 1.}] \textit{All communication between the frontend, backend, and machine learning services shall use encrypted HTTPS (TLS 1.2 or higher).}\\
+    \textbf{Rationale:} Encryption prevents interception and tampering of sensitive data such as authentication tokens or image files.\\
+    \textbf{Fit Criterion:} All HTTP requests must be redirected to HTTPS; unencrypted requests are rejected by the web server.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{SR-IR 2.}] \textit{Uploaded images shall remain unmodified during processing and analysis.}\\
+    \textbf{Rationale:} Preserving file integrity ensures consistent and accurate generation of alt-text.\\
+    \textbf{Fit Criterion:} File hash comparison verifies that image files remain identical throughout the upload and analysis process.\\
+    \textbf{Priority:} High
+\end{itemize}
+
 \subsection{Privacy Requirements}
-\lips
+\begin{itemize}
+    \item[\textbf{SR-PR 1.}] \textit{Uploaded images shall be deleted immediately after processing is complete.}\\
+    \textbf{Rationale:} Protects user privacy and ensures compliance with institutional data governance policies.\\
+    \textbf{Fit Criterion:} Uploaded files are stored temporarily in memory or on a secure local directory and deleted within 60 seconds after alt-text generation.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{SR-PR 2.}] \textit{Generated alt-text shall not contain personally identifiable information (PII) or sensitive content.}\\
+    \textbf{Rationale:} Prevents disclosure of private information and ensures responsible AI usage.\\
+    \textbf{Fit Criterion:} The model output is passed through a content moderation filter that rejects or flags any alt-text containing PII or inappropriate language.\\
+    \textbf{Priority:} Medium
+\end{itemize}
+
 \subsection{Audit Requirements}
-\lips
+\begin{itemize}
+    \item[\textbf{SR-AU 1.}] \textit{System usage logs shall record authentication events, uploads, and generation activities for accountability and debugging.}\\
+    \textbf{Rationale:} Audit logs enable traceability, assist in debugging, and ensure ethical research practices.\\
+    \textbf{Fit Criterion:} Logs record timestamps, user IDs, and non-sensitive metadata while excluding image or generated text content.\\
+    \textbf{Priority:} Medium
+
+    \item[\textbf{SR-AU 2.}] \textit{Access to audit logs shall be restricted to authorized project administrators.}\\
+    \textbf{Rationale:} Limits access to potentially sensitive operational data and protects user confidentiality.\\
+    \textbf{Fit Criterion:} Logs are stored in a restricted-access directory with read permissions granted only to administrators.\\
+    \textbf{Priority:} Medium
+\end{itemize}
+
 \subsection{Immunity Requirements}
-\lips
+\begin{itemize}
+    \item[\textbf{SR-IM 1.}] \textit{The system shall validate and sanitize all uploaded files to prevent malicious or unsupported file types.}\\
+    \textbf{Rationale:} Protects against injection attacks, corrupted uploads, or execution of non-image files.\\
+    \textbf{Fit Criterion:} Only files with valid image types (.png, .jpg, .jpeg, .svg, .webp) are accepted; unsupported or script files are automatically rejected.\\
+    \textbf{Priority:} High
+
+    \item[\textbf{SR-IM 2.}] \textit{The system shall block access from networks or domains outside McMaster University’s infrastructure.}\\
+    \textbf{Rationale:} Restricting network access minimizes exposure to external threats during the proof-of-concept phase.\\
+    \textbf{Fit Criterion:} Requests must originate from verified McMaster SSO tokens or IP ranges associated with university networks.\\
+    \textbf{Priority:} High
+\end{itemize}
 
 \section{Cultural Requirements}
 \subsection{Cultural Requirements}
@@ -405,7 +697,14 @@ The table below discusses the different use cases.
 \lips
 
 \section{Open Issues}
-\lips
+This section outlines unresolved questions and decisions that may impact the overall success of the system.
+The following items require additional research, testing, or discussion to ensure the project’s successful completion. 
+\begin{itemize}
+  \item The ML/AI model architecture the team will use to generate alternative text will need research and testing 
+  to ensure optimal accuracy and correctness.
+  \item The optimal length of the generated alternative text requires further research to determine how many characters provide an 
+  accurate description without causing confusion or distracting from the main idea of the diagram.
+\end{itemize}
 
 \section{Off-the-Shelf Solutions}
 \subsection{Ready-Made Products}
@@ -441,15 +740,76 @@ Inhibit the New Product}
 \lips
 
 \section{Costs}
-\lips
+
+The total cost of developing this project is primarily based on the effort contributed by the student development team and faculty supervisors. As the project utilizes open-source technologies (e.g., Python, TensorFlow, Flask, and React) and university-hosted infrastructure, no direct monetary expenditure is incurred. The project is scheduled to be completed within the academic term (MVP ready by April 2026), and resource allocation is focused on efficient time management and workload balancing rather than financial cost.
+
+\subsection{Metrics for Estimation}
+
+To estimate overall development cost in terms of time and effort, the following key metrics have been considered:
+\begin{itemize}
+    \item Number of image input/output workflows supported by the tool.
+    \item Number of core functional requirements (e.g., image upload, alt-text generation, user authentication, evaluation metrics).
+    \item Number of non-functional requirements (e.g., accessibility compliance, latency, privacy, and scalability).
+    \item Number of deliverables and milestones within the development timeline.
+    \item Team size and individual role distribution (frontend, backend, model integration, documentation).
+\end{itemize}
+
+\subsection{Estimation Approach}
+
+Each deliverable has been estimated based on the effort required to implement, test, and document it within the given academic term.  
+The estimates are derived from prior experience with similar web-based machine learning projects and adjusted for the learning and research effort required to integrate accessibility and WCAG compliance features.  
+Time allocation also accounts for model fine-tuning, front-end accessibility testing, and usability evaluation with pilot users.
+
+\subsection{Cost Breakdown}
+
+\noindent\textbf{• Development Effort:} Based on a team of four student developers and one faculty supervisor, the estimated time allocation per team member is as follows:
+\begin{itemize}
+    \item Initial research, planning, and requirement analysis: \textbf{40 hours per team member.}
+    \item Model integration and backend implementation: \textbf{120 hours per team member.}
+    \item Frontend development and accessibility compliance: \textbf{80 hours per team member.}
+    \item Testing, debugging, and refinement: \textbf{60 hours per team member.}
+    \item Documentation and presentation preparation: \textbf{30 hours per team member.}
+\end{itemize}
+\noindent\textbf{Total estimated effort: 330 hours per team member.}
+
+\noindent\textbf{• Tools and Software:}  
+All software components used in the project (Python, Flask, React, TensorFlow, Machine Learning Models, and GitHub) are open-source or free for academic use.  
+Therefore, there are no direct licensing or software procurement costs.
+
+\noindent\textbf{• Testing Environment:}  
+Testing will be conducted using McMaster-hosted or open-source platforms for model inference and user testing.
+The team might decide to conduct user testing and award attendees 10 dollar Amazon.com gift cards as a reward for participation.  
+No additional hardware purchases are required beyond existing student laptops and cloud compute credits provided for academic purposes.
+
+\subsection{Estimated Cost}
+
+The total development effort is estimated at approximately \textbf{1,320 person-hours} across all team members (4 × 330 hours).  
+Assuming an average academic hourly equivalent of \textbf{\$20 per hour} for estimation purposes, the notional cost of development would be approximately \textbf{\$26,400 CAD}.  
+
+However, as this project is conducted as part of a capstone academic course and leverages free university and open-source resources, the \textbf{actual monetary cost is \$0 CAD}.  
+The effective cost of the project lies entirely in time, research, and human effort required to meet the performance, accessibility, and security requirements outlined in previous sections.
+
 \section{User Documentation and Training}
 \subsection{User Documentation Requirements}
-\lips
+\begin{enumerate}
+  \item User Manual
+  \begin{itemize}
+    \item \textbf{Purpose}: The user manual will serve as a user guide and provide detailed information and instructions on the final product and how to use it effectively
+    \item \textbf{Target Audience}: Academic students, instructors, and other professionals
+    \item \textbf{Content}: Website navigation and instructions, usage examples, product purposes, and best practices
+  \end{itemize}
+\end{enumerate}
 \subsection{Training Requirements}
-\lips
+Users of the final product will require minimal to no training as we aim to ensure that the tool is as accessible, simple, and intuitive as possible. For any additional guidance,
+a user manual will be created along with any relevant tutorials on how to use the features within the website. 
 
 \section{Waiting Room}
-\lips
+This section lists potential ideas and features that are out of scope for the current project, however, may be valuable for future updates. 
+\begin{itemize}
+  \item Support for multilingual alternative text generation (e.g., French and Spanish)
+  \item A browser extension that automatically generates alternative text on websites or learning platforms (e.g. \textit{D2L}) using our model
+  \item Compatibility with mobile platforms to extend accessibility across users' preferred devices
+\end{itemize}
 
 \section{Ideas for Solution}
 This section discusses potential ways to acheive some of the functionality discussed throughout this report, 
