@@ -14,6 +14,8 @@
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{float} 
+\usepackage{placeins}
+\usepackage{hanging}
 
 
 
@@ -165,45 +167,41 @@ Relevant Standards and Reference Documents:
 \subsection{Solution Constraints}
 \begin{enumerate}[label=MD-SL \arabic*., wide=0pt, leftmargin=*]
   \item \emph{The solution design must comply with at least the Level AA of the Web Content Accessibility Guidelines (WCAG) 2.1 standards}\\[2mm]
-    {\bf Rationale:} This ensures that the solution ensures inclusivity for users with visual, auditory, or cognitive impairments\\
+    {\bf Rationale:} This ensures that the solution demonstrates inclusivity for users with visual, auditory, or cognitive impairments. \\
     {\bf Fit Criterion:} The solution must past all tests using WCAG automated testing tools and manual tests.\\
-    {\bf Priority:} High
-\end{enumerate}
-\begin{enumerate}[label=MD-SL \arabic*., wide=0pt, leftmargin=*]
-  \item \emph{The solution must be implemented as a website}\\[2mm]
-    {\bf Rationale:} A website will allow for automated testing against the WCAG standards which ensures accesibility for users 
-    and allow users to upload images/figures to generate alternative text\\
-    {\bf Fit Criterion:} The website must be functional and allow users to generate alternative text by uploading
-    images and figures\\
-    {\bf Priority:} High
-\end{enumerate}
-\begin{enumerate}[label=MD-SL \arabic*., wide=0pt, leftmargin=*]
-  \item \emph{The solution must support common image formats (e.g. JPEG, PNG, etc.)}\\[2mm]
-    {\bf Rationale:} The website will enable users to upload images or figures to generate the alternative text, therefore the solution must be able 
-    to handle the different types of image formats\\
+    {\bf Priority:} High.
+  \item \emph{The solution must be implemented as a web tool}\\[2mm]
+    {\bf Rationale:} A web tool will allow for automated testing against the WCAG standards which ensures accesibility for users 
+    and allow users to upload images/figures to generate alternative text.\\
+    {\bf Fit Criterion:} The web tool must be functional and allow users to generate alternative text by uploading
+    images and figures.\\
+    {\bf Priority:} High.
+  \item \emph{The solution must support common image formats (e.g. Joint Photographic Experts Group (JPEG), Portable Network Graphic (PNG), etc.)}\\[2mm]
+    {\bf Rationale:} The web tool will enable users to upload images or figures to generate the alternative text, therefore the solution must be able 
+    to handle the different types of image formats.\\
     {\bf Fit Criterion:} The product must successfully process at least one image of each required format including JPEG and PNG
-    images and figures\\
-    {\bf Priority:} High
+    images and figures.\\
+    {\bf Priority:} High.
 \end{enumerate}
 
 \subsection{Implementation Environment of the Current System}
 \begin{enumerate}[label=MD-IE \arabic*., wide=0pt, leftmargin=*]
-  \item \emph{The product must be able to run on standard laptop environments, including operatins systems (OS) such as 
+  \item \emph{The product must be able to run on standard of laptop environments, including operating systems (OS) such as 
   macOS, Windows, and Linux}\\[2mm]
-    {\bf Rationale:} This ensures that the product is compatible with major operating systems to allow the product to be 
-    accessible to users, regardless of their laptop environment\\
-    {\bf Fit Criterion:} The product must successfully install and operate on the latest releases of macOS, Windows, and Linux,
-    verified through installation and functionality testing on each OS\\
-    {\bf Priority:} High
+    {\bf Rationale:} This ensures that the product is compatible with the latest and major operating systems to allow the product to be 
+    accessible to users, regardless of their laptop environment.\\
+    {\bf Fit Criterion:} The product must successfully install and operate on the latest three releases of macOS, Windows, and Linux,
+    verified through installation and functionality testing on each OS.\\
+    {\bf Priority:} High.
 \end{enumerate}
 \subsection{Partner or Collaborative Applications}
 \begin{enumerate}[label=MD-PA \arabic*., wide=0pt, leftmargin=*]
-  \item \emph{The product must not conflict with other accessibility tools (e.g. screen readers, screen magnifiers, dictation software)}\\[2mm]
+  \item \emph{The product must be compatible with other accessibility tools (e.g. screen readers, screen magnifiers, dictation software)}\\[2mm]
     {\bf Rationale:} This is to ensure that the product does not limit or intefere with other accessibility tools that 
-    meets the users' needs \\
+    meets the users' needs. \\
     {\bf Fit Criterion:} The product must operate simultaneously with at least one other accessibility tool,
-    verified through interoperability testing \\
-    {\bf Priority:} High
+    verified through interoperability testing. \\
+    {\bf Priority:} High.
 \end{enumerate}
 \subsection{Off-the-Shelf Software}
 There are a number of existing AI generated alternative text off-the-shelf software in the market today. The following 
@@ -228,27 +226,27 @@ require alternative text to interpret images and figures within their coursework
 \begin{enumerate}[label=MD-SC \arabic*., wide=0pt, leftmargin=*]
   \item \emph{The final product must be completed and tested by the end of the academic term (April 2026)}\\[2mm]
     {\bf Rationale:} This is to ensure that the final product is functional and meets all requirements
-    at the end of the academic year\\
-    {\bf Fit Criterion:} All deliverables are submitted, and the final product is tested and operable by April 2026 \\
-    {\bf Priority:} High
+    at the end of the academic year.\\
+    {\bf Fit Criterion:} All deliverables are submitted, and the final product is tested and operable by April 2026. \\
+    {\bf Priority:} High.
 \end{enumerate}
 \subsection{Budget Constraints}
 \begin{enumerate}[label=MD-BC \arabic*., wide=0pt, leftmargin=*]
-  \item \emph{The project budget must include compensation for user testers, set at maximum \$150 per participant for two rounds of usability testing.}\\[2mm]
+  \item \emph{The project budget must include compensation for user testers, set at maximum \$150 CAD per participant for two rounds of usability testing.}\\[2mm]
     {\bf Rationale:} This is to ensure that user testers are compensated for their meaningful feedback, 
-    and that our testing aligns with ethical practices\\
+    and that our testing aligns with ethical practices.\\
     {\bf Fit Criterion:} There must be record of participants being compensated between the range of \$100 and \$150 for
     two rounds of testing. \\
-    {\bf Priority:} High
+    {\bf Priority:} High.
 \end{enumerate}
 \subsection{Enterprise Constraints}
 \begin{enumerate}[label=MD-EC \arabic*., wide=0pt, leftmargin=*]
   \item \emph{The product must comply with the Accessibility for Ontarians with Disabilities Act (AODA)}\\[2mm]
     {\bf Rationale:} This ensures that the product meets the legal requirements in Ontario and guarantees that 
-    the product is accessible to users with diverse needs\\
+    the product is accessible to users with diverse needs.\\
     {\bf Fit Criterion:} AODA requires compliance with WCAG standards, which ensures that the product meets AODA regulations. 
     Compliance must be verified through both automated WCAG testing tools and manual accessibility testing.\\
-    {\bf Priority:} High
+    {\bf Priority:} High.
 \end{enumerate}
 
 \section{Naming Conventions and Terminology}
@@ -259,8 +257,8 @@ involved in the Project}
 \section{Relevant Facts And Assumptions}
 \subsection{Relevant Facts}
 \begin{itemize}
-  \item This project is being developed for a Software Engineering Capstone course with a fixed timeline
-  \item The solution is targeted primarily for laptop and/or desktop environments, but can later be extended for mobile platforms use
+  \item This project is being developed for a Software Engineering Capstone course with a fixed timeline.
+  \item The solution is targeted primarily for laptop and/or desktop environments, but can later be extended for mobile platforms use.
 \end{itemize}
 \subsection{Business Rules}
 The business rules established among the team are as follows: 
@@ -280,9 +278,10 @@ The business rules established among the team are as follows:
 \subsection{Assumptions}
 The following assumptions are made when using the product:
 \begin{itemize}
-  \item Users will be operating on modern browsers such as Chrome, Safari, and Firefox
-  \item Users will have access to stable internet connection when installing and using the product
-  \item Users will have basic knowledge of installing and enabling web extensions
+  \item Users will be operating on the three latest releases of browsers including Chrome, Safari, and Firefox.
+  \item Users will have access to stable internet connection when using the product.
+  \item Users will have basic knowledge of installing and enabling web tools.
+  \item Users will be using the three most commonly used and latest versions of screen readers.
 \end{itemize}
 \section{The Scope of the Work}
 \subsection{The Current Situation}
@@ -299,21 +298,24 @@ The current limitations of existing generated alternative text tools are as foll
   \item \textbf{High Manual Effort}: In many cases, subject matter experts must manually create alt text, 
   which is time-intensive and not scalable across large volumes of academic content.
 \end{itemize}
+
 \subsection{The Context of the Work}
-The product will be in the form of a website that integrates into existing accessibility workflows
+The product will be in the form of a web tool that integrates into existing accessibility workflows
 by providing accurate descriptions from images that can be read aloud by screen readers. The product 
 will complement existing screen readers by ensuring accurate generated alternative text from 
-uploaded images and figures of academic work are available. \href{fig:work-context}{Figure1} shows 
-how the product will integrate with existing screen readers.\\
-\begin{figure}[h]
+uploaded images and figures of academic work are available. \autoref{fig:work-context} shows 
+how the product will integrate with existing screen readers.
+
+\begin{figure}[H] % or [htbp] + \FloatBarrier below
   \centering
-  \includegraphics[width=1.0\textwidth]{images/work-context-diagram.png}
+  \includegraphics[width=\textwidth]{images/work-context-diagram.png}
   \caption{Work Context Diagram}
   \label{fig:work-context}
 \end{figure}
+\FloatBarrier   % prevents later floats from jumping before this point
 
 \subsection{Work Partitioning}
-\href{tab:work-partition}{Table 1} shows the work partitioning for completing the project. It includes major events, 
+\autoref{tab:work-partition} shows the work partitioning for completing the project. It includes major events, 
 their inputs and outputs, and the summary of the event.
 
 \begin{table}[H]
@@ -324,25 +326,26 @@ their inputs and outputs, and the summary of the event.
     \hline
     \textbf{Event Name} & \textbf{Input} & \textbf{Output} & \textbf{Summary} \\
     \hline
-    Login & Username, Password & & User logs in using their McMaster account \\
+    Login & Username, Password &  & User logs in using their McMaster account \\
     \hline
-    Upload  \mbox{Images/Figures} & PNG/JPEG files & Uploaded File Reference & User uploads their files to generate alternative text \\
+    Upload \mbox{Images/Figures} & PNG/JPEG files & Uploaded File Reference & User uploads their files to generate alternative text \\
     \hline
     \mbox{OCR Text} \mbox{Extraction} & Uploaded \mbox{Images/Figures} & Detected Text & System reads the text embedded in the uploaded files \\
     \hline
-    Generate \mbox{Alternative Text} & Uploaded  \mbox{Images/Figures}, Extracted OCR, Model Parameters & Generated Alt Text, Quality Metric from Machine Learning (ML) Model & System analyzes the image and extracted OCR data to generate accurate alternative text \\
+    Generate \mbox{Alternative Text} & Uploaded \mbox{Images/Figures}, Extracted OCR, Model Parameters & Generated Alt Text, Quality Metric from Machine Learning (ML) Model & System analyzes the image and extracted OCR data to generate accurate alternative text \\
     \hline
     View History & \mbox{User Login,} Stored Uploads and Generated Alt Text & List of Previously Generated Alt Text & The system retrieves and displays a user’s history of uploaded images along with their associated generated alt text \\
     \hline
   \end{tabular}
 \end{table}
 
+
 \subsection{Specifying a Business Use Case (BUC)}
 The project has one primary business use case, which aims to achieve the goal of providing users with visual and cognitive impairments an efficient 
 and accessible way to generate accurate alternative text for academic images and figures.\\[1ex]
 \textbf{Preconditions:}
 \begin{itemize}
-  \item The user has access to the website
+  \item The user has access to the web tool
   \item The user has files containing diagrams or images requiring alternative text
 \end{itemize}
 \textbf{Scenario:}
@@ -352,7 +355,7 @@ and accessible way to generate accurate alternative text for academic images and
   \item The AI model analyzes the uploaded file(s), performs OCR to extract any visible text, and generates 
   alternative text describing each image/figure accurately
   \item Screen readers use the generated alternative text to read aloud and convey the uploaded image
-  \item The generated alternative text can be copied to clipboard or dowloaded as a \texttt{.txt} file by the user if needed
+  \item The generated alternative text can be edited, copied, or dowloaded as a \texttt{.txt} file by the user if needed
   \item The user can view previously uploaded files and generated alternative text for future reference
 \end{enumerate}
 \textbf{Postcondition:}
@@ -381,8 +384,8 @@ The diagram below shows the components within the system and how they connect. T
   \label{tab:product-use}
     \begin{table}[H]
       \centering
-      \caption{Product Use Case Outlines}
-      \begin{tabular}{|p{1.3cm}|p{3.5cm}|p{3.5cm}|p{4cm}|p{2.8cm}|}
+      \caption{Labels and Their Usage}
+      \begin{tabular}{|p{1.3cm}|p{2.5cm}|p{3cm}|p{4cm}|p{2.6cm}|}
       \hline
       \textbf{PUC\#} & \textbf{PUC Name} & \textbf{Actor(s)} & \textbf{Input \& Output(s)} & \textbf{Requirement} \\ 
       \hline 
@@ -581,7 +584,7 @@ The diagram below shows the components within the system and how they connect. T
 \subsection{Accessibility Requirements}
 \begin{enumerate}[label=UHR-AR \arabic*., wide=0pt, leftmargin=*]
 \item \emph{The system must meet the WCAG 2.1 Level AA accessibility standards.}\\[2mm] 
-    {\bf Rationale:} The Accessibility for Ontarians with Disabilities Act (AODA) requires organizations to meet WCAG 2.0 Level AA for websites. Therefore, meeting WCAG 2.1 Level AA ensures the system meets AODA standards and is accessible for users with disabilities.  \\
+    {\bf Rationale:} The Accessibility for Ontarians with Disabilities Act (AODA) requires organizations to meet WCAG 2.0 Level AA for web tools. Therefore, meeting WCAG 2.1 Level AA ensures the system meets AODA standards and is accessible for users with disabilities.  \\
     {\bf Fit Criterion:} The system will be evaluated using an accessibility testing tool such as Pope Tech and Wave Web Aim to ensure WCAG 2.1 criteria is met.\\
     {\bf Priority:} High
 \item \emph{The system must accept keyboard input for navigation.}\\[2mm] 
@@ -920,13 +923,6 @@ The following items require additional research, testing, or discussion to ensur
 \end{itemize}
 
 \section{Off-the-Shelf Solutions}
-\subsection{Ready-Made Products}
-\lips
-\subsection{Reusable Components}
-\lips
-\subsection{Products That Can Be Copied}
-\lips
-\section{Off-the-Shelf Solutions}
 
 This section identifies existing tools, reusable components, and research products that can support or inspire the development of Reading4All. These solutions address various aspects of the system’s vision analysis, language generation, and accessibility workflows.
 
@@ -1101,12 +1097,12 @@ The effective cost of the project lies entirely in time, research, and human eff
   \begin{itemize}
     \item \textbf{Purpose}: The user manual will serve as a user guide and provide detailed information and instructions on the final product and how to use it effectively
     \item \textbf{Target Audience}: Academic students, instructors, and other professionals
-    \item \textbf{Content}: Website navigation and instructions, usage examples, product purposes, and best practices
+    \item \textbf{Content}: Web tool navigation and instructions, usage examples, product purposes, and best practices
   \end{itemize}
 \end{enumerate}
 \subsection{Training Requirements}
 Users of the final product will require minimal to no training as we aim to ensure that the tool is as accessible, simple, and intuitive as possible. For any additional guidance,
-a user manual will be created along with any relevant tutorials on how to use the features within the website. 
+a user manual will be created along with any relevant tutorials on how to use the features within the web tool. 
 
 \section{Waiting Room}
 This section lists potential ideas and features that are out of scope for the current project, however, may be valuable for future updates. 
@@ -1137,5 +1133,23 @@ After the user is satisfied with the generated alternative text, the system will
 \input{../Reflection.tex}
 
 \input{../SRS_Reflection.tex}
+
+\newpage
+\section*{References} 
+
+\begin{hangparas}{2em}{1}
+Microsoft, ``Azure AI Vision---Image Analysis,'' Microsoft Docs/Learn.
+Accessed: Oct.~9,~2025. [Online]. Available:
+\url{https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-image-analysis?tabs=4-0}
+\\
+\par
+AltText.ai, ``AltText.ai---Automatic Image Alt Text Generation,'' AltText.ai.
+Accessed: Oct.~9,~2025. [Online]. Available: \url{https://alttext.ai/}
+\\
+\par
+accessiBe, ``Building a more accessible web together'', accessiBe.
+Accessed: Oct.~9,~2025. [Online]. Available:
+\url{https://www.accessibe.com/about}
+\end{hangparas}
 
 \end{document}
