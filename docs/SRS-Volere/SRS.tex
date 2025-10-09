@@ -650,6 +650,12 @@ The table below discusses the different use cases.
 \end{itemize}
 
 \subsection{Scalability or Extensibility Requirements}
+\begin{itemize}
+    \item[\textbf{PR-SER 1.}] \textit{The architecture shall allow integration of improved ML models or multilingual capabilities in future phases.}\\
+    \textbf{Rationale:} Enables progressive enhancement and future accessibility expansion.\\
+    \textbf{Fit Criterion:} New models or language modules can be incorporated without restructuring existing components.\\
+    \textbf{Priority:} Medium
+\end{itemize}
 
 \subsection{Longevity Requirements}
 \begin{itemize}
@@ -663,20 +669,11 @@ The table below discusses the different use cases.
     \textbf{Fit Criterion:} Verified through annual testing on supported Python versions.\\
     \textbf{Priority:} Low
 \end{itemize}
-\section{Operating Environment Requirements}
+
+\section{Operatinonal and Environment Requirements}
 
 The following operating environment requirements define the physical, network, interfacing, and deployment contexts in which the Reading4All system must operate reliably and efficiently.
 
-=======
-
-\section{Operational and Environmental Requirements}
-
-\begin{itemize}
-    \item[\textbf{PR-SER 1.}] \textit{The architecture shall allow integration of improved ML models or multilingual capabilities in future phases.}\\
-    \textbf{Rationale:} Enables progressive enhancement and future accessibility expansion.\\
-    \textbf{Fit Criterion:} New models or language modules can be incorporated without restructuring existing components.\\
-    \textbf{Priority:} Medium
-\end{itemize}
 \subsection{Expected Physical Environment}
 
 \begin{enumerate}[label=OER-EP\arabic*., wide=0pt, leftmargin=*]
