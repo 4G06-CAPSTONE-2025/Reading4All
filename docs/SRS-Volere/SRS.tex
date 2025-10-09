@@ -10,6 +10,10 @@
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+
+
 
 \hypersetup{
     bookmarks=true,         % show bookmarks bar?
@@ -126,15 +130,98 @@ involved in the Project}
 
 \section{The Scope of the Product}
 \subsection{Product Boundary}
-\lips
+The diagram below shows the components within the system and how they connect. The components that this project will aim on building include a user interface, an alternative text generation ML model, a session manager. Furthermore, these components will utilize or communicate with a screen reader software, McMaster Authentication system and external AI/ML Frameworks. 
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Product_Boundary_Diagram.jpg}
+    \caption{Product Boundary Diagram}
+    \label{img:usecase}
+\end{figure}
+
 \subsection{Product Use Case Table}
-\lips
+The table below discusses the different use cases. 
+    \begin{table}[H]
+      \centering
+      \caption{Labels and Their Usage}
+      \begin{tabular}{|p{1.3cm}|p{3.5cm}|p{3.5cm}|p{4cm}|p{2.8cm}|}
+      \hline
+      \textbf{PUC\#} & \textbf{PUC Name} & \textbf{Actor(s)} & \textbf{Input \& Output(s)} & \textbf{Requirement} \\ 
+      \hline 
+      PUC 1 & Login Using McMaster Credentials &  McMaster Student and Faculty , McMaster Authentication System & User Credentials (input), Authentication Results (output) & FR 7 \\
+      \hline 
+      PUC 2 & Upload Image & McMaster Student and Faculty & JPEG or PNG (input), Image upload status (output) & FR 1, UHR-EUR 3 \\
+      \hline 
+      PUC 3 & Generate Alternative Text &  McMaster Student and Faculty, Alternative Text Generation Model & Uploaded image (input), Generated alternative text  & FR 2, FR 3\\
+      \hline
+      PUC 4 & Copy or Download Text & McMaster Student and Faculty & User decision to copy or download (input), text copied to clipboard or downloaded & UHR-PIR 1\\ 
+      \hline
+      PUC 5 & View History of Inputted Images and their Alternative Text & McMaster Student and Faculty & User request to view history (input), Display of previously inputted images and their generated text within a session & FR 5\\
+      \hline
+\end{tabular}
+\end{table}
+
 \subsection{Individual Product Use Cases (PUC's)}
-\lips
+\textbf{PUC 1: Login Using McMaster Credentials }\\
+\textbf{Trigger:} User selects "Login" and is directed to McMaster sign in page.\\
+\textbf{Preconditions:}
+\begin{itemize}
+  \item The user is registered person in McMaster system and has valid credentials.
+\end{itemize}
+\textbf{Actors:} McMaster Student or Faculty, McMaster Authentication System.\\
+\textbf{Outcome:} McMaster validates user's credentials are validated and they are given access to system.\\
+\textbf{Input:} McMaster System username and password. \\
+\textbf{Output:} User enters system or an error message is displayed.\\
+\\
+\textbf{PUC 2: Upload Image }\\
+\textbf{Trigger:} User selects "Upload Image" and chooses a file\\
+\textbf{Preconditions:}
+\begin{itemize}
+  \item User successfully logged into the system.
+\end{itemize}
+\textbf{Actors:} McMaster Student or Faculty \\
+\textbf{Outcome:} The selected image is uploaded and stored for later text generation.\\
+\textbf{Input:} Image file (JPEG or PNG) \\
+\textbf{Output:} A confirmation message is displayed if the image was successfully uploaded, or an error message otherwise is displayed.\\
+\\
+\textbf{PUC 3: Generate Alternative Text}\\
+\textbf{Trigger:} User selects \textit{Generate Alternative Text} for an uploaded image.\\
+\textbf{Preconditions:}
+\begin{itemize}
+  \item A valid image has been successfully uploaded to the system. 
+\end{itemize}
+\textbf{Actors:} McMaster Student or Faculty.\\
+\textbf{Outcome:} The system generates a descriptive alternative text for the uploaded image.\\
+\textbf{Input:} User selection to generate alternative text\\
+\textbf{Output:} Generated alternative text is displayed to the user.\\
+\\
+\textbf{PUC 4: Copy or Download Generated Alternative Text }\\
+\textbf{Trigger:} User selects \textit{Copy} to clipboard or \textit{Download} .txt after generating alternative text.\\
+\textbf{Preconditions:}
+\begin{itemize}
+  \item System has successfully generated alternative text.
+  \item User is satisfied with generated alternative text and has made any desired changes. 
+\end{itemize}
+\textbf{Actors:} McMaster Student or Faculty. \\
+\textbf{Outcome:} The user receives the alternative text through their preferred method. \\
+\textbf{Input:} User decision to copy or download.\\
+\textbf{Output:} Text is copied to clipboard or downloaded as .txt file on the users device.\\
+\\
+\textbf{PUC 5: View History of Uploaded Images and Generated Alternative Text}\\
+\textbf{Trigger:} User selects \textit{View History} option.\\
+\textbf{Preconditions:}
+\begin{itemize}
+  \item User is logged in with an active session. 
+  \item User has previously uploaded at least one image and generated text within the session. 
+\end{itemize}
+\textbf{Actors:} McMaster Student or Faculty.\\
+\textbf{Outcome:} The user views a list of their images and the corresponding generated alternative text within the current session. \\
+\textbf{Input:} User request to view session history.\\
+\textbf{Output:} Display of uploaded images and their corresponding generated alternative text.\\
+
+
 
 \section{Functional Requirements}
 \subsection{Functional Requirements}
-\lips
 \begin{enumerate}[label=FR \arabic*., wide=0pt, leftmargin=*]
   \item \emph{The system must accept technical diagrams in the format of JPEG and PNG.}\\[2mm]
     {\bf Rationale:} The system must process JPEG/PNG images in order to output alternative text. \\
