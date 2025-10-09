@@ -9,6 +9,10 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{float} 
+
 \hypersetup{
     bookmarks=true,         % show bookmarks bar?
       colorlinks=true,      % false: boxed links; true: colored links
@@ -77,21 +81,93 @@ Date 2 & 1.1 & Notes\\
 
 \section{Mandated Constraints}
 \subsection{Solution Constraints}
-\lips
+\begin{enumerate}[label=MD-SL \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The solution design must comply with at least the Level AA of the Web Content Accessibility Guidelines (WCAG) 2.1 standards}\\[2mm]
+    {\bf Rationale:} This ensures that the solution ensures inclusivity for users with visual, auditory, or cognitive impairments\\
+    {\bf Fit Criterion:} The solution must past all tests using WCAG automated testing tools and manual tests.\\
+    {\bf Priority:} High
+\end{enumerate}
+\begin{enumerate}[label=MD-SL \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The solution must be implemented as a website}\\[2mm]
+    {\bf Rationale:} A website will allow for automated testing against the WCAG standards which ensures accesibility for users 
+    and allow users to upload images/figures to generate alternative text\\
+    {\bf Fit Criterion:} The website must be functional and allow users to generate alternative text by uploading
+    images and figures\\
+    {\bf Priority:} High
+\end{enumerate}
+\begin{enumerate}[label=MD-SL \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The solution must support common image formats (e.g. JPEG, PNG, etc.)}\\[2mm]
+    {\bf Rationale:} The website will enable users to upload images or figures to generate the alternative text, therefore the solution must be able 
+    to handle the different types of image formats\\
+    {\bf Fit Criterion:} The product must successfully process at least one image of each required format including JPEG and PNG
+    images and figures\\
+    {\bf Priority:} High
+\end{enumerate}
+
 \subsection{Implementation Environment of the Current System}
-\lips
+\begin{enumerate}[label=MD-IE \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The product must be able to run on standard laptop environments, including operatins systems (OS) such as 
+  macOS, Windows, and Linux}\\[2mm]
+    {\bf Rationale:} This ensures that the product is compatible with major operating systems to allow the product to be 
+    accessible to users, regardless of their laptop environment\\
+    {\bf Fit Criterion:} The product must successfully install and operate on the latest releases of macOS, Windows, and Linux,
+    verified through installation and functionality testing on each OS\\
+    {\bf Priority:} High
+\end{enumerate}
 \subsection{Partner or Collaborative Applications}
-\lips
+\begin{enumerate}[label=MD-PA \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The product must not conflict with other accessibility tools (e.g. screen readers, screen magnifiers, dictation software)}\\[2mm]
+    {\bf Rationale:} This is to ensure that the product does not limit or intefere with other accessibility tools that 
+    meets the users' needs \\
+    {\bf Fit Criterion:} The product must operate simultaneously with at least one other accessibility tool,
+    verified through interoperability testing \\
+    {\bf Priority:} High
+\end{enumerate}
 \subsection{Off-the-Shelf Software}
-\lips
+There are a number of existing AI generated alternative text off-the-shelf software in the market today. The following 
+highlights a few of these tools, including their functions, benefits, and limitations: 
+\begin{enumerate}
+  \item \textbf{Azure AI Vision Image Analysis}: This service by Microsoft can extract a wide variety of 
+  visual features from images. Image Analysis offers image captioning models that generate one-sentence descriptions of an image's visual content.
+  Limitations of this product is that it only generates one simple sentence, and that the image
+  captions are only available in English.
+  \item \textbf{ALTTEXT.AI}: This service allows users to upload images and generate alternative text. The website supports
+  over 100 languages and many modern image formats. A significant limitation of this project
+  is that it doesn't guarantee compliance with WCAG which limits accessibility.
+  \item \textbf{accessiBe}: This service is an accessibility platform built for developers and engineers that plugs into their SDLC to detect and 
+  remediate WCAG issues at code level. The tools offers AI alt-text descriptions for images and allows users to review 
+  and edit the alt text. A limitiation of this tool is that it uses overlays that sit on top of a website to fix issues at run-time. This is an issue 
+  because overlays can conflict with assistive technologies and miss context-specific WCAG requirements creating a false sense of real accessibility compliance.
+\end{enumerate}
 \subsection{Anticipated Workplace Environment}
-\lips
+The anticipated workplace environment for this product is academic settings such as universities, where students may 
+require alternative text to interpret images and figures within their coursework and study materials. 
 \subsection{Schedule Constraints}
-\lips
+\begin{enumerate}[label=MD-SC \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The final product must be completed and tested by the end of the academic term (April 2026)}\\[2mm]
+    {\bf Rationale:} This is to ensure that the final product is functional and meets all requirements
+    at the end of the academic year\\
+    {\bf Fit Criterion:} All deliverables are submitted, and the final product is tested and operable by April 2026 \\
+    {\bf Priority:} High
+\end{enumerate}
 \subsection{Budget Constraints}
-\lips
+\begin{enumerate}[label=MD-BC \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The project budget must include compensation for user testers, set at maximum \$150 per participant for two rounds of usability testing.}\\[2mm]
+    {\bf Rationale:} This is to ensure that user testers are compensated for their meaningful feedback, 
+    and that our testing aligns with ethical practices\\
+    {\bf Fit Criterion:} There must be record of participants being compensated between the range of \$100 and \$150 for
+    two rounds of testing. \\
+    {\bf Priority:} High
+\end{enumerate}
 \subsection{Enterprise Constraints}
-\lips
+\begin{enumerate}[label=MD-EC \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The product must comply with the Accessibility for Ontarians with Disabilities Act (AODA)}\\[2mm]
+    {\bf Rationale:} This ensures that the product meets the legal requirements in Ontario and guarantees that 
+    the product is accessible to users with diverse needs\\
+    {\bf Fit Criterion:} AODA requires compliance with WCAG standards, which ensures that the product meets AODA regulations. 
+    Compliance must be verified through both automated WCAG testing tools and manual accessibility testing.\\
+    {\bf Priority:} High
+\end{enumerate}
 
 \section{Naming Conventions and Terminology}
 \subsection{Glossary of All Terms, Including Acronyms, Used by Stakeholders
@@ -100,21 +176,107 @@ involved in the Project}
 
 \section{Relevant Facts And Assumptions}
 \subsection{Relevant Facts}
-\lips
+\begin{itemize}
+  \item This project is being developed for a Software Engineering Capstone course with a fixed timeline
+  \item The solution is targeted primarily for laptop and/or desktop environments, but can later be extended for mobile platforms use
+\end{itemize}
 \subsection{Business Rules}
-\lips
+The business rules established among the team are as follows: 
+\begin{itemize}
+  \item \textbf{Adherence to Project Schedule}: All deliverables and milestones must be 
+  completed according to the established project schedule. Any anticipated delays must be communicated
+  in advance.
+  \item \textbf{Pull Request Requirement}: All pull requests made by a team member must be reviewed by 
+  three other members before being merged into the \texttt{main} branch. The reviewers must provide approval
+  or feedback within 24 hours of the pull request.
+  \item \textbf{Team Communication Standard}: All team members must communicate respectfully and professionally during 
+  all discussions, meetings, and written communication. 
+  \item \textbf{Testing Requirements}: All code contributions must include appropriate unit, intergration, and 
+  functionality tests to ensure correctness and reliability. Accessibility testing must also be performed for all
+  product features. 
+\end{itemize}
 \subsection{Assumptions}
-\lips
-
+The following assumptions are made when using the product:
+\begin{itemize}
+  \item Users will be operating on modern browsers such as Chrome, Safari, and Firefox
+  \item Users will have access to stable internet connection when installing and using the product
+  \item Users will have basic knowledge of installing and enabling web extensions
+\end{itemize}
 \section{The Scope of the Work}
 \subsection{The Current Situation}
-\lips
+Currently, alternative text generation tools are able to provide sufficient descriptions for simple images and figures. However, for more complex visuals 
+such as engineering diagrams, the generated alt text is often misleading, incomplete, or inefficient at conveying the intended meaning.\\
+Accurate alternative text is particularly essential for individuals with visual or cognitive impairments, as it enables fair access to academic content. Without 
+reliable descriptions, students may experience barriers to learning and miss critical information conveyed in diagrams and figures.\\
+The current limitations of existing generated alternative text tools are as follows:
+\begin{itemize}
+  \item \textbf{Inaccurate Alternative Text}: Generated alt text may emphasize unimportant details and overlook key elements, 
+  resulting in misleading or confusing interpretations.
+  \item \textbf{Oversimplification of Complex Figures}: Current tools frequently oversimplify technical or academic diagrams, 
+  failing to capture essential details required for learning.
+  \item \textbf{High Manual Effort}: In many cases, subject matter experts must manually create alt text, 
+  which is time-intensive and not scalable across large volumes of academic content.
+\end{itemize}
 \subsection{The Context of the Work}
-\lips
+The product will be in the form of a website that integrates into existing accessibility workflows
+by providing accurate descriptions from images that can be read aloud by screen readers. The product 
+will complement existing screen readers by ensuring accurate generated alternative text from 
+uploaded images and figures of academic work are available. \href{fig:work-context}{Figure1} shows 
+how the product will integrate with existing screen readers.\\
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1.0\textwidth]{images/work-context-diagram.png}
+  \caption{Work Context Diagram}
+  \label{fig:work-context}
+\end{figure}
+
 \subsection{Work Partitioning}
-\lips
+\href{tab:work-partition}{Table 1} shows the work partitioning for completing the project. It includes major events, 
+their inputs and outputs, and the summary of the event.
+
+\begin{table}[H]
+  \centering
+  \caption{Work Partition for the System}
+  \label{tab:work-partition}
+  \begin{tabular}{ |p{3cm}|p{3cm}|p{3cm}|p{4cm}| }
+    \hline
+    \textbf{Event Name} & \textbf{Input} & \textbf{Output} & \textbf{Summary} \\
+    \hline
+    Login & Username, Password & & User logs in using their McMaster account \\
+    \hline
+    Upload  \mbox{Images/Figures} & PNG/JPEG files & Uploaded File Reference & User uploads their files to generate alternative text \\
+    \hline
+    \mbox{OCR Text} \mbox{Extraction} & Uploaded \mbox{Images/Figures} & Detected Text & System reads the text embedded in the uploaded files \\
+    \hline
+    Generate \mbox{Alternative Text} & Uploaded  \mbox{Images/Figures}, Extracted OCR, Model Parameters & Generated Alt Text, Quality Metric from ML Model & System analyzes the image and extracted OCR data to generate accurate alternative text \\
+    \hline
+    View History & \mbox{User Login,} Stored Uploads and Generated Alt Text & List of Previously Generated Alt Text & The system retrieves and displays a user’s history of uploaded images along with their associated generated alt text \\
+    \hline
+  \end{tabular}
+\end{table}
+
 \subsection{Specifying a Business Use Case (BUC)}
-\lips
+The project has one primary business use case, which aims to achieve the goal of providing users with visual and cognitive impairments an efficient 
+and accessible way to generate accurate alternative text for academic images and figures.\\[1ex]
+\textbf{Preconditions:}
+\begin{itemize}
+  \item The user has access to the website
+  \item The user has files containing diagrams or images requiring alternative text
+\end{itemize}
+\textbf{Scenario:}
+\begin{enumerate}
+  \item The user logs into the system using their McMaster student credentials
+  \item The user uploads one or more files (PNG, JPEG) containing diagrams 
+  \item The AI model analyzes the uploaded file(s), performs OCR to extract any visible text, and generates 
+  alternative text describing each image/figure accurately
+  \item Screen readers use the generated alternative text to read aloud and convey the uploaded image
+  \item The generated alternative text can be copied to clipboard or dowloaded as a \texttt{.txt} file by the user if needed
+  \item The user can view previously uploaded files and generated alternative text for future reference
+\end{enumerate}
+\textbf{Postcondition:}
+\begin{itemize}
+  \item The user obtains accurate and accessible alternative text that complies with AODA and WCAG 2.1 standards.
+\end{itemize}
 
 \section{Business Data Model and Data Dictionary}
 \subsection{Business Data Model}
@@ -347,7 +509,14 @@ involved in the Project}
 \lips
 
 \section{Open Issues}
-\lips
+This section outlines unresolved questions and decisions that may impact the overall success of the system.
+The following items require additional research, testing, or discussion to ensure the project’s successful completion. 
+\begin{itemize}
+  \item The ML/AI model architecture the team will use to generate alternative text will need research and testing 
+  to ensure optimal accuracy and correctness.
+  \item The optimal length of the generated alternative text requires further research to determine how many characters provide an 
+  accurate description without causing confusion or distracting from the main idea of the diagram.
+\end{itemize}
 
 \section{Off-the-Shelf Solutions}
 \subsection{Ready-Made Products}
@@ -434,12 +603,25 @@ The effective cost of the project lies entirely in time, research, and human eff
 
 \section{User Documentation and Training}
 \subsection{User Documentation Requirements}
-\lips
+\begin{enumerate}
+  \item User Manual
+  \begin{itemize}
+    \item \textbf{Purpose}: The user manual will serve as a user guide and provide detailed information and instructions on the final product and how to use it effectively
+    \item \textbf{Target Audience}: Academic students, instructors, and other professionals
+    \item \textbf{Content}: Website navigation and instructions, usage examples, product purposes, and best practices
+  \end{itemize}
+\end{enumerate}
 \subsection{Training Requirements}
-\lips
+Users of the final product will require minimal to no training as we aim to ensure that the tool is as accessible, simple, and intuitive as possible. For any additional guidance,
+a user manual will be created along with any relevant tutorials on how to use the features within the website. 
 
 \section{Waiting Room}
-\lips
+This section lists potential ideas and features that are out of scope for the current project, however, may be valuable for future updates. 
+\begin{itemize}
+  \item Support for multilingual alternative text generation (e.g., French and Spanish)
+  \item A browser extension that automatically generates alternative text on websites or learning platforms (e.g. \textit{D2L}) using our model
+  \item Compatibility with mobile platforms to extend accessibility across users' preferred devices
+\end{itemize}
 
 \section{Ideas for Solution}
 \lips
