@@ -9,6 +9,7 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{graphicx}
@@ -59,10 +60,74 @@ Date 2 & 1.1 & Notes\\
 ~\\
 
 ~\newpage
-\section{Purpose of the Project}
-\subsection{User Business}
-\lips
-\subsection{Goals of the Project}
+\section{Introduction}
+
+\subsection{Purpose of Document}
+This Software Requirements Specification (SRS) defines the functional and non-functional requirements for the \progname{} system, \textbf{Reading4All}. The document explains the project's aims, context, restrictions, and expected behavior in order to ensure that developers, accessibility professionals, instructors, and project stakeholders all have a shared understanding.
+
+This SRS provides a formal reference for Reading4All's design, implementation, testing, and validation. It establishes a clear link between user requirements, accessibility standards (such as AODA and WCAG 2.1), and system features that enable reliable alternative text generation for technical diagrams.
+
+\subsection{Scope of Project}
+Reading4All is an artificial intelligence/machine learning tool that provides detailed and contextually aware alternative text for complicated technical graphics, notably those found in postsecondary STEM course materials. The system combines machine vision and natural language generation models to assess diagram content, identify key parts, and provide text descriptions that are compatible with screen readers and assistive technology.
+
+\noindent \textbf{Core objectives:}
+\begin{itemize}
+    \item Automate the creation of comprehensive and accurate alternative text for technical diagrams.
+    \item Maintain compliance with the \textbf{Accessibility for Ontarians with Disabilities Act (AODA)} and the \textbf{WCAG 2.1} accessibility standards.
+    \item Improve the learning experiences and inclusion of students with visual challenges in higher education.
+    \item Reduce the instructor effort and institutional costs related to manual alt-text creation.
+\end{itemize}
+
+\noindent \textbf{Final deliverable includes:}
+\begin{itemize}
+    \item A web-based or locally hosted interface for uploading images and creating alternative-texts.
+    \item A backend service that combines AI models for diagram analysis and generation of languages.
+    \item Structured output formats are suitable with systems for learning management and screen readers.
+\end{itemize}
+
+\subsection{Characteristics of Intended Reader}
+This document is intended for:
+\begin{itemize}
+    \item \textbf{Developers} who are responsible for implementing and testing the system.
+    \item \textbf{Accessibility Professionals} to ensure AODA and WCAG compliance.
+    \item \textbf{Academic Stakeholders} including educators, instructional designers, and content creators.
+    \item \textbf{Supervisors and Assessors} who assess project completion and design quality.
+\end{itemize}
+
+Readers should have an overall knowledge of software engineering, web development, and fundamental machine learning techniques. Accessibility reviewers should understand digital accessibility principles and standards.
+
+\subsection{Organization of Document}
+This Software Requirements Specification (SRS) is divided into twenty-six sections following the IEEE standard structure. 
+\begin{itemize}
+    \item \textbf{Sections 1–5:} Establish the foundation of the document, including the project scope, stakeholders, assumptions, and terminology.
+    \item \textbf{Sections 6–10:} Define the overall system context, business model, product scope, and high-level functional requirements.
+    \item \textbf{Sections 11–17:} Specify detailed non-functional requirements such as usability, performance, maintainability, security, and compliance.
+    \item \textbf{Sections 18–26:} Present supporting material including open issues, off-the-shelf components, project tasks, migration plans, documentation, and solution ideas.
+\end{itemize}
+This organization ensures logical flow from project background to detailed requirements and supporting documentation.
+
+\subsection{System Context}
+
+\textbf{Inputs:} Technical diagrams or schematics (JPEG, JPG, and PNG) provided for alt-text generation. \\[2mm]
+\textbf{Processing:} The system analyzes visual elements using a vision model and generates textual descriptions through a language model. \\[2mm]
+\textbf{Outputs:} Descriptive alternative text formatted for screen readers, including HTML \texttt{alt} attributes, text files, and ARIA labels.
+
+\subsection{Document Conventions}
+
+This document follows the structure and formatting guidelines of the McMaster University SFWRENG 4G06 Capstone SRS template. 
+All section numbers, requirement identifiers, and tables conform to the IEEE SRS format. 
+Standard SI units are used where applicable. 
+Technical terms, acronyms, and variables are presented in \texttt{monospaced} or \textit{italic} text for clarity.
+
+\subsection{Reference Material}
+Relevant Standards and Reference Documents:
+\begin{itemize}
+    \item Accessibility for Ontarians with Disabilities Act (AODA, 2005)
+    \item Web Content Accessibility Guidelines (WCAG 2.1)
+    \item \textit{SRS Template}, McMaster University
+\end{itemize}
+
+
 \lips
 \section{Stakeholders}
 \subsection{Client}
@@ -584,12 +649,6 @@ The table below discusses the different use cases.
 \end{itemize}
 
 \subsection{Scalability or Extensibility Requirements}
-\begin{itemize}
-    \item[\textbf{PR-SER 1.}] \textit{The architecture shall allow integration of improved ML models or multilingual capabilities in future phases.}\\
-    \textbf{Rationale:} Enables progressive enhancement and future accessibility expansion.\\
-    \textbf{Fit Criterion:} New models or language modules can be incorporated without restructuring existing components.\\
-    \textbf{Priority:} Medium
-\end{itemize}
 
 \subsection{Longevity Requirements}
 \begin{itemize}
@@ -603,24 +662,157 @@ The table below discusses the different use cases.
     \textbf{Fit Criterion:} Verified through annual testing on supported Python versions.\\
     \textbf{Priority:} Low
 \end{itemize}
+\section{Operating Environment Requirements}
+
+The following operating environment requirements define the physical, network, interfacing, and deployment contexts in which the Reading4All system must operate reliably and efficiently.
+
+=======
+
 \section{Operational and Environmental Requirements}
+
+\begin{itemize}
+    \item[\textbf{PR-SER 1.}] \textit{The architecture shall allow integration of improved ML models or multilingual capabilities in future phases.}\\
+    \textbf{Rationale:} Enables progressive enhancement and future accessibility expansion.\\
+    \textbf{Fit Criterion:} New models or language modules can be incorporated without restructuring existing components.\\
+    \textbf{Priority:} Medium
+\end{itemize}
 \subsection{Expected Physical Environment}
-\lips
+
+\begin{enumerate}[label=OER-EP\arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The system shall be operable on standard devices (laptops, desktops, or servers) running common operating systems such as Windows, macOS, or Linux, or deployed to standard cloud environments (e.g., GCP, AWS, Azure).}\\[2mm]
+    {\bf Rationale:} Reading4All is intended for academic and institutional use, where users rely on a variety of systems. Supporting cross-platform and cloud deployment ensures accessibility and flexibility.\\
+    {\bf Fit Criterion:} The system runs successfully across all major operating systems and supported cloud environments without compatibility errors.\\
+    {\bf Priority:} High
+
+  \item \emph{The system shall operate effectively under normal indoor conditions typical of academic or office environments.}\\[2mm]
+    {\bf Rationale:} As the system is designed for digital academic use within classrooms and offices, no specialized environmental setup is required.\\
+    {\bf Fit Criterion:} The tool performs consistently at standard indoor temperatures (10°C–35°C) and lighting levels.\\
+    {\bf Priority:} Low
+\end{enumerate}
+
 \subsection{Wider Environment Requirements}
-\lips
+
+\begin{enumerate}[label=OER-WE\arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The system shall comply with accessibility and data privacy regulations, including AODA, WCAG 2.1 Level AA, and relevant institutional privacy policies such as FIPPA.}\\[2mm]
+    {\bf Rationale:} Compliance ensures digital inclusion and privacy protection while aligning with university and governmental accessibility mandates.\\
+    {\bf Fit Criterion:} Independent evaluation verifies AODA and WCAG 2.1 Level AA compliance, and no accessibility blockers are found during testing.\\
+    {\bf Priority:} High
+
+  \item \emph{The system shall operate effectively within standard academic network environments with stable internet connectivity.}\\[2mm]
+    {\bf Rationale:} Reading4All depends on cloud-based inference models for text generation, which require reliable network access.\\
+    {\bf Fit Criterion:} The system maintains consistent API communication over typical university Wi-Fi or Ethernet with upload speeds of at least 10 Mbps.\\
+    {\bf Priority:} Medium
+\end{enumerate}
+
 \subsection{Requirements for Interfacing with Adjacent Systems}
-\lips
+
+\begin{enumerate}[label=OER-IAS\arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The system shall integrate with learning management systems (LMS) such as Avenue to Learn (D2L Brightspace) for image uploads and alt-text retrieval.}\\[2mm]
+    {\bf Rationale:} Direct LMS integration streamlines accessibility workflows for instructors and students.\\
+    {\bf Fit Criterion:} Reading4All successfully connects to at least one LMS via secure API endpoints approved by the institution.\\
+    {\bf Priority:} High
+
+  \item \emph{The system shall support interoperability with assistive technologies such as screen readers (e.g., NVDA, JAWS, and VoiceOver).}\\[2mm]
+    {\bf Rationale:} Screen-reader compatibility ensures generated text can be read aloud for visually impaired users.\\
+    {\bf Fit Criterion:} Descriptions produced by Reading4All are correctly parsed and read by major screen readers without formatting issues.\\
+    {\bf Priority:} High
+
+  \item \emph{The system shall support importing diagrams in common formats including JPG, JPEG, and PNG.}\\[2mm]
+    {\bf Rationale:} Supporting a range of standard formats allows instructors to use materials from multiple academic sources.\\
+    {\bf Fit Criterion:} The system processes at least one valid sample of each format and produces accurate alternative text.\\
+    {\bf Priority:} Medium
+
+  \item \emph{The system shall optionally interface with automated accessibility validation tools (e.g., WAVE or Axe).}\\[2mm]
+    {\bf Rationale:} Integration with automated validators aids instructors in verifying alt-text accessibility compliance.\\
+    {\bf Fit Criterion:} Validation reports are successfully generated and accessible through the user interface.\\
+    {\bf Priority:} Low
+\end{enumerate}
+
 \subsection{Productization Requirements}
-\lips
+
+\begin{enumerate}[label=OER-PR\arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The system shall be deployable as both a web application and an API service for institutional integration.}\\[2mm]
+    {\bf Rationale:} Dual deployment ensures accessibility for individual users and organizations integrating accessibility workflows.\\
+    {\bf Fit Criterion:} A hosted web app and functional REST API are accessible and validated through institutional testing.\\
+    {\bf Priority:} High
+
+  \item \emph{The system shall securely store configuration and model parameters in a version-controlled and scalable environment.}\\[2mm]
+    {\bf Rationale:} Proper configuration management ensures reproducibility and secure model versioning.\\
+    {\bf Fit Criterion:} Configuration files are encrypted, tracked via version control, and retrievable for rollback or update.\\
+    {\bf Priority:} Medium
+\end{enumerate}
+
 \subsection{Release Requirements}
-\lips
+
+\begin{enumerate}[label=OER-RL\arabic*., wide=0pt, leftmargin=*]
+  \item \emph{All major functionalities (image analysis, text generation, and accessibility validation) must be implemented, tested, and verified prior to release.}\\[2mm]
+    {\bf Rationale:} Ensures reliable, inclusive functionality before public or institutional rollout.\\
+    {\bf Fit Criterion:} Verification and validation (V\&V) documentation confirms that each functional requirement is successfully tested.\\
+    {\bf Priority:} High
+
+  \item \emph{The system must be ready for release by March 18, 2026, aligned with the McMaster University SFWRENG 4G06 Capstone final demonstration schedule.}\\[2mm]
+    {\bf Rationale:} Aligns release timing with Capstone evaluation and stakeholder presentation.\\
+    {\bf Fit Criterion:} The final deliverable is fully functional, accessible, and deployed for the 2026 demonstration.\\
+    {\bf Priority:} Medium
+\end{enumerate}
+
 \section{Maintainability and Support Requirements}
+
+These requirements ensure the Reading4All system remains maintainable, well-supported, and adaptable to future accessibility standards and technical advancements.
+
 \subsection{Maintenance Requirements}
-\lips
+
+\begin{enumerate}[label=MS-MNT\arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The system shall be designed with modular components to allow independent updates to subsystems such as the front-end interface, image-analysis model, language-generation model, or accessibility validation module.}\\[2mm]
+    {\bf Rationale:} Modularity minimizes maintenance effort and prevents regressions when individual components are updated.\\
+    {\bf Fit Criterion:} Modules are separately deployable and testable with independent configuration files.\\
+    {\bf Priority:} High
+
+  \item \emph{All source code shall include inline documentation and external developer documentation stored in the project’s GitHub Wiki or README.}\\[2mm]
+    {\bf Rationale:} Comprehensive documentation ensures maintainability and smooth developer onboarding.\\
+    {\bf Fit Criterion:} Each function and class includes descriptive docstrings, and setup steps are verified by a peer review checklist.\\
+    {\bf Priority:} Medium
+
+  \item \emph{The system shall implement a CI/CD pipeline with automated regression and accessibility tests.}\\[2mm]
+    {\bf Rationale:} Continuous testing reduces maintenance time and ensures stability after updates.\\
+    {\bf Fit Criterion:} Each code merge triggers automated unit, integration, and WCAG/AODA compliance tests.\\
+    {\bf Priority:} High
+\end{enumerate}
+
 \subsection{Supportability Requirements}
-\lips
+
+\begin{enumerate}[label=MS-SUP\arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The system shall allow users to report issues or feedback directly through the interface without revealing personal identifiers.}\\[2mm]
+    {\bf Rationale:} Enables user-driven improvements while maintaining privacy.\\
+    {\bf Fit Criterion:} Feedback forms are logged securely without user PII and assigned unique issue IDs.\\
+    {\bf Priority:} Medium
+
+  \item \emph{The system shall log performance and error metrics for debugging and continuous improvement.}\\[2mm]
+    {\bf Rationale:} Monitoring key metrics helps identify bottlenecks and optimize performance.\\
+    {\bf Fit Criterion:} Logs record API calls, latency, error rates, and model confidence distributions.\\
+    {\bf Priority:} Medium
+\end{enumerate}
+
 \subsection{Adaptability Requirements}
-\lips
+
+\begin{enumerate}[label=MS-AD\arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The system shall support integration of new AI models or components through a standardized interface schema.}\\[2mm]
+    {\bf Rationale:} A consistent interface allows easy replacement or upgrading of AI components.\\
+    {\bf Fit Criterion:} New modules adhere to the existing JSON I/O structure and pass automated compatibility checks.\\
+    {\bf Priority:} High
+
+  \item \emph{The system shall allow configuration updates without modifying source code.}\\[2mm]
+    {\bf Rationale:} Enables rapid adaptation to new accessibility or institutional requirements.\\
+    {\bf Fit Criterion:} All configurable parameters are stored in editable YAML or JSON files.\\
+    {\bf Priority:} Medium
+
+  \item \emph{All major updates shall be versioned and documented each academic term to ensure reproducibility.}\\[2mm]
+    {\bf Rationale:} Academic projects require transparent traceability across semesters.\\
+    {\bf Fit Criterion:} Version logs include change summaries, affected modules, and verification results.\\
+    {\bf Priority:} Medium
+\end{enumerate}
+
+
 
 \section{Security Requirements}
 
@@ -716,25 +908,117 @@ The following items require additional research, testing, or discussion to ensur
 \lips
 \subsection{Products That Can Be Copied}
 \lips
+\section{Off-the-Shelf Solutions}
 
-\section{New Problems}
-\subsection{Effects on the Current Environment}
-\lips
-\subsection{Effects on the Installed Systems}
-\lips
-\subsection{Potential User Problems}
-\lips
-\subsection{Limitations in the Anticipated Implementation Environment That May
-Inhibit the New Product}
-\lips
-\subsection{Follow-Up Problems}
-\lips
+This section identifies existing tools, reusable components, and research products that can support or inspire the development of Reading4All. These solutions address various aspects of the system’s vision analysis, language generation, and accessibility workflows.
 
+\subsection{Ready-Made Products}
+
+\begin{itemize}
+    \item \textbf{Google Cloud Vision API:} A commercial computer vision service capable of detecting objects, text, and structural elements within images. It can assist in preliminary diagram segmentation or optical character recognition for Reading4All’s visual analysis component.
+
+    \item \textbf{Microsoft Azure Cognitive Services:} Offers image captioning and scene-description APIs that generate textual summaries of visual content. These can serve as a performance benchmark for Reading4All’s AI-generated academic alt text.
+
+    \item \textbf{OpenAI GPT-4V (Vision):} A multimodal AI model capable of interpreting images and generating context-aware captions. It can be evaluated for use in academic diagrams and as a reference for Reading4All’s natural-language generation pipeline.
+\end{itemize}
+
+\subsection{Reusable Components}
+
+\begin{itemize}
+    \item \textbf{Hugging Face Transformers:} An open-source library offering pretrained multimodal models (e.g., BLIP-2, CLIP, and ViT-GPT2). These can be fine-tuned to identify structural and semantic relationships within STEM diagrams.
+
+    \item \textbf{Albumentations:} A Python library for data augmentation, enhancing dataset diversity for diagram recognition tasks. It can be reused in Reading4All’s preprocessing pipeline to improve robustness.
+
+    \item \textbf{Pandas + Matplotlib AltText Plugin:} An open-source extension that generates descriptive alt text for statistical plots. Its modular logic can guide Reading4All’s diagram-specific description component.
+\end{itemize}
+
+\subsection{Products That Can Be Copied}
+
+\begin{itemize}
+    \item \textbf{Chart2Text:} A benchmark system that automatically converts data visualizations such as bar charts and line graphs into natural-language summaries. Its approach to aligning visual features with linguistic structures provides a strong foundation for Reading4All’s diagram-description workflow.
+
+    \item \textbf{SciA11y:} A research initiative by the Allen Institute for AI that generates accessible figure descriptions for scientific papers. Its methods for extracting captions, metadata, and contextual relationships between visual and textual elements align closely with Reading4All’s academic accessibility objectives.
+\end{itemize}
 \section{Tasks}
+
 \subsection{Project Planning}
-\lips
+
+\begin{itemize}
+    \item \textbf{Development Approach}  
+    The Reading4All team will follow an iterative agile workflow emphasizing continuous improvement and regular feedback from stakeholders. Development will progress through a series of short sprints that each target measurable goals, allowing flexibility as requirements evolve. The general process will involve:
+    \begin{enumerate}
+        \item Requirement analysis and refinement of functional specifications
+        \item Sprint planning and backlog prioritization
+        \item Incremental coding and integration
+        \item Verification, validation, and unit testing
+        \item Periodic reviews with the project supervisor and accessibility lead
+        \item System deployment and documentation finalization
+    \end{enumerate}
+
+    \item \textbf{Key Tasks}
+    \begin{itemize}
+        \item Confirm system architecture and interface specifications  
+        \item Establish a shared GitHub repository with branching standards  
+        \item Configure CI/CD automation through GitHub Actions  
+        \item Implement the vision module for diagram segmentation and labeling  
+        \item Integrate the language generation component for alt-text synthesis  
+        \item Conduct user testing with instructors and accessibility specialists  
+        \item Evaluate outputs for WCAG 2.1 compliance and descriptive accuracy  
+    \end{itemize}
+
+    \item \textbf{Resource Estimates}  
+    The project involves a five-member team responsible for design, development, testing, and reporting. Shared tools will include:
+    \begin{itemize}
+        \item Cloud computing resources (GPU-based inference environment)  
+        \item Version control and issue tracking using GitHub Projects  
+        \item Datasets of academic diagrams and verified alternative texts  
+    \end{itemize}
+
+    \item \textbf{Key Considerations}
+    \begin{itemize}
+        \item Early integration testing to avoid dependency conflicts  
+        \item Dataset bias evaluation to ensure inclusive model outputs  
+        \item Consistent communication with the faculty advisor and accessibility consultant  
+        \item Risk reduction through checkpoint testing and documentation reviews  
+    \end{itemize}
+
+    \item \textbf{Documentation Process}
+    \begin{itemize}
+        \item Maintain all documentation collaboratively within the GitHub Wiki  
+        \item Use meaningful commit messages and structured pull requests  
+        \item Require automated testing to pass before merging any code  
+        \item Apply peer review and version tagging for every major deliverable  
+        \item Archive final reports and test results for supervisor review  
+    \end{itemize}
+\end{itemize}
+
 \subsection{Planning of the Development Phases}
-\lips
+
+\textbf{Deliverables and Tentative Schedule}
+
+\begin{itemize}
+    \item Problem Statement, Proof of Concept, and Development Plan — \textbf{Week 4 (September 24, 2025)}  
+    \item Software Requirements Specification (SRS) and Hazard Analysis — \textbf{Week 6 (October 8, 2025)}  
+    \item Verification and Validation Plan — \textbf{Week 8 (October 22, 2025)}  
+    \item Design Document (Revision 0) — \textbf{Week 10 (November 5, 2025)}  
+    \item Proof of Concept Demonstration — \textbf{Weeks 11–12 (November 12–19, 2025)}  
+    \item Design Document (Revision 1) — \textbf{Week 16 (January 21, 2026)}  
+    \item Revision 0 Demonstration — \textbf{Weeks 18–19 (February 4–11, 2026)}  
+    \item Verification and Validation Report — \textbf{Week 22 (March 4, 2026)}  
+    \item Final Demonstration (Revision 1) — \textbf{Week 24 (March 18, 2026)}  
+    \item Capstone EXPO — \textbf{Week 26 (April 1, 2026)}  
+    \item Final Documentation Submission — \textbf{Week 26 (April 1, 2026)}  
+\end{itemize}
+
+\textbf{Sprint and Review Cycle}
+\begin{itemize}
+    \item Each sprint will run for approximately two weeks, concluding with a progress review.  
+    \item Development milestones will be validated through automated testing and peer evaluation.  
+    \item Supervisor and accessibility advisor feedback will guide milestone adjustments and task prioritization.  
+\end{itemize}
+
+By adopting this structured development plan, the team will ensure that Reading4All evolves into a reliable and maintainable system capable of producing accurate, accessible, and pedagogically useful alt text for academic diagrams.
+
 
 \section{Migration to the New Product}
 \subsection{Requirements for Migration to the New Product}
