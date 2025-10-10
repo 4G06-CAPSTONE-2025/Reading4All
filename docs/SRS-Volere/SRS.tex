@@ -52,6 +52,38 @@ describing software}
 \begin{tabularx}{\textwidth}{|X|X|}
 \toprule {\textbf{Name}} & {\textbf{Value}}\\
 \midrule
+T\_ALT\_GEN\_SMALL & 3 seconds(s) \\
+T\_ALT\_GEN\_LARGE & 8 s \\
+T\_UI\_RESP & 300 miliseconds (ms) \\
+R\_SUFFICIENCY & 85\% \\
+R\_LENGTH & 90\% \\
+R\_USABILITY\_MEDIAN & 3 (rating) \\
+R\_USABILITY\_MIN & 2 (rating) \\
+T\_ERROR\_HANDLE & 2 s \\
+T\_RECOVERY & 5 s \\
+CAP\_CONCURRENT & 2 requests \\
+CAP\_STORAGE & 500 images/day \\
+MAINT\_TIME & 2 person-days/quarter \\
+COMPAT\_VERSIONS & 2 releases \\
+IMG\_SIZE\_BIG & 10 MEGABYTES (MB) \\
+IMG\_SIZE\_SMALL & 2 MEGABYTES \\
+TLS\_VERSION & 1.2 \\
+FILE\_DELETE\_TIME & 60 s \\
+FILE\_TYPES & .png, .jpg, .jpeg, .svg, .webp \\
+NETWORK\_SOURCE\_POLICY & McMaster SSO tokens or IP ranges only\\
+TEAM\_SIZE & 4 students \\
+HOURS\_RESEARCH & 40 hours \\
+HOURS\_BACKEND & 120 hours \\
+HOURS\_FRONTEND & 80 hours \\
+HOURS\_TESTING & 60 hours \\
+HOURS\_DOCS & 30 hours \\
+HOURS\_TOTAL & 330 hours \\
+HOURS\_PROJECT & 1,320 person-hours \\
+COST\_PER\_HOUR & \$20/hour \\
+COST\_TOTAL & \$26,400 CAD \\
+COST\_ACTUAL & \$0 CAD \\
+COST\_INCENTIVE\_MIN & \$100 CAD \\
+COST\_INCENTIVE\_MAX & \$150 CAD \\
 MAX\_ZOOM\_PERCENTAGE & 200\%\\
 MIN\_CONTRAST\_RATIO & 4.5:1\\
 MAX\_UPLOAD\_STEPS & 5 steps\\
@@ -658,10 +690,63 @@ images and figures.\\[1ex]
 \end{itemize}
 
 \section{Business Data Model and Data Dictionary}
+This section describes the structure and organization of the data flow throughout the system. It explains how the system’s components interact with the stored data, ensuring a consistent and well-defined understanding of the information processed by the tool.
+
 \subsection{Business Data Model}
-\lips
+The following diagram (Figure~\ref{fig:business_data_model}) illustrates the relationships between key components of the system as well as their interactions with external components.
+
+\begin{figure}[h!]
+    \centering
+    % Export the draw.io diagram below as PNG and save it to this path:
+    \includegraphics[width=0.85\textwidth]{images/business-data-model.png}
+    \caption{Business Data Model of Alt-Text Generation System}
+    \label{fig:business_data_model}
+\end{figure}
+
 \subsection{Data Dictionary}
-\lips
+\begin{table}[H]
+    \centering
+    \caption{Data Dictionary for the Reading4All System}
+    \label{tab:data-dictionary-reading4all}
+    \begin{tabular}{ |p{3.6cm}|p{7.4cm}|p{3.0cm}| }
+      \hline
+      \textbf{Name} & \textbf{Content} & \textbf{Type} \\
+      \hline
+      Reading4All (container) &
+      Logical package that contains the core components of the system (Frontend UI, Backend Controller, Model Service, Session Storage Component, Evaluation Service). &
+      Package \\
+      \hline
+      Frontend User Interface (UI) &
+      Uploads images, shows generated alt text, and captures tester evaluations. Provides keyboard/ARIA navigation and WCAG~2.1 Level~AA compliant views. &
+      Module \\
+      \hline
+      Backend Controller &
+      Orchestrates requests: validates inputs (images/type/size), routes to the Model Service, manages temporary/session storage, records events, and returns results to the user interface(UI). &
+      Module \\
+      \hline
+      Model Service &
+      Machine-learning inference service that generates alt text from uploaded images and returns text plus timing/quality metadata. Exposed via an internal Application Programmable Interface(API). &
+      External Service / Module \\
+      \hline
+      Session Storage Component &
+      Short term temporary storage for uploaded image bytes and short-lived artifacts used during inference; configured to auto-delete shortly after processing. &
+      Storage \\
+      \hline
+      Evaluation Service &
+      Collects and persists pilot-testing ratings (sufficiency, length, accessibility/usability, learning impact) and optional notes for analysis. &
+      Module / Dataset \\
+      \hline
+      McMaster Single Sign On (SSO) &
+      Institutional authentication provider used to restrict access to McMaster users; issues and validates user sessions for the web application. &
+      External Service Provider \\
+      \hline
+      Web Application (deployment) &
+      Deployed application entry point that exposes the Reading4All system to end users over web protocols such as Hypertext Transfer Protocol Secure (HTTPS); integrates Single Sign On (SS0) and serves the User/Application Interfaces. &
+      Package / Deployment Target \\
+      \hline
+    \end{tabular}
+  \end{table}
+  
 
 \section{The Scope of the Product}
 \subsection{Product Boundary}
@@ -982,154 +1067,102 @@ inputs and outputs to the system and the related requirements.
 \section{Performance Requirements}
 
 \subsection{Speed and Latency Requirements}
-\begin{itemize}
-  \item[\textbf{PR-SL 1.}] \textit{The tool shall generate alt-text
-    for uploaded images within a reasonable time frame.}\\
-    \textbf{Rationale:} Ensures users, including those using
-    assistive technologies, do not experience delays that hinder
-    accessibility.\\
-    \textbf{Fit Criterion:} The system shall return generated
-    alt-text within \textbf{3 seconds} for images $\leq$2 MB and
-    within \textbf{8 seconds} for images $\leq$10 MB under normal
-    load conditions.\\
-    \textbf{Priority:} High
+\begin{enumerate}[label=PR-SL \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The tool shall generate alt-text for uploaded images within a reasonable time frame.}\\[2mm] 
+    {\bf Rationale:} Ensures users, including those using assistive technologies, do not experience delays that hinder accessibility.\\
+    {\bf Fit Criterion:} The system shall return generated alt-text within T\_ALT\_GEN\_SMALL for images $\leq$ IMG\_SIZE\_SMALL and within T\_ALT\_GEN\_LARGE for images $\leq$ IMG\_SIZE\_BIG under normal load conditions.\\
+    {\bf Priority:} High
 
-  \item[\textbf{PR-SL 2.}] \textit{The web interface shall load and
-    render accessibility components efficiently.}\\
-    \textbf{Rationale:} Improves user experience and responsiveness
-    for screen-reader users and keyboard navigation.\\
-    \textbf{Fit Criterion:} All interactive elements shall respond
-    within \textbf{300 ms} of user input under typical conditions.\\
-    \textbf{Priority:} Medium
-\end{itemize}
+\item \emph{The web interface shall load and render accessibility components efficiently.}\\[2mm] 
+    {\bf Rationale:} Improves user experience and responsiveness for screen-reader users and keyboard navigation.\\
+    {\bf Fit Criterion:} All interactive elements shall respond within T\_UI\_RESP of user input under typical conditions.\\
+    {\bf Priority:} Medium
+\end{enumerate}
 
 \subsection{Safety-Critical Requirements}
-\begin{itemize}
-  \item[\textbf{PR-SCR 1.}] \textit{The tool shall ensure that no
-      personally identifiable data from uploaded images is stored or
-    shared without consent.}\\
-    \textbf{Rationale:} Protects user privacy and adheres to ethical
-    AI standards.\\
-    \textbf{Fit Criterion:} Uploaded images are deleted from
-    temporary storage within \textbf{60 seconds} of processing unless
-    explicitly saved by the user.\\
-    \textbf{Priority:} High
+\begin{enumerate}[label=PR-SCR \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The tool shall ensure that no personally identifiable data from uploaded images is stored or shared without consent.}\\[2mm] 
+    {\bf Rationale:} Protects user privacy and adheres to ethical AI standards.\\
+    {\bf Fit Criterion:} Uploaded images are deleted from temporary storage for the user session unless explicitly saved by the user. The images will not be stored in any database without user consent.\\
+    {\bf Priority:} High
 
-  \item[\textbf{PR-SCR 2.}] \textit{The tool shall not produce
-    alt-text containing offensive, biased, or harmful language.}\\
-    \textbf{Rationale:} Ensures ethical AI output and inclusivity.\\
-    \textbf{Fit Criterion:} 0 \% of generated outputs shall contain
-    content flagged by moderation filters as offensive or biased.\\
-    \textbf{Priority:} High
+\item \emph{The tool shall not produce alt-text containing offensive, biased, or harmful language beyond the context of image.}\\[2mm] 
+    {\bf Rationale:} Ensures ethical AI output and inclusivity.\\
+    {\bf Fit Criterion:} 0\% of generated outputs shall contain content flagged by moderation filters as offensive or biased.\\
+    {\bf Priority:} High
 
-  \item[\textbf{PR-SCR 3.}] \textit{The interface shall adhere to
-      WCAG 2.1 Level A accessibility guidelines to prevent stress or
-    strain on users’ eyes and ensure comfortable interaction.}\\
-    \textbf{Rationale:} Provides a visually safe, inclusive
-    experience for all users, including those with visual or
-    cognitive impairments.\\
-    \textbf{Fit Criterion:} Verified through front-end accessibility
-    testing that confirms conformance with WCAG 2.1 Level A success criteria.\\
-    \textbf{Priority:} High
-\end{itemize}
+\item \emph{The interface shall adhere to WCAG 2.1 Level AA accessibility guidelines to prevent stress or strain on users’ eyes and ensure comfortable interaction.}\\[2mm] 
+    {\bf Rationale:} Provides a visually safe, inclusive experience for all users, including those with visual or cognitive impairments.\\
+    {\bf Fit Criterion:} Verified through front-end accessibility testing that confirms conformance with WCAG 2.1 Level AA success criteria.\\
+    {\bf Priority:} High
+\end{enumerate}
 
 \subsection{Precision or Accuracy Requirements}
-\label{sec:PrecisionAccuracy}
-\begin{itemize}
-  \item[\textbf{PR-PAR 1.}] \textit{The generated alt-text shall
-      adequately describe the image content with minimal omissions or
-    irrelevant details.}\\
-    \textbf{Rationale:} Ensures the description fulfills its
-    accessibility purpose.\\
-    \textbf{Fit Criterion:} At least \textbf{85 \%} of outputs rated
-    “Sufficient” or better on the sufficiency scale by testers.\\
-    \textbf{Priority:} High
+Please refer to Appendix – Evaluation Metrics Summary (\ref{sec:evaluation-metrics}) to understand the evaluation scales and metrics.
+\begin{enumerate}[label=PR-PAR \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The generated alt-text shall adequately describe the image content with minimal omissions or irrelevant details.}\\[2mm] 
+    {\bf Rationale:} Ensures the description fulfills its accessibility purpose.\\
+    {\bf Fit Criterion:} At least R\_SUFFICIENCY of outputs rated “Sufficient” or better on the sufficiency scale by testers.\\
+    {\bf Priority:} High
 
-  \item[\textbf{PR-PAR 2.}] \textit{The alt-text shall maintain
-    appropriate length and readability.}\\
-    \textbf{Rationale:} Prevents overly short or verbose outputs that
-    reduce usability.\\
-    \textbf{Fit Criterion:} $\geq$ 90 \% of outputs rated “Proper
-    Length” on the user-testing scale.\\
-    \textbf{Priority:} Medium
+\item \emph{The alt-text shall maintain appropriate length and readability.}\\[2mm] 
+    {\bf Rationale:} Prevents overly short or verbose outputs that reduce usability.\\
+    {\bf Fit Criterion:} $\geq$ R\_LENGTH of outputs rated “Proper Length” on the user-testing scale.\\
+    {\bf Priority:} Medium
 
-  \item[\textbf{PR-PAR 3.}] \textit{The overall accessibility and
-    usability of the alt-text shall be acceptable to testers.}\\
-    \textbf{Rationale:} Evaluates real-world effectiveness of
-    generated descriptions.\\
-    \textbf{Fit Criterion:} Median user rating $\geq$ 3 (“Mostly
-    Accessible/Usable”) on the 0–3 or 0–4 scales; no outputs below 2.\\
-    \textbf{Priority:} Medium
-\end{itemize}
+\item \emph{The overall accessibility and usability of the alt-text shall be acceptable to testers.}\\[2mm] 
+    {\bf Rationale:} Evaluates real-world effectiveness of generated descriptions.\\
+    {\bf Fit Criterion:} Median user rating $\geq$ R\_USABILITY\_MEDIAN (“Mostly Accessible/Usable”) on the 0–3 or 0–4 scales; no outputs below R\_USABILITY\_MIN.\\
+    {\bf Priority:} Medium
+\end{enumerate}
 
 \subsection{Robustness or Fault-Tolerance Requirements}
-\begin{itemize}
-  \item[\textbf{PR-RFT 1.}] \textit{The system shall gracefully
-    handle unsupported or corrupted image inputs.}\\
-    \textbf{Rationale:} Prevents crashes and maintains system stability.\\
-    \textbf{Fit Criterion:} Invalid files trigger a clear error
-    message within 2 seconds without interrupting service.\\
-    \textbf{Priority:} High
+\begin{enumerate}[label=PR-RFT \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The system shall gracefully handle unsupported or corrupted image inputs.}\\[2mm] 
+    {\bf Rationale:} Prevents crashes and maintains system stability.\\
+    {\bf Fit Criterion:} Invalid files trigger a clear error message within T\_ERROR\_HANDLE without interrupting service.\\
+    {\bf Priority:} High
 
-  \item[\textbf{PR-RFT 2.}] \textit{The backend shall recover
-    automatically from isolated process failures.}\\
-    \textbf{Rationale:} Ensures continued operation without developer
-    intervention.\\
-    \textbf{Fit Criterion:} System recovers within 5 seconds after
-    fault detection.\\
-    \textbf{Priority:} High
-\end{itemize}
+\item \emph{The backend shall recover automatically from isolated process failures.}\\[2mm] 
+    {\bf Rationale:} Ensures continued operation without developer intervention.\\
+    {\bf Fit Criterion:} System recovers within T\_RECOVERY after fault detection.\\
+    {\bf Priority:} High
+\end{enumerate}
 
 \subsection{Capacity Requirements}
-\begin{itemize}
-  \item[\textbf{PR-CR 1.}] \textit{The system shall support limited
-    concurrent usage suitable for a proof-of-concept deployment.}\\
-    \textbf{Rationale:} Demonstrates feasibility and reliability for
-    initial testing without production-level scaling.\\
-    \textbf{Fit Criterion:} Supports at least \textbf{5 simultaneous
-    requests} with response times $\leq$ 10 seconds.\\
-    \textbf{Priority:} Medium
+\begin{enumerate}[label=PR-CR \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The system shall support limited concurrent usage suitable for a proof-of-concept deployment.}\\[2mm] 
+    {\bf Rationale:} Demonstrates feasibility and reliability for initial testing without production-level scaling.\\
+    {\bf Fit Criterion:} Supports at least CAP\_CONCURRENT simultaneous requests with response times $\leq$ 10 seconds.\\
+    {\bf Priority:} Medium
 
-  \item[\textbf{PR-CR 2.}] \textit{Storage shall accommodate pilot
-    testing datasets.}\\
-    \textbf{Rationale:} Ensures smooth prototype validation without
-    capacity issues.\\
-    \textbf{Fit Criterion:} The system can temporarily store metadata
-    for up to \textbf{500 images per day} without data loss.\\
-    \textbf{Priority:} Low
-\end{itemize}
+\item \emph{Storage shall accommodate pilot testing datasets.}\\[2mm] 
+    {\bf Rationale:} Ensures smooth prototype validation without capacity issues.\\
+    {\bf Fit Criterion:} The system can temporarily store metadata for up to CAP\_STORAGE without data loss.\\
+    {\bf Priority:} Low
+\end{enumerate}
 
 \subsection{Scalability or Extensibility Requirements}
-\begin{itemize}
-  \item[\textbf{PR-SER 1.}] \textit{The architecture shall allow
-      integration of improved ML models or multilingual capabilities in
-    future phases.}\\
-    \textbf{Rationale:} Enables progressive enhancement and future
-    accessibility expansion.\\
-    \textbf{Fit Criterion:} New models or language modules can be
-    incorporated without restructuring existing components.\\
-    \textbf{Priority:} Medium
-\end{itemize}
+\begin{enumerate}[label=PR-SER \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The architecture shall allow integration of improved ML models or multilingual capabilities in future phases.}\\[2mm] 
+    {\bf Rationale:} Enables progressive enhancement and future accessibility expansion.\\
+    {\bf Fit Criterion:} New models or language modules can be incorporated without restructuring existing components.\\
+    {\bf Priority:} Medium
+\end{enumerate}
 
 \subsection{Longevity Requirements}
-\begin{itemize}
-  \item[\textbf{PR-LR 1.}] \textit{The codebase shall be maintainable
-      and adaptable to updates in WCAG guidelines, Python libraries,
-    and ML frameworks.}\\
-    \textbf{Rationale:} Ensures long-term usability and compliance
-    even after the pilot phase.\\
-    \textbf{Fit Criterion:} Minor updates or migrations require
-    $\leq$ 2 person-days per quarter.\\
-    \textbf{Priority:} Medium
+\begin{enumerate}[label=PR-LR \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The codebase shall be maintainable and adaptable to updates in WCAG guidelines, software libraries, and ML frameworks.}\\[2mm] 
+    {\bf Rationale:} Ensures long-term usability and compliance even after the pilot phase.\\
+    {\bf Fit Criterion:} Minor updates or migrations require $\leq$ MAINT\_TIME.\\
+    {\bf Priority:} Medium
 
-  \item[\textbf{PR-LR 2.}] \textit{The prototype shall maintain
-    compatibility with at least the next two Python releases.}\\
-    \textbf{Rationale:} Ensures sustainability of the pilot for
-    educational and testing purposes.\\
-    \textbf{Fit Criterion:} Verified through annual testing on
-    supported Python versions.\\
-    \textbf{Priority:} Low
-\end{itemize}
+\item \emph{The prototype shall maintain compatibility with at least the next two software releases.}\\[2mm] 
+    {\bf Rationale:} Ensures sustainability of the pilot for educational and testing purposes.\\
+    {\bf Fit Criterion:} Verified through annual testing on supported Python versions to ensure compatibility with COMPAT\_VERSIONS.\\
+    {\bf Priority:} Low
+\end{enumerate}
+
 
 \section{Operatinonal and Environment Requirements}
 
@@ -1309,13 +1342,9 @@ standards and technical advancements.
 \subsection{Supportability Requirements}
 
 \begin{enumerate}[label=MS-SUP\arabic*., wide=0pt, leftmargin=*]
-  \item \emph{The system shall allow users to report issues or
-      feedback directly through the interface without revealing
-    personal identifiers.}\\[2mm]
-    {\bf Rationale:} Enables user-driven improvements while
-    maintaining privacy.\\
-    {\bf Fit Criterion:} Feedback forms are logged securely without
-    user PII and assigned unique issue IDs.\\
+  \item \emph{The system shall allow users to report issues or feedback directly through the interface without revealing personal identifiers.}\\[2mm]
+    {\bf Rationale:} Enables user-driven improvements while maintaining privacy.\\
+    {\bf Fit Criterion:} Feedback forms are logged securely without user Person Interest Information (PII) and assigned unique issue IDs.\\
     {\bf Priority:} Medium
 
   \item \emph{The system shall log performance and error metrics for
@@ -1358,108 +1387,69 @@ standards and technical advancements.
 \section{Security Requirements}
 
 \subsection{Access Requirements}
-\begin{itemize}
-  \item[\textbf{SR-AR 1.}] \textit{The system shall restrict access
-      exclusively to McMaster University users through institutional
-    Single Sign-On (SSO) authentication.}\\
-    \textbf{Rationale:} Restricting access ensures only authorized
-    users within McMaster can use the system during the pilot phase,
-    reducing the risk of unauthorized use or data exposure.\\
-    \textbf{Fit Criterion:} All users must log in using verified
-    McMaster SSO credentials before accessing the platform.
-    Unauthenticated requests are automatically rejected.\\
-    \textbf{Priority:} High
+\begin{enumerate}[label=SR-AR \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The system shall restrict access exclusively to McMaster University users through institutional Single Sign-On (SSO) authentication.}\\[2mm] 
+    {\bf Rationale:} Restricting access ensures only authorized users within McMaster can use the system during the pilot phase, reducing the risk of unauthorized use or data exposure.\\
+    {\bf Fit Criterion:} All users must log in using verified McMaster SSO credentials before accessing the platform. Unauthenticated requests are automatically rejected.\\
+    {\bf Priority:} High
 
-  \item[\textbf{SR-AR 2.}] \textit{All actions performed by users
-    shall be tied to their authenticated session.}\\
-    \textbf{Rationale:} Linking actions to a user’s authenticated
-    identity enables traceability and controlled access to system features.\\
-    \textbf{Fit Criterion:} Each upload or alt-text generation event
-    is associated with a unique McMaster user ID through SSO session tracking.\\
-    \textbf{Priority:} Medium
-\end{itemize}
+\item \emph{All actions performed by users shall be tied to their authenticated session.}\\[2mm] 
+    {\bf Rationale:} Linking actions to a user’s authenticated identity enables traceability and controlled access to system features.\\
+    {\bf Fit Criterion:} Each upload or alt-text generation event is associated with a unique McMaster user ID through SSO session tracking.\\
+    {\bf Priority:} Medium
+\end{enumerate}
 
 \subsection{Integrity Requirements}
-\begin{itemize}
-  \item[\textbf{SR-IR 1.}] \textit{All communication between the
-      frontend, backend, and machine learning services shall use
-    encrypted HTTPS (TLS 1.2 or higher).}\\
-    \textbf{Rationale:} Encryption prevents interception and
-    tampering of sensitive data such as authentication tokens or image files.\\
-    \textbf{Fit Criterion:} All HTTP requests must be redirected to
-    HTTPS; unencrypted requests are rejected by the web server.\\
-    \textbf{Priority:} High
+\begin{enumerate}[label=SR-IR \arabic*., wide=0pt, leftmargin=*]
+\item \emph{All communication between the frontend, backend, and machine learning services shall use encrypted HTTPS (TLS TLS\_VERSION or higher).}\\[2mm] 
+    {\bf Rationale:} Encryption prevents interception and tampering of sensitive data such as authentication tokens or image files.\\
+    {\bf Fit Criterion:} All HTTP requests must be redirected to HTTPS; unencrypted requests are rejected by the web server.\\
+    {\bf Priority:} High
 
-  \item[\textbf{SR-IR 2.}] \textit{Uploaded images shall remain
-    unmodified during processing and analysis.}\\
-    \textbf{Rationale:} Preserving file integrity ensures consistent
-    and accurate generation of alt-text.\\
-    \textbf{Fit Criterion:} File hash comparison verifies that image
-    files remain identical throughout the upload and analysis process.\\
-    \textbf{Priority:} High
-\end{itemize}
+\item \emph{Uploaded images shall remain unmodified during processing and analysis.}\\[2mm] 
+    {\bf Rationale:} Preserving file integrity ensures consistent and accurate generation of alt-text.\\
+    {\bf Fit Criterion:} File hash comparison verifies that image files remain identical throughout the upload and analysis process.\\
+    {\bf Priority:} High
+\end{enumerate}
 
 \subsection{Privacy Requirements}
-\begin{itemize}
-  \item[\textbf{SR-PR 1.}] \textit{Uploaded images shall be deleted
-    immediately after processing is complete.}\\
-    \textbf{Rationale:} Protects user privacy and ensures compliance
-    with institutional data governance policies.\\
-    \textbf{Fit Criterion:} Uploaded files are stored temporarily in
-    memory or on a secure local directory and deleted within 60
-    seconds after alt-text generation.\\
-    \textbf{Priority:} High
+\begin{enumerate}[label=SR-PR \arabic*., wide=0pt, leftmargin=*]
+\item \emph{Uploaded images shall be deleted immediately after processing is complete.}\\[2mm] 
+    {\bf Rationale:} Protects user privacy and ensures compliance with institutional data governance policies.\\
+    {\bf Fit Criterion:} Uploaded files are stored temporarily in memory or on a secure local directory and deleted within FILE\_DELETE\_TIME after alt-text generation.\\
+    {\bf Priority:} High
 
-  \item[\textbf{SR-PR 2.}] \textit{Generated alt-text shall not
-    contain personally identifiable information (PII) or sensitive content.}\\
-    \textbf{Rationale:} Prevents disclosure of private information
-    and ensures responsible AI usage.\\
-    \textbf{Fit Criterion:} The model output is passed through a
-    content moderation filter that rejects or flags any alt-text
-    containing PII or inappropriate language.\\
-    \textbf{Priority:} Medium
-\end{itemize}
+\item \emph{Generated alt-text shall not contain personally identifiable information (PII) or sensitive content.}\\[2mm] 
+    {\bf Rationale:} Prevents disclosure of private information and ensures responsible AI usage.\\
+    {\bf Fit Criterion:} The model output is passed through a content moderation filter that rejects or flags any alt-text containing PII or inappropriate language.\\
+    {\bf Priority:} Medium
+\end{enumerate}
 
 \subsection{Audit Requirements}
-\begin{itemize}
-  \item[\textbf{SR-AU 1.}] \textit{System usage logs shall record
-      authentication events, uploads, and generation activities for
-    accountability and debugging.}\\
-    \textbf{Rationale:} Audit logs enable traceability, assist in
-    debugging, and ensure ethical research practices.\\
-    \textbf{Fit Criterion:} Logs record timestamps, user IDs, and
-    non-sensitive metadata while excluding image or generated text content.\\
-    \textbf{Priority:} Medium
+\begin{enumerate}[label=SR-AU \arabic*., wide=0pt, leftmargin=*]
+\item \emph{System usage logs shall record authentication events, uploads, and generation activities for accountability and debugging.}\\[2mm] 
+    {\bf Rationale:} Audit logs enable traceability, assist in debugging, and ensure ethical research practices.\\
+    {\bf Fit Criterion:} Logs record timestamps, user IDs, and non-sensitive metadata while excluding image or generated text content.\\
+    {\bf Priority:} Medium
 
-  \item[\textbf{SR-AU 2.}] \textit{Access to audit logs shall be
-    restricted to authorized project administrators.}\\
-    \textbf{Rationale:} Limits access to potentially sensitive
-    operational data and protects user confidentiality.\\
-    \textbf{Fit Criterion:} Logs are stored in a restricted-access
-    directory with read permissions granted only to administrators.\\
-    \textbf{Priority:} Medium
-\end{itemize}
+\item \emph{Access to audit logs shall be restricted to authorized project administrators.}\\[2mm] 
+    {\bf Rationale:} Limits access to potentially sensitive operational data and protects user confidentiality.\\
+    {\bf Fit Criterion:} Logs are stored in a restricted-access directory with read permissions granted only to administrators.\\
+    {\bf Priority:} Medium
+\end{enumerate}
 
 \subsection{Immunity Requirements}
-\begin{itemize}
-  \item[\textbf{SR-IM 1.}] \textit{The system shall validate and
-      sanitize all uploaded files to prevent malicious or unsupported
-    file types.}\\
-    \textbf{Rationale:} Protects against injection attacks, corrupted
-    uploads, or execution of non-image files.\\
-    \textbf{Fit Criterion:} Only files with valid image types (.png,
-    .jpg, .jpeg, .svg, .webp) are accepted; unsupported or script
-    files are automatically rejected.\\
-    \textbf{Priority:} High
+\begin{enumerate}[label=SR-IM \arabic*., wide=0pt, leftmargin=*]
+\item \emph{The system shall validate and sanitize all uploaded files to prevent malicious or unsupported file types.}\\[2mm] 
+    {\bf Rationale:} Protects against injection attacks, corrupted uploads, or execution of non-image files.\\
+    {\bf Fit Criterion:} Only files with valid image types FILE\_TYPES are accepted; unsupported or script files are automatically rejected.\\
+    {\bf Priority:} High
 
-  \item[\textbf{SR-IM 2.}] \textit{The system shall block access from
-    networks or domains outside McMaster University’s infrastructure.}\\
-    \textbf{Rationale:} Restricting network access minimizes exposure
-    to external threats during the proof-of-concept phase.\\
-    \textbf{Fit Criterion:} Requests must originate from verified
-    McMaster SSO tokens or IP ranges associated with university networks.\\
-    \textbf{Priority:} High
-\end{itemize}
+\item \emph{The system shall block access from networks or domains outside McMaster University’s infrastructure.}\\[2mm] 
+    {\bf Rationale:} Restricting network access minimizes exposure to external threats during the proof-of-concept phase.\\
+    {\bf Fit Criterion:} Requests must originate from verified McMaster SSO tokens or IP ranges associated with university networks defined in NETWORK\_SOURCE\_POLICY.\\
+    {\bf Priority:} High
+\end{enumerate}
 
 \section{Cultural Requirements}
 The following list conists of cultural requirements the system shall follow:
@@ -1735,88 +1725,92 @@ system to replace, thus, no data at all.
 
 \section{Costs}
 
-The total cost of developing this project is primarily based on the
-effort contributed by the student development team and faculty
-supervisors. As the project utilizes open-source technologies (e.g.,
-Python, TensorFlow, Flask, and React) and university-hosted
-infrastructure, no direct monetary expenditure is incurred. The
-project is scheduled to be completed within the academic term (MVP
-ready by April 2026), and resource allocation is focused on efficient
-time management and workload balancing rather than financial cost.
+The total cost of developing this project is primarily based on the effort contributed by the student development team and faculty supervisors. As the project utilizes open-source technologies and university-hosted infrastructure, no direct monetary expenditure is incurred. The project is scheduled to be completed within the academic term (Minimum Viable Product (MVP) ready by April 2026), and resource allocation is focused on efficient time management and workload balancing rather than financial cost.
 
 \subsection{Metrics for Estimation}
+\begin{enumerate}[label=C-ME \arabic*., wide=0pt, leftmargin=*]
+\item \emph{Number of image input/output workflows supported by the tool.}\\[2mm] 
+    {\bf Rationale:} Defines the scope of functionality that affects the development and testing workload.\\
+    {\bf Priority:} High
 
-To estimate overall development cost in terms of time and effort, the
-following key metrics have been considered:
-\begin{itemize}
-  \item Number of image input/output workflows supported by the tool.
-  \item Number of core functional requirements (e.g., image upload,
-    alt-text generation, user authentication, evaluation metrics).
-  \item Number of non-functional requirements (e.g., accessibility
-    compliance, latency, privacy, and scalability).
-  \item Number of deliverables and milestones within the development timeline.
-  \item Team size and individual role distribution (frontend,
-    backend, model integration, documentation).
-\end{itemize}
+\item \emph{Number of core functional requirements (e.g., image upload, alt-text generation, user authentication, evaluation metrics).}\\[2mm] 
+    {\bf Rationale:} Determines the complexity of the implementation and testing processes.\\
+    {\bf Priority:} High
+
+\item \emph{Number of non-functional requirements (e.g., accessibility compliance, latency, privacy, and scalability).}\\[2mm] 
+    {\bf Rationale:} Reflects the additional design and validation effort beyond core functionality.\\
+    {\bf Priority:} Medium
+
+\item \emph{Number of deliverables and milestones within the development timeline.}\\[2mm] 
+    {\bf Rationale:} Ensures that project progress and deliverables are measurable and time-bound.\\
+    {\bf Priority:} Medium
+
+\item \emph{Team size and individual role distribution (frontend, backend, model integration, documentation).}\\[2mm] 
+    {\bf Rationale:} Defines the workload balance and collaborative structure of the development process.\\
+    {\bf Priority:} High
+\end{enumerate}
 
 \subsection{Estimation Approach}
+\begin{enumerate}[label=C-EA \arabic*., wide=0pt, leftmargin=*]
+\item \emph{Each deliverable has been estimated based on the effort required to implement, test, and document it within the academic term.}\\[2mm] 
+    {\bf Rationale:} Provides a structured approach to time allocation aligned with academic deadlines.\\
+    {\bf Fit Criterion:} Estimates are derived from prior experience with similar web-based machine learning projects and adjusted for accessibility integration.\\
+    {\bf Priority:} High
 
-Each deliverable has been estimated based on the effort required to
-implement, test, and document it within the given academic term.
-The estimates are derived from prior experience with similar
-web-based machine learning projects and adjusted for the learning and
-research effort required to integrate accessibility and WCAG
-compliance features.
-Time allocation also accounts for model fine-tuning, front-end
-accessibility testing, and usability evaluation with pilot users.
+\item \emph{Time allocation accounts for model fine-tuning, accessibility testing, and usability evaluation.}\\[2mm] 
+    {\bf Rationale:} Incorporates all major tasks necessary to ensure compliance with WCAG standards and project objectives.\\
+    {\bf Fit Criterion:} Schedule includes model optimization, frontend validation, and pilot user testing within the project timeline.\\
+    {\bf Priority:} Medium
+\end{enumerate}
 
 \subsection{Cost Breakdown}
+\begin{enumerate}[label=C-CB \arabic*., wide=0pt, leftmargin=*]
+\item \emph{Development Effort}\\[2mm] 
+    {\bf Rationale:} Represents the primary cost driver, measured in person-hours contributed by the student team and supervisor.\\
+    {\bf Fit Criterion:} Based on a team of TEAM\_SIZE student developers and one faculty supervisor:
+    \begin{itemize}
+        \item Initial research, planning, and requirement analysis: HOURS\_RESEARCH per team member.
+        \item Model integration and backend implementation: HOURS\_BACKEND per team member.
+        \item Frontend development and accessibility compliance: HOURS\_FRONTEND per team member.
+        \item Testing, debugging, and refinement: HOURS\_TESTING per team member.
+        \item Documentation and presentation preparation: HOURS\_DOCS per team member.
+    \end{itemize}
+    {\bf Total Estimated Effort:} HOURS\_TOTAL per team member.\\
+    {\bf Priority:} High
 
-\noindent\textbf{• Development Effort:} Based on a team of four
-student developers and one faculty supervisor, the estimated time
-allocation per team member is as follows:
-\begin{itemize}
-  \item Initial research, planning, and requirement analysis:
-    \textbf{40 hours per team member.}
-  \item Model integration and backend implementation: \textbf{120
-    hours per team member.}
-  \item Frontend development and accessibility compliance: \textbf{80
-    hours per team member.}
-  \item Testing, debugging, and refinement: \textbf{60 hours per team member.}
-  \item Documentation and presentation preparation: \textbf{30 hours
-    per team member.}
-\end{itemize}
-\noindent\textbf{Total estimated effort: 330 hours per team member.}
+\item \emph{Tools and Software}\\[2mm] 
+    {\bf Rationale:} All software components used in the project are open-source or free for academic use.\\
+    {\bf Fit Criterion:} No direct licensing or software procurement costs are incurred.\\
+    {\bf Priority:} High
 
-\noindent\textbf{• Tools and Software:}
-All software components used in the project (Python, Flask, React,
-TensorFlow, Machine Learning Models, and GitHub) are open-source or
-free for academic use.
-Therefore, there are no direct licensing or software procurement costs.
+\item \emph{Testing Environment}\\[2mm] 
+    {\bf Rationale:} Defines the testing setup and potential costs associated with user testing incentives.\\
+    {\bf Fit Criterion:} Testing is conducted on McMaster-hosted or open-source platforms. User testing sessions may include gift card incentives between COST\_INCENTIVE\_MIN–COST\_INCENTIVE\_MAX.\\
+    {\bf Priority:} Medium
 
-\noindent\textbf{• Testing Environment:}
-Testing will be conducted using McMaster-hosted or open-source
-platforms for model inference and user testing.
-The team might decide to conduct user testing and award attendees 10
-dollar Amazon.com gift cards as a reward for participation.
-No additional hardware purchases are required beyond existing student
-laptops and cloud compute credits provided for academic purposes.
+\item \emph{Hardware and Infrastructure}\\[2mm] 
+    {\bf Rationale:} Evaluates the physical and computational resources used during development.\\
+    {\bf Fit Criterion:} No additional hardware purchases required beyond student laptops and academic cloud credits.\\
+    {\bf Priority:} Low
+\end{enumerate}
 
 \subsection{Estimated Cost}
+\begin{enumerate}[label=C-EC \arabic*., wide=0pt, leftmargin=*]
+\item \emph{Total Development Effort}\\[2mm] 
+    {\bf Rationale:} Quantifies total workload for the entire team in measurable units.\\
+    {\bf Fit Criterion:} Approximately HOURS\_PROJECT person-hours across four team members (TEAM\_SIZE × HOURS\_TOTAL).\\
+    {\bf Priority:} High
 
-The total development effort is estimated at approximately
-\textbf{1,320 person-hours} across all team members (4 × 330 hours).
-Assuming an average academic hourly equivalent of \textbf{\$20 per
-hour} for estimation purposes, the notional cost of development would
-be approximately \textbf{\$26,400 CAD}.
+\item \emph{Notional Monetary Cost}\\[2mm] 
+    {\bf Rationale:} Provides an academic-equivalent cost estimate for effort valuation.\\
+    {\bf Fit Criterion:} Assuming an average rate of COST\_PER\_HOUR, total notional cost is approximately COST\_TOTAL.\\
+    {\bf Priority:} Medium
 
-However, as this project is conducted as part of a capstone academic
-course and leverages free university and open-source resources, the
-\textbf{actual monetary cost is \$0 CAD}.
-The effective cost of the project lies entirely in time, research,
-and human effort required to meet the performance, accessibility, and
-security requirements outlined in previous sections.
-
+\item \emph{Actual Financial Cost}\\[2mm] 
+    {\bf Rationale:} Since the project leverages university and open-source resources, there are no direct expenses.\\
+    {\bf Fit Criterion:} The actual monetary cost is COST\_ACTUAL; all expenditure is in research and development effort.\\
+    {\bf Priority:} High
+\end{enumerate}
 \section{User Documentation and Training}
 \subsection{User Documentation Requirements}
 \begin{enumerate}
@@ -1882,11 +1876,48 @@ paired with examples of descriptive alternative text, allow it to
 generate accurate and high quality descriptions for new images.\\
 \\
 \textbf{Session History}
-After the user is satisfied with the generated alternative text, the
-system will store the image and its final description in the
-browser's session storage as a JSON record. This allows the data to
-be stored temporarily and can easily be displayed to the user when
-they request their history. \\
+After the user is satisfied with the generated alternative text, the system will store the image and its final description in the browser's session storage as a JSON record. This allows the data to be stored temporarily and can easily be displayed to the user when they request their history. \\
+
+\section*{Appendix --- Evaluation Metrics Summary}
+\label{sec:evaluation-metrics}
+The following table summarizes the evaluation metrics that will be used to assess the quality and effectiveness of the alternative text generated by the Reading4All system. Each metric includes its scale type, acceptable range, and a brief description of its purpose.
+\begin{table}[H]
+    \centering
+    \caption{Evaluation Metrics Summary}
+    \label{tab:evaluation-metrics-summary}
+    \begin{tabular}{ |p{3.5cm}|p{3cm}|p{3cm}|p{4cm}| }
+      \hline
+      \textbf{Metric Name} & \textbf{Scale Type} & \textbf{Acceptable Range} & \textbf{Summary Description} \\
+      \hline
+      Sufficiency of Description
+        & Categorical (1--3)
+        & $\geq$ 3 (Sufficient)
+        & Does the alt text convey enough information to achieve the intended objective? \\
+      \hline
+      Length Appropriateness
+        & Categorical (1--3)
+        & $\geq$ 3 (Proper Length)
+        & Is the alt text concise yet complete (not too short or overly verbose)? \\
+      \hline
+      Accessibility / Usability
+        & Numerical (0--3)
+        & $\geq$ 2 (Acceptable)
+        & Assistive-technology compatibility and clarity; aligns with WCAG 2.1 Level~AA use. \\
+      \hline
+      Learning Impact
+        & Numerical (0--3)
+        & $\geq$ 2 (Positive)
+        & Does the alt text support or enhance user understanding in learning contexts? \\
+      \hline
+      Qualitative Feedback Notes
+        & Textual
+        & N/A
+        & Free-form comments on clarity, tone, and suggested improvements. \\
+      \hline
+    \end{tabular}
+  \end{table}
+  
+
 \section*{Appendix --- Reflection}
 
 \input{../Reflection.tex}
