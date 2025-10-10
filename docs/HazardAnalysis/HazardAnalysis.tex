@@ -71,20 +71,46 @@ each individual piece of hardware.  If your software will have a database, or an
 important library, these are also potential components.} 
 
 \subsection{System Overview}
+The system is a web-based AI tool that generates alternative text (alt text) for uploaded images or figures
+and integrated with screen readers to improve accessibility for visually impaired users.
 \subsection{System Boundaries}
 \begin{itemize}
-    \item \textbf{Internal Components:} ML model, 
-    \item \textbf{External Interfaces:} McMaster Student Database, Screen Readers, Browsers,
+    \item \textbf{Internal Components:} Alternative Text Generation Machine Learning (ML) Model, User Interface, Session History Manager
+    \item \textbf{External Components:} McMaster Authentication System, External AI/ML Frameworks, Screen Reader Software
 \end{itemize}
 \subsection{System Components}
-\begin{itemize}
-    \item Frontend: \dots
-    \item Backend: \dots
-    \item AI/ML model: \dots
-    \item History Database: \dots
-    \item McMaster Authentication Service: \dots
-\end{itemize}
-Diagram of System Components Here
+\begin{enumerate}
+    \item \textbf{Alt Text Generation ML Model}
+    \begin{itemize}
+        \item \textbf{Purpose:} To automatically generate accurate and descriptive alternative text for uploaded images using machine learning.
+        \item \textbf{Key Functions:}
+        \begin{itemize}
+            \item Process image inputs received from the backend and extract key visual features.
+            \item Generate contextually relevant text descriptions.
+            \item Return the generated alternative text to the backend to display to the user interface.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{User Interface}
+    \begin{itemize}
+        \item \textbf{Purpose:} To serve as the primary interaction point between the user and the system and allow users to upload images and view generated alt text.
+        \item \textbf{Key Functions:}
+        \begin{itemize}
+            \item Enable users to upload images through an accessible web interface.
+            \item Display generated alt text and allow users to edit, copy, and download the text. 
+            \item Provide features that are accessible and complies with the Web Content Accessibility Guidelines (WCAG) 2.1 standards.
+            \item Communicates user requests and display outputs from the backend.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Session History Manager}
+    \begin{itemize}
+        \item \textbf{Purpose:} To ensure the continuity of the current session and manage user data during active use of the system.
+        \item \textbf{Key Functions:}
+        \begin{itemize}
+            \item Track unique user sessions throughout interaction with the web application.
+            \item Store previously uploaded images and generated alternative text for the current session to allow users to view history.
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
 \section{Critical Assumptions}
 
 \wss{These assumptions that are made about the software or system.  You should
