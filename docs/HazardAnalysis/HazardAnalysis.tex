@@ -52,16 +52,31 @@
 
 \pagenumbering{arabic}
 
-\wss{You are free to modify this template.}
 
 \section{Introduction}
 
-\wss{You can include your definition of what a hazard is here.}
+\subsection{Problem Statement}
+Students with disabilities confront major challenges to reading technical diagrams, which are often given in the form of static images that screen readers cannot interpret. Manually developing alternative (alt) text is possible, but it is resource-intensive, inconsistent, and not scalable for huge volumes of course content. This generates disparities in access to learning materials in postsecondary education.
+
+To address this issue, this project proposes creating an AI/ML-powered application that automatically generates clear and detailed alt text for technical diagrams. The tool intends to increase accessibility, assure compliance with AODA regulations, and promote greater inclusion in higher education.
+
+\subsection{Hazard Analysis Introduction}
+A hazard is a system state or combination of conditions that, when paired with specific environmental or contextual factors, can result in an unwanted or adverse event in the system or its surroundings. Hazards in software and AI development encompass not only physical threats but also usability, ethical, and technological issues.
+
+Hazards in this project may develop during the design, training, and implementation of the alt-text generating model. These risks include technical flaws in generated text, misinterpretations that may mislead learners, ethical concerns regarding bias in the dataset, and compatibility issues with assistive technology.
+
+This hazard analysis identifies and evaluates such risks to guarantee that the system provides consistent accessibility gains while not mistakenly introducing new obstacles.
 
 \section{Scope and Purpose of Hazard Analysis}
+The objective of this hazard analysis is to analyze the potential hazards and damages related to the AI/ML alt-text generating tool throughout its development and operation. The most significant hazards are:
 
-\wss{You should say what \textbf{loss} could be incurred because of the
-hazards.}
+\begin{itemize}
+    \item \textbf{Technical Flaws:} Incorrect or inadequate alt text may mislead students, impair comprehension, or violate accessibility guidelines. This could result in a loss of confidence in the tool and poor results in education.
+    \item \textbf{User Insensitivity:} Alt text that is excessively technical, unsophisticated, or inconsistent may not meet the needs of students. This may result in a loss of usefulness, reducing participation among students, teachers, and accessibility professionals.
+    \item \textbf{External Dependencies:} Relying on third-party libraries, APIs, or screen reader compatibility can lead to external failures. Interruptions in these functions may result in a loss of functionality or downtime.
+\end{itemize}
+
+The purpose of this hazard study is to systematically identify these hazards, estimate their potential impact, and develop mitigation strategies. By doing this, we aim to minimize losses associated with time, trust, resources, and accessibility outcomes, ensuring that the tool contributes positively to equitable education.
 
 \section{System Boundaries and Components}
 
