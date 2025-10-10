@@ -34,8 +34,7 @@
 
 \begin{document}
 
-\title{Software Requirements Specification for \progname: subtitle
-describing software}
+\title{Software Requirements Specification for \progname}
 \author{\authname}
 \date{\today}
 
@@ -96,6 +95,7 @@ MIN\_COMPENSATION\_DOLLARS & \$100 CAD \\
 MAX\_COMPENSATION\_DOLLARS & \$150 CAD \\ 
 LATEST\_RELEASES\_NUM & 3 \\
 MOST\_COMMON\_SR & 3 \\
+SFWR\_RELEASES & 2 \\
 
 
 \bottomrule
@@ -200,7 +200,7 @@ detailed requirements and supporting documentation.
 
 \subsection{System Context}
 
-\textbf{Inputs:} Technical diagrams or schematics provided for alt-text generation. \\[2mm]
+\textbf{Inputs:} Technical diagrams or schematics provided for alt text generation. \\[2mm]
 \textbf{Processing:} The system analyzes visual elements using a
 vision model and generates textual descriptions through a language
 model. \\[2mm]
@@ -390,7 +390,7 @@ alternative text generation models, fixing bugs, or upgrading dependencies.
     for updates or troubleshooting.
   \item \textbf{Accessibility Services Office Staff} \\
     Although initially secondary stakeholders, some staff may
-    contribute to iterative refinement of alt-text generation
+    contribute to iterative refinement of alt text generation
     accuracy or compliance updates. Their participation may prompt
     system adjustments or patches.
   \item \textbf{Development Team (Group 22) or Future Maintainance Team} \\
@@ -478,7 +478,7 @@ and limitations:
     accessibility.
   \item \textbf{accessiBe}: This service is an accessibility platform
     built for developers and engineers that plugs into their SDLC to detect and
-    remediate WCAG issues at code level. The tools offers AI alt-text
+    remediate WCAG issues at code level. The tools offers AI alt text
     descriptions for images and allows users to review
     and edit the alt text. A limitiation of this tool is that it uses
     overlays that sit on top of a website to fix issues at run-time.
@@ -586,7 +586,7 @@ A screen reader software available on Windows.
 Human-readable data formats used for configs and API payloads.
 
 \paragraph*{Latency}
-Time from user action such as uploading an image to a system response or alt-text generation
+Time from user action such as uploading an image to a system response or alt text generation
 
 \paragraph*{Low Vision}
 Reduced level of vision that interferes with daily activities and is to be considered in designing the user interface and testing.
@@ -750,7 +750,7 @@ their inputs and outputs, and the summary of the event.
     retrieves and displays a user’s history of uploaded images along
     with their associated generated alt text \\
     \hline
-  \end{tabular}
+  \end{tabular} 
 \end{table}
 
 \subsection{Specifying a Business Use Case (BUC)}
@@ -794,7 +794,7 @@ The following diagram (Figure~\ref{fig:business_data_model}) illustrates the rel
     \centering
     % Export the draw.io diagram below as PNG and save it to this path:
     \includegraphics[width=0.85\textwidth]{images/business-data-model.png}
-    \caption{Business Data Model of Alt-Text Generation System}
+    \caption{Business Data Model of alt text Generation System}
     \label{fig:business_data_model}
 \end{figure}
 
@@ -816,11 +816,11 @@ The following diagram (Figure~\ref{fig:business_data_model}) illustrates the rel
       Module \\
       \hline
       Backend Controller &
-      Orchestrates requests: validates inputs (images/type/size), routes to the Model Service, manages temporary/session storage, records events, and returns results to the user interface(UI). &
+      Orchestrates requests: validates inputs (images/type/size), routes to the Model Service, manages temporary/session storage, records events, and returns results to the user interface (UI). &
       Module \\
       \hline
       Model Service &
-      Machine-learning inference service that generates alt text from uploaded images and returns text plus timing/quality metadata. Exposed via an internal Application Programmable Interface(API). &
+      Machine-learning inference service that generates alt text from uploaded images and returns text plus timing/quality metadata. Exposed via an internal Application Programmable Interface (API). &
       External Service / Module \\
       \hline
       Session Storage Component &
@@ -835,8 +835,8 @@ The following diagram (Figure~\ref{fig:business_data_model}) illustrates the rel
       Institutional authentication provider used to restrict access to McMaster users; issues and validates user sessions for the web application. &
       External Service Provider \\
       \hline
-      Web Application (deployment) &
-      Deployed application entry point that exposes the Reading4All system to end users over web protocols such as Hypertext Transfer Protocol Secure (HTTPS); integrates Single Sign On (SS0) and serves the User/Application Interfaces. &
+      Web Tool (deployment) &
+      Deployed application entry point that exposes the Reading4All system to end users over web protocols such as Hypertext Transfer Protocol Secure (HTTPS); integrates Single Sign On (SSO) and serves the User/Application Interfaces. &
       Package / Deployment Target \\
       \hline
     \end{tabular}
@@ -1163,12 +1163,12 @@ inputs and outputs to the system and the related requirements.
 
 \subsection{Speed and Latency Requirements}
 \begin{enumerate}[label=PR-SL \arabic*., wide=0pt, leftmargin=*]
-\item \emph{The tool shall generate alt-text for uploaded images within a reasonable time frame.}\\[2mm] 
+\item \emph{The tool shall generate alt text for uploaded images within a reasonable time frame.}\\[2mm] 
     {\bf Rationale:} Ensures users, including those using assistive technologies, do not experience delays that hinder accessibility.\\
-    {\bf Fit Criterion:} The system shall return generated alt-text within T\_ALT\_GEN\_SMALL for images $\leq$ IMG\_SIZE\_SMALL and within T\_ALT\_GEN\_LARGE for images $\leq$ IMG\_SIZE\_BIG under normal load conditions.\\
+    {\bf Fit Criterion:} The system shall return generated alt text within T\_ALT\_GEN\_SMALL for images $\leq$ IMG\_SIZE\_SMALL and within T\_ALT\_GEN\_LARGE for images $\leq$ IMG\_SIZE\_BIG under normal load conditions.\\
     {\bf Priority:} High
 
-\item \emph{The web interface shall load and render accessibility components efficiently.}\\[2mm] 
+\item \emph{The web tool shall load and render accessibility components efficiently.}\\[2mm] 
     {\bf Rationale:} Improves user experience and responsiveness for screen-reader users and keyboard navigation.\\
     {\bf Fit Criterion:} All interactive elements shall respond within T\_UI\_RESP of user input under typical conditions.\\
     {\bf Priority:} Medium
@@ -1181,7 +1181,7 @@ inputs and outputs to the system and the related requirements.
     {\bf Fit Criterion:} Uploaded images are deleted from temporary storage for the user session unless explicitly saved by the user. The images will not be stored in any database without user consent.\\
     {\bf Priority:} High
 
-\item \emph{The tool shall not produce alt-text containing offensive, biased, or harmful language beyond the context of image.}\\[2mm] 
+\item \emph{The tool shall not produce alt text containing offensive, biased, or harmful language beyond the context of image.}\\[2mm] 
     {\bf Rationale:} Ensures ethical AI output and inclusivity.\\
     {\bf Fit Criterion:} 0\% of generated outputs shall contain content flagged by moderation filters as offensive or biased.\\
     {\bf Priority:} High
@@ -1195,17 +1195,17 @@ inputs and outputs to the system and the related requirements.
 \subsection{Precision or Accuracy Requirements}
 Please refer to Appendix – Evaluation Metrics Summary (\ref{sec:evaluation-metrics}) to understand the evaluation scales and metrics.
 \begin{enumerate}[label=PR-PAR \arabic*., wide=0pt, leftmargin=*]
-\item \emph{The generated alt-text shall adequately describe the image content with minimal omissions or irrelevant details.}\\[2mm] 
+\item \emph{The generated alt text shall adequately describe the image content with minimal omissions or irrelevant details.}\\[2mm] 
     {\bf Rationale:} Ensures the description fulfills its accessibility purpose.\\
     {\bf Fit Criterion:} At least R\_SUFFICIENCY of outputs rated “Sufficient” or better on the sufficiency scale by testers.\\
     {\bf Priority:} High
 
-\item \emph{The alt-text shall maintain appropriate length and readability.}\\[2mm] 
+\item \emph{The alt text shall maintain appropriate length and readability.}\\[2mm] 
     {\bf Rationale:} Prevents overly short or verbose outputs that reduce usability.\\
     {\bf Fit Criterion:} $\geq$ R\_LENGTH of outputs rated “Proper Length” on the user-testing scale.\\
     {\bf Priority:} Medium
 
-\item \emph{The overall accessibility and usability of the alt-text shall be acceptable to testers.}\\[2mm] 
+\item \emph{The overall accessibility and usability of the alt text shall be acceptable to testers.}\\[2mm] 
     {\bf Rationale:} Evaluates real-world effectiveness of generated descriptions.\\
     {\bf Fit Criterion:} Median user rating $\geq$ R\_USABILITY\_MEDIAN (“Mostly Accessible/Usable”) on the 0–3 or 0–4 scales; no outputs below R\_USABILITY\_MIN.\\
     {\bf Priority:} Medium
@@ -1252,7 +1252,7 @@ Please refer to Appendix – Evaluation Metrics Summary (\ref{sec:evaluation-met
     {\bf Fit Criterion:} Minor updates or migrations require $\leq$ MAINT\_TIME.\\
     {\bf Priority:} Medium
 
-\item \emph{The prototype shall maintain compatibility with at least the next two software releases.}\\[2mm] 
+\item \emph{The prototype shall maintain compatibility with at least the previous SFWR\_RELEASES software releases.}\\[2mm] 
     {\bf Rationale:} Ensures sustainability of the pilot for educational and testing purposes.\\
     {\bf Fit Criterion:} Verified through annual testing on supported Python versions to ensure compatibility with COMPAT\_VERSIONS.\\
     {\bf Priority:} Low
@@ -1307,26 +1307,17 @@ Reading4All system must operate reliably and efficiently.
 
   \item \emph{The system shall operate effectively within standard
     academic network environments with stable internet connectivity.}\\[2mm]
-    {\bf Rationale:} Reading4All depends on cloud-based inference
-    models for text generation, which require reliable network access.\\
+    {\bf Rationale:} Reading4All depends on
+    models for text generation, which may require reliable network access.\\
     {\bf Fit Criterion:} The system maintains consistent API
     communication over typical university Wi-Fi or Ethernet with
-    upload speeds of at least 10 Mbps.\\
+    upload speeds of at least IMG\_SIZE\_BIG Mbps.\\
     {\bf Priority:} Medium
 \end{enumerate}
 
 \subsection{Requirements for Interfacing with Adjacent Systems}
 
 \begin{enumerate}[label=OER-IAS\arabic*., wide=0pt, leftmargin=*]
-  \item \emph{The system shall integrate with learning management
-      systems (LMS) such as Avenue to Learn (D2L Brightspace) for image
-    uploads and alt-text retrieval.}\\[2mm]
-    {\bf Rationale:} Direct LMS integration streamlines accessibility
-    workflows for instructors and students.\\
-    {\bf Fit Criterion:} Reading4All successfully connects to at
-    least one LMS via secure API endpoints approved by the institution.\\
-    {\bf Priority:} High
-
   \item \emph{The system shall support interoperability with
       assistive technologies such as screen readers (e.g., NVDA, JAWS,
     and VoiceOver).}\\[2mm]
@@ -1348,7 +1339,7 @@ Reading4All system must operate reliably and efficiently.
   \item \emph{The system shall optionally interface with automated
     accessibility validation tools (e.g., WAVE or Axe).}\\[2mm]
     {\bf Rationale:} Integration with automated validators aids
-    instructors in verifying alt-text accessibility compliance.\\
+    instructors in verifying alt text accessibility compliance.\\
     {\bf Fit Criterion:} Validation reports are successfully
     generated and accessible through the user interface.\\
     {\bf Priority:} Low
@@ -1490,7 +1481,7 @@ standards and technical advancements.
 
 \item \emph{All actions performed by users shall be tied to their authenticated session.}\\[2mm] 
     {\bf Rationale:} Linking actions to a user’s authenticated identity enables traceability and controlled access to system features.\\
-    {\bf Fit Criterion:} Each upload or alt-text generation event is associated with a unique McMaster user ID through SSO session tracking.\\
+    {\bf Fit Criterion:} Each upload or alt text generation event is associated with a unique McMaster user ID through SSO session tracking.\\
     {\bf Priority:} Medium
 \end{enumerate}
 
@@ -1502,7 +1493,7 @@ standards and technical advancements.
     {\bf Priority:} High
 
 \item \emph{Uploaded images shall remain unmodified during processing and analysis.}\\[2mm] 
-    {\bf Rationale:} Preserving file integrity ensures consistent and accurate generation of alt-text.\\
+    {\bf Rationale:} Preserving file integrity ensures consistent and accurate generation of alt text.\\
     {\bf Fit Criterion:} File hash comparison verifies that image files remain identical throughout the upload and analysis process.\\
     {\bf Priority:} High
 \end{enumerate}
@@ -1511,12 +1502,12 @@ standards and technical advancements.
 \begin{enumerate}[label=SR-PR \arabic*., wide=0pt, leftmargin=*]
 \item \emph{Uploaded images shall be deleted immediately after processing is complete.}\\[2mm] 
     {\bf Rationale:} Protects user privacy and ensures compliance with institutional data governance policies.\\
-    {\bf Fit Criterion:} Uploaded files are stored temporarily in memory or on a secure local directory and deleted within FILE\_DELETE\_TIME after alt-text generation.\\
+    {\bf Fit Criterion:} Uploaded files are stored temporarily in memory or on a secure local directory and deleted within FILE\_DELETE\_TIME after alt text generation.\\
     {\bf Priority:} High
 
-\item \emph{Generated alt-text shall not contain personally identifiable information (PII) or sensitive content.}\\[2mm] 
+\item \emph{Generated alt text shall not contain personally identifiable information (PII) or sensitive content.}\\[2mm] 
     {\bf Rationale:} Prevents disclosure of private information and ensures responsible AI usage.\\
-    {\bf Fit Criterion:} The model output is passed through a content moderation filter that rejects or flags any alt-text containing PII or inappropriate language.\\
+    {\bf Fit Criterion:} The model output is passed through a content moderation filter that rejects or flags any alt text containing PII or inappropriate language.\\
     {\bf Priority:} Medium
 \end{enumerate}
 
@@ -1709,7 +1700,7 @@ vision analysis, language generation, and accessibility workflows.
       \item Establish a shared GitHub repository with branching standards
       \item Configure CI/CD automation through GitHub Actions
       \item Implement the vision module for diagram segmentation and labeling
-      \item Integrate the language generation component for alt-text synthesis
+      \item Integrate the language generation component for alt text synthesis
       \item Conduct user testing with instructors and accessibility specialists
       \item Evaluate outputs for WCAG 2.1 compliance and descriptive accuracy
     \end{itemize}
@@ -1828,7 +1819,7 @@ The total cost of developing this project is primarily based on the effort contr
     {\bf Rationale:} Defines the scope of functionality that affects the development and testing workload.\\
     {\bf Priority:} High
 
-\item \emph{Number of core functional requirements (e.g., image upload, alt-text generation, user authentication, evaluation metrics).}\\[2mm] 
+\item \emph{Number of core functional requirements (e.g., image upload, alt text generation, user authentication, evaluation metrics).}\\[2mm] 
     {\bf Rationale:} Determines the complexity of the implementation and testing processes.\\
     {\bf Priority:} High
 
