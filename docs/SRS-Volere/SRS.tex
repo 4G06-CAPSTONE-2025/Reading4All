@@ -657,17 +657,12 @@ images and figures.\\[1ex]
 
 \section{The Scope of the Product}
 \subsection{Product Boundary}
-The diagram below shows the components within the system and how they
-connect. The components that this project will aim on building
-include a user interface, an alternative text generation ML model, a
-session manager. Furthermore, these components will utilize or
-communicate with a screen reader software, McMaster Authentication
-system and external AI/ML Frameworks.
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{Product_Boundary_Diagram.jpg}
-  \caption{Product Boundary Diagram}
-  \label{img:usecase}
+The diagram below shows the components within the system and how they connect. The components that this project will aim on building include a user interface, an alternative text generation ML model, a session history manager. Furthermore, these components will utilize or communicate with a screen reader software, McMaster Authentication system and external AI/ML Frameworks. 
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/Product_Boundary_Diagram.jpg}
+    \caption{Product Boundary Diagram}
+    \label{img:usecase}
 \end{figure}
 
 \subsection{Product Use Case Table}
@@ -924,6 +919,18 @@ inputs and outputs to the system and the related requirements.
     {\bf Fit Criterion:} Users can upload images to the system and
     generate alternative text in 5 steps or fewer. \\
     {\bf Priority:} High
+\item \emph{The system interface must be easy for users to remember how to use after not using it for some time.}\\[2mm] 
+    {\bf Rationale:} Users should be able to quickly recall how to use the system without needing to relearn the features. An intuitive design will reduce the Gulf of Execution by making it easier for returning users to find and use key features.  \\
+    {\bf Fit Criterion:} Users who have not used the system in a month, can successfully login, upload an image and generate alternative text within 5 minutes, without needing any assistance. \\
+    {\bf Priority:} Medium
+\item \emph{The system interface must provide users with clear and immediate feedback for all actions.}\\[2mm] 
+    {\bf Rationale:} Providing the users with feedback ensures they understand the outcome of their actions and whether they are using the system correctly. This reduces the Gulf of Evaluation as it makes users more confident while using the system. \\
+    {\bf Fit Criterion:} The system provides textual feedback within 1 second after a user interaction, such as uploading an image.  \\
+    {\bf Priority:} High 
+\item \emph{The system interface must provide clear instructions, prevent common errors and allow users to easily correct them.}\\[2mm] 
+    {\bf Rationale:} Providing easy to follow instructions will help ensure that users can easily use the system features and prevent errors. Additionally, if a user makes a mistake, they should easily be able to revert it.  \\
+    {\bf Fit Criterion:} In user testing, at least 80\% of users can complete tasks without errors. When a user error occurs, the system explains the issue and how to recover within 2 seconds.\\
+    {\bf Priority:} High 
   \item \emph{The system interface must be easy for users to remember
     how to use after not using it for some time.}\\[2mm]
     {\bf Rationale:} Users should be able to quickly recall how to
@@ -1890,6 +1897,9 @@ for the current project, however, may be valuable for future updates.
 \end{itemize}
 
 \section{Ideas for Solution}
+This section discusses potential ways to achieve some of the functionality discussed throughout this report, 
+including image upload and processing, alternative text generation and session history. 
+These ideas have been documented so they can be referenced later during development.\\
 This section discusses potential ways to acheive some of the
 functionality discussed throughout this report,
 including image upload and processing, alternative text generation
