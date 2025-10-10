@@ -1,4 +1,5 @@
-% THIS DOCUMENT IS FOLLOWS THE VOLERE TEMPLATE BY Suzanne Robertson and James Robertson
+% THIS DOCUMENT IS FOLLOWS THE VOLERE TEMPLATE BY Suzanne Robertson
+% and James Robertson
 % ONLY THE SECTION HEADINGS ARE PROVIDED
 %
 % Initial draft from https://github.com/Dieblich/volere
@@ -23,12 +24,13 @@
 
 
 \hypersetup{
-    bookmarks=true,         % show bookmarks bar?
-      colorlinks=true,      % false: boxed links; true: colored links
-    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
-    citecolor=green,        % color of links to bibliography
-    filecolor=magenta,      % color of file links
-    urlcolor=cyan           % color of external links
+  bookmarks=true,         % show bookmarks bar?
+  colorlinks=true,      % false: boxed links; true: colored links
+  linkcolor=red,          % color of internal links (change box color
+  % with linkbordercolor)
+  citecolor=green,        % color of links to bibliography
+  filecolor=magenta,      % color of file links
+  urlcolor=cyan           % color of external links
 }
 
 \newcommand{\lips}{\textit{Insert your content here.}}
@@ -38,10 +40,11 @@
 
 \begin{document}
 
-\title{Software Requirements Specification for \progname: subtitle describing software} 
+\title{Software Requirements Specification for \progname: subtitle
+describing software}
 \author{\authname}
 \date{\today}
-	
+
 \maketitle
 
 ~\newpage
@@ -66,11 +69,11 @@ Symbol & 1.1 \\
 \section*{Revision History}
 
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\textbf{Date}} & {\textbf{Version}} & {\textbf{Notes}}\\
-\midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
-\bottomrule
+  \toprule {\textbf{Date}} & {\textbf{Version}} & {\textbf{Notes}}\\
+  \midrule
+  Date 1 & 1.0 & Notes\\
+  Date 2 & 1.1 & Notes\\
+  \bottomrule
 \end{tabularx}
 
 ~\\
@@ -146,22 +149,179 @@ Relevant Standards and Reference Documents:
 
 \lips
 \section{Stakeholders}
+The project stakeholders consist of people who have a need or
+interest, whether direct or indirect, for alternative text generation
+for visual, idle
+content (such as images or diagrams). These stakeholders will
+influence and be affected by the
+project's development decisions and progress. To meet user
+needs, it is vital to understand the stakeholder roles and expectations.
+\par First, this section introduces the client, customer and other
+stakeholders involved in this project. Then, the product users are
+described, specifically the hands-on users of the project. Finally,
+personas, priority levels and anticipated
+participation levels are listed for each stakeholder.
 \subsection{Client}
-\lips
+This project's client is Ms. Jingchuan Sui who works as a Media Lab
+Specialist Supervisor at the Faculty of Engineering, McMaster
+University. As this project's supervisor, her main role is to provide
+guidance and voice any concerns during the development phase with her
+technical and domain expertise. She will be the main source for
+setting requirements while also being directly involved in the
+development of this project, providing feedback and opinions on the
+Human-Computer interface components.
 \subsection{Customer}
-\lips
+The customers of this product are McMaster users, specifically,
+McMaster students, staff and teaching instructors who are directly
+involved in learning from course content or making them accessible as per the
+Accessibility for Ontarians with Disabilities Act (AODA). In other
+words, McMaster University stakeholders who benefit directly from
+accessible course content. For
+example, primary customers can include students who use a screen reader for
+learning purposes or
+a teaching assistant who is making a course's content AODA compliant.
+Furthermore, under her
+position at McMaster University, Ms. Sui can also be considered a
+customer, as she aids in course content remediation and thus, is also
+one of the intended end-users.
+\par For development, Group 22 is tailoring the solution to the
+McMaster demographic in line with Ms. Sui’s requirements. However,
+the product has the potential to support any users who require
+alternative text generation for visual content. Feedback from
+McMaster stakeholders will be prioritized to maintain a clear and
+manageable scope.
 \subsection{Other Stakeholders}
-\lips
+This subsection discusses other groups that are indirectly impacted
+or who contribute to the ecosystem of accessibility, content
+creation, and AODA compliance.
+\subsubsection {Faculty of Engineering Instructors}
+This group consists of professors and lecturers responsible for
+creating and maintaining
+course content. They may benefit from automated alternative text generation
+to ensure their teaching materials are accessible.
+\subsubsection {Teaching Assistants (TAs)}
+As part of their work, TAs are often responsible for preparing,
+modifying, and uploading course
+content. They are stakeholders as they could use the system to
+simplify accessibility compliance.
+\subsubsection {Accessibility Services Office at McMaster}
+This group includes staff members who oversee accessibility
+compliance and provide
+accommodations for students. They have a strong interest in ensuring
+tools meet AODA standards.
+\subsubsection {McMaster IT Services / Media Production Services}
+These teams may be involved in system integration, technical support,
+and maintenance of the product within the university’s digital infrastructure.
+\subsubsection {Students with Accessibility Needs}
+These students are those who may not be primary testers but are
+indirectly impacted
+by improved accessibility of course materials.
 \subsection{Hands-On Users of the Project}
-\lips
+\subsubsection{Students with Accessibility Needs}
+In some cases, students who use screen readers may provide feedback
+loops to improve generated alternative text. While they are customers, they
+may also be “hands-on” users if they test or adjust alt text themselves.
+\subsubsection{Teaching Staff}
+This group consists of TAs and instructors. As mentioned above, TAs
+Frequently upload, adapt, and remediate course content. They would be
+interacting directly with the tool to generate and refine alt text.
+On the other hand, some instructors (especially those who prepare
+their own slides, diagrams, or assignments) would use the system to
+add or edit alternative text.
 \subsection{Personas}
-\lips
+\subsubsection*{Persona: Alice Bayes}
+\textbf{Age:} 27 \\
+\textbf{Job Title:} Teaching Assistant at McMaster University\\
+\textbf{Education:} Bachelor's in History\\
+\textbf{Work Environment:} Alice works under several teaching
+instructors to help deliver course content to students. She is in
+charge of marking assignments and has recently been tasked with
+auditing then remediating any inaccessible learning content. \\
+\textbf{Professional Background:} Alice graduated two years ago, and
+as part of her undergraduate career, she has experience in working
+with students with disabilities. She is trained on making content
+accessible and AODA compliant.\\[2mm]
+\textbf{Need:} With so many courses to grade student work for, Alice
+needs a tool that can easily and quickly generate content for her to
+use as alternative text while she can ensure that her boss' teaching
+content meets AODA compliance.\\
+\textbf{Challenges:} Balancing her work and life has been difficult
+as there are multiple images per document, and several documents per
+course. She is overwhelmed with the amount of grading she has to do
+on top of manually writing alternative text for over 50 images.
+
+\subsubsection*{Persona: Chetan Dakshesh}
+\textbf{Age:} 20 \\
+\textbf{Job Title:} Chetan is a student at McMaster University.\\
+\textbf{Education:} He is currently pursuing a Bachelor's in
+Electrical Engineering\\
+\textbf{Work Environment:} Chetan has a super busy course load with
+six courses and volleyball club!\\
+\textbf{Professional Background:} \\[2mm]
+\textbf{Need:} With so many courses and volleyball practice to keep
+up with, Chetan is finding it hard to keep track of course content.
+Furthermore, through his screen reader, he has picked up that there
+is no alternative text generated for several diagrams in a course he
+is taking. These diagrams are vital to his learning experience but he
+has little clue on what they indicate. \\
+\textbf{Challenges:} Using large language models (LLMs) such as
+Chat-GPT doesn't work for him as the text generated is too generic
+and lacks substance. Chetan needs a tool that can effectively
+describe the diagram to him while staying relevant to the course material.
+
+\subsubsection*{Persona: Eyad Fahim}
+\textbf{Age:} 40 \\
+\textbf{Job Title:} Professor at McMaster University\\
+\textbf{Education:} Doctor of Philosophy (PhD) in Engineering\\
+\textbf{Work Environment:} Eyad works on a fast paced work
+environment, connecting with over 100 students.
+\textbf{Professional Background:} With over 20 years of experience both in
+the workforce and academic, Eyad loves to teach the next generation
+of leaders about various engineering techniques.\\[2mm]
+\textbf{Need:} With the goal to
+celebrate students of experiences, Eyad is looking for help to make
+his teaching content accessible for all.\\
+\textbf{Challenges:} Eyad needs a fast tool that can help gap the
+accessibility knowledge he lacks. He wants to ensure all students can
+learn from his materials with little to no barriers, including
+alternative text but he has no idea how to get started.
 \subsection{Priorities Assigned to Users}
-\lips
+\textbf{Primary users:}
+\begin{itemize}
+  \item Students with accessibility needs
+  \item Ms. Jingchuan Sui
+  \item Teaching Staff
+\end{itemize}
+\textbf{Secondary users:}
+\begin{itemize}
+  \item Accessibility Services Office at McMaster
+  \item McMaster IT/Media Production Services
+\end{itemize}
 \subsection{User Participation}
-\lips
+During the development process, the requirements will be gathered
+mainly from Ms. Sui. During testing phase, Group 22 will conduct
+usability testing to ensure AODA compliance and to further refine the product.
 \subsection{Maintenance Users and Service Technicians}
-\lips
+For this project, maintenance activities may involve updating
+alternative text generation models, fixing bugs, or upgrading dependencies.
+\subsubsection*{Expected Maintenance Users and Roles}
+\begin{itemize}
+  \item \textbf{McMaster IT Services / Media Production Services} \\
+    These teams may oversee deployment, integration with
+    institutional systems, and technical support. They require access
+    to configuration tools, diagnostic information, and documentation
+    for updates or troubleshooting.
+  \item \textbf{Accessibility Services Office Staff} \\
+    Although initially secondary stakeholders, some staff may
+    contribute to iterative refinement of alt-text generation
+    accuracy or compliance updates. Their participation may prompt
+    system adjustments or patches.
+  \item \textbf{Development Team (Group 22) or Future Maintainership Team} \\
+    During initial deployment and handover, the development team or a
+    designated successor group may perform updates to improve
+    usability, resolve technical issues, or adapt to new
+    accessibility standards.
+\end{itemize}
 
 \section{Mandated Constraints}
 \subsection{Solution Constraints}
@@ -903,14 +1063,65 @@ These requirements ensure the Reading4All system remains maintainable, well-supp
 \end{itemize}
 
 \section{Cultural Requirements}
-\subsection{Cultural Requirements}
-\lips
+The following list conists of cultural requirements the system shall follow:
+\begin{itemize}
+  \item[\textbf{CR 1.}] \textit{The system shall generate alternative
+      text using neutral and inclusive language appropriate for
+    academic environments.}\\
+    \textbf{Rationale:} Ensures that generated content is respectful
+    to diverse cultural and educational backgrounds.\\
+    \textbf{Fit Criterion:} Generated alt text contains no culturally
+    biased, exclusionary, or inappropriate terminology.\\
+    \textbf{Priority:} High
+
+  \item[\textbf{CR 2.}] \textit{The system shall avoid using
+      culturally specific references unless the visual content
+    explicitly requires it.}\\
+    \textbf{Rationale:} Prevents misinterpretation and maintains
+    accessibility for a wide audience.\\
+    \textbf{Fit Criterion:} Alt text focuses on visual description
+    and context without unnecessary cultural assumptions.\\
+    \textbf{Priority:} Medium
+
+  \item[\textbf{CR 3.}] \textit{The system shall use professional and
+    educationally appropriate tone in all generated content.}\\
+    \textbf{Rationale:} Maintains usability across academic
+    departments and contexts.\\
+    \textbf{Fit Criterion:} Outputs remain formal, non-colloquial,
+    and context-relevant.\\
+    \textbf{Priority:} Medium
+\end{itemize}
 
 \section{Compliance Requirements}
 \subsection{Legal Requirements}
-\lips
+\begin{itemize}
+  \item[\textbf{CR-LR 1.}] \textit{The system shall comply with AODA
+    standards for alternative text generation.}\\
+    \textbf{Rationale:} Ensures the tool supports institutional
+    accessibility requirements and legal obligations.\\
+    \textbf{Fit Criterion:} All generated alt text meets WCAG 2.1
+    Level AA criteria for accuracy, clarity, and relevance.\\
+    \textbf{Priority:} High
+\end{itemize}
 \subsection{Standards Compliance Requirements}
-\lips
+\begin{itemize}
+  \item[\textbf{CR-SCR 1.}] \textit{The system shall follow
+      institutional privacy and data-handling guidelines for uploaded
+    teaching materials.}\\
+    \textbf{Rationale:} Prevents unauthorized distribution or
+    mishandling of academic content.\\
+    \textbf{Fit Criterion:} No files are stored beyond active use
+    unless explicitly authorized; logs exclude proprietary content.\\
+    \textbf{Priority:} High
+
+  \item[\textbf{CR-SCR 2.}] \textit{The system shall provide verifiable
+    documentation or statements of compliance upon request.}\\
+    \textbf{Rationale:} Facilitates audits, approvals, and
+    integration into university workflows.\\
+    \textbf{Fit Criterion:} A compliance overview document or help
+    section is available to stakeholders.\\
+    \textbf{Priority:} Medium
+\end{itemize}
 
 \section{Open Issues}
 This section outlines unresolved questions and decisions that may impact the overall success of the system.
@@ -1036,9 +1247,42 @@ By adopting this structured development plan, the team will ensure that Reading4
 
 \section{Migration to the New Product}
 \subsection{Requirements for Migration to the New Product}
-\lips
+\begin{itemize}
+  \item[\textbf{MNP-RMNP 1.}] \textit{The system shall support a
+      phased implementation to allow gradual adoption while minimizing
+    disruptions.}\\
+    \textbf{Rationale:} Reduces organizational risk and allows
+    controlled testing during rollout.\\
+    \textbf{Fit Criterion:} Each phase is deployed and validated
+    independently before progressing to the next.\\
+    \textbf{Priority:} High
+
+  \item[\textbf{MNP-RMNP 2.}] \textit{The organization shall operate
+      the new system in parallel with the old product for a defined
+    transition period.}\\
+    \textbf{Rationale:} Ensures continuity and confirms correct
+    operation before full cutover.\\
+    \textbf{Fit Criterion:} Parallel operation lasts until all
+    critical functions pass acceptance testing.\\
+    \textbf{Priority:} High
+
+  \item[\textbf{MNP-RMNP 3.}] \textit{The system shall provide
+    procedures and tools for manual backup during transition.}\\
+    \textbf{Rationale:} Maintains operational stability during migration.\\
+    \textbf{Fit Criterion:} Backup processes are documented, tested,
+    and accessible to staff.\\
+    \textbf{Priority:} Medium
+
+  \item[\textbf{MNP-RMNP 4.}] \textit{The transition plan shall
+    identify and schedule major components and release phases.}\\
+    \textbf{Rationale:} Guides project planning and resource allocation.\\
+    \textbf{Fit Criterion:} A migration timeline with milestones and
+    dependencies is documented.\\
+    \textbf{Priority:} Medium
+\end{itemize}
+
 \subsection{Data That Has to be Modified or Translated for the New System}
-\lips
+This section does not apply to this project as there is no current system to replace, thus, no data at all.
 
 \section{Costs}
 
@@ -1153,3 +1397,4 @@ Accessed: Oct.~9,~2025. [Online]. Available:
 \end{hangparas}
 
 \end{document}
+
