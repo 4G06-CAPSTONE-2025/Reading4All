@@ -5,11 +5,12 @@
 \usepackage{hyperref}
 
 \hypersetup{
-    colorlinks=true,       % false: boxed links; true: colored links
-    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
-    citecolor=green,        % color of links to bibliography
-    filecolor=magenta,      % color of file links
-    urlcolor=cyan           % color of external links
+  colorlinks=true,       % false: boxed links; true: colored links
+  linkcolor=red,          % color of internal links (change box color
+  % with linkbordercolor)
+  citecolor=green,        % color of links to bibliography
+  filecolor=magenta,      % color of file links
+  urlcolor=cyan           % color of external links
 }
 
 \title{Hazard Analysis\\\progname}
@@ -31,16 +32,16 @@
 \pagenumbering{roman}
 
 \begin{table}[hp]
-\caption{Revision History} \label{TblRevisionHistory}
-\begin{tabularx}{\textwidth}{llX}
-\toprule
-\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
-\midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
-\bottomrule
-\end{tabularx}
+  \caption{Revision History} \label{TblRevisionHistory}
+  \begin{tabularx}{\textwidth}{llX}
+    \toprule
+    \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
+    \midrule
+    Date1 & Name(s) & Description of changes\\
+    Date2 & Name(s) & Description of changes\\
+    ... & ... & ...\\
+    \bottomrule
+  \end{tabularx}
 \end{table}
 
 ~\newpage
@@ -65,27 +66,112 @@ hazards.}
 \section{System Boundaries and Components}
 
 \wss{Dividing the system into components will help you brainstorm the hazards.
-You shouldn't do a full design of the components, just get a feel for the major
-ones.  For projects that involve hardware, the components will typically include
-each individual piece of hardware.  If your software will have a database, or an
+  You shouldn't do a full design of the components, just get a feel
+  for the major
+  ones.  For projects that involve hardware, the components will
+  typically include
+  each individual piece of hardware.  If your software will have a
+  database, or an
 important library, these are also potential components.}
 
+\subsection{System Overview}
+The system is a web-based AI tool that generates alternative text
+(alt text) for uploaded images or figures
+and integrated with screen readers to improve accessibility for
+visually impaired users.
+\subsection{System Boundaries}
+\begin{itemize}
+  \item \textbf{Internal Components:} Alternative Text Generation
+    Machine Learning (ML) Model, User Interface, Session History Manager
+  \item \textbf{External Components:} McMaster Authentication System,
+    External AI/ML Frameworks, Screen Reader Software
+\end{itemize}
+\subsection{System Components}
+\begin{enumerate}
+  \item \textbf{Alt Text Generation ML Model}
+    \begin{itemize}
+      \item \textbf{Purpose:} To automatically generate accurate and
+        descriptive alternative text for uploaded images using machine learning.
+      \item \textbf{Key Functions:}
+        \begin{itemize}
+          \item Process image inputs received from the backend and
+            extract key visual features.
+          \item Generate contextually relevant text descriptions.
+          \item Return the generated alternative text to the backend
+            to display to the user interface.
+        \end{itemize}
+    \end{itemize}
+  \item \textbf{User Interface}
+    \begin{itemize}
+      \item \textbf{Purpose:} To serve as the primary interaction
+        point between the user and the system and allow users to
+        upload images and view generated alt text.
+      \item \textbf{Key Functions:}
+        \begin{itemize}
+          \item Enable users to upload images through an accessible
+            web interface.
+          \item Display generated alt text and allow users to edit,
+            copy, and download the text.
+          \item Provide features that are accessible and complies
+            with the Web Content Accessibility Guidelines (WCAG) 2.1 standards.
+          \item Communicates user requests and display outputs from the backend.
+        \end{itemize}
+    \end{itemize}
+  \item \textbf{Session History Manager}
+    \begin{itemize}
+      \item \textbf{Purpose:} To ensure the continuity of the current
+        session and manage user data during active use of the system.
+      \item \textbf{Key Functions:}
+        \begin{itemize}
+          \item Track unique user sessions throughout interaction
+            with the web application.
+          \item Store previously uploaded images and generated
+            alternative text for the current session to allow users
+            to view history.
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
 \section{Critical Assumptions}
+This section documents the assumptions made during the hazard analysis of
+\progname{} (Reading4All). The number of assumptions is kept to a minimum
+to reduce the chance of overlooking potential hazards. Where assumptions
+are made, they set clear boundaries for the analysis and define the
+conditions under which the system is expected to operate safely.
 
-\wss{These assumptions that are made about the software or system.  You should
-minimize the number of assumptions that remove potential hazards.  For instance,
-you could assume a part will never fail, but it is generally better to include
-this potential failure mode.}
+\begin{itemize}
+  \item \textbf{Assumption 1: Input Integrity.} All image files provided
+    to the system are assumed to be valid image formats and not corrupted
+    or maliciously constructed to exploit parsing vulnerabilities.
+
+  \item \textbf{Assumption 2: Standards Stability.} Accessibility
+    guidelines (WCAG 2.1, AODA) are assumed to remain stable for the
+    operational lifetime of the system.
+
+  \item \textbf{Assumption 3: Model Performance.} The machine learning
+    models used for visual recognition and natural language generation are
+    assumed to operate within validated ranges of accuracy and reliability.
+
+  \item \textbf{Assumption 4: Human Oversight.} It is assumed that
+    alternative text generated by the system will undergo review by human
+    instructors, teaching assistants, or accessibility specialists before
+    being used in educational contexts.
+\end{itemize}
+
+Violations of these assumptions may introduce additional hazards outside
+the current scope of this analysis. Such cases would require
+re-evaluation of risks and system design updates.
 
 \section{Failure Mode and Effect Analysis}
 
-\wss{Include your FMEA table here. This is the most important part of this document.}
+\wss{Include your FMEA table here. This is the most important part of
+this document.}
 \wss{The safety requirements in the table do not have to have the prefix SR.
-The most important thing is to show traceability to your SRS. You might trace to
-requirements you have already written, or you might need to add new
+  The most important thing is to show traceability to your SRS. You
+  might trace to
+  requirements you have already written, or you might need to add new
 requirements.}
 \wss{If no safety requirement can be devised, other mitigation strategies can be
-entered in the table, including strategies involving providing additional
+  entered in the table, including strategies involving providing additional
 documentation, and/or test cases.}
 
 \section{Safety and Security Requirements}
@@ -95,7 +181,8 @@ rationale design process how and why to fake it.)}
 
 \section{Roadmap}
 
-\wss{Which safety requirements will be implemented as part of the capstone timeline?
+\wss{Which safety requirements will be implemented as part of the
+  capstone timeline?
 Which requirements will be implemented in the future?}
 
 \newpage{}
@@ -125,8 +212,39 @@ Which requirements will be implemented in the future?}
     the latter ones (ones you thought of while doing the Hazard Analysis), how
     did they come about?\\[1ex]
     \item Other than the risk of physical harm (some projects may not have any
+  \item What went well while writing this deliverable?
+  \item What pain points did you experience during this deliverable, and how
+    did you resolve them?
+  \item Which of your listed risks had your team thought of before this
+    deliverable, and which did you think of while doing this deliverable? For
+    the latter ones (ones you thought of while doing the Hazard Analysis), how
+    did they come about?
+  \item Other than the risk of physical harm (some projects may not have any
     appreciable risks of this form), list at least 2 other types of risk in
     software products. Why are they important to consider?\\[1ex]
+\end{enumerate}
+
+\textbf{Nawaal Fatima  - Reflection}
+\begin{enumerate}
+  \item \textbf{What went well while writing this deliverable?}\newline
+    I think the easiest part was coming up with the assumptions
+    themselves. From my summer work experience with Ms. Sui, I was already familiar with the main areas where Reading4All
+    could run into issues (inputs, standards, model accuracy, and
+    human review), it felt pretty natural to turn those into clear
+    assumptions. It also helped that the section didn’t need to be
+    super long, so I could keep it focused and to the point.
+
+  \item \textbf{What pain points did you experience during this
+    deliverable, and how did you resolve them?}\newline
+    The tricky part was figuring out how much detail to put in
+    without overcomplicating things. At first, I thought about
+    writing assumptions that basically ruled out certain failures,
+    but I realized that would go against the whole idea of hazard
+    analysis. To fix that, I stuck to assumptions that made sense for
+    defining boundaries without pretending hazards don’t exist.
+    Another small challenge was making the wording simple enough - so
+    I rewrote a couple of the assumptions to sound clearer and less
+    ``technical report'' heavy.
 \end{enumerate}
 
 \end{document}
