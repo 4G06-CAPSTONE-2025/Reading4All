@@ -67,11 +67,11 @@ MAINT\_TIME & 2 person-days/quarter \\
 COMPAT\_VERSIONS & 2 releases \\
 IMG\_SIZE\_BIG & 10 MEGABYTES (MB) \\
 IMG\_SIZE\_SMALL & 2 MEGABYTES \\
-TLS\_VERSION & 1.2 \\
+TLS\_VERSION & 1.2 \\ 
 FILE\_DELETE\_TIME & 60 s \\
 FILE\_TYPES & .png, .jpg, .jpeg, .svg, .webp \\
 NETWORK\_SOURCE\_POLICY & McMaster SSO tokens or IP ranges only\\
-TEAM\_SIZE & 4 students \\
+TEAM\_SIZE & 5 students \\
 HOURS\_RESEARCH & 40 hours \\
 HOURS\_BACKEND & 120 hours \\
 HOURS\_FRONTEND & 80 hours \\
@@ -92,14 +92,15 @@ USERS\_SUCCESS\_PERCENT & 80\%\\
 MAX\_ERROR\_RECOVER & 2 seconds \\
 LEARNING\_PERCENT & 90\% \\
 MAX\_LEARNING\_MINUTES & 5 minutes \\
-MIN\_COMPENSATION\_DOLLARS & \$100 cad \\ 
-MAX\_COMPENSATION\_DOLLARS & \$150 cad \\ 
+MIN\_COMPENSATION\_DOLLARS & \$100 CAD \\ 
+MAX\_COMPENSATION\_DOLLARS & \$150 CAD \\ 
 LATEST\_RELEASES\_NUM & 3 \\
 MOST\_COMMON\_SR & 3 \\
 
 
 \bottomrule
 \end{tabularx}
+
 
 ~\newpage
 
@@ -108,8 +109,7 @@ MOST\_COMMON\_SR & 3 \\
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
   \toprule {\textbf{Date}} & {\textbf{Version}} & {\textbf{Notes}}\\
   \midrule
-  Date 1 & 1.0 & Notes\\
-  Date 2 & 1.1 & Notes\\
+  October 10 2025 & 1.0 & Initial Version of SRS\\
   \bottomrule
 \end{tabularx}
 
@@ -128,15 +128,14 @@ stakeholders all have a shared understanding.
 
 This SRS provides a formal reference for Reading4All's design,
 implementation, testing, and validation. It establishes a clear link
-between user requirements, accessibility standards (such as AODA and
-WCAG 2.1), and system features that enable reliable alternative text
+between user requirements, accessibility standards, and system features that enable reliable alternative (alt) text
 generation for technical diagrams.
 
 \subsection{Scope of Project}
-Reading4All is an artificial intelligence/machine learning tool that
+Reading4All is an artificial intelligence (AI)/machine learning (ML) tool that
 provides detailed and contextually aware alternative text for
 complicated technical graphics, notably those found in postsecondary
-STEM course materials. The system combines machine vision and natural
+Science, Technology, Engineering, and Mathematics (STEM) course materials. The system combines machine learning and natural
 language generation models to assess diagram content, identify key
 parts, and provide text descriptions that are compatible with screen
 readers and assistive technology.
@@ -146,12 +145,12 @@ readers and assistive technology.
   \item Automate the creation of comprehensive and accurate
     alternative text for technical diagrams.
   \item Maintain compliance with the \textbf{Accessibility for
-    Ontarians with Disabilities Act (AODA)} and the \textbf{WCAG 2.1}
+    Ontarians with Disabilities Act (AODA)} and the \textbf{Web Content Accessibility Guidelines (WCAG) 2.1}
     accessibility standards.
   \item Improve the learning experiences and inclusion of students
-    with visual challenges in higher education.
+    with disabilities in higher education.
   \item Reduce the instructor effort and institutional costs related
-    to manual alt-text creation.
+    to manual alt text creation.
 \end{itemize}
 
 \noindent \textbf{Final deliverable includes:}
@@ -159,9 +158,8 @@ readers and assistive technology.
   \item A web-based or locally hosted interface for uploading images
     and creating alternative-texts.
   \item A backend service that combines AI models for diagram
-    analysis and generation of languages.
-  \item Structured output formats are suitable with systems for
-    learning management and screen readers.
+    analysis and alt text generation.
+  \item Generated alt text that are compatible with existing accessibility tools.
 \end{itemize}
 
 \subsection{Characteristics of Intended Reader}
@@ -176,7 +174,7 @@ This document is intended for:
     completion and design quality.
 \end{itemize}
 
-Readers should have an overall knowledge of software engineering, web
+\noindent Readers should have an overall knowledge of software engineering, web
 development, and fundamental machine learning techniques.
 Accessibility reviewers should understand digital accessibility
 principles and standards.
@@ -202,13 +200,12 @@ detailed requirements and supporting documentation.
 
 \subsection{System Context}
 
-\textbf{Inputs:} Technical diagrams or schematics (JPEG, JPG, and
-PNG) provided for alt-text generation. \\[2mm]
+\textbf{Inputs:} Technical diagrams or schematics provided for alt-text generation. \\[2mm]
 \textbf{Processing:} The system analyzes visual elements using a
 vision model and generates textual descriptions through a language
 model. \\[2mm]
 \textbf{Outputs:} Descriptive alternative text formatted for screen
-readers, including HTML \texttt{alt} attributes, text files, and ARIA labels.
+readers.
 
 \subsection{Document Conventions}
 
@@ -225,15 +222,14 @@ Relevant Standards and Reference Documents:
 \begin{itemize}
   \item Accessibility for Ontarians with Disabilities Act (AODA, 2005)
   \item Web Content Accessibility Guidelines (WCAG 2.1)
-  \item \textit{SRS Template}, McMaster University
+  \item \textit{SRS-Volere Template}, McMaster University
 \end{itemize}
 
-\lips
 \section{Stakeholders}
 The project stakeholders consist of people who have a need or
 interest, whether direct or indirect, for alternative text generation
-for visual, idle
-content (such as images or diagrams). These stakeholders will
+for visual and idle
+content such as images or diagrams. These stakeholders will
 influence and be affected by the
 project's development decisions and progress. To meet user
 needs, it is vital to understand the stakeholder roles and expectations.
@@ -250,22 +246,22 @@ guidance and voice any concerns during the development phase with her
 technical and domain expertise. She will be the main source for
 setting requirements while also being directly involved in the
 development of this project, providing feedback and opinions on the
-Human-Computer interface components.
+human-computer interface components.
 \subsection{Customer}
 The customers of this product are McMaster users, specifically,
 McMaster students, staff and teaching instructors who are directly
-involved in learning from course content or making them accessible as per the
-Accessibility for Ontarians with Disabilities Act (AODA). In other
+involved in learning from course content or making them accessible as per the AODA.
+ In other
 words, McMaster University stakeholders who benefit directly from
 accessible course content. For
 example, primary customers can include students who use a screen reader for
 learning purposes or
 a teaching assistant who is making a course's content AODA compliant.
-Furthermore, under her
-position at McMaster University, Ms. Sui can also be considered a
+Furthermore, under Ms. Sui's
+position at McMaster University, she can also be considered a
 customer, as she aids in course content remediation and thus, is also
-one of the intended end-users.
-\par For development, Group 22 is tailoring the solution to the
+one of the intended end-users.\\
+For development, Group 22 is tailoring the solution to the
 McMaster demographic in line with Ms. Sui’s requirements. However,
 the product has the potential to support any users who require
 alternative text generation for visual content. Feedback from
@@ -333,12 +329,12 @@ on top of manually writing alternative text for over 50 images.
 
 \subsubsection*{Persona: Chetan Dakshesh}
 \textbf{Age:} 20 \\
-\textbf{Job Title:} Chetan is a student at McMaster University.\\
+\textbf{Job Title:} Student at McMaster University.\\
 \textbf{Education:} He is currently pursuing a Bachelor's in
 Electrical Engineering\\
 \textbf{Work Environment:} Chetan has a super busy course load with
 six courses and volleyball club!\\
-\textbf{Professional Background:} \\[2mm]
+\textbf{Professional Background:} N/A\\[2mm]
 \textbf{Need:} With so many courses and volleyball practice to keep
 up with, Chetan is finding it hard to keep track of course content.
 Furthermore, through his screen reader, he has picked up that there
@@ -355,14 +351,14 @@ describe the diagram to him while staying relevant to the course material.
 \textbf{Job Title:} Professor at McMaster University\\
 \textbf{Education:} Doctor of Philosophy (PhD) in Engineering\\
 \textbf{Work Environment:} Eyad works on a fast paced work
-environment, connecting with over 100 students.
+environment, connecting with over 100 students.\\
 \textbf{Professional Background:} With over 20 years of experience both in
 the workforce and academic, Eyad loves to teach the next generation
 of leaders about various engineering techniques.\\[2mm]
 \textbf{Need:} With the goal to
 celebrate students of experiences, Eyad is looking for help to make
 his teaching content accessible for all.\\
-\textbf{Challenges:} Eyad needs a fast tool that can help gap the
+\textbf{Challenges:} Eyad needs a fast tool that can help close the gap in the
 accessibility knowledge he lacks. He wants to ensure all students can
 learn from his materials with little to no barriers, including
 alternative text but he has no idea how to get started.
@@ -397,7 +393,7 @@ alternative text generation models, fixing bugs, or upgrading dependencies.
     contribute to iterative refinement of alt-text generation
     accuracy or compliance updates. Their participation may prompt
     system adjustments or patches.
-  \item \textbf{Development Team (Group 22) or Future Maintainership Team} \\
+  \item \textbf{Development Team (Group 22) or Future Maintainance Team} \\
     During initial deployment and handover, the development team or a
     designated successor group may perform updates to improve
     usability, resolve technical issues, or adapt to new
@@ -553,9 +549,6 @@ Ontario law aimed at improving accessibility for people with disabilities by rem
 \paragraph*{API (Application Programming Interface)}
 Rules and protocols that allows different software programs to communicate with each other.
 
-\paragraph*{ARIA (Accessible Rich Internet Applications)}
-HTML attributes that allow interactions and widgets commonly used in applications to be passed to assistive technologies.
-
 \paragraph*{Backend}
 Server components handling processes of an application that users don't see.
 
@@ -643,7 +636,7 @@ Assistive technology that reads text aloud.
 \begin{itemize}
   \item This project is being developed for a Software Engineering
     Capstone course with a fixed timeline.
-  \item The solution is targeted primarily for laptop and/or desktop
+  \item The solution is targeted primarily for the last LATEST\_RELEASES\_NUM of laptop and/or desktop
     environments, but can later be extended for mobile platforms use.
 \end{itemize}
 \subsection{Business Rules}
@@ -743,14 +736,13 @@ their inputs and outputs, and the summary of the event.
     Upload \mbox{Images/Figures} & PNG/JPEG files & Uploaded File
     Reference & User uploads their files to generate alternative text \\
     \hline
-    \mbox{OCR Text} \mbox{Extraction} & Uploaded
+    Optical Character Recognition \mbox{OCR Text} \mbox{Extraction} & Uploaded
     \mbox{Images/Figures} & Detected Text & System reads the text
     embedded in the uploaded files \\
     \hline
     Generate \mbox{Alternative Text} & Uploaded
     \mbox{Images/Figures}, Extracted OCR, Model Parameters &
-    Generated Alt Text, Quality Metric from Machine Learning (ML)
-    Model & System analyzes the image and extracted OCR data to
+    Generated Alt Text & System analyzes the image and extracted OCR data to
     generate accurate alternative text \\
     \hline
     View History & \mbox{User Login,} Stored Uploads and Generated
