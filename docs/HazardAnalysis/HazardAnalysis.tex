@@ -68,8 +68,49 @@ hazards.}
 You shouldn't do a full design of the components, just get a feel for the major
 ones.  For projects that involve hardware, the components will typically include
 each individual piece of hardware.  If your software will have a database, or an
-important library, these are also potential components.}
+important library, these are also potential components.} 
 
+\subsection{System Overview}
+The system is a web-based AI tool that generates alternative text (alt text) for uploaded images or figures
+and integrated with screen readers to improve accessibility for visually impaired users.
+\subsection{System Boundaries}
+\begin{itemize}
+    \item \textbf{Internal Components:} Alternative Text Generation Machine Learning (ML) Model, User Interface, Session History Manager
+    \item \textbf{External Components:} McMaster Authentication System, External AI/ML Frameworks, Screen Reader Software
+\end{itemize}
+\subsection{System Components}
+\begin{enumerate}
+    \item \textbf{Alt Text Generation ML Model}
+    \begin{itemize}
+        \item \textbf{Purpose:} To automatically generate accurate and descriptive alternative text for uploaded images using machine learning.
+        \item \textbf{Key Functions:}
+        \begin{itemize}
+            \item Process image inputs received from the backend and extract key visual features.
+            \item Generate contextually relevant text descriptions.
+            \item Return the generated alternative text to the backend to display to the user interface.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{User Interface}
+    \begin{itemize}
+        \item \textbf{Purpose:} To serve as the primary interaction point between the user and the system and allow users to upload images and view generated alt text.
+        \item \textbf{Key Functions:}
+        \begin{itemize}
+            \item Enable users to upload images through an accessible web interface.
+            \item Display generated alt text and allow users to edit, copy, and download the text. 
+            \item Provide features that are accessible and complies with the Web Content Accessibility Guidelines (WCAG) 2.1 standards.
+            \item Communicates user requests and display outputs from the backend.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Session History Manager}
+    \begin{itemize}
+        \item \textbf{Purpose:} To ensure the continuity of the current session and manage user data during active use of the system.
+        \item \textbf{Key Functions:}
+        \begin{itemize}
+            \item Track unique user sessions throughout interaction with the web application.
+            \item Store previously uploaded images and generated alternative text for the current session to allow users to view history.
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
 \section{Critical Assumptions}
 
 \wss{These assumptions that are made about the software or system.  You should
@@ -117,6 +158,28 @@ Which requirements will be implemented in the future?}
     \item Other than the risk of physical harm (some projects may not have any
     appreciable risks of this form), list at least 2 other types of risk in
     software products. Why are they important to consider?
+\end{enumerate}
+
+\textbf{Casey Francine Bulaclac - Reflection}
+\begin{enumerate}
+    \item What went well while writing this deliverable? \\[1ex]
+    Writing this deliverable was organized as the team split the sections beforehand, so we had clear instructions on how and who is completing which sections. It 
+    was also helpful completing the SRS before this document as it helped define certain sections such as the System Boundaries and Components. 
+    \item What pain points did you experience during this deliverable, and how
+    did you resolve them?\\[1ex]
+    One challenge I ran into with this deliverable were keeping the language and details aligned with the SRS. Another challenge was having to finish one section before I could move on 
+    to others as some sections depended on previous ones. To address this, I double-checked the SRS and kept clear, timely communication with my team about what needed to be done and by when.
+    \item Which of your listed risks had your team thought of before this
+    deliverable, and which did you think of while doing this deliverable? For
+    the latter ones (ones you thought of while doing the Hazard Analysis), how
+    did they come about? \\
+    \item Other than the risk of physical harm (some projects may not have any
+    appreciable risks of this form), list at least 2 other types of risk in
+    software products. Why are they important to consider?\\[1ex]
+    One main risk in software products is in security and privacy. Situations such as unauthorized access and data leaks can harm users of the software and 
+    can violate laws. This can also lead to damage of the developer's reputation, as well as fines and lawsuits. Another risk in software products is failure to comply with 
+    certain required regulations. For example, violating licenses or accessibility rules can result in the delay or blocking of deployments, and may also lead 
+    to legal issues. 
 \end{enumerate}
 
 \end{document}
