@@ -55,8 +55,38 @@
 \begin{tabularx}{\textwidth}{|X|X|}
 \toprule {\textbf{Name}} & {\textbf{Value}}\\
 \midrule
-Symbol & 1.0 \\
-Symbol & 1.1 \\
+T\_ALT\_GEN\_SMALL & 3 seconds(s) \\
+T\_ALT\_GEN\_LARGE & 8 s \\
+T\_UI\_RESP & 300 miliseconds (ms) \\
+R\_SUFFICIENCY & 85\% \\
+R\_LENGTH & 90\% \\
+R\_USABILITY\_MEDIAN & 3 (rating) \\
+R\_USABILITY\_MIN & 2 (rating) \\
+T\_ERROR\_HANDLE & 2 s \\
+T\_RECOVERY & 5 s \\
+CAP\_CONCURRENT & 2 requests \\
+CAP\_STORAGE & 500 images/day \\
+MAINT\_TIME & 2 person-days/quarter \\
+COMPAT\_VERSIONS & 2 releases \\
+IMG\_SIZE\_BIG & 10 MEGABYTES (MB) \\
+IMG\_SIZE\_SMALL & 2 MEGABYTES \\
+TLS\_VERSION & 1.2 \\
+FILE\_DELETE\_TIME & 60 s \\
+FILE\_TYPES & .png, .jpg, .jpeg, .svg, .webp \\
+NETWORK\_SOURCE\_POLICY & McMaster SSO tokens or IP ranges only\\
+TEAM\_SIZE & 4 students \\
+HOURS\_RESEARCH & 40 hours \\
+HOURS\_BACKEND & 120 hours \\
+HOURS\_FRONTEND & 80 hours \\
+HOURS\_TESTING & 60 hours \\
+HOURS\_DOCS & 30 hours \\
+HOURS\_TOTAL & 330 hours \\
+HOURS\_PROJECT & 1,320 person-hours \\
+COST\_PER\_HOUR & \$20/hour \\
+COST\_TOTAL & \$26,400 CAD \\
+COST\_ACTUAL & \$0 CAD \\
+COST\_INCENTIVE\_MIN & \$100 CAD \\
+COST\_INCENTIVE\_MAX & \$150 CAD \\
 \bottomrule
 \end{tabularx}
 
@@ -391,15 +421,15 @@ The following diagram (Figure~\ref{fig:business_data_model}) illustrates the rel
       Package \\
       \hline
       Frontend User Interface (UI) &
-      Uploads images, shows generated alt text, and captures tester evaluations. Provides keyboard/ARIA navigation and WCAG~2.1 Level~A compliant views. &
+      Uploads images, shows generated alt text, and captures tester evaluations. Provides keyboard/ARIA navigation and WCAG~2.1 Level~AA compliant views. &
       Module \\
       \hline
       Backend Controller &
-      Orchestrates requests: validates inputs (images/type/size), routes to the Model Service, manages temporary/session storage, records events, and returns results to the UI. &
+      Orchestrates requests: validates inputs (images/type/size), routes to the Model Service, manages temporary/session storage, records events, and returns results to the user interface(UI). &
       Module \\
       \hline
       Model Service &
-      Machine-learning inference service that generates alt text from uploaded images and returns text plus timing/quality metadata. Exposed via an internal API. &
+      Machine-learning inference service that generates alt text from uploaded images and returns text plus timing/quality metadata. Exposed via an internal Application Programmable Interface(API). &
       External Service / Module \\
       \hline
       Session Storage Component &
@@ -415,7 +445,7 @@ The following diagram (Figure~\ref{fig:business_data_model}) illustrates the rel
       External Service Provider \\
       \hline
       Web Application (deployment) &
-      Deployed application entry point that exposes the Reading4All system to end users over web protocols such as Hyperlink Text Transfer Protocol; integrates Single Sign On (SS0) and serves the User/Application Interfaces. &
+      Deployed application entry point that exposes the Reading4All system to end users over web protocols such as Hypertext Transfer Protocol Secure (HTTPS); integrates Single Sign On (SS0) and serves the User/Application Interfaces. &
       Package / Deployment Target \\
       \hline
     \end{tabular}
@@ -646,19 +676,18 @@ The diagram below shows the components within the system and how they connect. T
     {\bf Priority:} High
 \end{enumerate}
 
-
 \section{Performance Requirements}
 
 \subsection{Speed and Latency Requirements}
 \begin{enumerate}[label=PR-SL \arabic*., wide=0pt, leftmargin=*]
 \item \emph{The tool shall generate alt-text for uploaded images within a reasonable time frame.}\\[2mm] 
     {\bf Rationale:} Ensures users, including those using assistive technologies, do not experience delays that hinder accessibility.\\
-    {\bf Fit Criterion:} The system shall return generated alt-text within \textbf{3 seconds} for images $\leq$ 2 MB and within \textbf{8 seconds} for images $\leq$ 10 MB under normal load conditions.\\
+    {\bf Fit Criterion:} The system shall return generated alt-text within T\_ALT\_GEN\_SMALL for images $\leq$ IMG\_SIZE\_SMALL and within T\_ALT\_GEN\_LARGE for images $\leq$ IMG\_SIZE\_BIG under normal load conditions.\\
     {\bf Priority:} High
 
 \item \emph{The web interface shall load and render accessibility components efficiently.}\\[2mm] 
     {\bf Rationale:} Improves user experience and responsiveness for screen-reader users and keyboard navigation.\\
-    {\bf Fit Criterion:} All interactive elements shall respond within \textbf{300 ms} of user input under typical conditions.\\
+    {\bf Fit Criterion:} All interactive elements shall respond within T\_UI\_RESP of user input under typical conditions.\\
     {\bf Priority:} Medium
 \end{enumerate}
 
@@ -669,7 +698,7 @@ The diagram below shows the components within the system and how they connect. T
     {\bf Fit Criterion:} Uploaded images are deleted from temporary storage for the user session unless explicitly saved by the user. The images will not be stored in any database without user consent.\\
     {\bf Priority:} High
 
-\item \emph{The tool shall not produce alt-text containing offensive, biased, or harmful language.}\\[2mm] 
+\item \emph{The tool shall not produce alt-text containing offensive, biased, or harmful language beyond the context of image.}\\[2mm] 
     {\bf Rationale:} Ensures ethical AI output and inclusivity.\\
     {\bf Fit Criterion:} 0\% of generated outputs shall contain content flagged by moderation filters as offensive or biased.\\
     {\bf Priority:} High
@@ -681,21 +710,21 @@ The diagram below shows the components within the system and how they connect. T
 \end{enumerate}
 
 \subsection{Precision or Accuracy Requirements}
-Please refer to Appendix - Evaluation Metrics Summary to understand the evaluation scales and metrics.
+Please refer to Appendix – Evaluation Metrics Summary (\ref{sec:evaluation-metrics}) to understand the evaluation scales and metrics.
 \begin{enumerate}[label=PR-PAR \arabic*., wide=0pt, leftmargin=*]
 \item \emph{The generated alt-text shall adequately describe the image content with minimal omissions or irrelevant details.}\\[2mm] 
     {\bf Rationale:} Ensures the description fulfills its accessibility purpose.\\
-    {\bf Fit Criterion:} At least \textbf{85\%} of outputs rated “Sufficient” or better on the sufficiency scale by testers.\\
+    {\bf Fit Criterion:} At least R\_SUFFICIENCY of outputs rated “Sufficient” or better on the sufficiency scale by testers.\\
     {\bf Priority:} High
 
 \item \emph{The alt-text shall maintain appropriate length and readability.}\\[2mm] 
     {\bf Rationale:} Prevents overly short or verbose outputs that reduce usability.\\
-    {\bf Fit Criterion:} $\geq$ 90\% of outputs rated “Proper Length” on the user-testing scale.\\
+    {\bf Fit Criterion:} $\geq$ R\_LENGTH of outputs rated “Proper Length” on the user-testing scale.\\
     {\bf Priority:} Medium
 
 \item \emph{The overall accessibility and usability of the alt-text shall be acceptable to testers.}\\[2mm] 
     {\bf Rationale:} Evaluates real-world effectiveness of generated descriptions.\\
-    {\bf Fit Criterion:} Median user rating $\geq$ 3 (“Mostly Accessible/Usable”) on the 0–3 or 0–4 scales; no outputs below 2.\\
+    {\bf Fit Criterion:} Median user rating $\geq$ R\_USABILITY\_MEDIAN (“Mostly Accessible/Usable”) on the 0–3 or 0–4 scales; no outputs below R\_USABILITY\_MIN.\\
     {\bf Priority:} Medium
 \end{enumerate}
 
@@ -703,12 +732,12 @@ Please refer to Appendix - Evaluation Metrics Summary to understand the evaluati
 \begin{enumerate}[label=PR-RFT \arabic*., wide=0pt, leftmargin=*]
 \item \emph{The system shall gracefully handle unsupported or corrupted image inputs.}\\[2mm] 
     {\bf Rationale:} Prevents crashes and maintains system stability.\\
-    {\bf Fit Criterion:} Invalid files trigger a clear error message within 2 seconds without interrupting service.\\
+    {\bf Fit Criterion:} Invalid files trigger a clear error message within T\_ERROR\_HANDLE without interrupting service.\\
     {\bf Priority:} High
 
 \item \emph{The backend shall recover automatically from isolated process failures.}\\[2mm] 
     {\bf Rationale:} Ensures continued operation without developer intervention.\\
-    {\bf Fit Criterion:} System recovers within 5 seconds after fault detection.\\
+    {\bf Fit Criterion:} System recovers within T\_RECOVERY after fault detection.\\
     {\bf Priority:} High
 \end{enumerate}
 
@@ -716,12 +745,12 @@ Please refer to Appendix - Evaluation Metrics Summary to understand the evaluati
 \begin{enumerate}[label=PR-CR \arabic*., wide=0pt, leftmargin=*]
 \item \emph{The system shall support limited concurrent usage suitable for a proof-of-concept deployment.}\\[2mm] 
     {\bf Rationale:} Demonstrates feasibility and reliability for initial testing without production-level scaling.\\
-    {\bf Fit Criterion:} Supports at least \textbf{2 simultaneous requests} with response times $\leq$ 10 seconds.\\
+    {\bf Fit Criterion:} Supports at least CAP\_CONCURRENT simultaneous requests with response times $\leq$ 10 seconds.\\
     {\bf Priority:} Medium
 
 \item \emph{Storage shall accommodate pilot testing datasets.}\\[2mm] 
     {\bf Rationale:} Ensures smooth prototype validation without capacity issues.\\
-    {\bf Fit Criterion:} The system can temporarily store metadata for up to \textbf{500 images per day} without data loss.\\
+    {\bf Fit Criterion:} The system can temporarily store metadata for up to CAP\_STORAGE without data loss.\\
     {\bf Priority:} Low
 \end{enumerate}
 
@@ -737,12 +766,12 @@ Please refer to Appendix - Evaluation Metrics Summary to understand the evaluati
 \begin{enumerate}[label=PR-LR \arabic*., wide=0pt, leftmargin=*]
 \item \emph{The codebase shall be maintainable and adaptable to updates in WCAG guidelines, software libraries, and ML frameworks.}\\[2mm] 
     {\bf Rationale:} Ensures long-term usability and compliance even after the pilot phase.\\
-    {\bf Fit Criterion:} Minor updates or migrations require $\leq$ 2 person-days per quarter.\\
+    {\bf Fit Criterion:} Minor updates or migrations require $\leq$ MAINT\_TIME.\\
     {\bf Priority:} Medium
 
 \item \emph{The prototype shall maintain compatibility with at least the next two software releases.}\\[2mm] 
     {\bf Rationale:} Ensures sustainability of the pilot for educational and testing purposes.\\
-    {\bf Fit Criterion:} Verified through annual testing on supported Python versions.\\
+    {\bf Fit Criterion:} Verified through annual testing on supported Python versions to ensure compatibility with COMPAT\_VERSIONS.\\
     {\bf Priority:} Low
 \end{enumerate}
 
@@ -859,7 +888,7 @@ These requirements ensure the Reading4All system remains maintainable, well-supp
 \begin{enumerate}[label=MS-SUP\arabic*., wide=0pt, leftmargin=*]
   \item \emph{The system shall allow users to report issues or feedback directly through the interface without revealing personal identifiers.}\\[2mm]
     {\bf Rationale:} Enables user-driven improvements while maintaining privacy.\\
-    {\bf Fit Criterion:} Feedback forms are logged securely without user PII and assigned unique issue IDs.\\
+    {\bf Fit Criterion:} Feedback forms are logged securely without user Person Interest Information (PII) and assigned unique issue IDs.\\
     {\bf Priority:} Medium
 
   \item \emph{The system shall log performance and error metrics for debugging and continuous improvement.}\\[2mm]
@@ -906,7 +935,7 @@ These requirements ensure the Reading4All system remains maintainable, well-supp
 
 \subsection{Integrity Requirements}
 \begin{enumerate}[label=SR-IR \arabic*., wide=0pt, leftmargin=*]
-\item \emph{All communication between the frontend, backend, and machine learning services shall use encrypted HTTPS (TLS 1.2 or higher).}\\[2mm] 
+\item \emph{All communication between the frontend, backend, and machine learning services shall use encrypted HTTPS (TLS TLS\_VERSION or higher).}\\[2mm] 
     {\bf Rationale:} Encryption prevents interception and tampering of sensitive data such as authentication tokens or image files.\\
     {\bf Fit Criterion:} All HTTP requests must be redirected to HTTPS; unencrypted requests are rejected by the web server.\\
     {\bf Priority:} High
@@ -921,7 +950,7 @@ These requirements ensure the Reading4All system remains maintainable, well-supp
 \begin{enumerate}[label=SR-PR \arabic*., wide=0pt, leftmargin=*]
 \item \emph{Uploaded images shall be deleted immediately after processing is complete.}\\[2mm] 
     {\bf Rationale:} Protects user privacy and ensures compliance with institutional data governance policies.\\
-    {\bf Fit Criterion:} Uploaded files are stored temporarily in memory or on a secure local directory and deleted within 60 seconds after alt-text generation.\\
+    {\bf Fit Criterion:} Uploaded files are stored temporarily in memory or on a secure local directory and deleted within FILE\_DELETE\_TIME after alt-text generation.\\
     {\bf Priority:} High
 
 \item \emph{Generated alt-text shall not contain personally identifiable information (PII) or sensitive content.}\\[2mm] 
@@ -947,15 +976,14 @@ These requirements ensure the Reading4All system remains maintainable, well-supp
 \begin{enumerate}[label=SR-IM \arabic*., wide=0pt, leftmargin=*]
 \item \emph{The system shall validate and sanitize all uploaded files to prevent malicious or unsupported file types.}\\[2mm] 
     {\bf Rationale:} Protects against injection attacks, corrupted uploads, or execution of non-image files.\\
-    {\bf Fit Criterion:} Only files with valid image types (.png, .jpg, .jpeg, .svg, .webp) are accepted; unsupported or script files are automatically rejected.\\
+    {\bf Fit Criterion:} Only files with valid image types FILE\_TYPES are accepted; unsupported or script files are automatically rejected.\\
     {\bf Priority:} High
 
 \item \emph{The system shall block access from networks or domains outside McMaster University’s infrastructure.}\\[2mm] 
     {\bf Rationale:} Restricting network access minimizes exposure to external threats during the proof-of-concept phase.\\
-    {\bf Fit Criterion:} Requests must originate from verified McMaster SSO tokens or IP ranges associated with university networks.\\
+    {\bf Fit Criterion:} Requests must originate from verified McMaster SSO tokens or IP ranges associated with university networks defined in NETWORK\_SOURCE\_POLICY.\\
     {\bf Priority:} High
 \end{enumerate}
-
 
 \section{Cultural Requirements}
 \subsection{Cultural Requirements}
@@ -1139,15 +1167,15 @@ The total cost of developing this project is primarily based on the effort contr
 \begin{enumerate}[label=C-CB \arabic*., wide=0pt, leftmargin=*]
 \item \emph{Development Effort}\\[2mm] 
     {\bf Rationale:} Represents the primary cost driver, measured in person-hours contributed by the student team and supervisor.\\
-    {\bf Fit Criterion:} Based on a team of four student developers and one faculty supervisor:
+    {\bf Fit Criterion:} Based on a team of TEAM\_SIZE student developers and one faculty supervisor:
     \begin{itemize}
-        \item Initial research, planning, and requirement analysis: \textbf{40 hours per team member.}
-        \item Model integration and backend implementation: \textbf{120 hours per team member.}
-        \item Frontend development and accessibility compliance: \textbf{80 hours per team member.}
-        \item Testing, debugging, and refinement: \textbf{60 hours per team member.}
-        \item Documentation and presentation preparation: \textbf{30 hours per team member.}
+        \item Initial research, planning, and requirement analysis: HOURS\_RESEARCH per team member.
+        \item Model integration and backend implementation: HOURS\_BACKEND per team member.
+        \item Frontend development and accessibility compliance: HOURS\_FRONTEND per team member.
+        \item Testing, debugging, and refinement: HOURS\_TESTING per team member.
+        \item Documentation and presentation preparation: HOURS\_DOCS per team member.
     \end{itemize}
-    {\bf Total Estimated Effort:} 330 hours per team member.\\
+    {\bf Total Estimated Effort:} HOURS\_TOTAL per team member.\\
     {\bf Priority:} High
 
 \item \emph{Tools and Software}\\[2mm] 
@@ -1157,7 +1185,7 @@ The total cost of developing this project is primarily based on the effort contr
 
 \item \emph{Testing Environment}\\[2mm] 
     {\bf Rationale:} Defines the testing setup and potential costs associated with user testing incentives.\\
-    {\bf Fit Criterion:} Testing is conducted on McMaster-hosted or open-source platforms. User testing sessions may include gift card incentives (\$100–\$150).\\
+    {\bf Fit Criterion:} Testing is conducted on McMaster-hosted or open-source platforms. User testing sessions may include gift card incentives between COST\_INCENTIVE\_MIN–COST\_INCENTIVE\_MAX.\\
     {\bf Priority:} Medium
 
 \item \emph{Hardware and Infrastructure}\\[2mm] 
@@ -1170,20 +1198,19 @@ The total cost of developing this project is primarily based on the effort contr
 \begin{enumerate}[label=C-EC \arabic*., wide=0pt, leftmargin=*]
 \item \emph{Total Development Effort}\\[2mm] 
     {\bf Rationale:} Quantifies total workload for the entire team in measurable units.\\
-    {\bf Fit Criterion:} Approximately \textbf{1,320 person-hours} across four team members (4 × 330 hours).\\
+    {\bf Fit Criterion:} Approximately HOURS\_PROJECT person-hours across four team members (TEAM\_SIZE × HOURS\_TOTAL).\\
     {\bf Priority:} High
 
 \item \emph{Notional Monetary Cost}\\[2mm] 
     {\bf Rationale:} Provides an academic-equivalent cost estimate for effort valuation.\\
-    {\bf Fit Criterion:} Assuming an average rate of \textbf{\$20/hour}, total notional cost is approximately \textbf{\$26,400 CAD}.\\
+    {\bf Fit Criterion:} Assuming an average rate of COST\_PER\_HOUR, total notional cost is approximately COST\_TOTAL.\\
     {\bf Priority:} Medium
 
 \item \emph{Actual Financial Cost}\\[2mm] 
     {\bf Rationale:} Since the project leverages university and open-source resources, there are no direct expenses.\\
-    {\bf Fit Criterion:} The actual monetary cost is \textbf{\$0 CAD}; all expenditure is in research and development effort.\\
+    {\bf Fit Criterion:} The actual monetary cost is COST\_ACTUAL; all expenditure is in research and development effort.\\
     {\bf Priority:} High
 \end{enumerate}
-
 \section{User Documentation and Training}
 \subsection{User Documentation Requirements}
 \begin{enumerate}
@@ -1224,6 +1251,7 @@ The model can learn from both images and text to solve various problems. The mod
 After the user is satisfied with the generated alternative text, the system will store the image and its final description in the browser's session storage as a JSON record. This allows the data to be stored temporarily and can easily be displayed to the user when they request their history. \\
 
 \section*{Appendix --- Evaluation Metrics Summary}
+\label{sec:evaluation-metrics}
 The following table summarizes the evaluation metrics that will be used to assess the quality and effectiveness of the alternative text generated by the Reading4All system. Each metric includes its scale type, acceptable range, and a brief description of its purpose.
 \begin{table}[H]
     \centering
