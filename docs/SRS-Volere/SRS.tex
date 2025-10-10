@@ -60,7 +60,10 @@ USERS\_SUCCESS\_PERCENT & 80\%\\
 MAX\_ERROR\_RECOVER & 2 seconds \\
 LEARNING\_PERCENT & 90\% \\
 MAX\_LEARNING\_MINUTES & 5 minutes \\
-COMPENSATION\_DOLLARS & \$150 cad \\
+MIN\_COMPENSATION\_DOLLARS & \$100 cad \\ 
+MAX\_COMPENSATION\_DOLLARS & \$150 cad \\ 
+LATEST\_RELEASES\_NUM & 3 \\
+MOST\_COMMON\_SR & 3 \\
 
 
 \bottomrule
@@ -409,7 +412,7 @@ alternative text generation models, fixing bugs, or upgrading dependencies.
     the latest and major operating systems to allow the product to be
     accessible to users, regardless of their laptop environment.\\
     {\bf Fit Criterion:} The product must successfully install and
-    operate on the latest three releases of macOS, Windows, and Linux,
+    operate on the latest LATEST\_RELEASES\_NUM releases of macOS, Windows, and Linux,
     verified through installation and functionality testing on each OS.\\
     {\bf Priority:} High.
 \end{enumerate}
@@ -475,13 +478,13 @@ coursework and study materials.
 \subsection{Budget Constraints}
 \begin{enumerate}[label=MD-BC \arabic*., wide=0pt, leftmargin=*]
   \item \emph{The project budget must include compensation for user
-      testers, set at maximum COMPENSATION\_DOLLARS canadian dollars per participant for two rounds
+      testers, set at maximum MAX\_COMPENSATION\_DOLLARS canadian dollars per participant for two rounds
     of usability testing.}\\[2mm]
     {\bf Rationale:} This is to ensure that user testers are
     compensated for their meaningful feedback,
     and that our testing aligns with ethical practices.\\
     {\bf Fit Criterion:} There must be record of participants being
-    compensated between the range of \$100 and \$150 for
+    compensated between the range of MIN\_COMPENSATION\_DOLLARS and MAX\_COMPENSATION\_DOLLARS for
     two rounds of testing. \\
     {\bf Priority:} High.
 \end{enumerate}
@@ -636,12 +639,12 @@ The business rules established among the team are as follows:
 \subsection{Assumptions}
 The following assumptions are made when using the product:
 \begin{itemize}
-  \item Users will be operating on the three latest releases of
+  \item Users will be operating on the LATEST\_RELEASES\_NUM latest releases of
     browsers including Chrome, Safari, and Firefox.
   \item Users will have access to stable internet connection when
     using the product.
   \item Users will have basic knowledge of installing and enabling web tools.
-  \item Users will be using the three most commonly used and latest
+  \item Users will be using the MOST\_COMMON\_SR most commonly used and latest
     versions of screen readers.
 \end{itemize}
 \section{The Scope of the Work}
@@ -923,7 +926,7 @@ inputs and outputs to the system and the related requirements.
     format is not compatible with screen readers, then students
     cannot benefit from the application output.\\
     {\bf Fit Criterion:} The alternative text output must be readable
-    by at least three commonly used screen readers.\\
+    by at least MOST\_COMMON\_SR commonly used screen readers.\\
     {\bf Priority:} High
   \item \emph{The system shall allow users to edit the outputted
     alternative texts.}\\[2mm]
