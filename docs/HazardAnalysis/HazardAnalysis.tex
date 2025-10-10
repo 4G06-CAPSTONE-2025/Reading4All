@@ -75,7 +75,7 @@ The system is a web-based AI tool that generates alternative text (alt text) for
 and integrated with screen readers to improve accessibility for visually impaired users.
 \subsection{System Boundaries}
 \begin{itemize}
-    \item \textbf{Internal Components:} Alternative Text Generation Machine Learning (ML) Model, User Interface, Session History Manager
+    \item \textbf{Internal Components:} Alternative Text Generation Machine Learning (ML) Model, User Interface, Session History Manager, Backend Server
     \item \textbf{External Components:} McMaster Authentication System, External AI/ML Frameworks, Screen Reader Software
 \end{itemize}
 \subsection{System Components}
@@ -110,6 +110,17 @@ and integrated with screen readers to improve accessibility for visually impaire
             \item Store previously uploaded images and generated alternative text for the current session to allow users to view history.
         \end{itemize}
     \end{itemize}
+    \item \textbf{Backend Server}
+    \begin{itemize}
+        \item \textbf{Purpose:} To manage communication between the user interface, session manager, and the machine learning model, and ensuring smooth data exchange between the components.
+        \item \textbf{Key Functions:}
+        \begin{itemize}
+            \item Receive and process image upload requests from the user interface.
+            \item Forward images to the Alt Text Generation ML Model for processing.
+            \item Retrieve generated alt text from the model and return it to the user interface. 
+            \item Interact with the Session Manager to store or retrieve session data such as previous uploads and generated results.
+        \end{itemize}
+    \end{itemize}
 \end{enumerate}
 \section{Critical Assumptions}
 
@@ -136,7 +147,7 @@ rationale design process how and why to fake it.)}
 
 \section{Roadmap}
 
-\wss{Which safety requirements will be implemented as part of the capstone timeline?
+\wss{Which safety requirements  will be implemented as part of the capstone timeline?
 Which requirements will be implemented in the future?}
 
 \newpage{}
