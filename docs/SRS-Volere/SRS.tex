@@ -394,15 +394,17 @@ The diagram below shows the components within the system and how they connect. T
       \hline
       \textbf{PUC\#} & \textbf{PUC Name} & \textbf{Actor(s)} & \textbf{Input \& Output(s)} & \textbf{Requirement} \\ 
       \hline 
-      PUC 1 & Login Using McMaster Credentials &  McMaster Student and Faculty , McMaster Authentication System & User Credentials (input), Authentication Results (output) & FR 7 \\
+      PUC 1 & Login Using McMaster Credentials &  McMaster Student and Faculty, McMaster Authentication System & User Credentials (input), Authentication Results (output) & FR 7 \\
       \hline 
       PUC 2 & Upload Image & McMaster Student and Faculty & JPEG or PNG (input), Image upload status (output) & FR 1, UHR-EUR 3 \\
       \hline 
       PUC 3 & Generate Alternative Text &  McMaster Student and Faculty, Alternative Text Generation Model & Uploaded image (input), Generated alternative text  & FR 2, FR 3\\
       \hline
-      PUC 4 & Copy or Download Text & McMaster Student and Faculty & User decision to copy or download (input), text copied to clipboard or downloaded & UHR-PIR 1\\ 
+      PUC 4 & Edit Alternative Text & McMaster Student and Faculty, System User Interface, Generated text (input), edited text displayed (output) & FR 4\\
       \hline
-      PUC 5 & View History of Inputted Images and their Alternative Text & McMaster Student and Faculty & User request to view history (input), Display of previously inputted images and their generated text within a session & FR 5\\
+      PUC 5 & Copy or Download Text & McMaster Student and Faculty & User decision to copy or download (input), text copied to clipboard or downloaded & UHR-PIR 1\\ 
+      \hline
+      PUC 6 & View History of Inputted Images and their Alternative Text & McMaster Student and Faculty & User request to view history (input), Display of previously inputted images and their generated text within a session & FR 5\\
       \hline
 \end{tabular}
 \end{table}
@@ -422,7 +424,7 @@ The diagram below shows the components within the system and how they connect. T
 \end{quote}
 \textbf{PUC 2: Upload Image }
 \begin{quote}
-\textbf{Trigger:} User selects "Upload Image" and chooses a file\\
+\textbf{Trigger:} User selects "Upload Image" and chooses a file.\\
 \textbf{Preconditions:}
 \begin{itemize}
   \item User successfully logged into the system.
@@ -444,12 +446,24 @@ The diagram below shows the components within the system and how they connect. T
 \textbf{Input:} User selection to generate alternative text\\
 \textbf{Output:} Generated alternative text is displayed to the user.
 \end{quote}
-\textbf{PUC 4: Copy or Download Generated Alternative Text }
+\textbf{PUC 4: Edit Generated Alternative Text}
+\begin{quote}
+\textbf{Trigger:} User decides to modify the generated alternative text before copying or downloading it.\\
+\textbf{Preconditions:}
+\begin{itemize}
+  \item System has successfully generated alternative text for an uploaded image.
+\end{itemize}
+\textbf{Actors:} McMaster Student or Faculty, System User Interface \\
+\textbf{Outcome:} The user edits and saves the updated alternative text. \\
+\textbf{Input:} User edits to the generated alternative text.\\
+\textbf{Output:} The edited alternative text is displayed to the user and stored within the session, to be copied or downloaded later.
+\end{quote}
+\textbf{PUC 5: Copy or Download Generated Alternative Text }
 \begin{quote}
 \textbf{Trigger:} User selects copy or download .txt after generating alternative text.\\
 \textbf{Preconditions:}
 \begin{itemize}
-  \item System has successfully generated alternative text.
+  \item System has successfully generated alternative text for an uploaded image.
   \item User is satisfied with generated alternative text and has made any desired changes. 
 \end{itemize}
 \textbf{Actors:} McMaster Student or Faculty. \\
@@ -457,7 +471,7 @@ The diagram below shows the components within the system and how they connect. T
 \textbf{Input:} User decision to copy or download.\\
 \textbf{Output:} Text is copied or downloaded as .txt file on the users device.
 \end{quote}
-\textbf{PUC 5: View History of Uploaded Images and Generated Alternative Text}
+\textbf{PUC 6: View History of Uploaded Images and Generated Alternative Text}
 \begin{quote}
 \textbf{Trigger:} User selects the view history option.\\
 \textbf{Preconditions:}
