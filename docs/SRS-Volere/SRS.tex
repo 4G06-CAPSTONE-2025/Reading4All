@@ -92,6 +92,10 @@ USERS\_SUCCESS\_PERCENT & 80\%\\
 MAX\_ERROR\_RECOVER & 2 seconds \\
 LEARNING\_PERCENT & 90\% \\
 MAX\_LEARNING\_MINUTES & 5 minutes \\
+MIN\_COMPENSATION\_DOLLARS & \$100 cad \\ 
+MAX\_COMPENSATION\_DOLLARS & \$150 cad \\ 
+LATEST\_RELEASES\_NUM & 3 \\
+MOST\_COMMON\_SR & 3 \\
 
 
 \bottomrule
@@ -440,7 +444,7 @@ alternative text generation models, fixing bugs, or upgrading dependencies.
     the latest and major operating systems to allow the product to be
     accessible to users, regardless of their laptop environment.\\
     {\bf Fit Criterion:} The product must successfully install and
-    operate on the latest three releases of macOS, Windows, and Linux,
+    operate on the latest LATEST\_RELEASES\_NUM releases of macOS, Windows, and Linux,
     verified through installation and functionality testing on each OS.\\
     {\bf Priority:} High.
 \end{enumerate}
@@ -506,13 +510,13 @@ coursework and study materials.
 \subsection{Budget Constraints}
 \begin{enumerate}[label=MD-BC \arabic*., wide=0pt, leftmargin=*]
   \item \emph{The project budget must include compensation for user
-      testers, set at maximum \$150 CAD per participant for two rounds
+      testers, set at maximum MAX\_COMPENSATION\_DOLLARS canadian dollars per participant for two rounds
     of usability testing.}\\[2mm]
     {\bf Rationale:} This is to ensure that user testers are
     compensated for their meaningful feedback,
     and that our testing aligns with ethical practices.\\
     {\bf Fit Criterion:} There must be record of participants being
-    compensated between the range of \$100 and \$150 for
+    compensated between the range of MIN\_COMPENSATION\_DOLLARS and MAX\_COMPENSATION\_DOLLARS for
     two rounds of testing. \\
     {\bf Priority:} High.
 \end{enumerate}
@@ -533,7 +537,106 @@ coursework and study materials.
 \section{Naming Conventions and Terminology}
 \subsection{Glossary of All Terms, Including Acronyms, Used by Stakeholders
 involved in the Project}
-\lips
+
+\paragraph*{Accuracy}
+The degree to which generated descriptions capture the image’s content correctly.
+
+\paragraph*{AI (artificial intelligence)}
+Techniques that enable computers to perform tasks that normally require human intelligence.
+
+\paragraph*{Alt Text (Alternative Text)}
+Textual description of non-text content such as images that allow accessibility tools such as screen readers to convey the content.
+
+\paragraph*{AODA (Accessibility for Ontarians with Disabilities Act)}
+Ontario law aimed at improving accessibility for people with disabilities by removing and preventing barriers when designing.
+
+\paragraph*{API (Application Programming Interface)}
+Rules and protocols that allows different software programs to communicate with each other.
+
+\paragraph*{ARIA (Accessible Rich Internet Applications)}
+HTML attributes that allow interactions and widgets commonly used in applications to be passed to assistive technologies.
+
+\paragraph*{Backend}
+Server components handling processes of an application that users don't see.
+
+\paragraph*{Benchmarking}
+The comparing of performance or quality of one's system against known systems or datasets.
+
+\paragraph*{Contrast Ratio}
+Luminance difference between text and background required by WCAG 2.1.
+
+\paragraph*{Dataset Bias}
+Systematic skew in training data that can harm fairness or accuracy of the model.
+
+\paragraph*{Edge Case}
+Uncommon input or scenario that the system must handle safely.
+
+\paragraph*{FIPPA (Freedom of Information and Protection of Privacy Act)}
+Ontario privacy law affecting the university data in the Authentication process.
+
+\paragraph*{Frontend}
+User interface in the browser that handles input, feedback, and accessibility features.
+
+\paragraph*{Git/Github}
+Version control and collaboration platform. 
+
+\paragraph*{HTTP/HTTPS}
+Web protocols in which HTTPS adds a transport layer security encryption for integrity and privacy.
+
+\paragraph*{Issue (Github)}
+Tracked unit of task, bug, or feature with discussion and linkage to commits in Github.
+
+\paragraph*{JAWS (Job Access with Speech)}
+A screen reader software available on Windows.
+
+\paragraph*{JSON (JavaScript Object Notation) / YAML (Yet Another Markup Language)}
+Human-readable data formats used for configs and API payloads.
+
+\paragraph*{Latency}
+Time from user action such as uploading an image to a system response or alt-text generation
+
+\paragraph*{Low Vision}
+Reduced level of vision that interferes with daily activities and is to be considered in designing the user interface and testing.
+
+\paragraph*{Manual Accessibility Testing}
+Human review or testing of user interface and alt text.
+
+\paragraph*{Modularity}
+Separating user interface, vision, language, and validation for maintainability.
+
+\paragraph*{NVDA (NonVisual Desktop Access)}
+A free screen reader available on Windows.
+
+\paragraph*{OCR (Optical Character Recognition)}
+Extracts embedded text in images or diagrams.
+
+\paragraph*{PII (Personally Identifiable Information)}
+Data that identifies a person and must not appear in outputs or logs for security.
+
+\paragraph*{Screen Magnifier}
+Assistive technology to enlarge screen content.
+
+\paragraph*{Screen Reader}
+Assistive technology that reads text aloud.
+
+\paragraph*{Session History}
+ Record of user uploads and generated alt text during the current session.
+
+ \paragraph*{Stakeholder}
+ Anyone affected by or influencing the system.
+
+ \paragraph*{Technical Diagram}
+ An informational visual used in post-secondary course materials. 
+
+ \paragraph*{TLS (Transport Layer Security)}
+ Protocol providing encryption and integrity.
+
+ \paragraph*{WCAG 2.1 (Web Content Accessibility Guidelines)}
+ International standard for accessible web content.
+
+ \paragraph*{WCAG Levels (A/AA/AAA)}
+ Different conformance tiers to WCAG 2.1 where Level AA is the target for the project.
+
 
 \section{Relevant Facts And Assumptions}
 \subsection{Relevant Facts}
@@ -568,12 +671,12 @@ The business rules established among the team are as follows:
 \subsection{Assumptions}
 The following assumptions are made when using the product:
 \begin{itemize}
-  \item Users will be operating on the three latest releases of
+  \item Users will be operating on the LATEST\_RELEASES\_NUM latest releases of
     browsers including Chrome, Safari, and Firefox.
   \item Users will have access to stable internet connection when
     using the product.
   \item Users will have basic knowledge of installing and enabling web tools.
-  \item Users will be using the three most commonly used and latest
+  \item Users will be using the MOST\_COMMON\_SR most commonly used and latest
     versions of screen readers.
 \end{itemize}
 \section{The Scope of the Work}
@@ -908,7 +1011,7 @@ inputs and outputs to the system and the related requirements.
     format is not compatible with screen readers, then students
     cannot benefit from the application output.\\
     {\bf Fit Criterion:} The alternative text output must be readable
-    by at least three commonly used screen readers.\\
+    by at least MOST\_COMMON\_SR commonly used screen readers.\\
     {\bf Priority:} High
   \item \emph{The system shall allow users to edit the outputted
     alternative texts.}\\[2mm]
