@@ -72,46 +72,62 @@ hazards.}
   typically include
   each individual piece of hardware.  If your software will have a
   database, or an
-important library, these are also potential components.} 
+important library, these are also potential components.}
 
 \subsection{System Overview}
-The system is a web-based AI tool that generates alternative text (alt text) for uploaded images or figures
-and integrated with screen readers to improve accessibility for visually impaired users.
+The system is a web-based AI tool that generates alternative text
+(alt text) for uploaded images or figures
+and integrated with screen readers to improve accessibility for
+visually impaired users.
 \subsection{System Boundaries}
 \begin{itemize}
-    \item \textbf{Internal Components:} Alternative Text Generation Machine Learning (ML) Model, User Interface, Session History Manager
-    \item \textbf{External Components:} McMaster Authentication System, External AI/ML Frameworks, Screen Reader Software
+  \item \textbf{Internal Components:} Alternative Text Generation
+    Machine Learning (ML) Model, User Interface, Session History Manager
+  \item \textbf{External Components:} McMaster Authentication System,
+    External AI/ML Frameworks, Screen Reader Software
 \end{itemize}
 \subsection{System Components}
 \begin{enumerate}
-    \item \textbf{Alt Text Generation ML Model}
+  \item \textbf{Alt Text Generation ML Model}
     \begin{itemize}
-        \item \textbf{Purpose:} To automatically generate accurate and descriptive alternative text for uploaded images using machine learning.
-        \item \textbf{Key Functions:}
+      \item \textbf{Purpose:} To automatically generate accurate and
+        descriptive alternative text for uploaded images using machine learning.
+      \item \textbf{Key Functions:}
         \begin{itemize}
-            \item Process image inputs received from the backend and extract key visual features.
-            \item Generate contextually relevant text descriptions.
-            \item Return the generated alternative text to the backend to display to the user interface.
+          \item Process image inputs received from the backend and
+            extract key visual features.
+          \item Generate contextually relevant text descriptions.
+          \item Return the generated alternative text to the backend
+            to display to the user interface.
         \end{itemize}
     \end{itemize}
-    \item \textbf{User Interface}
+  \item \textbf{User Interface}
     \begin{itemize}
-        \item \textbf{Purpose:} To serve as the primary interaction point between the user and the system and allow users to upload images and view generated alt text.
-        \item \textbf{Key Functions:}
+      \item \textbf{Purpose:} To serve as the primary interaction
+        point between the user and the system and allow users to
+        upload images and view generated alt text.
+      \item \textbf{Key Functions:}
         \begin{itemize}
-            \item Enable users to upload images through an accessible web interface.
-            \item Display generated alt text and allow users to edit, copy, and download the text. 
-            \item Provide features that are accessible and complies with the Web Content Accessibility Guidelines (WCAG) 2.1 standards.
-            \item Communicates user requests and display outputs from the backend.
+          \item Enable users to upload images through an accessible
+            web interface.
+          \item Display generated alt text and allow users to edit,
+            copy, and download the text.
+          \item Provide features that are accessible and complies
+            with the Web Content Accessibility Guidelines (WCAG) 2.1 standards.
+          \item Communicates user requests and display outputs from the backend.
         \end{itemize}
     \end{itemize}
-    \item \textbf{Session History Manager}
+  \item \textbf{Session History Manager}
     \begin{itemize}
-        \item \textbf{Purpose:} To ensure the continuity of the current session and manage user data during active use of the system.
-        \item \textbf{Key Functions:}
+      \item \textbf{Purpose:} To ensure the continuity of the current
+        session and manage user data during active use of the system.
+      \item \textbf{Key Functions:}
         \begin{itemize}
-            \item Track unique user sessions throughout interaction with the web application.
-            \item Store previously uploaded images and generated alternative text for the current session to allow users to view history.
+          \item Track unique user sessions throughout interaction
+            with the web application.
+          \item Store previously uploaded images and generated
+            alternative text for the current session to allow users
+            to view history.
         \end{itemize}
     \end{itemize}
 \end{enumerate}
@@ -188,6 +204,29 @@ Which requirements will be implemented in the future?}
   \item Other than the risk of physical harm (some projects may not have any
     appreciable risks of this form), list at least 2 other types of risk in
     software products. Why are they important to consider?
+\end{enumerate}
+
+\textbf{Nawaal Fatima  - Reflection}
+\begin{enumerate}
+  \item \textbf{What went well while writing this deliverable?}\newline
+    I think the easiest part was coming up with the assumptions
+    themselves. From my summer work experience with Ms. Sui, I was already familiar with the main areas where Reading4All
+    could run into issues (inputs, standards, model accuracy, and
+    human review), it felt pretty natural to turn those into clear
+    assumptions. It also helped that the section didn’t need to be
+    super long, so I could keep it focused and to the point.
+
+  \item \textbf{What pain points did you experience during this
+    deliverable, and how did you resolve them?}\newline
+    The tricky part was figuring out how much detail to put in
+    without overcomplicating things. At first, I thought about
+    writing assumptions that basically ruled out certain failures,
+    but I realized that would go against the whole idea of hazard
+    analysis. To fix that, I stuck to assumptions that made sense for
+    defining boundaries without pretending hazards don’t exist.
+    Another small challenge was making the wording simple enough - so
+    I rewrote a couple of the assumptions to sound clearer and less
+    ``technical report'' heavy.
 \end{enumerate}
 
 \end{document}
