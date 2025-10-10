@@ -657,22 +657,23 @@ images and figures.\\[1ex]
 
 \section{The Scope of the Product}
 \subsection{Product Boundary}
-The diagram below shows the components within the system and how they connect. The components that this project will aim on building include a user interface, an alternative text generation ML model, a session history manager. Furthermore, these components will utilize or communicate with a screen reader software, McMaster Authentication system and external AI/ML Frameworks. 
- \begin{figure}[H]
+\autoref{fig:product-boundary} below shows the components within the system and how they connect. The components that this project will aim on building include a user interface, an alternative text generation ML model, a session history manager. Furthermore, these components will utilize or communicate with a screen reader software, McMaster Authentication system and external AI/ML Frameworks. 
+\label{tab:product-boundary} 
+\begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/Product_Boundary_Diagram.jpg}
     \caption{Product Boundary Diagram}
-    \label{img:usecase}
+    \label{fig:product-boundary}
 \end{figure}
 
 \subsection{Product Use Case Table}
-\href{tab:product-use}{Table 2} summarizes the main product use cases
+\autoref{tab:product-use} summarizes the main product use cases
 for the systems. For each use case it describes the actors involved,
 inputs and outputs to the system and the related requirements.
-\label{tab:product-use}
 \begin{table}[H]
   \centering
-  \caption{Labels and Their Usage}
+  \caption{Product Use Case Table}
+  \label{tab:product-use}
   \begin{tabular}{|p{1.3cm}|p{2.5cm}|p{3cm}|p{4cm}|p{2.6cm}|}
     \hline
     \textbf{PUC\#} & \textbf{PUC Name} & \textbf{Actor(s)} &
@@ -680,7 +681,7 @@ inputs and outputs to the system and the related requirements.
     \hline
     PUC 1 & Login Using McMaster Credentials &  McMaster Student and
     Faculty , McMaster Authentication System & User Credentials
-    (input), Authentication Results (output) & FR 7 \\
+    (input), Authentication Results (output) & FR 6, SR-AR 1\\
     \hline
     PUC 2 & Upload Image & McMaster Student and Faculty & JPEG or PNG
     (input), Image upload status (output) & FR 1, UHR-EUR 3 \\
