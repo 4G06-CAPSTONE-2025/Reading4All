@@ -665,37 +665,49 @@ images and figures.\\[1ex]
 
 \section{The Scope of the Product}
 \subsection{Product Boundary}
-The diagram below shows the components within the system and how they connect. The components that this project will aim on building include a user interface, an alternative text generation ML model, a session history manager. Furthermore, these components will utilize or communicate with a screen reader software, McMaster Authentication system and external AI/ML Frameworks. 
- \begin{figure}[H]
+\autoref{fig:product-boundary} below shows the components within the system and how they connect. The components that this project will aim on building include a user interface, an alternative text generation ML model, a session history manager. Furthermore, these components will utilize or communicate with a screen reader software, McMaster Authentication system and external AI/ML Frameworks. 
+\label{tab:product-boundary} 
+\begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/Product_Boundary_Diagram.jpg}
     \caption{Product Boundary Diagram}
-    \label{img:usecase}
+    \label{fig:product-boundary}
 \end{figure}
 
 \subsection{Product Use Case Table}
-\href{tab:product-use}{Table 2} summarizes the main product use cases for the systems. For each use case it describes the actors involved, inputs and outputs to the system and the related requirements. 
+\autoref{tab:product-use} summarizes the main product use cases
+for the systems. For each use case it describes the actors involved,
+inputs and outputs to the system and the related requirements.
+\begin{table}[H]
+  \centering
+  \caption{Product Use Case Table}
   \label{tab:product-use}
-    \begin{table}[H]
-      \centering
-      \caption{Product Use Case Outlines}
-      \begin{tabular}{|p{1.3cm}|p{3.5cm}|p{3.5cm}|p{4cm}|p{2.8cm}|}
-      \hline
-      \textbf{PUC\#} & \textbf{PUC Name} & \textbf{Actor(s)} & \textbf{Input \& Output(s)} & \textbf{Requirement} \\ 
-      \hline 
-      PUC 1 & Login Using McMaster Credentials &  McMaster Student and Faculty, McMaster Authentication System & User Credentials (input), Authentication Results (output) & FR 7 \\
-      \hline 
-      PUC 2 & Upload Image & McMaster Student and Faculty & JPEG or PNG (input), Image upload status (output) & FR 1, UHR-EUR 3 \\
-      \hline 
-      PUC 3 & Generate Alternative Text &  McMaster Student and Faculty, Alternative Text Generation Model & Uploaded image (input), Generated alternative text  & FR 2, FR 3\\
-      \hline
-      PUC 4 & Edit Alternative Text & McMaster Student and Faculty, System User Interface, Generated text (input), edited text displayed (output) & FR 4\\
-      \hline
-      PUC 5 & Copy or Download Text & McMaster Student and Faculty & User decision to copy or download (input), text copied to clipboard or downloaded & UHR-PIR 1\\ 
-      \hline
-      PUC 6 & View History of Inputted Images and their Alternative Text & McMaster Student and Faculty & User request to view history (input), Display of previously inputted images and their generated text within a session & FR 5\\
-      \hline
-\end{tabular}
+  \begin{tabular}{|p{1.3cm}|p{2.5cm}|p{3cm}|p{4cm}|p{2.6cm}|}
+    \hline
+    \textbf{PUC\#} & \textbf{PUC Name} & \textbf{Actor(s)} &
+    \textbf{Input \& Output(s)} & \textbf{Requirement} \\
+    \hline
+    PUC 1 & Login Using McMaster Credentials &  McMaster Student and
+    Faculty , McMaster Authentication System & User Credentials
+    (input), Authentication Results (output) & FR 6, SR-AR 1\\
+    \hline
+    PUC 2 & Upload Image & McMaster Student and Faculty & JPEG or PNG
+    (input), Image upload status (output) & FR 1, UHR-EUR 3 \\
+    \hline
+    PUC 3 & Generate Alternative Text &  McMaster Student and
+    Faculty, Alternative Text Generation Model & Uploaded image
+    (input), Generated alternative text  & FR 2, FR 3\\
+    \hline
+    PUC 4 & Copy or Download Text & McMaster Student and Faculty &
+    User decision to copy or download (input), text copied to
+    clipboard or downloaded & UHR-PIR 1\\
+    \hline
+    PUC 5 & View History of Inputted Images and their Alternative
+    Text & McMaster Student and Faculty & User request to view
+    history (input), Display of previously inputted images and their
+    generated text within a session & FR 5\\
+    \hline
+  \end{tabular}
 \end{table}
 
 \subsection{Individual Product Use Cases (PUC's)}
