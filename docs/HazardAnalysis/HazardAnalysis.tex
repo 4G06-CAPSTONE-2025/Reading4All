@@ -3,8 +3,15 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{graphicx}  
+\usepackage{makecell}
+\usepackage{pdflscape}
+\usepackage[margin=1.5in]{geometry}  
 
-\hypersetup{
+\hypersetup{ 
     colorlinks=true,       % false: boxed links; true: colored links
     linkcolor=red,          % color of internal links (change box color with linkbordercolor)
     citecolor=green,        % color of links to bibliography
@@ -31,16 +38,16 @@
 \pagenumbering{roman}
 
 \begin{table}[hp]
-\caption{Revision History} \label{TblRevisionHistory}
-\begin{tabularx}{\textwidth}{llX}
-\toprule
-\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
-\midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
-\bottomrule
-\end{tabularx}
+  \caption{Revision History} \label{TblRevisionHistory}
+  \begin{tabularx}{\textwidth}{llX}
+    \toprule
+    \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
+    \midrule
+    Date1 & Name(s) & Description of changes\\
+    Date2 & Name(s) & Description of changes\\
+    ... & ... & ...\\
+    \bottomrule
+  \end{tabularx}
 \end{table}
 
 ~\newpage
@@ -51,43 +58,235 @@ Date2 & Name(s) & Description of changes\\
 
 \pagenumbering{arabic}
 
-\wss{You are free to modify this template.}
 
 \section{Introduction}
 
-\wss{You can include your definition of what a hazard is here.}
+\subsection{Problem Statement}
+Students with disabilities confront major challenges to reading technical diagrams, which are often given in the form of static images that screen readers cannot interpret. Manually developing alternative (alt) text is possible, but it is resource-intensive, inconsistent, and not scalable for huge volumes of course content. This generates disparities in access to learning materials in postsecondary education.
+
+To address this issue, this project proposes creating an AI/ML-powered application that automatically generates clear and detailed alt text for technical diagrams. The tool intends to increase accessibility, assure compliance with AODA regulations, and promote greater inclusion in higher education.
+
+\subsection{Hazard Analysis Introduction}
+A hazard is a system state or combination of conditions that, when paired with specific environmental or contextual factors, can result in an unwanted or adverse event in the system or its surroundings. Hazards in software and AI development encompass not only physical threats but also usability, ethical, and technological issues.
+
+Hazards in this project may develop during the design, training, and implementation of the alt-text generating model. These risks include technical flaws in generated text, misinterpretations that may mislead learners, ethical concerns regarding bias in the dataset, and compatibility issues with assistive technology.
+
+This hazard analysis identifies and evaluates such risks to guarantee that the system provides consistent accessibility gains while not mistakenly introducing new obstacles.
 
 \section{Scope and Purpose of Hazard Analysis}
+The objective of this hazard analysis is to analyze the potential hazards and damages related to the AI/ML alt-text generating tool throughout its development and operation. The most significant hazards are:
 
-\wss{You should say what \textbf{loss} could be incurred because of the
-hazards.}
+\begin{itemize}
+    \item \textbf{Technical Flaws:} Incorrect or inadequate alt text may mislead students, impair comprehension, or violate accessibility guidelines. This could result in a loss of confidence in the tool and poor results in education.
+    \item \textbf{User Insensitivity:} Alt text that is excessively technical, unsophisticated, or inconsistent may not meet the needs of students. This may result in a loss of usefulness, reducing participation among students, teachers, and accessibility professionals.
+    \item \textbf{External Dependencies:} Relying on third-party libraries, APIs, or screen reader compatibility can lead to external failures. Interruptions in these functions may result in a loss of functionality or downtime.
+\end{itemize}
+
+The purpose of this hazard study is to systematically identify these hazards, estimate their potential impact, and develop mitigation strategies. By doing this, we aim to minimize losses associated with time, trust, resources, and accessibility outcomes, ensuring that the tool contributes positively to equitable education.
 
 \section{System Boundaries and Components}
 
 \wss{Dividing the system into components will help you brainstorm the hazards.
-You shouldn't do a full design of the components, just get a feel for the major
-ones.  For projects that involve hardware, the components will typically include
-each individual piece of hardware.  If your software will have a database, or an
+  You shouldn't do a full design of the components, just get a feel
+  for the major
+  ones.  For projects that involve hardware, the components will
+  typically include
+  each individual piece of hardware.  If your software will have a
+  database, or an
 important library, these are also potential components.}
 
+\subsection{System Overview}
+The system is a web-based AI tool that generates alternative text
+(alt text) for uploaded images or figures
+and integrated with screen readers to improve accessibility for
+visually impaired users.
+\subsection{System Boundaries}
+\begin{itemize}
+  \item \textbf{Internal Components:} Alternative Text Generation
+    Machine Learning (ML) Model, User Interface, Session History Manager
+  \item \textbf{External Components:} McMaster Authentication System,
+    External AI/ML Frameworks, Screen Reader Software
+\end{itemize}
+\subsection{System Components}
+\begin{enumerate}
+  \item \textbf{Alt Text Generation ML Model}
+    \begin{itemize}
+      \item \textbf{Purpose:} To automatically generate accurate and
+        descriptive alternative text for uploaded images using machine learning.
+      \item \textbf{Key Functions:}
+        \begin{itemize}
+          \item Process image inputs received from the backend and
+            extract key visual features.
+          \item Generate contextually relevant text descriptions.
+          \item Return the generated alternative text to the backend
+            to display to the user interface.
+        \end{itemize}
+    \end{itemize}
+  \item \textbf{User Interface}
+    \begin{itemize}
+      \item \textbf{Purpose:} To serve as the primary interaction
+        point between the user and the system and allow users to
+        upload images and view generated alt text.
+      \item \textbf{Key Functions:}
+        \begin{itemize}
+          \item Enable users to upload images through an accessible
+            web interface.
+          \item Display generated alt text and allow users to edit,
+            copy, and download the text.
+          \item Provide features that are accessible and complies
+            with the Web Content Accessibility Guidelines (WCAG) 2.1 standards.
+          \item Communicates user requests and display outputs from the backend.
+        \end{itemize}
+    \end{itemize}
+  \item \textbf{Session History Manager}
+    \begin{itemize}
+      \item \textbf{Purpose:} To ensure the continuity of the current
+        session and manage user data during active use of the system.
+      \item \textbf{Key Functions:}
+        \begin{itemize}
+          \item Track unique user sessions throughout interaction
+            with the web application.
+          \item Store previously uploaded images and generated
+            alternative text for the current session to allow users
+            to view history.
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
 \section{Critical Assumptions}
+This section documents the assumptions made during the hazard analysis of
+\progname{} (Reading4All). The number of assumptions is kept to a minimum
+to reduce the chance of overlooking potential hazards. Where assumptions
+are made, they set clear boundaries for the analysis and define the
+conditions under which the system is expected to operate safely.
 
-\wss{These assumptions that are made about the software or system.  You should
-minimize the number of assumptions that remove potential hazards.  For instance,
-you could assume a part will never fail, but it is generally better to include
-this potential failure mode.}
+\begin{itemize}
+  \item \textbf{Assumption 1: Input Integrity.} All image files provided
+    to the system are assumed to be valid image formats and not corrupted
+    or maliciously constructed to exploit parsing vulnerabilities.
+
+  \item \textbf{Assumption 2: Standards Stability.} Accessibility
+    guidelines (WCAG 2.1, AODA) are assumed to remain stable for the
+    operational lifetime of the system.
+
+  \item \textbf{Assumption 3: Model Performance.} The machine learning
+    models used for visual recognition and natural language generation are
+    assumed to operate within validated ranges of accuracy and reliability.
+
+  \item \textbf{Assumption 4: Human Oversight.} It is assumed that
+    alternative text generated by the system will undergo review by human
+    instructors, teaching assistants, or accessibility specialists before
+    being used in educational contexts.
+\end{itemize}
+
+Violations of these assumptions may introduce additional hazards outside
+the current scope of this analysis. Such cases would require
+re-evaluation of risks and system design updates.
 
 \section{Failure Mode and Effect Analysis}
 
-\wss{Include your FMEA table here. This is the most important part of this document.}
-\wss{The safety requirements in the table do not have to have the prefix SR.
-The most important thing is to show traceability to your SRS. You might trace to
-requirements you have already written, or you might need to add new
-requirements.}
-\wss{If no safety requirement can be devised, other mitigation strategies can be
-entered in the table, including strategies involving providing additional
-documentation, and/or test cases.}
+\begin{landscape}
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{5pt}
+    \small                         
+    
+    \begin{longtable}{|p{1.2cm}|p{2.0cm}|p{3.0cm}|p{3.2cm}|p{3.2cm}|p{4.0cm}|p{2.6cm}|}
+    \caption{Failure Mode and Effect Analysis (FMEA) for Reading4All}
+    \label{tab:fmea-reading4all}\\
+    \hline
+    \textbf{HA ID} & \textbf{Component} & \textbf{Failure Mode} & \textbf{Effects of Failure} &
+    \textbf{Possible Causes} & \textbf{Recommended Action / Mitigation} &
+    \textbf{SRS Ref.} \\
+    \hline
+    \endfirsthead
+    \multicolumn{7}{r}{\huge \textit{Table \thetable\ (continued)}}\\
+    \hline
+    \textbf{HA ID} & \textbf{Component} & \textbf{Failure Mode} & \textbf{Effects of Failure} &
+    \textbf{Possible Causes} & \textbf{Recommended Action / Mitigation} &
+    \textbf{SRS Ref.} \\
+    \hline
+    \endhead
+    \hline
+    \multicolumn{7}{r}{\normalsize \textit{Table continues on next page}}\\
+    \hline
+    \endfoot
+    \hline
+    \endlastfoot   
+    
+    HA-1 & Frontend UI &
+    All user interface components cannot be controlled using keyboard &
+    Users using assistive technology cannot operate all features &
+    Missing Accessible Rich Internet Applications (ARIA) roles, incorrect tab order &
+    WCAG~2.1 Level~AA evaluation; fix focus order and ARIA; add additional tests for accessibility needs &
+    UHR-AR~1, UHR-AR~2 \\ \hline
+    
+    HA-2 & Frontend UI &
+    Alt text output not compatible with screen readers &
+    Screen readers skip generated alt text &
+    Missing ARIA labels &
+    Validate with NVDA/JAWS/VoiceOver; use \texttt{aria-label} with user interface components  &
+    FR~3, UHR-AR~1 \\ \hline
+    
+    HA-3 & Backend Controller &
+    Accepts unsupported/corrupted files &
+    System crash or user confusion &
+    Missing images/type validation or file-size limits &
+    Validate uploads; enforce size/type checks; detailed error messages &
+    FR~1, PR-RFT~1, SR-IM~1 \\ \hline
+    
+    HA-4 & Backend Controller &
+    Timeout during image analysis &
+    User perceives failure and is frustrated with system; repeated submissions; increased load on backend controller &
+    Increased model latency; missing timeout handling &
+    Add timeouts/retries for better user handling; progress indicator &
+    PR-SL~1, PR-SL~2 \\ \hline
+    
+    HA-5 & Alt Text Generation Model &
+    Generates offensive/biased or Personal Interest Information (PII)–leaking text &
+    Ethical/privacy risk; loss of user trust &
+    Lack of Model Training and Accuracy; no output filtering &
+    Add additional filters and checks for PII Data and offensive texts &
+    SR-PR~2 \\ \hline
+    
+    HA-6 & Alt Text Generation Model &
+    No output or empty alt text &
+    Users cannot use result; reduced learning impact &
+    Interface failure or Application Programmable Interface (API) crash &
+    Retry option; “No Text Generated” label; clear user feedback &
+    PR-RFT~2 \\ \hline
+    
+    HA-7 & Session Storage Component &
+    Images metadata or generated alt text not deleted after processing &
+    Privacy exposure; increased storage/cost &
+    Cleanup jobs fail or not configured &
+    Auto-delete temp files; periodic cleanup; log storage usage; manual deletion triggered by deletion failure alarms &
+    SR-PR~1 \\ \hline
+    
+    HA-8 & Session Storage Component &
+    Session history not found &
+    Loss of user trust and session data causing frustration &
+    Session key mismatch; write errors &
+    Atomic writes; bind session to SSO token &
+    FR~5, SR-AR~2 \\ \hline
+    
+    HA-9 & Alt Text Model Output Training Evaluation &
+    Evaluation metrics and scale linked to wrong model output &
+    Inaccurate metrics &
+    Race condition; wrong foreign key &
+    Immutable IDs; transactional writes; enforce referential integrity &
+    PR-PAR~1 \\ \hline
+    
+    HA-10 & McMaster SSO (Access Control) &
+    Session bypass &
+    Unauthorized access &
+    Token reuse; improper validation &
+    Validate tokens on the server &
+    SR-AR~1, SR-AR~2 \\ \hline
 
+    \end{longtable}
+    
+\end{landscape}
+    
+    
 \section{Safety and Security Requirements}
 
 \wss{Newly discovered requirements.  These should also be added to the SRS.  (A
@@ -95,7 +294,8 @@ rationale design process how and why to fake it.)}
 
 \section{Roadmap}
 
-\wss{Which safety requirements will be implemented as part of the capstone timeline?
+\wss{Which safety requirements will be implemented as part of the
+  capstone timeline?
 Which requirements will be implemented in the future?}
 
 \newpage{}
@@ -104,19 +304,60 @@ Which requirements will be implemented in the future?}
 
 \wss{Not required for CAS 741}
 
-\input{../Reflection.tex}
-
+\input{../Reflection.tex}\\
+\textbf{Moly Mikhail - Reflection}
 \begin{enumerate}
-    \item What went well while writing this deliverable? 
+    \item What went well while writing this deliverable? \\[1ex]
+    Completing part 6, where we outlined the Safety and Security requirements, 
+    went well for several reasons. Firstly, completing the previous section 5 helped us directly derive the new Safety and
+    Security requirements that needed to be outlined. Additionally, working on this document after finishing the SRS
+    document made the process much easier, as we had gained a lot of practice with determining and writing requirements from the SRS. 
     \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
+    did you resolve them?\\[1ex]
+    One pain point we faced during this deliverable was the dependency on other sections within the 
+    HA document and the SRS document. For example, to complete section 5 in the HA document, we needed
+    the requirements in SRS to be completed so they can be referenced as needed. This was challenging as 
+    developing our SRS requirements was a long process that required significant work and detail; 
+    meanwhile, the HA Failure Mode and Effect analysis also needed extensive work.  
+    This made it hard to manage our time effectively, as the two documents couldn’t be worked on in parallel at times. 
     \item Which of your listed risks had your team thought of before this
     deliverable, and which did you think of while doing this deliverable? For
     the latter ones (ones you thought of while doing the Hazard Analysis), how
-    did they come about?
+    did they come about?\\[1ex]
     \item Other than the risk of physical harm (some projects may not have any
+  \item What went well while writing this deliverable?
+  \item What pain points did you experience during this deliverable, and how
+    did you resolve them?
+  \item Which of your listed risks had your team thought of before this
+    deliverable, and which did you think of while doing this deliverable? For
+    the latter ones (ones you thought of while doing the Hazard Analysis), how
+    did they come about?
+  \item Other than the risk of physical harm (some projects may not have any
     appreciable risks of this form), list at least 2 other types of risk in
-    software products. Why are they important to consider?
+    software products. Why are they important to consider?\\[1ex]
+\end{enumerate}
+
+\textbf{Nawaal Fatima  - Reflection}
+\begin{enumerate}
+  \item \textbf{What went well while writing this deliverable?}\newline
+    I think the easiest part was coming up with the assumptions
+    themselves. From my summer work experience with Ms. Sui, I was already familiar with the main areas where Reading4All
+    could run into issues (inputs, standards, model accuracy, and
+    human review), it felt pretty natural to turn those into clear
+    assumptions. It also helped that the section didn’t need to be
+    super long, so I could keep it focused and to the point.
+
+  \item \textbf{What pain points did you experience during this
+    deliverable, and how did you resolve them?}\newline
+    The tricky part was figuring out how much detail to put in
+    without overcomplicating things. At first, I thought about
+    writing assumptions that basically ruled out certain failures,
+    but I realized that would go against the whole idea of hazard
+    analysis. To fix that, I stuck to assumptions that made sense for
+    defining boundaries without pretending hazards don’t exist.
+    Another small challenge was making the wording simple enough - so
+    I rewrote a couple of the assumptions to sound clearer and less
+    ``technical report'' heavy.
 \end{enumerate}
 
 \end{document}
