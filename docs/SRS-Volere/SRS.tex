@@ -848,7 +848,7 @@ The following diagram (Figure~\ref{fig:business_data_model}) illustrates the rel
 
 \section{The Scope of the Product}
 \subsection{Product Boundary}
-\autoref{fig:product-boundary} below shows the components within the system and how they connect. The components that this project will aim on building include a user interface, an alternative text generation ML model, a session history manager. Furthermore, these components will utilize or communicate with a screen reader software, McMaster Authentication system and external AI/ML Frameworks. 
+\autoref{fig:product-boundary} below shows the components within the system and how they connect. The components that this project will aim on building include a user interface, backend component, alt text generation ML model, a session history manager. Furthermore, these components will utilize or communicate with a screen reader software, McMaster Authentication system and external AI/ML Frameworks. 
 \label{tab:product-boundary} 
 \begin{figure}[H]
     \centering
@@ -865,28 +865,28 @@ inputs and outputs to the system and the related requirements.
   \centering
   \caption{Product Use Case Table}
   \label{tab:product-use}
-  \begin{tabular}{|p{1.3cm}|p{2.5cm}|p{3cm}|p{4cm}|p{2.6cm}|}
+  \begin{tabular}{|p{1.3cm}|p{2.5cm}|p{3.5cm}|p{4cm}|p{2.6cm}|}
     \hline
     \textbf{PUC\#} & \textbf{PUC Name} & \textbf{Actor(s)} &
     \textbf{Input \& Output(s)} & \textbf{Requirement} \\
     \hline
     PUC 1 & Login Using McMaster Credentials &  McMaster Student and
-    Faculty , McMaster Authentication System & User Credentials
+    Faculty , McMaster Authentication System, UI, Backend Component & User Credentials
     (input), Authentication Results (output) & FR 6, SR-AR 1\\
     \hline
-    PUC 2 & Upload Image & McMaster Student and Faculty & JPEG or PNG
+    PUC 2 & Upload Image & McMaster Student and Faculty, UI, Backend Component & JPEG or PNG
     (input), Image upload status (output) & FR 1, UHR-EUR 3 \\
     \hline
     PUC 3 & Generate Alternative Text &  McMaster Student and
-    Faculty, Alternative Text Generation Model & Uploaded image
+    Faculty, Alt Text Generation ML Model, UI, Backend Component & Uploaded image
     (input), Generated alternative text  & FR 2, FR 3\\
     \hline
-    PUC 4 & Copy or Download Text & McMaster Student and Faculty &
+    PUC 4 & Copy or Download Text & McMaster Student and Faculty, UI, Backend Component &
     User decision to copy or download (input), text copied to
     clipboard or downloaded & UHR-PIR 1\\
     \hline
     PUC 5 & View History of Inputted Images and their Alternative
-    Text & McMaster Student and Faculty & User request to view
+    Text& McMaster Student and Faculty, UI, Backend Component, Session History Manager & User request to view
     history (input), Display of previously inputted images and their
     generated text within a session & FR 5\\
     \hline
@@ -903,8 +903,7 @@ inputs and outputs to the system and the related requirements.
     \item The user is registered person in McMaster system and has
       valid credentials.
   \end{itemize}
-  \textbf{Actors:} McMaster Student or Faculty, McMaster
-  Authentication System.\\
+  \textbf{Actors:} McMaster Student or Faculty, McMaster Authentication System, UI, Backend Component.\\
   \textbf{Outcome:} McMaster validates user's credentials are
   validated and they are given access to system.\\
   \textbf{Input:} McMaster System username and password. \\
@@ -917,7 +916,7 @@ inputs and outputs to the system and the related requirements.
 \begin{itemize}
   \item User successfully logged into the system.
 \end{itemize}
-\textbf{Actors:} McMaster Student or Faculty \\
+\textbf{Actors:} McMaster Student or Faculty, UI, Backend Component\. \\
 \textbf{Outcome:} The selected image is uploaded and stored for later text generation.\\
 \textbf{Input:} Image file (JPEG or PNG) \\
 \textbf{Output:} A confirmation message is displayed if the image was successfully uploaded, or an error message otherwise is displayed.
@@ -930,7 +929,7 @@ inputs and outputs to the system and the related requirements.
   \begin{itemize}
     \item A valid image has been successfully uploaded to the system.
   \end{itemize}
-  \textbf{Actors:} McMaster Student or Faculty.\\
+  \textbf{Actors:} McMaster Student or Faculty, Backend Component, Alt Text Generation ML Model. \\
   \textbf{Outcome:} The system generates a descriptive alternative
   text for the uploaded image.\\
   \textbf{Input:} User selection to generate alternative text\\
@@ -943,7 +942,7 @@ inputs and outputs to the system and the related requirements.
 \begin{itemize}
   \item System has successfully generated alternative text for an uploaded image.
 \end{itemize}
-\textbf{Actors:} McMaster Student or Faculty, System User Interface \\
+\textbf{Actors:} McMaster Student or Faculty, UI, Backend Component.\\
 \textbf{Outcome:} The user edits and saves the updated alternative text. \\
 \textbf{Input:} User edits to the generated alternative text.\\
 \textbf{Output:} The edited alternative text is displayed to the user and stored within the session, to be copied or downloaded later.
@@ -956,7 +955,7 @@ inputs and outputs to the system and the related requirements.
   \item System has successfully generated alternative text for an uploaded image.
   \item User is satisfied with generated alternative text and has made any desired changes. 
 \end{itemize}
-\textbf{Actors:} McMaster Student or Faculty. \\
+\textbf{Actors:} McMaster Student or Faculty, UI, Backend Component.\\
 \textbf{Outcome:} The user receives the alternative text through their preferred method. \\
 \textbf{Input:} User decision to copy or download.\\
 \textbf{Output:} Text is copied or downloaded as .txt file on the users device.
@@ -970,7 +969,7 @@ inputs and outputs to the system and the related requirements.
     \item User has previously uploaded at least one image and
       generated text within the session.
   \end{itemize}
-  \textbf{Actors:} McMaster Student or Faculty.\\
+  \textbf{Actors:} McMaster Student or Faculty, Backend Component, Session History Manager.\\
   \textbf{Outcome:} The user views a list of their images and the
   corresponding generated alternative text within the current session. \\
   \textbf{Input:} User request to view session history.\\
