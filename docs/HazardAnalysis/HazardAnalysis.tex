@@ -46,9 +46,7 @@
     \toprule
     \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
     \midrule
-    Date1 & Name(s) & Description of changes\\
-    Date2 & Name(s) & Description of changes\\
-    ... & ... & ...\\
+    October 10th 2025 & All Team Members & Initial Draft of HA \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -65,9 +63,9 @@
 \section{Introduction}
 
 \subsection{Problem Statement}
-Students with disabilities confront major challenges to reading technical diagrams, which are often given in the form of static images that screen readers cannot interpret. Manually developing alternative (alt) text is possible, but it is resource-intensive, inconsistent, and not scalable for huge volumes of course content. This generates disparities in access to learning materials in postsecondary education.
+Students with disabilities face major challenges to reading technical diagrams, which are often given in the form of static images that screen readers cannot interpret. Manually developing alternative (alt) text is possible, but it is resource-intensive, inconsistent, and not scalable for huge volumes of course content. This generates disparities in access to learning materials in postsecondary education.
 
-To address this issue, this project proposes creating an AI/ML-powered application that automatically generates clear and detailed alt text for technical diagrams. The tool intends to increase accessibility, assure compliance with AODA regulations, and promote greater inclusion in higher education.
+To address this issue, this project proposes creating an Artificial Intelligence (AI) / Machine Learning (ML) powered application that automatically generates clear and detailed alt text for technical diagrams. The tool intends to increase accessibility, assure compliance with Accessibility for Ontarians with Disabilities Act (AODA) regulations, and promote greater inclusion in higher education.
 
 \subsection{Hazard Analysis Introduction}
 A hazard is a system state or combination of conditions that, when paired with specific environmental or contextual factors, can result in an unwanted or adverse event in the system or its surroundings. Hazards in software and AI development encompass not only physical threats but also usability, ethical, and technological issues.
@@ -82,30 +80,21 @@ The objective of this hazard analysis is to analyze the potential hazards and da
 \begin{itemize}
     \item \textbf{Technical Flaws:} Incorrect or inadequate alt text may mislead students, impair comprehension, or violate accessibility guidelines. This could result in a loss of confidence in the tool and poor results in education.
     \item \textbf{User Insensitivity:} Alt text that is excessively technical, unsophisticated, or inconsistent may not meet the needs of students. This may result in a loss of usefulness, reducing participation among students, teachers, and accessibility professionals.
-    \item \textbf{External Dependencies:} Relying on third-party libraries, APIs, or screen reader compatibility can lead to external failures. Interruptions in these functions may result in a loss of functionality or downtime.
+    \item \textbf{External Dependencies:} Relying on third-party libraries, Application Programming Interfaces (APIs), or screen reader compatibility can lead to external failures. Interruptions in these functions may result in a loss of functionality or downtime.
 \end{itemize}
 
 The purpose of this hazard study is to systematically identify these hazards, estimate their potential impact, and develop mitigation strategies. By doing this, we aim to minimize losses associated with time, trust, resources, and accessibility outcomes, ensuring that the tool contributes positively to equitable education.
 
 \section{System Boundaries and Components}
 
-\wss{Dividing the system into components will help you brainstorm the hazards.
-  You shouldn't do a full design of the components, just get a feel
-  for the major
-  ones.  For projects that involve hardware, the components will
-  typically include
-  each individual piece of hardware.  If your software will have a
-  database, or an
-important library, these are also potential components.}
-
 \subsection{System Overview}
-The system is a web-based AI tool that generates alternative text
-(alt text) for uploaded images or figures
+The system is a web-based AI tool that generates alt text
+for uploaded images or figures
 and integrated with screen readers to improve accessibility for
 visually impaired users.
 \subsection{System Boundaries}
 \begin{itemize}
-    \item \textbf{Internal Components:} Alternative Text Generation Machine Learning (ML) Model, User Interface, Session History Manager, Backend Server
+    \item \textbf{Internal Components:} Alternative Text Generation ML Model, User Interface (UI), Session History Manager, Backend Server
     \item \textbf{External Components:} McMaster Authentication System, External AI/ML Frameworks, Screen Reader Software
 \end{itemize}
 \subsection{System Components}
@@ -113,13 +102,13 @@ visually impaired users.
   \item \textbf{Alt Text Generation ML Model}
     \begin{itemize}
       \item \textbf{Purpose:} To automatically generate accurate and
-        descriptive alternative text for uploaded images using machine learning.
+        descriptive alt text for uploaded images using machine learning.
       \item \textbf{Key Functions:}
         \begin{itemize}
           \item Process image inputs received from the backend and
             extract key visual features.
           \item Generate contextually relevant text descriptions.
-          \item Return the generated alternative text to the backend
+          \item Return the generated alt text to the backend
             to display to the user interface.
         \end{itemize}
     \end{itemize}
@@ -148,7 +137,7 @@ visually impaired users.
           \item Track unique user sessions throughout interaction
             with the web application.
           \item Store previously uploaded images and generated
-            alternative text for the current session to allow users
+            alt text for the current session to allow users
             to view history.
         \end{itemize}
     \end{itemize}
@@ -185,7 +174,7 @@ conditions under which the system is expected to operate safely.
     assumed to operate within validated ranges of accuracy and reliability.
 
   \item \textbf{Assumption 4: Human Oversight.} It is assumed that
-    alternative text generated by the system will undergo review by human
+    alt text generated by the system will undergo review by human
     instructors, teaching assistants, or accessibility specialists before
     being used in educational contexts.
 \end{itemize}
@@ -300,19 +289,15 @@ re-evaluation of risks and system design updates.
     
     
 \section{Safety and Security Requirements}
-
-\wss{Newly discovered requirements.  These should also be added to the SRS.  (A
-rationale design process how and why to fake it.)}
-
 \begin{enumerate}[label=PR-SR-HA \arabic*., wide=0pt, leftmargin=*]
-  \item \emph{The system must notify the user when a timeout occurs during alternative text generation.}\\[2mm]
-    {\bf Rationale:} Users should be informed when the alternative text generation exceeds the expected amount of time. If users are not notified they may send multiple requests, leading the server to be overloaded; this would also lead to user frustration.\\
-    {\bf Fit Criterion:} When a timeout occurs, the system displays a message indicating the timeout and a "Retry" option. The message must follow accessibility guidelines and be compatible with screen readers.\\
+  \item \emph{The system must notify the user when a timeout occurs during alt text generation.}\\[2mm]
+    {\bf Rationale:} Users should be informed when the alt text generation exceeds the expected amount of time. If users are not notified they may send multiple requests, leading the server to be overloaded; this would also lead to user frustration.\\
+    {\bf Fit Criterion:} When a timeout occurs, the system displays a message indicating the timeout and a ''Retry" option. The message must follow accessibility guidelines and be compatible with screen readers.\\
     {\bf Priority:} Medium\\
     {\bf Hazard Analysis Connected}: HA4
-  \item \emph{The system must safely exit when a timeout occurs and ensure that no user data or incomplete alternative text is stored or shown to the user.}\\[2mm]
-    {\bf Rationale:} Safely exiting during a timeout prevents users from seeing incomplete alternative text and mistaking it for a complete output, which may cause confusion. Leaving user data stored would also be a security violation. \\
-    {\bf Fit Criterion:} When a timeout occurs, the system must stop processing and delete the users data and any incomplete alternative text that has been generated.\\
+  \item \emph{The system must safely exit when a timeout occurs and ensure that no user data or incomplete alt text is stored or shown to the user.}\\[2mm]
+    {\bf Rationale:} Safely exiting during a timeout prevents users from seeing incomplete alt text and mistaking it for a complete output, which may cause confusion. Leaving user data stored would also be a security violation. \\
+    {\bf Fit Criterion:} When a timeout occurs, the system must stop processing and delete the users data and any incomplete alt text that has been generated.\\
     {\bf Priority:} High\\
     {\bf Hazard Analysis Connected}: HA4
   \item \emph{The system must ensure that messages notifying the user of failure, do not reveal any system code or data. }\\[2mm]
@@ -324,11 +309,8 @@ rationale design process how and why to fake it.)}
 
 \section{Roadmap}
 
-\wss{Which safety requirements  will be implemented as part of the capstone timeline?
-Which requirements will be implemented in the future?}
-
 All safety and security requirements outlined in our SRS, as well as newly discovered requirements will be implemented as part of the capstone timeline. This includes the following requirements, which can be found in our SRS document: 
-\begin{multicols}{3}
+\begin{multicols}{4}
 \begin{itemize}
   \item SR-AR 1
   \item SR-AR 2 
@@ -352,39 +334,46 @@ All safety and security requirements outlined in our SRS, as well as newly disco
 
 \section*{Appendix --- Reflection}
 
-\wss{Not required for CAS 741}
-
 \input{../Reflection.tex}\\
+
+\textbf{Group - Reflection}
+\begin{enumerate}
+     \item \textbf{Which of your listed risks had your team thought of before this
+    deliverable, and which did you think of while doing this deliverable? For
+    the latter ones (ones you thought of while doing the Hazard Analysis), how
+    did they come about?}
+
+    Prior to completing this deliverable we had considered the privacy hazard, specifically relating to user's data. 
+    We also had discussed the need to add programmable labels when developing our system. Furthermore, completing this deliverable
+    revealed many hazards, the most significant being the possibility of the system timing out and the issues that may cause. 
+    It revealed other hazards relating to the model evaluation process, which is essential to our system. 
+
+
+    \item \textbf{Other than the risk of physical harm (some projects may not have any
+    appreciable risks of this form), list at least 2 other types of risk in
+    software products. Why are they important to consider?}
+
+    One main risk in software products is in security and privacy. Situations such as unauthorized access and data leaks can harm users of the software and 
+    can violate laws. This can also lead to damage of the developer's reputation, as well as fines and lawsuits. Another risk in software products is failure to comply with 
+    certain required regulations. For example, violating licenses or accessibility rules can result in the delay or blocking of deployments, and may also lead 
+    to legal issues. 
+\end{enumerate}
+
 \textbf{Moly Mikhail - Reflection}
 \begin{enumerate}
-    \item What went well while writing this deliverable? \\[1ex]
+    \item \textbf{What went well while writing this deliverable?}
     Completing part 6, where we outlined the Safety and Security requirements, 
     went well for several reasons. Firstly, completing the previous section 5 helped us directly derive the new Safety and
     Security requirements that needed to be outlined. Additionally, working on this document after finishing the SRS
     document made the process much easier, as we had gained a lot of practice with determining and writing requirements from the SRS. 
-    \item What pain points did you experience during this deliverable, and how
-    did you resolve them?\\[1ex]
+    \item \textbf{What pain points did you experience during this deliverable, and how
+    did you resolve them?}
     One pain point we faced during this deliverable was the dependency on other sections within the 
     HA document and the SRS document. For example, to complete section 5 in the HA document, we needed
     the requirements in SRS to be completed so they can be referenced as needed. This was challenging as 
     developing our SRS requirements was a long process that required significant work and detail; 
     meanwhile, the HA Failure Mode and Effect analysis also needed extensive work.  
     This made it hard to manage our time effectively, as the two documents couldn’t be worked on in parallel at times. 
-    \item Which of your listed risks had your team thought of before this
-    deliverable, and which did you think of while doing this deliverable? For
-    the latter ones (ones you thought of while doing the Hazard Analysis), how
-    did they come about?\\[1ex]
-    \item Other than the risk of physical harm (some projects may not have any
-  \item What went well while writing this deliverable?
-  \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
-  \item Which of your listed risks had your team thought of before this
-    deliverable, and which did you think of while doing this deliverable? For
-    the latter ones (ones you thought of while doing the Hazard Analysis), how
-    did they come about?
-  \item Other than the risk of physical harm (some projects may not have any
-    appreciable risks of this form), list at least 2 other types of risk in
-    software products. Why are they important to consider?\\[1ex]
 \end{enumerate}
 
 \textbf{Nawaal Fatima  - Reflection}
@@ -413,7 +402,7 @@ All safety and security requirements outlined in our SRS, as well as newly disco
 \textbf{Dhruv Sardana  - Reflection}
 \begin{enumerate}
   \item \textbf{What went well while writing this deliverable?}\newline
-    While writing this deliverable, I was responsible for the FMEA Table. This gave me an oppurtunity to 
+    While writing this deliverable, I was responsible for the FMEA Table. This gave me an opportunity to 
     understand the system in depth and identify potential failure modes. It helped me identify different risks and 
     it helped other team members understand requirements better and helped refine the SRS document. 
     It also helped me otherstand the mitigation strategies for the identified risks.
@@ -424,4 +413,17 @@ All safety and security requirements outlined in our SRS, as well as newly disco
     Especially referring to SRS document and accompanying them with system components. 
     This was challenging as the SRS document was being worked on in parallel and requirements were constantly being refined
 \end{enumerate}
+
+\textbf{Casey Francine Bulaclac - Reflection}
+\begin{enumerate}
+    \item \textbf{What went well while writing this deliverable? }
+    Writing this deliverable was organized as the team split the sections beforehand, so we had clear instructions on how and who is completing which sections. It 
+    was also helpful completing the SRS before this document as it helped define certain sections such as the System Boundaries and Components. 
+
+    \item \textbf{What pain points did you experience during this deliverable, and how
+    did you resolve them?}
+    One challenge I ran into with this deliverable were keeping the language and details aligned with the SRS. Another challenge was having to finish one section before I could move on 
+    to others as some sections depended on previous ones. To address this, I double-checked the SRS and kept clear, timely communication with my team about what needed to be done and by when.
+\end{enumerate}
+
 \end{document}
