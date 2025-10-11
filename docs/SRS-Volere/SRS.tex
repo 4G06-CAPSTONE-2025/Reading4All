@@ -1314,7 +1314,7 @@ Reading4All system must operate reliably and efficiently.
     upload speeds of at least IMG\_SIZE\_BIG Mbps.\\
     {\bf Priority:} Medium
 \end{enumerate}
-
+ 
 \subsection{Requirements for Interfacing with Adjacent Systems}
 
 \begin{enumerate}[label=OER-IAS\arabic*., wide=0pt, leftmargin=*]
@@ -1349,20 +1349,12 @@ Reading4All system must operate reliably and efficiently.
 
 \begin{enumerate}[label=OER-PR\arabic*., wide=0pt, leftmargin=*]
   \item \emph{The system shall be deployable as both a web
-    application and an API service for institutional integration.}\\[2mm]
-    {\bf Rationale:} Dual deployment ensures accessibility for
+    tool for institutional integration.}\\[2mm]
+    {\bf Rationale:} This ensures accessibility for
     individual users and organizations integrating accessibility workflows.\\
-    {\bf Fit Criterion:} A hosted web app and functional REST API are
+    {\bf Fit Criterion:} A hosted web tool is
     accessible and validated through institutional testing.\\
     {\bf Priority:} High
-
-  \item \emph{The system shall securely store configuration and model
-    parameters in a version-controlled and scalable environment.}\\[2mm]
-    {\bf Rationale:} Proper configuration management ensures
-    reproducibility and secure model versioning.\\
-    {\bf Fit Criterion:} Configuration files are encrypted, tracked
-    via version control, and retrievable for rollback or update.\\
-    {\bf Priority:} Medium
 \end{enumerate}
 
 \subsection{Release Requirements}
@@ -1378,7 +1370,7 @@ Reading4All system must operate reliably and efficiently.
     successfully tested.\\
     {\bf Priority:} High
 
-  \item \emph{The system must be ready for release by March 18, 2026,
+  \item \emph{The system must be ready for release by the end of March 2026,
       aligned with the McMaster University SFWRENG 4G06 Capstone final
     demonstration schedule.}\\[2mm]
     {\bf Rationale:} Aligns release timing with Capstone evaluation
@@ -1428,10 +1420,6 @@ standards and technical advancements.
 \subsection{Supportability Requirements}
 
 \begin{enumerate}[label=MS-SUP\arabic*., wide=0pt, leftmargin=*]
-  \item \emph{The system shall allow users to report issues or feedback directly through the interface without revealing personal identifiers.}\\[2mm]
-    {\bf Rationale:} Enables user-driven improvements while maintaining privacy.\\
-    {\bf Fit Criterion:} Feedback forms are logged securely without user Person Interest Information (PII) and assigned unique issue IDs.\\
-    {\bf Priority:} Medium
 
   \item \emph{The system shall log performance and error metrics for
     debugging and continuous improvement.}\\[2mm]
@@ -1449,8 +1437,8 @@ standards and technical advancements.
     or components through a standardized interface schema.}\\[2mm]
     {\bf Rationale:} A consistent interface allows easy replacement
     or upgrading of AI components.\\
-    {\bf Fit Criterion:} New modules adhere to the existing JSON I/O
-    structure and pass automated compatibility checks.\\
+    {\bf Fit Criterion:} New modules adhere to the existing data
+    structures and pass automated compatibility checks.\\
     {\bf Priority:} High
 
   \item \emph{The system shall allow configuration updates without
@@ -1458,7 +1446,7 @@ standards and technical advancements.
     {\bf Rationale:} Enables rapid adaptation to new accessibility or
     institutional requirements.\\
     {\bf Fit Criterion:} All configurable parameters are stored in
-    editable YAML or JSON files.\\
+    editable files.\\
     {\bf Priority:} Medium
 
   \item \emph{All major updates shall be versioned and documented
@@ -1500,7 +1488,7 @@ standards and technical advancements.
 
 \subsection{Privacy Requirements}
 \begin{enumerate}[label=SR-PR \arabic*., wide=0pt, leftmargin=*]
-\item \emph{Uploaded images shall be deleted immediately after processing is complete.}\\[2mm] 
+\item \emph{Uploaded images shall be deleted after each session.}\\[2mm] 
     {\bf Rationale:} Protects user privacy and ensures compliance with institutional data governance policies.\\
     {\bf Fit Criterion:} Uploaded files are stored temporarily in memory or on a secure local directory and deleted within FILE\_DELETE\_TIME after alt text generation.\\
     {\bf Priority:} High
@@ -1611,6 +1599,11 @@ discussion to ensure the project’s successful completion.
     further research to determine how many characters provide an
     accurate description without causing confusion or distracting
     from the main idea of the diagram.
+  \item Some users have pre-defined keyboard shortcuts, while others use a standard
+  menu. Therefore, more research needs to be conducted on the most optimal and efficient
+  keyboard navigation type with the least accessibility barriers. 
+  \item As mentioned in \autoref{tab:evaluation-metrics-summary} of the Appendix, all these metrics 
+  need to be researched to further understand them. 
 \end{itemize}
 
 \section{Off-the-Shelf Solutions}
@@ -1641,7 +1634,7 @@ vision analysis, language generation, and accessibility workflows.
 \end{itemize}
 
 \subsection{Reusable Components}
-
+Inspirations can be taken from existing software components and libraries including: 
 \begin{itemize}
   \item \textbf{Hugging Face Transformers:} An open-source library
     offering pretrained multimodal models (e.g., BLIP-2, CLIP, and
@@ -1706,7 +1699,7 @@ vision analysis, language generation, and accessibility workflows.
     \end{itemize}
 
   \item \textbf{Resource Estimates}
-    The project involves a five-member team responsible for design,
+    The project involves a TEAM\_SIZE member team responsible for design,
     development, testing, and reporting. Shared tools will include:
     \begin{itemize}
       \item Cloud computing resources (GPU-based inference environment)
@@ -1737,22 +1730,25 @@ vision analysis, language generation, and accessibility workflows.
 
 \textbf{Deliverables and Tentative Schedule}
 
-\begin{itemize}
-  \item Problem Statement, Proof of Concept, and Development Plan —
-    \textbf{Week 4 (September 24, 2025)}
-  \item Software Requirements Specification (SRS) and Hazard Analysis
-    — \textbf{Week 6 (October 8, 2025)}
-  \item Verification and Validation Plan — \textbf{Week 8 (October 22, 2025)}
-  \item Design Document (Revision 0) — \textbf{Week 10 (November 5, 2025)}
-  \item Proof of Concept Demonstration — \textbf{Weeks 11–12
-    (November 12–19, 2025)}
-  \item Design Document (Revision 1) — \textbf{Week 16 (January 21, 2026)}
-  \item Revision 0 Demonstration — \textbf{Weeks 18–19 (February 4–11, 2026)}
-  \item Verification and Validation Report — \textbf{Week 22 (March 4, 2026)}
-  \item Final Demonstration (Revision 1) — \textbf{Week 24 (March 18, 2026)}
-  \item Capstone EXPO — \textbf{Week 26 (April 1, 2026)}
-  \item Final Documentation Submission — \textbf{Week 26 (April 1, 2026)}
-\end{itemize}
+\begin{center}
+  \begin{tabularx}{\textwidth}{Xc}
+    \toprule
+    \textbf{Deliverables} & \textbf{Due Date} \\
+    \midrule
+    Problem Statement, Proof of Concept, and Development Plan & Week  04 \\
+    Software Requirements Specifications and Hazards Analysis (Revision 0) & Week 06 \\
+    Verification \& Validation Plan (Revision 0) & Week 08 \\
+    Design Document (Rev-1) & Week 10 \\
+    Proof of Concept Demonstration & Week 11 + 12 \\
+    Design Document (Revision 0) & Week 16 \\
+    Project Demonstration (Revision 0) & Week 18 + 19 \\
+    Verification \& Validation Report (Revision 0) & Week 22 \\
+    Final Demonstration (Revision 1) & Week 24 \\
+    Final Documentation & Week 26 \\
+    Capstone EXPO & Week 26 \\
+    \bottomrule
+  \end{tabularx}
+\end{center}
 
 \textbf{Sprint and Review Cycle}
 \begin{itemize}
@@ -1764,15 +1760,15 @@ vision analysis, language generation, and accessibility workflows.
     milestone adjustments and task prioritization.
 \end{itemize}
 
-By adopting this structured development plan, the team will ensure
+\noindent By adopting this structured development plan, the team will ensure
 that Reading4All evolves into a reliable and maintainable system
 capable of producing accurate, accessible, and pedagogically useful
 alt text for academic diagrams.
 
 \section{Migration to the New Product}
 \subsection{Requirements for Migration to the New Product}
-\begin{itemize}
-  \item[\textbf{MNP-RMNP 1.}] \textit{The system shall support a
+\begin{enumerate}[label=MNP-RMNP  \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The system shall support a
       phased implementation to allow gradual adoption while minimizing
     disruptions.}\\
     \textbf{Rationale:} Reduces organizational risk and allows
@@ -1781,7 +1777,7 @@ alt text for academic diagrams.
     independently before progressing to the next.\\
     \textbf{Priority:} High
 
-  \item[\textbf{MNP-RMNP 2.}] \textit{The organization shall operate
+  \item \emph{The organization shall operate
       the new system in parallel with the old product for a defined
     transition period.}\\
     \textbf{Rationale:} Ensures continuity and confirms correct
@@ -1790,20 +1786,20 @@ alt text for academic diagrams.
     critical functions pass acceptance testing.\\
     \textbf{Priority:} High
 
-  \item[\textbf{MNP-RMNP 3.}] \textit{The system shall provide
+  \item \emph{The system shall provide
     procedures and tools for manual backup during transition.}\\
     \textbf{Rationale:} Maintains operational stability during migration.\\
     \textbf{Fit Criterion:} Backup processes are documented, tested,
     and accessible to staff.\\
     \textbf{Priority:} Medium
 
-  \item[\textbf{MNP-RMNP 4.}] \textit{The transition plan shall
+  \item \emph{The transition plan shall
     identify and schedule major components and release phases.}\\
     \textbf{Rationale:} Guides project planning and resource allocation.\\
     \textbf{Fit Criterion:} A migration timeline with milestones and
     dependencies is documented.\\
     \textbf{Priority:} Medium
-\end{itemize}
+\end{enumerate}
 
 \subsection{Data That Has to be Modified or Translated for the New System}
 This section does not apply to this project as there is no current
@@ -1871,7 +1867,7 @@ The total cost of developing this project is primarily based on the effort contr
 
 \item \emph{Testing Environment}\\[2mm] 
     {\bf Rationale:} Defines the testing setup and potential costs associated with user testing incentives.\\
-    {\bf Fit Criterion:} Testing is conducted on McMaster-hosted or open-source platforms. User testing sessions may include gift card incentives between COST\_INCENTIVE\_MIN–COST\_INCENTIVE\_MAX.\\
+    {\bf Fit Criterion:} Testing is conducted on McMaster-hosted or open-source platforms. User testing sessions may include incentives between COST\_INCENTIVE\_MIN–COST\_INCENTIVE\_MAX.\\
     {\bf Priority:} Medium
 
 \item \emph{Hardware and Infrastructure}\\[2mm] 
@@ -1884,7 +1880,7 @@ The total cost of developing this project is primarily based on the effort contr
 \begin{enumerate}[label=C-EC \arabic*., wide=0pt, leftmargin=*]
 \item \emph{Total Development Effort}\\[2mm] 
     {\bf Rationale:} Quantifies total workload for the entire team in measurable units.\\
-    {\bf Fit Criterion:} Approximately HOURS\_PROJECT person-hours across four team members (TEAM\_SIZE × HOURS\_TOTAL).\\
+    {\bf Fit Criterion:} Approximately HOURS\_PROJECT person-hours across team members (TEAM\_SIZE × HOURS\_TOTAL).\\
     {\bf Priority:} High
 
 \item \emph{Notional Monetary Cost}\\[2mm] 
@@ -1904,11 +1900,11 @@ The total cost of developing this project is primarily based on the effort contr
     \begin{itemize}
       \item \textbf{Purpose}: The user manual will serve as a user
         guide and provide detailed information and instructions on
-        the final product and how to use it effectively
+        the final product and how to use it effectively.
       \item \textbf{Target Audience}: Academic students, instructors,
-        and other professionals
+        and other professionals.
       \item \textbf{Content}: Web tool navigation and instructions,
-        usage examples, product purposes, and best practices
+        usage examples, product purposes, and best practices.
     \end{itemize}
 \end{enumerate}
 \subsection{Training Requirements}
@@ -1923,47 +1919,47 @@ This section lists potential ideas and features that are out of scope
 for the current project, however, may be valuable for future updates.
 \begin{itemize}
   \item Support for multilingual alternative text generation (e.g.,
-    French and Spanish)
+    French and Spanish).
   \item A browser extension that automatically generates alternative
-    text on websites or learning platforms (e.g. \textit{D2L}) using our model
+    text on websites or learning platforms (e.g. \textit{D2L}) using our model.
   \item Compatibility with mobile platforms to extend accessibility
-    across users' preferred devices
+    across users' preferred devices.
+  \item Allowing users to report issues or feedback anonymously directly through the web tool 
+  that can enable user-driven improvements while maintaining privacy.
+
 \end{itemize}
 
 \section{Ideas for Solution}
 This section discusses potential ways to achieve some of the functionality discussed throughout this report, 
 including image upload and processing, alternative text generation and session history. 
 These ideas have been documented so they can be referenced later during development.\\
-This section discusses potential ways to acheive some of the
-functionality discussed throughout this report,
-including image upload and processing, alternative text generation
-and session history.
-These ideas have been documented so they can be referenced later
-during development.\\
-\\
-\textbf{Image Upload and Processing}
-This functionality can be achieved through a front-end interface,
-where users are prompted to upload an image using an upload button or
-by dragging their file into the drop box. Furthermore, to minimize
-errors, this will only allow JPEG and PNG image files.
-Once the image has been uploaded, it will be displayed to the user
-with the image file name, so users can confirm the correct file was chosen.
-If the upload fails, the system will display an error message
-explaining the issue. Furthermore, this can be achieved using the
-HTML5 File API, which supports reading and processing file data,
-specifically obtained through input or drag and drop. \\
-\\
-\textbf{Alternative Text Generation}
-This functionality can be implemented using a vision-language model
-(VLM), which combines natural language models with computer vision.
-The model can learn from both images and text to solve various
-problems. The model can be trained using sample scientific images,
-paired with examples of descriptive alternative text, allow it to
-generate accurate and high quality descriptions for new images.\\
-\\
-\textbf{Session History}
-After the user is satisfied with the generated alternative text, the system will store the image and its final description in the browser's session storage as a JSON record. This allows the data to be stored temporarily and can easily be displayed to the user when they request their history. \\
 
+\begin{enumerate}
+  \item \textbf{Image Upload and Processing}:
+  This functionality can be achieved through a front-end interface,
+  where users are prompted to upload an image using an upload button or
+  by dragging their file into the drop box. Furthermore, to minimize
+  errors, this will only allow JPEG and PNG image files.
+  Once the image has been uploaded, it will be displayed to the user
+  with the image file name, so users can confirm the correct file was chosen.
+  If the upload fails, the system will display an error message
+  explaining the issue. Furthermore, this can be achieved using the
+  HTML5 File API, which supports reading and processing file data,
+  specifically obtained through input or drag and drop. 
+  \item 
+  \textbf{Alternative Text Generation}:
+  This functionality can be implemented using a vision-language model
+  (VLM), which combines natural language models with computer vision.
+  The model can learn from both images and text to solve various
+  problems. The model can be trained using sample technical diagrams,
+  paired with examples of descriptive alternative text, allow it to
+  generate accurate and high quality descriptions for new images.
+  \item 
+  \textbf{Session History}:
+  After the user is satisfied with the generated alternative text, the system will store the image and its final description in the browser's session storage as a JSON record. This allows the data to be stored temporarily and can easily be displayed to the user when they request their history.   
+\end{enumerate}
+
+\newpage
 \section*{Appendix --- Evaluation Metrics Summary}
 \label{sec:evaluation-metrics}
 The following table summarizes the evaluation metrics that will be used to assess the quality and effectiveness of the alternative text generated by the Reading4All system. Each metric includes its scale type, acceptable range, and a brief description of its purpose.
