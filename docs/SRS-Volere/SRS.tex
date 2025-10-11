@@ -13,6 +13,7 @@
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{graphicx}
+\usepackage{longtable}
 \usepackage{float}
 \usepackage{placeins}
 \usepackage{hanging}
@@ -48,8 +49,9 @@
 ~\newpage
 
 \section*{Symbolic Constants}
-\begin{tabularx}{\textwidth}{|X|X|}
-\toprule {\textbf{Name}} & {\textbf{Value}}\\
+\begin{longtable}{|p{8.0cm}|p{8.0cm}|}
+\toprule
+{\textbf{Name}} & {\textbf{Value}}\\
 \midrule
 T\_ALT\_GEN\_SMALL & 3 seconds(s) \\
 T\_ALT\_GEN\_LARGE & 8 s \\
@@ -83,7 +85,7 @@ COST\_TOTAL & \$26,400 CAD \\
 COST\_ACTUAL & \$0 CAD \\
 COST\_INCENTIVE\_MIN & \$100 CAD \\
 COST\_INCENTIVE\_MAX & \$150 CAD \\
-MAX\_ZOOM\_PERCENTAGE & 200\%\\
+MAX\_ZOOM\_PERCENTAGE & 200\% \qquad\textit{Table continues on next page}\\
 MIN\_CONTRAST\_RATIO & 4.5:1\\
 MAX\_UPLOAD\_STEPS & 5 steps\\
 MAX\_MINUTES & 5 minutes\\
@@ -99,7 +101,8 @@ SFWR\_RELEASES & 2 \\
 
 
 \bottomrule
-\end{tabularx}
+\end{longtable}
+    
 
 
 ~\newpage
