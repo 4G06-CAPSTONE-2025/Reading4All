@@ -6,8 +6,11 @@
 \usepackage{longtable}
 \usepackage{array}
 \usepackage{booktabs}
+\usepackage{enumitem}
 \usepackage{graphicx}  
 \usepackage{makecell}
+\usepackage{multicol}
+
 \usepackage{pdflscape}
 \usepackage[margin=1.5in]{geometry}  
 
@@ -292,12 +295,51 @@ re-evaluation of risks and system design updates.
 \wss{Newly discovered requirements.  These should also be added to the SRS.  (A
 rationale design process how and why to fake it.)}
 
+\begin{enumerate}[label=PR-SR-HA \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The system must notify the user when a timeout occurs during alternative text generation.}\\[2mm]
+    {\bf Rationale:} Users should be informed when the alternative text generation exceeds the expected amount of time. If users are not notified they may send multiple requests, leading the server to be overloaded; this would also lead to user frustration.\\
+    {\bf Fit Criterion:} When a timeout occurs, the system displays a message indicating the timeout and a "Retry" option. The message must follow accessibility guidelines and be compatible with screen readers.\\
+    {\bf Priority:} Medium\\
+    {\bf Hazard Analysis Connected}: HA4
+  \item \emph{The system must safely exit when a timeout occurs and ensure that no user data or incomplete alternative text is stored or shown to the user.}\\[2mm]
+    {\bf Rationale:} Safely exiting during a timeout prevents users from seeing incomplete alternative text and mistaking it for a complete output, which may cause confusion. Leaving user data stored would also be a security violation. \\
+    {\bf Fit Criterion:} When a timeout occurs, the system must stop processing and delete the users data and any incomplete alternative text that has been generated.\\
+    {\bf Priority:} High\\
+    {\bf Hazard Analysis Connected}: HA4
+  \item \emph{The system must ensure that messages notifying the user of failure, do not reveal any system code or data. }\\[2mm]
+    {\bf Rationale:} This will prevent internal data from being shown to users, which may lead to system and user security issues. \\
+    {\bf Fit Criterion:} All error messages shown to the user only display the necessary information and do not contain any technical information.\\
+    {\bf Priority:} High \\
+    {\bf Hazard Analysis Connected}: HA4, HA7
+\end{enumerate}
+
 \section{Roadmap}
 
 \wss{Which safety requirements will be implemented as part of the
   capstone timeline?
 Which requirements will be implemented in the future?}
 
+All safety and security requirements outlined in our SRS, as well as newly discovered requirements will be implemented as part of the capstone timeline. This includes the following requirements, which can be found in our SRS document: 
+\begin{multicols}{3}
+\begin{itemize}
+  \item SR-AR 1
+  \item SR-AR 2 
+  \item SR-IR 1
+  \item SR-IR 2
+  \item SR-PR 1
+  \item SR-PR 2
+  \item SR-AU 1
+  \item SR-AU 2
+  \item SR-IM 1
+  \item SR-IM 2
+  \item PR-SCR 1
+  \item PR-SCR 2
+  \item PR-SCR 3
+  \item PR-SCR-HA 1
+  \item PR-SCR-HA 2
+  \item PR-SCR-HA 3
+\end{itemize}
+\end{multicols}
 \newpage{}
 
 \section*{Appendix --- Reflection}

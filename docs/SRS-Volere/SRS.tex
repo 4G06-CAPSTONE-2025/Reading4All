@@ -1200,6 +1200,25 @@ inputs and outputs to the system and the related requirements.
     {\bf Priority:} High
 \end{enumerate}
 
+\begin{enumerate}[label=PR-SR-HA \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{The system must notify the user when a timeout occurs during alternative text generation.}\\[2mm]
+    {\bf Rationale:} Users should be informed when the alternative text generation exceeds the expected amount of time. If users are not notified they may send multiple requests, leading the server to be overloaded; this would also lead to user frustration.\\
+    {\bf Fit Criterion:} When a timeout occurs, the system displays a message indicating the timeout and a "Retry" option. The message must follow accessibility guidelines and be compatible with screen readers.\\
+    {\bf Priority:} Medium\\
+    {\bf Hazard Analysis Connected}: HA4
+  \item \emph{The system must safely exit when a timeout occurs and ensure that no user data or incomplete alternative text is stored or shown to the user.}\\[2mm]
+    {\bf Rationale:} Safely exiting during a timeout prevents users from seeing incomplete alternative text and mistaking it for a complete output, which may cause confusion. Leaving user data stored would also be a security violation. \\
+    {\bf Fit Criterion:} When a timeout occurs, the system must stop processing and delete the users data and any incomplete alternative text that has been generated.\\
+    {\bf Priority:} High\\
+    {\bf Hazard Analysis Connected}: HA4.
+  \item \emph{The system must ensure that messages notifying the user of failure, do not reveal any system code or data. }\\[2mm]
+    {\bf Rationale:} This will prevent internal data from being shown to users, which may lead to system and user security issues. \\
+    {\bf Fit Criterion:} All error messages shown to the user only display the necessary information and do not contain any technical information.\\
+    {\bf Priority:} High \\
+    {\bf Hazard Analysis Connected}: HA4, HA7.
+\end{enumerate}
+
+
 \subsection{Precision or Accuracy Requirements}
 Please refer to Appendix – Evaluation Metrics Summary (\ref{sec:evaluation-metrics}) to understand the evaluation scales and metrics.
 \begin{enumerate}[label=PR-PAR \arabic*., wide=0pt, leftmargin=*]
