@@ -184,117 +184,107 @@ re-evaluation of risks and system design updates.
 
 \section{Failure Mode and Effect Analysis}
 
-\wss{Include your FMEA table here. This is the most important part of
-this document.}
-\wss{The safety requirements in the table do not have to have the prefix SR.
-  The most important thing is to show traceability to your SRS. You
-  might trace to
-  requirements you have already written, or you might need to add new
-requirements.}
-\wss{If no safety requirement can be devised, other mitigation strategies can be
-  entered in the table, including strategies involving providing additional
-documentation, and/or test cases.}
 \begin{landscape}
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{5pt}
     \small                         
     
-    \begin{longtable}{|p{2.0cm}|p{3.0cm}|p{3.2cm}|p{3.2cm}|p{4.0cm}|p{2.6cm}|}
+    \begin{longtable}{|p{1.2cm}|p{2.0cm}|p{3.0cm}|p{3.2cm}|p{3.2cm}|p{4.0cm}|p{2.6cm}|}
     \caption{Failure Mode and Effect Analysis (FMEA) for Reading4All}
     \label{tab:fmea-reading4all}\\
     \hline
-    \textbf{Component} & \textbf{Failure Mode} & \textbf{Effects of Failure} &
+    \textbf{HA ID} & \textbf{Component} & \textbf{Failure Mode} & \textbf{Effects of Failure} &
     \textbf{Possible Causes} & \textbf{Recommended Action / Mitigation} &
     \textbf{SRS Ref.} \\
     \hline
     \endfirsthead
-    \multicolumn{6}{r}{\small \textit{Table \thetable\ (continued)}}\\
+    \multicolumn{7}{r}{\huge \textit{Table \thetable\ (continued)}}\\
     \hline
-    \textbf{Component} & \textbf{Failure Mode} & \textbf{Effects of Failure} &
+    \textbf{HA ID} & \textbf{Component} & \textbf{Failure Mode} & \textbf{Effects of Failure} &
     \textbf{Possible Causes} & \textbf{Recommended Action / Mitigation} &
     \textbf{SRS Ref.} \\
     \hline
     \endhead
     \hline
-    \multicolumn{6}{r}{\small \textit{Table continues on next page}}\\
+    \multicolumn{7}{r}{\normalsize \textit{Table continues on next page}}\\
     \hline
     \endfoot
     \hline
     \endlastfoot   
-    Frontend UI &
+    
+    HA-1 & Frontend UI &
     All user interface components cannot be controlled using keyboard &
     Users using assistive technology cannot operate all features &
     Missing Accessible Rich Internet Applications (ARIA) roles, incorrect tab order &
     WCAG~2.1 Level~AA evaluation; fix focus order and ARIA; add additional tests for accessibility needs &
     UHR-AR~1, UHR-AR~2 \\ \hline
     
-    Frontend UI &
+    HA-2 & Frontend UI &
     Alt text output not compatible with screen readers &
     Screen readers skip generated alt text &
     Missing ARIA labels &
     Validate with NVDA/JAWS/VoiceOver; use \texttt{aria-label} with user interface components  &
     FR~3, UHR-AR~1 \\ \hline
     
-    Backend Controller &
+    HA-3 & Backend Controller &
     Accepts unsupported/corrupted files &
     System crash or user confusion &
     Missing images/type validation or file-size limits &
     Validate uploads; enforce size/type checks; detailed error messages &
     FR~1, PR-RFT~1, SR-IM~1 \\ \hline
     
-    Backend Controller &
+    HA-4 & Backend Controller &
     Timeout during image analysis &
-    User perceives failure and is frustrated with system; repeated submissions; increased load on backend controller&
+    User perceives failure and is frustrated with system; repeated submissions; increased load on backend controller &
     Increased model latency; missing timeout handling &
-    Add timeouts/retries for better user handling; progress indicator; &
+    Add timeouts/retries for better user handling; progress indicator &
     PR-SL~1, PR-SL~2 \\ \hline
     
-    Alt Text Generation Model &
-    Generates offensive/biased or Personal Interest Information (PII) -leaking text &
+    HA-5 & Alt Text Generation Model &
+    Generates offensive/biased or Personal Interest Information (PII)–leaking text &
     Ethical/privacy risk; loss of user trust &
     Lack of Model Training and Accuracy; no output filtering &
     Add additional filters and checks for PII Data and offensive texts &
     SR-PR~2 \\ \hline
     
-    Alt Text Generation Model &
+    HA-6 & Alt Text Generation Model &
     No output or empty alt text &
     Users cannot use result; reduced learning impact &
-    Interface failure or Application Programmable Interface (API) crash;  &
-    Retry option; No Text Generated Label ; clear user feedback &
+    Interface failure or Application Programmable Interface (API) crash &
+    Retry option; “No Text Generated” label; clear user feedback &
     PR-RFT~2 \\ \hline
     
-    Session Storage Component &
+    HA-7 & Session Storage Component &
     Images metadata or generated alt text not deleted after processing &
-    Privacy exposure; increased storage/cost;  &
+    Privacy exposure; increased storage/cost &
     Cleanup jobs fail or not configured &
     Auto-delete temp files; periodic cleanup; log storage usage; manual deletion triggered by deletion failure alarms &
     SR-PR~1 \\ \hline
     
-    Session Storage Component &
+    HA-8 & Session Storage Component &
     Session history not found &
     Loss of user trust and session data causing frustration &
     Session key mismatch; write errors &
     Atomic writes; bind session to SSO token &
     FR~5, SR-AR~2 \\ \hline
     
-    Alt Text Model Output Training Evaluation &
+    HA-9 & Alt Text Model Output Training Evaluation &
     Evaluation metrics and scale linked to wrong model output &
     Inaccurate metrics &
     Race condition; wrong foreign key &
     Immutable IDs; transactional writes; enforce referential integrity &
     PR-PAR~1 \\ \hline
     
-    McMaster SSO (Access Control) &
+    HA-10 & McMaster SSO (Access Control) &
     Session bypass &
     Unauthorized access &
     Token reuse; improper validation &
     Validate tokens on the server &
     SR-AR~1, SR-AR~2 \\ \hline
-    
+
     \end{longtable}
     
-    \end{landscape}
-
+\end{landscape}
     
     
 \section{Safety and Security Requirements}
