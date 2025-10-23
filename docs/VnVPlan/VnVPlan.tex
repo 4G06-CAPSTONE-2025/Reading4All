@@ -3,6 +3,8 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{float}
+
 \hypersetup{
     colorlinks,
     citecolor=blue,
@@ -171,6 +173,28 @@ how they relate to your VnV efforts.}
   You should do more than list names.  You should say what each person's role is
   for the project's verification.  A table is a good way to summarize this information.}
 
+\begin{table}[H]
+    \centering
+    \caption{Verification and Validation Responsibility Breakdown}
+    \label{tab:data-dictionary-reading4all}
+    \begin{tabular}{ |p{3.0cm}|p{3.8cm}|p{7.3cm}| }
+      \hline
+      \textbf{Name} & \textbf{ Focus Area } & \textbf{Responsibility} \\
+      \hline
+      Moly Mikhail and Fiza Sehar & Functional Requirements Tester & Completes manuel testing on the software to ensure that functional requirements are met. Also oversees any written unit tests to ensure they correctly test the system and intended functionality \\
+      \hline
+      Nawaal Fatima & User Testing Preparation & Coordinates the user testing sessions, and oversees the planning and execution of the sessions. \\
+      \hline 
+      Casey Francine Bulaclac & Usability Requirements Tester & Completes manuel testing to ensure all the defined usability requirements are met. Also references WCAG 2.1 crtieria is met, prior to automated testing. \\
+      \hline 
+      Dhruv Sardana & Look and Feel Requirements & Evaluates the systems design and interface to ensure the outlined requreiments are met. Also references WCAG 2.1 criteria is met, prior to automated testing. \\
+      \hline 
+      Ms. Jingchuan Sui (Supervisor) & Overall Usability and Quality of Alternative Text Reviewer & Reviews and provides feedback to team on the overall usability of the system and the quality of the generated alternative text. Also helps team complete automating evaluation of the system against WCAG 2.1 criteria. \\ 
+      \hline
+    \end{tabular}
+  \end{table}
+  
+  
 \subsection{SRS Verification}
 
 \wss{List any approaches you intend to use for SRS verification.  This may
