@@ -126,6 +126,12 @@ proof, GenderMag personas, Design Thinking, etc.  Extras should have already
 been approved by the course instructor as included in your problem statement.
 You can use a pull request to update your extras (in TeamComposition.csv or
 Repos.csv) if your plan changes as a result of the VnV planning exercise.}
+\\
+The challenge level of the project is set at a \textit{general} level that will include two additional 
+components (extras). The first additional component will be a Norman's Principles report that will 
+evaluate the design of our final product to ensure that it optimizes usability and accessibility. The second additional 
+component will be a user manual that will include comprehensive documentation to guide users in using the final 
+product effectively. 
 
 \subsection{Relevant Documentation}
 
@@ -135,10 +141,20 @@ Repos.csv) if your plan changes as a result of the VnV planning exercise.}
   is done, they will be written.  You can create BibTeX entries for your
   documents and within those entries include a hyperlink to the documents.}
 
-\citet{SRS}
-
 \wss{Don't just list the other documents.  You should explain why they are relevant and 
-how they relate to your VnV efforts.}
+how they relate to your VnV efforts.} 
+\\
+The System Verification and Validation (VnV) plan will reference the following documents to aid in 
+the project's assessment and testing:
+\begin{enumerate}
+  \item \textbf{Software Requirements Specification} (\citet{SRS}): This document outlines the key components 
+for the VnV plan as it details the functional and non-functional requirements of the product. Ensuring that our testing 
+satisfies these requirements is essential to meeting the goals of the project.
+  \item \textbf{Design Document - Module Guide} (\citet{MG}): This document outlines how the system is divided into separate module and their respective functions. 
+  This structure helps the VnV Plan by making it easier to test, trace, and confirm that each module works correctly and meets the requirements.
+  \item \textbf{Design Document - Module Interface Specification} (\citet{MIS}): This document outlines how the modules of the system works and how they interact with each other.
+  This aids in our VnV plan as it defines how to validate the testing of interactions between the individual parts of the system.
+\end{enumerate}
 
 \section{Plan}
 
@@ -172,6 +188,12 @@ issue tracker?}
 \wss{The review will include reviews by your classmates}
 
 \wss{Create a checklists?}
+\\
+The verification of our design will rely on reviews conducted by our fellow classmates and supervisor who will
+evaluate our design documents including our Module Guide (MG) and Module Interface Specification (MIS). They will also aid in performing
+consistency and traceability checks to ensure clear alignment between our requirements, design, and implementation. \\[1ex]
+In a formal review, our supervisor, Ms. Jing, will verify that the user interface design supports accessibility in accordance with WCAG 2.1 standards. 
+Additionally, our professor, Dr. Smith, will assess the technical aspects of the system, focusing on the machine learning architecture to ensure it is well designed.
 
 \subsection{Verification and Validation Plan Verification}
 
@@ -206,11 +228,21 @@ CAS741) for a partial usability survey.}
   that verify that coding standards have been respected, like flake9 for
   Python.}
 
+
+
 \wss{If you have already done this in the development plan, you can point to
 that document.}
 
 \wss{The details of this section will likely evolve as you get closer to the
   implementation.}
+\\
+The AI Generated Alternative (alt) Text tool will make use of the following automated testing and verification tools: 
+\begin{itemize}
+  \item \textbf{Automated Accessibility Testing}: Automated web accessibility testing tools such as the WAVE Web Accessibility Evaluation Tool will be used to 
+  verify that the tool adheres to the WCAG 2.1 guidelines. These tools will automatically scan for accessibility issues such as missing alternative text and color contrast violations.
+  \item \textbf{Unit Testing Framework, Linters, Coverage Tools, and Continuous Integration}: These tools have been detailed and outlined in the Expected Technologies section
+  of our Development Plan (\citet{DP}) document under Table 3. 
+\end{itemize}
 
 \subsection{Software Validation}
 
@@ -231,6 +263,16 @@ The feedback from your supervisor will be very useful for improving your project
 as a Rev 0 demo for the supervisor.}
 
 \wss{This section might reference back to the SRS verification section.}
+\\
+The AI Generated Alternative (alt) Text tool will be validated through the following: 
+\begin{itemize}
+  \item \textbf{User Testing}: Stakeholders of this project including students experiencing visual 
+  and cognitive disabilities will perform realistic tasks such as uploading an image and generating alt text to validate 
+  that it meets their needs and requirements. 
+  \item \textbf{Formal Reviews}: Reviews will be conducted with the stakeholders of the project and our supervisor, Ms. Jing, to validate that the requirements
+  outlined in our SRS document are correct and captures the needs for the tool. Additionally, the Rev 0 demo with Ms. Jing will serve as a validation review and allow the team 
+  to receive feedback to improve the tool. 
+\end{itemize} 
 
 \section{System Tests}
 
