@@ -477,130 +477,199 @@ How test will be performed:
   requirements.}
 
 \section{Unit Test Description}
-
-\wss{This section should not be filled in until after the MIS (detailed design
-  document) has been completed.}
-
-\wss{Reference your MIS (detailed design document) and explain your overall
-philosophy for test case selection.}  
-
-\wss{To save space and time, it may be an option to provide less detail in this section.  
-For the unit tests you can potentially layout your testing strategy here.  That is, you 
-can explain how tests will be selected for each module.  For instance, your test building 
-approach could be test cases for each access program, including one test for normal behaviour 
-and as many tests as needed for edge cases.  Rather than create the details of the input 
-and output here, you could point to the unit testing code.  For this to work, you code 
-needs to be well-documented, with meaningful names for all of the tests.}
-
 \subsection{Unit Testing Scope}
 
-\wss{What modules are outside of the scope.  If there are modules that are
-  developed by someone else, then you would say here if you aren't planning on
-  verifying them.  There may also be modules that are part of your software, but
-  have a lower priority for verification than others.  If this is the case,
-  explain your rationale for the ranking of module importance.}
+The purpose of unit testing for \textit{Reading4All} is to verify the correctness, robustness, and accessibility compliance of individual components prior to system integration. Each module is tested independently using automated test scripts (PyTest) and deterministic input fixtures.
+
+\textbf{Modules in Scope:}
+\begin{itemize}
+  \item Image Upload \& Validation Module
+  \item Alt-Text Generation Module
+  \item Accessibility and UI Compliance Module
+  \item Security and Privacy Module
+\end{itemize}
+
+\textbf{Modules Out of Scope:}
+Third-party OCR engines, pretrained vision/language models, and external McMaster authentication services are assumed to be validated independently. Only the thin wrappers and internal interactions with these APIs are tested here.
 
 \subsection{Tests for Functional Requirements}
 
-\wss{Most of the verification will be through automated unit testing.  If
-  appropriate specific modules can be verified by a non-testing based
-  technique.  That can also be documented in this section.}
+\subsubsection{Module 1 \textemdash{} Image Upload and Validation}
 
-\subsubsection{Module 1}
-
-\wss{Include a blurb here to explain why the subsections below cover the module.
-  References to the MIS would be good.  You will want tests from a black box
-  perspective and from a white box perspective.  Explain to the reader how the
-  tests were selected.}
+\textbf{Goal:} Ensure uploaded images meet all input constraints for format, size, and type, and that invalid files are rejected gracefully.
 
 \begin{enumerate}
+\item{UT1-UploadValidImage\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: Application running; no active uploads.\\
+Input: Valid PNG image, 1 MB in size.\\
+Output: File accepted; confirmation message displayed; metadata stored in temporary session.\\
+Test Case Derivation: Confirms compliance with input constraints (JPEG/PNG $\leq$ 10 MB).\\
+How test will be performed: Run automated pytest verifying HTTP 200 response and valid JSON schema.
 
-\item{test-id1\\}
+\item{UT2-UploadInvalidFileType\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: No uploads.\\
+Input: Unsupported file type (e.g., \texttt{.pdf}).\\
+Output: Error message ``Unsupported file format'' returned; no data stored.\\
+Test Case Derivation: Validates enforcement of file type constraint and secure rejection.\\
+How test will be performed: Send POST request with invalid MIME type; assert error 400 and log entry.
 
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-
-\item{...\\}
-    
+\item{UT3-UploadOversizedFile\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: No uploads.\\
+Input: PNG file $>$ 10 MB.\\
+Output: Upload rejected with clear error; no file stored.\\
+Test Case Derivation: Confirms handling of maximum size threshold.\\
+How test will be performed: Simulate multipart upload; verify memory cleanup and error alert.
 \end{enumerate}
 
-\subsubsection{Module 2}
+\subsubsection{Module 2 \textemdash{} Alt-Text Generation}
 
-...
+\textbf{Goal:} Validate that image inference and text generation components produce deterministic, relevant, and correctly formatted alternative text.
 
-\subsection{Tests for Nonfunctional Requirements}
-
-\wss{If there is a module that needs to be independently assessed for
-  performance, those test cases can go here.  In some projects, planning for
-  nonfunctional tests of units will not be that relevant.}
-
-\wss{These tests may involve collecting performance data from previously
-  mentioned functional tests.}
-
-\subsubsection{Module ?}
-		
 \begin{enumerate}
+\item{UT4-GenerateAltText\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: Valid image uploaded and accessible to model service.\\
+Input: Image containing labeled diagram.\\
+Output: Non-empty descriptive string within 3--8~s latency window.\\
+Test Case Derivation: Confirms compliance with generation timing and content sufficiency.\\
+How test will be performed: Mock ML service; assert response schema and timing $<$ T\_ALT\_GEN\_SMALL.
 
-\item{test-id1\\}
+\item{UT5-EditAltText\\}
+Type: Functional, Dynamic, Manual\\
+Initial State: Alt-text successfully generated.\\
+Input: User edits description and saves.\\
+Output: Edited text replaces old version in session storage.\\
+Test Case Derivation: Ensures edit functionality modifies session data only.\\
+How test will be performed: Selenium automation of UI; assert saved value persists on reload.
 
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
-
+\item{UT6-HandleEmptyAltText\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: Image uploaded yields no model output.\\
+Input: Blank model return.\\
+Output: Error message and retry option; no text stored.\\
+Test Case Derivation: Confirms graceful failure and user notification.\\
+How test will be performed: Patch model API to return empty string; validate error log.
 \end{enumerate}
 
-\subsubsection{Module ?}
+\subsubsection{Module 3 \textemdash{} Accessibility and UI Compliance}
 
-...
+\textbf{Goal:} Validate that all UI components meet accessibility and usability criteria (keyboard navigation, zoom, color contrast, alt text labeling).
+
+\begin{enumerate}
+\item{UT7-KeyboardNavigation\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: Application home screen loaded.\\
+Input: Simulated Tab and Enter key presses.\\
+Output: All focusable elements reachable; no trap detected.\\
+Test Case Derivation: Confirms WCAG 2.1 Success Criterion 2.1.1.\\
+How test will be performed: Automated Axe/WAVE accessibility scan with keyboard simulation.
+
+\item{UT8-ContrastValidation\\}
+Type: Functional, Static, Automatic\\
+Initial State: Deployed UI snapshot available.\\
+Input: CSS stylesheet.\\
+Output: All color pairs $\geq$ 4.5:1 contrast ratio.\\
+Test Case Derivation: Confirms MIN\_CONTRAST\_RATIO threshold met.\\
+How test will be performed: Run Lighthouse CI contrast-check script.
+
+\item{UT9-ZoomResilience\\}
+Type: Functional, Manual\\
+Initial State: Browser window at 100\%.\\
+Input: Zoom increased to 200\%.\\
+Output: Interface remains fully visible and interactive.\\
+Test Case Derivation: Ensures compliance with MAX\_ZOOM\_PERCENTAGE.\\
+How test will be performed: Manual inspection + screen-reader pass.
+\end{enumerate}
+
+\subsubsection{Module 4 \textemdash{} Security and Privacy}
+
+\textbf{Goal:} Verify that all authentication, encryption, and data-deletion procedures uphold confidentiality and integrity requirements.
+
+\begin{enumerate}
+\item{UT10-LoginAuthentication\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: No user session.\\
+Input: Valid McMaster SSO credentials.\\
+Output: Access granted; session token stored.\\
+Test Case Derivation: Ensures access restriction and session linking.\\
+How test will be performed: Mock OAuth SSO; assert 200 and JWT valid.
+
+\item{UT11-RejectUnauthorizedAccess\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: No valid session token.\\
+Input: API request to /generate endpoint.\\
+Output: HTTP 401 Unauthorized.\\
+Test Case Derivation: Confirms secure access control.\\
+How test will be performed: Post request without auth header; verify denial and log entry.
+
+\item{UT12-TemporaryFileDeletion\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: Completed alt-text generation.\\
+Input: Wait $>$ 60~s.\\
+Output: Uploaded file deleted from temporary directory.\\
+Test Case Derivation: Verifies privacy compliance (FILE\_DELETE\_TIME).\\
+How test will be performed: Check directory contents before/after timeout.
+\end{enumerate}
+
+\subsection{Tests for Non-Functional Requirements}
+
+\subsubsection{Module 5 \textemdash{} Performance and Reliability}
+
+\textbf{Goal:} Ensure responsiveness, stability, and error handling meet defined thresholds.
+
+\begin{enumerate}
+\item{UT13-LatencyBenchmark\\}
+Type: Dynamic, Automatic\\
+Input/Condition: Upload 5 images $\leq$ 2~MB each concurrently.\\
+Output/Result: Mean response $\leq$ 8~s; no timeouts.\\
+How test will be performed: Stress-test script measuring T\_ALT\_GEN\_LARGE; record average latency.
+
+\item{UT14-FaultRecovery\\}
+Type: Dynamic, Automatic\\
+Input/Condition: Force backend process crash.\\
+Output/Result: Recovery $\leq$ 5~s; no user data loss.\\
+How test will be performed: Docker restart test; verify persistence logs.
+\end{enumerate}
+
+\subsubsection{Module 6 \textemdash{} Usability and Accessibility Metrics}
+
+\textbf{Goal:} Quantify user interaction quality and accessibility performance.
+
+\begin{enumerate}
+\item{UT15-UsabilitySurvey\\}
+Type: Manual, Empirical\\
+Input/Condition: Ten participants complete key tasks.\\
+Output/Result: Median usability rating $\geq 3$/4; no responses $<2$.\\
+How test will be performed: Controlled observation using evaluation rubric.
+
+\item{UT16-ScreenReaderCompatibility\\}
+Type: Functional, Dynamic, Manual\\
+Input/Condition: Generate alt text and read using NVDA, JAWS, VoiceOver.\\
+Output/Result: All screen readers announce output correctly.\\
+How test will be performed: Manual auditory confirmation + accessibility log capture.
+\end{enumerate}
 
 \subsection{Traceability Between Test Cases and Modules}
 
-\wss{Provide evidence that all of the modules have been considered.}
-				
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Test ID} & \textbf{Module / Feature Tested} & \textbf{Supported Requirement(s)}\\
+\hline
+UT1--UT3   & Image Upload and Validation          & FR1, PR-RFT1 \\
+UT4--UT6   & Alt-Text Generation                  & FR2, FR4, PR-PAR1, PR-PAR2 \\
+UT7--UT9   & Accessibility and UI Compliance      & LFR-AR1--AR4, UHR-EUR1--4 \\
+UT10--UT12 & Security and Privacy                 & SR-AR1, SR-PR1, PR-SCR1--PR-SCR3 \\
+UT13--UT14 & Performance and Reliability          & PR-SL1--2, PR-RFT2 \\
+UT15--UT16 & Usability and Accessibility Metrics  & UHR-LR1, UHR-AR1, OER-IAS1 \\
+\hline
+\end{tabular}
+\end{center}
+\newpage
+
 \bibliographystyle{plainnat}
 
 \bibliography{../../refs/References}
