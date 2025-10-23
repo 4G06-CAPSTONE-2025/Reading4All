@@ -3,6 +3,8 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{float}
+
 \hypersetup{
     colorlinks,
     citecolor=blue,
@@ -92,6 +94,12 @@ This document ... \wss{provide an introductory blurb and roadmap of the
 \wss{Say what software is being tested.  Give its name and a brief overview of
   its general functions.}
 
+The software being tested is called Reading4All. This software will utilize artificial intelligence (AI)/
+machine learning (ML) techniques to provide detailed, context-informed alternative text for complex technical images, specifically those found in post-secondary Science, Technology, Engineering and Mathematics (STEM)
+course materials. Reading4All will allow users to upload images and automatically produce corresponding alternative text, that meet the outlined criteria. The system is intended for use by McMaster University students and faculty, therefore it will include user validation through McMaster's sign-on, ensuring that only verified users can access the Reading4All system.  
+In addition, the system will allow users to edit the generated alternative text, view a history of uploaded images and their alternative text within that session and download the final outputs in their desired formats.
+
+
 \subsection{Objectives}
 
 \wss{State what is intended to be accomplished.  The objective will be around
@@ -99,6 +107,7 @@ This document ... \wss{provide an introductory blurb and roadmap of the
   something like: ``build confidence in the software correctness,''
   ``demonstrate adequate usability.'' etc.  You won't list all of the qualities,
   just those that are most important.}
+
 
 \wss{You should also list the objectives that are out of scope.  You don't have 
 the resources to do everything, so what will you be leaving out.  For instance, 
@@ -110,6 +119,19 @@ limitations in your resources for verification and validation.  You can't do eve
 so what are you going to prioritize?  As an example, if your system depends on an 
 external library, you can explicitly state that you will assume that external library 
 has already been verified by its implementation team.}
+
+
+The objective of this Verification and Validation (VnV) plan is to build confidence in the correctness, accessibility and usability of the Reading4All system. 
+The plan focuses on ensuring that the system generates, accurate, detailed and contextually appropriate alternative text for complex STEM images, as this is the main functionality of the software. 
+It also aims to verify that the systems interface is accessible an usable for individuals with visual impairments, who are one of the main users of the software. The last object is to demonstrate effective and accessible usability in secondary features
+such as editing the outputted alternative text, viewing session history and file downloading. 
+Verifying and validating these objectives is essential to ensure that users can benefit from the Reading4All system and 
+it can effectively fulfill its goal of making STEM diagrams more accessible.
+\\
+
+Some objectives are out of scope from this VnV plan due to the time and resource limitations of the project.
+The external libraries that might be used in the development of the system, including PyTorch, TensorFlow, Scikit-Learn, Pandas and frontend frameworks, will not be verified by our team, as they will be assumed to have been tested and validated by their implementation teams. 
+The McMaster sign-on authentication service will also not be tested, as its maintained and run by the university.
 
 \subsection{Challenge Level and Extras}
 
@@ -167,6 +189,28 @@ satisfies these requirements is essential to meeting the goals of the project.
   You should do more than list names.  You should say what each person's role is
   for the project's verification.  A table is a good way to summarize this information.}
 
+\begin{table}[H]
+    \centering
+    \caption{Verification and Validation Responsibility Breakdown}
+    \label{tab:data-dictionary-reading4all}
+    \begin{tabular}{ |p{3.0cm}|p{3.8cm}|p{7.3cm}| }
+      \hline
+      \textbf{Name} & \textbf{ Focus Area } & \textbf{Responsibility} \\
+      \hline
+      Moly Mikhail and Fiza Sehar & Functional Requirements Tester & Completes manuel testing on the software to ensure that functional requirements are met. Also oversees any written unit tests to ensure they correctly test the system and intended functionality \\
+      \hline
+      Nawaal Fatima & User Testing Preparation & Coordinates the user testing sessions, and oversees the planning and execution of the sessions. \\
+      \hline 
+      Casey Francine Bulaclac & Usability Requirements Tester & Completes manuel testing to ensure all the defined usability requirements are met. Also references WCAG 2.1 crtieria is met, prior to automated testing. \\
+      \hline 
+      Dhruv Sardana & Look and Feel Requirements & Evaluates the systems design and interface to ensure the outlined requreiments are met. Also references WCAG 2.1 criteria is met, prior to automated testing. \\
+      \hline 
+      Ms. Jingchuan Sui (Supervisor) & Overall Usability and Quality of Alternative Text Reviewer & Reviews and provides feedback to team on the overall usability of the system and the quality of the generated alternative text. Also helps team complete automating evaluation of the system against WCAG 2.1 criteria. \\ 
+      \hline
+    \end{tabular}
+  \end{table}
+  
+  
 \subsection{SRS Verification}
 
 \wss{List any approaches you intend to use for SRS verification.  This may
@@ -178,6 +222,29 @@ read over the SRS.  You should explain your structured approach to the review.
 Will you have a meeting?  What will you present?  What questions will you ask?
 Will you give them instructions for a task-based inspection?  Will you use your
 issue tracker?}
+
+The verification of the Reading4All SRS will be completed through supervisor feedback, user testing,
+team review and a peer review. \\
+
+\textbf{Team Review}:
+As the Reading4All team has already reviewed the outlined requirements in the SRS document, an team review will 
+consist of each team member individually going through each requirement and trying to validate it manually. 
+Furthermore, the team review will also ensure that any previously determined numerical constraints are met and realistic.  \\
+
+
+\textbf{Supervisor Feedback}
+We will dedicate one of our weekly scheduled meetings with our supervisor to verifying our SRS document. 
+We will first highlight functional and non functional requirements and ensure we have not missed any.
+This will ensure our supervisor has a good understanding of the specific requirements we have outlined and can keep them in 
+mind when completing a task based inspection. During this inspection, we will provide our supervisor with a checklist that they can review while trying to 
+use all the main functionalities within the system. \\
+
+\textbf{User Testing}
+User Testing will be used to verify the non-functional requirements of the system. Participants will being given access to the system 
+and asked to complete a predefined list of tasks such as uploading multiple images, viewing their session history and downloading the output. The team will
+be present during these sessions to observe and note any challenges the users face. The participants will also be asked follow-up questions to gain additional feedback on their overall experience. 
+
+
 
 \wss{Maybe create an SRS checklist?}
 
@@ -194,6 +261,16 @@ evaluate our design documents including our Module Guide (MG) and Module Interfa
 consistency and traceability checks to ensure clear alignment between our requirements, design, and implementation. \\[1ex]
 In a formal review, our supervisor, Ms. Jing, will verify that the user interface design supports accessibility in accordance with WCAG 2.1 standards. 
 Additionally, our professor, Dr. Smith, will assess the technical aspects of the system, focusing on the machine learning architecture to ensure it is well designed.
+
+The Verification and Validation plan will be verified to ensure its completeness, and alignment with previous 
+documents such as our SRS, HA and development plan. This will be completed through a team and peer review. \\
+
+\textbf{Team Review}\\
+The team will perform a review to ensure that the unit testing described within the document effectively tests the system and achieves the defined objectives. 
+This review will involve the team collaboratively going through the document, identifying areas for improvement and making the necessary changes before completing further validation activities.\\
+
+\textbf{Peer Review}\\
+A peer review will be completed by Team 10 (One of a Kind) to provide feedback on our V\&V plan. They will review the document to ensure that the sections are consistent and aligned, as well as to identify any missing unit tests.
 
 \subsection{Verification and Validation Plan Verification}
 
