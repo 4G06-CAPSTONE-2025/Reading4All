@@ -118,6 +118,19 @@ so what are you going to prioritize?  As an example, if your system depends on a
 external library, you can explicitly state that you will assume that external library 
 has already been verified by its implementation team.}
 
+
+The objective of this Verification and Validation (VnV) plan is to build confidence in the correctness, accessibility and usability of the Reading4All system. 
+The plan focuses on ensuring that the system generates, accurate, detailed and contextually appropriate alternative text for complex STEM images, as this is the main functionality of the software. 
+It also aims to verify that the systems interface is accessible an usable for individuals with visual impairments, who are one of the main users of the software. The last object is to demonstrate effective and accessible usability in secondary features
+such as editing the outputted alternative text, viewing session history and file downloading. 
+Verifying and validating these objectives is essential to ensure that users can benefit from the Reading4All system and 
+it can effectively fulfill its goal of making STEM diagrams more accessible.
+\\
+
+Some objectives are out of scope from this VnV plan due to the time and resource limitations of the project.
+The external libraries that might be used in the development of the system, including PyTorch, TensorFlow, Scikit-Learn, Pandas and frontend frameworks, will not be verified by our team, as they will be assumed to have been tested and validated by their implementation teams. 
+The McMaster sign-on authentication service will also not be tested, as its maintained and run by the university.
+
 \subsection{Challenge Level and Extras}
 
 \wss{State the challenge level (advanced, general, basic) for your project.
