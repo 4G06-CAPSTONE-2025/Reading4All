@@ -141,10 +141,21 @@ product effectively.
   is done, they will be written.  You can create BibTeX entries for your
   documents and within those entries include a hyperlink to the documents.}
 
-\citet{SRS}
 
 \wss{Don't just list the other documents.  You should explain why they are relevant and 
-how they relate to your VnV efforts.}
+how they relate to your VnV efforts.} 
+\\
+The System Verification and Validation (VnV) plan will reference the following documents to aid in 
+the project's assessment and testing:
+\begin{enumerate}
+  \item \textbf{Software Requirements Specification} (\citet{SRS}): This document outlines the key components 
+for the VnV plan as it details the functional and non-functional requirements of the product. Ensuring that our testing 
+satisfies these requirements is essential to meeting the goals of the project.
+  \item \textbf{Design Document - Module Guide} (\citet{MG}): This document outlines how the system is divided into separate module and their respective functions. 
+  This structure helps the VnV Plan by making it easier to test, trace, and confirm that each module works correctly and meets the requirements.
+  \item \textbf{Design Document - Module Interface Specification} (\citet{MIS}): This document outlines how the modules of the system works and how they interact with each other.
+  This aids in our VnV plan as it defines how to validate the testing of interactions between the individual parts of the system.
+\end{enumerate}
 
 \section{Plan}
 
