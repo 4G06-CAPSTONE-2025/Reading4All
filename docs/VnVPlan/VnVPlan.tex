@@ -223,28 +223,24 @@ Will you have a meeting?  What will you present?  What questions will you ask?
 Will you give them instructions for a task-based inspection?  Will you use your
 issue tracker?}
 
-The verification of the Reading4All SRS will be completed through supervisor feedback, user testing,
-team review and a peer review. \\
+The verification of the Reading4All SRS will be completed
+ through a team review, peer review, and supervisor feedback, in that order. 
+ Feedback from each step will be incorporated iteratively to ensure the document is reviewed and the version presented to our supervisor reflects the most accurate and complete requirements. \\
 
 \textbf{Team Review}:
-As the Reading4All team has already reviewed the outlined requirements in the SRS document, an team review will 
-consist of each team member individually going through each requirement and trying to validate it manually. 
-Furthermore, the team review will also ensure that any previously determined numerical constraints are met and realistic.  \\
+As the Reading4All team has already reviewed the outlined requirements in the SRS document, a team review will 
+consist of each team member independently evaluating the document against the checklist provided in Appendix~\ref{appendix:srs_checklist}.   \\
 
+\textbf{Peer Review }:
+A peer review will be completed by Team 10 (One of a Kind) to provide feedback on our SRS document.
+They will review the document against the same checklist provided in Appendix~\ref{appendix:srs_checklist}, ensuring consistency between how both teams evaluate the document. 
+This process will allow external reviewers who understand the documents technical details and software engineering context to provide feedback on the completeness, understandability and the overall quality of the requirements. \\
 
 \textbf{Supervisor Feedback}
-We will dedicate one of our weekly scheduled meetings with our supervisor to verifying our SRS document. 
-We will first highlight functional and non functional requirements and ensure we have not missed any.
-This will ensure our supervisor has a good understanding of the specific requirements we have outlined and can keep them in 
-mind when completing a task based inspection. During this inspection, we will provide our supervisor with a checklist that they can review while trying to 
-use all the main functionalities within the system. \\
-
-\textbf{User Testing}
-User Testing will be used to verify the non-functional requirements of the system. Participants will being given access to the system 
-and asked to complete a predefined list of tasks such as uploading multiple images, viewing their session history and downloading the output. The team will
-be present during these sessions to observe and note any challenges the users face. The participants will also be asked follow-up questions to gain additional feedback on their overall experience. 
-
-
+We will dedicate one of our weekly meetings with our supervisor to verifying the SRS document. 
+During this meeting, will explain each functional and non functional requirement to ensure every requirement has been documented.
+This process will help our supervisor gain an understanding of the specific requirements we have outlined and keep them in 
+mind during future validation of our system. \\
 
 \wss{Maybe create an SRS checklist?}
 
@@ -679,6 +675,32 @@ UT15--UT16 & Usability and Accessibility Metrics  & UHR-LR1, UHR-AR1, OER-IAS1 \
 \section{Appendix}
 
 This is where you can place additional information.
+
+\subsection{SRS Team and Peer Review Checklist}
+\label{appendix:srs_checklist}
+\textbf{Stakeholders and Users:}
+\begin{itemize}
+  \item All relevant stakeholders are listed and explained
+  \item  Personas clearly explain the stakeholders pain points, needs and their relationship to system being designed. 
+\end{itemize}
+\textbf{Mandated Constraints:}
+\begin{itemize}
+  \item All solution constraints are clearly explained, attainable, and measurable. 
+\end{itemize}
+\textbf{Functional and Non-Functional Requirements:}
+\begin{itemize}
+  \item Each requirement has a unique identifier.
+  \item All core system features have corresponding functional requirement.
+  \item Each functional requirement is clearly defined and measurable.
+  \item Numerical constraints (ex, number of steps or completion time) are realistic and achievable. 
+  \item All the functional requirement are unique, and do not conflict with one another 
+  \item All the functional requirements can be traced to a business and product use case.
+  \item Each non-functional requirements is clearly defined and measurable. 
+  \item All usability and accessibility needs are addressed by a requirement.
+  \item Performance related numerical constraints are achievable. 
+  \item All the Non-functional requirements are unique, and do not conflict with one another. 
+\end{itemize}
+
 
 \subsection{Symbolic Parameters}
 
