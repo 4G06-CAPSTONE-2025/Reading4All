@@ -4,6 +4,7 @@
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{float}
+\usepackage{enumitem}
 
 \hypersetup{
     colorlinks,
@@ -258,6 +259,16 @@ consistency and traceability checks to ensure clear alignment between our requir
 In a formal review, our supervisor, Ms. Jing, will verify that the user interface design supports accessibility in accordance with WCAG 2.1 standards. 
 Additionally, our professor, Dr. Smith, will assess the technical aspects of the system, focusing on the machine learning architecture to ensure it is well designed.
 
+\subsection{Verification and Validation Plan Verification}
+
+\wss{The verification and validation plan is an artifact that should also be
+verified.  Techniques for this include review and mutation testing.}
+
+\wss{The review will include reviews by your classmates}
+
+\wss{Create a checklists?}
+
+
 The Verification and Validation plan will be verified to ensure its completeness, and alignment with previous 
 documents such as our SRS, HA and development plan. This will be completed through a team and peer review. \\
 
@@ -268,14 +279,6 @@ This review will involve the team collaboratively going through the document, id
 \textbf{Peer Review}\\
 A peer review will be completed by Team 10 (One of a Kind) to provide feedback on our V\&V plan. They will review the document to ensure that the sections are consistent and aligned, as well as to identify any missing unit tests.
 
-\subsection{Verification and Validation Plan Verification}
-
-\wss{The verification and validation plan is an artifact that should also be
-verified.  Techniques for this include review and mutation testing.}
-
-\wss{The review will include reviews by your classmates}
-
-\wss{Create a checklists?}
 
 The Verification and Validation Plan Verification for Reading4All will be completed through a team and peer review, as well as mutation testing to assess the effectiveness and correctness of our tests. \\
 
@@ -364,7 +367,9 @@ The AI Generated Alternative (alt) Text tool will be validated through the follo
 \begin{itemize}
   \item \textbf{User Testing}: Stakeholders of this project including students experiencing visual 
   and cognitive disabilities will perform realistic tasks such as uploading an image and generating alt text to validate 
-  that it meets their needs and requirements. 
+  that it meets their needs and requirements. The team will be present during these sessions to observe and note any challenges 
+  the users face. The participants will also be asked follow-up questions highlighted in Appendix ~\ref{appendix:usability} to gain additional feedback and insight
+  on their overall experience of using the tool. 
   \item \textbf{Formal Reviews}: Reviews will be conducted with the stakeholders of the project and our supervisor, Ms. Jing, to validate that the requirements
   outlined in our SRS document are correct and captures the needs for the tool. Additionally, the Rev 0 demo with Ms. Jing will serve as a validation review and allow the team 
   to receive feedback to improve the tool. 
@@ -771,8 +776,37 @@ The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
 Their values are defined in this section for easy maintenance.
 
 \subsection{Usability Survey Questions?}
+\label{appendix:usability}
 
-\wss{This is a section that would be appropriate for some projects.}
+\begin{enumerate}[label=UA-Q \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{Was the length of the generated alternative text description too short, sufficient, or too long?}\\[2mm]
+    {\bf Purpose:} This is to gain feedback on whether the length of the text description is sufficient enough 
+    for the user to gain understanding on the learning objective of the uploaded image.
+
+  \item \emph{Did the generated alternative text contain too much irrelevant information? If so, how did this affect 
+  your ability to learn?}\\[2mm]
+    {\bf Purpose:} This is to gain feedback on whether the alternative text contained irrelevant information that deviated 
+    from the main learning objective of the uploaded image. It is also to understand what difficulties the stakeholder experiences 
+    when there is too much irrelevant information.
+  
+  \item \emph{Was the generated alternative text contain over-detailed? If so, how did this affect 
+  your ability to learn?}\\[2mm]
+    {\bf Purpose:} This is to determine whether the generated alternative text includes excessive detail that may hinder user 
+    comprehension or distract from the key information needed for effective learning.
+
+  \item \emph{On a scale of 0-4, is the generated alternative text presented in an accessible way? (0 = not accessible at all, 4 = very accessible)}\\[2mm]
+    {\bf Purpose:} This is to ensure that the AI-generated alternative text is presented in a manner that aligns with accessibility standards and 
+    can be easily perceived, understood, and utilized by users relying on assistive technologies such as screen readers.
+
+  \item \emph{On a scale of 0–4, how easy was it for you to use and understand the generated alternative text? (0 = not easy at all, 4 = very easy)}\\[2mm]
+    {\bf Purpose:} This is to assess whether the generated alternative text is presented in a way that supports ease of use and whether it allows users to easily interact with 
+    the interface and understand the content with minimal confusion or effort.
+
+  \item \emph{What changes or improvements would you suggest to make this web tool more accessible and enhance your learning experience, if any?}\\[2mm]
+  {\bf Purpose:} This question aims to collect additional user feedback on accessibility and usability improvements that may not have been addressed in the previous questions of this survey.
+
+\end{enumerate}
+
 
 \newpage{}
 \section*{Appendix --- Reflection}
