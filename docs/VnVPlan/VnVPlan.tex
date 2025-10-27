@@ -212,79 +212,41 @@ the project's assessment and testing:
 
 \section{Plan}
 
-\wss{Introduce this section.  You can provide a roadmap of the sections to
-come.}
 This section outlines the strategies and techniques that will be used for verifying and validating the Reading4All system, throughout the varying development phases. 
-This includes verifying and validating the SRS, the design, the V\&V plan, and the implementation. This section also defines the Reading4All team's responsibilities in 
+This includes verifying and validating the SRS, the design, the VnV plan, and the implementation. This section also defines the Reading4All team's responsibilities in 
 completing this plan and implementing the specified strategies, to ultimately ensure the system meets our requirements and objectives.
 
 \subsection{Verification and Validation Team}
 
-\wss{Your teammates.  Maybe your supervisor.
-  You should do more than list names.  You should say what each person's role is
-  for the project's verification.  A table is a good way to summarize
-this information.}
-
-<<<<<<< HEAD
-The V\*V team ensures that all SRS requirements are thorough,
-accurately implemented and tested to ensure our system meets them.
-Table ~\ref{tab:data-dictionary-reading4all} defines each Reading4All
-team members role in confirming that these requirements are well
-defined and fulfilled in the system.
-=======
-The V\&V team will ensure that all SRS requirements are thorough, accurately implemented and tested to ensure our system meets them. 
+The VnV team will ensure that all SRS requirements are thorough, accurately implemented and tested to ensure our system meets them. 
 Table ~\ref{tab:data-dictionary-reading4all} defines each Reading4All team members role in confirming that these requirements are well defined and fulfilled in the system.
->>>>>>> dev
+These roles will remain the same across different verification tasks, allowing for consistency and a deeper understanding of each focus area. 
 
 \begin{table}[H]
-  \centering
-  \caption{Verification and Validation Responsibility Breakdown}
-  \label{tab:data-dictionary-reading4all}
-  \begin{tabular}{ |p{3.0cm}|p{3.8cm}|p{7.3cm}| }
-    \hline
-    \textbf{Name} & \textbf{ Focus Area } & \textbf{Responsibility} \\
-    \hline
-    Moly Mikhail and Fiza Sehar & Functional Requirements Tester &
-    Completes manuel testing on the software to ensure that
-    functional requirements are met. Also oversees any written unit
-    tests to ensure they correctly test the system and intended functionality \\
-    \hline
-    Nawaal Fatima & User Testing Preparation & Coordinates the user
-    testing sessions, and oversees the planning and execution of the
-    sessions. \\
-    \hline
-    Casey Francine Bulaclac & Usability Requirements Tester &
-    Completes manuel testing to ensure all the defined usability
-    requirements are met. Also references WCAG 2.1 crtieria is met,
-    prior to automated testing. \\
-    \hline
-    Dhruv Sardana & Look and Feel Requirements & Evaluates the
-    systems design and interface to ensure the outlined requreiments
-    are met. Also references WCAG 2.1 criteria is met, prior to
-    automated testing. \\
-    \hline
-    Ms. Jingchuan Sui (Supervisor) & Overall Usability and Quality of
-    Alternative Text Reviewer & Reviews and provides feedback to team
-    on the overall usability of the system and the quality of the
-    generated alternative text. Also helps team complete automating
-    evaluation of the system against WCAG 2.1 criteria. \\
-    \hline
-  \end{tabular}
-\end{table}
-
+    \centering
+    \caption{Verification and Validation Responsibility Breakdown}
+    \label{tab:data-dictionary-reading4all}
+    \begin{tabular}{ |p{3.0cm}|p{3.8cm}|p{7.3cm}| }
+      \hline
+      \textbf{Name} & \textbf{ Focus Area } & \textbf{Responsibility} \\
+      \hline
+      Moly Mikhail and Fiza Sehar & Functional Requirements Leads & Verifies all corresponding requirements in the SRS are thorough, clearly defined, attainable and measurable. Completes manual testing on the software to ensure that the functional requirements are met. Also oversees any written unit tests to ensure they correctly test the system and intended functionality. \\
+      \hline
+      Nawaal Fatima & User Testing Preparation Lead & Coordinates the user testing sessions, and oversees the planning and execution of these sessions. \\
+      \hline 
+      Casey Francine Bulaclac & Usability and Humanity Requirements Lead & Verifies all corresponding requirements in the SRS are thorough, clearly defined, attainable and measurable. Completes manual testing to ensure all the related requirements are met. Also verifies that WCAG 2.1 crtierias are met, prior to automated testing. \\
+      \hline 
+      Dhruv Sardana & Performance, Operational and Environmental Requirements & Verifies that corresponding requirements are thorough, clearly defined, attainable and measurable. Also, validates that the implemented system meets these requirements through extensive testing.  \\
+      \hline 
+      All Reading4All Team Members & Look and Feel Requirements Lead & All team members are responsible for verifying that the corresponding requrieemnts in the SRS are thorough, clearly defined, attainable and measurable. The team will validate that the final system meets the specified requirements prior to user testing. \\
+      \hline
+      Ms. Jingchuan Sui (Supervisor) & Overall Usability and Quality of Alt Text Reviewer, User Testing Material Reviewer& Reviews and provides feedback to team on the overall usability of the system and the quality of the generated alternative text. Reviews user testing materials to ensure they align with accessibility standards and assits the team in completing the automated evaluation of the system against WCAG 2.1 criteria. \\ 
+      \hline
+    \end{tabular}
+  \end{table}
+  
+  
 \subsection{SRS Verification}
-
-\wss{List any approaches you intend to use for SRS verification.  This may
-  include ad hoc feedback from reviewers, like your classmates (like your
-primary reviewer), or you may plan for something more rigorous/systematic.}
-
-\wss{If you have a supervisor for the project, you shouldn't just say they will
-  read over the SRS.  You should explain your structured approach to the review.
-  Will you have a meeting?  What will you present?  What questions will you ask?
-  Will you give them instructions for a task-based inspection?  Will
-  you use your
-issue tracker?}
-
 The verification of the Reading4All SRS will be completed
 through a team review, peer review, and supervisor feedback, in that order.
 Feedback from each step will be incorporated iteratively to ensure
@@ -317,7 +279,6 @@ This process will help our supervisor gain an understanding of the
 specific requirements we have outlined and keep them in
 mind during future validation of our system. \\
 
-\wss{Maybe create an SRS checklist?}
 
 \subsection{Design Verification}
 The design verification will be accomplished through the following:
@@ -390,20 +351,8 @@ cases can detect unexpected behavior.
 
 \subsection{Implementation Verification}
 
-\wss{You should at least point to the tests listed in this document and the unit
-testing plan.}
-
-\wss{In this section you would also give any details of any plans for static
-  verification of the implementation.  Potential techniques include code
-walkthroughs, code inspection, static analyzers, etc.}
-
-\wss{The final class presentation in CAS 741 could be used as a code
-  walkthrough.  There is also a possibility of using the final presentation (in
-CAS741) for a partial usability survey.}
-
-The implementation verification for Reading4All will utilize the unit
-tests defined in section~\ref{Unit Test Desc},
-static analyzers and code inspections.
+The implementation verification for Reading4All will utilize the unit tests defined in section~\ref{Unit Test Desc}, system tests defined in section~\ref{System Tests Desc},
+static analyzers and code inspections. Test results, coverage metrics and pull request reviews will be collected as evidence that verification activities have been completed. 
 
 \textbf{Unit and System Tests}:
 The unit and system tests will be run to ensure the system behaves as expected. The unit tests will check that individual functions within he implementation are working correctly, helping us narrow down possible issues, and thoroughly test functions with different inputs. 
@@ -1339,22 +1288,21 @@ type, acceptable range, and a brief description of its purpose.
   \item Provided checklist can guide review process and bring attention
     to important parts of document.
   \item Describes a plan for documenting and implementing feedback.
-  \item Criteria for evaluating SRS quality is defined.
-  \item  The data collected as evidence for V\&V is clear.
+  \item Criteria for evaluating SRS quality is defined. 
+  \item  The data collected as evidence for VnV is clear. 
 \end{itemize}
 \textbf{Design Verification}:
 \begin{itemize}
-  \item Design review methods are specified, explained and justified.
-  \item The process for documenting and resolving design review
-    feedback is described.
-  \item  The data collected as evidence for V\&V is clear.
-  \item Automated testing and verification tools are specified.
+  \item Design review methods are specified, explained and justified. 
+  \item The process for documenting and resolving design review feedback is described. 
+  \item  The data collected as evidence for VnV is clear. 
+  \item Automated testing and verification tools are specified. 
 \end{itemize}
-\textbf{V\&V Plan Verification}:
+\textbf{VnV Plan Verification}:
 \begin{itemize}
   \item Verification methods are specified, explained and justified.
-  \item Mutation testing will be used to verify the effectiveness of unit tests.
-  \item The data collected as evidence for V\&V is clear.
+  \item Mutation testing will be used to verify the effectiveness of unit tests. 
+  \item The data collected as evidence for VnV is clear. 
 \end{itemize}
 \textbf{System Tests for Requirements}:
 \begin{itemize}
