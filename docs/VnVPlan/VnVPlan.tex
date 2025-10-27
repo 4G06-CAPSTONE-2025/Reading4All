@@ -214,6 +214,9 @@ the project's assessment and testing:
 
 \wss{Introduce this section.  You can provide a roadmap of the sections to
 come.}
+This section outlines the strategies and techniques that will be used for verifying and validating the Reading4All system, throughout the varying development phases. 
+This includes verifying and validating the SRS, the design, the V\&V plan, and the implementation. This section also defines the Reading4All team's responsibilities in 
+completing this plan and implementing the specified strategies, to ultimately ensure the system meets our requirements and objectives.
 
 \subsection{Verification and Validation Team}
 
@@ -222,11 +225,16 @@ come.}
   for the project's verification.  A table is a good way to summarize
 this information.}
 
+<<<<<<< HEAD
 The V\*V team ensures that all SRS requirements are thorough,
 accurately implemented and tested to ensure our system meets them.
 Table ~\ref{tab:data-dictionary-reading4all} defines each Reading4All
 team members role in confirming that these requirements are well
 defined and fulfilled in the system.
+=======
+The V\&V team will ensure that all SRS requirements are thorough, accurately implemented and tested to ensure our system meets them. 
+Table ~\ref{tab:data-dictionary-reading4all} defines each Reading4All team members role in confirming that these requirements are well defined and fulfilled in the system.
+>>>>>>> dev
 
 \begin{table}[H]
   \centering
@@ -396,6 +404,10 @@ CAS741) for a partial usability survey.}
 The implementation verification for Reading4All will utilize the unit
 tests defined in section~\ref{Unit Test Desc},
 static analyzers and code inspections.
+
+\textbf{Unit and System Tests}:
+The unit and system tests will be run to ensure the system behaves as expected. The unit tests will check that individual functions within he implementation are working correctly, helping us narrow down possible issues, and thoroughly test functions with different inputs. 
+The system tests will verify that the implementation fulfills all functional and non-functional requirements. \\
 
 \textbf{Static Analyzers}:
 Static analyzers will be used to automatically review any committed
@@ -1690,4 +1702,17 @@ graduate attribute of Lifelong Learning.
     before starting future deliverables.
 \end{enumerate}
 
+\textbf{Dhruv Sardana - Reflection}
+\begin{enumerate}
+  \item What went well while writing this deliverable?\\
+  While writing this deliverable, it helped me to gauge a good understanding of the system requirements document (SRS) and how each requirement can be tested through various test cases. This deliverable also helped me understand the importance of traceability between requirements and test cases, ensuring that each requirement is adequately covered by at least one test case.
+  Besides that I was responsibel for writing the Unit Tests section which we later got to know wasnt required for this deliverable but it still was though provoking and helped me understand different modules of the system in depth.
+  
+  \item What pain points did you experience during this deliverable, and how
+    did you resolve them?\\
+  A pain point I experienced during this deliverable was the initial confusion regarding the scope of the Unit Test Description section. 
+  I initially thought it was required for this deliverable, which led to some misallocation of time and effort. Due to this, it caused a few minor conflicts which helped us to shape our focus better for future deliverables.
+  Later on, I was assigned to restructure the POC plan and review the tracebility of System Tests to SRS document which helped me understand the requirements better.
+ 
+\end{enumerate}
 \end{document}
