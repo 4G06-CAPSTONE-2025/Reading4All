@@ -136,8 +136,8 @@ learning (ML) techniques to provide detailed, context-informed
 alternative text for complex technical images, specifically those
 found in post-secondary Science, Technology, Engineering and Mathematics (STEM)
 course materials. \textit{Reading4All} will allow users to upload
-images and then it will automatically produce corresponding alternative text, that
-meet the outlined criteria. The system is intended for use by
+images and then it will automatically produce corresponding alternative text (alt text), that
+meets the described criteria in Appendix~\ref{appendix:evaluation-metrics} . The system is intended for use by
 McMaster University students and faculty, therefore it will include
 user validation through McMaster's sign-on, ensuring that only
 verified users can access the \textit{Reading4All} system.
@@ -148,20 +148,33 @@ in their desired formats.
 
 \subsection{Objectives}
 
-The objective of this Verification and Validation (VnV) plan is to
-build confidence in the correctness, accessibility and usability of
-the \textit{Reading4All} system.
-The plan focuses on ensuring that the system generates accurate,
-detailed and contextually appropriate alternative text for complex
-STEM images, as this is the main functionality of the software.
-It also aims to verify that the systems interface is accessible an
-usable for individuals with visual impairments, who are one of the
-main users of the software. The last object is to demonstrate
-effective and accessible usability in secondary features
-such as editing the outputted alternative text, viewing session
-history and file downloading.
-Verifying and validating these objectives is essential to ensure that
-users can benefit from the \textit{Reading4All} system and
+\wss{State what is intended to be accomplished.  The objective will be around
+  the qualities that are most important for your project.  You might have
+  something like: ``build confidence in the software correctness,''
+  ``demonstrate adequate usability.'' etc.  You won't list all of the qualities,
+just those that are most important.}
+
+
+\wss{You should also list the objectives that are out of scope.  You don't have 
+the resources to do everything, so what will you be leaving out.  For instance, 
+if you are not going to verify the quality of usability, state this.  It is also 
+worthwhile to justify why the objectives are left out.}
+
+\wss{The objectives are important because they highlight that you are aware of
+  limitations in your resources for verification and validation.  You
+  can't do everything,
+  so what are you going to prioritize?  As an example, if your system
+  depends on an
+  external library, you can explicitly state that you will assume
+  that external library
+has already been verified by its implementation team.}
+
+
+The objective of this Verification and Validation (VnV) plan is to build confidence in the correctness, accessibility and usability of the Reading4All system. 
+The plan focuses on ensuring that the system generates, accurate, detailed and contextually appropriate alternative text for complex STEM images, as this is the main functionality of the software. 
+It also aims to verify that the systems interface is accessible an usable for individuals with visual impairments, who are one of the main users of the software. The last object is to demonstrate effective and accessible usability in secondary features
+such as editing the outputted alternative text, viewing session history and file downloading. 
+Verifying and validating these objectives is essential to ensure that users can benefit from the Reading4All system and 
 it can effectively fulfill its goal of making STEM diagrams more accessible.
 \\
 
@@ -222,43 +235,31 @@ come.}
   for the project's verification.  A table is a good way to summarize
 this information.}
 
+The V\*V team ensures that all SRS requirements are thorough, accurately implemented and tested to ensure our system meets them. 
+Table ~\ref{tab:data-dictionary-reading4all} defines each Reading4All team members role in confirming that these requirements are well defined and fulfilled in the system.
+
 \begin{table}[H]
-  \centering
-  \caption{Verification and Validation Responsibility Breakdown}
-  \label{tab:data-dictionary-reading4all}
-  \begin{tabular}{ |p{3.0cm}|p{3.8cm}|p{7.3cm}| }
-    \hline
-    \textbf{Name} & \textbf{ Focus Area } & \textbf{Responsibility} \\
-    \hline
-    Moly Mikhail and Fiza Sehar & Functional Requirements Tester &
-    Completes manuel testing on the software to ensure that
-    functional requirements are met. Also oversees any written unit
-    tests to ensure they correctly test the system and intended functionality \\
-    \hline
-    Nawaal Fatima & User Testing Preparation & Coordinates the user
-    testing sessions, and oversees the planning and execution of the
-    sessions. \\
-    \hline
-    Casey Francine Bulaclac & Usability Requirements Tester &
-    Completes manuel testing to ensure all the defined usability
-    requirements are met. Also references WCAG 2.1 crtieria is met,
-    prior to automated testing. \\
-    \hline
-    Dhruv Sardana & Look and Feel Requirements & Evaluates the
-    systems design and interface to ensure the outlined requreiments
-    are met. Also references WCAG 2.1 criteria is met, prior to
-    automated testing. \\
-    \hline
-    Ms. Jingchuan Sui (Supervisor) & Overall Usability and Quality of
-    Alternative Text Reviewer & Reviews and provides feedback to team
-    on the overall usability of the system and the quality of the
-    generated alternative text. Also helps team complete automating
-    evaluation of the system against WCAG 2.1 criteria. \\
-    \hline
-  \end{tabular}
-\end{table}
-
-
+    \centering
+    \caption{Verification and Validation Responsibility Breakdown}
+    \label{tab:data-dictionary-reading4all}
+    \begin{tabular}{ |p{3.0cm}|p{3.8cm}|p{7.3cm}| }
+      \hline
+      \textbf{Name} & \textbf{ Focus Area } & \textbf{Responsibility} \\
+      \hline
+      Moly Mikhail and Fiza Sehar & Functional Requirements Tester & Completes manuel testing on the software to ensure that functional requirements are met. Also oversees any written unit tests to ensure they correctly test the system and intended functionality \\
+      \hline
+      Nawaal Fatima & User Testing Preparation & Coordinates the user testing sessions, and oversees the planning and execution of the sessions. \\
+      \hline 
+      Casey Francine Bulaclac & Usability Requirements Tester & Completes manuel testing to ensure all the defined usability requirements are met. Also references WCAG 2.1 crtieria is met, prior to automated testing. \\
+      \hline 
+      Dhruv Sardana & Look and Feel Requirements & Evaluates the systems design and interface to ensure the outlined requreiments are met. Also references WCAG 2.1 criteria is met, prior to automated testing. \\
+      \hline 
+      Ms. Jingchuan Sui (Supervisor) & Overall Usability and Quality of Alternative Text Reviewer & Reviews and provides feedback to team on the overall usability of the system and the quality of the generated alternative text. Also helps team complete automating evaluation of the system against WCAG 2.1 criteria. \\ 
+      \hline
+    \end{tabular}
+  \end{table}
+  
+  
 \subsection{SRS Verification}
 
 \wss{List any approaches you intend to use for SRS verification.  This may
@@ -272,11 +273,9 @@ primary reviewer), or you may plan for something more rigorous/systematic.}
   you use your
 issue tracker?}
 
-The verification of the \textit{Reading4All} SRS will be completed
-through a team review, peer review, and supervisor feedback, in that order.
-Feedback from each step will be incorporated iteratively to ensure
-the document is reviewed and the version presented to our supervisor
-reflects the most accurate and complete requirements. \\
+The verification of the Reading4All SRS will be completed
+ through a team review, peer review, and supervisor feedback, in that order. 
+ Feedback from each step will be incorporated iteratively to ensure the document is reviewed and the version presented to our supervisor reflects the most accurate and complete requirements. \\
 
 \textbf{Team Review}:
 As the Reading4All team has already reviewed the outlined
@@ -337,29 +336,19 @@ verified.  Techniques for this include review and mutation testing.}
 
 \wss{Create a checklists?}
 
-The Verification and Validation plan will be verified to ensure its
-completeness, and alignment with previous
-documents such as our SRS, HA and development plan. This will be
-completed through a team and peer review. \\
+
+The Verification and Validation plan will be verified to ensure its completeness, and alignment with previous 
+documents such as our SRS, HA and development plan. This will be completed through a team and peer review. \\
 
 \textbf{Team Review}\\
-The team will perform a review to ensure that the unit testing
-described within the document effectively tests the system and
-achieves the defined objectives.
-This review will involve the team collaboratively going through the
-document, identifying areas for improvement and making the necessary
-changes before completing further validation activities.\\
+The team will perform a review to ensure that the unit testing described within the document effectively tests the system and achieves the defined objectives. 
+This review will involve the team collaboratively going through the document, identifying areas for improvement and making the necessary changes before completing further validation activities.\\
 
 \textbf{Peer Review}\\
-A peer review will be completed by Team 10 (One of a Kind) to provide
-feedback on our V\&V plan. They will review the document to ensure
-that the sections are consistent and aligned, as well as to identify
-any missing unit tests.
+A peer review will be completed by Team 10 (One of a Kind) to provide feedback on our V\&V plan. They will review the document to ensure that the sections are consistent and aligned, as well as to identify any missing unit tests.
 
-The Verification and Validation Plan Verification for
-\textit{Reading4All} will be completed through a team and peer
-review, as well as mutation testing to assess the effectiveness and
-correctness of our tests. \\
+
+The Verification and Validation Plan Verification for Reading4All will be completed through a team and peer review, as well as mutation testing to assess the effectiveness and correctness of our tests. \\
 
 \textbf{Team and Peer Review:}
 The \textit{Reading4All} team will complete an internal review to
@@ -370,11 +359,9 @@ document against the checklist provided in
 Appendix~\ref{appendix:v_v_checklist}.   \\ \\
 
 \textbf{Mutation Testing:}
-Mutation testing will be used to determine whether our unit tests
-correctly identify errors within the system.
-Small errors will be intentionally be introduced into the prototype
-code related to the main functionalities to check whether the test
-cases can detect unexpected behavior.
+Mutation testing will be used to determine whether our unit tests correctly identify errors within the system.
+Small errors will be intentionally be introduced into the prototype code related to the main functionalities to check whether the test cases can detect unexpected behavior. 
+
 
 \subsection{Implementation Verification}
 
@@ -389,8 +376,7 @@ walkthroughs, code inspection, static analyzers, etc.}
   walkthrough.  There is also a possibility of using the final presentation (in
 CAS741) for a partial usability survey.}
 
-The implementation verification for \textit{Reading4All} will utilize
-the unit tests defined in section~\ref{Unit Test Desc},
+The implementation verification for Reading4All will utilize the unit tests defined in section~\ref{Unit Test Desc}, 
 static analyzers and code inspections.
 
 \textbf{Static Analyzers}:
@@ -439,27 +425,21 @@ automated testing and verification tools:
 \subsection{Software Validation}
 The AI Generated Alternative Text tool will be validated through the following:
 \begin{itemize}
-  \item \textbf{User Testing}: Stakeholders of this project including
-    students experiencing visual
-    and cognitive disabilities will perform realistic tasks such as
-    uploading multiple images and downloading the alternative text
-    to validate that it meets their needs and requirements.
-    The team will be present during these sessions to observe and
-    note any challenges
-    the users face. The participants will also be asked follow-up
-    questions highlighted in Appendix \ref{appendix:usability} to
-    gain additional feedback and insight
-    on their overall experience of using the tool.
-  \item \textbf{Formal Reviews}: Reviews will be conducted with the
-    stakeholders of the project and our supervisor, Ms. Jing, to
-    validate that the requirements
-    outlined in our SRS document are fulfilled and met by our tool.
-    Additionally, the Rev 0 demo with Ms. Jing will serve as a
-    validation review and allow the team
-    to receive feedback to improve the tool.
-\end{itemize}
+  \item \textbf{User Testing}: Stakeholders of this project including students experiencing visual 
+  and cognitive disabilities will perform realistic tasks such as uploading multiple images and downloading the alternative text
+to validate that it meets their needs and requirements. 
+  The team will be present during these sessions to observe and note any challenges 
+  the users face. The participants will also be asked follow-up questions highlighted in Appendix \ref{appendix:usability} to gain additional feedback and insight
+  on their overall experience of using the tool. 
+  \item \textbf{Formal Reviews}: Reviews will be conducted with the stakeholders of the project and our supervisor, Ms. Jing, to validate that the requirements
+  outlined in our SRS document are fulfilled and met by our tool. Additionally, the Rev 0 demo with Ms. Jing will serve as a validation review and allow the team 
+  to receive feedback to improve the tool. 
+\end{itemize} 
 
 \section{System Tests}
+\label{System Tests Desc}
+
+
 
 This section details tests to cover all requirements as listed in the
 Software Requirements Specification (SRS) for Team 22's project. The
@@ -1588,6 +1568,45 @@ meet defined thresholds.
 
 This is where you can place additional information.
 
+\subsection{Evaluation Metrics Summary}
+\label{appendix:evaluation-metrics}
+The following table summarizes the evaluation metrics that will be used to assess the quality and effectiveness of the alternative text generated by the Reading4All system. Each metric includes its scale type, acceptable range, and a brief description of its purpose.
+\begin{table}[H]
+    \centering
+    \caption{Evaluation Metrics Summary}
+    \label{tab:evaluation-metrics-summary}
+    \begin{tabular}{ |p{3.5cm}|p{3cm}|p{3cm}|p{4cm}| }
+      \hline
+      \textbf{Metric Name} & \textbf{Scale Type} & \textbf{Acceptable Range} & \textbf{Summary Description} \\
+      \hline
+      Sufficiency of Description
+        & Categorical (1--3)
+        & $\geq$ 3 (Sufficient)
+        & Does the alt text convey enough information to achieve the intended objective? \\
+      \hline
+      Length Appropriateness
+        & Categorical (1--3)
+        & $\geq$ 3 (Proper Length)
+        & Is the alt text concise yet complete (not too short or overly verbose)? \\
+      \hline
+      Accessibility / Usability
+        & Numerical (0--3)
+        & $\geq$ 2 (Acceptable)
+        & Assistive-technology compatibility and clarity; aligns with WCAG 2.1 Level~AA use. \\
+      \hline
+      Learning Impact
+        & Numerical (0--3)
+        & $\geq$ 2 (Positive)
+        & Does the alt text support or enhance user understanding in learning contexts? \\
+      \hline
+      Qualitative Feedback Notes
+        & Textual
+        & N/A
+        & Free-form comments on clarity, tone, and suggested improvements. \\
+      \hline
+    \end{tabular}
+  \end{table}
+
 \subsection{SRS Team and Peer Review Checklist}
 \label{appendix:srs_checklist}
 \textbf{Stakeholders and Users:}
@@ -1927,6 +1946,22 @@ graduate attribute of Lifelong Learning.
   internal rubrics and clearer priorities to stay organized and avoid
   similar issues moving forward.
 
+\end{enumerate}
+
+
+\textbf{Moly Mikhail Reflection}
+\begin{enumerate}
+  \item \textbf{What went well while writing this deliverable?}\\
+  I believe many aspects went well while writing this deliverable. Firstly, starting our work prior to the interim TA presentation was really helpful. 
+  This provided an opportunity to look ahead at the sections and begin tackling them. While doing so, many questions and areas of confusion arose, so having our upcoming meeting with our TA was really helpful. 
+  Ultimately, this meeting allowed us to clear up any confusion about sections with the document, giving the group much more confidence. Another thing that went well throughout this deliverable is having team check-ins and reviews. 
+  This allowed all team members to gain insight into the other parts of the document and ensure we are aligned with the content.
+  \item \textbf{What pain points did you experience during this deliverable, and how
+    did you resolve them?}\\
+  One pain point I experienced writing this deliverable was fully understanding the difference between verification and validation. This made it challenging to differentiate between the parts in section 3.
+  I resolved this pain point by reviewing lecture content, researching more about validation and verification techniques and finally clarifying with our TA during the interim presentation. 
+  Having a good understanding about the difference between validation and verification was essential in completing this deliverable. Once I completed 
+  my assigned sections, I reflected back on if I had completed the appropriate activities, ensuring it correctly aligned with what the section needed. 
 \end{enumerate}
 
 \textbf{Casey Francine Bulaclac - Reflection}
