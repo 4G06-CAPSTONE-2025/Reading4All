@@ -185,20 +185,6 @@ The McMaster sign-on authentication service will also not be tested, as its main
 
 \subsection{Challenge Level and Extras}
 
-\wss{State the challenge level (advanced, general, basic) for your project.
-  Your challenge level should exactly match what is included in your problem
-  statement.  This should be the challenge level agreed on between you and the
-  course instructor.  You can use a pull request to update your challenge level
-  (in TeamComposition.csv or Repos.csv) if your plan changes as a result of the
-VnV planning exercise.}
-
-\wss{Summarize the extras (if any) that were tackled by this project.  Extras
-  can include usability testing, code walkthroughs, user documentation, formal
-  proof, GenderMag personas, Design Thinking, etc.  Extras should have already
-  been approved by the course instructor as included in your problem statement.
-  You can use a pull request to update your extras (in TeamComposition.csv or
-Repos.csv) if your plan changes as a result of the VnV planning exercise.}
-\\
 The challenge level of the project is set at a \textit{general} level that will include two additional 
 components (extras). The first additional component will be a Norman's Principles report that will 
 evaluate the design of our final product to ensure that it optimizes usability and accessibility. The second additional 
@@ -206,16 +192,6 @@ component will be a user manual that will include comprehensive documentation to
 product effectively. 
 
 \subsection{Relevant Documentation}
-
-\wss{Reference relevant documentation.  This will definitely include your SRS
-  and your other project documents (design documents, like MG, MIS, etc).  You
-  can include these even before they are written, since by the time the project
-  is done, they will be written.  You can create BibTeX entries for your
-documents and within those entries include a hyperlink to the documents.}
-
-\wss{Don't just list the other documents.  You should explain why they are relevant and 
-how they relate to your VnV efforts.} 
-\\
 The System Verification and Validation (VnV) plan will reference the following documents to aid in 
 the project's assessment and testing:
 \begin{enumerate}
@@ -297,18 +273,16 @@ mind during future validation of our system. \\
 \wss{Maybe create an SRS checklist?}
 
 \subsection{Design Verification}
-
-\wss{Plans for design verification}
-
-\wss{The review will include reviews by your classmates}
-
-\wss{Create a checklists?}
-\\
-The verification of our design will rely on reviews conducted by our fellow classmates and supervisor who will
-evaluate our design documents including our Module Guide (MG) and Module Interface Specification (MIS). They will also aid in performing
-consistency and traceability checks to ensure clear alignment between our requirements, design, and implementation. \\[1ex]
-In a formal review, our supervisor, Ms. Jing, will verify that the user interface design supports accessibility in accordance with WCAG 2.1 standards. 
-Additionally, our professor, Dr. Smith, will assess the technical aspects of the system, focusing on the machine learning architecture to ensure it is well designed.
+The design verification will be accomplished through the following: 
+\begin{itemize}
+  \item \textbf{Peer Review:} The verification of our design will rely on reviews conducted by our fellow classmates who will
+  evaluate our design documents including our Module Guide (MG) and Module Interface Specification (MIS) using the following checklist in Appendix \ref{appendix:dd_checklist}. The peer review will
+  be conducted in Week 10 and Week 16 following the due date for submission of these design documents.
+  Any items on the checklist not satisfied by our team on these documents will be addressed through making issues on GitHub.
+  \item \textbf{Formal Review:} In a formal review, our supervisor, Ms. Jing, will verify that the user interface design supports accessibility in accordance with WCAG 2.1 standards. 
+  Additionally, Capstone teaching assistants and instructors will assess the technical aspects of the system, focusing on the machine learning architecture to ensure it is well designed.
+  The formal review will also be conducted in Week 10 and Week 16 following the due date for submission of these design documents.
+\end{itemize}
 
 \subsection{Verification and Validation Plan Verification}
 
@@ -368,64 +342,27 @@ Using these static analyzers and workflows will help us to continuously verify o
 As part of our development process, when a feature is completed, team members are required to open a pull request. The pull request highlights all the code changes made and is reviewed by other team members, before merging. 
 This process ensures that the multiple team members are aware of the changes being made, and provides an opportunity to give feedback on 
 the implementation decisions. Additionally it also helps verify that the code fulfills the intended functionality.
+
 \subsection{Automated Testing and Verification Tools}
-\wss{What tools are you using for automated testing.  Likely a unit testing
-  framework and maybe a profiling tool, like ValGrind.  Other possible tools
-  include a static analyzer, make, continuous integration tools, test coverage
-  tools, etc.  Explain your plans for summarizing code coverage metrics.
-  Linters are another important class of tools.  For the programming language
-  you select, you should look at the available linters.  There may also be tools
-  that verify that coding standards have been respected, like flake9 for
-Python.}
-
-
-
-\wss{If you have already done this in the development plan, you can point to
-that document.}
-
-\wss{The details of this section will likely evolve as you get closer to the
-  implementation.}
-\\
-The AI Generated Alternative (alt) Text tool will make use of the following automated testing and verification tools: 
+The AI Generated Alternative Text tool will make use of the following automated testing and verification tools: 
 \begin{itemize}
   \item \textbf{Automated Accessibility Testing}: Automated web accessibility testing tools such as the WAVE Web Accessibility Evaluation Tool will be used to 
-  verify that the tool adheres to the WCAG 2.1 guidelines. These tools will automatically scan for accessibility issues such as missing alternative text and color contrast violations.
+  verify that the tool adheres to the Web Content Accessibility Guidelines (WCAG) 2.1 guidelines. These tools will automatically scan for accessibility issues such as missing alternative text and color contrast violations.
   \item \textbf{Unit Testing Framework, Linters, Coverage Tools, and Continuous Integration}: These tools have been detailed and outlined in the Expected Technologies section
   of our Development Plan (\citet{DP}) document under Table 3. 
 \end{itemize}
 
 \subsection{Software Validation}
-
-\wss{If there is any external data that can be used for validation, you should
-  point to it here.  If there are no plans for validation, you should state that
-here.}
-
-\wss{You might want to use review sessions with the stakeholder to check that
-  the requirements document captures the right requirements.  Maybe task based
-inspection?}
-
-\wss{For those capstone teams with an external supervisor, the Rev 0 demo should
-  be used as an opportunity to validate the requirements.  You should plan on
-  demonstrating your project to your supervisor shortly after the
-  scheduled Rev 0 demo.
-  The feedback from your supervisor will be very useful for improving
-your project.}
-
-\wss{For teams without an external supervisor, user testing can serve
-  the same purpose
-as a Rev 0 demo for the supervisor.}
-
-\wss{This section might reference back to the SRS verification section.}
-\\
-The AI Generated Alternative (alt) Text tool will be validated through the following: 
+The AI Generated Alternative Text tool will be validated through the following: 
 \begin{itemize}
   \item \textbf{User Testing}: Stakeholders of this project including students experiencing visual 
-  and cognitive disabilities will perform realistic tasks such as uploading an image and generating alt text to validate 
-  that it meets their needs and requirements. The team will be present during these sessions to observe and note any challenges 
-  the users face. The participants will also be asked follow-up questions highlighted in Appendix ~\ref{appendix:usability} to gain additional feedback and insight
+  and cognitive disabilities will perform realistic tasks such as uploading multiple images and downloading the alternative text
+to validate that it meets their needs and requirements. 
+  The team will be present during these sessions to observe and note any challenges 
+  the users face. The participants will also be asked follow-up questions highlighted in Appendix \ref{appendix:usability} to gain additional feedback and insight
   on their overall experience of using the tool. 
   \item \textbf{Formal Reviews}: Reviews will be conducted with the stakeholders of the project and our supervisor, Ms. Jing, to validate that the requirements
-  outlined in our SRS document are correct and captures the needs for the tool. Additionally, the Rev 0 demo with Ms. Jing will serve as a validation review and allow the team 
+  outlined in our SRS document are fulfilled and met by our tool. Additionally, the Rev 0 demo with Ms. Jing will serve as a validation review and allow the team 
   to receive feedback to improve the tool. 
 \end{itemize} 
 
@@ -1583,15 +1520,61 @@ This is where you can place additional information.
   \item Traceability between test cases and requirement is clear and documented. 
 \end{itemize}
 
+\subsection{Design Documents Checklist}
+\label{appendix:dd_checklist}
+\textbf{Module Guide}:
+\begin{itemize}
+  \item Each identified module follows the “one module, one secret” rule.
+  \item “Uses” relation forms a clear hierarchy and represents dependency. 
+  \item Secrets are expressed as nouns or concepts, not actions.
+  \item Traceability matrix shows that every requirement is satisfied by at least one module.
+  \item Traceability matrix shows that every module satisfies at least one requirement.
+  \item Traceability matrix shows that every likely change maps to a module.
+  \item Behaviour-Hiding modules trace back to requirements.
+  \item Software-Decision Hiding modules introduce necessary design concepts.
+  \item Each Software-Decision Hiding module supports at least one Behaviour-Hiding module.
+  \item Anticipated changes include all likely changes from SRS.
+\end{itemize}
+
+\textbf{Module Interface Specification}:
+\begin{itemize}
+  \item Data-only modules are modelled as exported types.
+  \item Modules with state and behaviour are correctly defined as ADTs.
+  \item Single-instance modules are correctly identified as Abstract Objects.
+  \item Behaviour-only modules are defined as Library Modules (no state).
+  \item Generic modules use the Generic keyword appropriately.
+  \item Abstract Objects include proper initialization methods and assumptions.
+  \item Exported constants are literal, compile-time values.
+  \item Modified Hoffmann and Strooper notation (or equivalent) is used consistently.
+  \item All local functions are used somewhere in the module specification.
+  \item Each access program has a clear purpose (output or state change).
+  \item State transitions clearly indicate what changes and where.
+  \item State invariants hold before and after access program execution.
+  \item Specification is consistent, essential, general, and independent of implementation details.
+  \item Every module in the Module Guide (MG) appears in the MIS.
+\end{itemize}
+
 \subsection{Symbolic Parameters}
 
 The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
 Their values are defined in this section for easy maintenance.
 
-\subsection{Usability Survey Questions?}
+\subsection{Usability Survey Questions}
 \label{appendix:usability}
 
 \begin{enumerate}[label=UA-Q \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{What operating system and its version are you using? (i.e. Windows, MacOS, etc.)}\\[2mm]
+    {\bf Purpose:} This is to collect information on the user to assess the compatibility across different platforms and
+    whether accessibility or usability issues are system-dependent.
+
+  \item \emph{What browser are you using? (i.e. Google Chrome, Mozilla Firefox, etc.)}\\[2mm]
+  {\bf Purpose:} This is to collect information on the user to assess the compatibility across different browsers and
+  whether accessibility or usability issues are dependent on the browsers.
+
+  \item \emph{What assistive technologies or tools are you using (i.e., screen readers, magnifiers, voice control), and what specific model or version, if applicable?}\\[2mm]
+  {\bf Purpose:} This collects information on the types and versions of assistive technologies used by participants to understand how different tools interact with the web tool 
+  and to identify any issues specific to certain technologies.
+
   \item \emph{Was the length of the generated alternative text description too short, sufficient, or too long?}\\[2mm]
     {\bf Purpose:} This is to gain feedback on whether the length of the text description is sufficient enough 
     for the user to gain understanding on the learning objective of the uploaded image.
@@ -1614,11 +1597,112 @@ Their values are defined in this section for easy maintenance.
   \item \emph{On a scale of 0–4, how easy was it for you to use and understand the generated alternative text? (0 = not easy at all, 4 = very easy)}\\[2mm]
     {\bf Purpose:} This is to assess whether the generated alternative text is presented in a way that supports ease of use and whether it allows users to easily interact with 
     the interface and understand the content with minimal confusion or effort.
+  
+  \item \emph{What is your primary purpose for using this web tool, and how do you typically use it during your tasks or learning activities?}\\[2mm]
+  {\bf Purpose:} This is to understand the user’s main goals and usage patterns when interacting with the web tool and to identify any areas for improvement in how the web tool's features 
+  can better support their needs.
 
   \item \emph{What changes or improvements would you suggest to make this web tool more accessible and enhance your learning experience, if any?}\\[2mm]
   {\bf Purpose:} This question aims to collect additional user feedback on accessibility and usability improvements that may not have been addressed in the previous questions of this survey.
-
 \end{enumerate}
+
+\subsection{Glossary of All Terms}
+
+\paragraph*{Accuracy}
+The degree to which generated descriptions capture the image’s content correctly.
+
+\paragraph*{AI (artificial intelligence)}
+Techniques that enable computers to perform tasks that normally require human intelligence.
+
+\paragraph*{Alt Text (Alternative Text)}
+Textual description of non-text content such as images that allow accessibility tools such as screen readers to convey the content.
+
+\paragraph*{AODA (Accessibility for Ontarians with Disabilities Act)}
+Ontario law aimed at improving accessibility for people with disabilities by removing and preventing barriers when designing.
+
+\paragraph*{API (Application Programming Interface)}
+Rules and protocols that allows different software programs to communicate with each other.
+
+\paragraph*{Backend}
+Server components handling processes of an application that users don't see.
+
+\paragraph*{Benchmarking}
+The comparing of performance or quality of one's system against known systems or datasets.
+
+\paragraph*{Contrast Ratio}
+Luminance difference between text and background required by WCAG 2.1.
+
+\paragraph*{Dataset Bias}
+Systematic skew in training data that can harm fairness or accuracy of the model.
+
+\paragraph*{Edge Case}
+Uncommon input or scenario that the system must handle safely.
+
+\paragraph*{FIPPA (Freedom of Information and Protection of Privacy Act)}
+Ontario privacy law affecting the university data in the Authentication process.
+
+\paragraph*{Frontend}
+User interface in the browser that handles input, feedback, and accessibility features.
+
+\paragraph*{Git/Github}
+Version control and collaboration platform. 
+
+\paragraph*{HTTP/HTTPS}
+Web protocols in which HTTPS adds a transport layer security encryption for integrity and privacy.
+
+\paragraph*{Issue (Github)}
+Tracked unit of task, bug, or feature with discussion and linkage to commits in Github.
+
+\paragraph*{JAWS (Job Access with Speech)}
+A screen reader software available on Windows.
+
+\paragraph*{JSON (JavaScript Object Notation) / YAML (Yet Another Markup Language)}
+Human-readable data formats used for configs and API payloads.
+
+\paragraph*{Latency}
+Time from user action such as uploading an image to a system response or alt text generation
+
+\paragraph*{Low Vision}
+Reduced level of vision that interferes with daily activities and is to be considered in designing the user interface and testing.
+
+\paragraph*{Manual Accessibility Testing}
+Human review or testing of user interface and alt text.
+
+\paragraph*{Modularity}
+Separating user interface, vision, language, and validation for maintainability.
+
+\paragraph*{NVDA (NonVisual Desktop Access)}
+A free screen reader available on Windows.
+
+\paragraph*{OCR (Optical Character Recognition)}
+Extracts embedded text in images or diagrams.
+
+\paragraph*{PII (Personally Identifiable Information)}
+Data that identifies a person and must not appear in outputs or logs for security.
+
+\paragraph*{Screen Magnifier}
+Assistive technology to enlarge screen content.
+
+\paragraph*{Screen Reader}
+Assistive technology that reads text aloud.
+
+\paragraph*{Session History}
+ Record of user uploads and generated alt text during the current session.
+
+ \paragraph*{Stakeholder}
+ Anyone affected by or influencing the system.
+
+ \paragraph*{Technical Diagram}
+ An informational visual used in post-secondary course materials. 
+
+ \paragraph*{TLS (Transport Layer Security)}
+ Protocol providing encryption and integrity.
+
+ \paragraph*{WCAG 2.1 (Web Content Accessibility Guidelines)}
+ International standard for accessible web content.
+
+ \paragraph*{WCAG Levels (A/AA/AAA)}
+ Different conformance tiers to WCAG 2.1 where Level AA is the target for the project.
 
 
 \newpage{}
@@ -1645,6 +1729,25 @@ graduate attribute of Lifelong Learning.
     question, what are at least two approaches to acquiring the knowledge or
     mastering the skill?  Of the identified approaches, which will each team
     member pursue, and why did they make this choice?
+\end{enumerate}
+
+\textbf{Casey Francine Bulaclac - Reflection}
+\begin{enumerate}
+  \item What went well while writing this deliverable?\\
+  What went well during this deliverable was gaining a better understanding of the difference between verification and validation and how each plays a role in making sure 
+  our system works as intended. It also went smoothly linking our VnV activities back to the requirements in the SRS, which helped us see clearly how each test connects to what 
+  the system is supposed to do. Overall, this deliverable helped our team prepare for how to properly test the product we will be developing, and also helped us gain 
+  insight on how verification and validation ensure that our system meets both its functional requirements and user needs.
+  \item What pain points did you experience during this deliverable, and how
+    did you resolve them?\\
+  A pain point while writing the VnV plan was trying to differentiate between the different
+  sections of Section 3. For example, at the beginning stages, it was hard to understand the difference between 
+  Implementation Verification and Software Validation. To resolve this, I made sure to ask for clarification 
+  from our TA to ensure that I understood each section properly and also used sample VnV documents from teams in previous years as 
+  guidance when writing these sections. Another pain point experienced during this deliverable was a miscommunication regarding the division 
+  of work, specifically, assigning Section 5 as a task during the initial stage when it was not yet required. To resolve this, our team 
+  held a meeting to address the communication gap and established a goal to ensure that all members clearly understand the scope and requirements of each section 
+  before starting future deliverables. 
 \end{enumerate}
 
 \end{document}
