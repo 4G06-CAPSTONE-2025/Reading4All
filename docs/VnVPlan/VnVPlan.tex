@@ -143,7 +143,7 @@ its general functions.}
 
 The software being tested is called Reading4All. This software will utilize artificial intelligence (AI)/
 machine learning (ML) techniques to provide detailed, context-informed alternative text for complex technical images, specifically those found in post-secondary Science, Technology, Engineering and Mathematics (STEM)
-course materials. Reading4All will allow users to upload images and automatically produce corresponding alternative text (alt text), that meets the outlined criteria. The system is intended for use by McMaster University students and faculty, therefore it will include user validation through McMaster's sign-on, ensuring that only verified users can access the Reading4All system.  
+course materials. Reading4All will allow users to upload images and automatically produce corresponding alternative text (alt text), that meets the described criteria in Appendix~\ref{appendix:evaluation-metrics} . The system is intended for use by McMaster University students and faculty, therefore it will include user validation through McMaster's sign-on, ensuring that only verified users can access the Reading4All system.  
 In addition, the system will allow users to edit the generated alternative text, view a history of uploaded images and their alternative text within that session and download the final outputs in their desired formats.
 
 
@@ -240,6 +240,9 @@ come.}
   for the project's verification.  A table is a good way to summarize
 this information.}
 
+The V\*V team ensures that all SRS requirements are thorough, accurately implemented and tested to ensure our system meets them. 
+Table ~\ref{tab:data-dictionary-reading4all} defines each Reading4All team members role in confirming that these requirements are well defined and fulfilled in the system.
+
 \begin{table}[H]
     \centering
     \caption{Verification and Validation Responsibility Breakdown}
@@ -254,9 +257,11 @@ this information.}
       \hline 
       Casey Francine Bulaclac & Usability Requirements Tester & Completes manual testing to ensure all the defined usability requirements are met. Also references WCAG 2.1 crtieria is met, prior to automated testing. \\
       \hline 
-      Dhruv Sardana & Look and Feel Requirements & Evaluates the systems design and interface to ensure the outlined requreiments are met. Also references WCAG 2.1 criteria is met, prior to automated testing. \\
+      Dhruv Sardana & Performance, Operational and Environmental Requirements & Verifies that performance, operational and environmental requirements are thorough, clearly defined, attainable and measurable. Also, validates that the implemented system meets these requirements through extensive testing.  \\
       \hline 
-      Ms. Jingchuan Sui (Supervisor) & Overall Usability and Quality of Alternative Text Reviewer & Reviews and provides feedback to team on the overall usability of the system and the quality of the generated alternative text. Also helps team complete automating evaluation of the system against WCAG 2.1 criteria. \\ 
+      All Reading4All Team Members & Look and Feel Requirements, Usability and Humanity Requirements & All team members are responsible for verifying that the corresponding requrieemnts in the SRS are thorough, clearly defined, attainable and measurable. The team will validate that the final system meets the specified requirements prior to doing user testing. \\
+      \hline
+      Ms. Jingchuan Sui (Supervisor) & Overall Usability and Quality of Alt Text Reviewer, User Testing Material Reviewer& Reviews and provides feedback to team on the overall usability of the system and the quality of the generated alternative text. Reviews user testing material to ensure they align with accessibility standards and assits the team completing automating evaluation of the system against WCAG 2.1 criteria. \\ 
       \hline
     \end{tabular}
   \end{table}
@@ -277,7 +282,9 @@ issue tracker?}
 
 The verification of the Reading4All SRS will be completed
  through a team review, peer review, and supervisor feedback, in that order. 
- Feedback from each step will be incorporated iteratively to ensure the document is reviewed and the version presented to our supervisor reflects the most accurate and complete requirements. \\
+ Feedback from each step will be incorporated iteratively to ensure the document is reviewed and the version presented to our supervisor reflects the most accurate and complete requirements.
+ Furthermore, criteria not met from the checklists will be documented as GitHub issues, to ensure they are tracked and resolved. 
+  \\
 
 \textbf{Team Review}:
 As the Reading4All team has already reviewed the outlined requirements in the SRS document, a team review will 
@@ -318,7 +325,9 @@ verified.  Techniques for this include review and mutation testing.}
 \wss{The review will include reviews by your classmates}
 
 \wss{Create a checklists?}
-The Verification and Validation Plan Verification for Reading4All will be completed through a team and peer review, as well as mutation testing to assess the effectiveness and correctness of our tests. \\
+The Verification and Validation Plan Verification for Reading4All will be completed through a team and peer review, as well as mutation testing to assess the effectiveness and correctness of our tests. 
+Furthermore, any criteria not met, or failed mutation tests identified from this process will be documented as GitHub issues, to ensure they are tracked and resolved. 
+\\
 
 \textbf{Team and Peer Review:}
 The Reading4All team will complete an internal review to ensure that the plan is complete and aligns with the SRS requirements, as well as other documents. 
@@ -342,7 +351,7 @@ walkthroughs, code inspection, static analyzers, etc.}
   walkthrough.  There is also a possibility of using the final presentation (in
 CAS741) for a partial usability survey.}
 
-The implementation verification for Reading4All will utilize the unit tests defined in section~\ref{Unit Test Desc}, 
+The implementation verification for Reading4All will utilize the unit tests defined in section~\ref{Unit Test Desc}, system tests defined in section~\ref{System Tests Desc},
 static analyzers and code inspections.
 
 \textbf{Static Analyzers}:
@@ -417,6 +426,9 @@ The AI Generated Alternative (alt) Text tool will be validated through the follo
 \end{itemize} 
 
 \section{System Tests}
+\label{System Tests Desc}
+
+
 
 This section details tests to cover all requirements as listed in the
 Software Requirements Specification (SRS) for Team 22's project. The
@@ -1506,6 +1518,45 @@ UT15--UT16 & Usability and Accessibility Metrics  & UHR-LR1, UHR-AR1, OER-IAS1 \
 \section{Appendix}
 
 This is where you can place additional information.
+
+\subsection{Evaluation Metrics Summary}
+\label{appendix:evaluation-metrics}
+The following table summarizes the evaluation metrics that will be used to assess the quality and effectiveness of the alternative text generated by the Reading4All system. Each metric includes its scale type, acceptable range, and a brief description of its purpose.
+\begin{table}[H]
+    \centering
+    \caption{Evaluation Metrics Summary}
+    \label{tab:evaluation-metrics-summary}
+    \begin{tabular}{ |p{3.5cm}|p{3cm}|p{3cm}|p{4cm}| }
+      \hline
+      \textbf{Metric Name} & \textbf{Scale Type} & \textbf{Acceptable Range} & \textbf{Summary Description} \\
+      \hline
+      Sufficiency of Description
+        & Categorical (1--3)
+        & $\geq$ 3 (Sufficient)
+        & Does the alt text convey enough information to achieve the intended objective? \\
+      \hline
+      Length Appropriateness
+        & Categorical (1--3)
+        & $\geq$ 3 (Proper Length)
+        & Is the alt text concise yet complete (not too short or overly verbose)? \\
+      \hline
+      Accessibility / Usability
+        & Numerical (0--3)
+        & $\geq$ 2 (Acceptable)
+        & Assistive-technology compatibility and clarity; aligns with WCAG 2.1 Level~AA use. \\
+      \hline
+      Learning Impact
+        & Numerical (0--3)
+        & $\geq$ 2 (Positive)
+        & Does the alt text support or enhance user understanding in learning contexts? \\
+      \hline
+      Qualitative Feedback Notes
+        & Textual
+        & N/A
+        & Free-form comments on clarity, tone, and suggested improvements. \\
+      \hline
+    \end{tabular}
+  \end{table}
 
 \subsection{SRS Team and Peer Review Checklist}
 \label{appendix:srs_checklist}
