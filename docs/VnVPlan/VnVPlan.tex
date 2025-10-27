@@ -208,6 +208,9 @@ satisfies these requirements is essential to meeting the goals of the project.
 
 \wss{Introduce this section.  You can provide a roadmap of the sections to
 come.}
+This section outlines the strategies and techniques that will be used for verifying and validating the Reading4All system, throughout the varying development phases. 
+This includes verifying and validating the SRS, the design, the V\&V plan, and the implementation. This section also defines the Reading4All team's responsibilities in 
+completing this plan and implementing the specified strategies, to ultimately ensure the system meets our requirements and objectives.
 
 \subsection{Verification and Validation Team}
 
@@ -216,7 +219,7 @@ come.}
   for the project's verification.  A table is a good way to summarize
 this information.}
 
-The V\*V team ensures that all SRS requirements are thorough, accurately implemented and tested to ensure our system meets them. 
+The V\&V team will ensure that all SRS requirements are thorough, accurately implemented and tested to ensure our system meets them. 
 Table ~\ref{tab:data-dictionary-reading4all} defines each Reading4All team members role in confirming that these requirements are well defined and fulfilled in the system.
 
 \begin{table}[H]
@@ -327,6 +330,10 @@ CAS741) for a partial usability survey.}
 
 The implementation verification for Reading4All will utilize the unit tests defined in section~\ref{Unit Test Desc}, system tests defined in section~\ref{System Tests Desc},
 static analyzers and code inspections.
+
+\textbf{Unit and System Tests}:
+The unit and system tests will be run to ensure the system behaves as expected. The unit tests will check that individual functions within he implementation are working correctly, helping us narrow down possible issues, and thoroughly test functions with different inputs. 
+The system tests will verify that the implementation fulfills all functional and non-functional requirements. \\
 
 \textbf{Static Analyzers}:
 Static analyzers will be used to automatically review any committed code for errors, and ensure the implementation meets the specified coding standard.
