@@ -3,15 +3,17 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
-\usepackage{float}
 \usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{bm}
+\usepackage{float}
 
 \hypersetup{
-    colorlinks,
-    citecolor=blue,
-    filecolor=black,
-    linkcolor=red,
-    urlcolor=blue
+  colorlinks,
+  citecolor=blue,
+  filecolor=black,
+  linkcolor=red,
+  urlcolor=blue
 }
 \usepackage[round]{natbib}
 
@@ -20,10 +22,10 @@
 
 \begin{document}
 
-\title{System Verification and Validation Plan for \progname{}} 
+\title{System Verification and Validation Plan for \progname{}}
 \author{\authname}
 \date{\today}
-	
+
 \maketitle
 
 \pagenumbering{roman}
@@ -31,26 +33,30 @@
 \section*{Revision History}
 
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
-\midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
-\bottomrule
+  \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+  \midrule
+  Date 1 & 1.0 & Notes\\
+  Date 2 & 1.1 & Notes\\
+  \bottomrule
 \end{tabularx}
 
 ~\\
 \wss{The intention of the VnV plan is to increase confidence in the software.
-However, this does not mean listing every verification and validation technique
-that has ever been devised.  The VnV plan should also be a \textbf{feasible}
-plan. Execution of the plan should be possible with the time and team available.
-If the full plan cannot be completed during the time available, it can either be
-modified to ``fake it'', or a better solution is to add a section describing
+  However, this does not mean listing every verification and
+  validation technique
+  that has ever been devised.  The VnV plan should also be a \textbf{feasible}
+  plan. Execution of the plan should be possible with the time and
+  team available.
+  If the full plan cannot be completed during the time available, it
+  can either be
+  modified to ``fake it'', or a better solution is to add a section describing
 what work has been completed and what work is still planned for the future.}
 
 \wss{The VnV plan is typically started after the requirements stage, but before
-the design stage.  This means that the sections related to unit testing cannot
-initially be completed.  The sections will be filled in after the design stage
-is complete.  the final version of the VnV plan should have all sections filled
+  the design stage.  This means that the sections related to unit testing cannot
+  initially be completed.  The sections will be filled in after the design stage
+  is complete.  the final version of the VnV plan should have all
+  sections filled
 in.}
 
 \newpage
@@ -66,34 +72,74 @@ in.}
 \newpage
 
 \section{Symbols, Abbreviations, and Acronyms}
+\section*{Symbolic Constants}
+\begin{longtable}{|p{8.0cm}|p{8.0cm}|}
+\toprule
+{\textbf{Name}} & {\textbf{Value}}\\
+\midrule
+T\_ALT\_GEN\_SMALL & 3 seconds(s) \\
+T\_ALT\_GEN\_LARGE & 8 s \\
+T\_UI\_RESP & 300 miliseconds (ms) \\
+R\_SUFFICIENCY & 85\% \\
+R\_LENGTH & 90\% \\
+R\_USABILITY\_MEDIAN & 3 (rating) \\
+R\_USABILITY\_MIN & 2 (rating) \\
+T\_ERROR\_HANDLE & 2 s \\
+T\_RECOVERY & 5 s \\
+CAP\_CONCURRENT & 2 requests \\
+CAP\_STORAGE & 500 images/day \\
+MAINT\_TIME & 2 person-days/quarter \\
+COMPAT\_VERSIONS & 2 releases \\
+IMG\_SIZE\_BIG & 10 MEGABYTES (MB) \\
+IMG\_SIZE\_SMALL & 2 MEGABYTES \\
+TLS\_VERSION & 1.2 \\ 
+FILE\_DELETE\_TIME & 60 s \\
+FILE\_TYPES & .png, .jpg, .jpeg, .svg, .webp \\
+NETWORK\_SOURCE\_POLICY & McMaster SSO tokens or IP ranges only\\
+TEAM\_SIZE & 5 students \\
+HOURS\_RESEARCH & 40 hours \\
+HOURS\_BACKEND & 120 hours \\
+HOURS\_FRONTEND & 80 hours \\
+HOURS\_TESTING & 60 hours \\
+HOURS\_DOCS & 30 hours \\
+HOURS\_TOTAL & 330 hours \\
+HOURS\_PROJECT & 1,320 person-hours \\
+COST\_PER\_HOUR & \$20/hour \\
+COST\_TOTAL & \$26,400 CAD \\
+COST\_ACTUAL & \$0 CAD \\
+COST\_INCENTIVE\_MIN & \$100 CAD \\
+COST\_INCENTIVE\_MAX & \$150 CAD \\
+MAX\_ZOOM\_PERCENTAGE & 200\% \qquad\textit{Table continues on next page}\\
+MIN\_CONTRAST\_RATIO & 4.5:1\\
+MAX\_UPLOAD\_STEPS & 5 steps\\
+MAX\_MINUTES & 5 minutes\\
+USERS\_SUCCESS\_PERCENT & 80\%\\
+MAX\_ERROR\_RECOVER & 2 seconds \\
+LEARNING\_PERCENT & 90\% \\
+MAX\_LEARNING\_MINUTES & 5 minutes \\
+MIN\_COMPENSATION\_DOLLARS & \$100 CAD \\ 
+MAX\_COMPENSATION\_DOLLARS & \$150 CAD \\ 
+LATEST\_RELEASES\_NUM & 3 \\
+MOST\_COMMON\_SR & 3 \\
+SFWR\_RELEASES & 2 \\
 
-\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{l l} 
-  \toprule		
-  \textbf{symbol} & \textbf{description}\\
-  \midrule 
-  T & Test\\
-  \bottomrule
-\end{tabular}\\
 
-\wss{symbols, abbreviations, or acronyms --- you can simply reference the SRS
-  \citep{SRS} tables, if appropriate}
-
-\wss{Remove this section if it isn't needed}
+\bottomrule
+\end{longtable}
 
 \newpage
 
 \pagenumbering{arabic}
 
 This document ... \wss{provide an introductory blurb and roadmap of the
-  Verification and Validation plan}
+Verification and Validation plan}
 
 \section{General Information}
 
 \subsection{Summary}
 
 \wss{Say what software is being tested.  Give its name and a brief overview of
-  its general functions.}
+its general functions.}
 
 The software being tested is called Reading4All. This software will utilize artificial intelligence (AI)/
 machine learning (ML) techniques to provide detailed, context-informed alternative text for complex technical images, specifically those found in post-secondary Science, Technology, Engineering and Mathematics (STEM)
@@ -107,7 +153,7 @@ In addition, the system will allow users to edit the generated alternative text,
   the qualities that are most important for your project.  You might have
   something like: ``build confidence in the software correctness,''
   ``demonstrate adequate usability.'' etc.  You won't list all of the qualities,
-  just those that are most important.}
+just those that are most important.}
 
 
 \wss{You should also list the objectives that are out of scope.  You don't have 
@@ -115,10 +161,13 @@ the resources to do everything, so what will you be leaving out.  For instance,
 if you are not going to verify the quality of usability, state this.  It is also 
 worthwhile to justify why the objectives are left out.}
 
-\wss{The objectives are important because they highlight that you are aware of 
-limitations in your resources for verification and validation.  You can't do everything, 
-so what are you going to prioritize?  As an example, if your system depends on an 
-external library, you can explicitly state that you will assume that external library 
+\wss{The objectives are important because they highlight that you are aware of
+  limitations in your resources for verification and validation.  You
+  can't do everything,
+  so what are you going to prioritize?  As an example, if your system
+  depends on an
+  external library, you can explicitly state that you will assume
+  that external library
 has already been verified by its implementation team.}
 
 
@@ -137,17 +186,17 @@ The McMaster sign-on authentication service will also not be tested, as its main
 \subsection{Challenge Level and Extras}
 
 \wss{State the challenge level (advanced, general, basic) for your project.
-Your challenge level should exactly match what is included in your problem
-statement.  This should be the challenge level agreed on between you and the
-course instructor.  You can use a pull request to update your challenge level
-(in TeamComposition.csv or Repos.csv) if your plan changes as a result of the
+  Your challenge level should exactly match what is included in your problem
+  statement.  This should be the challenge level agreed on between you and the
+  course instructor.  You can use a pull request to update your challenge level
+  (in TeamComposition.csv or Repos.csv) if your plan changes as a result of the
 VnV planning exercise.}
 
 \wss{Summarize the extras (if any) that were tackled by this project.  Extras
-can include usability testing, code walkthroughs, user documentation, formal
-proof, GenderMag personas, Design Thinking, etc.  Extras should have already
-been approved by the course instructor as included in your problem statement.
-You can use a pull request to update your extras (in TeamComposition.csv or
+  can include usability testing, code walkthroughs, user documentation, formal
+  proof, GenderMag personas, Design Thinking, etc.  Extras should have already
+  been approved by the course instructor as included in your problem statement.
+  You can use a pull request to update your extras (in TeamComposition.csv or
 Repos.csv) if your plan changes as a result of the VnV planning exercise.}
 \\
 The challenge level of the project is set at a \textit{general} level that will include two additional 
@@ -162,7 +211,7 @@ product effectively.
   and your other project documents (design documents, like MG, MIS, etc).  You
   can include these even before they are written, since by the time the project
   is done, they will be written.  You can create BibTeX entries for your
-  documents and within those entries include a hyperlink to the documents.}
+documents and within those entries include a hyperlink to the documents.}
 
 \wss{Don't just list the other documents.  You should explain why they are relevant and 
 how they relate to your VnV efforts.} 
@@ -182,13 +231,14 @@ satisfies these requirements is essential to meeting the goals of the project.
 \section{Plan}
 
 \wss{Introduce this section.  You can provide a roadmap of the sections to
-  come.}
+come.}
 
 \subsection{Verification and Validation Team}
 
 \wss{Your teammates.  Maybe your supervisor.
   You should do more than list names.  You should say what each person's role is
-  for the project's verification.  A table is a good way to summarize this information.}
+  for the project's verification.  A table is a good way to summarize
+this information.}
 
 \begin{table}[H]
     \centering
@@ -216,12 +266,13 @@ satisfies these requirements is essential to meeting the goals of the project.
 
 \wss{List any approaches you intend to use for SRS verification.  This may
   include ad hoc feedback from reviewers, like your classmates (like your
-  primary reviewer), or you may plan for something more rigorous/systematic.}
+primary reviewer), or you may plan for something more rigorous/systematic.}
 
 \wss{If you have a supervisor for the project, you shouldn't just say they will
-read over the SRS.  You should explain your structured approach to the review.
-Will you have a meeting?  What will you present?  What questions will you ask?
-Will you give them instructions for a task-based inspection?  Will you use your
+  read over the SRS.  You should explain your structured approach to the review.
+  Will you have a meeting?  What will you present?  What questions will you ask?
+  Will you give them instructions for a task-based inspection?  Will
+  you use your
 issue tracker?}
 
 The verification of the Reading4All SRS will be completed
@@ -294,14 +345,14 @@ Small errors will be intentionally be introduced into the prototype code related
 \subsection{Implementation Verification}
 
 \wss{You should at least point to the tests listed in this document and the unit
-  testing plan.}
+testing plan.}
 
 \wss{In this section you would also give any details of any plans for static
   verification of the implementation.  Potential techniques include code
-  walkthroughs, code inspection, static analyzers, etc.}
+walkthroughs, code inspection, static analyzers, etc.}
 
 \wss{The final class presentation in CAS 741 could be used as a code
-walkthrough.  There is also a possibility of using the final presentation (in
+  walkthrough.  There is also a possibility of using the final presentation (in
 CAS741) for a partial usability survey.}
 
 The implementation verification for Reading4All will utilize the unit tests defined in section~\ref{Unit Test Desc}, 
@@ -325,7 +376,7 @@ the implementation decisions. Additionally it also helps verify that the code fu
   Linters are another important class of tools.  For the programming language
   you select, you should look at the available linters.  There may also be tools
   that verify that coding standards have been respected, like flake9 for
-  Python.}
+Python.}
 
 
 
@@ -347,18 +398,21 @@ The AI Generated Alternative (alt) Text tool will make use of the following auto
 
 \wss{If there is any external data that can be used for validation, you should
   point to it here.  If there are no plans for validation, you should state that
-  here.}
+here.}
 
 \wss{You might want to use review sessions with the stakeholder to check that
-the requirements document captures the right requirements.  Maybe task based
+  the requirements document captures the right requirements.  Maybe task based
 inspection?}
 
-\wss{For those capstone teams with an external supervisor, the Rev 0 demo should 
-be used as an opportunity to validate the requirements.  You should plan on 
-demonstrating your project to your supervisor shortly after the scheduled Rev 0 demo.  
-The feedback from your supervisor will be very useful for improving your project.}
+\wss{For those capstone teams with an external supervisor, the Rev 0 demo should
+  be used as an opportunity to validate the requirements.  You should plan on
+  demonstrating your project to your supervisor shortly after the
+  scheduled Rev 0 demo.
+  The feedback from your supervisor will be very useful for improving
+your project.}
 
-\wss{For teams without an external supervisor, user testing can serve the same purpose 
+\wss{For teams without an external supervisor, user testing can serve
+  the same purpose
 as a Rev 0 demo for the supervisor.}
 
 \wss{This section might reference back to the SRS verification section.}
@@ -377,128 +431,887 @@ The AI Generated Alternative (alt) Text tool will be validated through the follo
 
 \section{System Tests}
 
-\wss{There should be text between all headings, even if it is just a roadmap of
-the contents of the subsections.}
+This section details tests to cover all requirements as listed in the
+Software Requirements Specification (SRS) for Team 22's project. The
+tests ensure that the system performs to the predefined standards and
+meets user needs.
 
 \subsection{Tests for Functional Requirements}
 
-\wss{Subsets of the tests may be in related, so this section is divided into
-  different areas.  If there are no identifiable subsets for the tests, this
-  level of document structure can be removed.}
+The tests below cover all six functional requirements as defined in
+the SRS document.(I need to add in more summary text here)
 
-\wss{Include a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good here.}
+\paragraph{Tests for Functional Requirements}
 
-\subsubsection{Area of Testing1}
+\begin{enumerate}[label=FR-ST \arabic*., wide=0pt, leftmargin=*]
+  \item{}
+    {\bf Control:} Automatic. \\
+    {\bf Initial State:} System is running and ready to accept an
+    image upload.\\
+    {\bf Input:} Upload files in the following formats:
+    \begin{itemize}
+      \item Valid: diagram1.jpeg, diagram2.png
+      \item Invalid: diagram3.gif, diagram4.pdf
+    \end{itemize}
+    {\bf Output:} The system accepts .jpeg and .png images and
+    displays an error message (e.g., “Invalid file type”) for .gif
+    and .pdf uploads.\\
+    {\bf  Case Derivation:}According to the \textbf{FR 1} criterion, the system
+    must accept JPEG and PNG formats and reject all others with proper
+    feedback. Therefore, valid formats are processed, and invalid
+    formats trigger an error.\\
+    {\bf How test will be performed:} The test can be performed by
+    uploading a sample set of image files in different formats (JPEG,
+    PNG, GIF, PDF) to the system. The system’s responses will be
+    observed to confirm that only JPEG and PNG files are accepted,
+    while others trigger an appropriate error message.\\
 
-\wss{It would be nice to have a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good here.  If a section
-  covers tests for input constraints, you should reference the data constraints
-  table in the SRS.}
-		
-\paragraph{Title for Test}
+  \item{}
+    {\bf Control:} Automatic\\
+    {\bf Initial State:} System running with image upload
+    functionality active.\\
+    {\bf Input:} Upload a set of test diagrams (diagram1.png, diagram2.jpeg).\\
+    {\bf Output:} The system generates alternative text descriptions
+    for each uploaded image that meet pre-determined quality or
+    clarity criteria (e.g., contains key diagram elements, concise
+    description, no missing components).\\
+    {\bf  Case Derivation:}As specified by \textbf{FR 2} criterion,
+    the system must correctly process JPEG and PNG files while
+    rejecting all other formats. Therefore, the expected outcome is
+    that valid images are accepted without error, and invalid formats
+    trigger a clear feedback message to the user.\\
+    {\bf How test will be performed:} The test can be performed by
+    uploading a test set of sample diagrams to the system and
+    reviewing the generated alternative text. The generated text will
+    be compared against predetermined quality criteria or expected
+    reference outputs to verify accuracy and completeness.\\
 
-\begin{enumerate}
+  \item{}
+    {\bf Control:} Manual\\
+    {\bf Initial State:} Alternative text has been generated for at
+    least one uploaded image.\\
+    {\bf Input:} Use screen readers such as NVDA, JAWS, and VoiceOver
+    to read the outputted alternative text.\\
+    {\bf Output:} Alternative text is fully read aloud by at least
+    the most common screen readers without truncation, misreading, or
+    formatting errors. \\
+    {\bf  Case Derivation:} Given the \textbf{FR 3} criterion for
+    compatibility with commonly used screen readers, the expected
+    outcome is that the generated alternative text will be fully
+    readable and correctly interpreted by tools such as NVDA, JAWS,
+    and VoiceOver without truncation or mispronunciation.\\
+    {\bf How test will be performed:} The test can be performed by
+    enabling common screen readers such as NVDA, JAWS, and VoiceOver
+    to read the generated alternative text aloud. Observations will
+    confirm whether the text is read fully, clearly, and without
+    formatting or accessibility issues.\\
 
-\item{test-id1\\}
+  \item{}
+    {\bf Control:} Manual\\
+    {\bf Initial State:} Generated alternative text is visible to the user.\\
+    {\bf Input:}User edits the outputted text (adds words, deletes
+    sentences, modifies phrasing) and saves changes. \\
+    {\bf Output:} The system reflects the user’s edits accurately and
+    stores the updated version without loss of data or formatting errors.\\
+    {\bf  Case Derivation:} As stated in \textbf{FR 4} criterion,
+    users must be able to modify any part of the generated
+    alternative text and save their changes. The expected result is
+    that all edits are accurately captured, stored, and displayed
+    without data loss or formatting issues.\\
+    {\bf How test will be performed:} The test can be performed by
+    selecting the generated alternative text and performing a series
+    of edits—adding, deleting, and modifying words—then saving the
+    changes. The output will be reviewed to ensure that edits are
+    accurately reflected and retained.\\
 
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs.  Output is not how you
-are going to return the results of the test.  The output is the expected
-result.}
+  \item{}
+    {\bf Control:} Automatic\\
+    {\bf Initial State:}User logged in and has uploaded at least one
+    image with generated alt text.\\
+    {\bf Input:} Upload multiple images sequentially within the same
+    session, then navigate through the session interface.\\
+    {\bf Output:} All previously uploaded images and their
+    corresponding alt texts remain visible and accessible until the
+    user logs out or the session ends.\\
+    {\bf  Case Derivation:}According to \textbf{FR 5} criterion, all
+    uploaded images and their corresponding alternative texts should
+    remain visible within the same session. Therefore, the expected
+    outcome is that users can access and review all prior uploads
+    without reloading or re-uploading them during an active session.\\
+    {\bf How test will be performed:} The test can be performed by
+    uploading multiple images within the same session, then
+    navigating across different pages or refreshing the interface.
+    The test will verify that all uploaded images and their
+    corresponding alternative texts remain visible until the session ends.\\
 
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-
+  \item{}
+    {\bf Control:} Automatic\\
+    {\bf Initial State:} Login page displayed.\\
+    {\bf Input:} Access for login is defined below:
+    \begin{itemize}
+      \item Valid credentials: McMaster University email and password
+      \item Invalid credentials: non-McMaster email or incorrect password
+    \end{itemize}
+    {\bf Output:} Access granted only to users with valid McMaster
+    credentials. Invalid attempts are rejected with an appropriate
+    error message (e.g., “Invalid login credentials”).\\
+    {\bf  Case Derivation:}As outlined in the \textbf{FR 6}
+    criterion, only users with verified McMaster University
+    credentials should gain access to system features. The expected
+    outcome is that valid users can log in successfully, while
+    unauthorized or invalid attempts are denied with an appropriate
+    error message.\\
+    {\bf How test will be performed:} The test can be performed by
+    attempting to log in using both valid McMaster University
+    credentials and invalid credentials. The system’s behavior will
+    be reviewed to confirm that only verified users gain access,
+    while invalid attempts produce an appropriate error message.\\
 \end{enumerate}
-
-\subsubsection{Area of Testing2}
-
-...
 
 \subsection{Tests for Nonfunctional Requirements}
 
-\wss{The nonfunctional requirements for accuracy will likely just reference the
-  appropriate functional tests from above.  The test cases should mention
-  reporting the relative error for these tests.  Not all projects will
-  necessarily have nonfunctional requirements related to accuracy.}
+{Need a small summary blurb here pls. - NF}
 
-\wss{For some nonfunctional tests, you won't be setting a target threshold for
-passing the test, but rather describing the experiment you will do to measure
-the quality for different inputs.  For instance, you could measure speed versus
-the problem size.  The output of the test isn't pass/fail, but rather a summary
-table or graph.}
+\paragraph{Tests for Non-Functional Requirements}
 
-\wss{Tests related to usability could include conducting a usability test and
-  survey.  The survey will be in the Appendix.}
+\begin{enumerate}[label=NFR-ST \arabic*., wide=0pt, leftmargin=*]
 
-\wss{Static tests, review, inspections, and walkthroughs, will not follow the
-format for the tests given below.}
+  \item{}
+    \textbf{Text Resizing and Contrast Accessibility} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic. \\
+    \textbf{Covers:} LFR-AR1, LFR-AR2, LFR-AR3, LFR-AR4. \\
+    \textbf{Initial State:} Interface displayed in a standard browser
+    with accessibility tools enabled. \\
+    \textbf{Input/Condition:} The user adjusts browser zoom to the
+    maximum allowed and reviews color usage. \\
+    \textbf{Output/Result:} Text resizes correctly without overlap;
+    information is not conveyed by color alone; contrast meets
+    accessibility thresholds; all images have alternative text. \\[2mm]
+    \textbf{How test will be performed:} The tester will manually
+    adjust zoom levels, use color contrast tools, and run screen
+    reader tests to confirm accessibility compliance.
 
-\wss{If you introduce static tests in your plan, you need to provide details.
-How will they be done?  In cases like code (or document) walkthroughs, who will
-be involved? Be specific.}
+  \item \textbf{Interface Style and Branding Verification}. \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic. \\
+    \textbf{Covers:} LFR-SR1, LFR-SR2, LFR-SR3. \\
+    \textbf{Initial State:} System interface displayed in a browser. \\
+    \textbf{Input/Condition:} Visual inspection of layout, font,
+    colors, branding, and adherence to Norman's design principles. \\
+    \textbf{Output/Result:} Interface maintains modern and simple
+    style, McMaster branding is present without interfering with
+    usability, and design elements comply with Norman’s principles. \\[2mm]
+    \textbf{How test will be performed:} Tester will review the
+    interface against the style guide, branding requirements, and
+    Norman’s design checklist to ensure compliance.
 
-\subsubsection{Area of Testing1}
-		
-\paragraph{Title for Test}
+  \item \textbf{Usability Efficiency and Learnability}. \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic. \\
+    \textbf{Covers:} UHR-EUR1, UHR-EUR2, UHR-EUR3, UHR-EUR4 \\
+    \textbf{Initial State:} System interface available to first-time
+    and returning users \\
+    \textbf{Input/Condition:} Users perform key actions: login,
+    upload images, generate alt text \\
+    \textbf{Output/Result:} Users complete tasks efficiently, recall
+    steps after a break, receive feedback within 1 second, and can
+    correct errors easily \\[2mm]
+    \textbf{How test will be performed:} Conduct usability sessions
+    with participants performing all major tasks while timing
+    actions, recording feedback response, and monitoring error recovery.
 
-\begin{enumerate}
+  \item \textbf{Alt Text Storage and Personalization Options} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} UHR-PIR1 \\
+    \textbf{Initial State:} Alt text generated for uploaded image \\
+    \textbf{Input/Condition:} User chooses to copy or download
+    generated alt text \\
+    \textbf{Output/Result:} Alt text is successfully copied to
+    clipboard or downloaded as .txt \\[2mm]
+    \textbf{How test will be performed:} Tester generates alt text
+    and selects each option, confirming that the system executes the
+    chosen storage method correctly.
 
-\item{test-id1\\}
+  \item \textbf{Accessibility for Screen Readers and Low-Vision Users} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} UHR-LR1, UHR-AR1, UHR-AR2 \\
+    \textbf{Initial State:} Interface accessible with popular screen readers \\
+    \textbf{Input/Condition:} Users with screen readers upload images
+    and generate alt text \\
+    \textbf{Output/Result:} Users successfully generate alt text
+    within the time limit and can navigate interface efficiently \\[2mm]
+    \textbf{How test will be performed:} Conduct sessions with
+    low-vision participants using NVDA, JAWS, or VoiceOver and
+    measure task completion time and success rates.
 
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
+  \item \textbf{Information Display Clarity} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} UHR-LR2 \\
+    \textbf{Initial State:} Interface displays system messages and information \\
+    \textbf{Input/Condition:} User navigates through tasks without
+    developer guidance \\
+    \textbf{Output/Result:} Only essential information is displayed;
+    technical details are hidden \\[2mm]
+    \textbf{How test will be performed:} Tester inspects interface
+    during task completion to confirm that technical or unnecessary
+    details are not visible to the user.
 
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
+  \item \textbf{Performance – Alt Text Generation Time} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-SL1, PR-SL2 \\
+    \textbf{Initial State:} System under typical load conditions \\
+    \textbf{Input/Condition:} Upload images of various sizes (small and large) \\
+    \textbf{Output/Result:} Generated alt text returned within
+    specified thresholds for each image size; UI responds within
+    T\_UI\_RESP \\[2mm]
+    \textbf{How test will be performed:} Automated scripts upload
+    images and record generation time and UI response time; results
+    plotted to verify performance meets criteria.
+
+  \item \textbf{Safety and Timeout Handling} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} PR-SR-HA1, PR-SR-HA2, PR-SR-HA3 \\
+    \textbf{Initial State:} System ready for alt text generation \\
+    \textbf{Input/Condition:} Simulate long-running or stalled image
+    processing \\
+    \textbf{Output/Result:} User notified of timeout, option to
+    retry; incomplete data is deleted; messages do not reveal
+    technical details \\ [2mm]
+    \textbf{How test will be performed:} Tester simulates timeouts
+    and verifies notifications, data cleanup, and absence of
+    technical information in messages.
+
+  \item \textbf{Alt Text Accuracy and Usability Evaluation} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} PR-PAR1, PR-PAR2, PR-PAR3, CR-LR1 \\
+    \textbf{Initial State:} Alt text generated for uploaded images \\
+    \textbf{Input/Condition:} Users rate generated alt text for
+    sufficiency, length, readability, and usability \\
+    \textbf{Output/Result:} Ratings meet R\_SUFFICIENCY, R\_LENGTH, and
+    R\_USABILITY\_MEDIAN thresholds \\[2mm]
+    \textbf{How test will be performed:} Conduct structured user
+    evaluation using rating scales; calculate statistics to confirm
+    compliance with quality thresholds.
+
+  \item \textbf{Robustness to Invalid Inputs and Fault Recovery} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual/Automated, Dynamic \\
+    \textbf{Covers:} PR-RFT1, PR-RFT2 \\
+    \textbf{Initial State:} System running normally \\
+    \textbf{Input/Condition:} Upload unsupported, corrupted files, or
+    simulate backend process failures \\
+    \textbf{Output/Result:} Clear error messages displayed; system recovers within T\_RECOVERY \\[2mm]
+    \textbf{How test will be performed:} Tester uploads invalid files
+    and observes error handling; automated test simulates isolated
+    failures to confirm automatic recovery.
+
+  \item \textbf{Concurrent Usage and Storage Capacity} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-CR1, PR-CR2 \\
+    \textbf{Initial State:} System deployed in test environment \\
+    \textbf{Input/Condition:} Simulate multiple simultaneous users
+    and upload datasets \\
+    \textbf{Output/Result:} Supports CAP\_CONCURRENT users with
+    response times $\le$ 10s; storage handles CAP\_STORAGE datasets \\[2mm]
+    \textbf{How test will be performed:} Load testing scripts
+    simulate multiple concurrent requests and dataset uploads;
+    performance and storage usage monitored.
+
+  \item \textbf{System Extensibility and Maintainability} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} PR-SER1, PR-LR1, PR-LR2, MS-MNT1, MS-MNT2,
+    MS-MNT3, MS-AD1, MS-AD2, MS-AD3 \\
+    \textbf{Initial State:} Existing modular system codebase deployed \\
+    \textbf{Input/Condition:} Apply updates to modules,
+    configuration, or AI models \\
+    \textbf{Output/Result:} System maintains functionality; new
+    modules integrate without breaking existing components; changes
+    tracked \\[2mm]
+    \textbf{How test will be performed:} Tester modifies components
+    and configuration files, runs automated CI/CD tests, and verifies
+    integration of new modules.
+
+  \item \textbf{Security, Access, and Network Restrictions} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual/Automated, Dynamic \\
+    \textbf{Covers:} SR-AR1, SR-AR2, SR-IR1, SR-IR2, SR-PR1, SR-PR2,
+    SR-AU1, SR-AU2, SR-IM1, SR-IM2 \\
+    \textbf{Initial State:} System deployed with SSO and HTTPS enabled \\
+    \textbf{Input/Condition:} Attempt unauthorized access, upload
+    images, and inspect logs \\
+    \textbf{Output/Result:} Only authorized McMaster users gain
+    access; encrypted communication enforced; uploaded images
+    deleted; PII filtered; logs access restricted; unsupported files
+    rejected; external networks blocked \\[2mm]
+    \textbf{How test will be performed:} Testers attempt invalid
+    logins, inspect encrypted traffic, upload images and check
+    deletion, validate moderation filters, and verify network
+    restrictions and audit log access.
+
+  \item \textbf{Cultural and Professional Content Compliance} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} CR1, CR2, CR3 \\
+    \textbf{Initial State:} Alt text generated by the system \\
+    \textbf{Input/Condition:} Review generated alt text samples \\
+    \textbf{Output/Result:} Text is neutral, inclusive, contextually
+    accurate, and professional \\[2mm]
+    \textbf{How test will be performed:} Tester inspects a variety of
+    outputs for bias, unnecessary cultural references, and tone appropriateness.
+
+  \item \textbf{Compliance and Regulatory Verification} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} CR-LR1, CR-SCR1, CR-SCR2 \\
+    \textbf{Initial State:} System generates alt text and manages
+    uploaded data \\
+    \textbf{Input/Condition:} Validate against AODA, WCAG 2.1, and
+    institutional privacy policies \\
+    \textbf{Output/Result:} Generated alt text meets accessibility
+    standards; uploaded files handled per policy; documentation
+    available for stakeholders \\[2mm]
+    \textbf{How test will be performed:} Run accessibility and
+    privacy compliance tests; inspect system logs and documentation
+    for adherence.
+
+  \item \textbf{Environmental and Device Compatibility} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} OER-EP1, OER-EP2, OER-WE1, OER-WE2 \\
+    \textbf{Initial State:} System installed on multiple devices and
+    OS platforms \\
+    \textbf{Input/Condition:} Access system in standard classroom,
+    office, or cloud environments \\
+    \textbf{Output/Result:} System functions reliably across devices,
+    platforms, and typical indoor conditions; maintains network
+    connectivity \\[2mm]
+    \textbf{How test will be performed:} Testers access the system on
+    Windows, Mac, and Linux with various browsers; verify full functionality.
+
+  \item \textbf{Documentation and Logging Availability} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} MS-LOG1, MS-LOG2, MS-LOG3 \\
+    \textbf{Initial State:} System operational with logging enabled \\
+    \textbf{Input/Condition:} Generate alt text and simulate user actions \\
+    \textbf{Output/Result:} Comprehensive logs maintained;
+    documentation available for developers and users; logs do not
+    contain PII \\[2mm]
+    \textbf{How test will be performed:} Tester performs sample
+    actions; inspects logs and documentation for completeness and
+    privacy compliance.
+
+  \item \textbf{Error Handling and Feedback Clarity} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} PR-RFT3, PR-RFT4 \\
+    \textbf{Initial State:} System running normally \\
+    \textbf{Input/Condition:} Trigger recoverable and non-recoverable errors \\
+    \textbf{Output/Result:} Clear, concise, and non-technical error
+    messages displayed; user able to recover or retry \\[2mm]
+    \textbf{How test will be performed:} Tester induces known errors
+    (e.g., network failure, invalid file upload) and verifies
+    displayed messages and recovery options.
+
+  \item \textbf{Data Retention and Auto-Deletion Compliance} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} SR-DTR1, SR-DTR2 \\
+    \textbf{Initial State:} User data uploaded and processed \\
+    \textbf{Input/Condition:} System retains data past defined
+    retention period \\
+    \textbf{Output/Result:} Data automatically deleted per policy; no
+    unauthorized access possible \\[2mm]
+    \textbf{How test will be performed:} Tester checks timestamped
+    data and verifies auto-deletion after expiration; attempts access
+    post-deletion to confirm security.
+
+  \item \textbf{System Logging and Audit Trail} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual/Automated, Dynamic \\
+    \textbf{Covers:} MS-LOG4, MS-LOG5 \\
+    \textbf{Initial State:} System operational with logging enabled \\
+    \textbf{Input/Condition:} Perform multiple system operations and
+    user logins \\
+    \textbf{Output/Result:} All critical actions logged securely;
+    logs immutable and auditable \\[2mm]
+    \textbf{How test will be performed:} Tester executes operations
+    and reviews logs for completeness, accuracy, and security compliance.
+
+  \item \textbf{System Recovery and Failover} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual/Automated, Dynamic \\
+    \textbf{Covers:} PR-RFT5, PR-RFT6 \\
+    \textbf{Initial State:} System operating under normal load \\
+    \textbf{Input/Condition:} Simulate server crash, database
+    failure, or network outage \\
+    \textbf{Output/Result:} System recovers automatically; user
+    experience minimally impacted; data integrity maintained \\[2mm]
+    \textbf{How test will be performed:} Tester simulates failures
+    and verifies recovery procedures, system availability, and data integrity.
+
+  \item \textbf{AI Model Update and Version Control} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} PR-SER2, MS-MNT4 \\
+    \textbf{Initial State:} AI model deployed with version control \\
+    \textbf{Input/Condition:} Apply new model updates \\
+    \textbf{Output/Result:} New model integrates without breaking
+    functionality; rollback possible if necessary \\[2mm]
+    \textbf{How test will be performed:} Tester deploys updates in
+    staging environment and verifies system functions; tests rollback procedure.
+
+  \item \textbf{Backup and Restore Functionality} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} PR-RST1, PR-RST2 \\
+    \textbf{Initial State:} System operational with recent backups \\
+    \textbf{Input/Condition:} Restore system from backup after
+    simulated failure \\
+    \textbf{Output/Result:} System restores to prior state; no data
+    loss beyond last backup \\[2mm]
+    \textbf{How test will be performed:} Tester triggers backup
+    restoration and verifies system state and data consistency.
+
+  \item \textbf{Load Handling and Stress Testing} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-CR3, PR-CR4 \\
+    \textbf{Initial State:} System deployed with baseline load \\
+    \textbf{Input/Condition:} Simulate increasing concurrent users
+    and transactions beyond expected peak \\
+    \textbf{Output/Result:} System maintains acceptable response
+    times and throughput; no critical failures \\[2mm]
+    \textbf{How test will be performed:} Automated scripts generate
+    load; monitor CPU, memory, and response times; confirm thresholds
+    not exceeded.
+
+  \item \textbf{Cross-Browser Compatibility} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} OER-BC1, OER-BC2 \\
+    \textbf{Initial State:} System accessible from modern browsers \\
+    \textbf{Input/Condition:} Access system via Chrome, Edge,
+    Firefox, and Safari \\
+    \textbf{Output/Result:} Interface renders correctly;
+    functionality consistent across browsers \\[2mm]
+    \textbf{How test will be performed:} Tester manually accesses
+    system from each browser and verifies UI, functionality, and performance.
+
+  \item \textbf{Mobile Responsiveness} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} OER-MR1, OER-MR2 \\
+    \textbf{Initial State:} System deployed in browser and mobile view \\
+    \textbf{Input/Condition:} Access system from smartphones and
+    tablets of different resolutions \\
+    \textbf{Output/Result:} UI scales correctly; touch interactions
+    functional; alt text generation accessible \\[2mm]
+    \textbf{How test will be performed:} Tester uses multiple devices
+    and orientations, verifying layout, functionality, and accessibility.
+
+  \item \textbf{Data Encryption in Transit and Storage} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} SR-PR3, SR-PR4 \\
+    \textbf{Initial State:} System with HTTPS and encrypted database enabled \\
+    \textbf{Input/Condition:} Upload images and generate alt text \\
+    \textbf{Output/Result:} All data encrypted during transit and
+    storage; unauthorized decryption prevented \\[2mm]
+    \textbf{How test will be performed:} Automated scripts intercept
+    and attempt decryption; confirm encryption standards met.
+
+  \item \textbf{Accessibility Compliance Documentation} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Static \\
+    \textbf{Covers:} CR-LR2, CR-LR3 \\
+    \textbf{Initial State:} Documentation available in project repository \\
+    \textbf{Input/Condition:} Review compliance documentation for
+    WCAG 2.1 and AODA \\
+    \textbf{Output/Result:} Documentation fully describes
+    accessibility features, test results, and compliance levels \\[2mm]
+    \textbf{How test will be performed:} Tester reads documentation
+    and confirms all standards, features, and results documented accurately.
+
+  \item \textbf{Scalability of Storage and Processing} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-CR5, PR-CR6 \\
+    \textbf{Initial State:} System running with normal load \\
+    \textbf{Input/Condition:} Upload datasets with sizes increasing
+    up to 10x expected usage \\
+    \textbf{Output/Result:} System handles scaling without
+    degradation; storage and processing remain within thresholds \\[2mm]
+    \textbf{How test will be performed:} Automated scripts simulate
+    large datasets; monitor CPU, memory, and response times; confirm
+    thresholds not exceeded.
+
+  \item \textbf{Session Management and Timeout Enforcement} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} SR-AR3, SR-AR4 \\
+    \textbf{Initial State:} User logged in \\
+    \textbf{Input/Condition:} Remain idle for session timeout period \\
+    \textbf{Output/Result:} User automatically logged out; session
+    data cleared \\[2mm]
+    \textbf{How test will be performed:} Tester leaves session idle
+    and verifies automatic logout and data clearance.
+
+  \item \textbf{Internationalization and Localization} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} OER-LC1, OER-LC2 \\
+    \textbf{Initial State:} Interface configured with language options \\
+    \textbf{Input/Condition:} Switch language settings to French,
+    Spanish, or other supported languages \\
+    \textbf{Output/Result:} UI, messages, and alt text generation
+    output properly localized \\[2mm]
+    \textbf{How test will be performed:} Tester changes language
+    settings and inspects all interface components and generated alt text.
+
+  \item \textbf{Logging Level and Error Traceability} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} MS-LOG6, MS-LOG7 \\
+    \textbf{Initial State:} System logging configured \\
+    \textbf{Input/Condition:} Trigger minor, major, and critical errors \\
+    \textbf{Output/Result:} Logs record errors with severity and
+    timestamp; traceability from log to incident possible \\[2mm]
+    \textbf{How test will be performed:} Tester induces errors and
+    reviews logs for completeness, severity, and traceability.
+
+  \item \textbf{Maintainability – Code Documentation} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Static \\
+    \textbf{Covers:} MS-MNT5, MS-MNT6 \\
+    \textbf{Initial State:} System code deployed \\
+    \textbf{Input/Condition:} Review code comments, README, and
+    module documentation \\
+    \textbf{Output/Result:} Documentation sufficient for new
+    developer onboarding; functions and classes clearly described \\[2mm]
+    \textbf{How test will be performed:} Tester reviews repository,
+    checks code comments and documentation quality, and attempts to
+    understand functionality.
+
+  \item \textbf{Reliability and Uptime Metrics} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-REL1, PR-REL2 \\
+    \textbf{Initial State:} System deployed in production environment \\
+    \textbf{Input/Condition:} Continuous operation over 30 days \\
+    \textbf{Output/Result:} Uptime $\ge$ 99.5 percentage; critical errors $\le$ 0.5 percentage \\[2mm]
+    \textbf{How test will be performed:} Automated monitoring scripts
+    track system availability, error rates, and generate uptime reports.
+
+  \item \textbf{Audit and Regulatory Reporting} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Static \\
+    \textbf{Covers:} CR-SCR3, CR-SCR4 \\
+    \textbf{Initial State:} System operational with logging and data
+    retention policies \\
+    \textbf{Input/Condition:} Generate audit report \\
+    \textbf{Output/Result:} Report includes user access, data
+    retention, and compliance with standards \\[2mm]
+    \textbf{How test will be performed:} Tester generates reports and
+    verifies completeness and compliance with regulatory standards.
+
+  \item \textbf{Usability Feedback Collection} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} UHR-FB1, UHR-FB2 \\
+    \textbf{Initial State:} System includes feedback collection mechanisms \
+    \textbf{Input/Condition:} Users submit feedback after alt text generation \\
+    \textbf{Output/Result:} Feedback stored and categorized; system
+    able to analyze usability trends \\[2mm]
+    \textbf{How test will be performed:} Tester submits sample
+    feedback and verifies storage, categorization, and accessibility
+    of feedback for review.
+
+  \item \textbf{System Responsiveness Under Load} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-CR7, PR-CR8 \\
+    \textbf{Initial State:} System operational with normal load \\
+    \textbf{Input/Condition:} Increase concurrent user activity to 2x
+    expected peak \\
+    \textbf{Output/Result:} UI response time $\le$ 3s for 95 percentage of requests. \\[2mm]
+    \textbf{How test will be performed:} Automated load scripts
+    simulate multiple users; system response times recorded and analyzed.
+
+  \item \textbf{Third-Party API Integration Stability} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual/Automated, Dynamic \\
+    \textbf{Covers:} PR-API1, PR-API2 \\
+    \textbf{Initial State:} System connected to external APIs \\
+    \textbf{Input/Condition:} Perform repeated alt text generation requests \\
+    \textbf{Output/Result:} API responses consistent; errors handled
+    gracefully; system continues normal operation \\[2mm]
+    \textbf{How test will be performed:} Tester triggers repeated API
+    calls and monitors system stability, error handling, and response
+    consistency.
+
+  \item \textbf{User Interface Localization Accuracy} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} OER-LC3, OER-LC4 \\
+    \textbf{Initial State:} Multi-language system interface \\
+    \textbf{Input/Condition:} Switch to each supported language \\
+    \textbf{Output/Result:} All messages, labels, and generated
+    content correctly localized; no truncation or overlap \\[2mm]
+    \textbf{How test will be performed:} Tester switches language
+    settings and inspects UI and content for correctness and readability.
+
+  \item \textbf{Cross-Platform File Upload Compatibility} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} OER-FC1, OER-FC2 \\
+    \textbf{Initial State:} System accessible from Windows, Mac, Linux \\
+    \textbf{Input/Condition:} Upload images from each platform \\
+    \textbf{Output/Result:} All images successfully uploaded and
+    processed; no format-specific errors \\[2mm]
+    \textbf{How test will be performed:} Tester uploads images from
+    each platform and verifies correct processing.
+
+  \item \textbf{Accessibility Feature Toggle Verification} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} LFR-AR5, LFR-AR6 \\
+    \textbf{Initial State:} Accessibility features available \\
+    \textbf{Input/Condition:} Enable and disable accessibility
+    options such as high-contrast mode and text resizing \\
+    \textbf{Output/Result:} Features function as intended without
+    affecting core operations \\[2mm]
+    \textbf{How test will be performed:} Tester toggles options and
+    confirms UI adapts correctly and tasks remain fully functional.
+
+  \item \textbf{Session Persistence Across Devices} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} SR-SES1, SR-SES2 \\
+    \textbf{Initial State:} User logged in on one device \\
+    \textbf{Input/Condition:} Log in from a second device \\
+    \textbf{Output/Result:} Session persists correctly; no data loss
+    or overlap occurs \\[2mm]
+    \textbf{How test will be performed:} Tester logs in from multiple
+    devices and verifies session continuity and data integrity.
+
+  \item \textbf{Authentication and Authorization Robustness} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} SR-SEC1, SR-SEC2 \\
+    \textbf{Initial State:} System user management enabled \\
+    \textbf{Input/Condition:} Attempt login with valid and invalid
+    credentials, and role-based access attempts \\
+    \textbf{Output/Result:} Only authorized users gain access; failed
+    attempts logged and blocked \\[2mm]
+    \textbf{How test will be performed:} Tester executes login
+    attempts and role-specific actions, verifying proper access
+    control and logging.
+
+  \item \textbf{Backup Frequency and Integrity Verification} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-RST3, PR-RST4 \\
+    \textbf{Initial State:} System operational with scheduled backups \\
+    \textbf{Input/Condition:} Check backup creation and integrity
+    after scheduled intervals \\
+    \textbf{Output/Result:} Backup files are created, complete, and
+    restorable \\[2mm]
+    \textbf{How test will be performed:} Automated scripts validate
+    backup presence, completeness, and successful restore operations.
+
+  \item \textbf{System Latency under Concurrent Requests} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-CR9, PR-CR10 \\
+    \textbf{Initial State:} System operating normally \\
+    \textbf{Input/Condition:} Simulate multiple concurrent requests
+    exceeding peak load \\
+    \textbf{Output/Result:} Average latency remains below 2 seconds
+    for 95% of requests \\[2mm]
+    \textbf{How test will be performed:} Automated load testing
+    scripts measure response times and record metrics.
+
+  \item \textbf{Accessibility Feature Consistency Across Pages} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} LFR-AR7, LFR-AR8 \\
+    \textbf{Initial State:} System accessible via web interface \\
+    \textbf{Input/Condition:} Navigate through all interface pages
+    while accessibility features enabled \\
+    \textbf{Output/Result:} All pages reflect selected accessibility
+    settings consistently \\[2mm]
+    \textbf{How test will be performed:} Tester manually navigates
+    pages and confirms consistent application of accessibility features.
+
+  \item \textbf{Data Validation Accuracy} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} SR-DV1, SR-DV2 \\
+    \textbf{Initial State:} System receiving data input \\
+    \textbf{Input/Condition:} Submit valid and invalid data sets \\
+    \textbf{Output/Result:} Invalid data rejected with proper
+    messages; valid data accepted correctly \\[2mm]
+    \textbf{How test will be performed:} Automated tests feed data
+    and verify validation, error messages, and acceptance of correct entries.
+
+  \item \textbf{System Performance Logging} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} MS-LOG8, MS-LOG9 \\
+    \textbf{Initial State:} System operational with monitoring enabled \\
+    \textbf{Input/Condition:} Conduct normal and peak operations \\
+    \textbf{Output/Result:} Performance metrics recorded accurately;
+    logs available for analysis \\[2mm]
+    \textbf{How test will be performed:} Automated scripts simulate
+    usage and check log accuracy, completeness, and integrity.
+
+  \item \textbf{System Maintainability Through Modular Design} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Static \\
+    \textbf{Covers:} MS-MNT7, MS-MNT8 \\
+    \textbf{Initial State:} System code deployed \\
+    \textbf{Input/Condition:} Review code modules and interdependencies \\
+    \textbf{Output/Result:} Modules decoupled; maintenance tasks
+    simplified; documentation available \\[2mm]
+    \textbf{How test will be performed:} Tester inspects codebase and
+    verifies module independence and clear documentation.
+
+  \item \textbf{System Monitoring Dashboard Functionality} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} PR-MON1, PR-MON2 \\
+    \textbf{Initial State:} Monitoring dashboard active \\
+    \textbf{Input/Condition:} Generate alerts and simulate metric spikes \\
+    \textbf{Output/Result:} Dashboard reflects accurate status and
+    metrics in real-time \\[2mm]
+    \textbf{How test will be performed:} Tester triggers alerts and
+    monitors dashboard for correct visualization and metrics.
+
+  \item \textbf{Accessibility Compliance Reporting} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Static \\
+    \textbf{Covers:} CR-LR4, CR-LR5 \\
+    \textbf{Initial State:} Accessibility features and logging enabled \\
+    \textbf{Input/Condition:} Generate compliance report \\
+    \textbf{Output/Result:} Report shows coverage of WCAG 2.1
+    standards; any non-compliance highlighted \\[2mm]
+    \textbf{How test will be performed:} Tester reviews reports and
+    validates against accessibility standards checklist.
+
+  \item \textbf{Data Privacy and GDPR Compliance} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} SR-PR5, SR-PR6 \\
+    \textbf{Initial State:} User data stored \\
+    \textbf{Input/Condition:} Access and delete personal data \\
+    \textbf{Output/Result:} Personal data protected and deletions
+    effective; no unauthorized access \\[2mm]
+    \textbf{How test will be performed:} Tester attempts access and
+    deletion operations, verifying compliance with privacy standards.
+
+  \item \textbf{High Availability Through Redundancy} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-REL3, PR-REL4 \\
+    \textbf{Initial State:} System deployed with redundant servers \\
+    \textbf{Input/Condition:} Simulate server failure \\
+    \textbf{Output/Result:} System continues operation with minimal
+    downtime; failover verified \\[2mm]
+    \textbf{How test will be performed:} Tester disables primary
+    server and observes continuity of service.
+
+  \item \textbf{Notification Delivery and Logging} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} PR-NOT1, PR-NOT2 \\
+    \textbf{Initial State:} Notification system active \\
+    \textbf{Input/Condition:} Trigger various system notifications \\
+    \textbf{Output/Result:} Notifications sent promptly; logged and
+    traceable \\[2mm]
+    \textbf{How test will be performed:} Tester triggers
+    notifications and verifies delivery, logging, and accuracy.
+
+  \item \textbf{Accessibility User Preferences Persistence} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} LFR-AR9, LFR-AR10 \\
+    \textbf{Initial State:} Accessibility preferences set by user \\
+    \textbf{Input/Condition:} Log out and log back in \\
+    \textbf{Output/Result:} Preferences persist and applied automatically \\[2mm]
+    \textbf{How test will be performed:} Tester logs out/in and
+    verifies consistent application of user accessibility settings.
+
+  \item \textbf{Version Control and Deployment Audit} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Static \\
+    \textbf{Covers:} MS-MNT9, MS-MNT10 \\
+    \textbf{Initial State:} System deployed with version control \\
+    \textbf{Input/Condition:} Review deployment history \\
+    \textbf{Output/Result:} All deployments documented; rollback
+    history available \\[2mm]
+    \textbf{How test will be performed:} Tester inspects deployment
+    logs and confirms version tracking and rollback capability.
+
+  \item \textbf{Image Processing Throughput} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-CR11, PR-CR12 \\
+    \textbf{Initial State:} System idle \\
+    \textbf{Input/Condition:} Upload batch of images for alt text generation \\
+    \textbf{Output/Result:} All images processed within expected time
+    threshold \\[2mm]
+    \textbf{How test will be performed:} Automated tests measure
+    processing time for large image batches.
+
+  \item \textbf{System Health Check Automation} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-MON3, PR-MON4 \\
+    \textbf{Initial State:} System running \\
+    \textbf{Input/Condition:} Scheduled automated health checks \\
+    \textbf{Output/Result:} Alerts generated for any anomalies;
+    uptime maintained \\[2mm]
+    \textbf{How test will be performed:} Automated health scripts
+    execute and log system metrics, notifying tester on anomalies.
+
+  \item \textbf{User Onboarding Accessibility Guidance} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} LFR-AR11, LFR-AR12 \\
+    \textbf{Initial State:} New user account created \\
+    \textbf{Input/Condition:} User accesses onboarding tutorial \\
+    \textbf{Output/Result:} Tutorial accessible via screen reader and
+    keyboard navigation \\[2mm]
+    \textbf{How test will be performed:} Tester follows tutorial
+    using accessibility tools and verifies all steps are readable and navigable.
+
+  \item \textbf{Data Consistency Across Multiple Instances} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} SR-DV3, SR-DV4 \\
+    \textbf{Initial State:} System running on multiple instances \\
+    \textbf{Input/Condition:} Modify data concurrently \\
+    \textbf{Output/Result:} Data remains consistent across all instances \\[2mm]
+    \textbf{How test will be performed:} Automated tests simulate
+    concurrent data operations and verify consistency.
+
+  \item \textbf{Accessibility Keyboard Shortcut Support} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} LFR-AR13, LFR-AR14 \\
+    \textbf{Initial State:} System accessible via keyboard \\
+    \textbf{Input/Condition:} Navigate and perform tasks using only keyboard \\
+    \textbf{Output/Result:} All interface elements operable; focus
+    indicators clear \\[2mm]
+    \textbf{How test will be performed:} Tester completes tasks
+    without mouse and verifies navigation and operation.
+
+  \item \textbf{End-to-End Encryption Verification} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} SR-PR7, SR-PR8 \\
+    \textbf{Initial State:} Data transfer enabled \\
+    \textbf{Input/Condition:} Transmit sensitive data \\
+    \textbf{Output/Result:} Data encrypted in transit and decrypted
+    only by intended recipient \\[2mm]
+    \textbf{How test will be performed:} Automated tests attempt
+    interception; validate encryption and decryption correctness.
+
+  \item \textbf{System Scalability for Concurrent Users} \\2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-CR13, PR-CR14 \\
+    \textbf{Initial State:} System running normally \\
+    \textbf{Input/Condition:} Simulate up to 5x expected user load \\
+    \textbf{Output/Result:} System handles load without significant
+    performance degradation \\[2mm]
+    \textbf{How test will be performed:} Automated load scripts
+    generate peak traffic; monitor system response and resource usage.
+
+  \item \textbf{Comprehensive Audit Trail Accessibility} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Static \\
+    \textbf{Covers:} MS-LOG10, MS-LOG11 \\
+    \textbf{Initial State:} System logs active \\
+    \textbf{Input/Condition:} Access audit trail \\
+    \textbf{Output/Result:} Logs readable, searchable, and meet
+    regulatory standards \\[2mm]
+    \textbf{How test will be performed:} Tester queries audit trail
+    and confirms completeness and accessibility.
+
+  \item \textbf{Image Alt Text Accuracy Metrics} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-VAL1, PR-VAL2 \\
+    \textbf{Initial State:} Alt text generation operational \\
+    \textbf{Input/Condition:} Process test image set \\
+    \textbf{Output/Result:} Accuracy metrics calculated; performance
+    within target thresholds \\[2mm]
+    \textbf{How test will be performed:} Automated evaluation against
+    ground truth alt text; calculate accuracy, precision, and recall.
+
+  \item \textbf{End-to-End System Security Review} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Static \\
+    \textbf{Covers:} SR-SEC3, SR-SEC4 \\
+    \textbf{Initial State:} System deployed in production \\
+    \textbf{Input/Condition:} Conduct security assessment \\
+    \textbf{Output/Result:} All vulnerabilities identified; security
+    policies validated \\[2mm]
+    \textbf{How test will be performed:} Tester reviews system
+    architecture, performs penetration tests, and verifies adherence
+    to security standards.\\
 
 \end{enumerate}
-
-\subsubsection{Area of Testing2}
-
-...
 
 \subsection{Traceability Between Test Cases and Requirements}
 
 \wss{Provide a table that shows which test cases are supporting which
-  requirements.}
+requirements.}
 
 \section{Unit Test Description}
 \label{Unit Test Desc}
@@ -819,18 +1632,19 @@ graduate attribute of Lifelong Learning.
 \input{../Reflection.tex}
 
 \begin{enumerate}
-  \item What went well while writing this deliverable? 
+  \item What went well while writing this deliverable?
   \item What pain points did you experience during this deliverable, and how
     did you resolve them?
   \item What knowledge and skills will the team collectively need to acquire to
-  successfully complete the verification and validation of your project?
-  Examples of possible knowledge and skills include dynamic testing knowledge,
-  static testing knowledge, specific tool usage, Valgrind etc.  You should look to
-  identify at least one item for each team member.
+    successfully complete the verification and validation of your project?
+    Examples of possible knowledge and skills include dynamic testing knowledge,
+    static testing knowledge, specific tool usage, Valgrind etc.  You
+    should look to
+    identify at least one item for each team member.
   \item For each of the knowledge areas and skills identified in the previous
-  question, what are at least two approaches to acquiring the knowledge or
-  mastering the skill?  Of the identified approaches, which will each team
-  member pursue, and why did they make this choice?
+    question, what are at least two approaches to acquiring the knowledge or
+    mastering the skill?  Of the identified approaches, which will each team
+    member pursue, and why did they make this choice?
 \end{enumerate}
 
 \end{document}
