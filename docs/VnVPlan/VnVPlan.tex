@@ -6,6 +6,8 @@
 \usepackage{enumitem}
 \usepackage{longtable}
 \usepackage{bm}
+\usepackage{float}
+
 \hypersetup{
   colorlinks,
   citecolor=blue,
@@ -139,6 +141,12 @@ Verification and Validation plan}
 \wss{Say what software is being tested.  Give its name and a brief overview of
 its general functions.}
 
+The software being tested is called Reading4All. This software will utilize artificial intelligence (AI)/
+machine learning (ML) techniques to provide detailed, context-informed alternative text for complex technical images, specifically those found in post-secondary Science, Technology, Engineering and Mathematics (STEM)
+course materials. Reading4All will allow users to upload images and automatically produce corresponding alternative text, that meet the outlined criteria. The system is intended for use by McMaster University students and faculty, therefore it will include user validation through McMaster's sign-on, ensuring that only verified users can access the Reading4All system.  
+In addition, the system will allow users to edit the generated alternative text, view a history of uploaded images and their alternative text within that session and download the final outputs in their desired formats.
+
+
 \subsection{Objectives}
 
 \wss{State what is intended to be accomplished.  The objective will be around
@@ -147,11 +155,10 @@ its general functions.}
   ``demonstrate adequate usability.'' etc.  You won't list all of the qualities,
 just those that are most important.}
 
-\wss{You should also list the objectives that are out of scope.  You don't have
-  the resources to do everything, so what will you be leaving out.
-  For instance,
-  if you are not going to verify the quality of usability, state
-  this.  It is also
+
+\wss{You should also list the objectives that are out of scope.  You don't have 
+the resources to do everything, so what will you be leaving out.  For instance, 
+if you are not going to verify the quality of usability, state this.  It is also 
 worthwhile to justify why the objectives are left out.}
 
 \wss{The objectives are important because they highlight that you are aware of
@@ -162,6 +169,19 @@ worthwhile to justify why the objectives are left out.}
   external library, you can explicitly state that you will assume
   that external library
 has already been verified by its implementation team.}
+
+
+The objective of this Verification and Validation (VnV) plan is to build confidence in the correctness, accessibility and usability of the Reading4All system. 
+The plan focuses on ensuring that the system generates, accurate, detailed and contextually appropriate alternative text for complex STEM images, as this is the main functionality of the software. 
+It also aims to verify that the systems interface is accessible an usable for individuals with visual impairments, who are one of the main users of the software. The last object is to demonstrate effective and accessible usability in secondary features
+such as editing the outputted alternative text, viewing session history and file downloading. 
+Verifying and validating these objectives is essential to ensure that users can benefit from the Reading4All system and 
+it can effectively fulfill its goal of making STEM diagrams more accessible.
+\\
+
+Some objectives are out of scope from this VnV plan due to the time and resource limitations of the project.
+The external libraries that might be used in the development of the system, including PyTorch, TensorFlow, Scikit-Learn, Pandas and frontend frameworks, will not be verified by our team, as they will be assumed to have been tested and validated by their implementation teams. 
+The McMaster sign-on authentication service will also not be tested, as its maintained and run by the university.
 
 \subsection{Challenge Level and Extras}
 
@@ -178,6 +198,12 @@ VnV planning exercise.}
   been approved by the course instructor as included in your problem statement.
   You can use a pull request to update your extras (in TeamComposition.csv or
 Repos.csv) if your plan changes as a result of the VnV planning exercise.}
+\\
+The challenge level of the project is set at a \textit{general} level that will include two additional 
+components (extras). The first additional component will be a Norman's Principles report that will 
+evaluate the design of our final product to ensure that it optimizes usability and accessibility. The second additional 
+component will be a user manual that will include comprehensive documentation to guide users in using the final 
+product effectively. 
 
 \subsection{Relevant Documentation}
 
@@ -187,11 +213,20 @@ Repos.csv) if your plan changes as a result of the VnV planning exercise.}
   is done, they will be written.  You can create BibTeX entries for your
 documents and within those entries include a hyperlink to the documents.}
 
-\citet{SRS}
-
-\wss{Don't just list the other documents.  You should explain why
-  they are relevant and
-how they relate to your VnV efforts.}
+\wss{Don't just list the other documents.  You should explain why they are relevant and 
+how they relate to your VnV efforts.} 
+\\
+The System Verification and Validation (VnV) plan will reference the following documents to aid in 
+the project's assessment and testing:
+\begin{enumerate}
+  \item \textbf{Software Requirements Specification} (\citet{SRS}): This document outlines the key components 
+for the VnV plan as it details the functional and non-functional requirements of the product. Ensuring that our testing 
+satisfies these requirements is essential to meeting the goals of the project.
+  \item \textbf{Design Document - Module Guide} (\citet{MG}): This document outlines how the system is divided into separate module and their respective functions. 
+  This structure helps the VnV Plan by making it easier to test, trace, and confirm that each module works correctly and meets the requirements.
+  \item \textbf{Design Document - Module Interface Specification} (\citet{MIS}): This document outlines how the modules of the system works and how they interact with each other.
+  This aids in our VnV plan as it defines how to validate the testing of interactions between the individual parts of the system.
+\end{enumerate}
 
 \section{Plan}
 
@@ -205,6 +240,28 @@ come.}
   for the project's verification.  A table is a good way to summarize
 this information.}
 
+\begin{table}[H]
+    \centering
+    \caption{Verification and Validation Responsibility Breakdown}
+    \label{tab:data-dictionary-reading4all}
+    \begin{tabular}{ |p{3.0cm}|p{3.8cm}|p{7.3cm}| }
+      \hline
+      \textbf{Name} & \textbf{ Focus Area } & \textbf{Responsibility} \\
+      \hline
+      Moly Mikhail and Fiza Sehar & Functional Requirements Tester & Completes manuel testing on the software to ensure that functional requirements are met. Also oversees any written unit tests to ensure they correctly test the system and intended functionality \\
+      \hline
+      Nawaal Fatima & User Testing Preparation & Coordinates the user testing sessions, and oversees the planning and execution of the sessions. \\
+      \hline 
+      Casey Francine Bulaclac & Usability Requirements Tester & Completes manuel testing to ensure all the defined usability requirements are met. Also references WCAG 2.1 crtieria is met, prior to automated testing. \\
+      \hline 
+      Dhruv Sardana & Look and Feel Requirements & Evaluates the systems design and interface to ensure the outlined requreiments are met. Also references WCAG 2.1 criteria is met, prior to automated testing. \\
+      \hline 
+      Ms. Jingchuan Sui (Supervisor) & Overall Usability and Quality of Alternative Text Reviewer & Reviews and provides feedback to team on the overall usability of the system and the quality of the generated alternative text. Also helps team complete automating evaluation of the system against WCAG 2.1 criteria. \\ 
+      \hline
+    \end{tabular}
+  \end{table}
+  
+  
 \subsection{SRS Verification}
 
 \wss{List any approaches you intend to use for SRS verification.  This may
@@ -218,6 +275,25 @@ primary reviewer), or you may plan for something more rigorous/systematic.}
   you use your
 issue tracker?}
 
+The verification of the Reading4All SRS will be completed
+ through a team review, peer review, and supervisor feedback, in that order. 
+ Feedback from each step will be incorporated iteratively to ensure the document is reviewed and the version presented to our supervisor reflects the most accurate and complete requirements. \\
+
+\textbf{Team Review}:
+As the Reading4All team has already reviewed the outlined requirements in the SRS document, a team review will 
+consist of each team member independently evaluating the document against the checklist provided in Appendix~\ref{appendix:srs_checklist}.   \\
+
+\textbf{Peer Review}:
+A peer review will be completed by Team 10 (One of a Kind) to provide feedback on our SRS document.
+They will review the document against the same checklist provided in Appendix~\ref{appendix:srs_checklist}, ensuring consistency between how both teams evaluate the document. 
+This process will allow external reviewers who understand the documents technical details and software engineering context to provide feedback on the completeness, understandability and the overall quality of the requirements. \\
+
+\textbf{Supervisor Feedback}:
+We will dedicate one of our weekly meetings with our supervisor to verifying the SRS document. 
+During this meeting, will explain each functional and non functional requirement to ensure every requirement has been documented.
+This process will help our supervisor gain an understanding of the specific requirements we have outlined and keep them in 
+mind during future validation of our system. \\
+
 \wss{Maybe create an SRS checklist?}
 
 \subsection{Design Verification}
@@ -227,6 +303,12 @@ issue tracker?}
 \wss{The review will include reviews by your classmates}
 
 \wss{Create a checklists?}
+\\
+The verification of our design will rely on reviews conducted by our fellow classmates and supervisor who will
+evaluate our design documents including our Module Guide (MG) and Module Interface Specification (MIS). They will also aid in performing
+consistency and traceability checks to ensure clear alignment between our requirements, design, and implementation. \\[1ex]
+In a formal review, our supervisor, Ms. Jing, will verify that the user interface design supports accessibility in accordance with WCAG 2.1 standards. 
+Additionally, our professor, Dr. Smith, will assess the technical aspects of the system, focusing on the machine learning architecture to ensure it is well designed.
 
 \subsection{Verification and Validation Plan Verification}
 
@@ -236,6 +318,29 @@ verified.  Techniques for this include review and mutation testing.}
 \wss{The review will include reviews by your classmates}
 
 \wss{Create a checklists?}
+
+
+The Verification and Validation plan will be verified to ensure its completeness, and alignment with previous 
+documents such as our SRS, HA and development plan. This will be completed through a team and peer review. \\
+
+\textbf{Team Review}\\
+The team will perform a review to ensure that the unit testing described within the document effectively tests the system and achieves the defined objectives. 
+This review will involve the team collaboratively going through the document, identifying areas for improvement and making the necessary changes before completing further validation activities.\\
+
+\textbf{Peer Review}\\
+A peer review will be completed by Team 10 (One of a Kind) to provide feedback on our V\&V plan. They will review the document to ensure that the sections are consistent and aligned, as well as to identify any missing unit tests.
+
+
+The Verification and Validation Plan Verification for Reading4All will be completed through a team and peer review, as well as mutation testing to assess the effectiveness and correctness of our tests. \\
+
+\textbf{Team and Peer Review:}
+The Reading4All team will complete an internal review to ensure that the plan is complete and aligns with the SRS requirements, as well as other documents. 
+Both our team and peer review will be completed by reviewing the V\&V document against the checklist provided in Appendix~\ref{appendix:v_v_checklist}.   \\ \\
+
+\textbf{Mutation Testing:}
+Mutation testing will be used to determine whether our unit tests correctly identify errors within the system.
+Small errors will be intentionally be introduced into the prototype code related to the main functionalities to check whether the test cases can detect unexpected behavior. 
+
 
 \subsection{Implementation Verification}
 
@@ -250,8 +355,20 @@ walkthroughs, code inspection, static analyzers, etc.}
   walkthrough.  There is also a possibility of using the final presentation (in
 CAS741) for a partial usability survey.}
 
-\subsection{Automated Testing and Verification Tools}
+The implementation verification for Reading4All will utilize the unit tests defined in section~\ref{Unit Test Desc}, 
+static analyzers and code inspections.
 
+\textbf{Static Analyzers}:
+Static analyzers will be used to automatically review any committed code for errors, and ensure the implementation meets the specified coding standard.
+Tools such as Flake8 and Coverage.py will be integrated into our development process. Flake8 will identify syntax and style issues, while Coverage.py can verify that any new code written has unit tests associated. 
+Additionally, all unit tests will be executed automatically through GitHub Actions whenever new code is pushed or a pull request is opened. This will ensure that recent changes do not introduce any errors into previously completed features. 
+Using these static analyzers and workflows will help us to continuously verify our implementation, ensuring it meets the design requirements, functional and non functional requirements.
+
+\textbf{Code Inspections}:
+As part of our development process, when a feature is completed, team members are required to open a pull request. The pull request highlights all the code changes made and is reviewed by other team members, before merging. 
+This process ensures that the multiple team members are aware of the changes being made, and provides an opportunity to give feedback on 
+the implementation decisions. Additionally it also helps verify that the code fulfills the intended functionality.
+\subsection{Automated Testing and Verification Tools}
 \wss{What tools are you using for automated testing.  Likely a unit testing
   framework and maybe a profiling tool, like ValGrind.  Other possible tools
   include a static analyzer, make, continuous integration tools, test coverage
@@ -261,11 +378,21 @@ CAS741) for a partial usability survey.}
   that verify that coding standards have been respected, like flake9 for
 Python.}
 
+
+
 \wss{If you have already done this in the development plan, you can point to
 that document.}
 
 \wss{The details of this section will likely evolve as you get closer to the
-implementation.}
+  implementation.}
+\\
+The AI Generated Alternative (alt) Text tool will make use of the following automated testing and verification tools: 
+\begin{itemize}
+  \item \textbf{Automated Accessibility Testing}: Automated web accessibility testing tools such as the WAVE Web Accessibility Evaluation Tool will be used to 
+  verify that the tool adheres to the WCAG 2.1 guidelines. These tools will automatically scan for accessibility issues such as missing alternative text and color contrast violations.
+  \item \textbf{Unit Testing Framework, Linters, Coverage Tools, and Continuous Integration}: These tools have been detailed and outlined in the Expected Technologies section
+  of our Development Plan (\citet{DP}) document under Table 3. 
+\end{itemize}
 
 \subsection{Software Validation}
 
@@ -289,6 +416,18 @@ your project.}
 as a Rev 0 demo for the supervisor.}
 
 \wss{This section might reference back to the SRS verification section.}
+\\
+The AI Generated Alternative (alt) Text tool will be validated through the following: 
+\begin{itemize}
+  \item \textbf{User Testing}: Stakeholders of this project including students experiencing visual 
+  and cognitive disabilities will perform realistic tasks such as uploading an image and generating alt text to validate 
+  that it meets their needs and requirements. The team will be present during these sessions to observe and note any challenges 
+  the users face. The participants will also be asked follow-up questions highlighted in Appendix ~\ref{appendix:usability} to gain additional feedback and insight
+  on their overall experience of using the tool. 
+  \item \textbf{Formal Reviews}: Reviews will be conducted with the stakeholders of the project and our supervisor, Ms. Jing, to validate that the requirements
+  outlined in our SRS document are correct and captures the needs for the tool. Additionally, the Rev 0 demo with Ms. Jing will serve as a validation review and allow the team 
+  to receive feedback to improve the tool. 
+\end{itemize} 
 
 \section{System Tests}
 
@@ -1175,137 +1314,201 @@ the SRS document.(I need to add in more summary text here)
 requirements.}
 
 \section{Unit Test Description}
+\label{Unit Test Desc}
 
-\wss{This section should not be filled in until after the MIS (detailed design
-document) has been completed.}
-
-\wss{Reference your MIS (detailed design document) and explain your overall
-philosophy for test case selection.}
-
-\wss{To save space and time, it may be an option to provide less
-  detail in this section.
-  For the unit tests you can potentially layout your testing strategy
-  here.  That is, you
-  can explain how tests will be selected for each module.  For
-  instance, your test building
-  approach could be test cases for each access program, including one
-  test for normal behaviour
-  and as many tests as needed for edge cases.  Rather than create the
-  details of the input
-  and output here, you could point to the unit testing code.  For
-  this to work, you code
-needs to be well-documented, with meaningful names for all of the tests.}
 
 \subsection{Unit Testing Scope}
 
-\wss{What modules are outside of the scope.  If there are modules that are
-  developed by someone else, then you would say here if you aren't planning on
-  verifying them.  There may also be modules that are part of your software, but
-  have a lower priority for verification than others.  If this is the case,
-explain your rationale for the ranking of module importance.}
+The purpose of unit testing for \textit{Reading4All} is to verify the correctness, robustness, and accessibility compliance of individual components prior to system integration. Each module is tested independently using automated test scripts (PyTest) and deterministic input fixtures.
+
+\textbf{Modules in Scope:}
+\begin{itemize}
+  \item Image Upload \& Validation Module
+  \item Alt-Text Generation Module
+  \item Accessibility and UI Compliance Module
+  \item Security and Privacy Module
+\end{itemize}
+
+\textbf{Modules Out of Scope:}
+Third-party OCR engines, pretrained vision/language models, and external McMaster authentication services are assumed to be validated independently. Only the thin wrappers and internal interactions with these APIs are tested here.
 
 \subsection{Tests for Functional Requirements}
 
-\wss{Most of the verification will be through automated unit testing.  If
-  appropriate specific modules can be verified by a non-testing based
-technique.  That can also be documented in this section.}
+\subsubsection{Module 1 \textemdash{} Image Upload and Validation}
 
-\subsubsection{Module 1}
-
-\wss{Include a blurb here to explain why the subsections below cover the module.
-  References to the MIS would be good.  You will want tests from a black box
-  perspective and from a white box perspective.  Explain to the reader how the
-tests were selected.}
+\textbf{Goal:} Ensure uploaded images meet all input constraints for format, size, and type, and that invalid files are rejected gracefully.
 
 \begin{enumerate}
+\item{UT1-UploadValidImage\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: Application running; no active uploads.\\
+Input: Valid PNG image, 1 MB in size.\\
+Output: File accepted; confirmation message displayed; metadata stored in temporary session.\\
+Test Case Derivation: Confirms compliance with input constraints (JPEG/PNG $\leq$ 10 MB).\\
+How test will be performed: Run automated pytest verifying HTTP 200 response and valid JSON schema.
 
-  \item{test-id1\\}
+\item{UT2-UploadInvalidFileType\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: No uploads.\\
+Input: Unsupported file type (e.g., \texttt{.pdf}).\\
+Output: Error message ``Unsupported file format'' returned; no data stored.\\
+Test Case Derivation: Validates enforcement of file type constraint and secure rejection.\\
+How test will be performed: Send POST request with invalid MIME type; assert error 400 and log entry.
 
-    Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-    be automatic}
-
-    Initial State:
-
-    Input:
-
-    Output: \wss{The expected result for the given inputs}
-
-    Test Case Derivation: \wss{Justify the expected value given in
-    the Output field}
-
-    How test will be performed:
-
-  \item{test-id2\\}
-
-    Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-    be automatic}
-
-    Initial State:
-
-    Input:
-
-    Output: \wss{The expected result for the given inputs}
-
-    Test Case Derivation: \wss{Justify the expected value given in
-    the Output field}
-
-    How test will be performed:
-
-  \item{...\\}
-
+\item{UT3-UploadOversizedFile\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: No uploads.\\
+Input: PNG file $>$ 10 MB.\\
+Output: Upload rejected with clear error; no file stored.\\
+Test Case Derivation: Confirms handling of maximum size threshold.\\
+How test will be performed: Simulate multipart upload; verify memory cleanup and error alert.
 \end{enumerate}
 
-\subsubsection{Module 2}
+\subsubsection{Module 2 \textemdash{} Alt-Text Generation}
 
-...
-
-\subsection{Tests for Nonfunctional Requirements}
-
-\wss{If there is a module that needs to be independently assessed for
-  performance, those test cases can go here.  In some projects, planning for
-nonfunctional tests of units will not be that relevant.}
-
-\wss{These tests may involve collecting performance data from previously
-mentioned functional tests.}
-
-\subsubsection{Module ?}
+\textbf{Goal:} Validate that image inference and text generation components produce deterministic, relevant, and correctly formatted alternative text.
 
 \begin{enumerate}
+\item{UT4-GenerateAltText\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: Valid image uploaded and accessible to model service.\\
+Input: Image containing labeled diagram.\\
+Output: Non-empty descriptive string within 3--8~s latency window.\\
+Test Case Derivation: Confirms compliance with generation timing and content sufficiency.\\
+How test will be performed: Mock ML service; assert response schema and timing $<$ T\_ALT\_GEN\_SMALL.
 
-  \item{test-id1\\}
+\item{UT5-EditAltText\\}
+Type: Functional, Dynamic, Manual\\
+Initial State: Alt-text successfully generated.\\
+Input: User edits description and saves.\\
+Output: Edited text replaces old version in session storage.\\
+Test Case Derivation: Ensures edit functionality modifies session data only.\\
+How test will be performed: Selenium automation of UI; assert saved value persists on reload.
 
-    Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-    be automatic}
-
-    Initial State:
-
-    Input/Condition:
-
-    Output/Result:
-
-    How test will be performed:
-
-  \item{test-id2\\}
-
-    Type: Functional, Dynamic, Manual, Static etc.
-
-    Initial State:
-
-    Input:
-
-    Output:
-
-    How test will be performed:
-
+\item{UT6-HandleEmptyAltText\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: Image uploaded yields no model output.\\
+Input: Blank model return.\\
+Output: Error message and retry option; no text stored.\\
+Test Case Derivation: Confirms graceful failure and user notification.\\
+How test will be performed: Patch model API to return empty string; validate error log.
 \end{enumerate}
 
-\subsubsection{Module ?}
+\subsubsection{Module 3 \textemdash{} Accessibility and UI Compliance}
 
-...
+\textbf{Goal:} Validate that all UI components meet accessibility and usability criteria (keyboard navigation, zoom, color contrast, alt text labeling).
+
+\begin{enumerate}
+\item{UT7-KeyboardNavigation\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: Application home screen loaded.\\
+Input: Simulated Tab and Enter key presses.\\
+Output: All focusable elements reachable; no trap detected.\\
+Test Case Derivation: Confirms WCAG 2.1 Success Criterion 2.1.1.\\
+How test will be performed: Automated Axe/WAVE accessibility scan with keyboard simulation.
+
+\item{UT8-ContrastValidation\\}
+Type: Functional, Static, Automatic\\
+Initial State: Deployed UI snapshot available.\\
+Input: CSS stylesheet.\\
+Output: All color pairs $\geq$ 4.5:1 contrast ratio.\\
+Test Case Derivation: Confirms MIN\_CONTRAST\_RATIO threshold met.\\
+How test will be performed: Run Lighthouse CI contrast-check script.
+
+\item{UT9-ZoomResilience\\}
+Type: Functional, Manual\\
+Initial State: Browser window at 100\%.\\
+Input: Zoom increased to 200\%.\\
+Output: Interface remains fully visible and interactive.\\
+Test Case Derivation: Ensures compliance with MAX\_ZOOM\_PERCENTAGE.\\
+How test will be performed: Manual inspection + screen-reader pass.
+\end{enumerate}
+
+\subsubsection{Module 4 \textemdash{} Security and Privacy}
+
+\textbf{Goal:} Verify that all authentication, encryption, and data-deletion procedures uphold confidentiality and integrity requirements.
+
+\begin{enumerate}
+\item{UT10-LoginAuthentication\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: No user session.\\
+Input: Valid McMaster SSO credentials.\\
+Output: Access granted; session token stored.\\
+Test Case Derivation: Ensures access restriction and session linking.\\
+How test will be performed: Mock OAuth SSO; assert 200 and JWT valid.
+
+\item{UT11-RejectUnauthorizedAccess\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: No valid session token.\\
+Input: API request to /generate endpoint.\\
+Output: HTTP 401 Unauthorized.\\
+Test Case Derivation: Confirms secure access control.\\
+How test will be performed: Post request without auth header; verify denial and log entry.
+
+\item{UT12-TemporaryFileDeletion\\}
+Type: Functional, Dynamic, Automatic\\
+Initial State: Completed alt-text generation.\\
+Input: Wait $>$ 60~s.\\
+Output: Uploaded file deleted from temporary directory.\\
+Test Case Derivation: Verifies privacy compliance (FILE\_DELETE\_TIME).\\
+How test will be performed: Check directory contents before/after timeout.
+\end{enumerate}
+
+\subsection{Tests for Non-Functional Requirements}
+
+\subsubsection{Module 5 \textemdash{} Performance and Reliability}
+
+\textbf{Goal:} Ensure responsiveness, stability, and error handling meet defined thresholds.
+
+\begin{enumerate}
+\item{UT13-LatencyBenchmark\\}
+Type: Dynamic, Automatic\\
+Input/Condition: Upload 5 images $\leq$ 2~MB each concurrently.\\
+Output/Result: Mean response $\leq$ 8~s; no timeouts.\\
+How test will be performed: Stress-test script measuring T\_ALT\_GEN\_LARGE; record average latency.
+
+\item{UT14-FaultRecovery\\}
+Type: Dynamic, Automatic\\
+Input/Condition: Force backend process crash.\\
+Output/Result: Recovery $\leq$ 5~s; no user data loss.\\
+How test will be performed: Docker restart test; verify persistence logs.
+\end{enumerate}
+
+\subsubsection{Module 6 \textemdash{} Usability and Accessibility Metrics}
+
+\textbf{Goal:} Quantify user interaction quality and accessibility performance.
+
+\begin{enumerate}
+\item{UT15-UsabilitySurvey\\}
+Type: Manual, Empirical\\
+Input/Condition: Ten participants complete key tasks.\\
+Output/Result: Median usability rating $\geq 3$/4; no responses $<2$.\\
+How test will be performed: Controlled observation using evaluation rubric.
+
+\item{UT16-ScreenReaderCompatibility\\}
+Type: Functional, Dynamic, Manual\\
+Input/Condition: Generate alt text and read using NVDA, JAWS, VoiceOver.\\
+Output/Result: All screen readers announce output correctly.\\
+How test will be performed: Manual auditory confirmation + accessibility log capture.
+\end{enumerate}
 
 \subsection{Traceability Between Test Cases and Modules}
 
-\wss{Provide evidence that all of the modules have been considered.}
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Test ID} & \textbf{Module / Feature Tested} & \textbf{Supported Requirement(s)}\\
+\hline
+UT1--UT3   & Image Upload and Validation          & FR1, PR-RFT1 \\
+UT4--UT6   & Alt-Text Generation                  & FR2, FR4, PR-PAR1, PR-PAR2 \\
+UT7--UT9   & Accessibility and UI Compliance      & LFR-AR1--AR4, UHR-EUR1--4 \\
+UT10--UT12 & Security and Privacy                 & SR-AR1, SR-PR1, PR-SCR1--PR-SCR3 \\
+UT13--UT14 & Performance and Reliability          & PR-SL1--2, PR-RFT2 \\
+UT15--UT16 & Usability and Accessibility Metrics  & UHR-LR1, UHR-AR1, OER-IAS1 \\
+\hline
+\end{tabular}
+\end{center}
+\newpage
 
 \bibliographystyle{plainnat}
 
@@ -1317,14 +1520,106 @@ mentioned functional tests.}
 
 This is where you can place additional information.
 
+\subsection{SRS Team and Peer Review Checklist}
+\label{appendix:srs_checklist}
+\textbf{Stakeholders and Users:}
+\begin{itemize}
+  \item All relevant stakeholders are listed and explained
+  \item  Personas clearly explain the stakeholders pain points, needs and their relationship to system being designed. 
+\end{itemize}
+\textbf{Mandated Constraints:}
+\begin{itemize}
+  \item All solution constraints are clearly explained, attainable, and measurable. 
+\end{itemize}
+\textbf{Functional and Non-Functional Requirements:}
+\begin{itemize}
+  \item Each requirement has a unique identifier.
+  \item All core system features have corresponding functional requirement.
+  \item Each functional requirement is clearly defined and measurable.
+  \item Numerical constraints (ex, number of steps or completion time) are realistic and achievable. 
+  \item All the functional requirement are unique, and do not conflict with one another 
+  \item All the functional requirements can be traced to a business and product use case.
+  \item Each non-functional requirements is clearly defined and measurable. 
+  \item All usability and accessibility needs are addressed by a requirement.
+  \item Performance related numerical constraints are achievable. 
+  \item All the Non-functional requirements are unique, and do not conflict with one another. 
+\end{itemize}
+
+
+\subsection{Verification and Validation Plan Verification Checklist}
+\label{appendix:v_v_checklist}
+
+\textbf{General Document Criteria}:
+\begin{itemize}
+  \item Mission critical qualities are thoroughly discussed and referenced throughout the plan.
+  \item Relevant documents such as SRS and HA are referenced and connected to plan. 
+\end{itemize}
+\textbf{SRS Verification}:
+\begin{itemize}
+  \item Verification process is thorough and includes key stakeholders.
+  \item Provided checklist can guide review process and bring attention to important parts of document. 
+  \item Describes a plan for documenting and implementing feedback.
+  \item Criteria for evaluating SRS quality is defined. 
+  \item  The data collected as evidence for V\&V is clear. 
+\end{itemize}
+\textbf{Design Verification}:
+\begin{itemize}
+  \item Design review methods are specified, explained and justified. 
+  \item The process for documenting and resolving design review feedback is described. 
+  \item  The data collected as evidence for V\&V is clear. 
+  \item Automated testing and verification tools are specified. 
+\end{itemize}
+\textbf{V\&V Plan Verification}:
+\begin{itemize}
+  \item Verification methods are specified, explained and justified.
+  \item Mutation testing will be used to verify the effectiveness of unit tests. 
+  \item The data collected as evidence for V\&V is clear. 
+\end{itemize}
+\textbf{System Tests for Requirements}:
+\begin{itemize}
+  \item All test cases are detailed and specify input data. 
+  \item Survey questions are outlined for usability testing. 
+  \item System tests connect and cover all system requirements. 
+  \item Traceability between test cases and requirement is clear and documented. 
+\end{itemize}
+
 \subsection{Symbolic Parameters}
 
 The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
 Their values are defined in this section for easy maintenance.
 
 \subsection{Usability Survey Questions?}
+\label{appendix:usability}
 
-\wss{This is a section that would be appropriate for some projects.}
+\begin{enumerate}[label=UA-Q \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{Was the length of the generated alternative text description too short, sufficient, or too long?}\\[2mm]
+    {\bf Purpose:} This is to gain feedback on whether the length of the text description is sufficient enough 
+    for the user to gain understanding on the learning objective of the uploaded image.
+
+  \item \emph{Did the generated alternative text contain too much irrelevant information? If so, how did this affect 
+  your ability to learn?}\\[2mm]
+    {\bf Purpose:} This is to gain feedback on whether the alternative text contained irrelevant information that deviated 
+    from the main learning objective of the uploaded image. It is also to understand what difficulties the stakeholder experiences 
+    when there is too much irrelevant information.
+  
+  \item \emph{Was the generated alternative text contain over-detailed? If so, how did this affect 
+  your ability to learn?}\\[2mm]
+    {\bf Purpose:} This is to determine whether the generated alternative text includes excessive detail that may hinder user 
+    comprehension or distract from the key information needed for effective learning.
+
+  \item \emph{On a scale of 0-4, is the generated alternative text presented in an accessible way? (0 = not accessible at all, 4 = very accessible)}\\[2mm]
+    {\bf Purpose:} This is to ensure that the AI-generated alternative text is presented in a manner that aligns with accessibility standards and 
+    can be easily perceived, understood, and utilized by users relying on assistive technologies such as screen readers.
+
+  \item \emph{On a scale of 0–4, how easy was it for you to use and understand the generated alternative text? (0 = not easy at all, 4 = very easy)}\\[2mm]
+    {\bf Purpose:} This is to assess whether the generated alternative text is presented in a way that supports ease of use and whether it allows users to easily interact with 
+    the interface and understand the content with minimal confusion or effort.
+
+  \item \emph{What changes or improvements would you suggest to make this web tool more accessible and enhance your learning experience, if any?}\\[2mm]
+  {\bf Purpose:} This question aims to collect additional user feedback on accessibility and usability improvements that may not have been addressed in the previous questions of this survey.
+
+\end{enumerate}
+
 
 \newpage{}
 \section*{Appendix --- Reflection}
