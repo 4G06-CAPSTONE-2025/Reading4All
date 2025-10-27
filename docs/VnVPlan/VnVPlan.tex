@@ -301,8 +301,20 @@ Small errors will be intentionally be introduced into the prototype code related
 walkthrough.  There is also a possibility of using the final presentation (in
 CAS741) for a partial usability survey.}
 
-\subsection{Automated Testing and Verification Tools}
+The implementation verification for Reading4All will utilize the unit tests defined in section~\ref{Unit Test Desc}, 
+static analyzers and code inspections.
 
+\textbf{Static Analyzers}:
+Static analyzers will be used to automatically review any committed code for errors, and ensure the implementation meets the specified coding standard.
+Tools such as Flake8 and Coverage.py will be integrated into our development process. Flake8 will identify syntax and style issues, while Coverage.py can verify that any new code written has unit tests associated. 
+Additionally, all unit tests will be executed automatically through GitHub Actions whenever new code is pushed or a pull request is opened. This will ensure that recent changes do not introduce any errors into previously completed features. 
+Using these static analyzers and workflows will help us to continuously verify our implementation, ensuring it meets the design requirements, functional and non functional requirements.
+
+\textbf{Code Inspections}:
+As part of our development process, when a feature is completed, team members are required to open a pull request. The pull request highlights all the code changes made and is reviewed by other team members, before merging. 
+This process ensures that the multiple team members are aware of the changes being made, and provides an opportunity to give feedback on 
+the implementation decisions. Additionally it also helps verify that the code fulfills the intended functionality.
+\subsection{Automated Testing and Verification Tools}
 \wss{What tools are you using for automated testing.  Likely a unit testing
   framework and maybe a profiling tool, like ValGrind.  Other possible tools
   include a static analyzer, make, continuous integration tools, test coverage
@@ -484,6 +496,9 @@ How test will be performed:
   requirements.}
 
 \section{Unit Test Description}
+\label{Unit Test Desc}
+
+
 \subsection{Unit Testing Scope}
 
 The purpose of unit testing for \textit{Reading4All} is to verify the correctness, robustness, and accessibility compliance of individual components prior to system integration. Each module is tested independently using automated test scripts (PyTest) and deterministic input fixtures.
