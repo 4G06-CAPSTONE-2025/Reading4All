@@ -143,7 +143,7 @@ its general functions.}
 
 The software being tested is called Reading4All. This software will utilize artificial intelligence (AI)/
 machine learning (ML) techniques to provide detailed, context-informed alternative text for complex technical images, specifically those found in post-secondary Science, Technology, Engineering and Mathematics (STEM)
-course materials. Reading4All will allow users to upload images and automatically produce corresponding alternative text, that meet the outlined criteria. The system is intended for use by McMaster University students and faculty, therefore it will include user validation through McMaster's sign-on, ensuring that only verified users can access the Reading4All system.  
+course materials. Reading4All will allow users to upload images and automatically produce corresponding alternative text (alt text), that meets the outlined criteria. The system is intended for use by McMaster University students and faculty, therefore it will include user validation through McMaster's sign-on, ensuring that only verified users can access the Reading4All system.  
 In addition, the system will allow users to edit the generated alternative text, view a history of uploaded images and their alternative text within that session and download the final outputs in their desired formats.
 
 
@@ -173,7 +173,7 @@ has already been verified by its implementation team.}
 
 The objective of this Verification and Validation (VnV) plan is to build confidence in the correctness, accessibility and usability of the Reading4All system. 
 The plan focuses on ensuring that the system generates, accurate, detailed and contextually appropriate alternative text for complex STEM images, as this is the main functionality of the software. 
-It also aims to verify that the systems interface is accessible an usable for individuals with visual impairments, who are one of the main users of the software. The last object is to demonstrate effective and accessible usability in secondary features
+It also aims to verify that the systems interface is accessible an usable for individuals with disabilities, who are one of the main users of the software. The last objective is to demonstrate effective and accessible usability of secondary features
 such as editing the outputted alternative text, viewing session history and file downloading. 
 Verifying and validating these objectives is essential to ensure that users can benefit from the Reading4All system and 
 it can effectively fulfill its goal of making STEM diagrams more accessible.
@@ -248,11 +248,11 @@ this information.}
       \hline
       \textbf{Name} & \textbf{ Focus Area } & \textbf{Responsibility} \\
       \hline
-      Moly Mikhail and Fiza Sehar & Functional Requirements Tester & Completes manuel testing on the software to ensure that functional requirements are met. Also oversees any written unit tests to ensure they correctly test the system and intended functionality \\
+      Moly Mikhail and Fiza Sehar & Functional Requirements Tester & Completes manual testing on the software to ensure that functional requirements are met. Also oversees any written unit tests to ensure they correctly test the system and intended functionality \\
       \hline
       Nawaal Fatima & User Testing Preparation & Coordinates the user testing sessions, and oversees the planning and execution of the sessions. \\
       \hline 
-      Casey Francine Bulaclac & Usability Requirements Tester & Completes manuel testing to ensure all the defined usability requirements are met. Also references WCAG 2.1 crtieria is met, prior to automated testing. \\
+      Casey Francine Bulaclac & Usability Requirements Tester & Completes manual testing to ensure all the defined usability requirements are met. Also references WCAG 2.1 crtieria is met, prior to automated testing. \\
       \hline 
       Dhruv Sardana & Look and Feel Requirements & Evaluates the systems design and interface to ensure the outlined requreiments are met. Also references WCAG 2.1 criteria is met, prior to automated testing. \\
       \hline 
@@ -318,19 +318,6 @@ verified.  Techniques for this include review and mutation testing.}
 \wss{The review will include reviews by your classmates}
 
 \wss{Create a checklists?}
-
-
-The Verification and Validation plan will be verified to ensure its completeness, and alignment with previous 
-documents such as our SRS, HA and development plan. This will be completed through a team and peer review. \\
-
-\textbf{Team Review}\\
-The team will perform a review to ensure that the unit testing described within the document effectively tests the system and achieves the defined objectives. 
-This review will involve the team collaboratively going through the document, identifying areas for improvement and making the necessary changes before completing further validation activities.\\
-
-\textbf{Peer Review}\\
-A peer review will be completed by Team 10 (One of a Kind) to provide feedback on our V\&V plan. They will review the document to ensure that the sections are consistent and aligned, as well as to identify any missing unit tests.
-
-
 The Verification and Validation Plan Verification for Reading4All will be completed through a team and peer review, as well as mutation testing to assess the effectiveness and correctness of our tests. \\
 
 \textbf{Team and Peer Review:}
@@ -339,7 +326,7 @@ Both our team and peer review will be completed by reviewing the V\&V document a
 
 \textbf{Mutation Testing:}
 Mutation testing will be used to determine whether our unit tests correctly identify errors within the system.
-Small errors will be intentionally be introduced into the prototype code related to the main functionalities to check whether the test cases can detect unexpected behavior. 
+Small errors will be intentionally introduced into the prototype code related to the main functionalities to check whether the test cases can detect unexpected behavior. 
 
 
 \subsection{Implementation Verification}
@@ -419,8 +406,8 @@ as a Rev 0 demo for the supervisor.}
 \\
 The AI Generated Alternative (alt) Text tool will be validated through the following: 
 \begin{itemize}
-  \item \textbf{User Testing}: Stakeholders of this project including students experiencing visual 
-  and cognitive disabilities will perform realistic tasks such as uploading an image and generating alt text to validate 
+  \item \textbf{User Testing}: Stakeholders of this project including students with disabilities
+  will perform realistic tasks such as uploading an image and generating alt text to validate 
   that it meets their needs and requirements. The team will be present during these sessions to observe and note any challenges 
   the users face. The participants will also be asked follow-up questions highlighted in Appendix ~\ref{appendix:usability} to gain additional feedback and insight
   on their overall experience of using the tool. 
