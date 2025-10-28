@@ -45,82 +45,73 @@
 \newpage
 
 \section{Symbols, Abbreviations, and Acronyms}
-\section*{Symbolic Constants}
-\begin{longtable}{|p{8.0cm}|p{8.0cm}|}
-  \captionsetup{justification=raggedright,singlelinecheck=false}
-  \caption{Symbolic Constants used in the \textit{Reading4All} System}
-  \label{tab:symbolic-constants} \\
-  \toprule
-  {\textbf{Name}} & {\textbf{Value}}\\
-  \midrule
-  T\_ALT\_GEN\_SMALL & 3 seconds(s) \\
-  T\_ALT\_GEN\_LARGE & 8 s \\
-  T\_UI\_RESP & 300 miliseconds (ms) \\
-  R\_SUFFICIENCY & 85\% \\
-  R\_LENGTH & 90\% \\
-  R\_USABILITY\_MEDIAN & 3 (rating) \\
-  R\_USABILITY\_MIN & 2 (rating) \\
-  T\_ERROR\_HANDLE & 2 s \\
-  T\_RECOVERY & 5 s \\
-  CAP\_CONCURRENT & 2 requests \\
-  CAP\_STORAGE & 500 images/day \\
-  MAINT\_TIME & 2 person-days/quarter \\
-  COMPAT\_VERSIONS & 2 releases \\
-  IMG\_SIZE\_BIG & 10 MEGABYTES (MB) \\
-  IMG\_SIZE\_SMALL & 2 MEGABYTES \\
-  TLS\_VERSION & 1.2 \\
-  FILE\_DELETE\_TIME & 60 s \\
-  FILE\_TYPES & .png, .jpg, .jpeg, .svg, .webp \\
-  NETWORK\_SOURCE\_POLICY & McMaster SSO tokens or IP ranges only\\
-  TEAM\_SIZE & 5 students \\
-  HOURS\_RESEARCH & 40 hours \\
-  HOURS\_BACKEND & 120 hours \\
-  HOURS\_FRONTEND & 80 hours \\
-  HOURS\_TESTING & 60 hours \\
-  HOURS\_DOCS & 30 hours \\
-  HOURS\_TOTAL & 330 hours \\
-  HOURS\_PROJECT & 1,320 person-hours \\
-  COST\_PER\_HOUR & \$20/hour(CAD) \qquad\textit{Table continues on next page}\\
-  COST\_TOTAL & \$26,400 CAD \\
-  COST\_ACTUAL & \$0 CAD \\
-  COST\_INCENTIVE\_MIN & \$100 CAD \\
-  COST\_INCENTIVE\_MAX & \$150 CAD \\
-  MAX\_ZOOM\_PERCENTAGE & 200\% \\
-  MIN\_CONTRAST\_RATIO & 4.5:1\\
-  MAX\_UPLOAD\_STEPS & 5 steps\\
-  MAX\_MINUTES & 5 minutes\\
-  USERS\_SUCCESS\_PERCENT & 80\%\\
-  MAX\_ERROR\_RECOVER & 2 seconds \\
-  LEARNING\_PERCENT & 90\% \\
-  MAX\_LEARNING\_MINUTES & 5 minutes \\
-  MIN\_COMPENSATION\_DOLLARS & \$100 CAD \\
-  MAX\_COMPENSATION\_DOLLARS & \$150 CAD \\
-  LATEST\_RELEASES\_NUM & last 3 versions \\
-  MOST\_COMMON\_SR & top 3 screen readers \\
-  SFWR\_RELEASES & previous 2 releases \\
 
-  \bottomrule
-\end{longtable}
+\begin{table}[H]
+\centering
+\caption{Abbreviations and Acronyms Used in the Verification and Validation Plan}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Acronym} & \textbf{Definition} \\
+\hline
+AI & Artificial Intelligence \\
+API & Application Programming Interface \\
+AODA & Accessibility for Ontarians with Disabilities Act \\
+AR & Accessibility Requirement \\
+CAD & Canadian Dollar \\
+CI & Continuous Integration \\
+CD & Continuous Development \\
+CR & Cultural/Regulatory Requirement \\
+DP & Development Plan \\
+FR & Functional Requirement \\
+GUI & Graphical User Interface \\
+HA & Hazard Analysis \\
+LFR & Look and Feel Requirement \\
+LR & Legal Requirement \\
+MG & Module Guide \\
+MIS & Module Interface Specification \\
+ML & Machine Learning \\
+MS & Maintenance Support Requirement \\
+NFR & Nonfunctional Requirement \\
+NVDA & NonVisual Desktop Access (screen reader) \\
+OER & Operational and Environmental Requirement \\
+OCR & Optical Character Recognition \\
+PII & Personally Identifiable Information \\
+PR & Performance Requirement \\
+R & Requirement \\
+RL & Release Requirement \\
+RFT & Reliability and Fault Tolerance Requirement \\
+SCR & Safety-Critical Requirement \\
+SRS & Software Requirements Specification \\
+SR & Security Requirement \\
+SSO & Single Sign-On \\
+TLS & Transport Layer Security \\
+UI & User Interface \\
+UHR & Usability and Humanity Requirement \\
+VnV & Verification and Validation \\
+WCAG & Web Content Accessibility Guidelines \\
+\hline
+\end{tabular}
+\end{table}
 
 \newpage
 
 \pagenumbering{arabic}
 
-\noindent This document outlines the methods Team 22 will take to
-ensure the built software meets the intended requirements. To make
-certain that the product is built correctly(verification) and that
-the right product is built(validation), Team 22 has structured this
-document to reflect our plan, by briefly providing our objectives,
+\noindent This document outlines the method \textit{Reading4All} team will take to
+ensure the software built meets the intended requirements. To make
+certain that the product is built correctly (verification) and that
+the right product is built (validation) \textit{Reading4All} team has structured this
+document to reflect our plan. We achieve this by providing our objectives,
 and laying out a comprehensive test plan while referring to the
-Software Requirements Specification (SRS), Design Document - Module
-Guide (MG) and Design Document - Module Interface Specification (MIS). \\
+Software Requirements Specification (SRS), Module
+Guide (MG) and Module Interface Specification (MIS). \\
 
 First, Section \ref{geninfo} outlines what software is being tested
 with its expected functionality. Here, the objectives and relevant
 documentation is mentioned. Next, the plan for verification and
 validation is thoroughly explored, touching on the previously
 mentioned documents. Finally, each test is mapped to one or more
-requirements, ensuring Team 22 delivers what we promised. At the time
+requirements highlighted in the SRS, ensuring th \textit{Reading4All} team delivers what we promised. At the time
 of writing this document, unit tests (Section \ref{Unit Test Desc})
 was not applicable as it was too early in the project timeline.\\
 
@@ -161,7 +152,7 @@ effective and accessible usability in secondary features
 such as editing the outputted alternative text, viewing session
 history and file downloading.
 Verifying and validating these objectives is essential to ensure that
-users can benefit from the Reading4All system and
+users can benefit from th \textit{Reading4All} system and
 it can effectively fulfill its goal of making STEM diagrams more accessible.
 \\
 
@@ -212,14 +203,14 @@ the project's assessment and testing:
 
 \section{Plan}
 
-This section outlines the strategies and techniques that will be used for verifying and validating the Reading4All system, throughout the varying development phases. 
-This includes verifying and validating the SRS, the design, the VnV plan, and the implementation. This section also defines the Reading4All team's responsibilities in 
+This section outlines the strategies and techniques that will be used for verifying and validating the \textit{Reading4All} system, throughout the varying development phases. 
+This includes verifying and validating the SRS, the design, the VnV plan, and the implementation. This section also defines the \textit{Reading4All} team's responsibilities in 
 completing this plan and implementing the specified strategies, to ultimately ensure the system meets our requirements and objectives.
 
 \subsection{Verification and Validation Team}
 
 The VnV team will ensure that all SRS requirements are thorough, accurately implemented and tested to ensure our system meets them. 
-Table ~\ref{tab:data-dictionary-reading4all} defines each Reading4All team members role in confirming that these requirements are well defined and fulfilled in the system.
+Table \ref{tab:data-dictionary-reading4all} defines each \textit{Reading4All} team members role in confirming that these requirements are well defined and fulfilled in the system.
 These roles will remain the same across different verification tasks, allowing for consistency and a deeper understanding of each focus area. 
 
 \begin{table}[H]
@@ -238,7 +229,7 @@ These roles will remain the same across different verification tasks, allowing f
       \hline 
       Dhruv Sardana & Performance, Operational and Environmental Requirements & Verifies that corresponding requirements are thorough, clearly defined, attainable and measurable. Also, validates that the implemented system meets these requirements through extensive testing.  \\
       \hline 
-      All Reading4All Team Members & Look and Feel Requirements Lead & All team members are responsible for verifying that the corresponding requrieemnts in the SRS are thorough, clearly defined, attainable and measurable. The team will validate that the final system meets the specified requirements prior to user testing. \\
+      All \textit{Reading4All} Team Members & Look and Feel Requirements Lead & All team members are responsible for verifying that the corresponding requrieemnts in the SRS are thorough, clearly defined, attainable and measurable. The team will validate that the final system meets the specified requirements prior to user testing. \\
       \hline
       Ms. Jingchuan Sui (Supervisor) & Overall Usability and Quality of Alt Text Reviewer, User Testing Material Reviewer& Reviews and provides feedback to team on the overall usability of the system and the quality of the generated alternative text. Reviews user testing materials to ensure they align with accessibility standards and assits the team in completing the automated evaluation of the system against WCAG 2.1 criteria. \\ 
       \hline
@@ -247,37 +238,40 @@ These roles will remain the same across different verification tasks, allowing f
   
   
 \subsection{SRS Verification}
-The verification of the Reading4All SRS will be completed
+The verification of the \textit{Reading4All} SRS will be completed
 through a team review, peer review, and supervisor feedback, in that order.
 Feedback from each step will be incorporated iteratively to ensure
 the document is reviewed and the version presented to our supervisor
-reflects the most accurate and complete requirements. \\
+reflects the most accurate and complete requirements. The following details the 
+strategies used for SRS verification: 
 
-\textbf{Team Review}:
-As the Reading4All team has already reviewed the outlined
-requirements in the SRS document, a team review will
-consist of each team member independently evaluating the document
-against the checklist provided in Appendix~\ref{appendix:srs_checklist}.   \\
-
-\textbf{Peer Review}:
-A peer review will be completed by Team 10 (One of a Kind) to provide
-feedback on our SRS document.
-They will review the document against the same checklist provided in
-Appendix~\ref{appendix:srs_checklist}, ensuring consistency between
-how both teams evaluate the document.
-This process will allow external reviewers who understand the
-documents technical details and software engineering context to
-provide feedback on the completeness, understandability and the
-overall quality of the requirements. \\
-
-\textbf{Supervisor Feedback}:
-We will dedicate one of our weekly meetings with our supervisor to
-verifying the SRS document.
-During this meeting, will explain each functional and non functional
-requirement to ensure every requirement has been documented.
-This process will help our supervisor gain an understanding of the
-specific requirements we have outlined and keep them in
-mind during future validation of our system. \\
+\begin{itemize}
+  \item \textbf{Team Review}:
+  As the \textit{Reading4All} team has already reviewed the outlined
+  requirements in the SRS document, a team review will
+  consist of each team member independently evaluating the document
+  against the checklist provided in Appendix \ref{appendix:srs_checklist}.  
+  
+  \item \textbf{Peer Review}:
+  A peer review will be completed by Team 10 (One of a Kind) to provide
+  feedback on our SRS document.
+  They will review the document against the same checklist provided in
+  Appendix \ref{appendix:srs_checklist}, ensuring consistency between
+  how both teams evaluate the document.
+  This process will allow external reviewers who understand the
+  documents technical details and software engineering context to
+  provide feedback on the completeness, understandability and the
+  overall quality of the requirements. 
+  
+  \item \textbf{Supervisor Feedback}:
+  We will dedicate one of our weekly meetings with our supervisor to
+  verifying the SRS document.
+  During this meeting, will explain each functional and non functional
+  requirement to ensure every requirement has been documented.
+  This process will help our supervisor gain an understanding of the
+  specific requirements we have outlined and keep them in
+  mind during future validation of our system. 
+\end{itemize}
 
 
 \subsection{Design Verification}
@@ -304,87 +298,73 @@ The design verification will be accomplished through the following:
 
 \subsection{Verification and Validation Plan Verification}
 
-\wss{The verification and validation plan is an artifact that should also be
-verified.  Techniques for this include review and mutation testing.}
+The Verification and Validation Plan Verification for Reading4All will be completed through a team and peer review,
+as well as mutation testing to assess the effectiveness and correctness of our
+tests. Furthermore, any criteria not met, or failed mutation tests identified
+from this process will be documented as GitHub issues, to ensure they are
+tracked and resolved. The following details the 
+strategies used for verifying the VnV plan: 
 
-\wss{The review will include reviews by your classmates}
-
-\wss{Create a checklists?}
-
-The Verification and Validation plan will be verified to ensure its
-completeness, and alignment with previous
-documents such as our SRS, HA and development plan. This will be
-completed through a team and peer review. \\
-
-\textbf{Team Review}\\
-The team will perform a review to ensure that the unit testing
-described within the document effectively tests the system and
-achieves the defined objectives.
-This review will involve the team collaboratively going through the
-document, identifying areas for improvement and making the necessary
-changes before completing further validation activities.\\
-
-\textbf{Peer Review}\\
-A peer review will be completed by Team 10 (One of a Kind) to provide
-feedback on our V\&V plan. They will review the document to ensure
-that the sections are consistent and aligned, as well as to identify
-any missing unit tests.
-
-The Verification and Validation Plan Verification for Reading4All
-will be completed through a team and peer review, as well as mutation
-testing to assess the effectiveness and correctness of our tests. \\
-
-\textbf{Team and Peer Review:}
-The \textit{Reading4All} team will complete an internal review to
-ensure that the plan is complete and aligns with the SRS
-requirements, as well as other documents.
-Both our team and peer review will be completed by reviewing the V\&V
-document against the checklist provided in
-Appendix~\ref{appendix:v_v_checklist}.   \\ \\
-
-\textbf{Mutation Testing:}
-Mutation testing will be used to determine whether our unit tests
-correctly identify errors within the system.
-Small errors will be intentionally be introduced into the prototype
-code related to the main functionalities to check whether the test
-cases can detect unexpected behavior.
+\begin{itemize}
+  \item \textbf{Team and Peer Review:}
+  The \textit{Reading4All} team will complete an internal review to
+  ensure that the plan is complete and aligns with the SRS
+  requirements, as well as other documents.
+  Both our team and peer review will be completed by reviewing the V\&V
+  document against the checklist provided in
+  Appendix~\ref{appendix:v_v_checklist}.  
+  
+  \item \textbf{Mutation Testing:}
+  Mutation testing will be used to determine whether our unit tests
+  correctly identify errors within the system.
+  Small errors will be intentionally be introduced into the prototype
+  code related to the main functionalities to check whether the test
+  cases can detect unexpected behavior.
+\end{itemize}
 
 \subsection{Implementation Verification}
 
-The implementation verification for Reading4All will utilize the unit tests defined in section~\ref{Unit Test Desc}, system tests defined in section~\ref{System Tests Desc},
+The implementation verification for \textit{Reading4All} will utilize the unit tests defined in section~\ref{Unit Test Desc}, system tests defined in section~\ref{System Tests Desc},
 static analyzers and code inspections. Test results, coverage metrics and pull request reviews will be collected as evidence that verification activities have been completed. 
+The following details the strategies used for verifying the implementation plan: 
 
-\textbf{Unit and System Tests}:
-The unit and system tests will be run to ensure the system behaves as expected. The unit tests will check that individual functions within he implementation are working correctly, helping us narrow down possible issues, and thoroughly test functions with different inputs. 
-The system tests will verify that the implementation fulfills all functional and non-functional requirements. \\
+\begin{itemize}
+  \item \textbf{Unit and System Tests}:
+  The unit and system tests will be run to ensure the system behaves as expected. The unit tests will check that individual functions within he implementation are working correctly, helping us narrow down possible issues, and thoroughly test functions with different inputs. 
+  The system tests will verify that the implementation fulfills all functional and non-functional requirements. \\
+  
+  \item \textbf{Static Analyzers}:
+  Static analyzers will be used to automatically review any committed
+  code for errors, and ensure the implementation meets the specified
+  coding standard.
+  Tools such as Flake8 and Coverage.py will be integrated into our
+  development process. Flake8 will identify syntax and style issues,
+  while Coverage.py can verify that any new code written has unit tests
+  associated.
+  Additionally, all unit tests will be executed automatically through
+  GitHub Actions whenever new code is pushed or a pull request is
+  opened. This will ensure that recent changes do not introduce any
+  errors into previously completed features.
+  Using these static analyzers and workflows will help us to
+  continuously verify our implementation, ensuring it meets the design
+  requirements, functional and non functional requirements.
+   
+  \item \textbf{Code Inspections}:
+  As part of our development process, when a feature is completed, team
+  members are required to open a pull request. The pull request
+  highlights all the code changes made and is reviewed by other team
+  members, before merging.
+  This process ensures that the multiple team members are aware of the
+  changes being made, and provides an opportunity to give feedback on
+  the implementation decisions. Additionally it also helps verify that
+  the code fulfills the intended functionality.
+\end{itemize}
 
-\textbf{Static Analyzers}:
-Static analyzers will be used to automatically review any committed
-code for errors, and ensure the implementation meets the specified
-coding standard.
-Tools such as Flake8 and Coverage.py will be integrated into our
-development process. Flake8 will identify syntax and style issues,
-while Coverage.py can verify that any new code written has unit tests
-associated.
-Additionally, all unit tests will be executed automatically through
-GitHub Actions whenever new code is pushed or a pull request is
-opened. This will ensure that recent changes do not introduce any
-errors into previously completed features.
-Using these static analyzers and workflows will help us to
-continuously verify our implementation, ensuring it meets the design
-requirements, functional and non functional requirements.
-
-\textbf{Code Inspections}:
-As part of our development process, when a feature is completed, team
-members are required to open a pull request. The pull request
-highlights all the code changes made and is reviewed by other team
-members, before merging.
-This process ensures that the multiple team members are aware of the
-changes being made, and provides an opportunity to give feedback on
-the implementation decisions. Additionally it also helps verify that
-the code fulfills the intended functionality.
 
 \subsection{Automated Testing and Verification Tools}
+The programming language being used in the front-end will be Hypertext Markup Language (HTML) and 
+Cascading Style Sheets (CSS), and 
+the backend will be programmed using Python for machine learning applications.
 The AI Generated Alternative Text tool will make use of the following
 automated testing and verification tools:
 \begin{itemize}
@@ -395,10 +375,16 @@ automated testing and verification tools:
     Guidelines (WCAG) 2.1 guidelines. These tools will automatically
     scan for accessibility issues such as missing alternative text
     and color contrast violations.
+  \item \textbf{Automated Performance Testing}: \texttt{cProfile}, a python standard library, will be 
+  used to determine the execution time of different functions within the system. This helps to identify 
+  bottlenecks in the code and ensure that the system stays within the expected time limits as stated in our 
+  performance requirements.
   \item \textbf{Unit Testing Framework, Linters, Coverage Tools, and
     Continuous Integration}: These tools have been detailed and
     outlined in the Expected Technologies section
-    of our Development Plan (\citet{DP}) document under Table 3.
+    of our Development Plan (\citet{DP}) document under Table 3. These tools
+    will ensure to help us follow our coding standards of PEP8 and help verify 
+    our defined programming languages.
 \end{itemize}
 
 \subsection{Software Validation}
@@ -428,14 +414,15 @@ The AI Generated Alternative Text tool will be validated through the following:
 \label{System Tests Desc}
 
 This section details tests to cover all requirements as listed in the
-Software Requirements Specification (SRS) for Team 22's project. The
+Software Requirements Specification (SRS) for the \textit{Reading4All} team's project. The
 tests ensure that the system performs to the predefined standards and
 meets user needs.
 
 \subsection{Tests for Functional Requirements}
 
 The tests below cover all six functional requirements as defined in
-the SRS document.(I need to add in more summary text here)
+the SRS document. The following tests will help validate that the system meets 
+the requirements. 
 
 \paragraph{Tests for Functional Requirements}
 
@@ -452,7 +439,7 @@ the SRS document.(I need to add in more summary text here)
     {\bf Output:} The system accepts .jpeg and .png images and
     displays an error message (e.g., “Invalid file type”) for .gif
     and .pdf uploads.\\
-    {\bf  Case Derivation:}According to the \textbf{FR 1} criterion, the system
+    {\bf  Case Derivation:} According to the \textbf{FR 1} criterion, the system
     must accept JPEG and PNG formats and reject all others with proper
     feedback. Therefore, valid formats are processed, and invalid
     formats trigger an error.\\
@@ -471,7 +458,7 @@ the SRS document.(I need to add in more summary text here)
     for each uploaded image that meet pre-determined quality or
     clarity criteria (e.g., contains key diagram elements, concise
     description, no missing components).\\
-    {\bf  Case Derivation:}As specified by \textbf{FR 2} criterion,
+    {\bf  Case Derivation:} As specified by \textbf{FR 2} criterion,
     the system must correctly process JPEG and PNG files while
     rejecting all other formats. Therefore, the expected outcome is
     that valid images are accepted without error, and invalid formats
@@ -522,14 +509,14 @@ the SRS document.(I need to add in more summary text here)
 
   \item{}
     {\bf Control:} Automatic\\
-    {\bf Initial State:}User logged in and has uploaded at least one
+    {\bf Initial State:} User logged in and has uploaded at least one
     image with generated alt text.\\
     {\bf Input:} Upload multiple images sequentially within the same
     session, then navigate through the session interface.\\
     {\bf Output:} All previously uploaded images and their
     corresponding alt texts remain visible and accessible until the
     user logs out or the session ends.\\
-    {\bf  Case Derivation:}According to \textbf{FR 5} criterion, all
+    {\bf  Case Derivation:} According to \textbf{FR 5} criterion, all
     uploaded images and their corresponding alternative texts should
     remain visible within the same session. Therefore, the expected
     outcome is that users can access and review all prior uploads
@@ -551,7 +538,7 @@ the SRS document.(I need to add in more summary text here)
     {\bf Output:} Access granted only to users with valid McMaster
     credentials. Invalid attempts are rejected with an appropriate
     error message (e.g., “Invalid login credentials”).\\
-    {\bf  Case Derivation:}As outlined in the \textbf{FR 6}
+    {\bf  Case Derivation:} As outlined in the \textbf{FR 6}
     criterion, only users with verified McMaster University
     credentials should gain access to system features. The expected
     outcome is that valid users can log in successfully, while
@@ -566,7 +553,9 @@ the SRS document.(I need to add in more summary text here)
 
 \subsection{Tests for Nonfunctional Requirements}
 
-{Need a small summary blurb here pls. - NF}
+The tests below cover all non-functional requirements as defined in
+the SRS document. The following tests will help validate that the system meets 
+the requirements. 
 
 \paragraph{Tests for Non-Functional Requirements}
 
@@ -604,19 +593,19 @@ the SRS document.(I need to add in more summary text here)
     \textbf{Type:} Non-Functional, Manual, Dynamic. \\
     \textbf{Covers:} UHR-EUR1, UHR-EUR2, UHR-EUR3, UHR-EUR4 \\
     \textbf{Initial State:} System interface available to first-time
-    and returning users \\
+    and returning users. \\
     \textbf{Input/Condition:} Users perform key actions: login,
-    upload images, generate alt text \\
-    \textbf{Output/Result:} Users complete tasks efficiently, recall
-    steps after a break, receive feedback within 1 second, and can
-    correct errors easily \\[2mm]
+    upload images, generate alt text. \\
+    \textbf{Output/Result:} Users complete tasks, recall
+    steps after a break, receive feedback within FEEDBACK\_TIME, and can
+    correct errors easily. \\[2mm]
     \textbf{How test will be performed:} Conduct usability sessions
     with participants performing all major tasks while timing
     actions, recording feedback response, and monitoring error recovery.
 
   \item \textbf{Alt Text Storage and Personalization Options} \\[2mm]
-    \textbf{Type:} Non-Functional, Manual, Dynamic \\
-    \textbf{Covers:} UHR-PIR1 \\
+    \textbf{Type:} Non-Functional, Manual, Dynamic. \\
+    \textbf{Covers:} UHR-PIR1. \\
     \textbf{Initial State:} Alt text generated for uploaded image \\
     \textbf{Input/Condition:} User chooses to copy or download
     generated alt text \\
@@ -627,39 +616,39 @@ the SRS document.(I need to add in more summary text here)
     chosen storage method correctly.
 
   \item \textbf{Accessibility for Screen Readers and Low-Vision Users} \\[2mm]
-    \textbf{Type:} Non-Functional, Manual, Dynamic \\
-    \textbf{Covers:} UHR-LR1, UHR-AR1, UHR-AR2\\
+    \textbf{Type:} Non-Functional, Manual, Dynamic. \\
+    \textbf{Covers:} UHR-LR1, UHR-AR1, UHR-AR2.\\
     \textbf{Initial State:} Interface accessible with popular screen readers \\
     \textbf{Input/Condition:} Users with screen readers upload images
-    and generate alt text \\
-    \textbf{Output/Result:} Users successfully generate alt text
-    within the time limit and can navigate interface efficiently \\[2mm]
+    and generate alt text. \\
+    \textbf{Output/Result:} Users successfully obtaines generated alt text
+    within the time limit and can navigate the interface efficiently. \\[2mm]
     \textbf{How test will be performed:} Conduct sessions with
     low-vision participants using NVDA, JAWS, or VoiceOver and
     measure task completion time and success rates.
 
   \item \textbf{Performance – Alt Text Generation Time} \\[2mm]
-    \textbf{Type:} Non-Functional, Automated, Dynamic \\
-    \textbf{Covers:} PR-SL1, PR-SL2 \\
+    \textbf{Type:} Non-Functional, Automated, Dynamic. \\
+    \textbf{Covers:} PR-SL1, PR-SL2. \\
     \textbf{Initial State:} System under typical load conditions \\
     \textbf{Input/Condition:} Upload images of various sizes (small
-    and large) \\
+    and large). \\
     \textbf{Output/Result:} Generated alt text returned within
     specified thresholds for each image size; UI responds within
-    T\_UI\_RESP \\[2mm]
+    T\_UI\_RESP. \\[2mm]
     \textbf{How test will be performed:} Automated scripts upload
     images and record generation time and UI response time; results
     plotted to verify performance meets criteria.
 
   \item \textbf{Safety and Timeout Handling} \\[2mm]
-    \textbf{Type:} Non-Functional, Manual, Dynamic \\
-    \textbf{Covers:} PR-SR-HA1, PR-SR-HA2, PR-SR-HA3 \\
-    \textbf{Initial State:} System ready for alt text generation \\
+    \textbf{Type:} Non-Functional, Manual, Dynamic. \\
+    \textbf{Covers:} PR-SR-HA1, PR-SR-HA2, PR-SR-HA3. \\
+    \textbf{Initial State:} System is ready for alt text generation. \\
     \textbf{Input/Condition:} Simulate long-running or stalled image
-    processing \\
-    \textbf{Output/Result:} User notified of timeout, option to
+    processing. \\
+    \textbf{Output/Result:} User is notified of timeout, option to
     retry; incomplete data is deleted; messages do not reveal
-    technical details \\ [2mm]
+    technical details. \\ [2mm]
     \textbf{How test will be performed:} Tester simulates timeouts
     and verifies notifications, data cleanup, and absence of
     technical information in messages.
@@ -667,11 +656,11 @@ the SRS document.(I need to add in more summary text here)
   \item \textbf{Alt Text Accuracy and Usability Evaluation} \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic \\
     \textbf{Covers:} PR-PAR1, PR-PAR2, PR-PAR3, CR-LR1 \\
-    \textbf{Initial State:} Alt text generated for uploaded images \\
+    \textbf{Initial State:} Alt text generated for uploaded images. \\
     \textbf{Input/Condition:} Users rate generated alt text for
-    sufficiency, length, readability, and usability \\
+    sufficiency, length, readability, and usability. \\
     \textbf{Output/Result:} Ratings meet R\_SUFFICIENCY, R\_LENGTH, and
-    R\_USABILITY\_MEDIAN thresholds \\[2mm]
+    R\_USABILITY\_MEDIAN thresholds. \\[2mm]
     \textbf{How test will be performed:} Conduct structured user
     evaluation using rating scales; calculate statistics to confirm
     compliance with quality thresholds.
@@ -679,11 +668,11 @@ the SRS document.(I need to add in more summary text here)
   \item \textbf{Robustness to Invalid Inputs and Fault Recovery} \\[2mm]
     \textbf{Type:} Non-Functional, Manual/Automated, Dynamic \\
     \textbf{Covers:} PR-RFT1, PR-RFT2 \\
-    \textbf{Initial State:} System running normally \\
+    \textbf{Initial State:} System is running normally. \\
     \textbf{Input/Condition:} Upload unsupported, corrupted files, or
-    simulate backend process failures \\
+    simulate backend process failures. \\
     \textbf{Output/Result:} Clear error messages displayed; system
-    recovers within T\_RECOVERY \\[2mm]
+    recovers within T\_RECOVERY. \\[2mm]
     \textbf{How test will be performed:} Tester uploads invalid files
     and observes error handling; automated test simulates isolated
     failures to confirm automatic recovery.
@@ -691,13 +680,13 @@ the SRS document.(I need to add in more summary text here)
   \item \textbf{Concurrent Usage and Storage Capacity} \\[2mm]
     \textbf{Type:} Non-Functional, Automated, Dynamic \\
     \textbf{Covers:} PR-CR1, PR-CR2 \\
-    \textbf{Initial State:} System deployed in test environment \\
+    \textbf{Initial State:} System deployed in test environment. \\
     \textbf{Input/Condition:} Simulate multiple simultaneous users
-    and upload datasets \\
+    and upload images. \\
     \textbf{Output/Result:} Supports CAP\_CONCURRENT users with
-    response times $\le$ 10s; storage handles CAP\_STORAGE datasets \\[2mm]
+    response times $\le$ CAPACITY\_RTIME; storage handles CAP\_STORAGE datasets. \\[2mm]
     \textbf{How test will be performed:} Load testing scripts
-    simulate multiple concurrent requests and dataset uploads;
+    simulate multiple concurrent requests and image uploads;
     performance and storage usage monitored.
 
   \item \textbf{System Extensibility and Maintainability} \\[2mm]
@@ -706,10 +695,10 @@ the SRS document.(I need to add in more summary text here)
     MS-MNT3, MS-AD1, MS-AD2, MS-AD3 \\
     \textbf{Initial State:} Existing modular system codebase deployed \\
     \textbf{Input/Condition:} Apply updates to modules,
-    configuration, or AI models \\
+    configuration, or AI models. \\
     \textbf{Output/Result:} System maintains functionality; new
     modules integrate without breaking existing components; changes
-    tracked \\[2mm]
+    tracked. \\[2mm]
     \textbf{How test will be performed:} Tester modifies components
     and configuration files, runs automated CI/CD tests, and verifies
     integration of new modules.
@@ -718,13 +707,13 @@ the SRS document.(I need to add in more summary text here)
     \textbf{Type:} Non-Functional, Manual/Automated, Dynamic \\
     \textbf{Covers:} SR-AR1, SR-AR2, SR-IR1, SR-IR2, SR-PR1, SR-PR2,
     SR-AU1, SR-AU2, SR-IM1, SR-IM2 \\
-    \textbf{Initial State:} System deployed with SSO and HTTPS enabled \\
+    \textbf{Initial State:} System deployed with Single Sign-On (SSO) and HTTPS enabled. \\
     \textbf{Input/Condition:} Attempt unauthorized access, upload
-    images, and inspect logs \\
+    images, and inspect logs. \\
     \textbf{Output/Result:} Only authorized McMaster users gain
     access; encrypted communication enforced; uploaded images
     deleted; PII filtered; logs access restricted; unsupported files
-    rejected; external networks blocked \\[2mm]
+    rejected; external networks blocked. \\[2mm]
     \textbf{How test will be performed:} Testers attempt invalid
     logins, inspect encrypted traffic, upload images and check
     deletion, validate moderation filters, and verify network
@@ -733,10 +722,10 @@ the SRS document.(I need to add in more summary text here)
   \item \textbf{Cultural and Professional Content Compliance} \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic \\
     \textbf{Covers:} CR1, CR2, CR3 \\
-    \textbf{Initial State:} Alt text generated by the system \\
-    \textbf{Input/Condition:} Review generated alt text samples \\
+    \textbf{Initial State:} Alt text is generated by the system. \\
+    \textbf{Input/Condition:} The generated alt text is reviewed. \\
     \textbf{Output/Result:} Text is neutral, inclusive, contextually
-    accurate, and professional \\[2mm]
+    accurate, and professional. \\[2mm]
     \textbf{How test will be performed:} Tester inspects a variety of
     outputs for bias, unnecessary cultural references, and tone appropriateness.
 
@@ -744,12 +733,12 @@ the SRS document.(I need to add in more summary text here)
     \textbf{Type:} Non-Functional, Manual, Dynamic \\
     \textbf{Covers:} CR-LR1, CR-SCR1, CR-SCR2 \\
     \textbf{Initial State:} System generates alt text and manages
-    uploaded data \\
+    uploaded image. \\
     \textbf{Input/Condition:} Validate against AODA, WCAG 2.1, and
-    institutional privacy policies \\
+    institutional privacy policies. \\
     \textbf{Output/Result:} Generated alt text meets accessibility
     standards; uploaded files handled per policy; documentation
-    available for stakeholders \\[2mm]
+    available for stakeholders. \\[2mm]
     \textbf{How test will be performed:} Run accessibility and
     privacy compliance tests; inspect system logs and documentation
     for adherence.
@@ -758,22 +747,20 @@ the SRS document.(I need to add in more summary text here)
     \textbf{Type:} Non-Functional, Manual, Dynamic \\
     \textbf{Covers:} OER-EP1, OER-EP2, OER-WE1, OER-WE2 \\
     \textbf{Initial State:} System installed on multiple devices and
-    OS platforms \\
-    \textbf{Input/Condition:} Access system in standard classroom,
-    office, or cloud environments \\
-    \textbf{Output/Result:} System functions reliably across devices,
-    platforms, and typical indoor conditions; maintains network
-    connectivity \\[2mm]
+    OS platforms. \\
+    \textbf{Input/Condition:} System is accessed on varying devices and OS platforms. \\
+    \textbf{Output/Result:} System functions reliably across devices and
+    platforms; maintains network connectivity. \\[2mm]
     \textbf{How test will be performed:} Testers access the system on
     Windows, Mac, and Linux with various browsers; verify full functionality.
 
   \item \textbf{Image Alt Text Accuracy Metrics} \\[2mm]
     \textbf{Type:} Non-Functional, Automated, Dynamic \\
     \textbf{Covers:} PR-VAL1, PR-VAL2 \\
-    \textbf{Initial State:} Alt text generation operational \\
-    \textbf{Input/Condition:} Process test image set \\
+    \textbf{Initial State:} Alt text generation is operational. \\
+    \textbf{Input/Condition:} Process the images test set. \\
     \textbf{Output/Result:} Accuracy metrics calculated; performance
-    within target thresholds \\[2mm]
+    within target thresholds. \\[2mm]
     \textbf{How test will be performed:} Automated evaluation against
     ground truth alt text; calculate accuracy, precision, and recall.
 
@@ -781,23 +768,23 @@ the SRS document.(I need to add in more summary text here)
     \textbf{Type:} Safety-Critical, Manual and Automated, Dynamic \\
     \textbf{Covers:} PR-SCR1 \\
     \textbf{Initial State:} User session active; image upload
-    interface loaded \\
-    \textbf{Input/Condition:} Upload test images without opting to save \\
+    interface loaded. \\
+    \textbf{Input/Condition:} Upload test images without opting to save. \\
     \textbf{Output/Result:} Uploaded images removed from temporary
-    storage; no images stored in database \\[2mm]
+    storage; no images stored in database. \\[2mm]
     \textbf{How test will be performed:}
-    Upload images, complete user session (logout or timeout), inspect
+    Upload images, end user session (logout or timeout), inspect
     temporary storage and databases to verify images are deleted and
     no personally identifiable data remains.
 
   \item \textbf{Offensive or Biased Alt Text Prevention} \\[2mm]
     \textbf{Type:} Safety-Critical, Automated, Dynamic \\
     \textbf{Covers:} PR-SCR2 \\
-    \textbf{Initial State:} Alt text generation operational \\
-    \textbf{Input/Condition:} Process diverse test image set,
-    including sensitive content \\
+    \textbf{Initial State:} Alt text generation is operational. \\
+    \textbf{Input/Condition:} Process diverse image test set,
+    including sensitive content. \\
     \textbf{Output/Result:} Generated alt text contains no offensive,
-    biased, or harmful language \\[2mm]
+    biased, or harmful language. \\[2mm]
     \textbf{How test will be performed:}
     Generate alt text for each test image, pass outputs through
     moderation filters, confirm 0 percentage flagged content.
@@ -805,11 +792,11 @@ the SRS document.(I need to add in more summary text here)
   \item \textbf{WCAG 2.1 Level AA Accessibility Compliance} \\[2mm]
     \textbf{Type:} Safety-Critical, Manual and Automated, Dynamic \\
     \textbf{Covers:} PR-SCR3 \\
-    \textbf{Initial State:} Interface loaded and interactive \\
+    \textbf{Initial State:} Interface is loaded and interactive. \\
     \textbf{Input/Condition:} Navigate and interact with all
-    interface elements \\
+    interface elements. \\
     \textbf{Output/Result:} Interface meets WCAG 2.1 Level AA
-    criteria; no visual strain or accessibility barriers \\[2mm]
+    criteria; no visual strain or accessibility barriers. \\[2mm]
     \textbf{How test will be performed:}
     Perform automated accessibility scans (e.g., axe, Lighthouse) and
     manual checks for color contrast, text resizing, keyboard
@@ -818,23 +805,23 @@ the SRS document.(I need to add in more summary text here)
   \item \textbf{Screen Reader Interoperability} \\[2mm]
     \textbf{Type:} Functional, Manual and Automated, Dynamic \\
     \textbf{Covers:} OER-IAS1 \\
-    \textbf{Initial State:} Alt text generation operational \\
+    \textbf{Initial State:} Alt text generation is operational. \\
     \textbf{Input/Condition:} Generate alt text and access it using
-    major screen readers (NVDA, JAWS, VoiceOver) \\
+    major screen readers (NVDA, JAWS, VoiceOver.) \\
     \textbf{Output/Result:} Alt text is correctly parsed and read
-    aloud without formatting issues \\[2mm]
+    aloud without formatting issues. \\[2mm]
     \textbf{How test will be performed:}
-    Feed generated alt text to NVDA, JAWS, and VoiceOver; verify
+    Input generated alt text to NVDA, JAWS, and VoiceOver; verify
     correct pronunciation, formatting, and comprehension; record any
     errors or misread content.
 
   \item \textbf{Supported Image Format Processing} \\[2mm]
     \textbf{Type:} Functional, Automated, Dynamic \\
     \textbf{Covers:} OER-IAS2 \\
-    \textbf{Initial State:} Image upload interface operational \\
-    \textbf{Input/Condition:} Upload images in JPG, JPEG, and PNG formats \\
+    \textbf{Initial State:} Image upload interface is operational. \\
+    \textbf{Input/Condition:} Upload images in JPG, JPEG, and PNG formats. \\
     \textbf{Output/Result:} System correctly processes images and
-    generates accurate alt text \\[2mm]
+    generates accurate alt text. \\[2mm]
     \textbf{How test will be performed:}
     Prepare a set of test images in each supported format, upload to
     the system, generate alt text, and validate output accuracy
@@ -843,12 +830,12 @@ the SRS document.(I need to add in more summary text here)
   \item \textbf{Automated Accessibility Validator Integration} \\[2mm]
     \textbf{Type:} Functional, Manual and Automated, Dynamic \\
     \textbf{Covers:} OER-IAS3 \\
-    \textbf{Initial State:} System operational with validator
-    interface enabled \\
+    \textbf{Initial State:} System is operational with validator
+    interface enabled. \\
     \textbf{Input/Condition:} Trigger accessibility validation using
-    WAVE or Axe \\
+    WAVE or Axe. \\
     \textbf{Output/Result:} Validation reports are successfully
-    generated and accessible through the interface \\[2mm]
+    generated and accessible through the interface. \\[2mm]
     \textbf{How test will be performed:}
     Run alt text through integrated validation tools; confirm report
     generation, correct display in UI, and accurate reflection of
@@ -857,11 +844,11 @@ the SRS document.(I need to add in more summary text here)
   \item \textbf{Web Tool Deployment} \\[2mm]
     \textbf{Type:} Productization, Manual and Automated, Dynamic \\
     \textbf{Covers:} OER-PR1 \\
-    \textbf{Initial State:} System hosted and deployed on test server \\
+    \textbf{Initial State:} System is hosted and deployed on a test server. \\
     \textbf{Input/Condition:} Access web tool from multiple
-    institutional environments \\
+    institutional environments. \\
     \textbf{Output/Result:} Tool is accessible, functional, and
-    validated through institutional testing \\[2mm]
+    validated through institutional testing. \\[2mm]
     \textbf{How test will be performed:}
     Deploy the system on institutional server; verify accessibility,
     authentication, alt text generation, and performance; document
@@ -870,11 +857,11 @@ the SRS document.(I need to add in more summary text here)
   \item \textbf{Core Feature Verification Before Release} \\[2mm]
     \textbf{Type:} Release, Manual and Automated, Dynamic \\
     \textbf{Covers:} OER-RL1 \\
-    \textbf{Initial State:} System fully implemented in test environment \\
+    \textbf{Initial State:} System is fully implemented in test environment. \\
     \textbf{Input/Condition:} Execute image analysis, text
-    generation, and accessibility validation modules \\
+    generation, and accessibility validation modules. \\
     \textbf{Output/Result:} All core features function correctly;
-    verification and validation documentation confirms compliance \\[2mm]
+    verification and validation documentation confirms compliance. \\[2mm]
     \textbf{How test will be performed:}
     Run full test suite for each core feature; document results,
     record any failures, and confirm all functional requirements are
@@ -883,11 +870,11 @@ the SRS document.(I need to add in more summary text here)
   \item \textbf{Release Readiness for Capstone Demonstration} \\[2mm]
     \textbf{Type:} Release, Manual and Automated, Dynamic \\
     \textbf{Covers:} OER-RL2 \\
-    \textbf{Initial State:} System deployed to staging environment \\
-    \textbf{Input/Condition:} Conduct full system walkthrough aligned
-    with March 2026 Capstone schedule \\
-    \textbf{Output/Result:} System fully functional, accessible, and
-    ready for demonstration \\[2mm]
+    \textbf{Initial State:} System is deployed to staging environment. \\
+    \textbf{Input/Condition:} Conduct a full system walkthrough aligned
+    with March 2026 Capstone schedule. \\
+    \textbf{Output/Result:} System is fully functional, accessible, and
+    ready for demonstration. \\[2mm]
     \textbf{How test will be performed:}
     Perform end-to-end functional testing, accessibility
     verification, and deployment validation; ensure all components
@@ -897,11 +884,11 @@ the SRS document.(I need to add in more summary text here)
     \textbf{Type:} Maintenance Support, Automated, Dynamic \\
     \textbf{Covers:} MS-SUP1 \\
     \textbf{Initial State:} System operational with
-    monitoring/logging enabled \\
+    monitoring/logging enabled. \\
     \textbf{Input/Condition:} Execute standard workflows including
-    image uploads, alt text generation, and API interactions \\
+    image uploads, alt text generation, and API interactions. \\
     \textbf{Output/Result:} Metrics for API calls, latency, error
-    rates, and model confidence scores are logged and accessible \\[2mm]
+    rates, and model confidence scores are logged and accessible. \\[2mm]
     \textbf{How test will be performed:}
     Perform typical user operations; monitor logs and dashboards;
     export reports to verify all key metrics are accurately recorded,
@@ -910,8 +897,10 @@ the SRS document.(I need to add in more summary text here)
 \end{enumerate}
 
 \subsection{Traceability Between Test Cases and Requirements}
+Table \ref{tab:sys-tests} highlights the traceability between each test case listed above and 
+the functional and non-functional requirements in our SRS document. 
 
-\begin{longtable}{|p{8.0cm}|p{8.0cm}|}
+\begin{longtable}{|p{6.0cm}|p{8.0cm}|}
   \captionsetup{justification=raggedright,singlelinecheck=false}
   \caption{Connections between \textit{Reading4All} system tests and
   SRS requirements}
@@ -956,233 +945,18 @@ the SRS document.(I need to add in more summary text here)
 
 \section{Unit Test Description}
 \label{Unit Test Desc}
-
+This section is not currently applicable and will be completed at a later time. 
 \subsection{Unit Testing Scope}
-
-The purpose of unit testing for \textit{Reading4All} is to verify the
-correctness, robustness, and accessibility compliance of individual
-components prior to system integration. Each module is tested
-independently using automated test scripts (PyTest) and deterministic
-input fixtures.
-
-\textbf{Modules in Scope:}
-\begin{itemize}
-  \item Image Upload \& Validation Module
-  \item Alt-Text Generation Module
-  \item Accessibility and UI Compliance Module
-  \item Security and Privacy Module
-\end{itemize}
-
-\textbf{Modules Out of Scope:}
-Third-party OCR engines, pretrained vision/language models, and
-external McMaster authentication services are assumed to be validated
-independently. Only the thin wrappers and internal interactions with
-these APIs are tested here.
 
 \subsection{Tests for Functional Requirements}
 
-\subsubsection{Module 1 \textemdash{} Image Upload and Validation}
-
-\textbf{Goal:} Ensure uploaded images meet all input constraints for
-format, size, and type, and that invalid files are rejected gracefully.
-
-\begin{enumerate}
-  \item{UT1-UploadValidImage\\}
-    Type: Functional, Dynamic, Automatic\\
-    Initial State: Application running; no active uploads.\\
-    Input: Valid PNG image, 1 MB in size.\\
-    Output: File accepted; confirmation message displayed; metadata
-    stored in temporary session.\\
-    Test Case Derivation: Confirms compliance with input constraints
-    (JPEG/PNG $\leq$ 10 MB).\\
-    How test will be performed: Run automated pytest verifying HTTP 200
-    response and valid JSON schema.
-
-  \item{UT2-UploadInvalidFileType\\}
-    Type: Functional, Dynamic, Automatic\\
-    Initial State: No uploads.\\
-    Input: Unsupported file type (e.g., \texttt{.pdf}).\\
-    Output: Error message ``Unsupported file format'' returned; no
-    data stored.\\
-    Test Case Derivation: Validates enforcement of file type constraint
-    and secure rejection.\\
-    How test will be performed: Send POST request with invalid MIME
-    type; assert error 400 and log entry.
-
-  \item{UT3-UploadOversizedFile\\}
-    Type: Functional, Dynamic, Automatic\\
-    Initial State: No uploads.\\
-    Input: PNG file $>$ 10 MB.\\
-    Output: Upload rejected with clear error; no file stored.\\
-    Test Case Derivation: Confirms handling of maximum size threshold.\\
-    How test will be performed: Simulate multipart upload; verify
-    memory cleanup and error alert.
-\end{enumerate}
-
-\subsubsection{Module 2 \textemdash{} Alt-Text Generation}
-
-\textbf{Goal:} Validate that image inference and text generation
-components produce deterministic, relevant, and correctly formatted
-alternative text.
-
-\begin{enumerate}
-  \item{UT4-GenerateAltText\\}
-    Type: Functional, Dynamic, Automatic\\
-    Initial State: Valid image uploaded and accessible to model service.\\
-    Input: Image containing labeled diagram.\\
-    Output: Non-empty descriptive string within 3--8~s latency window.\\
-    Test Case Derivation: Confirms compliance with generation timing
-    and content sufficiency.\\
-    How test will be performed: Mock ML service; assert response schema
-    and timing $<$ T\_ALT\_GEN\_SMALL.
-
-  \item{UT5-EditAltText\\}
-    Type: Functional, Dynamic, Manual\\
-    Initial State: Alt-text successfully generated.\\
-    Input: User edits description and saves.\\
-    Output: Edited text replaces old version in session storage.\\
-    Test Case Derivation: Ensures edit functionality modifies session
-    data only.\\
-    How test will be performed: Selenium automation of UI; assert saved
-    value persists on reload.
-
-  \item{UT6-HandleEmptyAltText\\}
-    Type: Functional, Dynamic, Automatic\\
-    Initial State: Image uploaded yields no model output.\\
-    Input: Blank model return.\\
-    Output: Error message and retry option; no text stored.\\
-    Test Case Derivation: Confirms graceful failure and user notification.\\
-    How test will be performed: Patch model API to return empty string;
-    validate error log.
-\end{enumerate}
-
-\subsubsection{Module 3 \textemdash{} Accessibility and UI Compliance}
-
-\textbf{Goal:} Validate that all UI components meet accessibility and
-usability criteria (keyboard navigation, zoom, color contrast, alt
-text labeling).
-
-\begin{enumerate}
-  \item{UT7-KeyboardNavigation\\}
-    Type: Functional, Dynamic, Automatic\\
-    Initial State: Application home screen loaded.\\
-    Input: Simulated Tab and Enter key presses.\\
-    Output: All focusable elements reachable; no trap detected.\\
-    Test Case Derivation: Confirms WCAG 2.1 Success Criterion 2.1.1.\\
-    How test will be performed: Automated Axe/WAVE accessibility scan
-    with keyboard simulation.
-
-  \item{UT8-ContrastValidation\\}
-    Type: Functional, Static, Automatic\\
-    Initial State: Deployed UI snapshot available.\\
-    Input: CSS stylesheet.\\
-    Output: All color pairs $\geq$ 4.5:1 contrast ratio.\\
-    Test Case Derivation: Confirms MIN\_CONTRAST\_RATIO threshold met.\\
-    How test will be performed: Run Lighthouse CI contrast-check script.
-
-  \item{UT9-ZoomResilience\\}
-    Type: Functional, Manual\\
-    Initial State: Browser window at 100\%.\\
-    Input: Zoom increased to 200\%.\\
-    Output: Interface remains fully visible and interactive.\\
-    Test Case Derivation: Ensures compliance with MAX\_ZOOM\_PERCENTAGE.\\
-    How test will be performed: Manual inspection + screen-reader pass.
-\end{enumerate}
-
-\subsubsection{Module 4 \textemdash{} Security and Privacy}
-
-\textbf{Goal:} Verify that all authentication, encryption, and
-data-deletion procedures uphold confidentiality and integrity requirements.
-
-\begin{enumerate}
-  \item{UT10-LoginAuthentication\\}
-    Type: Functional, Dynamic, Automatic\\
-    Initial State: No user session.\\
-    Input: Valid McMaster SSO credentials.\\
-    Output: Access granted; session token stored.\\
-    Test Case Derivation: Ensures access restriction and session linking.\\
-    How test will be performed: Mock OAuth SSO; assert 200 and JWT valid.
-
-  \item{UT11-RejectUnauthorizedAccess\\}
-    Type: Functional, Dynamic, Automatic\\
-    Initial State: No valid session token.\\
-    Input: API request to /generate endpoint.\\
-    Output: HTTP 401 Unauthorized.\\
-    Test Case Derivation: Confirms secure access control.\\
-    How test will be performed: Post request without auth header;
-    verify denial and log entry.
-
-  \item{UT12-TemporaryFileDeletion\\}
-    Type: Functional, Dynamic, Automatic\\
-    Initial State: Completed alt-text generation.\\
-    Input: Wait $>$ 60~s.\\
-    Output: Uploaded file deleted from temporary directory.\\
-    Test Case Derivation: Verifies privacy compliance (FILE\_DELETE\_TIME).\\
-    How test will be performed: Check directory contents before/after timeout.
-\end{enumerate}
 
 \subsection{Tests for Non-Functional Requirements}
 
-\subsubsection{Module 5 \textemdash{} Performance and Reliability}
-
-\textbf{Goal:} Ensure responsiveness, stability, and error handling
-meet defined thresholds.
-
-\begin{enumerate}
-  \item{UT13-LatencyBenchmark\\}
-    Type: Dynamic, Automatic\\
-    Input/Condition: Upload 5 images $\leq$ 2~MB each concurrently.\\
-    Output/Result: Mean response $\leq$ 8~s; no timeouts.\\
-    How test will be performed: Stress-test script measuring
-    T\_ALT\_GEN\_LARGE; record average latency.
-
-  \item{UT14-FaultRecovery\\}
-    Type: Dynamic, Automatic\\
-    Input/Condition: Force backend process crash.\\
-    Output/Result: Recovery $\leq$ 5~s; no user data loss.\\
-    How test will be performed: Docker restart test; verify persistence logs.
-\end{enumerate}
-
-\subsubsection{Module 6 \textemdash{} Usability and Accessibility Metrics}
-
-\textbf{Goal:} Quantify user interaction quality and accessibility performance.
-
-\begin{enumerate}
-  \item{UT15-UsabilitySurvey\\}
-    Type: Manual, Empirical\\
-    Input/Condition: Ten participants complete key tasks.\\
-    Output/Result: Median usability rating $\geq 3$/4; no responses $<2$.\\
-    How test will be performed: Controlled observation using evaluation rubric.
-
-  \item{UT16-ScreenReaderCompatibility\\}
-    Type: Functional, Dynamic, Manual\\
-    Input/Condition: Generate alt text and read using NVDA, JAWS, VoiceOver.\\
-    Output/Result: All screen readers announce output correctly.\\
-    How test will be performed: Manual auditory confirmation +
-    accessibility log capture.
-\end{enumerate}
 
 \subsection{Traceability Between Test Cases and Modules}
 
-\begin{center}
-  \begin{tabular}{|l|l|l|}
-    \hline
-    \textbf{Test ID} & \textbf{Module / Feature Tested} &
-    \textbf{Supported Requirement(s)}\\
-    \hline
-    UT1--UT3   & Image Upload and Validation          & FR1, PR-RFT1 \\
-    UT4--UT6   & Alt-Text Generation                  & FR2, FR4,
-    PR-PAR1, PR-PAR2 \\
-    UT7--UT9   & Accessibility and UI Compliance      & LFR-AR1--AR4,
-    UHR-EUR1--4 \\
-    UT10--UT12 & Security and Privacy                 & SR-AR1, SR-PR1,
-    PR-SCR1--PR-SCR3 \\
-    UT13--UT14 & Performance and Reliability          & PR-SL1--2, PR-RFT2 \\
-    UT15--UT16 & Usability and Accessibility Metrics  & UHR-LR1,
-    UHR-AR1, OER-IAS1 \\
-    \hline
-  \end{tabular}
-\end{center}
+
 \newpage
 
 \bibliographystyle{plainnat}
@@ -1193,13 +967,12 @@ meet defined thresholds.
 
 \section{Appendix}
 
-This is where you can place additional information.
 
 \subsection{Evaluation Metrics Summary}
 \label{appendix:evaluation-metrics}
 The following table summarizes the evaluation metrics that will be
 used to assess the quality and effectiveness of the alternative text
-generated by the Reading4All system. Each metric includes its scale
+generated by th \textit{Reading4All} system. Each metric includes its scale
 type, acceptable range, and a brief description of its purpose.
 \begin{table}[H]
   \centering
@@ -1351,10 +1124,69 @@ type, acceptable range, and a brief description of its purpose.
   \item Every module in the Module Guide (MG) appears in the MIS.
 \end{itemize}
 
+\newpage 
 \subsection{Symbolic Parameters}
 
-The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
-Their values are defined in this section for easy maintenance.
+Table \ref{tab:symbolic-constants} defines constants and their values for requirements and test cases used
+in the \textit{Reading4All} system.
+
+\begin{longtable}{|p{8.0cm}|p{8.0cm}|}
+  \captionsetup{justification=raggedright,singlelinecheck=false}
+  \caption{Symbolic Constants used in the \textit{Reading4All} System}
+  \label{tab:symbolic-constants} \\
+  \toprule
+  {\textbf{Name}} & {\textbf{Value}}\\
+  \midrule
+  T\_ALT\_GEN\_SMALL & 3 seconds(s) \\
+  T\_ALT\_GEN\_LARGE & 8 s \\
+  T\_UI\_RESP & 300 miliseconds (ms) \\
+  R\_SUFFICIENCY & 85\% \\
+  R\_LENGTH & 90\% \\
+  R\_USABILITY\_MEDIAN & 3 (rating) \\
+  R\_USABILITY\_MIN & 2 (rating) \\
+  T\_ERROR\_HANDLE & 2 s \\
+  T\_RECOVERY & 5 s \\
+  CAP\_CONCURRENT & 2 requests \\
+  CAP\_STORAGE & 500 images/day \\
+  MAINT\_TIME & 2 person-days/quarter \\
+  COMPAT\_VERSIONS & 2 releases \\
+  IMG\_SIZE\_BIG & 10 MEGABYTES (MB) \\
+  IMG\_SIZE\_SMALL & 2 MEGABYTES \\
+  TLS\_VERSION & 1.2 \\
+  FILE\_DELETE\_TIME & 60 s \\
+  FILE\_TYPES & .png, .jpg, .jpeg, .svg, .webp \\
+  NETWORK\_SOURCE\_POLICY & McMaster SSO tokens or IP ranges only\\
+  TEAM\_SIZE & 5 students \\
+  HOURS\_RESEARCH & 40 hours \\
+  HOURS\_BACKEND & 120 hours \\
+  HOURS\_FRONTEND & 80 hours \\
+  HOURS\_TESTING & 60 hours \\
+  HOURS\_DOCS & 30 hours \\
+  HOURS\_TOTAL & 330 hours \\
+  HOURS\_PROJECT & 1,320 person-hours \\
+  COST\_PER\_HOUR & \$20/hour(CAD) \\
+  COST\_TOTAL & \$26,400 CAD \\
+  COST\_ACTUAL & \$0 CAD \\
+  COST\_INCENTIVE\_MIN & \$100 CAD \\
+  COST\_INCENTIVE\_MAX & \$150 CAD \\
+  MAX\_ZOOM\_PERCENTAGE & 200\% \\
+  MIN\_CONTRAST\_RATIO & 4.5:1\\
+  MAX\_UPLOAD\_STEPS & 5 steps\\
+  MAX\_MINUTES & 5 minutes\\
+  USERS\_SUCCESS\_PERCENT & 80\%\\
+  MAX\_ERROR\_RECOVER & 2 seconds \\
+  LEARNING\_PERCENT & 90\% \\
+  MAX\_LEARNING\_MINUTES & 5 minutes \\
+  MIN\_COMPENSATION\_DOLLARS & \$100 CAD \\
+  MAX\_COMPENSATION\_DOLLARS & \$150 CAD \\
+  LATEST\_RELEASES\_NUM & last 3 versions \\
+  MOST\_COMMON\_SR & top 3 screen readers \\
+  SFWR\_RELEASES & previous 2 releases \\
+  FEEDBACK\_TIME & 1 second \\
+  CAPACITY\_RTIME & 10 seconds \\
+
+\bottomrule
+\end{longtable}
 
 \subsection{Usability Survey Questions}
 \label{appendix:usability}
