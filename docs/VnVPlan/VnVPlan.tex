@@ -3,12 +3,18 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{bm}
+\usepackage{float}
+\usepackage{caption}
+
 \hypersetup{
-    colorlinks,
-    citecolor=blue,
-    filecolor=black,
-    linkcolor=red,
-    urlcolor=blue
+  colorlinks,
+  citecolor=blue,
+  filecolor=black,
+  linkcolor=red,
+  urlcolor=blue
 }
 \usepackage[round]{natbib}
 
@@ -17,10 +23,10 @@
 
 \begin{document}
 
-\title{System Verification and Validation Plan for \progname{}} 
+\title{System Verification and Validation Plan for \progname{}}
 \author{\authname}
 \date{\today}
-	
+
 \maketitle
 
 \pagenumbering{roman}
@@ -28,460 +34,930 @@
 \section*{Revision History}
 
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
-\midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
-\bottomrule
+  \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+  \midrule
+  Oct 27, 2025 & 1.0 & Initial version of document.\\ 
+  \bottomrule
 \end{tabularx}
-
-~\\
-\wss{The intention of the VnV plan is to increase confidence in the software.
-However, this does not mean listing every verification and validation technique
-that has ever been devised.  The VnV plan should also be a \textbf{feasible}
-plan. Execution of the plan should be possible with the time and team available.
-If the full plan cannot be completed during the time available, it can either be
-modified to ``fake it'', or a better solution is to add a section describing
-what work has been completed and what work is still planned for the future.}
-
-\wss{The VnV plan is typically started after the requirements stage, but before
-the design stage.  This means that the sections related to unit testing cannot
-initially be completed.  The sections will be filled in after the design stage
-is complete.  the final version of the VnV plan should have all sections filled
-in.}
-
 \newpage
-
 \tableofcontents
-
 \listoftables
-\wss{Remove this section if it isn't needed}
-
-\listoffigures
-\wss{Remove this section if it isn't needed}
-
-\newpage
 
 \section{Symbols, Abbreviations, and Acronyms}
 
-\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{l l} 
-  \toprule		
-  \textbf{symbol} & \textbf{description}\\
-  \midrule 
-  T & Test\\
-  \bottomrule
-\end{tabular}\\
-
-\wss{symbols, abbreviations, or acronyms --- you can simply reference the SRS
-  \citep{SRS} tables, if appropriate}
-
-\wss{Remove this section if it isn't needed}
+\begin{table}[H]
+\centering
+\caption{Abbreviations and Acronyms Used in the Verification and Validation Plan}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Acronym} & \textbf{Definition} \\
+\hline
+AI & Artificial Intelligence \\
+API & Application Programming Interface \\
+AODA & Accessibility for Ontarians with Disabilities Act \\
+AR & Accessibility Requirement \\
+CAD & Canadian Dollar \\
+CI & Continuous Integration \\
+CD & Continuous Development \\
+CR & Cultural/Regulatory Requirement \\
+DP & Development Plan \\
+FR & Functional Requirement \\
+GUI & Graphical User Interface \\
+HA & Hazard Analysis \\
+LFR & Look and Feel Requirement \\
+LR & Legal Requirement \\
+MG & Module Guide \\
+MIS & Module Interface Specification \\
+ML & Machine Learning \\
+MS & Maintenance Support Requirement \\
+NFR & Nonfunctional Requirement \\
+NVDA & NonVisual Desktop Access (screen reader) \\
+OER & Operational and Environmental Requirement \\
+OCR & Optical Character Recognition \\
+PII & Personally Identifiable Information \\
+PR & Performance Requirement \\
+R & Requirement \\
+RL & Release Requirement \\
+RFT & Reliability and Fault Tolerance Requirement \\
+SCR & Safety-Critical Requirement \\
+SRS & Software Requirements Specification \\
+SR & Security Requirement \\
+SSO & Single Sign-On \\
+TLS & Transport Layer Security \\
+UI & User Interface \\
+UHR & Usability and Humanity Requirement \\
+VnV & Verification and Validation \\
+WCAG & Web Content Accessibility Guidelines \\
+\hline
+\end{tabular}
+\end{table}
 
 \newpage
 
 \pagenumbering{arabic}
 
-This document ... \wss{provide an introductory blurb and roadmap of the
-  Verification and Validation plan}
+\noindent This document outlines the method \textit{Reading4All} team will take to
+ensure the software built meets the intended requirements. To make
+certain that the product is built correctly (verification) and that
+the right product is built (validation) \textit{Reading4All} team has structured this
+document to reflect our plan. We achieve this by providing our objectives,
+and laying out a comprehensive test plan while referring to the
+Software Requirements Specification (SRS), Module
+Guide (MG) and Module Interface Specification (MIS). \\
 
-\section{General Information}
+First, Section \ref{geninfo} outlines what software is being tested
+with its expected functionality. Here, the objectives and relevant
+documentation is mentioned. Next, the plan for verification and
+validation is thoroughly explored, touching on the previously
+mentioned documents. Finally, each test is mapped to one or more
+requirements highlighted in the SRS, ensuring th \textit{Reading4All} team delivers what we promised. At the time
+of writing this document, unit tests (Section \ref{Unit Test Desc})
+was not applicable as it was too early in the project timeline.\\
+
+\section{General Information} \label{geninfo}
 
 \subsection{Summary}
 
-\wss{Say what software is being tested.  Give its name and a brief overview of
-  its general functions.}
+The software being tested is called \textit{Reading4All}. This
+software will utilize artificial intelligence (AI) and machine
+learning (ML) techniques to provide detailed, context-informed
+alternative text for complex technical images, specifically those
+found in post-secondary Science, Technology, Engineering and Mathematics (STEM)
+course materials. \textit{Reading4All} will allow users to upload
+images and then it will automatically produce corresponding
+alternative text (alt text), that
+meets the described criteria in
+Appendix~\ref{appendix:evaluation-metrics} . The system is intended for use by
+McMaster University students and faculty, therefore it will include
+user validation through McMaster's sign-on, ensuring that only
+verified users can access the \textit{Reading4All} system.
+In addition, the system will allow users to edit the generated
+alternative text, view a history of uploaded images and their
+alternative text within that session and download the final outputs
+in their desired formats.
 
 \subsection{Objectives}
 
-\wss{State what is intended to be accomplished.  The objective will be around
-  the qualities that are most important for your project.  You might have
-  something like: ``build confidence in the software correctness,''
-  ``demonstrate adequate usability.'' etc.  You won't list all of the qualities,
-  just those that are most important.}
+The objective of this Verification and Validation (VnV) plan is to
+build confidence in the correctness, accessibility and usability of
+the \textit{Reading4All} system.
+The plan focuses on ensuring that the system generates, accurate,
+detailed and contextually appropriate alternative text for complex
+STEM images, as this is the main functionality of the software.
+It also aims to verify that the systems interface is accessible an
+usable for individuals with visual impairments, who are one of the
+main users of the software. The last object is to demonstrate
+effective and accessible usability in secondary features
+such as editing the outputted alternative text, viewing session
+history and file downloading.
+Verifying and validating these objectives is essential to ensure that
+users can benefit from th \textit{Reading4All} system and
+it can effectively fulfill its goal of making STEM diagrams more accessible.
+\\
 
-\wss{You should also list the objectives that are out of scope.  You don't have 
-the resources to do everything, so what will you be leaving out.  For instance, 
-if you are not going to verify the quality of usability, state this.  It is also 
-worthwhile to justify why the objectives are left out.}
-
-\wss{The objectives are important because they highlight that you are aware of 
-limitations in your resources for verification and validation.  You can't do everything, 
-so what are you going to prioritize?  As an example, if your system depends on an 
-external library, you can explicitly state that you will assume that external library 
-has already been verified by its implementation team.}
+Some objectives are out of scope from this VnV plan due to the time
+and resource limitations of the project.
+The external libraries that might be used in the development of the
+system, including PyTorch, TensorFlow, Scikit-Learn, Pandas and
+frontend frameworks, will not be verified by our team, as they will
+be assumed to have been tested and validated by their implementation teams.
+The McMaster sign-on authentication service will also not be tested,
+as its maintained and run by the university.
 
 \subsection{Challenge Level and Extras}
 
-\wss{State the challenge level (advanced, general, basic) for your project.
-Your challenge level should exactly match what is included in your problem
-statement.  This should be the challenge level agreed on between you and the
-course instructor.  You can use a pull request to update your challenge level
-(in TeamComposition.csv or Repos.csv) if your plan changes as a result of the
-VnV planning exercise.}
-
-\wss{Summarize the extras (if any) that were tackled by this project.  Extras
-can include usability testing, code walkthroughs, user documentation, formal
-proof, GenderMag personas, Design Thinking, etc.  Extras should have already
-been approved by the course instructor as included in your problem statement.
-You can use a pull request to update your extras (in TeamComposition.csv or
-Repos.csv) if your plan changes as a result of the VnV planning exercise.}
+The challenge level of the project is set at a \textit{general} level
+that will include two additional
+components (extras). The first additional component will be a
+Norman's Principles report that will
+evaluate the design of our final product to ensure that it optimizes
+usability and accessibility. The second additional
+component will be a user manual that will include comprehensive
+documentation to guide users in using the final
+product effectively.
 
 \subsection{Relevant Documentation}
-
-\wss{Reference relevant documentation.  This will definitely include your SRS
-  and your other project documents (design documents, like MG, MIS, etc).  You
-  can include these even before they are written, since by the time the project
-  is done, they will be written.  You can create BibTeX entries for your
-  documents and within those entries include a hyperlink to the documents.}
-
-\citet{SRS}
-
-\wss{Don't just list the other documents.  You should explain why they are relevant and 
-how they relate to your VnV efforts.}
+The system's Verification and Validation (VnV) plan will reference the
+following documents to aid in
+the project's assessment and testing:
+\begin{enumerate}
+  \item \textbf{Software Requirements Specification} (\citet{SRS}):
+    This document outlines the key components
+    for the VnV plan as it details the functional and non-functional
+    requirements of the product. Ensuring that our testing
+    satisfies these requirements is essential to meeting the goals of
+    the project.
+  \item \textbf{Design Document - Module Guide} (\citet{MG}): This
+    document outlines how the system is divided into separate module
+    and their respective functions.
+    This structure helps the VnV Plan by making it easier to test,
+    trace, and confirm that each module works correctly and meets the
+    requirements.
+  \item \textbf{Design Document - Module Interface Specification}
+    (\citet{MIS}): This document outlines how the modules of the
+    system works and how they interact with each other.
+    This aids in our VnV plan as it defines how to validate the
+    testing of interactions between the individual parts of the system.
+\end{enumerate}
 
 \section{Plan}
 
-\wss{Introduce this section.  You can provide a roadmap of the sections to
-  come.}
+This section outlines the strategies and techniques that will be used for verifying and validating the \textit{Reading4All} system, throughout the varying development phases. 
+This includes verifying and validating the SRS, the design, the VnV plan, and the implementation. This section also defines the \textit{Reading4All} team's responsibilities in 
+completing this plan and implementing the specified strategies, to ultimately ensure the system meets our requirements and objectives.
 
 \subsection{Verification and Validation Team}
 
-\wss{Your teammates.  Maybe your supervisor.
-  You should do more than list names.  You should say what each person's role is
-  for the project's verification.  A table is a good way to summarize this information.}
+The VnV team will ensure that all SRS requirements are thorough, accurately implemented and tested to ensure our system meets them. 
+Table \ref{tab:data-dictionary-reading4all} defines each \textit{Reading4All} team members role in confirming that these requirements are well defined and fulfilled in the system.
+These roles will remain the same across different verification tasks, allowing for consistency and a deeper understanding of each focus area. 
 
+\begin{table}[H]
+    \centering
+    \caption{Verification and Validation Responsibility Breakdown}
+    \label{tab:data-dictionary-reading4all}
+    \begin{tabular}{ |p{3.0cm}|p{3.8cm}|p{7.3cm}| }
+      \hline
+      \textbf{Name} & \textbf{ Focus Area } & \textbf{Responsibility} \\
+      \hline
+      Moly Mikhail and Fiza Sehar & Functional Requirements Leads & Verifies all corresponding requirements in the SRS are thorough, clearly defined, attainable and measurable. Completes manual testing on the software to ensure that the functional requirements are met. Also oversees any written unit tests to ensure they correctly test the system and intended functionality. \\
+      \hline
+      Nawaal Fatima & User Testing Preparation Lead & Coordinates the user testing sessions, and oversees the planning and execution of these sessions. \\
+      \hline 
+      Casey Francine Bulaclac & Usability and Humanity Requirements Lead & Verifies all corresponding requirements in the SRS are thorough, clearly defined, attainable and measurable. Completes manual testing to ensure all the related requirements are met. Also verifies that WCAG 2.1 crtierias are met, prior to automated testing. \\
+      \hline 
+      Dhruv Sardana & Performance, Operational and Environmental Requirements & Verifies that corresponding requirements are thorough, clearly defined, attainable and measurable. Also, validates that the implemented system meets these requirements through extensive testing.  \\
+      \hline 
+      All \textit{Reading4All} Team Members & Look and Feel Requirements Lead & All team members are responsible for verifying that the corresponding requrieemnts in the SRS are thorough, clearly defined, attainable and measurable. The team will validate that the final system meets the specified requirements prior to user testing. \\
+      \hline
+      Ms. Jingchuan Sui (Supervisor) & Overall Usability and Quality of Alt Text Reviewer, User Testing Material Reviewer& Reviews and provides feedback to team on the overall usability of the system and the quality of the generated alternative text. Reviews user testing materials to ensure they align with accessibility standards and assits the team in completing the automated evaluation of the system against WCAG 2.1 criteria. \\ 
+      \hline
+    \end{tabular}
+  \end{table}
+  
+  
 \subsection{SRS Verification}
+The verification of the \textit{Reading4All} SRS will be completed
+through a team review, peer review, and supervisor feedback, in that order.
+Feedback from each step will be incorporated iteratively to ensure
+the document is reviewed and the version presented to our supervisor
+reflects the most accurate and complete requirements. The following details the 
+strategies used for SRS verification: 
 
-\wss{List any approaches you intend to use for SRS verification.  This may
-  include ad hoc feedback from reviewers, like your classmates (like your
-  primary reviewer), or you may plan for something more rigorous/systematic.}
+\begin{itemize}
+  \item \textbf{Team Review}:
+  As the \textit{Reading4All} team has already reviewed the outlined
+  requirements in the SRS document, a team review will
+  consist of each team member independently evaluating the document
+  against the checklist provided in Appendix \ref{appendix:srs_checklist}.  
+  
+  \item \textbf{Peer Review}:
+  A peer review will be completed by Team 10 (One of a Kind) to provide
+  feedback on our SRS document.
+  They will review the document against the same checklist provided in
+  Appendix \ref{appendix:srs_checklist}, ensuring consistency between
+  how both teams evaluate the document.
+  This process will allow external reviewers who understand the
+  documents technical details and software engineering context to
+  provide feedback on the completeness, understandability and the
+  overall quality of the requirements. 
+  
+  \item \textbf{Supervisor Feedback}:
+  We will dedicate one of our weekly meetings with our supervisor to
+  verifying the SRS document.
+  During this meeting, will explain each functional and non functional
+  requirement to ensure every requirement has been documented.
+  This process will help our supervisor gain an understanding of the
+  specific requirements we have outlined and keep them in
+  mind during future validation of our system. 
+\end{itemize}
 
-\wss{If you have a supervisor for the project, you shouldn't just say they will
-read over the SRS.  You should explain your structured approach to the review.
-Will you have a meeting?  What will you present?  What questions will you ask?
-Will you give them instructions for a task-based inspection?  Will you use your
-issue tracker?}
-
-\wss{Maybe create an SRS checklist?}
 
 \subsection{Design Verification}
-
-\wss{Plans for design verification}
-
-\wss{The review will include reviews by your classmates}
-
-\wss{Create a checklists?}
+The design verification will be accomplished through the following:
+\begin{itemize}
+  \item \textbf{Peer Review:} The verification of our design will
+    rely on reviews conducted by our fellow classmates who will
+    evaluate our design documents including our Module Guide (MG) and
+    Module Interface Specification (MIS) using the following
+    checklist in Appendix \ref{appendix:dd_checklist}. The peer review will
+    be conducted in Week 10 and Week 16 following the due date for
+    submission of these design documents.
+    Any items on the checklist not satisfied by our team on these
+    documents will be addressed through making issues on GitHub.
+  \item \textbf{Formal Review:} In a formal review, our supervisor,
+    Ms. Jing, will verify that the user interface design supports
+    accessibility in accordance with WCAG 2.1 standards.
+    Additionally, Capstone teaching assistants and instructors will
+    assess the technical aspects of the system, focusing on the
+    machine learning architecture to ensure it is well designed.
+    The formal review will also be conducted in Week 10 and Week 16
+    following the due date for submission of these design documents.
+\end{itemize}
 
 \subsection{Verification and Validation Plan Verification}
 
-\wss{The verification and validation plan is an artifact that should also be
-verified.  Techniques for this include review and mutation testing.}
+The Verification and Validation Plan Verification for Reading4All will be completed through a team and peer review,
+as well as mutation testing to assess the effectiveness and correctness of our
+tests. Furthermore, any criteria not met, or failed mutation tests identified
+from this process will be documented as GitHub issues, to ensure they are
+tracked and resolved. The following details the 
+strategies used for verifying the VnV plan: 
 
-\wss{The review will include reviews by your classmates}
-
-\wss{Create a checklists?}
+\begin{itemize}
+  \item \textbf{Team and Peer Review:}
+  The \textit{Reading4All} team will complete an internal review to
+  ensure that the plan is complete and aligns with the SRS
+  requirements, as well as other documents.
+  Both our team and peer review will be completed by reviewing the V\&V
+  document against the checklist provided in
+  Appendix~\ref{appendix:v_v_checklist}.  
+  
+  \item \textbf{Mutation Testing:}
+  Mutation testing will be used to determine whether our unit tests
+  correctly identify errors within the system.
+  Small errors will be intentionally be introduced into the prototype
+  code related to the main functionalities to check whether the test
+  cases can detect unexpected behavior.
+\end{itemize}
 
 \subsection{Implementation Verification}
 
-\wss{You should at least point to the tests listed in this document and the unit
-  testing plan.}
+The implementation verification for \textit{Reading4All} will utilize the unit tests defined in section~\ref{Unit Test Desc}, system tests defined in section~\ref{System Tests Desc},
+static analyzers and code inspections. Test results, coverage metrics and pull request reviews will be collected as evidence that verification activities have been completed. 
+The following details the strategies used for verifying the implementation plan: 
 
-\wss{In this section you would also give any details of any plans for static
-  verification of the implementation.  Potential techniques include code
-  walkthroughs, code inspection, static analyzers, etc.}
+\begin{itemize}
+  \item \textbf{Unit and System Tests}:
+  The unit and system tests will be run to ensure the system behaves as expected. The unit tests will check that individual functions within he implementation are working correctly, helping us narrow down possible issues, and thoroughly test functions with different inputs. 
+  The system tests will verify that the implementation fulfills all functional and non-functional requirements. \\
+  
+  \item \textbf{Static Analyzers}:
+  Static analyzers will be used to automatically review any committed
+  code for errors, and ensure the implementation meets the specified
+  coding standard.
+  Tools such as Flake8 and Coverage.py will be integrated into our
+  development process. Flake8 will identify syntax and style issues,
+  while Coverage.py can verify that any new code written has unit tests
+  associated.
+  Additionally, all unit tests will be executed automatically through
+  GitHub Actions whenever new code is pushed or a pull request is
+  opened. This will ensure that recent changes do not introduce any
+  errors into previously completed features.
+  Using these static analyzers and workflows will help us to
+  continuously verify our implementation, ensuring it meets the design
+  requirements, functional and non functional requirements.
+   
+  \item \textbf{Code Inspections}:
+  As part of our development process, when a feature is completed, team
+  members are required to open a pull request. The pull request
+  highlights all the code changes made and is reviewed by other team
+  members, before merging.
+  This process ensures that the multiple team members are aware of the
+  changes being made, and provides an opportunity to give feedback on
+  the implementation decisions. Additionally it also helps verify that
+  the code fulfills the intended functionality.
+\end{itemize}
 
-\wss{The final class presentation in CAS 741 could be used as a code
-walkthrough.  There is also a possibility of using the final presentation (in
-CAS741) for a partial usability survey.}
 
 \subsection{Automated Testing and Verification Tools}
-
-\wss{What tools are you using for automated testing.  Likely a unit testing
-  framework and maybe a profiling tool, like ValGrind.  Other possible tools
-  include a static analyzer, make, continuous integration tools, test coverage
-  tools, etc.  Explain your plans for summarizing code coverage metrics.
-  Linters are another important class of tools.  For the programming language
-  you select, you should look at the available linters.  There may also be tools
-  that verify that coding standards have been respected, like flake9 for
-  Python.}
-
-\wss{If you have already done this in the development plan, you can point to
-that document.}
-
-\wss{The details of this section will likely evolve as you get closer to the
-  implementation.}
+The programming language being used in the front-end will be Hypertext Markup Language (HTML) and 
+Cascading Style Sheets (CSS), and 
+the backend will be programmed using Python for machine learning applications.
+The AI Generated Alternative Text tool will make use of the following
+automated testing and verification tools:
+\begin{itemize}
+  \item \textbf{Automated Accessibility Testing}: Automated web
+    accessibility testing tools such as the WAVE Web Accessibility
+    Evaluation Tool will be used to
+    verify that the tool adheres to the Web Content Accessibility
+    Guidelines (WCAG) 2.1 guidelines. These tools will automatically
+    scan for accessibility issues such as missing alternative text
+    and color contrast violations.
+  \item \textbf{Automated Performance Testing}: \texttt{cProfile}, a python standard library, will be 
+  used to determine the execution time of different functions within the system. This helps to identify 
+  bottlenecks in the code and ensure that the system stays within the expected time limits as stated in our 
+  performance requirements.
+  \item \textbf{Unit Testing Framework, Linters, Coverage Tools, and
+    Continuous Integration}: These tools have been detailed and
+    outlined in the Expected Technologies section
+    of our Development Plan (\citet{DP}) document under Table 3. These tools
+    will ensure to help us follow our coding standards of PEP8 and help verify 
+    our defined programming languages.
+\end{itemize}
 
 \subsection{Software Validation}
-
-\wss{If there is any external data that can be used for validation, you should
-  point to it here.  If there are no plans for validation, you should state that
-  here.}
-
-\wss{You might want to use review sessions with the stakeholder to check that
-the requirements document captures the right requirements.  Maybe task based
-inspection?}
-
-\wss{For those capstone teams with an external supervisor, the Rev 0 demo should 
-be used as an opportunity to validate the requirements.  You should plan on 
-demonstrating your project to your supervisor shortly after the scheduled Rev 0 demo.  
-The feedback from your supervisor will be very useful for improving your project.}
-
-\wss{For teams without an external supervisor, user testing can serve the same purpose 
-as a Rev 0 demo for the supervisor.}
-
-\wss{This section might reference back to the SRS verification section.}
+The AI Generated Alternative Text tool will be validated through the following:
+\begin{itemize}
+  \item \textbf{User Testing}: Stakeholders of this project including
+    students experiencing visual
+    and cognitive disabilities will perform realistic tasks such as
+    uploading multiple images and downloading the alternative text
+    to validate that it meets their needs and requirements.
+    The team will be present during these sessions to observe and
+    note any challenges
+    the users face. The participants will also be asked follow-up
+    questions highlighted in Appendix \ref{appendix:usability} to
+    gain additional feedback and insight
+    on their overall experience of using the tool.
+  \item \textbf{Formal Reviews}: Reviews will be conducted with the
+    stakeholders of the project and our supervisor, Ms. Jing, to
+    validate that the requirements
+    outlined in our SRS document are fulfilled and met by our tool.
+    Additionally, the Rev 0 demo with Ms. Jing will serve as a
+    validation review and allow the team
+    to receive feedback to improve the tool.
+\end{itemize}
 
 \section{System Tests}
+\label{System Tests Desc}
 
-\wss{There should be text between all headings, even if it is just a roadmap of
-the contents of the subsections.}
+This section details tests to cover all requirements as listed in the
+Software Requirements Specification (SRS) for the \textit{Reading4All} team's project. The
+tests ensure that the system performs to the predefined standards and
+meets user needs.
 
 \subsection{Tests for Functional Requirements}
 
-\wss{Subsets of the tests may be in related, so this section is divided into
-  different areas.  If there are no identifiable subsets for the tests, this
-  level of document structure can be removed.}
+The tests below cover all six functional requirements as defined in
+the SRS document. The following tests will help validate that the system meets 
+the requirements. 
 
-\wss{Include a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good here.}
+\paragraph{Tests for Functional Requirements}
 
-\subsubsection{Area of Testing1}
+\begin{enumerate}[label=FR-ST \arabic*., wide=0pt, leftmargin=*]
+  \item{}
+    {\bf Control:} Automatic. \\
+    {\bf Initial State:} System is running and ready to accept an
+    image upload.\\
+    {\bf Input:} Upload files in the following formats:
+    \begin{itemize}
+      \item Valid: diagram1.jpeg, diagram2.png
+      \item Invalid: diagram3.gif, diagram4.pdf
+    \end{itemize}
+    {\bf Output:} The system accepts .jpeg and .png images and
+    displays an error message (e.g., “Invalid file type”) for .gif
+    and .pdf uploads.\\
+    {\bf  Case Derivation:} According to the \textbf{FR 1} criterion, the system
+    must accept JPEG and PNG formats and reject all others with proper
+    feedback. Therefore, valid formats are processed, and invalid
+    formats trigger an error.\\
+    {\bf How test will be performed:} The test can be performed by
+    uploading a sample set of image files in different formats (JPEG,
+    PNG, GIF, PDF) to the system. The system’s responses will be
+    observed to confirm that only JPEG and PNG files are accepted,
+    while others trigger an appropriate error message.\\
 
-\wss{It would be nice to have a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good here.  If a section
-  covers tests for input constraints, you should reference the data constraints
-  table in the SRS.}
-		
-\paragraph{Title for Test}
+  \item{}
+    {\bf Control:} Automatic\\
+    {\bf Initial State:} System running with image upload
+    functionality active.\\
+    {\bf Input:} Upload a set of test diagrams (diagram1.png, diagram2.jpeg).\\
+    {\bf Output:} The system generates alternative text descriptions
+    for each uploaded image that meet pre-determined quality or
+    clarity criteria (e.g., contains key diagram elements, concise
+    description, no missing components).\\
+    {\bf  Case Derivation:} As specified by \textbf{FR 2} criterion,
+    the system must correctly process JPEG and PNG files while
+    rejecting all other formats. Therefore, the expected outcome is
+    that valid images are accepted without error, and invalid formats
+    trigger a clear feedback message to the user.\\
+    {\bf How test will be performed:} The test can be performed by
+    uploading a test set of sample diagrams to the system and
+    reviewing the generated alternative text. The generated text will
+    be compared against predetermined quality criteria or expected
+    reference outputs to verify accuracy and completeness.\\
 
-\begin{enumerate}
+  \item{}
+    {\bf Control:} Manual\\
+    {\bf Initial State:} Alternative text has been generated for at
+    least one uploaded image.\\
+    {\bf Input:} Use screen readers such as NVDA, JAWS, and VoiceOver
+    to read the outputted alternative text.\\
+    {\bf Output:} Alternative text is fully read aloud by at least
+    the most common screen readers without truncation, misreading, or
+    formatting errors. \\
+    {\bf  Case Derivation:} Given the \textbf{FR 3} criterion for
+    compatibility with commonly used screen readers, the expected
+    outcome is that the generated alternative text will be fully
+    readable and correctly interpreted by tools such as NVDA, JAWS,
+    and VoiceOver without truncation or mispronunciation.\\
+    {\bf How test will be performed:} The test can be performed by
+    enabling common screen readers such as NVDA, JAWS, and VoiceOver
+    to read the generated alternative text aloud. Observations will
+    confirm whether the text is read fully, clearly, and without
+    formatting or accessibility issues.\\
 
-\item{test-id1\\}
+  \item{}
+    {\bf Control:} Manual\\
+    {\bf Initial State:} Generated alternative text is visible to the user.\\
+    {\bf Input:}User edits the outputted text (adds words, deletes
+    sentences, modifies phrasing) and saves changes. \\
+    {\bf Output:} The system reflects the user’s edits accurately and
+    stores the updated version without loss of data or formatting errors.\\
+    {\bf  Case Derivation:} As stated in \textbf{FR 4} criterion,
+    users must be able to modify any part of the generated
+    alternative text and save their changes. The expected result is
+    that all edits are accurately captured, stored, and displayed
+    without data loss or formatting issues.\\
+    {\bf How test will be performed:} The test can be performed by
+    selecting the generated alternative text and performing a series
+    of edits—adding, deleting, and modifying words—then saving the
+    changes. The output will be reviewed to ensure that edits are
+    accurately reflected and retained.\\
 
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs.  Output is not how you
-are going to return the results of the test.  The output is the expected
-result.}
+  \item{}
+    {\bf Control:} Automatic\\
+    {\bf Initial State:} User logged in and has uploaded at least one
+    image with generated alt text.\\
+    {\bf Input:} Upload multiple images sequentially within the same
+    session, then navigate through the session interface.\\
+    {\bf Output:} All previously uploaded images and their
+    corresponding alt texts remain visible and accessible until the
+    user logs out or the session ends.\\
+    {\bf  Case Derivation:} According to \textbf{FR 5} criterion, all
+    uploaded images and their corresponding alternative texts should
+    remain visible within the same session. Therefore, the expected
+    outcome is that users can access and review all prior uploads
+    without reloading or re-uploading them during an active session.\\
+    {\bf How test will be performed:} The test can be performed by
+    uploading multiple images within the same session, then
+    navigating across different pages or refreshing the interface.
+    The test will verify that all uploaded images and their
+    corresponding alternative texts remain visible until the session ends.\\
 
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-
+  \item{}
+    {\bf Control:} Automatic\\
+    {\bf Initial State:} Login page displayed.\\
+    {\bf Input:} Access for login is defined below:
+    \begin{itemize}
+      \item Valid credentials: McMaster University email and password
+      \item Invalid credentials: non-McMaster email or incorrect password
+    \end{itemize}
+    {\bf Output:} Access granted only to users with valid McMaster
+    credentials. Invalid attempts are rejected with an appropriate
+    error message (e.g., “Invalid login credentials”).\\
+    {\bf  Case Derivation:} As outlined in the \textbf{FR 6}
+    criterion, only users with verified McMaster University
+    credentials should gain access to system features. The expected
+    outcome is that valid users can log in successfully, while
+    unauthorized or invalid attempts are denied with an appropriate
+    error message.\\
+    {\bf How test will be performed:} The test can be performed by
+    attempting to log in using both valid McMaster University
+    credentials and invalid credentials. The system’s behavior will
+    be reviewed to confirm that only verified users gain access,
+    while invalid attempts produce an appropriate error message.\\
 \end{enumerate}
-
-\subsubsection{Area of Testing2}
-
-...
 
 \subsection{Tests for Nonfunctional Requirements}
 
-\wss{The nonfunctional requirements for accuracy will likely just reference the
-  appropriate functional tests from above.  The test cases should mention
-  reporting the relative error for these tests.  Not all projects will
-  necessarily have nonfunctional requirements related to accuracy.}
+The tests below cover all non-functional requirements as defined in
+the SRS document. The following tests will help validate that the system meets 
+the requirements. 
 
-\wss{For some nonfunctional tests, you won't be setting a target threshold for
-passing the test, but rather describing the experiment you will do to measure
-the quality for different inputs.  For instance, you could measure speed versus
-the problem size.  The output of the test isn't pass/fail, but rather a summary
-table or graph.}
+\paragraph{Tests for Non-Functional Requirements}
 
-\wss{Tests related to usability could include conducting a usability test and
-  survey.  The survey will be in the Appendix.}
+\begin{enumerate}[label=NFR-ST \arabic*., wide=0pt, leftmargin=*]
 
-\wss{Static tests, review, inspections, and walkthroughs, will not follow the
-format for the tests given below.}
+  \item{}
+    \textbf{Text Resizing and Contrast Accessibility} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic. \\
+    \textbf{Covers:} LFR-AR1, LFR-AR2, LFR-AR3, LFR-AR4. \\
+    \textbf{Initial State:} Interface displayed in a standard browser
+    with accessibility tools enabled. \\
+    \textbf{Input/Condition:} The user adjusts browser zoom to the
+    maximum allowed and reviews color usage. \\
+    \textbf{Output/Result:} Text resizes correctly without overlap;
+    information is not conveyed by color alone; contrast meets
+    accessibility thresholds; all images have alternative text. \\[2mm]
+    \textbf{How test will be performed:} The tester will manually
+    adjust zoom levels, use color contrast tools, and run screen
+    reader tests to confirm accessibility compliance.
 
-\wss{If you introduce static tests in your plan, you need to provide details.
-How will they be done?  In cases like code (or document) walkthroughs, who will
-be involved? Be specific.}
+  \item \textbf{Interface Style and Branding Verification}. \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic. \\
+    \textbf{Covers:} LFR-SR1, LFR-SR2, LFR-SR3. \\
+    \textbf{Initial State:} System interface displayed in a browser. \\
+    \textbf{Input/Condition:} Visual inspection of layout, font,
+    colors, branding, and adherence to Norman's design principles. \\
+    \textbf{Output/Result:} Interface maintains modern and simple
+    style, McMaster branding is present without interfering with
+    usability, and design elements comply with Norman’s principles. \\[2mm]
+    \textbf{How test will be performed:} Tester will review the
+    interface against the style guide, branding requirements, and
+    Norman’s design checklist to ensure compliance.
 
-\subsubsection{Area of Testing1}
-		
-\paragraph{Title for Test}
+  \item \textbf{Usability Efficiency and Learnability}. \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic. \\
+    \textbf{Covers:} UHR-EUR1, UHR-EUR2, UHR-EUR3, UHR-EUR4 \\
+    \textbf{Initial State:} System interface available to first-time
+    and returning users. \\
+    \textbf{Input/Condition:} Users perform key actions: login,
+    upload images, generate alt text. \\
+    \textbf{Output/Result:} Users complete tasks, recall
+    steps after a break, receive feedback within FEEDBACK\_TIME, and can
+    correct errors easily. \\[2mm]
+    \textbf{How test will be performed:} Conduct usability sessions
+    with participants performing all major tasks while timing
+    actions, recording feedback response, and monitoring error recovery.
 
-\begin{enumerate}
+  \item \textbf{Alt Text Storage and Personalization Options} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic. \\
+    \textbf{Covers:} UHR-PIR1. \\
+    \textbf{Initial State:} Alt text generated for uploaded image \\
+    \textbf{Input/Condition:} User chooses to copy or download
+    generated alt text \\
+    \textbf{Output/Result:} Alt text is successfully copied to
+    clipboard or downloaded as .txt \\[2mm]
+    \textbf{How test will be performed:} Tester generates alt text
+    and selects each option, confirming that the system executes the
+    chosen storage method correctly.
 
-\item{test-id1\\}
+  \item \textbf{Accessibility for Screen Readers and Low-Vision Users} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic. \\
+    \textbf{Covers:} UHR-LR1, UHR-AR1, UHR-AR2.\\
+    \textbf{Initial State:} Interface accessible with popular screen readers \\
+    \textbf{Input/Condition:} Users with screen readers upload images
+    and generate alt text. \\
+    \textbf{Output/Result:} Users successfully obtaines generated alt text
+    within the time limit and can navigate the interface efficiently. \\[2mm]
+    \textbf{How test will be performed:} Conduct sessions with
+    low-vision participants using NVDA, JAWS, or VoiceOver and
+    measure task completion time and success rates.
 
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
+  \item \textbf{Performance – Alt Text Generation Time} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic. \\
+    \textbf{Covers:} PR-SL1, PR-SL2. \\
+    \textbf{Initial State:} System under typical load conditions \\
+    \textbf{Input/Condition:} Upload images of various sizes (small
+    and large). \\
+    \textbf{Output/Result:} Generated alt text returned within
+    specified thresholds for each image size; UI responds within
+    T\_UI\_RESP. \\[2mm]
+    \textbf{How test will be performed:} Automated scripts upload
+    images and record generation time and UI response time; results
+    plotted to verify performance meets criteria.
 
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
+  \item \textbf{Safety and Timeout Handling} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic. \\
+    \textbf{Covers:} PR-SR-HA1, PR-SR-HA2, PR-SR-HA3. \\
+    \textbf{Initial State:} System is ready for alt text generation. \\
+    \textbf{Input/Condition:} Simulate long-running or stalled image
+    processing. \\
+    \textbf{Output/Result:} User is notified of timeout, option to
+    retry; incomplete data is deleted; messages do not reveal
+    technical details. \\ [2mm]
+    \textbf{How test will be performed:} Tester simulates timeouts
+    and verifies notifications, data cleanup, and absence of
+    technical information in messages.
+
+  \item \textbf{Alt Text Accuracy and Usability Evaluation} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} PR-PAR1, PR-PAR2, PR-PAR3, CR-LR1 \\
+    \textbf{Initial State:} Alt text generated for uploaded images. \\
+    \textbf{Input/Condition:} Users rate generated alt text for
+    sufficiency, length, readability, and usability. \\
+    \textbf{Output/Result:} Ratings meet R\_SUFFICIENCY, R\_LENGTH, and
+    R\_USABILITY\_MEDIAN thresholds. \\[2mm]
+    \textbf{How test will be performed:} Conduct structured user
+    evaluation using rating scales; calculate statistics to confirm
+    compliance with quality thresholds.
+
+  \item \textbf{Robustness to Invalid Inputs and Fault Recovery} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual/Automated, Dynamic \\
+    \textbf{Covers:} PR-RFT1, PR-RFT2 \\
+    \textbf{Initial State:} System is running normally. \\
+    \textbf{Input/Condition:} Upload unsupported, corrupted files, or
+    simulate backend process failures. \\
+    \textbf{Output/Result:} Clear error messages displayed; system
+    recovers within T\_RECOVERY. \\[2mm]
+    \textbf{How test will be performed:} Tester uploads invalid files
+    and observes error handling; automated test simulates isolated
+    failures to confirm automatic recovery.
+
+  \item \textbf{Concurrent Usage and Storage Capacity} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-CR1, PR-CR2 \\
+    \textbf{Initial State:} System deployed in test environment. \\
+    \textbf{Input/Condition:} Simulate multiple simultaneous users
+    and upload images. \\
+    \textbf{Output/Result:} Supports CAP\_CONCURRENT users with
+    response times $\le$ CAPACITY\_RTIME; storage handles CAP\_STORAGE datasets. \\[2mm]
+    \textbf{How test will be performed:} Load testing scripts
+    simulate multiple concurrent requests and image uploads;
+    performance and storage usage monitored.
+
+  \item \textbf{System Extensibility and Maintainability} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} PR-SER1, PR-LR1, PR-LR2, MS-MNT1, MS-MNT2,
+    MS-MNT3, MS-AD1, MS-AD2, MS-AD3 \\
+    \textbf{Initial State:} Existing modular system codebase deployed \\
+    \textbf{Input/Condition:} Apply updates to modules,
+    configuration, or AI models. \\
+    \textbf{Output/Result:} System maintains functionality; new
+    modules integrate without breaking existing components; changes
+    tracked. \\[2mm]
+    \textbf{How test will be performed:} Tester modifies components
+    and configuration files, runs automated CI/CD tests, and verifies
+    integration of new modules.
+
+  \item \textbf{Security, Access, and Network Restrictions} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual/Automated, Dynamic \\
+    \textbf{Covers:} SR-AR1, SR-AR2, SR-IR1, SR-IR2, SR-PR1, SR-PR2,
+    SR-AU1, SR-AU2, SR-IM1, SR-IM2 \\
+    \textbf{Initial State:} System deployed with Single Sign-On (SSO) and HTTPS enabled. \\
+    \textbf{Input/Condition:} Attempt unauthorized access, upload
+    images, and inspect logs. \\
+    \textbf{Output/Result:} Only authorized McMaster users gain
+    access; encrypted communication enforced; uploaded images
+    deleted; PII filtered; logs access restricted; unsupported files
+    rejected; external networks blocked. \\[2mm]
+    \textbf{How test will be performed:} Testers attempt invalid
+    logins, inspect encrypted traffic, upload images and check
+    deletion, validate moderation filters, and verify network
+    restrictions and audit log access.
+
+  \item \textbf{Cultural and Professional Content Compliance} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} CR1, CR2, CR3 \\
+    \textbf{Initial State:} Alt text is generated by the system. \\
+    \textbf{Input/Condition:} The generated alt text is reviewed. \\
+    \textbf{Output/Result:} Text is neutral, inclusive, contextually
+    accurate, and professional. \\[2mm]
+    \textbf{How test will be performed:} Tester inspects a variety of
+    outputs for bias, unnecessary cultural references, and tone appropriateness.
+
+  \item \textbf{Compliance and Regulatory Verification} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} CR-LR1, CR-SCR1, CR-SCR2 \\
+    \textbf{Initial State:} System generates alt text and manages
+    uploaded image. \\
+    \textbf{Input/Condition:} Validate against AODA, WCAG 2.1, and
+    institutional privacy policies. \\
+    \textbf{Output/Result:} Generated alt text meets accessibility
+    standards; uploaded files handled per policy; documentation
+    available for stakeholders. \\[2mm]
+    \textbf{How test will be performed:} Run accessibility and
+    privacy compliance tests; inspect system logs and documentation
+    for adherence.
+
+  \item \textbf{Environmental and Device Compatibility} \\[2mm]
+    \textbf{Type:} Non-Functional, Manual, Dynamic \\
+    \textbf{Covers:} OER-EP1, OER-EP2, OER-WE1, OER-WE2 \\
+    \textbf{Initial State:} System installed on multiple devices and
+    OS platforms. \\
+    \textbf{Input/Condition:} System is accessed on varying devices and OS platforms. \\
+    \textbf{Output/Result:} System functions reliably across devices and
+    platforms; maintains network connectivity. \\[2mm]
+    \textbf{How test will be performed:} Testers access the system on
+    Windows, Mac, and Linux with various browsers; verify full functionality.
+
+  \item \textbf{Image Alt Text Accuracy Metrics} \\[2mm]
+    \textbf{Type:} Non-Functional, Automated, Dynamic \\
+    \textbf{Covers:} PR-VAL1, PR-VAL2 \\
+    \textbf{Initial State:} Alt text generation is operational. \\
+    \textbf{Input/Condition:} Process the images test set. \\
+    \textbf{Output/Result:} Accuracy metrics calculated; performance
+    within target thresholds. \\[2mm]
+    \textbf{How test will be performed:} Automated evaluation against
+    ground truth alt text; calculate accuracy, precision, and recall.
+
+  \item \textbf{Privacy of Uploaded Images} \\[2mm]
+    \textbf{Type:} Safety-Critical, Manual and Automated, Dynamic \\
+    \textbf{Covers:} PR-SCR1 \\
+    \textbf{Initial State:} User session active; image upload
+    interface loaded. \\
+    \textbf{Input/Condition:} Upload test images without opting to save. \\
+    \textbf{Output/Result:} Uploaded images removed from temporary
+    storage; no images stored in database. \\[2mm]
+    \textbf{How test will be performed:}
+    Upload images, end user session (logout or timeout), inspect
+    temporary storage and databases to verify images are deleted and
+    no personally identifiable data remains.
+
+  \item \textbf{Offensive or Biased Alt Text Prevention} \\[2mm]
+    \textbf{Type:} Safety-Critical, Automated, Dynamic \\
+    \textbf{Covers:} PR-SCR2 \\
+    \textbf{Initial State:} Alt text generation is operational. \\
+    \textbf{Input/Condition:} Process diverse image test set,
+    including sensitive content. \\
+    \textbf{Output/Result:} Generated alt text contains no offensive,
+    biased, or harmful language. \\[2mm]
+    \textbf{How test will be performed:}
+    Generate alt text for each test image, pass outputs through
+    moderation filters, confirm 0 percentage flagged content.
+
+  \item \textbf{WCAG 2.1 Level AA Accessibility Compliance} \\[2mm]
+    \textbf{Type:} Safety-Critical, Manual and Automated, Dynamic \\
+    \textbf{Covers:} PR-SCR3 \\
+    \textbf{Initial State:} Interface is loaded and interactive. \\
+    \textbf{Input/Condition:} Navigate and interact with all
+    interface elements. \\
+    \textbf{Output/Result:} Interface meets WCAG 2.1 Level AA
+    criteria; no visual strain or accessibility barriers. \\[2mm]
+    \textbf{How test will be performed:}
+    Perform automated accessibility scans (e.g., axe, Lighthouse) and
+    manual checks for color contrast, text resizing, keyboard
+    navigation, and visual comfort to confirm compliance.
+
+  \item \textbf{Screen Reader Interoperability} \\[2mm]
+    \textbf{Type:} Functional, Manual and Automated, Dynamic \\
+    \textbf{Covers:} OER-IAS1 \\
+    \textbf{Initial State:} Alt text generation is operational. \\
+    \textbf{Input/Condition:} Generate alt text and access it using
+    major screen readers (NVDA, JAWS, VoiceOver.) \\
+    \textbf{Output/Result:} Alt text is correctly parsed and read
+    aloud without formatting issues. \\[2mm]
+    \textbf{How test will be performed:}
+    Input generated alt text to NVDA, JAWS, and VoiceOver; verify
+    correct pronunciation, formatting, and comprehension; record any
+    errors or misread content.
+
+  \item \textbf{Supported Image Format Processing} \\[2mm]
+    \textbf{Type:} Functional, Automated, Dynamic \\
+    \textbf{Covers:} OER-IAS2 \\
+    \textbf{Initial State:} Image upload interface is operational. \\
+    \textbf{Input/Condition:} Upload images in JPG, JPEG, and PNG formats. \\
+    \textbf{Output/Result:} System correctly processes images and
+    generates accurate alt text. \\[2mm]
+    \textbf{How test will be performed:}
+    Prepare a set of test images in each supported format, upload to
+    the system, generate alt text, and validate output accuracy
+    against expected descriptions.
+
+  \item \textbf{Automated Accessibility Validator Integration} \\[2mm]
+    \textbf{Type:} Functional, Manual and Automated, Dynamic \\
+    \textbf{Covers:} OER-IAS3 \\
+    \textbf{Initial State:} System is operational with validator
+    interface enabled. \\
+    \textbf{Input/Condition:} Trigger accessibility validation using
+    WAVE or Axe. \\
+    \textbf{Output/Result:} Validation reports are successfully
+    generated and accessible through the interface. \\[2mm]
+    \textbf{How test will be performed:}
+    Run alt text through integrated validation tools; confirm report
+    generation, correct display in UI, and accurate reflection of
+    accessibility issues.
+
+  \item \textbf{Web Tool Deployment} \\[2mm]
+    \textbf{Type:} Productization, Manual and Automated, Dynamic \\
+    \textbf{Covers:} OER-PR1 \\
+    \textbf{Initial State:} System is hosted and deployed on a test server. \\
+    \textbf{Input/Condition:} Access web tool from multiple
+    institutional environments. \\
+    \textbf{Output/Result:} Tool is accessible, functional, and
+    validated through institutional testing. \\[2mm]
+    \textbf{How test will be performed:}
+    Deploy the system on institutional server; verify accessibility,
+    authentication, alt text generation, and performance; document
+    compliance with institutional standards.
+
+  \item \textbf{Core Feature Verification Before Release} \\[2mm]
+    \textbf{Type:} Release, Manual and Automated, Dynamic \\
+    \textbf{Covers:} OER-RL1 \\
+    \textbf{Initial State:} System is fully implemented in test environment. \\
+    \textbf{Input/Condition:} Execute image analysis, text
+    generation, and accessibility validation modules. \\
+    \textbf{Output/Result:} All core features function correctly;
+    verification and validation documentation confirms compliance. \\[2mm]
+    \textbf{How test will be performed:}
+    Run full test suite for each core feature; document results,
+    record any failures, and confirm all functional requirements are
+    met prior to release.
+
+  \item \textbf{Release Readiness for Capstone Demonstration} \\[2mm]
+    \textbf{Type:} Release, Manual and Automated, Dynamic \\
+    \textbf{Covers:} OER-RL2 \\
+    \textbf{Initial State:} System is deployed to staging environment. \\
+    \textbf{Input/Condition:} Conduct a full system walkthrough aligned
+    with March 2026 Capstone schedule. \\
+    \textbf{Output/Result:} System is fully functional, accessible, and
+    ready for demonstration. \\[2mm]
+    \textbf{How test will be performed:}
+    Perform end-to-end functional testing, accessibility
+    verification, and deployment validation; ensure all components
+    operate as expected and system is stable for final presentation.
+
+  \item \textbf{Performance and Metrics Logging} \\[2mm]
+    \textbf{Type:} Maintenance Support, Automated, Dynamic \\
+    \textbf{Covers:} MS-SUP1 \\
+    \textbf{Initial State:} System operational with
+    monitoring/logging enabled. \\
+    \textbf{Input/Condition:} Execute standard workflows including
+    image uploads, alt text generation, and API interactions. \\
+    \textbf{Output/Result:} Metrics for API calls, latency, error
+    rates, and model confidence scores are logged and accessible. \\[2mm]
+    \textbf{How test will be performed:}
+    Perform typical user operations; monitor logs and dashboards;
+    export reports to verify all key metrics are accurately recorded,
+    securely stored, and available for analysis.
 
 \end{enumerate}
-
-\subsubsection{Area of Testing2}
-
-...
 
 \subsection{Traceability Between Test Cases and Requirements}
+Table \ref{tab:sys-tests} highlights the traceability between each test case listed above and 
+the functional and non-functional requirements in our SRS document. 
 
-\wss{Provide a table that shows which test cases are supporting which
-  requirements.}
+\begin{longtable}{|p{6.0cm}|p{8.0cm}|}
+  \captionsetup{justification=raggedright,singlelinecheck=false}
+  \caption{Connections between \textit{Reading4All} system tests and
+  SRS requirements}
+  \label{tab:sys-tests} \\
+  \toprule
+  {\textbf{Test ID}} & {\textbf{Requirement ID(as per SRS)}}\\
+  \midrule
+  FR-ST 1 & FR-1 \\ \hline
+  FR-ST 2 & FR-2 \\ \hline
+  FR-ST 3 & FR-3 \\ \hline
+  FR-ST 4 & FR-4 \\ \hline
+  FR-ST 5 & FR-5 \\ \hline
+  FR-ST 6 & FR-6 \\ \hline
+  NFR-ST 1 & LFR-AR1, LFR-AR2, LFR-AR3, LFR-AR4. \\ \hline
+  NFR-ST 2 & LFR-SR1, LFR-SR2, LFR-SR3 \\ \hline
+  NFR-ST 3 & UHR-EUR1, UHR-EUR2, UHR-EUR3, UHR-EUR4 \\ \hline
+  NFR-ST 4 & UHR-PIR1 \\ \hline
+  NFR-ST 5 & UHR-LR1, UHR-AR1, UHR-AR2\\ \hline
+  NFR-ST 6 & PR-SL1, PR-SL2\\ \hline
+  NFR-ST 7 & PR-SR-HA1, PR-SR-HA2, PR-SR-HA3 \\ \hline
+  NFR-ST 8 & PR-PAR1, PR-PAR2, PR-PAR3, CR-LR1 \\ \hline
+  NFR-ST 9 & PR-RFT1, PR-RFT2 \\ \hline
+  NFR-ST 10 & PR-CR1, PR-CR2 \\ \hline
+  NFR-ST 11 & PR-SER1, PR-LR1, PR-LR2, MS-MNT1, MS-MNT2,MS-MNT3, MS-AD1, MS-AD2, MS-AD3 \\ \hline
+  NFR-ST 12 & SR-AR1, SR-AR2, SR-IR1, SR-IR2, SR-PR1, SR-PR2, SR-AU1, SR-AU2, SR-IM1, SR-IM2 \\ \hline
+  NFR-ST 13 & CR1, CR2, CR3 \\ \hline
+  NFR-ST 14 & CR-LR1, CR-SCR1, CR-SCR2 \\ \hline
+  NFR-ST 15 & OER-EP1, OER-EP2, OER-WE1, OER-WE2 \\ \hline
+  NFR-ST 16 & PR-VAL1, PR-VAL2 \\ \hline
+  NFR-ST 17 & PR-SCR1 \\ \hline
+  NFR-ST 18 & PR-SCR2 \\ \hline
+  NFR-ST 19 & PR-SCR3 \\ \hline
+  NFR-ST 20 & OER-IAS1 \\ \hline
+  NFR-ST 21 & OER-IAS2 \\ \hline
+  NFR-ST 22 & OER-IAS3 \\ \hline
+  NFR-ST 23 & OER-PR1 \\ \hline
+  NFR-ST 24 & OER-RL1 \\ \hline
+  NFR-ST 25 & OER-RL2 \\ \hline
+  NFR-ST 26 & MS-SUP1 \\
+  \bottomrule
+\end{longtable}
 
 \section{Unit Test Description}
-
-\wss{This section should not be filled in until after the MIS (detailed design
-  document) has been completed.}
-
-\wss{Reference your MIS (detailed design document) and explain your overall
-philosophy for test case selection.}  
-
-\wss{To save space and time, it may be an option to provide less detail in this section.  
-For the unit tests you can potentially layout your testing strategy here.  That is, you 
-can explain how tests will be selected for each module.  For instance, your test building 
-approach could be test cases for each access program, including one test for normal behaviour 
-and as many tests as needed for edge cases.  Rather than create the details of the input 
-and output here, you could point to the unit testing code.  For this to work, you code 
-needs to be well-documented, with meaningful names for all of the tests.}
-
+\label{Unit Test Desc}
+This section is not currently applicable and will be completed at a later time. 
 \subsection{Unit Testing Scope}
-
-\wss{What modules are outside of the scope.  If there are modules that are
-  developed by someone else, then you would say here if you aren't planning on
-  verifying them.  There may also be modules that are part of your software, but
-  have a lower priority for verification than others.  If this is the case,
-  explain your rationale for the ranking of module importance.}
 
 \subsection{Tests for Functional Requirements}
 
-\wss{Most of the verification will be through automated unit testing.  If
-  appropriate specific modules can be verified by a non-testing based
-  technique.  That can also be documented in this section.}
 
-\subsubsection{Module 1}
+\subsection{Tests for Non-Functional Requirements}
 
-\wss{Include a blurb here to explain why the subsections below cover the module.
-  References to the MIS would be good.  You will want tests from a black box
-  perspective and from a white box perspective.  Explain to the reader how the
-  tests were selected.}
-
-\begin{enumerate}
-
-\item{test-id1\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-
-\item{...\\}
-    
-\end{enumerate}
-
-\subsubsection{Module 2}
-
-...
-
-\subsection{Tests for Nonfunctional Requirements}
-
-\wss{If there is a module that needs to be independently assessed for
-  performance, those test cases can go here.  In some projects, planning for
-  nonfunctional tests of units will not be that relevant.}
-
-\wss{These tests may involve collecting performance data from previously
-  mentioned functional tests.}
-
-\subsubsection{Module ?}
-		
-\begin{enumerate}
-
-\item{test-id1\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
-
-\end{enumerate}
-
-\subsubsection{Module ?}
-
-...
 
 \subsection{Traceability Between Test Cases and Modules}
 
-\wss{Provide evidence that all of the modules have been considered.}
-				
+
+\newpage
+
 \bibliographystyle{plainnat}
 
 \bibliography{../../refs/References}
@@ -490,40 +966,595 @@ How test will be performed:
 
 \section{Appendix}
 
-This is where you can place additional information.
 
+\subsection{Evaluation Metrics Summary}
+\label{appendix:evaluation-metrics}
+The following table summarizes the evaluation metrics that will be
+used to assess the quality and effectiveness of the alternative text
+generated by th \textit{Reading4All} system. Each metric includes its scale
+type, acceptable range, and a brief description of its purpose.
+\begin{table}[H]
+  \centering
+  \caption{Evaluation Metrics Summary}
+  \label{tab:evaluation-metrics-summary}
+  \begin{tabular}{ |p{3.5cm}|p{3cm}|p{3cm}|p{4cm}| }
+    \hline
+    \textbf{Metric Name} & \textbf{Scale Type} & \textbf{Acceptable
+    Range} & \textbf{Summary Description} \\
+    \hline
+    Sufficiency of Description
+    & Categorical (1--3)
+    & $\geq$ 3 (Sufficient)
+    & Does the alt text convey enough information to achieve the
+    intended objective? \\
+    \hline
+    Length Appropriateness
+    & Categorical (1--3)
+    & $\geq$ 3 (Proper Length)
+    & Is the alt text concise yet complete (not too short or overly verbose)? \\
+    \hline
+    Accessibility / Usability
+    & Numerical (0--3)
+    & $\geq$ 2 (Acceptable)
+    & Assistive-technology compatibility and clarity; aligns with
+    WCAG 2.1 Level~AA use. \\
+    \hline
+    Learning Impact
+    & Numerical (0--3)
+    & $\geq$ 2 (Positive)
+    & Does the alt text support or enhance user understanding in
+    learning contexts? \\
+    \hline
+    Qualitative Feedback Notes
+    & Textual
+    & N/A
+    & Free-form comments on clarity, tone, and suggested improvements. \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\subsection{SRS Team and Peer Review Checklist}
+\label{appendix:srs_checklist}
+\textbf{Stakeholders and Users:}
+\begin{itemize}
+  \item All relevant stakeholders are listed and explained
+  \item  Personas clearly explain the stakeholders pain points, needs
+    and their relationship to system being designed.
+\end{itemize}
+\textbf{Mandated Constraints:}
+\begin{itemize}
+  \item All solution constraints are clearly explained, attainable, and
+    measurable.
+\end{itemize}
+\textbf{Functional and Non-Functional Requirements:}
+\begin{itemize}
+  \item Each requirement has a unique identifier.
+  \item All core system features have corresponding functional requirement.
+  \item Each functional requirement is clearly defined and measurable.
+  \item Numerical constraints (ex, number of steps or completion time)
+    are realistic and achievable.
+  \item All the functional requirement are unique, and do not conflict
+    with one another
+  \item All the functional requirements can be traced to a business and
+    product use case.
+  \item Each non-functional requirements is clearly defined and measurable.
+  \item All usability and accessibility needs are addressed by a requirement.
+  \item Performance related numerical constraints are achievable.
+  \item All the Non-functional requirements are unique, and do not
+    conflict with one another.
+\end{itemize}
+
+\subsection{Verification and Validation Plan Verification Checklist}
+\label{appendix:v_v_checklist}
+
+\textbf{General Document Criteria}:
+\begin{itemize}
+  \item Mission critical qualities are thoroughly discussed and
+    referenced throughout the plan.
+  \item Relevant documents such as SRS and HA are referenced and
+    connected to plan.
+\end{itemize}
+\textbf{SRS Verification}:
+\begin{itemize}
+  \item Verification process is thorough and includes key stakeholders.
+  \item Provided checklist can guide review process and bring attention
+    to important parts of document.
+  \item Describes a plan for documenting and implementing feedback.
+  \item Criteria for evaluating SRS quality is defined. 
+  \item  The data collected as evidence for VnV is clear. 
+\end{itemize}
+\textbf{Design Verification}:
+\begin{itemize}
+  \item Design review methods are specified, explained and justified. 
+  \item The process for documenting and resolving design review feedback is described. 
+  \item  The data collected as evidence for VnV is clear. 
+  \item Automated testing and verification tools are specified. 
+\end{itemize}
+\textbf{VnV Plan Verification}:
+\begin{itemize}
+  \item Verification methods are specified, explained and justified.
+  \item Mutation testing will be used to verify the effectiveness of unit tests. 
+  \item The data collected as evidence for VnV is clear. 
+\end{itemize}
+\textbf{System Tests for Requirements}:
+\begin{itemize}
+  \item All test cases are detailed and specify input data.
+  \item Survey questions are outlined for usability testing.
+  \item System tests connect and cover all system requirements.
+  \item Traceability between test cases and requirement is clear and documented.
+\end{itemize}
+
+\subsection{Design Documents Checklist}
+\label{appendix:dd_checklist}
+\textbf{Module Guide}:
+\begin{itemize}
+  \item Each identified module follows the “one module, one secret” rule.
+  \item “Uses” relation forms a clear hierarchy and represents dependency.
+  \item Secrets are expressed as nouns or concepts, not actions.
+  \item Traceability matrix shows that every requirement is satisfied
+    by at least one module.
+  \item Traceability matrix shows that every module satisfies at least
+    one requirement.
+  \item Traceability matrix shows that every likely change maps to a module.
+  \item Behaviour-Hiding modules trace back to requirements.
+  \item Software-Decision Hiding modules introduce necessary design concepts.
+  \item Each Software-Decision Hiding module supports at least one
+    Behaviour-Hiding module.
+  \item Anticipated changes include all likely changes from SRS.
+\end{itemize}
+
+\textbf{Module Interface Specification}:
+\begin{itemize}
+  \item Data-only modules are modelled as exported types.
+  \item Modules with state and behaviour are correctly defined as ADTs.
+  \item Single-instance modules are correctly identified as Abstract Objects.
+  \item Behaviour-only modules are defined as Library Modules (no state).
+  \item Generic modules use the Generic keyword appropriately.
+  \item Abstract Objects include proper initialization methods and assumptions.
+  \item Exported constants are literal, compile-time values.
+  \item Modified Hoffmann and Strooper notation (or equivalent) is used
+    consistently.
+  \item All local functions are used somewhere in the module specification.
+  \item Each access program has a clear purpose (output or state change).
+  \item State transitions clearly indicate what changes and where.
+  \item State invariants hold before and after access program execution.
+  \item Specification is consistent, essential, general, and
+    independent of implementation details.
+  \item Every module in the Module Guide (MG) appears in the MIS.
+\end{itemize}
+
+\newpage 
 \subsection{Symbolic Parameters}
 
-The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
-Their values are defined in this section for easy maintenance.
+Table \ref{tab:symbolic-constants} defines constants and their values for requirements and test cases used
+in the \textit{Reading4All} system.
 
-\subsection{Usability Survey Questions?}
+\begin{longtable}{|p{8.0cm}|p{8.0cm}|}
+  \captionsetup{justification=raggedright,singlelinecheck=false}
+  \caption{Symbolic Constants used in the \textit{Reading4All} System}
+  \label{tab:symbolic-constants} \\
+  \toprule
+  {\textbf{Name}} & {\textbf{Value}}\\
+  \midrule
+  T\_ALT\_GEN\_SMALL & 3 seconds(s) \\
+  T\_ALT\_GEN\_LARGE & 8 s \\
+  T\_UI\_RESP & 300 miliseconds (ms) \\
+  R\_SUFFICIENCY & 85\% \\
+  R\_LENGTH & 90\% \\
+  R\_USABILITY\_MEDIAN & 3 (rating) \\
+  R\_USABILITY\_MIN & 2 (rating) \\
+  T\_ERROR\_HANDLE & 2 s \\
+  T\_RECOVERY & 5 s \\
+  CAP\_CONCURRENT & 2 requests \\
+  CAP\_STORAGE & 500 images/day \\
+  MAINT\_TIME & 2 person-days/quarter \\
+  COMPAT\_VERSIONS & 2 releases \\
+  IMG\_SIZE\_BIG & 10 MEGABYTES (MB) \\
+  IMG\_SIZE\_SMALL & 2 MEGABYTES \\
+  TLS\_VERSION & 1.2 \\
+  FILE\_DELETE\_TIME & 60 s \\
+  FILE\_TYPES & .png, .jpg, .jpeg, .svg, .webp \\
+  NETWORK\_SOURCE\_POLICY & McMaster SSO tokens or IP ranges only\\
+  TEAM\_SIZE & 5 students \\
+  HOURS\_RESEARCH & 40 hours \\
+  HOURS\_BACKEND & 120 hours \\
+  HOURS\_FRONTEND & 80 hours \\
+  HOURS\_TESTING & 60 hours \\
+  HOURS\_DOCS & 30 hours \\
+  HOURS\_TOTAL & 330 hours \\
+  HOURS\_PROJECT & 1,320 person-hours \\
+  COST\_PER\_HOUR & \$20/hour(CAD) \\
+  COST\_TOTAL & \$26,400 CAD \\
+  COST\_ACTUAL & \$0 CAD \\
+  COST\_INCENTIVE\_MIN & \$100 CAD \\
+  COST\_INCENTIVE\_MAX & \$150 CAD \\
+  MAX\_ZOOM\_PERCENTAGE & 200\% \\
+  MIN\_CONTRAST\_RATIO & 4.5:1\\
+  MAX\_UPLOAD\_STEPS & 5 steps\\
+  MAX\_MINUTES & 5 minutes\\
+  USERS\_SUCCESS\_PERCENT & 80\%\\
+  MAX\_ERROR\_RECOVER & 2 seconds \\
+  LEARNING\_PERCENT & 90\% \\
+  MAX\_LEARNING\_MINUTES & 5 minutes \\
+  MIN\_COMPENSATION\_DOLLARS & \$100 CAD \\
+  MAX\_COMPENSATION\_DOLLARS & \$150 CAD \\
+  LATEST\_RELEASES\_NUM & last 3 versions \\
+  MOST\_COMMON\_SR & top 3 screen readers \\
+  SFWR\_RELEASES & previous 2 releases \\
+  FEEDBACK\_TIME & 1 second \\
+  CAPACITY\_RTIME & 10 seconds \\
 
-\wss{This is a section that would be appropriate for some projects.}
+\bottomrule
+\end{longtable}
+
+\subsection{Usability Survey Questions}
+\label{appendix:usability}
+
+\begin{enumerate}[label=UA-Q \arabic*., wide=0pt, leftmargin=*]
+  \item \emph{What operating system and its version are you using?
+    (i.e. Windows, MacOS, etc.)}\\[2mm]
+    {\bf Purpose:} This is to collect information on the user to assess
+    the compatibility across different platforms and
+    whether accessibility or usability issues are system-dependent.
+
+  \item \emph{What browser are you using? (i.e. Google Chrome, Mozilla
+    Firefox, etc.)}\\[2mm]
+    {\bf Purpose:} This is to collect information on the user to assess
+    the compatibility across different browsers and
+    whether accessibility or usability issues are dependent on the browsers.
+
+  \item \emph{What assistive technologies or tools are you using (i.e.,
+      screen readers, magnifiers, voice control), and what specific model
+    or version, if applicable?}\\[2mm]
+    {\bf Purpose:} This collects information on the types and versions
+    of assistive technologies used by participants to understand how
+    different tools interact with the web tool
+    and to identify any issues specific to certain technologies.
+
+  \item \emph{Was the length of the generated alternative text
+    description too short, sufficient, or too long?}\\[2mm]
+    {\bf Purpose:} This is to gain feedback on whether the length of
+    the text description is sufficient enough
+    for the user to gain understanding on the learning objective of the
+    uploaded image.
+
+  \item \emph{Did the generated alternative text contain too much
+      irrelevant information? If so, how did this affect
+    your ability to learn?}\\[2mm]
+    {\bf Purpose:} This is to gain feedback on whether the alternative
+    text contained irrelevant information that deviated
+    from the main learning objective of the uploaded image. It is also
+    to understand what difficulties the stakeholder experiences
+    when there is too much irrelevant information.
+
+  \item \emph{Was the generated alternative text contain over-detailed?
+      If so, how did this affect
+    your ability to learn?}\\[2mm]
+    {\bf Purpose:} This is to determine whether the generated
+    alternative text includes excessive detail that may hinder user
+    comprehension or distract from the key information needed for
+    effective learning.
+
+  \item \emph{On a scale of 0-4, is the generated alternative text
+      presented in an accessible way? (0 = not accessible at all, 4 =
+    very accessible)}\\[2mm]
+    {\bf Purpose:} This is to ensure that the AI-generated alternative
+    text is presented in a manner that aligns with accessibility standards and
+    can be easily perceived, understood, and utilized by users relying
+    on assistive technologies such as screen readers.
+
+  \item \emph{On a scale of 0–4, how easy was it for you to use and
+      understand the generated alternative text? (0 = not easy at all, 4
+    = very easy)}\\[2mm]
+    {\bf Purpose:} This is to assess whether the generated alternative
+    text is presented in a way that supports ease of use and whether it
+    allows users to easily interact with
+    the interface and understand the content with minimal confusion or effort.
+
+  \item \emph{What is your primary purpose for using this web tool, and
+      how do you typically use it during your tasks or learning
+    activities?}\\[2mm]
+    {\bf Purpose:} This is to understand the user’s main goals and
+    usage patterns when interacting with the web tool and to identify
+    any areas for improvement in how the web tool's features
+    can better support their needs.
+
+  \item \emph{What changes or improvements would you suggest to make
+      this web tool more accessible and enhance your learning experience,
+    if any?}\\[2mm]
+    {\bf Purpose:} This question aims to collect additional user
+    feedback on accessibility and usability improvements that may not
+    have been addressed in the previous questions of this survey.
+\end{enumerate}
+
+\subsection{Glossary of All Terms}
+
+\paragraph*{Accuracy}
+The degree to which generated descriptions capture the image’s
+content correctly.
+
+\paragraph*{AI (artificial intelligence)}
+Techniques that enable computers to perform tasks that normally
+require human intelligence.
+
+\paragraph*{Alt Text (Alternative Text)}
+Textual description of non-text content such as images that allow
+accessibility tools such as screen readers to convey the content.
+
+\paragraph*{AODA (Accessibility for Ontarians with Disabilities Act)}
+Ontario law aimed at improving accessibility for people with
+disabilities by removing and preventing barriers when designing.
+
+\paragraph*{API (Application Programming Interface)}
+Rules and protocols that allows different software programs to
+communicate with each other.
+
+\paragraph*{Backend}
+Server components handling processes of an application that users don't see.
+
+\paragraph*{Benchmarking}
+The comparing of performance or quality of one's system against known
+systems or datasets.
+
+\paragraph*{Contrast Ratio}
+Luminance difference between text and background required by WCAG 2.1.
+
+\paragraph*{Dataset Bias}
+Systematic skew in training data that can harm fairness or accuracy
+of the model.
+
+\paragraph*{Edge Case}
+Uncommon input or scenario that the system must handle safely.
+
+\paragraph*{FIPPA (Freedom of Information and Protection of Privacy Act)}
+Ontario privacy law affecting the university data in the Authentication process.
+
+\paragraph*{Frontend}
+User interface in the browser that handles input, feedback, and
+accessibility features.
+
+\paragraph*{Git/Github}
+Version control and collaboration platform.
+
+\paragraph*{HTTP/HTTPS}
+Web protocols in which HTTPS adds a transport layer security
+encryption for integrity and privacy.
+
+\paragraph*{Issue (Github)}
+Tracked unit of task, bug, or feature with discussion and linkage to
+commits in Github.
+
+\paragraph*{JAWS (Job Access with Speech)}
+A screen reader software available on Windows.
+
+\paragraph*{JSON (JavaScript Object Notation) / YAML (Yet Another
+Markup Language)}
+Human-readable data formats used for configs and API payloads.
+
+\paragraph*{Latency}
+Time from user action such as uploading an image to a system response
+or alt text generation
+
+\paragraph*{Low Vision}
+Reduced level of vision that interferes with daily activities and is
+to be considered in designing the user interface and testing.
+
+\paragraph*{Manual Accessibility Testing}
+Human review or testing of user interface and alt text.
+
+\paragraph*{Modularity}
+Separating user interface, vision, language, and validation for maintainability.
+
+\paragraph*{NVDA (NonVisual Desktop Access)}
+A free screen reader available on Windows.
+
+\paragraph*{OCR (Optical Character Recognition)}
+Extracts embedded text in images or diagrams.
+
+\paragraph*{PII (Personally Identifiable Information)}
+Data that identifies a person and must not appear in outputs or logs
+for security.
+
+\paragraph*{Screen Magnifier}
+Assistive technology to enlarge screen content.
+
+\paragraph*{Screen Reader}
+Assistive technology that reads text aloud.
+
+\paragraph*{Session History}
+Record of user uploads and generated alt text during the current session.
+
+\paragraph*{Stakeholder}
+Anyone affected by or influencing the system.
+
+\paragraph*{Technical Diagram}
+An informational visual used in post-secondary course materials.
+
+\paragraph*{TLS (Transport Layer Security)}
+Protocol providing encryption and integrity.
+
+\paragraph*{WCAG 2.1 (Web Content Accessibility Guidelines)}
+International standard for accessible web content.
+
+\paragraph*{WCAG Levels (A/AA/AAA)}
+Different conformance tiers to WCAG 2.1 where Level AA is the target
+for the project.
 
 \newpage{}
 \section*{Appendix --- Reflection}
-
-\wss{This section is not required for CAS 741}
 
 The information in this section will be used to evaluate the team members on the
 graduate attribute of Lifelong Learning.
 
 \input{../Reflection.tex}
+\\
 
+\textbf{Team Reflection}
 \begin{enumerate}
-  \item What went well while writing this deliverable? 
-  \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
-  \item What knowledge and skills will the team collectively need to acquire to
+  \item \textbf{What knowledge and skills will the team collectively need to acquire to
   successfully complete the verification and validation of your project?
   Examples of possible knowledge and skills include dynamic testing knowledge,
   static testing knowledge, specific tool usage, Valgrind etc.  You should look to
-  identify at least one item for each team member.
-  \item For each of the knowledge areas and skills identified in the previous
+  identify at least one item for each team member.}
+  \begin{itemize}
+    \item Acquiring knowledge on the different types of testing (i.e. mutation testing, load testing) 
+    and how each are applicable to different aspects of our system. 
+    \item The knowledge on ways to conduct specific tests. For example, how to set up load tests and appropriately
+    recognizing the differences between the procedures of conducting the tests. 
+    \item Learning more about using coverage.py will be important in ensuring we can understand the reports
+    in order to add more tests if needed. 
+    \item The team requires more knowledge on integration of testing with our models. This includes building test suites 
+    that verify our model's outputs. 
+    \item Knowledge on writing efficient unit tests that are relevant and improves code coverage. Additionally, 
+    gaining more insight on using PyTest will help us become more efficient in testing our code. 
+  \end{itemize}
+  \item \textbf{For each of the knowledge areas and skills identified in the previous
   question, what are at least two approaches to acquiring the knowledge or
   mastering the skill?  Of the identified approaches, which will each team
-  member pursue, and why did they make this choice?
+  member pursue, and why did they make this choice?}
+  \begin{itemize}
+    \item Different types of testing (Casey): First approach is to research the different types of testing and understanding 
+    how each type is used in specific cases. Additionally, reading over the defined types of testing our project is using 
+    and looking ahead to how the tests will be implemented will help to understand testing better. 
+    \item Procedures of testing (Dhruv): First approach is going through 3S03 course notes to understand testing. Additionally, 
+    looking at tutorials or python notes on how these tests are typically conducted. 
+    \item Coverage.py (Moly): First approach is to read and watch tutorials on how to use coverage.py and its different
+    features. The second approach is to create a small project that will run coverage.py and use the results to see where
+    unit tests are missing.
+    \item Integration of Testing (Nawaal): First approach is to consult 3S03 notes and figure out what the largest type of testing 
+    is needed for the project. Additionally, consultion Dr. Smith and Dr. David for any additional information if needed.
+    \item Unit Tests and PyTest (Fiza): First approach is to look at PyTest documentation and gain more insight on the library. Also,
+    looking at sample projects that uses PyTest and going through 3S03 course notes will help in learning more about unit testing.
+  \end{itemize}
 \end{enumerate}
+
+
+\textbf{Fiza Sehar - Reflection}
+\begin{enumerate}
+  \item \textbf{What went well while writing this deliverable?}\\
+
+    We effectively organized the verification and validation framework
+    for \textit{Reading4All} by referencing both functional and
+    non-functional requirements from the SRS. We collaborated to design
+    clear, structured unit tests, ensuring traceability and consistency
+    across modules.
+
+    \item \textbf{What pain points did you experience during this
+    deliverable, and how did you resolve them?}\
+
+    This section was not required, but we completed it in detail before
+    realizing that, which limited our focus on other sections. This
+    caused minor conflicts regarding time and task distribution, which
+    we resolved through open communication and by redistributing
+    responsibilities for future deliverables. We decided to created
+    internal rubrics and clearer priorities to stay organized and avoid
+    similar issues moving forward.
+
+\end{enumerate}
+
+\textbf{Moly Mikhail - Reflection}
+\begin{enumerate}
+  \item \textbf{What went well while writing this deliverable?}\\
+    I believe many aspects went well while writing this deliverable.
+    Firstly, starting our work prior to the interim TA presentation
+    was really helpful.
+    This provided an opportunity to look ahead at the sections and
+    begin tackling them. While doing so, many questions and areas of
+    confusion arose, so having our upcoming meeting with our TA was
+    really helpful.
+    Ultimately, this meeting allowed us to clear up any confusion
+    about sections with the document, giving the group much more
+    confidence. Another thing that went well throughout this
+    deliverable is having team check-ins and reviews.
+    This allowed all team members to gain insight into the other
+    parts of the document and ensure we are aligned with the content.
+  \item \textbf{What pain points did you experience during this
+      deliverable, and how
+    did you resolve them?}\\
+    One pain point I experienced writing this deliverable was fully
+    understanding the difference between verification and validation.
+    This made it challenging to differentiate between the parts in section 3.
+    I resolved this pain point by reviewing lecture content,
+    researching more about validation and verification techniques and
+    finally clarifying with our TA during the interim presentation.
+    Having a good understanding about the difference between
+    validation and verification was essential in completing this
+    deliverable. Once I completed
+    my assigned sections, I reflected back on if I had completed the
+    appropriate activities, ensuring it correctly aligned with what
+    the section needed.
+\end{enumerate}
+
+\textbf{Casey Francine Bulaclac - Reflection}
+\begin{enumerate}
+  \item \textbf{What went well while writing this deliverable?}\\
+    What went well during this deliverable was gaining a better
+    understanding of the difference between verification and validation
+    and how each plays a role in making sure
+    our system works as intended. It also went smoothly linking our VnV
+    activities back to the requirements in the SRS, which helped us see
+    clearly how each test connects to what
+    the system is supposed to do. Overall, this deliverable helped our
+    team prepare for how to properly test the product we will be
+    developing, and also helped us gain
+    insight on how verification and validation ensure that our system
+    meets both its functional requirements and user needs.
+    \item \textbf{What pain points did you experience during this
+    deliverable, and how did you resolve them?}\
+    A pain point while writing the VnV plan was trying to differentiate
+    between the different
+    sections of Section 3. For example, at the beginning stages, it was
+    hard to understand the difference between
+    Implementation Verification and Software Validation. To resolve
+    this, I made sure to ask for clarification
+    from our TA to ensure that I understood each section properly and
+    also used sample VnV documents from teams in previous years as
+    guidance when writing these sections. Another pain point
+    experienced during this deliverable was a miscommunication
+    regarding the division
+    of work, specifically, assigning Section 5 as a task during the
+    initial stage when it was not yet required. To resolve this, our team
+    held a meeting to address the communication gap and established a
+    goal to ensure that all members clearly understand the scope and
+    requirements of each section
+    before starting future deliverables.
+\end{enumerate}
+
+\textbf{Dhruv Sardana - Reflection}
+\begin{enumerate}
+  \item \textbf{What went well while writing this deliverable?}\\
+  While writing this deliverable, it helped me to gauge a good understanding of the system requirements document (SRS) and how each requirement can be tested through various test cases. This deliverable also helped me understand the importance of traceability between requirements and test cases, ensuring that each requirement is adequately covered by at least one test case.
+  Besides that I was responsibel for writing the Unit Tests section which we later got to know wasnt required for this deliverable but it still was though provoking and helped me understand different modules of the system in depth.
+  
+  \item \textbf{What pain points did you experience during this
+    deliverable, and how did you resolve them?}\
+  A pain point I experienced during this deliverable was the initial confusion regarding the scope of the Unit Test Description section. 
+  I initially thought it was required for this deliverable, which led to some misallocation of time and effort. Due to this, it caused a few minor conflicts which helped us to shape our focus better for future deliverables.
+  Later on, I was assigned to restructure the POC plan and review the tracebility of System Tests to SRS document which helped me understand the requirements better.
+\end{enumerate}
+
+\textbf{Nawaal Fatima - Reflection}
+\begin{enumerate}
+  \item \textbf{What went well while writing this deliverable?}\
+    One thing that went really well was hoping to start our work early.
+    We met early, which wasn't the case and getting a head start
+    allowed us to become familiar with the
+    sections and plan how to tackle them efficiently. Another
+    positive aspect was improving our familiarity with Git. Working
+    collaboratively on the repository helped us manage changes better
+    and keep track of contributions, which made the teamwork smoother
+    and more organized.
+
+  \item \textbf{What pain points did you experience during this
+    deliverable, and how did you resolve them?}\
+    One pain point I experienced was some miscommunication and
+    expectation mismatches while working as a team. Specifically the
+    instructions for unit tests not being communicated until a couple of
+    days before the deadline left a bad taste in my mouth.
+    To resolve this, we had a huge team meeting, several check-ins
+    and clarified responsibilities, making sure everyone
+    was aligned on expectations. This improved collaboration and
+    ensured that the final deliverable met the group’s standards.
+  \end{enumerate}
 
 \end{document}
