@@ -20,6 +20,11 @@
 \usepackage{caption}
 \usepackage{fullpage}
 
+\newcommand{\String}{\mathsf{String}}
+\newcommand{\Real}{\ensuremath{\mathbb{R}}}
+\newcommand{\Bool}{\ensuremath{\mathbb{B}}}
+
+
 \hypersetup{
 bookmarks=true,     % show bookmarks bar?
 colorlinks=true,       % false: boxed links; true: colored links
@@ -292,10 +297,10 @@ cross-referencing}
 
 \subsection{Module}
 
-\wss{Short name for the module}
+UserInterfaceInteractions
 
 \subsection{Uses}
-
+[this is from other modules]
 
 \subsection{Syntax}
 
@@ -304,11 +309,14 @@ cross-referencing}
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\begin{tabular}{p{2.5cm} p{4cm} p{4cm} p{2cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-\wss{accessProg} & - & - & - \\
+uploadImage & imageFilePath:String & Success:\Bool & FileNotFound \\
+downloadText & altText:String & altTextFile:String (.txt) & NetworkError \\
+copyText & altText:String & Success:\Bool & ClipboardError \\
+editText & altText:String, editedText:String & Success:\Bool & NetworkError \\
 \hline
 \end{tabular}
 \end{center}
@@ -538,4 +546,4 @@ graduate attribute of Problem Analysis and Design.
 \end{enumerate}
 
 
-\end{document}
+\end{document} 
