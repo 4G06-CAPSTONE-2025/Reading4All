@@ -28,6 +28,7 @@
 September 22, 2025 & Dhruv Sardana, Moly Mikhail, Nawaal Fatima, Casey Francine Bulaclac & Initial version of document\\
 
 October 26, 2025 & Dhruv Sardana & Fixes to POC Plan\\
+October 28, 2025 & Dhruv Sardana & Change in risks and POC Fixes\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -195,7 +196,7 @@ The defined roles and current responsibilities per team member is as follows:
   The following criteria must be met in order to merge any changes into the ``Reading4All'' Repository
   \begin{itemize}
     \item All unit tests pass (CI pipeline is successful)
-    \item Test coverage is \textbf{95}\%
+    \item Test coverage is greater than  \textbf{90}\% for core logic and greater than \textbf{70}\% for UI functionality.
     \item Linting passes with zero warnings or errors
     \item At least one team member has reviewed and approved the PR
     \item User interface (UI) changes meet the Accessibility for Ontarians with Disabilities Act (AODA) and Web Content Accessibility Guidelines 2.1 (WCAG)
@@ -241,50 +242,59 @@ The project planner will have items to track and manage including:
 
 \section{Proof of Concept Demonstration Plan}
 
-Our Proof Of Concept(POC) will consist of roughly the following steps:
+Our Proof of Concept (POC) in November 2025 will focus on demonstrating the technical feasibility of automatic alt-text generation for a limited set of diagram types. The POC will include the following key steps:
+
 \begin{enumerate}
-    \item Identify the types of technical diagrams to target for alt text generation.
+    \item Select and prepare target diagram types.
     \begin{itemize}
-        \item Such as but not limited to flowcharts, circuit diagrams, graphs, UML diagrams, and mathematical figures.
+        \item Focus on 2--3 representative categories such as flowcharts, simple circuit diagrams, and mathematical figures.
+        \item Collect a small, curated dataset (10--20 examples per type) for validation and evaluation.
     \end{itemize}
 
-    \item Determine the accessibility requirements and standards for alt text.
+    \item Define minimal accessibility and quality criteria.
     \begin{itemize}
-        \item These requirements will be based on AODA and Web Content Accessibility Guidelines (WCAG) 2.1, focusing on clarity, conciseness, and compatibility with screen readers. For the proof of concept, the team will try to incoporate as many requirements possible.
+        \item Establish evaluation criteria derived from WCAG~2.1 and AODA, emphasizing clarity, conciseness, and semantic accuracy.
+        \item Create a short internal checklist to guide early text evaluation (e.g., describing structure, purpose etc).
     \end{itemize}
 
     \item Develop and evaluate the model’s ability to generate alt text for a selected set of diagrams.
     \begin{itemize}
-        \item We will test outputs using a curated dataset of diagrams.
-        \item Evaluation will include both automated metrics (e.g., text length, keyword coverage) and qualitative user testing with screen reader compatibility checks.
+        \item A baseline prototype will be built to generate alt text for a small, curated dataset of technical diagrams (e.g., 1--2 examples per type). 
+        \item The goal is to demonstrate feasibility by showing that the model can produce coherent and structurally relevant descriptions of diagram content.
+        \item The qualitative review will apply a simplified internal checklist derived from WCAG~2.1 principles to assess clarity, accuracy, and completeness.
+        \item Formal user testing and screen reader validation will be planned for a later project phase (during January) once the technical pipeline has been validated.
     \end{itemize}
 
-
-    \item Compare generated alt text against baseline approaches.
+    \item Conduct preliminary evaluation and benchmarking.
     \begin{itemize}
-        \item We will benchmark our tool’s outputs against existing alt text practices (manual descriptions, generic auto-generation) and results from the STEM Alt Text User Testing Project.
-        \item The goal is to show measurable improvements in accessibility and user comprehension.
+        \item Compare generated outputs against baseline approaches such as manual descriptions or generic auto-generation tools.
+        \item Measure improvements in content structure, clarity, and technical accuracy relative to baselines.
     \end{itemize}
 
-    \item Demonstrate proof of integration with tab based navigation on user interface.
+    \item Demonstrate proof of integration with assistive and interface technologies.
     \begin{itemize}
-        \item Final validation will involve testing with tab based keyboard navigation to ensure all user interface components can be navigated and function properly
+        \item Conduct internal checks to ensure alt-text output is compatible with standard screen readers and basic tab-based navigation on the user interface.
+        \item Validate that generated descriptions appear in the correct reading order and are interpretable by assistive software.
     \end{itemize}
 \end{enumerate}
 
+
 The following is a brief list of primary risks to our success and how the POC results can mitigate them: 
 \begin{itemize}
-    \item \textbf{Risk:} The model may not be able to accurately generate alternative text that is considered accessible. \\
-    \textbf{Mitigation:} The POC will include testing for the model on a diverse set of diagrams to evaluate its performance and regulate according to  Accessibility for Ontarians with Disabilities Act (AODA) standards.
-      
-    \item \textbf{Risk:} The tool may not integrate smoothly with assistive technologies (e.g., screen readers).  \\
-    \textbf{Mitigation:} The POC will explicitly test generated alt text with standard screen readers to confirm compatibility and usability.  
+  \item \textbf{Risk:} The model may struggle to generate meaningful or contextually accurate descriptions due to limited data or model inaccuracies.\\
+  \textbf{Mitigation:} The POC will start with a small, well-defined dataset of diagram types and use existing open-source Optical Content Recognition software and captioning tools to ensure baseline functionality before further expansion.
 
-    \item \textbf{Risk:} End-users may perceive the generated alt text as inaccurate or misleading, reducing trust in the tool.  \\
-    \textbf{Mitigation:} The POC will incorporate a human-in-the-loop feedback mechanism, enabling iterative validation and correction of generated text.  
-    
-    \item \textbf{Risk:} The project may face time constraints that could impact the depth of development. \\
-    \textbf{Mitigation:} The POC will prioritize essential features and functionalities, allowing for a focused approach that can be expanded upon in future iterations.
+  \item \textbf{Risk:} The team may encounter technical unfamiliarity when integrating computer vision and language generation components.\\
+  \textbf{Mitigation:} The development process will be modularized into smaller subtasks (e.g., image parsing, text generation), and existing frameworks will be leveraged to reduce integration complexity.
+
+  \item \textbf{Risk:} Acquiring or preparing a suitable dataset of annotated diagrams may prove challenging, limiting the quality of training and testing.\\
+  \textbf{Mitigation:} The POC will rely on publicly available academic diagrams or synthetically generated data to validate feasibility, documenting assumptions and limitations for later improvement.
+
+  \item \textbf{Risk:} Evaluation of generated alt text may be subjective and lack standardized metrics for “quality.”\\
+  \textbf{Mitigation:} A simplified internal evaluation rubric based on WCAG~2.1 principles (clarity, accuracy, and completeness) will be applied consistently across outputs to ensure fair comparisons.
+
+  \item \textbf{Risk:} The team may face time constraints in implementing and testing all desired features within the November POC timeline.\\
+  \textbf{Mitigation:} The POC will prioritize core technical feasibility—proving the model can generate relevant alt text—while deferring extensive user testing and accessibility validation to later project phases.
 \end{itemize}
 
 \section{Expected Technology}
