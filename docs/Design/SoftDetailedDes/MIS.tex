@@ -306,15 +306,19 @@ UserInterfaceInteractions
 
 \subsubsection{Exported Constants}
 
+\texttt{SUPPORTED\_IMG\_TYPES = \{"PNG", "JPEG"\}}\\
+\texttt{OUTPUT\_FILE\_TYPE = \{".txt"\}}\\
+\texttt{MAX\_IMG\_SIZE = 10MB}
+
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{2.5cm} p{4cm} p{4cm} p{2cm}}
+\begin{tabular}{p{2.5cm} p{4cm} p{4cm} p{3cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-uploadImage & imageFilePath:String & Success:\Bool & FileNotFound \\
-downloadText & altText:String & altTextFile:String (.txt) & NetworkError \\
+uploadImage & imageFilePath:String & Success:\Bool & FileNotFound, FileTypeNotSupported, FileTooLarge\\
+downloadText & altText:String & altTextFile:String & NetworkError \\
 copyText & altText:String & Success:\Bool & ClipboardError \\
 editText & altText:String, editedText:String & Success:\Bool & NetworkError \\
 \hline
@@ -326,26 +330,65 @@ editText & altText:String, editedText:String & Success:\Bool & NetworkError \\
 \subsubsection{State Variables}
 
 \wss{Not all modules will have state variables.  State variables give the module
-  a memory.}
+  a memory.} \\
+
+None
 
 \subsubsection{Environment Variables}
 
 \wss{This section is not necessary for all modules.  Its purpose is to capture
   when the module has external interaction with the environment, such as for a
-  device driver, screen interface, keyboard, file, etc.}
+  device driver, screen interface, keyboard, file, etc.} 
+
+\begin{itemize}
+  \item Clipboard - system's clipboard interface for copy function.
+  \item HTTPClient - used to call backend services.
+  \item ScreenReaderAPI - for compatibility with screenreaders. [should this be moved to view]
+  \item Keyboard - receives key presses for keyboard navigation. 
+\end{itemize}
+
 
 \subsubsection{Assumptions}
 
 \wss{Try to minimize assumptions and anticipate programmer errors via
-  exceptions, but for practical purposes assumptions are sometimes appropriate.}
+  exceptions, but for practical purposes assumptions are sometimes appropriate.} 
+  
+  \begin{itemize}
+    \item Clipboard access is enabled by the user for \texttt{copyText}.
+    \item User allows system to access files for uploading images and downloading alt text. 
+    \item \texttt{uploadImage} is called before any other access program.
+  \end{itemize}
+
 
 \subsubsection{Access Routine Semantics}
 
-\noindent \wss{accessProg}():
+\noindent \textbf{uploadImage(imageFilePath)}:
 \begin{itemize}
-\item transition: \wss{if appropriate} 
-\item output: \wss{if appropriate} 
-\item exception: \wss{if appropriate} 
+\item transition: \texttt{HTTPClient} sends the image bytes into the backend service which stores the image for that session, and communicates 
+with the AI model for alt text generation. 
+\item output: returns \texttt{true} iff the backend server acknowledges and is able to process the image.
+\item exception: FileNotFound, FileTypeNotSupported (not in \texttt{SUPPORT\_IMG\_TYPES}), and FileTooLarge (not within \texttt{MAX\_IMG\_SIZE})
+\end{itemize}
+
+\noindent \textbf{downloadText(altText)}:
+\begin{itemize}
+\item transition: None (read-only fetch).
+\item output: a \texttt{.txt} payload that contains the generated alt text. 
+\item exception: NetworkError.
+\end{itemize}
+
+\noindent \textbf{copyText(altText)}:
+\begin{itemize} 
+\item transition: Clipboard := altText
+\item output: returns \texttt{true} iff clipboard write succeeds. 
+\item exception: ClipboardError.
+\end{itemize}
+
+\noindent \textbf{editText(altText,editedText)}:
+\begin{itemize}
+\item transition: \texttt{HTTPClient} sends update to backend and stored altText for uploaded image is replaced with editedText.
+\item output: return \texttt{true} iff server acknowledges the update.
+\item exception: NetworkError.
 \end{itemize}
 
 \wss{A module without environment variables or state variables is unlikely to
@@ -356,11 +399,21 @@ editText & altText:String, editedText:String & Success:\Bool & NetworkError \\
   will have one or the other.}
 
 \subsubsection{Local Functions}
-
 \wss{As appropriate} \wss{These functions are for the purpose of specification.
   They are not necessarily something that is going to be implemented
   explicitly.  Even if they are implemented, they are not exported; they only
-  have local scope.}
+  have local scope.} 
+\begin{itemize}
+  \item \textbf{isSupportedImage(filePath:String) \texttt{->} \Bool}: returns \texttt{true} if 
+  the file type $\in$ \texttt{SUPPORTED\_IMG\_TYPES} 
+  \item \textbf{checkImgSize(filePath:String) \texttt{->} \Bool}: returns \texttt{true} if 
+  the size of the image $\le$ \texttt{MAX\_IMG\_SIZE}
+  \item \textbf{saveAsTxt(altText: String) \texttt{->} filePath:String}: wraps generated alt text
+   into a \texttt{.txt} file for \texttt{downloadText()}
+\end{itemize}
+
+
+
 
 
 \section{MIS of Authentication Module}\label{authentication} \wss{Use labels for
