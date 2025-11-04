@@ -405,14 +405,14 @@ with the AI model for alt text generation.
   have local scope.} 
 \begin{itemize}
   \item \textbf{isSupportedImage(filePath:String) \texttt{->} \Bool}: returns \texttt{true} if 
-  the file type $\in$ \texttt{SUPPORTED\_IMG\_TYPES} 
+  the file type $\in$ \texttt{SUPPORTED\_IMG\_TYPES}.
   \item \textbf{checkImgSize(filePath:String) \texttt{->} \Bool}: returns \texttt{true} if 
-  the size of the image $\le$ \texttt{MAX\_IMG\_SIZE}
+  the size of the image $\le$ \texttt{MAX\_IMG\_SIZE}.
   \item \textbf{saveAsTxt(altText: String) \texttt{->} filePath:String}: wraps generated alt text
-   into a \texttt{.txt} file for \texttt{downloadText()}
+   into a \texttt{.txt} file for \texttt{downloadText()}.
+  \item \textbf{buildUploadPayload(filePath: String) \texttt{->} Binary (?)}: reads the file and constructs the binary payload for the 
+  \texttt{uploadImage} function. 
 \end{itemize}
-
-
 
 
 
