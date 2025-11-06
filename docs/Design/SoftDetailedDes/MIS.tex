@@ -156,7 +156,7 @@ The following table is taken directly from the Module Guide document for this pr
 \newpage
 ~\newpage
 
-\section{MIS of \wss{Module Name}} \label{Module} \wss{Use labels for
+\section{MIS of Backend Controller} \label{Module} \wss{Use labels for
   cross-referencing}
 
 \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
@@ -165,24 +165,39 @@ The following table is taken directly from the Module Guide document for this pr
 
 \subsection{Module}
 
-\wss{Short name for the module}
+\texttt{BackendController}
 
 \subsection{Uses}
+Serves as the coordinator between the frontend, backend and machine learning modules. 
+\begin{itemize}
+  \item Forwards frontend requests to the appropriate backend modules, such authentication or image validation.
+  \item Sends validated inputs to the ML Model for alt-text generation. 
+  \item Retrieves generated alt-text and returns it to the frontend modules. 
+\end{itemize}
 
 
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
+\texttt{SESSION\_TIMEOUT}: $\mathbb{N}$ - Specifies the amount of time in minutes a users logged-in session can remain active for before requiring reauthentication.\\ \\
+\texttt{API\_RESPONSE\_TIMEOUT}: $\mathbb{N}$ - Specifies the amount of time in seconds that the controller waits for a response from other modules before timing out.\\
 
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\begin{tabular}{p{3cm} p{4cm} p{3cm} p{2cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-\wss{accessProg} & - & - & - \\
+validateUser & userToken & Boolean & InvalidTokenException \\
 \hline
+validateImage & image, userToken & Boolean & InvalidImageException\\
+\hline
+sendToModel & image, userToken & None & AltTextGenerationError\\
+\hline 
+getAltText & image, userToken & altText & AltTextNotFoundException\\
+\hline 
+returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableException \\
 \end{tabular}
 \end{center}
 
@@ -198,20 +213,60 @@ The following table is taken directly from the Module Guide document for this pr
 \wss{This section is not necessary for all modules.  Its purpose is to capture
   when the module has external interaction with the environment, such as for a
   device driver, screen interface, keyboard, file, etc.}
+  \begin{itemize}
+    \item Frontend Modules: Receives user requests such as image uploads and returns responses such alt-text generation or error messages.
+    \item User Authentication Modules: Sends the user's session token to module to verify users identity. 
+    \item Image Validation Modules: Sends the user's inputted image to be confirm it meets the required format and size, prior to alt-text generation.
+    \item Machine Learning Modules: Sends users validated image to ML model to begin alt text generation.
+  \end{itemize}
 
 \subsubsection{Assumptions}
 
 \wss{Try to minimize assumptions and anticipate programmer errors via
   exceptions, but for practical purposes assumptions are sometimes appropriate.}
+\begin{itemize}
+  \item Frontend, User authentication, Image validation and machine learning modules are correctly operating and reachable. 
+  \item Network connection is available for API communication. 
+\end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
-\noindent \wss{accessProg}():
+\noindent \texttt{validateUser(userToken)}:
 \begin{itemize}
-\item transition: \wss{if appropriate} 
-\item output: \wss{if appropriate} 
-\item exception: \wss{if appropriate} 
+\item transition: Sends the \texttt{userToken} to the User Authentication Module for Verification.
+\item output: Returns \texttt{True} if the user is valid, otherwise \texttt{False} is returned.
+\item exception: \texttt{InvalidTokenException} is raised if token is expired or cannot be validated. 
 \end{itemize}
+
+
+
+\noindent \texttt{validateImage(image,userToken)}:
+\begin{itemize}
+\item transition: Sends the uploaded image and associated user token to the Image Validation Module for verification of file type and size.
+\item output:  Returns \texttt{True} if the image was successfully validated, otherwise \texttt{False} is returned.
+\item exception:  \texttt{InvalidImageException} is raised if the image fails the validation process and does not meet system requirements.
+\end{itemize}
+
+
+
+\noindent \texttt{sendToModel(image,userToken)}:
+\begin{itemize}
+\item transition: Sends the validated image and associated user token to the Machine Learning Module to initiate alt-text generation.  
+\item output:  None
+\item exception: \texttt{AltTextGenerationError} is raised if the Machine Learning Module fails to process image or generate alt text. 
+\end{itemize}
+
+
+\noindent \texttt{returnToFrontend(alt Text or errorMsg, userToken)}:
+\begin{itemize}
+\item transition: Sends the generated alt text or corresponding error message to the Frontend Module. 
+\item output:  None
+\item exception: \texttt{FrontendUnreachableException} is raised if the Frontend Module cannot be reached. 
+\end{itemize}
+
+
+
+
 
 \wss{A module without environment variables or state variables is unlikely to
   have a state transition.  In this case a state transition can only occur if
