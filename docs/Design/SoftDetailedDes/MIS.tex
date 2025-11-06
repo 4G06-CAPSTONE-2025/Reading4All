@@ -301,6 +301,12 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
     \item Provides user authentication results to \texttt{BackendController} for access control.
   \end{itemize}
   
+  \subsection{Syntax}
+  
+  \subsubsection{Exported Constants}
+  \texttt{TOKEN\_EXPIRY\_TIME}: $\mathbb{N}$ — Duration in minutes after which an authentication token expires. \\ \\
+  \texttt{MAX\_LOGIN\_ATTEMPTS}: $\mathbb{N}$ — Maximum number of failed login attempts allowed before temporary account lockout. \\
+  
 
   
 
