@@ -17,7 +17,7 @@
 }
 
 \input{../../Comments}
-\input{../../Common}
+\input{../../Common} 
 
 \newcounter{acnum}
 \newcommand{\actheacnum}{AC\theacnum}
@@ -182,9 +182,14 @@ will potentially need to be modified. Hence, it is not intended that these
 decisions will be changed.
 
 \begin{description}
-\item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Input/Output devices
-  (Input: File and/or Keyboard, Output: File, Memory, and/or Screen).
-\item ...
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] The project's evaluation metrics as shown in Table 5 of the 
+Appendix in our \citet{SRS} document will not change as these metrics are concrete and
+will be used to evaluate the effectiveness of the generated alternative text.
+\item [\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] The primary output device for this system will remain as a screen, 
+even if the system is later expanded to additional platforms (i.e., mobile) and not just the current web-based tool.
+\item [\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] The system will always support keyboard input as its primary 
+interaction method, with mouse input also supported for selecting user interface elements. This is to ensure that 
+the functionality of keyboard navigation is always enabled for accessibility.
 \end{description}
 
 \section{Module Hierarchy} \label{SecMH}
@@ -310,18 +315,35 @@ to be implemented.
 
 \subsection{Software Decision Module}
 
+\subsubsection{AIModelTraining Module}
+
 \begin{description}
-\item[Secrets:] The design decision based on mathematical theorems, physical
-  facts, or programming considerations. The secrets of this module are
-  \emph{not} described in the SRS.
-\item[Services:] Includes data structure and algorithms used in the system that
-  do not provide direct interaction with the user. 
-  % Changes in these modules are more likely to be motivated by a desire to
-  % improve performance than by externally imposed changes.
-\item[Implemented By:] --
+\item[Secrets:]
+How to train an AI model to generate accurate alternative text for images using machine learning techniques.  
+Hidden details include the choice of architecture, optimization process, and data handling strategy.
+
+\item[Services:]
+Provides a trained model that can process new image inputs and learn relationships between visual features and descriptive text.  
+Produces saved model weights and training logs for later use by the inference module.
+
+\item[Implemented By:] \progname{}
+\item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Classifier / Inference Module}
+
+\begin{description}
+\item[Secrets:]
+The logic used to generate descriptive alternative text from trained model outputs.  
+This includes internal decoding strategies and how the system interprets predictions.
+
+\item[Services:]
+Takes in new images (or preprocessed tensors) and outputs meaningful, readable descriptions for end users.  
+Uses the trained model produced by the AIModelTraining module.
+
+\item[Implemented By:] \progname{}
+\item[Type of Module:] Abstract Data Type
+\end{description}
 
 \section{Traceability Matrix} \label{SecTM}
 
