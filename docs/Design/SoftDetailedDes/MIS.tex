@@ -407,7 +407,41 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
       \item Invalidates sessions on logout or timeout and clears associated session history.
   \end{itemize}
   
+  \subsection{Syntax}
 
+  \subsubsection{Exported Constants}
+  \texttt{MAX\_SESSION\_DURATION}: $\mathbb{N}$ - Specifies the maximum duration, in minutes, that a session remains active before expiration. \\ \\
+  \texttt{SESSION\_REFRESH\_INTERVAL}: $\mathbb{N}$ - The interval, in minutes, at which session validity is checked or refreshed. \\ \\
+  \texttt{MAX\_SESSION\_HISTORY}: $\mathbb{N}$ - Maximum number of interaction entries stored per session to prevent unbounded growth. \\
+  
+  \subsubsection{Exported Access Programs}
+  
+  \begin{center}
+  \begin{tabular}{p{3.3cm} p{4.5cm} p{3cm} p{3cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  createSession & userID & sessionToken & SessionCreationException \\
+  \hline
+  storeSession & userID, sessionToken & Boolean & SessionStorageException \\
+  \hline
+  validateSession & userToken & Boolean & InvalidSessionException \\
+  \hline
+  deleteSession & userToken & Boolean & SessionNotFoundException \\
+  \hline
+  getSession & userToken & sessionData & SessionNotFoundException \\
+  \hline
+  appendInteraction & userToken, interactionEntry & Boolean & SessionNotFoundException \\
+  \hline
+  getSessionHistory & userToken, filter? & interactionList & SessionNotFoundException \\
+  \hline
+  linkDataRecord & userToken, dataRecordID, metadata? & Boolean & SessionNotFoundException \\
+  \hline
+  getRecentRecords & userToken, limit & dataRecordRefs & SessionNotFoundException \\
+  \hline
+  \end{tabular}
+  \end{center}
+  
 \section{MIS of User Interface Interactions Module}\label{UI_Interactions} \wss{Use labels for
 cross-referencing}
 
