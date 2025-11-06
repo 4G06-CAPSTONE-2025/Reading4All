@@ -293,6 +293,25 @@ to be implemented.
 \item[Type of Module:] [Record, Library, Abstract Object, or Abstract Data Type]
   [Information to include for leaf modules in the decomposition by secrets tree.]
 \end{description}
+\subsubsection{Authentication Service Module (\mref{mAUTH})}
+
+\begin{description}
+\item[Secrets:] The internal logic for credential verification, token structure and signing, token refresh rules, lockout thresholds, and trust boundaries to external identity stores. Includes error classification for authentication failures and audit-safe handling of sensitive data.
+\item[Services:] Verifies user credentials, issues and refreshes authentication tokens, validates tokens on incoming requests, resolves current user identity (userID/role) for access control, and coordinates with Session Management to create/terminate sessions.
+\item[Implemented By:] Reading4All Team
+\item[Type of Module:] Abstract Object
+  [Information to include for leaf modules in the decomposition by secrets tree.]
+\end{description}
+
+\subsubsection{Session Management Module (\mref{mSESS})}
+
+\begin{description}
+\item[Secrets:] The representation and storage of active sessions, expiry/refresh policies, session-history data structures (interaction entries and Reading4All data references), and eviction/cleanup strategies. Includes indexing strategies for fast token lookups and privacy rules for session-scoped logs.
+\item[Services:] Creates, validates, refreshes, and deletes sessions; appends interaction entries; links session activity to Reading4All data records; retrieves filtered session history and recent data references for the current session.
+\item[Implemented By:] Reading4All Team
+\item[Type of Module:] Abstract Object
+  [Information to include for leaf modules in the decomposition by secrets tree.]
+\end{description}
 
 \subsubsection{Etc.}
 
