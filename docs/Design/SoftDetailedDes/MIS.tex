@@ -392,7 +392,20 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
     \item \texttt{validateCredentials(credentials)} — Confirms user credentials against secure storage.
   \end{itemize}
 
+  \section{MIS of Session Management} \label{Module:SessionManagement}
 
+  \subsection{Module}
+  \texttt{SessionManagement}
+  
+  \subsection{Uses}
+  The Session Management module is responsible for creating, storing, and maintaining active user sessions within the Reading4All system. It also tracks the session-specific history of user interactions, referencing corresponding entries in the Reading4All data record. Other modules, such as the Authentication Service and Backend Controller, rely on it for validating active tokens and retrieving user activity logs within the current session.
+  \begin{itemize}
+      \item Creates new sessions upon successful authentication.
+      \item Stores mappings between users and their associated session tokens.
+      \item Tracks and records user interactions (e.g., uploads, alt-text generation) linked to Reading4All data records.
+      \item Provides access to current session history and recent data records.
+      \item Invalidates sessions on logout or timeout and clears associated session history.
+  \end{itemize}
   
 
 \section{MIS of User Interface Interactions Module}\label{UI_Interactions} \wss{Use labels for
