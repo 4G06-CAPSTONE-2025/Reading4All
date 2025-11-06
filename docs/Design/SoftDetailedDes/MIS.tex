@@ -286,7 +286,23 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
   They are not necessarily something that is going to be implemented
   explicitly.  Even if they are implemented, they are not exported; they only
   have local scope.}
+  \section{MIS of Authentication Service} \label{Module:AuthenticationService}
 
+  \subsection{Module}
+  
+  \texttt{AuthenticationService}
+  
+  \subsection{Uses}
+  This module is responsible for managing and validating user authentication across the Reading4All system. It ensures that only verified users can upload, edit, or retrieve images and generated alt text.  
+  \begin{itemize}
+    \item Validates user session tokens received from frontend modules.
+    \item Manages the current logged-in user’s credentials and authentication status.
+    \item Communicates with \texttt{SessionManagement} to track and store active sessions.
+    \item Provides user authentication results to \texttt{BackendController} for access control.
+  \end{itemize}
+  
+
+  
 
 \section{MIS of User Interface Interactions Module}\label{UI_Interactions} \wss{Use labels for
 cross-referencing}
