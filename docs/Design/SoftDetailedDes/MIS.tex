@@ -341,6 +341,56 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
     \item Backend Controller Module: Requests user validation before allowing access to backend operations.
   \end{itemize}
   
+  \subsubsection{Assumptions}
+  \begin{itemize}
+    \item The database or session store used for token verification is operational.
+    \item Network connection to backend and session services is stable.
+    \item All tokens follow the system-defined structure and encryption standard.
+  \end{itemize}
+  
+  \subsubsection{Access Routine Semantics}
+  
+  \noindent \texttt{validateToken(userToken)}:
+  \begin{itemize}
+  \item transition: Compares provided token against valid session records in \texttt{SessionManagement}.
+  \item output: Returns \texttt{True} if token is valid and active, otherwise \texttt{False}.
+  \item exception: \texttt{InvalidTokenException} is raised if the token has expired or does not exist.
+  \end{itemize}
+  
+  \noindent \texttt{signInUser(credentials)}:
+  \begin{itemize}
+  \item transition: Verifies credentials (e.g., username and password) and issues a unique token for session creation.
+  \item output: Returns a valid \texttt{userToken} on successful authentication.
+  \item exception: \texttt{AuthenticationFailedException} is raised if credentials are invalid or user does not exist.
+  \end{itemize}
+  
+  \noindent \texttt{signOutUser(userToken)}:
+  \begin{itemize}
+  \item transition: Removes the associated token from the active token list and ends the user’s session.
+  \item output: Returns \texttt{True} on successful logout.
+  \item exception: \texttt{SessionNotFoundException} is raised if the token is invalid or session not found.
+  \end{itemize}
+  
+  \noindent \texttt{getCurrentUser(userToken)}:
+  \begin{itemize}
+  \item transition: Queries active sessions to identify the user associated with the token.
+  \item output: Returns \texttt{userID} if token corresponds to an active session.
+  \item exception: \texttt{UserNotAuthenticatedException} is raised if no active session exists for the token.
+  \end{itemize}
+  
+  \noindent \texttt{refreshToken(userToken)}:
+  \begin{itemize}
+  \item transition: Reissues a new token with an updated expiry time after verifying the old token’s validity.
+  \item output: Returns \texttt{newToken}.
+  \item exception: \texttt{TokenRefreshException} is raised if old token is expired or tampered.
+  \end{itemize}
+  
+  \subsubsection{Local Functions}
+  \begin{itemize}
+    \item \texttt{generateToken(userID)} — Creates a secure, encrypted token for the authenticated user.
+    \item \texttt{encryptData(data)} — Encrypts sensitive authentication information before storage.
+    \item \texttt{validateCredentials(credentials)} — Confirms user credentials against secure storage.
+  \end{itemize}
 
 
   
