@@ -207,7 +207,7 @@ actually be implemented.
 \midrule
 
 \multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & ?\\
-& ?\\
+& Backend Controller Module\\
 & ?\\
 & ?\\
 & ?\\
@@ -289,6 +289,18 @@ to be implemented.
   [Information to include for leaf modules in the decomposition by secrets tree.]
 \end{description}
 
+
+\subsubsection{Backend Controller Module (\mref{mBCM})}
+
+\begin{description}
+\item[Secrets:] The internal application flow of data and user inputs, including how backend requests are processed and routed between services. 
+\item[Services:]Coordinates backend responses by receiving requests from the frontend and directing it to the appropriate service such as the User Authentication or  AI Model, and returning the results.
+\item[Implemented By:] Reading4All Team 
+\item[Type of Module:] Abstract Object
+  [Information to include for leaf modules in the decomposition by secrets tree.]
+\end{description}
+
+
 \subsubsection{Etc.}
 
 
@@ -320,22 +332,200 @@ requirements and between the modules and the anticipated changes.
 \toprule
 \textbf{Req.} & \textbf{Modules}\\
 \midrule
-R1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-R2 & \mref{mInput}, \mref{mParams}\\
-R3 & \mref{mVerify}\\
-R4 & \mref{mOutput}, \mref{mControl}\\
-R5 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R6 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R7 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R8 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R9 & \mref{mVerifyOut}\\
-R10 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}\\
-R11 & \mref{mOutput}, \mref{mODEs}, \mref{mEnergy}, \mref{mControl}\\
+FR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+FR2 & \mref{mInput}, \mref{mParams}\\
+FR3 & \mref{mVerify}\\
+FR4 & \mref{mOutput}, \mref{mControl}\\
+FR5 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+FR6 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
 \bottomrule
 \end{tabular}
-\caption{Trace Between Requirements and Modules}
-\label{TblRT}
+\caption{Trace Between Functional Requirements and Modules}
+\label{TblFRT}
 \end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Req.} & \textbf{Modules}\\
+\midrule
+LFR-AR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+LFR-AR2 & \mref{mInput}, \mref{mParams}\\
+LFR-AR3 & \mref{mVerify}\\
+LFR-AR4 & \mref{mOutput}, \mref{mControl}\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Look and Feel Requirements and Modules}
+\label{TblFRT}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Req.} & \textbf{Modules}\\
+\midrule
+LFR-SR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+LFR-SR2 & \mref{mInput}, \mref{mParams}\\
+LFR-SR3 & \mref{mVerify}\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Style Requirements and Modules}
+\label{TblSRT}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Req.} & \textbf{Modules}\\
+\midrule
+UHR-EUR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+UHR-EUR2 & \mref{mInput}, \mref{mParams}\\
+UHR-EUR3 & \mref{mVerify}\\
+UHR-EUR4 & \mref{mOutput}, \mref{mControl}\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Usability and Humanity Requirements and Modules}
+\label{TblURT}
+\end{table}
+
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Req.} & \textbf{Modules}\\
+\midrule
+UHR-PIR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Personalization and Internationalization Requirements and Modules}
+\label{TblPIRT}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Req.} & \textbf{Modules}\\
+\midrule
+UHR-LR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Learning Requirements and Modules}
+\label{TblPIRT}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Req.} & \textbf{Modules}\\
+\midrule
+UHR-UPR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Understandability and Politeness Requirements and Modules}
+\label{TblUPRT}
+\end{table}
+
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Req.} & \textbf{Modules}\\
+\midrule
+UHR-AR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+UHR-AR2 & \mref{mInput}, \mref{mParams}\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Accessibility Requirements and Modules}
+\label{TblART}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Req.} & \textbf{Modules}\\
+\midrule
+PR-SL1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+PR-SL2 & \mref{mInput}, \mref{mParams}\\
+PR-SCR1 & \mref{mVerify}\\
+PR-SCR2 & \mref{mOutput}, \mref{mControl}\\
+PR-SCR3 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+PR-SR-HA1 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+PR-SR-HA2 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+PR-SR-HA3 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+PR-PAR1 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+PR-PAR2 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+PR-PAR3 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+PR-RFT1 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+PR-RFT2 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+PR-CR1 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+PR-CR2 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+PR-SER1 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+PR-LR1 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+PR-LR2 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Performance Requirements and Modules}
+\label{TblFRT}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Req.} & \textbf{Modules}\\
+\midrule
+OER-EP1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+OER-EP2 & \mref{mInput}, \mref{mParams}\\
+OER-WE1 & \mref{mVerify}\\
+OER-WE2 & \mref{mOutput}, \mref{mControl}\\
+OER-IAS1 & \mref{mVerify}\\
+OER-IAS2 & \mref{mOutput}, \mref{mControl}\\
+OER-IAS3 & \mref{mOutput}, \mref{mControl}\\
+OER-PR1 & \mref{mOutput}, \mref{mControl}\\
+OER-RL1 & \mref{mOutput}, \mref{mControl}\\
+OER-RL2 & \mref{mOutput}, \mref{mControl}\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Operational and Environmental Requirements and Modules}
+\label{TblOERT}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Req.} & \textbf{Modules}\\
+\midrule
+MS-MNT1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+MS-MNT2 & \mref{mInput}, \mref{mParams}\\
+MS-MNT3 & \mref{mVerify}\\
+MS-SUP1 & \mref{mOutput}, \mref{mControl}\\
+MS-AD1 & \mref{mVerify}\\
+MS-AD2 & \mref{mOutput}, \mref{mControl}\\
+MS-AD3 & \mref{mOutput}, \mref{mControl}\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Maintainability and Support  Requirements and Modules}
+\label{TblMSRT}
+\end{table}
+
+
 
 \begin{table}[H]
 \centering
