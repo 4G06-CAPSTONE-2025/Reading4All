@@ -9,11 +9,11 @@
 \usepackage{float}
 \usepackage{hyperref}
 \hypersetup{
-  colorlinks,
-  citecolor=blue,
-  filecolor=black,
-  linkcolor=red,
-  urlcolor=blue
+    colorlinks,
+    citecolor=blue,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
 }
 
 \input{../../Comments}
@@ -74,7 +74,7 @@ This section records information for easy reference.
   SRS & Software Requirements Specification\\
   \progname & Explanation of program name\\
   UC & Unlikely Change \\
-  \wss{etc.} & \wss{...}\\
+  \wss{etc.} & \wss{xxx}\\
   \bottomrule
 \end{tabular}\\
 
@@ -167,7 +167,6 @@ change.
     hardware on which the software is running.
   \item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the
     initial input data.
-  \item ...
 \end{description}
 
 \wss{Anticipated changes relate to changes that would be made in requirements,
@@ -187,7 +186,6 @@ decisions will be changed.
 \begin{description}
   \item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Input/Output devices
     (Input: File and/or Keyboard, Output: File, Memory, and/or Screen).
-  \item ...
 \end{description}
 
 \section{Module Hierarchy} \label{SecMH}
@@ -198,8 +196,9 @@ below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
 
 \begin{description}
-  \item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
-  \item ...
+  \item[\label{mHH}] Hardware-Hiding Module
+  \item[\label{mBH}] Behaviour-Hiding Module
+  \item[\label{mSD}] Software Decision Module
 \end{description}
 
 \begin{table}[h!]
@@ -209,22 +208,21 @@ actually be implemented.
     \textbf{Level 1} & \textbf{Level 2}\\
     \midrule
 
-    {Hardware-Hiding Module} & ~ \\
+    {Hardware-Hiding Module [Section (\ref{hhmmain})]} & N/A \\
     \midrule
 
-    \multirow{3}{0.3\textwidth}{Behaviour-Hiding Module} &
-    DataPreprocess Module\\
-    & WCAGCompliance Module\\
-    & ModelOutput Model \\
+    \multirow{3}{0.3\textwidth}{Behaviour-Hiding Module [Section (\ref{bhmmain})]} & 
+    {DataPreprocess Module (see \ref{mod:datapreprocess})}\\ &
+    {WCAGCompliance Module (see \ref{mod:wcagcompliance})}\\ &
+    {ModelOutput Module (see \ref{mod:modeloutput})}\\
     \midrule
 
-    \multirow{4}{0.3\textwidth}{Software Decision Module} &
-    AIModelTraining Module\\
-    & CaptionGeneration Module\\
-    & FeedbackMetrics Module\\
-    & FeedbackIntegration Module\\
+    \multirow{4}{0.3\textwidth}{Software Decision Module [Section (\ref{sdmmain})]} &
+    {AIModelTraining Module (see \ref{mod:aimodeltraining})}\\ &
+    {CaptionGeneration Module (see \ref{mod:captiongeneration})}\\ &
+    {FeedbackMetrics Module (see \ref{mod:feedbackmetrics})}\\ &
+    {FeedbackIntegration Module (see \ref{mod:feedbackintegration})}\\
     \bottomrule
-
   \end{tabular}
   \caption{Module Hierarchy}
   \label{TblMH}
@@ -260,7 +258,7 @@ Only the leaf modules in the hierarchy have to be implemented. If a dash
 (\emph{--}) is shown, this means that the module is not a leaf and will not have
 to be implemented.
 
-\subsection{Hardware Hiding Modules (\mref{mHH})}
+\subsection{Hardware Hiding Modules \label{hhmmain}}
 
 \begin{description}
   \item[Secrets:]The data structure and algorithm used to implement the virtual
@@ -271,30 +269,34 @@ to be implemented.
   \item[Implemented By:] OS
 \end{description}
 
-\subsection{Behaviour-Hiding Module}
+\subsection{Behaviour-Hiding Module \label{bhmmain}}
 This section is written in the following format for each module as
 defined in Table \ref{TblMH}. It is heavily inspired from the template
 given by Dr. Spencer Smith for the course SE 4G06.
 
 \begin{description}
-  \item[Secrets:]This module contains the essential behavioral
-    components that define its intended functionality.
-  \item[Services:]This module includes programs that implement the
+  \item[Secrets:]This section describes the essential behavioral
+    components that define a module's intended functionality.
+  \item[Services:]This section defines the module's programs that implement the
     externally visible behaviors of the system, as outlined in the
-    Software Requirements Specification (SRS). It functions as an
-    interface layer between the hardware abstraction module and the
-    software decision module. In essence, any modifications to the
+    Software Requirements Specification (SRS). Any modifications to the
     SRS will likely require corresponding updates to the programs
     within this module.
-  \item[Implemented By:] Mentions which part of the system will
+  \item[Implemented By:] This section mentions which part of the system will
     implement the specific module.
+  \item[Type of Module:] Is the module a Record, Library, Abstract
+    Object, or Abstract Data Type? This section also includes
+    information for leaf modules in the decomposition by secrets tree.
 \end{description}
 
-\subsubsection{DataPreprocess Module (\mref{XXX})}
+\subsubsection{DataPreprocess Module}
+\label{mod:datapreprocess}
 
 \begin{description}
-  \item[Secrets:] Input data is the image given by the end-user.
-  \item[Services:]Filters out or accepts the input data into the data structure used by the
+  \item[Secrets:] Input data is the image given by the end-user via
+    the relevant backend modules.
+  \item[Services:]Filters out or accepts the input data into the data
+    structure used by the
     model training module.
   \item[Implemented By:] [what do i put here?]
   \item[Type of Module:] [Library]
@@ -302,80 +304,107 @@ given by Dr. Spencer Smith for the course SE 4G06.
     secrets tree???]
 \end{description}
 
-\subsubsection{WCAGCompliance (\mref{mInput})}
+\subsubsection{WCAGCompliance Module}
+\label{mod:wcagcompliance}
 
 \begin{description}
   \item[Secrets:]Takes input from the CaptionGeneration Module.
-  \item[Services:]Checks generated text against certain parameters to ensure compliance.
+  \item[Services:]Checks generated text against certain parameters to
+    ensure WCAG 2.1 AA compliance.
   \item[Implemented By:] [Your Program Name Here]
-  \item[Type of Module:] [Abstract Data Type][Part of a Generic Module?] 
+  \item[Type of Module:] [Abstract Data Type][Part of a Generic Module?]
     [Information to include for leaf modules in the decomposition by
     secrets tree.]
 \end{description}
 
-\subsubsection{ModelOutput Module (\mref{XXX})}
+\subsubsection{ModelOutput Module}
+\label{mod:modeloutput}
 
 \begin{description}
-  \item[Secrets:] Takes in input from either WCAGCompliance or FeedbackMetrics module.
-  \item[Services:] Produces final alternative text to user via relevant back-end modules.
+  \item[Secrets:] Takes in input from either WCAGCompliance or
+    FeedbackMetrics module.
+  \item[Services:] Produces final alternative text to user via
+    relevant back-end modules.
   \item[Implemented By:] [what do i put here?]
   \item[Type of Module:] [Record]
     [Information to include for leaf modules in the decomposition by
     secrets tree???]
 \end{description}
 
-\subsection{Software Decision Module}
+\subsection{Software Decision Module \label{sdmmain}}
 This section is written in the following format for each module as
 defined in Table \ref{TblMH}. It is heavily inspired from the template
 given by Dr. Spencer Smith for the course SE 4G06.
 
 \begin{description}
-  \item[Secrets:]This module contains the essential behavioral
-    components that define its intended functionality.
-  \item[Services:]This module includes programs that implement the
-    externally visible behaviors of the system, as outlined in the
-    Software Requirements Specification (SRS). It functions as an
-    interface layer between the hardware abstraction module and the
-    software decision module. In essence, any modifications to the
-    SRS will likely require corresponding updates to the programs
-    within this module.
+  \item[Secrets:]This module encapsulates design decisions derived
+    from mathematical theorems, facts, or programming
+    logic. These internal details are \emph{not} documented in the
+    Software Requirements Specification (SRS).
+  \item[Services:]This section defines the module's data structures and
+    algorithms that support system functionality without directly
+    interacting with the user. Modifications in this module are
+    typically driven by performance optimization rather than external
+    requirements. As a side note, changes in these modules are more
+    likely to be motivated by a desire to improve performance than by
+    externally imposed changes.
   \item[Implemented By:] Mentions which part of the system will
     implement the specific module.
+  \item[Type of Module:] Is the module a Record, Library, Abstract
+    Object, or Abstract Data Type? This section also includes
+    information for leaf modules in the decomposition by secrets tree.
 \end{description}
 
-\subsubsection{ModelTraining Module (\mref{XXX})}
+\subsubsection{AIModelTraining Module}
+\label{mod:aimodeltraining}
 
 \begin{description}
-  \item[Secrets:] Input data is a dataset that is fed to the model to train it initially.
-  \item[Services:]It's main job is to train a model based on certain parameters.
+  \item[Secrets:] How to generate alternative text for a given image
+    using various Python libraries.
+  \item[Services:] Provides a trained AI model that can take in new
+    images and output corresponding text based on various relevant
+    details in the image.
+  \item[Implemented By:] [Your Program Name Here]
+  \item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{CaptionGeneration Module}
+\label{mod:captiongeneration}
+
+\begin{description}
+  \item[Secrets:]Predicts the alternative text for the image, based
+    on certain features of the image.
+  \item[Services:]Generates a couple sentences that describe the image.
+  \item[Implemented By:] [Your Program Name Here]
+  \item[Type of Module:] [Abstract Data Type][Part of a Generic Module?]
+    [Information to include for leaf modules in the decomposition by
+    secrets tree.]
+\end{description}
+
+\subsubsection{FeedbackMetrics Module}
+\label{mod:feedbackmetrics}
+
+\begin{description}
+  \item[Secrets:] Consists of predefined metrics to enhance generated alt text.
+  \item[Services:] Compares currently generated text's scores against
+    thresholds and returns results for further optimization.
   \item[Implemented By:] [what do i put here?]
-  \item[Type of Module:] [Abstract Object]
+  \item[Type of Module:] [Abstract Data Type]
     [Information to include for leaf modules in the decomposition by
     secrets tree???]
 \end{description}
 
-\subsubsection{CaptionGeneration (\mref{mInput})}
+\subsubsection{FeedbackIntegration Module}
+\label{mod:feedbackintegration}
 
 \begin{description}
-  \item[Secrets:]Predicts the alternative text for the image, based on certain features of the image.
-  \item[Services:]Generates a couple sentences that describe the image.
-  \item[Implemented By:] [Your Program Name Here]
-  \item[Type of Module:] [Abstract Data Type][Part of a Generic Module?] 
+  \item[Secrets:] Consists of features used to further enhance the AI Model.
+  \item[Services:] Uses results from FeedbackMetrics module to
+    optimize model on certain parameters.
+  \item[Implemented By:] [what do i put here?]
+  \item[Type of Module:] [Abstract Object]
     [Information to include for leaf modules in the decomposition by
-    secrets tree.]
-\end{description}
-
-\subsubsection{TEST (\mref{mInput})}
-
-\begin{description}
-  \item[Secrets:]The format and structure of the input data.
-  \item[Services:]Converts the input data into the data structure used by the
-    input parameters module.
-  \item[Implemented By:] [Your Program Name Here]
-  \item[Type of Module:] [Record, Library, Abstract Object, or
-    Abstract Data Type]
-    [Information to include for leaf modules in the decomposition by
-    secrets tree.]
+    secrets tree???]
 \end{description}
 
 \section{Traceability Matrix} \label{SecTM}
@@ -386,54 +415,50 @@ requirements and between the modules and the anticipated changes.
 % the table should use mref, the requirements should be named, use something
 % like fref
 \begin{table}[H]
-  \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
-    \toprule
-    \textbf{Req.} & \textbf{Modules}\\
-    \midrule
-    R1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-    R2 & \mref{mInput}, \mref{mParams}\\
-    R3 & \mref{mVerify}\\
-    R4 & \mref{mOutput}, \mref{mControl}\\
-    R5 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    R6 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    R7 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mPlot}\\
-    R8 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mPlot}\\
-    R9 & \mref{mVerifyOut}\\
-    R10 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}\\
-    R11 & \mref{mOutput}, \mref{mODEs}, \mref{mEnergy}, \mref{mControl}\\
-    \bottomrule
-  \end{tabular}
-  \caption{Trace Between Requirements and Modules}
-  \label{TblRT}
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Req.} & \textbf{Modules}\\
+\midrule
+R1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+R2 & \mref{mInput}, \mref{mParams}\\
+R3 & \mref{mVerify}\\
+R4 & \mref{mOutput}, \mref{mControl}\\
+R5 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+R6 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+R7 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
+R8 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
+R9 & \mref{mVerifyOut}\\
+R10 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}\\
+R11 & \mref{mOutput}, \mref{mODEs}, \mref{mEnergy}, \mref{mControl}\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Requirements and Modules}
+\label{TblRT}
 \end{table}
 
 \begin{table}[H]
-  \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
-    \toprule
-    \textbf{AC} & \textbf{Modules}\\
-    \midrule
-    \acref{acHardware} & \mref{mHH}\\
-    \acref{acInput} & \mref{mInput}\\
-    \acref{acParams} & \mref{mParams}\\
-    \acref{acVerify} & \mref{mVerify}\\
-    \acref{acOutput} & \mref{mOutput}\\
-    \acref{acVerifyOut} & \mref{mVerifyOut}\\
-    \acref{acODEs} & \mref{mODEs}\\
-    \acref{acEnergy} & \mref{mEnergy}\\
-    \acref{acControl} & \mref{mControl}\\
-    \acref{acSeqDS} & \mref{mSeqDS}\\
-    \acref{acSolver} & \mref{mSolver}\\
-    \acref{acPlot} & \mref{mPlot}\\
-    \bottomrule
-  \end{tabular}
-  \caption{Trace Between Anticipated Changes and Modules}
-  \label{TblACT}
+\centering
+\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{AC} & \textbf{Modules}\\
+\midrule
+\acref{acHardware} & \mref{mHH}\\
+\acref{acInput} & \mref{mInput}\\
+\acref{acParams} & \mref{mParams}\\
+\acref{acVerify} & \mref{mVerify}\\
+\acref{acOutput} & \mref{mOutput}\\
+\acref{acVerifyOut} & \mref{mVerifyOut}\\
+\acref{acODEs} & \mref{mODEs}\\
+\acref{acEnergy} & \mref{mEnergy}\\
+\acref{acControl} & \mref{mControl}\\
+\acref{acSeqDS} & \mref{mSeqDS}\\
+\acref{acSolver} & \mref{mSolver}\\
+\acref{acPlot} & \mref{mPlot}\\
+\bottomrule
+\end{tabular}
+\caption{Trace Between Anticipated Changes and Modules}
+\label{TblACT}
 \end{table}
 
 \section{Use Hierarchy Between Modules} \label{SecUse}

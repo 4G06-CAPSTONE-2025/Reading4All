@@ -21,12 +21,13 @@
 \usepackage{fullpage}
 
 \hypersetup{
-bookmarks=true,     % show bookmarks bar?
-colorlinks=true,       % false: boxed links; true: colored links
-linkcolor=red,          % color of internal links (change box color with linkbordercolor)
-citecolor=blue,      % color of links to bibliography
-filecolor=magenta,  % color of file links
-urlcolor=cyan          % color of external links
+  bookmarks=true,     % show bookmarks bar?
+  colorlinks=true,       % false: boxed links; true: colored links
+  linkcolor=red,          % color of internal links (change box color
+  % with linkbordercolor)
+  citecolor=blue,      % color of links to bibliography
+  filecolor=magenta,  % color of file links
+  urlcolor=cyan          % color of external links
 }
 
 \usepackage{array}
@@ -51,11 +52,11 @@ urlcolor=cyan          % color of external links
 \section{Revision History}
 
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
-\midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
-\bottomrule
+  \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+  \midrule
+  Date 1 & 1.0 & Notes\\
+  Date 2 & 1.1 & Notes\\
+  \bottomrule
 \end{tabularx}
 
 ~\newpage
@@ -86,7 +87,7 @@ found at \url{...}.  \wss{provide the url for your repo}
 \section{Notation}
 
 \wss{You should describe your notation.  You can use what is below as
-  a starting point.}
+a starting point.}
 
 The structure of the MIS for modules comes from \citet{HoffmanAndStrooper1995},
 with the addition that template modules have been adapted from
@@ -95,25 +96,28 @@ with the addition that template modules have been adapted from
 multiple assignment statement and conditional rules follow the form $(c_1
 \Rightarrow r_1 | c_2 \Rightarrow r_2 | ... | c_n \Rightarrow r_n )$.
 
-The following table summarizes the primitive data types used by \progname. 
+The following table summarizes the primitive data types used by \progname.
 
 \begin{center}
-\renewcommand{\arraystretch}{1.2}
-\noindent 
-\begin{tabular}{l l p{7.5cm}} 
-\toprule 
-\textbf{Data Type} & \textbf{Notation} & \textbf{Description}\\ 
-\midrule
-character & char & a single symbol or digit\\
-integer & $\mathbb{Z}$ & a number without a fractional component in (-$\infty$, $\infty$) \\
-natural number & $\mathbb{N}$ & a number without a fractional component in [1, $\infty$) \\
-real & $\mathbb{R}$ & any number in (-$\infty$, $\infty$)\\
-\bottomrule
-\end{tabular} 
+  \renewcommand{\arraystretch}{1.2}
+  \noindent
+  \begin{tabular}{l l p{7.5cm}}
+    \toprule
+    \textbf{Data Type} & \textbf{Notation} & \textbf{Description}\\
+    \midrule
+    character & char & a single symbol or digit\\
+    integer & $\mathbb{Z}$ & a number without a fractional component
+    in (-$\infty$, $\infty$) \\
+    natural number & $\mathbb{N}$ & a number without a fractional
+    component in [1, $\infty$) \\
+    real & $\mathbb{R}$ & any number in (-$\infty$, $\infty$)\\
+    \bottomrule
+  \end{tabular}
 \end{center}
 
 \noindent
-The specification of \progname \ uses some derived data types: sequences, strings, and
+The specification of \progname \ uses some derived data types:
+sequences, strings, and
 tuples. Sequences are lists filled with elements of the same data type. Strings
 are sequences of characters. Tuples contain a list of values, potentially of
 different types. In addition, \progname \ uses functions, which
@@ -122,42 +126,374 @@ described by giving their type signature followed by their specification.
 
 \section{Module Decomposition}
 
-The following table is taken directly from the Module Guide document for this project.
+The following table is taken directly from the Module Guide document
+for this project.
 
 \begin{table}[h!]
-\centering
-\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
-\toprule
-\textbf{Level 1} & \textbf{Level 2}\\
-\midrule
+  \centering
+  \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Level 1} & \textbf{Level 2}\\
+    \midrule
 
-{Hardware-Hiding} & ~ \\
-\midrule
+    {Hardware-Hiding} & ~ \\
+    \midrule
 
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding} & Input Parameters\\
-& Output Format\\
-& Output Verification\\
-& Temperature ODEs\\
-& Energy Equations\\ 
-& Control Module\\
-& Specification Parameters Module\\
-\midrule
+    \multirow{3}{0.3\textwidth}{Behaviour-Hiding Module} &
+    DataPreprocess Module\\
+    & WCAGCompliance Module\\
+    & ModelOutput Model \\
+    \midrule
 
-\multirow{3}{0.3\textwidth}{Software Decision} & {Sequence Data Structure}\\
-& ODE Solver\\
-& Plotting\\
-\bottomrule
+    \multirow{4}{0.3\textwidth}{Software Decision Module} &
+    AIModelTraining Module\\
+    & CaptionGeneration Module\\
+    & FeedbackMetrics Module\\
+    & FeedbackIntegration Module\\
+    \bottomrule
 
-\end{tabular}
-\caption{Module Hierarchy}
-\label{TblMH}
+  \end{tabular}
+  \caption{Module Hierarchy}
+  \label{TblMH}
 \end{table}
 
 \newpage
 ~\newpage
 
+%----------------------------------------------------------
+
+\section{MIS of DataPreprocess Module} \label{datapp}
+
+\subsection{Module}
+DataPP
+
+\subsection{Uses}
+Receives image input data from front-end or input-handling modules. Passes preprocessed data to the AIModelTraining Module (ADD REF HERE).
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None.
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+  \begin{tabular}{p{3cm} p{2cm} p{4cm} p{6cm}}
+    \hline
+    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+    filterInput() & Image & Filtered image data & InvalidInputException \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None.
+
+\subsubsection{Environment Variables}
+None.
+
+\subsubsection{Assumptions}
+Input images are valid files provided through the system interface.
+
+\subsubsection{Access Routine Semantics}
+
+\noindent filterInput():
+\begin{itemize}
+  \item transition: None
+  \item output: Returns image data compatible with the AIModelTraining module.
+  \item exception: Raises InvalidInputException if file type or format is unsupported.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None.
+
+\section{MIS of WCAGCompliance Module} \label{wcagc}
+
+\subsection{Module}
+WCAGComp
+
+\subsection{Uses}
+Takes generated captions from CaptionGeneration Module and validates them against WCAG 2.1 AA criteria (ADD REF HERE).
+
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+None.
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+  \begin{tabular}{p{4cm} p{2cm} p{4cm} p{6cm}}
+    \hline
+    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+    checkCompliance() & Caption text & Compliance report & ValidationException \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None.
+
+\subsubsection{Environment Variables}
+None.
+
+\subsubsection{Assumptions}
+Assumes caption text is non-empty and properly formatted.
+
+\subsubsection{Access Routine Semantics}
+
+\noindent checkCompliance():
+\begin{itemize}
+  \item transition: None
+  \item output: Returns a compliance report summarizing WCAG validation results.
+  \item exception: Raises ValidationException if text input is invalid.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None.
+
+
+\section{MIS of ModelOutput Module} \label{modout}
+
+\subsection{Module}
+ModOut
+
+\subsection{Uses}
+Receives validated captions from WCAGCompliance (Section \ref{wcagc}) or FeedbackMetrics module and sends final output to the user-facing interface.(ADD REF HERE).
+
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+None.
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+  \begin{tabular}{p{4cm} p{2cm} p{4cm} p{6cm}}
+    \hline
+    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+    generateOutput() & Final caption & Displayed text & OutputException \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection{Semantics}
+\subsubsection{State Variables}
+None.
+
+\subsubsection{Environment Variables}
+Connection to the user interface or backend display module.
+
+\subsubsection{Assumptions}
+Assumes output channel (backend or UI) is active.
+
+\subsubsection{Access Routine Semantics}
+
+\noindent generateOutput():
+\begin{itemize}
+  \item transition: Sends final text to the appropriate system interface.
+  \item output: Returns confirmation of successful output delivery.
+  \item exception: Raises OutputException if communication with UI fails.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None.
+
+
+\section{MIS of AIModelTraining Module} \label{aitrain}
+
+\subsection{Module}
+AITrain
+
+\subsection{Uses}
+Receives preprocessed data from DataPreprocess Module and produces a trained model used by CaptionGeneration Module.
+
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+None.
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+  \begin{tabular}{p{4cm} p{2cm} p{4cm} p{6cm}}
+    \hline
+    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+    trainModel() & Preprocessed data & Trained model & TrainingException \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection{Semantics}
+\subsubsection{State Variables}
+trainedModel: Stores the trained AI model instance.
+
+\subsubsection{Environment Variables}
+None.
+
+\subsubsection{Assumptions}
+Assumes sufficient computational resources and valid training data.
+
+\subsubsection{Access Routine Semantics}
+
+\noindent trainModel():
+\begin{itemize}
+  \item transition: Updates trainedModel with a newly trained instance.
+  \item output: Returns reference to the trained model.
+  \item exception: Raises TrainingException if model fails to converge or data is invalid.
+\end{itemize}
+
+\subsubsection{Local Functions}
+splitData(): Splits input data into training and validation sets.
+
+\section{MIS of CaptionGeneration Module} \label{capgen}
+
+\subsection{Module}
+CapGen
+
+\subsection{Uses}
+Utilizes the trained model from AIModelTraining Module to generate image captions.
+
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+None.
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+  \begin{tabular}{p{4cm} p{2cm} p{4cm} p{6cm}}
+    \hline
+    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+    generateCaption() & Image & Caption text & GenerationException \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection{Semantics}
+\subsubsection{State Variables}
+None.
+
+\subsubsection{Environment Variables}
+None.
+
+\subsubsection{Assumptions}
+The AI model has been successfully trained prior to use.
+
+\subsubsection{Access Routine Semantics}
+
+\noindent generateCaption():
+\begin{itemize}
+  \item transition: None
+  \item output: Returns generated alternative text for input image.
+  \item exception: Raises GenerationException if model inference fails.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None.
+
+
+\section{MIS of FeedbackMetrics Module} \label{modmetric}
+
+\subsection{Module}
+ModMetric
+
+\subsection{Uses}
+Compares generated captions with target thresholds and passes performance scores to FeedbackIntegration Module.
+
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+None.
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+  \begin{tabular}{p{4cm} p{2cm} p{4cm} p{6cm}}
+    \hline
+    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+    evaluateCaption() & Caption text & Metric scores & EvaluationException \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection{Semantics}
+\subsubsection{State Variables}
+None.
+
+\subsubsection{Environment Variables}
+None.
+
+\subsubsection{Assumptions}
+Assumes evaluation metrics are predefined and accessible.
+
+\subsubsection{Access Routine Semantics}
+
+\noindent evaluateCaption():
+\begin{itemize}
+  \item transition: None
+  \item output: Returns performance metrics [Put in appendix Jing's metrics].
+  \item exception: Raises EvaluationException if metrics are unavailable.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None.
+
+\section{MIS of FeedbackIntegration Module} \label{modint}
+
+\subsection{Module}
+ModInt
+
+\subsection{Uses}
+Uses feedback from FeedbackMetrics to improve model parameters in AIModelTraining.
+
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+None.
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+  \begin{tabular}{p{4cm} p{2cm} p{4cm} p{6cm}}
+    \hline
+    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+    updateModel() & Feedback metrics & Updated model & UpdateException \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection{Semantics}
+\subsubsection{State Variables}
+modelState: Holds the current model parameters for retraining.
+
+\subsubsection{Environment Variables}
+None.
+
+\subsubsection{Assumptions}
+Assumes valid feedback metrics are received from FeedbackMetrics Module.
+
+\subsubsection{Access Routine Semantics}
+
+\noindent updateModel():
+\begin{itemize}
+  \item transition: Updates modelState with new optimized parameters.
+  \item output: Returns confirmation of successful update.
+  \item exception: Raises UpdateException if optimization fails.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None.
+
+%----------------------------------------------------------
+
 \section{MIS of \wss{Module Name}} \label{Module} \wss{Use labels for
-  cross-referencing}
+cross-referencing}
 
 \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
 
@@ -169,7 +505,6 @@ The following table is taken directly from the Module Guide document for this pr
 
 \subsection{Uses}
 
-
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
@@ -177,13 +512,13 @@ The following table is taken directly from the Module Guide document for this pr
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
-\hline
-\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-\hline
-\wss{accessProg} & - & - & - \\
-\hline
-\end{tabular}
+  \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+    \hline
+    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+    \wss{accessProg} & - & - & - \\
+    \hline
+  \end{tabular}
 \end{center}
 
 \subsection{Semantics}
@@ -191,41 +526,41 @@ The following table is taken directly from the Module Guide document for this pr
 \subsubsection{State Variables}
 
 \wss{Not all modules will have state variables.  State variables give the module
-  a memory.}
+a memory.}
 
 \subsubsection{Environment Variables}
 
 \wss{This section is not necessary for all modules.  Its purpose is to capture
   when the module has external interaction with the environment, such as for a
-  device driver, screen interface, keyboard, file, etc.}
+device driver, screen interface, keyboard, file, etc.}
 
 \subsubsection{Assumptions}
 
 \wss{Try to minimize assumptions and anticipate programmer errors via
-  exceptions, but for practical purposes assumptions are sometimes appropriate.}
+exceptions, but for practical purposes assumptions are sometimes appropriate.}
 
 \subsubsection{Access Routine Semantics}
 
 \noindent \wss{accessProg}():
 \begin{itemize}
-\item transition: \wss{if appropriate} 
-\item output: \wss{if appropriate} 
-\item exception: \wss{if appropriate} 
+  \item transition: \wss{if appropriate}
+  \item output: \wss{if appropriate}
+  \item exception: \wss{if appropriate}
 \end{itemize}
 
 \wss{A module without environment variables or state variables is unlikely to
   have a state transition.  In this case a state transition can only occur if
-  the module is changing the state of another module.}
+the module is changing the state of another module.}
 
 \wss{Modules rarely have both a transition and an output.  In most cases you
-  will have one or the other.}
+will have one or the other.}
 
 \subsubsection{Local Functions}
 
 \wss{As appropriate} \wss{These functions are for the purpose of specification.
   They are not necessarily something that is going to be implemented
   explicitly.  Even if they are implemented, they are not exported; they only
-  have local scope.}
+have local scope.}
 
 \newpage
 
@@ -250,21 +585,23 @@ graduate attribute of Problem Analysis and Design.
 \input{../../Reflection.tex}
 
 \begin{enumerate}
-  \item What went well while writing this deliverable? 
+  \item What went well while writing this deliverable?
   \item What pain points did you experience during this deliverable, and how
     did you resolve them?
   \item Which of your design decisions stemmed from speaking to your client(s)
-  or a proxy (e.g. your peers, stakeholders, potential users)? For those that
-  were not, why, and where did they come from?
+    or a proxy (e.g. your peers, stakeholders, potential users)? For those that
+    were not, why, and where did they come from?
   \item While creating the design doc, what parts of your other documents (e.g.
-  requirements, hazard analysis, etc), it any, needed to be changed, and why?
+    requirements, hazard analysis, etc), it any, needed to be changed, and why?
   \item What are the limitations of your solution?  Put another way, given
-  unlimited resources, what could you do to make the project better? (LO\_ProbSolutions)
+    unlimited resources, what could you do to make the project
+    better? (LO\_ProbSolutions)
   \item Give a brief overview of other design solutions you considered.  What
-  are the benefits and tradeoffs of those other designs compared with the chosen
-  design?  From all the potential options, why did you select the documented design?
-  (LO\_Explores)
+    are the benefits and tradeoffs of those other designs compared
+    with the chosen
+    design?  From all the potential options, why did you select the
+    documented design?
+    (LO\_Explores)
 \end{enumerate}
-
 
 \end{document}
