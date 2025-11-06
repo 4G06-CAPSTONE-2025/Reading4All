@@ -326,7 +326,22 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
   \hline
   \end{tabular}
   \end{center}
+  \subsection{Semantics}
   
+  \subsubsection{State Variables}
+  \begin{itemize}
+    \item \texttt{currentUser}: Stores information of the currently authenticated user (userID, role, status).
+    \item \texttt{activeTokens}: List of active tokens issued during authenticated sessions.
+  \end{itemize}
+  
+  \subsubsection{Environment Variables}
+  \begin{itemize}
+    \item Frontend Module: Receives user login and logout requests, sends authentication tokens.
+    \item Session Management Module: Manages active sessions and stores validated tokens.
+    \item Backend Controller Module: Requests user validation before allowing access to backend operations.
+  \end{itemize}
+  
+
 
   
 
