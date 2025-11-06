@@ -433,15 +433,98 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
   \hline
   appendInteraction & userToken, interactionEntry & Boolean & SessionNotFoundException \\
   \hline
-  getSessionHistory & userToken, filter? & interactionList & SessionNotFoundException \\
+  getSessionHistory & userToken, filter & interactionList & SessionNotFoundException \\
   \hline
-  linkDataRecord & userToken, dataRecordID, metadata? & Boolean & SessionNotFoundException \\
+  linkDataRecord & userToken, dataRecordID, metadata & Boolean & SessionNotFoundException \\
   \hline
   getRecentRecords & userToken, limit & dataRecordRefs & SessionNotFoundException \\
   \hline
   \end{tabular}
   \end{center}
   
+  \subsection{Semantics}
+
+  \subsubsection{State Variables}
+  \begin{itemize}
+      \item \texttt{activeSessions}: Mapping of \texttt{userID} $\rightarrow$ \texttt{sessionToken} representing currently active sessions.
+      \item \texttt{sessionExpiry}: Mapping of \texttt{sessionToken} $\rightarrow$ expiry time.
+      \item \texttt{sessionHistory}: Mapping of \texttt{sessionToken} $\rightarrow$ ordered list of interaction entries for that session.
+      \item \texttt{sessionDataRefs}: Mapping of \texttt{sessionToken} $\rightarrow$ set of dataRecordIDs referencing Reading4All data entries.
+  \end{itemize}
+  
+  \subsubsection{Environment Variables}
+  \begin{itemize}
+      \item \textbf{Authentication Service:} Initiates creation, validation, and deletion of sessions.
+      \item \textbf{Backend Controller:} Updates session history after each major user action (e.g., validateImage, sendToModel, getAltText).
+      \item \textbf{Reading4All Data:} Serves as the persistent storage layer for user images and generated alt-text records, referenced by session data IDs.
+  \end{itemize}
+  
+  \subsubsection{Assumptions}
+  \begin{itemize}
+      \item The system clock is synchronized to ensure accurate session expiry times.
+      \item Tokens and user IDs are unique and securely generated.
+      \item A fast-access storage service (e.g., in-memory cache or Redis) is available for storing session and interaction data.
+      \item Reading4All data provides stable and retrievable \texttt{dataRecordID}s for cross-module referencing.
+  \end{itemize}
+  
+  \subsubsection{Access Routine Semantics}
+  
+  \noindent \texttt{createSession(userID)}:
+  \begin{itemize}
+      \item transition: Generates a new session token, initializes empty history and data references, and sets the expiry time.
+      \item output: Returns the created \texttt{sessionToken}.
+      \item exception: Raises \texttt{SessionCreationException} if session creation fails.
+  \end{itemize}
+  
+  \noindent \texttt{validateSession(userToken)}:
+  \begin{itemize}
+      \item transition: None.
+      \item output: Returns \texttt{True} if the session exists and is active, otherwise \texttt{False}.
+      \item exception: Raises \texttt{InvalidSessionException} if the token is expired or invalid.
+  \end{itemize}
+  
+  \noindent \texttt{appendInteraction(userToken, interactionEntry)}:
+  \begin{itemize}
+      \item transition: Appends the provided \texttt{interactionEntry} (with timestamp and type) to \texttt{sessionHistory[userToken]}. If the maximum history size is exceeded, the oldest entry is removed.
+      \item output: Returns \texttt{True} upon success.
+      \item exception: Raises \texttt{SessionNotFoundException} if the token is not associated with an active session.
+  \end{itemize}
+  
+  \noindent \texttt{linkDataRecord(userToken, dataRecordID, metadata?)}:
+  \begin{itemize}
+      \item transition: Associates the provided \texttt{dataRecordID} (from Reading4All data) with the user’s current session for future retrieval.
+      \item output: Returns \texttt{True} upon success.
+      \item exception: Raises \texttt{SessionNotFoundException} if no active session exists.
+  \end{itemize}
+  
+  \noindent \texttt{getSessionHistory(userToken, filter?)}:
+  \begin{itemize}
+      \item transition: None.
+      \item output: Returns a filtered list of interaction entries (e.g., uploads, alt-text retrieval) for the specified session.
+      \item exception: Raises \texttt{SessionNotFoundException} if the token is invalid or no session history exists.
+  \end{itemize}
+  
+  \noindent \texttt{getRecentRecords(userToken, limit)}:
+  \begin{itemize}
+      \item transition: None.
+      \item output: Returns up to the specified number of recent \texttt{dataRecordID} references associated with the current session.
+      \item exception: Raises \texttt{SessionNotFoundException} if no active session exists.
+  \end{itemize}
+  
+  \noindent \texttt{deleteSession(userToken)}:
+  \begin{itemize}
+      \item transition: Removes the token from active sessions and clears its associated history and data references.
+      \item output: Returns \texttt{True} if deletion is successful.
+      \item exception: Raises \texttt{SessionNotFoundException} if the token is invalid or not found.
+  \end{itemize}
+  
+  \subsubsection{Local Functions}
+  \begin{itemize}
+      \item \texttt{generateSessionToken(userID)}: Creates a secure, unique token for the given user.
+      \item \texttt{updateExpiry(sessionToken)}: Extends the expiry time of a session on continued activity.
+      \item \texttt{cleanExpiredSessions()}: Removes all expired sessions and their histories from storage.
+      \item \texttt{applyHistoryFilter(history, filter)}: Applies filtering parameters (e.g., type, time range, status) to session history queries.
+  \end{itemize}
 \section{MIS of User Interface Interactions Module}\label{UI_Interactions} \wss{Use labels for
 cross-referencing}
 
