@@ -294,18 +294,35 @@ to be implemented.
 
 \subsection{Software Decision Module}
 
+\subsubsection{AIModelTraining Module}
+
 \begin{description}
-\item[Secrets:] The design decision based on mathematical theorems, physical
-  facts, or programming considerations. The secrets of this module are
-  \emph{not} described in the SRS.
-\item[Services:] Includes data structure and algorithms used in the system that
-  do not provide direct interaction with the user. 
-  % Changes in these modules are more likely to be motivated by a desire to
-  % improve performance than by externally imposed changes.
-\item[Implemented By:] --
+\item[Secrets:]
+How to train an AI model to generate accurate alternative text for images using machine learning techniques.  
+Hidden details include the choice of architecture, optimization process, and data handling strategy.
+
+\item[Services:]
+Provides a trained model that can process new image inputs and learn relationships between visual features and descriptive text.  
+Produces saved model weights and training logs for later use by the inference module.
+
+\item[Implemented By:] \progname{}
+\item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Classifier / Inference Module}
+
+\begin{description}
+\item[Secrets:]
+The logic used to generate descriptive alternative text from trained model outputs.  
+This includes internal decoding strategies and how the system interprets predictions.
+
+\item[Services:]
+Takes in new images (or preprocessed tensors) and outputs meaningful, readable descriptions for end users.  
+Uses the trained model produced by the AIModelTraining module.
+
+\item[Implemented By:] \progname{}
+\item[Type of Module:] Abstract Data Type
+\end{description}
 
 \section{Traceability Matrix} \label{SecTM}
 
