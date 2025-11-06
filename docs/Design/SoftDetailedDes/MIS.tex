@@ -265,6 +265,167 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
 \end{itemize}
 
 
+\newpage
+\section{MIS of AIModelTraining Module} \label{aitrain}
+
+\subsection{Module}
+AITrain
+
+\subsection{Uses}
+Receives preprocessed data from the DataPreprocess module and produces a trained model used by the Classifier/Inference module for alt-text generation.  
+
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+None.
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+  \begin{tabular}{p{4cm} p{4cm} p{4cm} p{3cm}}
+    \toprule
+    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \midrule
+    initializeModel & configPath:\,String & None & ConfigFileNotFoundException \\
+    trainModel & datasetSpec:\,DatasetSpec & modelWeights:\,ModelWeights & TrainingException \\
+    saveCheckpoint & epoch:\,$\mathbb{N}$, metrics:\,MetricsReport & None & WriteErrorException \\
+    evaluateModel & validationSet:\,DatasetSpec & metrics:\,MetricsReport & EvaluationErrorException \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+  \item trainedModel:\,ModelWeights — stores most recently trained weights.
+  \item trainingLogs:\,MetricsLog — records metrics for each epoch.
+\end{itemize}
+
+\subsubsection{Environment Variables}
+\begin{itemize}
+  \item Filesystem — used to read/write checkpoints and logs.
+  \item GPU/CPU — executes model computations.
+\end{itemize}
+
+\subsubsection{Assumptions}
+\begin{itemize}
+  \item Dataset inputs are valid and preprocessed.
+  \item Sufficient compute (GPU/CPU) resources available.
+  \item The configuration file exists and is readable.
+\end{itemize}
+
+\subsubsection{Access Routine Semantics}
+
+\noindent \texttt{initializeModel(configPath)}:
+\begin{itemize}
+  \item transition: Loads model architecture, optimizer, and training parameters.
+  \item output: None.
+  \item exception: \texttt{ConfigFileNotFoundException} if file is missing or invalid.
+\end{itemize}
+
+\noindent \texttt{trainModel(datasetSpec)}:
+\begin{itemize}
+  \item transition: Performs training; updates \texttt{trainedModel}.
+  \item output: Returns \texttt{ModelWeights}.
+  \item exception: \texttt{TrainingException} if training fails or dataset is invalid.
+\end{itemize}
+
+\noindent \texttt{saveCheckpoint(epoch, metrics)}:
+\begin{itemize}
+  \item transition: Saves current weights and metrics to storage.
+  \item output: None.
+  \item exception: \texttt{WriteErrorException} if write operation fails.
+\end{itemize}
+
+\noindent \texttt{evaluateModel(validationSet)}:
+\begin{itemize}
+  \item transition: Evaluates performance; appends metrics to log.
+  \item output: Returns \texttt{MetricsReport}.
+  \item exception: \texttt{EvaluationErrorException} if validation set missing or corrupt.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None.
+
+
+\newpage
+\section{MIS of Classifier / Inference Module} \label{classify}
+
+\subsection{Module}
+ClassifierInference
+
+\subsection{Uses}
+Uses trained weights from \hyperref[aitrain]{AIModelTraining Module} to generate alt-text descriptions for new images.  
+
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+None.
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+  \begin{tabular}{p{4cm} p{4cm} p{4cm} p{3cm}}
+    \toprule
+    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \midrule
+    loadModel & modelWeights:\,ModelWeights & None & ModelLoadException \\
+    predictAltText & image:\,TensorImage & altText:\,AltText & InferenceErrorException \\
+    decodeOutput & rawPredictions:\,Logits & altText:\,AltText & DecodeErrorException \\
+    getConfidenceScore & altText:\,AltText & confidence:\,$\mathbb{R}$ & None \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+  \item loadedModel:\,ModelWeights — active weights for inference.
+\end{itemize}
+
+\subsubsection{Environment Variables}
+\begin{itemize}
+  \item GPU/CPU — runs inference computations.
+\end{itemize}
+
+\subsubsection{Assumptions}
+\begin{itemize}
+  \item \texttt{modelWeights} correspond to a valid trained model.
+  \item \texttt{image} is preprocessed to expected input dimensions.
+\end{itemize}
+
+\subsubsection{Access Routine Semantics}
+
+\noindent \texttt{loadModel(modelWeights)}:
+\begin{itemize}
+  \item transition: Loads model weights into memory.
+  \item output: None.
+  \item exception: \texttt{ModelLoadException} if weights are corrupted or missing.
+\end{itemize}
+
+\noindent \texttt{predictAltText(image)}:
+\begin{itemize}
+  \item transition: Performs inference and generates raw predictions.
+  \item output: Returns generated alt text.
+  \item exception: \texttt{InferenceErrorException} if computation fails.
+\end{itemize}
+
+\noindent \texttt{decodeOutput(rawPredictions)}:
+\begin{itemize}
+  \item transition: Converts raw outputs into readable descriptions.
+  \item output: Returns decoded \texttt{AltText}.
+  \item exception: \texttt{DecodeErrorException} if decoding fails.
+\end{itemize}
+
+\noindent \texttt{getConfidenceScore(altText)}:
+\begin{itemize}
+  \item transition: None.
+  \item output: Returns confidence score in range [0,1].
+  \item exception: None.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None.
 
 
 
