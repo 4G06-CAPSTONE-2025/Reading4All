@@ -307,6 +307,26 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
   \texttt{TOKEN\_EXPIRY\_TIME}: $\mathbb{N}$ — Duration in minutes after which an authentication token expires. \\ \\
   \texttt{MAX\_LOGIN\_ATTEMPTS}: $\mathbb{N}$ — Maximum number of failed login attempts allowed before temporary account lockout. \\
   
+  \subsubsection{Exported Access Programs}
+  
+  \begin{center}
+  \begin{tabular}{p{3cm} p{4cm} p{3cm} p{2cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  validateToken & userToken & Boolean & InvalidTokenException \\
+  \hline
+  signInUser & credentials & userToken & AuthenticationFailedException \\
+  \hline
+  signOutUser & userToken & Boolean & SessionNotFoundException \\
+  \hline
+  getCurrentUser & userToken & userID & UserNotAuthenticatedException \\
+  \hline
+  refreshToken & userToken & newToken & TokenRefreshException \\
+  \hline
+  \end{tabular}
+  \end{center}
+  
 
   
 
