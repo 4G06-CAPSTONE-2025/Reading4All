@@ -33,7 +33,7 @@
 
 \begin{document}
 
-\title{Module Guide for \progname{}} 
+\title{Module Guide for \progname{}}
 \author{\authname}
 \date{\today}
 
@@ -44,11 +44,11 @@
 \section{Revision History}
 
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
-\midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
-\bottomrule
+  \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+  \midrule
+  Date 1 & 1.0 & Notes\\
+  Date 2 & 1.1 & Notes\\
+  \bottomrule
 \end{tabularx}
 
 \newpage
@@ -60,10 +60,10 @@ This section records information for easy reference.
 \subsection{Abbreviations and Acronyms}
 
 \renewcommand{\arraystretch}{1.2}
-\begin{tabular}{l l} 
-  \toprule		
+\begin{tabular}{l l}
+  \toprule
   \textbf{symbol} & \textbf{description}\\
-  \midrule 
+  \midrule
   AC & Anticipated Change\\
   DAG & Directed Acyclic Graph \\
   M & Module \\
@@ -74,7 +74,7 @@ This section records information for easy reference.
   SRS & Software Requirements Specification\\
   \progname & Explanation of program name\\
   UC & Unlikely Change \\
-  \wss{etc.} & \wss{...}\\
+  \wss{etc.} & \wss{xxx}\\
   \bottomrule
 \end{tabular}\\
 
@@ -99,35 +99,41 @@ based on the principle of information hiding~\citep{Parnas1972a}.  This
 principle supports design for change, because the ``secrets'' that each module
 hides represent likely future changes.  Design for change is valuable in SC,
 where modifications are frequent, especially during initial development as the
-solution space is explored.  
+solution space is explored.
 
 Our design follows the rules layed out by \citet{ParnasEtAl1984}, as follows:
 \begin{itemize}
-\item System details that are likely to change independently should be the
-  secrets of separate modules.
-\item Each data structure is implemented in only one module.
-\item Any other program that requires information stored in a module's data
-  structures must obtain it by calling access programs belonging to that module.
+  \item System details that are likely to change independently should be the
+    secrets of separate modules.
+  \item Each data structure is implemented in only one module.
+  \item Any other program that requires information stored in a module's data
+    structures must obtain it by calling access programs belonging to
+    that module.
 \end{itemize}
 
 After completing the first stage of the design, the Software Requirements
-Specification (SRS), the Module Guide (MG) is developed~\citep{ParnasEtAl1984}. The MG
+Specification (SRS), the Module Guide (MG) is
+developed~\citep{ParnasEtAl1984}. The MG
 specifies the modular structure of the system and is intended to allow both
 designers and maintainers to easily identify the parts of the software.  The
 potential readers of this document are as follows:
 
 \begin{itemize}
-\item New project members: This document can be a guide for a new project member
-  to easily understand the overall structure and quickly find the
-  relevant modules they are searching for.
-\item Maintainers: The hierarchical structure of the module guide improves the
-  maintainers' understanding when they need to make changes to the system. It is
-  important for a maintainer to update the relevant sections of the document
-  after changes have been made.
-\item Designers: Once the module guide has been written, it can be used to
-  check for consistency, feasibility, and flexibility. Designers can verify the
-  system in various ways, such as consistency among modules, feasibility of the
-  decomposition, and flexibility of the design.
+  \item New project members: This document can be a guide for a new
+    project member
+    to easily understand the overall structure and quickly find the
+    relevant modules they are searching for.
+  \item Maintainers: The hierarchical structure of the module guide improves the
+    maintainers' understanding when they need to make changes to the
+    system. It is
+    important for a maintainer to update the relevant sections of the document
+    after changes have been made.
+  \item Designers: Once the module guide has been written, it can be used to
+    check for consistency, feasibility, and flexibility. Designers
+    can verify the
+    system in various ways, such as consistency among modules,
+    feasibility of the
+    decomposition, and flexibility of the design.
 \end{itemize}
 
 The rest of the document is organized as follows. Section
@@ -157,15 +163,15 @@ adapted here is called design for
 change.
 
 \begin{description}
-\item[\refstepcounter{acnum} \actheacnum \label{acHardware}:] The specific
-  hardware on which the software is running.
-\item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the
-  initial input data.
-\item ...
+  \item[\refstepcounter{acnum} \actheacnum \label{acHardware}:] The specific
+    hardware on which the software is running.
+  \item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the
+    initial input data.
 \end{description}
 
 \wss{Anticipated changes relate to changes that would be made in requirements,
-design or implementation choices.  They are not related to changes that are made
+  design or implementation choices.  They are not related to changes
+  that are made
 at run-time, like the values of parameters.}
 
 \subsection{Unlikely Changes} \label{SecUchange}
@@ -178,9 +184,8 @@ will potentially need to be modified. Hence, it is not intended that these
 decisions will be changed.
 
 \begin{description}
-\item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Input/Output devices
-  (Input: File and/or Keyboard, Output: File, Memory, and/or Screen).
-\item ...
+  \item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Input/Output devices
+    (Input: File and/or Keyboard, Output: File, Memory, and/or Screen).
 \end{description}
 
 \section{Module Hierarchy} \label{SecMH}
@@ -191,39 +196,36 @@ below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
 
 \begin{description}
-\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
-\item ...
+  \item[\label{mHH}] Hardware-Hiding Module
+  \item[\label{mBH}] Behaviour-Hiding Module
+  \item[\label{mSD}] Software Decision Module
 \end{description}
 
-
 \begin{table}[h!]
-\centering
-\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
-\toprule
-\textbf{Level 1} & \textbf{Level 2}\\
-\midrule
+  \centering
+  \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Level 1} & \textbf{Level 2}\\
+    \midrule
 
-{Hardware-Hiding Module} & ~ \\
-\midrule
+    {Hardware-Hiding Module [Section (\ref{hhmmain})]} & N/A \\
+    \midrule
 
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\ 
-& ?\\
-\midrule
+    \multirow{3}{0.3\textwidth}{Behaviour-Hiding Module [Section (\ref{bhmmain})]} & 
+    {DataPreprocess Module (see \ref{mod:datapreprocess})}\\ &
+    {WCAGCompliance Module (see \ref{mod:wcagcompliance})}\\ &
+    {ModelOutput Module (see \ref{mod:modeloutput})}\\
+    \midrule
 
-\multirow{3}{0.3\textwidth}{Software Decision Module} & {?}\\
-& ?\\
-& ?\\
-\bottomrule
-
-\end{tabular}
-\caption{Module Hierarchy}
-\label{TblMH}
+    \multirow{4}{0.3\textwidth}{Software Decision Module [Section (\ref{sdmmain})]} &
+    {AIModelTraining Module (see \ref{mod:aimodeltraining})}\\ &
+    {CaptionGeneration Module (see \ref{mod:captiongeneration})}\\ &
+    {FeedbackMetrics Module (see \ref{mod:feedbackmetrics})}\\ &
+    {FeedbackIntegration Module (see \ref{mod:feedbackintegration})}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Module Hierarchy}
+  \label{TblMH}
 \end{table}
 
 \section{Connection Between Requirements and Design} \label{SecConnection}
@@ -237,7 +239,7 @@ between requirements and modules is listed in Table~\ref{TblRT}.
   design decisions need to be made.  Rather than make these decisions implicit,
   they are explicitly recorded here.  For instance, if a program has security
   requirements, a specific design decision may be made to satisfy those
-  requirements with a password.}
+requirements with a password.}
 
 \section{Module Decomposition} \label{SecMD}
 
@@ -248,81 +250,127 @@ module. The \emph{Services} field specifies \emph{what} the module will do
 without documenting \emph{how} to do it. For each module, a suggestion for the
 implementing software is given under the \emph{Implemented By} title. If the
 entry is \emph{OS}, this means that the module is provided by the operating
-system or by standard programming language libraries.  \emph{\progname{}} means the
+system or by standard programming language libraries.
+\emph{\progname{}} means the
 module will be implemented by the \progname{} software.
 
 Only the leaf modules in the hierarchy have to be implemented. If a dash
 (\emph{--}) is shown, this means that the module is not a leaf and will not have
 to be implemented.
 
-\subsection{Hardware Hiding Modules (\mref{mHH})}
+\subsection{Hardware Hiding Modules \label{hhmmain}}
 
 \begin{description}
-\item[Secrets:]The data structure and algorithm used to implement the virtual
-  hardware.
-\item[Services:]Serves as a virtual hardware used by the rest of the
-  system. This module provides the interface between the hardware and the
-  software. So, the system can use it to display outputs or to accept inputs.
-\item[Implemented By:] OS
+  \item[Secrets:] How the physical or virtual hardware interacts with the system.
+  \item[Services:] Provides the interface for input and output between the hardware and software.
+  \item[Implemented By:] OS
 \end{description}
 
-\subsection{Behaviour-Hiding Module}
+\subsection{Behaviour-Hiding Modules \label{bhmmain}}
 
 \begin{description}
-\item[Secrets:]The contents of the required behaviours.
-\item[Services:]Includes programs that provide externally visible behaviour of
-  the system as specified in the software requirements specification (SRS)
-  documents. This module serves as a communication layer between the
-  hardware-hiding module and the software decision module. The programs in this
-  module will need to change if there are changes in the SRS.
-\item[Implemented By:] --
+  \item[Secrets:] User-facing or external behaviours of the system that are hidden from the internal logic.
+  \item[Services:] Implements functionalities that interact with external data or prepare it for internal modules.
 \end{description}
 
-\subsubsection{Input Format Module (\mref{mInput})}
+\subsubsection{Preprocessing Module}
+\label{mod:preprocessing}
 
 \begin{description}
-\item[Secrets:]The format and structure of the input data.
-\item[Services:]Converts the input data into the data structure used by the
-  input parameters module.
-\item[Implemented By:] [Your Program Name Here]
-\item[Type of Module:] [Record, Library, Abstract Object, or Abstract Data Type]
-  [Information to include for leaf modules in the decomposition by secrets tree.]
+  \item[Secrets:] The steps used to prepare input images for further processing.
+  \item[Services:] Normalizes, sorts, and standardizes the image input so it can be correctly used by the training and caption generation modules.
+  \item[Implemented By:] \progname{}
+  \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{Etc.}
-
-
-\subsection{Software Decision Module}
-
-\subsubsection{AIModelTraining Module}
+\subsection{Software Decision Modules \label{sdmmain}}
 
 \begin{description}
-\item[Secrets:]
-How to train an AI model to generate accurate alternative text for images using machine learning techniques.  
-Hidden details include the choice of architecture, optimization process, and data handling strategy.
-
-\item[Services:]
-Provides a trained model that can process new image inputs and learn relationships between visual features and descriptive text.  
-Produces saved model weights and training logs for later use by the inference module.
-
-\item[Implemented By:] \progname{}
-\item[Type of Module:] Abstract Object
+  \item[Secrets:] Internal logic, data flow, and processing steps that define how the system produces and improves alternative text.
+  \item[Services:] Implements the internal operations of the system, such as model training, caption generation, quality validation, feedback collection, and output production.
 \end{description}
 
-\subsubsection{Classifier / Inference Module}
+\subsubsection{ModelTraining Module}
+\label{mod:modeltraining}
 
 \begin{description}
-\item[Secrets:]
-The logic used to generate descriptive alternative text from trained model outputs.  
-This includes internal decoding strategies and how the system interprets predictions.
-
-\item[Services:]
-Takes in new images (or preprocessed tensors) and outputs meaningful, readable descriptions for end users.  
-Uses the trained model produced by the AIModelTraining module.
-
-\item[Implemented By:] \progname{}
-\item[Type of Module:] Abstract Data Type
+  \item[Secrets:] The internal design of how the model is built and improved. This includes how image and text data are linked, how training is divided into sets, and what hidden patterns the model learns. The specific model structure and training process are not exposed to other modules.
+  \item[Services:] Trains the system to understand relationships between images and text so it can later describe new images accurately. Produces a trained model and supporting data (such as validation results) that are used by the CaptionGeneration module.
+  \item[Implemented By:] \progname{}
+  \item[Type of Module:] Abstract Object
 \end{description}
+
+\subsubsection{CaptionGeneration Module}
+\label{mod:captiongeneration}
+
+\begin{description}
+  \item[Secrets:] The process the system uses to generate descriptive text from an image. This includes how image features are interpreted and how words are selected and arranged into sentences.
+  \item[Services:] Uses the trained model to produce alternative text for a given image. Passes the generated caption to the WCAG and InternalMetricCompliance modules to ensure it meets accessibility and clarity standards.
+  \item[Implemented By:] \progname{}
+  \item[Type of Module:] Library
+\end{description}
+
+\subsubsection{WCAGCompliance Module}
+\label{mod:wcagcompliance}
+
+\begin{description}
+  \item[Secrets:] The rules used to decide whether a caption meets accessibility standards.
+  \item[Services:] Checks the generated text against WCAG 2.1 AA criteria and flags or adjusts anything that does not meet these standards.
+  \item[Implemented By:] \progname{}
+  \item[Type of Module:] Library
+\end{description}
+
+\subsubsection{InternalMetricCompliance Module}
+\label{mod:internalmetriccompliance}
+
+\begin{description}
+  \item[Secrets:] The internal measures chosen by the team to judge how clear or concise the generated text is.
+  \item[Services:] Reviews each caption using internal quality checks that complement the WCAG validation.
+  \item[Implemented By:] \progname{}
+  \item[Type of Module:] Library
+\end{description}
+
+\subsubsection{FeedbackMetrics Module}
+\label{mod:feedbackmetrics}
+
+\begin{description}
+  \item[Secrets:] How user feedback is collected, interpreted, and organized for later use in model improvement. The exact method for analyzing or weighting different types of feedback is hidden.
+  \item[Services:] Receives direct input from users in the form of comments, ratings, or corrections about the generated alternative text. Summarizes this information into a structured format that can be used to guide model retraining and future system updates.
+  \item[Implemented By:] \progname{}
+  \item[Type of Module:] Library
+\end{description}
+
+\subsubsection{FeedbackLoop Module}
+\label{mod:feedbackloop}
+
+\begin{description}
+  \item[Secrets:] The rules and internal logic that determine how user feedback is used to update and improve the system’s model. The specific approach to retraining or fine-tuning is hidden.
+  \item[Services:] Takes processed feedback data from the FeedbackMetrics module and uses it to retrain or adjust the model over time. This allows the system to gradually improve its accuracy and produce captions that better reflect user expectations.
+  \item[Implemented By:] \progname{}
+  \item[Type of Module:] Abstract Data Type
+\end{description}
+
+\subsubsection{Feedback Module}
+\label{mod:feedback}
+
+\begin{description}
+  \item[Secrets:] How feedback information is stored and organized.
+  \item[Services:] Stores the user’s feedback entries and makes them available to the FeedbackMetrics and FeedbackLoop modules for review and improvement purposes.
+  \item[Implemented By:] \progname{}
+  \item[Type of Module:] Record
+\end{description}
+
+\subsubsection{ModelOutput Module}
+\label{mod:modeloutput}
+
+\begin{description}
+  \item[Secrets:] The structure used to store and present the final text to the user.
+  \item[Services:] Produces and formats the final version of the accessibility-compliant text for output or download.
+  \item[Implemented By:] \progname{}
+  \item[Type of Module:] Record
+\end{description}
+
+
 
 \section{Traceability Matrix} \label{SecTM}
 
@@ -392,19 +440,19 @@ system, and modules in the higher level of the hierarchy are essentially simpler
 because they use modules from the lower levels.
 
 \wss{The uses relation is not a data flow diagram.  In the code there will often
-be an import statement in module A when it directly uses module B.  Module B
-provides the services that module A needs.  The code for module A needs to be
-able to see these services (hence the import statement).  Since the uses
-relation is transitive, there is a use relation without an import, but the
+  be an import statement in module A when it directly uses module B.  Module B
+  provides the services that module A needs.  The code for module A needs to be
+  able to see these services (hence the import statement).  Since the uses
+  relation is transitive, there is a use relation without an import, but the
 arrows in the diagram typically correspond to the presence of import statement.}
 
 \wss{If module A uses module B, the arrow is directed from A to B.}
 
 \begin{figure}[H]
-\centering
-%\includegraphics[width=0.7\textwidth]{UsesHierarchy.png}
-\caption{Use hierarchy among modules}
-\label{FigUH}
+  \centering
+  %\includegraphics[width=0.7\textwidth]{UsesHierarchy.png}
+  \caption{Use hierarchy among modules}
+  \label{FigUH}
 \end{figure}
 
 %\section*{References}
