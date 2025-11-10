@@ -8,6 +8,7 @@
 \usepackage{graphicx} 
 \usepackage{float} 
 \usepackage{hyperref}
+\usepackage{enumitem}
 \hypersetup{
     colorlinks,
     citecolor=blue,
@@ -217,11 +218,26 @@ in a hierarchy decomposed by secrets in Table \ref{TblMH}. The modules listed
 below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
 
-\begin{description}
-  \item[\label{mHH}] Hardware-Hiding Module
-  \item[\label{mBH}] Behaviour-Hiding Module
-  \item[\label{mSD}] Software Decision Module
-\end{description}
+\begin{enumerate}[label=\textbf{M\arabic*}]
+  \item Data Preprocess Module
+  \item WCAG Compliance Module
+  \item Model Output Module
+  \item AI Model Training Module
+  \item Caption Generation Module
+  \item Feedback Metrics Module
+  \item Feedback Integration Module
+  \item Classifier/Inference Module
+  \item Authentication Service Module
+  \item Session Management Module
+  \item Image Handling Validation Module
+  \item Backend Controller Module
+  \item Logging Module
+  \item User Interface Interactions Module
+  \item Main Screen Module
+  \item Show History Screen Module
+  \item Log In Screen Module
+  \item User Interface Accessibility Module
+\end{enumerate}
 
 \begin{table}[h!]
   \centering
