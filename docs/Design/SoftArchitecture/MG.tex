@@ -307,10 +307,11 @@ Only the leaf modules in the hierarchy have to be implemented. If a dash
 to be implemented.
 
 \subsection{Hardware Hiding Modules \label{hhmmain}}
-This section is N/A as Reading4All has no hardware components.
+This subsection is N/A as the Reading4All system has no hardware components.
 
 \subsection{Behaviour-Hiding Modules \label{bhmmain}}
-This section includes modules that pertain to the required behavior.
+This subsection includes modules that pertain to the required
+behavior of the Reading4All system.
 The modules are defined as their own subsection and follow the following format:
 
 \begin{description}
@@ -322,17 +323,20 @@ The modules are defined as their own subsection and follow the following format:
     Software Requirements Specification (SRS). Any modifications to the
     SRS will likely require corresponding updates to the programs
     within this module.
-  \item[Implemented By:] This part mentioned if Team 22's system, Reading4All, or external systems will
+  \item[Implemented By:] This part mentions if the Reading4All system
+    or external systems will
     implement the specific module.
-  \item[Type of Module:] Is the module a Record, Library, Abstract
-    Object, or Abstract Data Type? This section also includes
+  \item[Type of Module:] This section defines the moduel type into a
+    Record, Library, Abstract
+    Object, or Abstract Data Type. This section also includes
     information for leaf modules in the decomposition by secrets tree.
 \end{description}
 
 \subsubsection{DataPreprocess Module}
 \label{mod:preprocessing}
 \begin{description}
-  \item[Secrets:] The steps used to prepare input images for further processing.
+  \item[Secrets:] Includes the steps used to prepare input images for
+    further processing.
   \item[Services:] Normalizes, sorts, and standardizes the image
     input so it can be correctly used by the training and caption
     generation modules.
@@ -344,7 +348,8 @@ The modules are defined as their own subsection and follow the following format:
 \label{mod:wcagcompliance}
 
 \begin{description}
-  \item[Secrets:] The rules used to decide whether a caption meets AODA and WCAG 2.1 AA accessibility standards.
+  \item[Secrets:] The rules used to decide whether a caption meets
+    AODA and WCAG 2.1 AA accessibility standards.
   \item[Services:] Checks the generated text against WCAG 2.1 AA
     criteria and flags or adjusts anything that does not meet these standards.
   \item[Implemented By:] Reading4All
@@ -356,7 +361,8 @@ The modules are defined as their own subsection and follow the following format:
 
 \begin{description}
   \item[Secrets:] The structure used to store and present the final
-    text to the user.
+    text to the user via the BackendController as mentioned in
+    Section \ref{mod:bcm}.
   \item[Services:] Produces and formats the final version of the
     accessibility-compliant text for output or download.
   \item[Implemented By:] Reading4All
@@ -377,8 +383,6 @@ The modules are defined as their own subsection and follow the following format:
     and coordinates with Session Management to create/terminate sessions.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
-    [Information to include for leaf modules in the decomposition by
-    secrets tree.]
 \end{description}
 
 \subsubsection{SessionManagement Module}
@@ -395,8 +399,6 @@ The modules are defined as their own subsection and follow the following format:
     recent data references for the current session.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Abstract Data Type
-    [Information to include for leaf modules in the decomposition by
-    secrets tree.]
 \end{description}
 
 \subsubsection{BackendController Module}
@@ -409,13 +411,16 @@ The modules are defined as their own subsection and follow the following format:
     from the frontend and directing it to the appropriate service
     such as the User Authentication or  AI Model, and returning the results.
   \item[Implemented By:] Reading4All
-  \item[Type of Module:] Abstract Object
-    [Information to include for leaf modules in the decomposition by
-    secrets tree.]
+  \item[Type of Module:] Abstract Objects
 \end{description}
 
 \subsection{Software Decision Modules}
 \label{mod:sdmmain}
+This subsection includes the modules' internal operations,
+connections with other modules and decision making components.
+Similar to Section \ref{bhmmain} the modules are defined as their own
+subsection and follow the following format:
+
 \begin{description}
   \item[Secrets:] Internal logic, data flow, and processing steps
     that define how the system produces and improves alternative text.
@@ -446,7 +451,7 @@ The modules are defined as their own subsection and follow the following format:
   \item[Secrets:] The process the system uses to generate descriptive
     text from an image. This includes how image features are
     interpreted and how words are selected and arranged into sentences.
-  \item[Services:] Uses the trained model to produce alternative text
+  \item[Services:] Uses the trained model from the AIModelTraining module to produce alternative text
     for a given image. Passes the generated caption to the WCAG and
     InternalMetricCompliance modules to ensure it meets accessibility
     and clarity standards.
@@ -457,10 +462,10 @@ The modules are defined as their own subsection and follow the following format:
 \subsubsection{InternalMetricCompliance Module}
 \label{mod:internalmetriccompliance}
 \begin{description}
-  \item[Secrets:] The internal measures chosen by the team to judge
-    how clear or concise the generated text is.
+  \item[Secrets:] The internal measures chosen by Team 22 to judge
+    how clear, concise or relevant the generated text is.
   \item[Services:] Reviews each caption using internal quality checks
-    that complement the WCAG validation.
+    that complement the AODA and WCAG 2.1 AA validation standards.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
 \end{description}
