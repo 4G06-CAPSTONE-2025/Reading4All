@@ -1095,6 +1095,88 @@ None
   \item \texttt{verifyFileSize(image)}: Checks that the images size falls between \texttt{MIN\_IMAGE\_SIZE} and \texttt{MAX\_IMAGE\_SIZE}.
   \item \texttt{verifyFileReachable(image)}: Checks that the image can be accessed and opened successfully. 
 \end{itemize}
+
+
+\section{MIS of Logger Module} \label{LogModule} \wss{Use labels for
+  cross-referencing}
+
+\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+
+\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+
+\subsection{Module}
+\texttt{Logger}
+
+\subsection{Uses}
+The module handles the recording of key system events and any errors encountered. It logs actions such as image uploads,alt-text generation and user validations, as well as system issues like timeouts. This logging will enables developers to debug for effectively and ensure system reliability and security during failures. 
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+  \texttt{LOG\_FILE\_PATH}: String - Specifies the location of where the logs should be stored.\\
+  \texttt{LOG\_TYPE}: List of Strings - Specifies the possible log types such as an \texttt{Event} and \texttt{Error}.\\
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{6cm} p{2cm} p{4cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+logEvent & eventMessage, logType & None & LogWriteException\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+
+None
+
+\subsubsection{Environment Variables}
+
+\wss{This section is not necessary for all modules.  Its purpose is to capture
+  when the module has external interaction with the environment, such as for a
+  device driver, screen interface, keyboard, file, etc.}
+\begin{itemize}
+  \item The Backend Controller Module sends any key system events and error messages to be logged. 
+  \item File System is used to store the logs written by this module.
+\end{itemize}
+
+\subsubsection{Assumptions}
+
+\wss{Try to minimize assumptions and anticipate programmer errors via
+  exceptions, but for practical purposes assumptions are sometimes appropriate.}
+\begin{itemize}
+  \item The file system is available and logs can be saved to it. 
+  \item The LOG\_FILE\_PATH location can be accessed. 
+  \item Log messages are provided in string format by the Backend Controller Module.
+\end{itemize}
+\subsubsection{Access Routine Semantics}
+
+\noindent \texttt{logEvent(eventMessage, logType)}:
+\begin{itemize}
+\item transition: Creates an log entry containing the time of event occur, type and message. 
+\item output: An updated log file with new event or error entry added. 
+\item exception: \texttt{LogWriteException} is raised if the log file cannot be accessed or written to. 
+\end{itemize}
+
+\wss{A module without environment variables or state variables is unlikely to
+  have a state transition.  In this case a state transition can only occur if
+  the module is changing the state of another module.}
+
+\wss{Modules rarely have both a transition and an output.  In most cases you
+  will have one or the other.}
+
+\subsubsection{Local Functions}
+
+\wss{As appropriate} \wss{These functions are for the purpose of specification.
+  They are not necessarily something that is going to be implemented
+  explicitly.  Even if they are implemented, they are not exported; they only
+  have local scope.}
+
+
 \section{MIS of User Interface Interactions Module}\label{UI_Interactions} \wss{Use labels for
 cross-referencing}
 
