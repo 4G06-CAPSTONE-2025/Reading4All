@@ -369,8 +369,8 @@ The modules are defined as their own subsection and follow the following format:
 
 \begin{description}
   \item[Secrets:] The rules used to decide whether a caption meets
-    AODA and WCAG 2.1 AA accessibility standards.
-  \item[Services:] Checks the generated text against WCAG 2.1 AA
+    AODA (\cite{AODA}) and WCAG 2.1 AA accessibility standards (\citet{WCAG}).
+  \item[Services:] Checks the generated text against WCAG 2.1 AA (\citet{WCAG})
     criteria and flags or adjusts any generated alt text that does not meet these standards.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
@@ -455,11 +455,11 @@ The modules are defined as their own subsection and follow the following format:
 \label{mod: uia}
 \begin{description}
   \item[Secrets:] The internal mechanism for providing screen reader and keyboard navigation compatibility in the browser.
-  This includes how ARIA live regions are implemented, how focus is manipulated, and how keyboard navigation is enabled 
+  This includes how ARIA (\citet{ARIA}) live regions are implemented, how focus is manipulated, and how keyboard navigation is enabled 
   internally.
   \item[Services:] Provides accessibility capabilities to other user interface modules by: assigning and maintaining 
   the correct main landmark on each screen; managing which element receives initial keyboard focus; sending 
-  announcements to screen readers using ARIA live regions; and enabling keyboard navigation patterns. 
+  announcements to screen readers using ARIA (\citet{ARIA}) live regions; and enabling keyboard navigation patterns. 
   \item[Implemented By:] Reading4All Team 
   \item[Type of Module:] Library
 \end{description}
@@ -550,7 +550,7 @@ subsection and follow the following format:
     text from an image. This includes how image features are
     interpreted and how words are selected and arranged into sentences.
   \item[Services:] Uses the trained model from the AIModelTraining module to produce alternative text
-    for a given image. Passes the generated caption to the WCAG and
+    for a given image. Passes the generated caption to the WCAG (\citet{WCAG}) and
     InternalMetricCompliance modules to ensure it meets accessibility
     and clarity standards.
   \item[Implemented By:] Reading4All
@@ -563,7 +563,7 @@ subsection and follow the following format:
   \item[Secrets:] The internal measures chosen by Team 22 to judge
     how clear, concise or relevant the generated text is.
   \item[Services:] Reviews each caption using internal quality checks
-    that complement the AODA and WCAG 2.1 AA validation standards.
+    that complement the AODA (\citet{AODA}) and WCAG 2.1 AA (\citet{WCAG}) validation standards.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
 \end{description}
