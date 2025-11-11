@@ -322,7 +322,8 @@ None.
 AITrain
 
 \subsection{Uses}
-Takes preprocessed data from the DataPreprocess module and trains a model.
+Takes preprocessed data from the DataPreprocess module and trains a model. 
+Incorporates feedback updates from the FeedbackIntegration module, which consumes performance metrics and adjusts model parameters to improve future training iterations.
 
 \subsection{Syntax}
 \subsubsection{Exported Constants}
@@ -498,7 +499,7 @@ None.
 ModInt
 
 \subsection{Uses}
-Consumes performance scores from the FeedbackMetrics module and applies them to update model parameters in the AIModelTraining module, closing the feedback loop after inference.
+Consumes performance scores from the FeedbackMetrics module.
 
 \subsection{Syntax}
 
@@ -609,8 +610,6 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
 \item output: Returns \texttt{True} if the user is valid, otherwise \texttt{False} is returned.
 \item exception: \texttt{InvalidTokenException} is raised if token is expired or cannot be validated. 
 \end{itemize}
-
-
 
 \noindent \texttt{validateImage(image,userToken)}:
 \begin{itemize}
