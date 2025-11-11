@@ -1021,19 +1021,173 @@ will have one or the other.}
       \item \texttt{cleanExpiredSessions()}: Removes all expired sessions and their histories from storage.
       \item \texttt{applyHistoryFilter(history, filter)}: Applies filtering parameters (e.g., type, time range, status) to session history queries.
   \end{itemize}
-\section{MIS of User Interface Interactions Module}\label{UI_Interactions} \wss{Use labels for
-cross-referencing}
+
+\section{MIS of Image Validation Module } \label{ImageValid}
 
 \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
 
 \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
 
 \subsection{Module}
+  \texttt{ImageValidation}
+
+\subsection{Uses}
+This module is responsible for verifying that uploaded images meet the systems requirements for format and size before the alt-text generation process begins. 
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+  \texttt{MAX\_IMAGE\_SIZE}: $\mathbb{N}$ - Specifies the maximum file size in (MB) allowed for uploaded images.\\
+  \texttt{MIN\_IMAGE\_SIZE}: $\mathbb{N}$ - Specifies the minimum file size in (MB) allowed for uploaded images.\\
+  \texttt{ACCEPTED\_IMAGE\_TYPES}: \texttt{List of Strings}- Specifies the accepted image file types. 
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{4 cm} p{4cm} p{2cm} p{4cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+validateImageFile & image, userToken & \texttt{boolean} & InvalidImageTypeException \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+
+\subsubsection{Environment Variables}
+\begin{itemize}
+  \item \textbf{Backend Controller:} Sends uploaded images to be validated and receives the results after validation is completed. 
+\end{itemize}
+
+
+
+\subsubsection{Assumptions}
+
+\wss{Try to minimize assumptions and anticipate programmer errors via
+  exceptions, but for practical purposes assumptions are sometimes appropriate.}
+
+  \begin{itemize}
+  \item The Backend Controller module provides the Image Validation module with an image file that is reachable for validation. 
+  \item The user has successfully been validated through the user authentication process. 
+\end{itemize}
+\subsubsection{Access Routine Semantics}
+
+\noindent \texttt{validateImageFile(image, userToken)}
+\begin{itemize}
+\item transition: Verifies that the inputted image meets size and format requirements.
+\item output: Returns \texttt{True} if the image meets size and format requirements, otherwise \texttt{False} is returned.
+\item exception: \texttt{InvalidImageException} is raised if the image cannot be reached and therefore cannot be validated. 
+\end{itemize}
+
+\wss{A module without environment variables or state variables is unlikely to
+  have a state transition.  In this case a state transition can only occur if
+  the module is changing the state of another module.}
+
+\wss{Modules rarely have both a transition and an output.  In most cases you
+  will have one or the other.}
+
+\subsubsection{Local Functions}
+\begin{itemize}
+  \item \texttt{verifyFileType(image)}: Checks that the images file type matches a type found in \texttt{ACCEPTED\_IMAGE\_TYPES}.
+  \item \texttt{verifyFileSize(image)}: Checks that the images size falls between \texttt{MIN\_IMAGE\_SIZE} and \texttt{MAX\_IMAGE\_SIZE}.
+  \item \texttt{verifyFileReachable(image)}: Checks that the image can be accessed and opened successfully. 
+\end{itemize}
+
+
+\section{MIS of Logger Module} \label{LogModule} \wss{Use labels for
+  cross-referencing}
+
+\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+
+\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+
+\subsection{Module}
+\texttt{Logger}
+
+\subsection{Uses}
+The module handles the recording of key system events and any errors encountered. It logs actions such as image uploads,alt-text generation and user validations, as well as system issues like timeouts. This logging will enables developers to debug for effectively and ensure system reliability and security during failures. 
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+  \texttt{LOG\_FILE\_PATH}: String - Specifies the location of where the logs should be stored.\\
+  \texttt{LOG\_TYPE}: List of Strings - Specifies the possible log types such as an \texttt{Event} and \texttt{Error}.\\
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{6cm} p{2cm} p{4cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+logEvent & eventMessage, logType & None & LogWriteException\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+
+None
+
+\subsubsection{Environment Variables}
+
+\wss{This section is not necessary for all modules.  Its purpose is to capture
+  when the module has external interaction with the environment, such as for a
+  device driver, screen interface, keyboard, file, etc.}
+\begin{itemize}
+  \item The Backend Controller Module sends any key system events and error messages to be logged. 
+  \item File System is used to store the logs written by this module.
+\end{itemize}
+
+\subsubsection{Assumptions}
+
+\wss{Try to minimize assumptions and anticipate programmer errors via
+  exceptions, but for practical purposes assumptions are sometimes appropriate.}
+\begin{itemize}
+  \item The file system is available and logs can be saved to it. 
+  \item The LOG\_FILE\_PATH location can be accessed. 
+  \item Log messages are provided in string format by the Backend Controller Module.
+\end{itemize}
+\subsubsection{Access Routine Semantics}
+
+\noindent \texttt{logEvent(eventMessage, logType)}:
+\begin{itemize}
+\item transition: Creates an log entry containing the time of event occur, type and message. 
+\item output: An updated log file with new event or error entry added. 
+\item exception: \texttt{LogWriteException} is raised if the log file cannot be accessed or written to. 
+\end{itemize}
+
+\wss{A module without environment variables or state variables is unlikely to
+  have a state transition.  In this case a state transition can only occur if
+  the module is changing the state of another module.}
+
+\wss{Modules rarely have both a transition and an output.  In most cases you
+  will have one or the other.}
+
+\subsubsection{Local Functions}
+
+\wss{As appropriate} \wss{These functions are for the purpose of specification.
+  They are not necessarily something that is going to be implemented
+  explicitly.  Even if they are implemented, they are not exported; they only
+  have local scope.}
+
+
+\section{MIS of User Interface Interactions Module}\label{UI_Interactions}
+
+\subsection{Module}
 
 interactionsUI
 
 \subsection{Uses}
-[this is from other modules]
+BackendController \\
+mainScreen \\ 
+logInScreen \\ 
+showHistory 
 
 \subsection{Syntax}
 
@@ -1054,6 +1208,10 @@ uploadImage & imageFilePath:String & Success:\Bool & FileNotFound, FileTypeNotSu
 downloadText & altText:String & altTextFile:String & NetworkError \\
 copyText & altText:String & Success:\Bool & ClipboardError \\
 editText & altText:String, editedText:String & Success:\Bool & NetworkError \\
+signIn & token:String & Success:\(\mathbb{B}\) & AuthError \\
+signOut & - & Success:\(\mathbb{B}\) & AuthError \\
+showHistory & - & - & NetworkError \\
+
 \hline
 \end{tabular}
 \end{center}
@@ -1062,16 +1220,9 @@ editText & altText:String, editedText:String & Success:\Bool & NetworkError \\
 
 \subsubsection{State Variables}
 
-\wss{Not all modules will have state variables.  State variables give the module
-  a memory.} \\ 
-
 None
 
 \subsubsection{Environment Variables}
-
-\wss{This section is not necessary for all modules.  Its purpose is to capture
-  when the module has external interaction with the environment, such as for a
-  device driver, screen interface, keyboard, file, etc.} 
 
 \begin{itemize}
   \item Clipboard - system's clipboard interface for copy function.
@@ -1081,9 +1232,6 @@ None
 
 
 \subsubsection{Assumptions}
-
-\wss{Try to minimize assumptions and anticipate programmer errors via
-  exceptions, but for practical purposes assumptions are sometimes appropriate.} 
   
   \begin{itemize}
     \item Clipboard access is enabled by the user for \texttt{copyText}.
@@ -1098,7 +1246,7 @@ None
 \begin{itemize}
 \item transition: \texttt{HTTPClient} sends the image bytes into the backend service which stores the image for that session, and communicates 
 with the AI model for alt text generation. 
-\item output: returns \texttt{true} iff the backend server acknowledges and is able to process the image.
+\item output: returns \texttt{true} iff the backend server acknowledges and is able to process the image, returns \texttt{false} otherwise.
 \item exception: FileNotFound, FileTypeNotSupported (not in \texttt{SUPPORT\_IMG\_TYPES}), and FileTooLarge (not within \texttt{MAX\_IMG\_SIZE})
 \end{itemize}
 
@@ -1112,29 +1260,42 @@ with the AI model for alt text generation.
 \noindent \textbf{copyText(altText)}:
 \begin{itemize} 
 \item transition: Clipboard := altText
-\item output: returns \texttt{true} iff clipboard write succeeds. 
+\item output: returns \texttt{true} iff clipboard write succeeds, returns \texttt{false} otherwise. 
 \item exception: ClipboardError.
 \end{itemize}
 
 \noindent \textbf{editText(altText,editedText)}:
 \begin{itemize}
 \item transition: \texttt{HTTPClient} sends update to backend and stored altText for uploaded image is replaced with editedText.
-\item output: return \texttt{true} iff server acknowledges the update.
+\item output: return \texttt{true} iff server acknowledges the update, returns \texttt{false} otherwise.
 \item exception: NetworkError.
 \end{itemize}
 
-\wss{A module without environment variables or state variables is unlikely to
-  have a state transition.  In this case a state transition can only occur if
-  the module is changing the state of another module.}
+\noindent \textbf{signIn(token)}:
+\begin{itemize}
+\item transition: if \texttt{token} is valid according to BackendController then user session becomes active.
+Otherwise no state change.
+\item output: return \texttt{true} iff user session is active, returns \texttt{false} otherwise.
+\item exception: Authentication Error.
+\end{itemize}
 
-\wss{Modules rarely have both a transition and an output.  In most cases you
-  will have one or the other.}
+\noindent \textbf{signOut()}:
+\begin{itemize}
+\item transition: terminates current active user session if any exists.
+Otherwise no state change.
+\item output: return \texttt{true} iff user session is was terminated, returns \texttt{false} otherwise.
+\item exception: Authentication Error.
+\end{itemize}
+
+\noindent \textbf{showHistory()}:
+\begin{itemize}
+\item transition: requests the showHistoryScreen module to render the History Screen using the current stored alt text session history.
+\item output: None.
+\item exception: Authentication Error.
+\end{itemize}
 
 \subsubsection{Local Functions}
-\wss{As appropriate} \wss{These functions are for the purpose of specification.
-  They are not necessarily something that is going to be implemented
-  explicitly.  Even if they are implemented, they are not exported; they only
-  have local scope.} 
+
 \begin{itemize}
   \item \textbf{isSupportedImage(filePath:String) \texttt{->} \Bool}: returns \texttt{true} if 
   the file type $\in$ \texttt{SUPPORTED\_IMG\_TYPES}.
@@ -1142,21 +1303,16 @@ with the AI model for alt text generation.
   the size of the image $\le$ \texttt{MAX\_IMG\_SIZE}.
   \item \textbf{saveAsTxt(altText: String) \texttt{->} filePath:String}: wraps generated alt text
    into a \texttt{.txt} file for \texttt{downloadText()}.
-  \item \textbf{buildUploadPayload(filePath: String) \texttt{->} Binary (?)}: reads the file and constructs the binary payload for the 
-  \texttt{uploadImage} function. 
+  \item \textbf{buildUploadPayload(filePath: String) \texttt{->} Binary}: reads the file and constructs the binary payload for the 
+  \texttt{uploadImage} function to send to the BackendController module.
 \end{itemize}
 
 
-\section{MIS of User Interface Display Module}\label{UI_display} \wss{Use labels for
-cross-referencing}
-
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+\section{MIS of Main Screen Module}\label{mainScreen} 
 
 \subsection{Module}
 
-displayUI
+mainScreen
 
 \subsection{Uses}
 
@@ -1175,9 +1331,7 @@ None
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-renderLogIn & - & - & - \\
-showHistory & - & - & - \\
-renderMain & - & - & - \\
+renderMain & - & - & RenderError, AccessibilityError \\
 \hline
 \end{tabular}
 \end{center}
@@ -1190,65 +1344,184 @@ None
 
 \subsubsection{Environment Variables}
 
-\texttt{DOM} - active document element into which UI is rendered.\\
+\texttt{DOM} - active document element into which UI is rendered.
 
 \subsubsection{Assumptions}
 
-\wss{Try to minimize assumptions and anticipate programmer errors via
-  exceptions, but for practical purposes assumptions are sometimes appropriate.}
+\begin{itemize}
+  \item Accessibility services are provided by the \texttt{accessibilityUI} module for screen reader announcements,
+  landmark management, initial focus, and keyboard navigation helpers. This module will provide notifications to
+  the \texttt{accessibilityUI} module. 
+\end{itemize}
+\subsubsection{Access Routine Semantics}
+
+\noindent \textbf{renderMain()}:
+\begin{itemize}
+  \item transition: update DOM to reflect main screen containing the upload page, then call on \texttt{accessibilityUI} to 
+  handle compatibility with screen readers and keyboard navigation.
+  \item output: None
+  \item exception: Render Error, Accessibility Error.
+\end{itemize}
+
+
+\subsubsection{Local Functions}
+
+\begin{itemize}
+  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  to mark/set the main landmark.
+  \item \textbf{setInitialFocus()\texttt{->} \Bool}: calls \texttt{accessibilityUI}
+   to move focus to the main region.
+  \item \textbf{announceMainLoaded() \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+   to announce screen load.
+
+\end{itemize}
+
+\section{MIS of Show History Screen Module}\label{showHistory} 
+
+\subsection{Module}
+
+showHistoryScreen
+
+\subsection{Uses}
+
+accessibilityUI\\
+interactionsUI
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2.5cm} p{4cm} p{4cm} p{3cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+showHistory & - & - & RenderError, AccessibilityError\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+
+None
+
+\subsubsection{Environment Variables}
+
+\texttt{DOM} - active document element into which UI is rendered.
+
+\subsubsection{Assumptions}
+
+\begin{itemize}
+  \item If history is shown, a valid and authenticated session already exists.
+  \item \texttt{accessibilityUI} is used for announcements and focus.
+  \item History content to display is already prepared by the \texttt{interactionsUI} module through
+  the \texttt{BackendController} module.
+\end{itemize}
+
+\subsubsection{Access Routine Semantics}
+
+\noindent \textbf{showHistory()}:
+\begin{itemize} 
+  \item transition: update DOM to reflect user's current session history, then call on \texttt{accessibilityUI} to 
+  handle compatibility with screen readers and keyboard navigation.
+  \item output: None
+  \item exception: Render Error, Accessibility Error.
+\end{itemize}
+
+\subsubsection{Local Functions}
+
+\begin{itemize}
+  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  to mark/set the main landmark.
+  \item \textbf{setInitialFocus()\texttt{->} \Bool}: calls \texttt{accessibilityUI}
+   to move focus to the main region.
+  \item \textbf{announceHistoryLoaded() \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+   to announce history screen load.
+\end{itemize}
+
+\section{MIS of Log In Screen Module}\label{logInScreen} 
+
+
+\subsection{Module}
+
+logInScreen
+
+\subsection{Uses}
+
+accessibilityUI\\
+interactionsUI
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2.5cm} p{4cm} p{4cm} p{3cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+renderLogIn & - & - & RenderError, AccessibilityError \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+
+None
+
+\subsubsection{Environment Variables}
+
+\texttt{DOM} - active document element into which UI is rendered.
+
+\subsubsection{Assumptions}
+
+\begin{itemize}
+  \item \texttt{accessibilityUI} is used for announcements and focus.
+\end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
 
 \noindent \textbf{renderLogIn()}:
 \begin{itemize}
-\item transition: update DOM to reflect log in screen with username and password fields.
+\item transition: update DOM to reflect log in screen with username and password fields, 
+then call on \texttt{accessibilityUI} to 
+handle compatibility with screen readers and keyboard navigation.
 \item output: None 
-\item exception: None
+\item exception: Render Error, Authentication Error.
 \end{itemize}
-
-\noindent \textbf{showHistory()}:
-\begin{itemize} 
-  \item transition: update DOM to reflect user's current session history.
-  \item output: None
-  \item exception: None
-\end{itemize}
-
-\noindent \textbf{renderMain()}:
-\begin{itemize}
-  \item transition: update DOM to reflect main screen containing the upload page.
-  \item output: None
-  \item exception: None
-\end{itemize}
-
-\wss{A module without environment variables or state variables is unlikely to
-  have a state transition.  In this case a state transition can only occur if
-  the module is changing the state of another module.}
-
-\wss{Modules rarely have both a transition and an output.  In most cases you
-  will have one or the other.}
 
 \subsubsection{Local Functions}
+\begin{itemize}
+  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  to mark/set the main landmark.
+  \item \textbf{setInitialFocus(username:String)\texttt{ -> }\Bool}:
+  calls \texttt{accessibilityUI} to move keyboard focus to the username
+  input field after the log in screen is rendered.
+  \item \textbf{announceLogInLoaded() \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+   to announce log in screen load.
+\end{itemize}
 
-\wss{As appropriate} \wss{These functions are for the purpose of specification.
-  They are not necessarily something that is going to be implemented
-  explicitly.  Even if they are implemented, they are not exported; they only
-  have local scope.}
-
-
-\section{MIS of User Interface Accessibility Module}\label{UI_accessibility} \wss{Use labels for
-  cross-referencing}
-  
-  \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-  
-  \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+\section{MIS of User Interface Accessibility Module}\label{UI_accessibility}
   
   \subsection{Module}
   
   accessibilityUI
   
   \subsection{Uses}
-  None
+  mainScreen\\
+  logInScreen\\
+  showHistoryScreen
   \subsection{Syntax}
   
   \subsubsection{Exported Constants}
@@ -1256,11 +1529,14 @@ None
   \subsubsection{Exported Access Programs}
   
   \begin{center}
-  \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+  \begin{tabular}{p{4cm} p{4cm} p{4cm} p{2cm}}
   \hline
   \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
   \hline
-  \wss{accessProg} & - & - & - \\
+  ensureMainLandmark & rootSel:String & Success:\(\mathbb{B}\) & AccessibilityError\\
+  setInitialFocus & targetSel:String & Success:\(\mathbb{B}\) & AccessibilityError\\
+  announce & msg:String & Success:\(\mathbb{B}\) & AccessibilityError\\
+  applyKeyboardNav & scopeSel:String & Success:\(\mathbb{B}\) & AccessibilityError\\
   \hline
   \end{tabular}
   \end{center}
@@ -1273,43 +1549,72 @@ None
   
   \subsubsection{Environment Variables}
     \texttt{DOM} - the active HTML document containing interactive elements \\ 
-    \texttt{ScreenReaderAPI} - hidden DOM nodes used to deliver announcements to screen readers for compatibility\\
+    \texttt{ScreenReaderAPI} - hidden live region nodes used to deliver announcements to screen readers 
+    for compatibility\\
     \texttt{Keyboard} - delivers keypress events to use for keyboard navigation\\
   
   \subsubsection{Assumptions}
-  
-  \wss{Try to minimize assumptions and anticipate programmer errors via
-    exceptions, but for practical purposes assumptions are sometimes appropriate.} \\
 
     \begin{itemize}
       \item The page allows insertion of valid ARIA live region nodes
-      \item \texttt{displayUI} calls \texttt{accessibilityUI} to announce changes rather than using ScreenReader APIs directly
+      \item \texttt{mainScreen}, \texttt{logInScreen}, \texttt{showHistoryScreen} modules calls \texttt{accessibilityUI} 
+      to announce changes on the user interface. 
     \end{itemize}
   
   \subsubsection{Access Routine Semantics}
   
-  \noindent \wss{accessProg}():
+  \noindent \textbf{ensureMainLandmark(rootSel:String)}:
   \begin{itemize}
-  \item transition: \wss{if appropriate} 
-  \item output: \wss{if appropriate} 
-  \item exception: \wss{if appropriate} 
+  \item transition: ensure that the element selected by \texttt{rootSel} is the page’s 
+  main landmark (i.e. \texttt{<main>}).
+  \item output: returns \texttt{true} if main landmark was present after the call, returns \texttt{false}
+  otherwise.
+  \item exception: AccessibilityError.
+  \end{itemize}
+
+  \noindent \textbf{setInitialFocus(targetSel:String)}:
+  \begin{itemize}
+  \item transition: move keyboard focus to the element matching \texttt{targetSel} for keyboard navigation; 
+  if not focusable, make it focusable for the interaction.
+  \item output: returns \texttt{true} if focus was moved, returns \texttt{false}
+  otherwise.
+  \item exception: AccessibilityError.
+  \end{itemize}
+
+  \noindent \textbf{announce(msg:String)}:
+  \begin{itemize}
+  \item transition: update the ARIA live region with \texttt{msg} 
+  so screen readers can announce the change.
+  \item output: returns \texttt{true} if live region was updated, returns \texttt{false}
+  otherwise.
+  \item exception: AccessibilityError.
+  \end{itemize}
+
+  \noindent \textbf{applyKeyboardNav(scopeSel:String)}:
+  \begin{itemize}
+  \item transition: attach handlers within \texttt{scopeSel} (container that gets arrow-key navigation behaviour) 
+  to enable roving-tabindex and arrow-key navigation (i.e., ArrowLeft/Right/Up/Down, Home/End, Enter/Space activation) 
+  without changing application state.
+  \item output: returns \texttt{true} if handlers are attached successfully, returns \texttt{false}
+  otherwise.
+  \item exception: AccessibilityError.
   \end{itemize}
   
-  \wss{A module without environment variables or state variables is unlikely to
-    have a state transition.  In this case a state transition can only occur if
-    the module is changing the state of another module.}
-  
-  \wss{Modules rarely have both a transition and an output.  In most cases you
-    will have one or the other.}
   
   \subsubsection{Local Functions}
-  
-  \wss{As appropriate} \wss{These functions are for the purpose of specification.
-    They are not necessarily something that is going to be implemented
-    explicitly.  Even if they are implemented, they are not exported; they only
-    have local scope.}
+  \begin{itemize}
+    \item \textbf{getLiveRegion(type:String)  \texttt{->} Node}: returns the hidden live region for announcements;
+    calls on \texttt{createLiveRegion(type: String)} if no live region to create one.
+    \item \textbf{createLiveRegion(type:String) \texttt{->} Node}: creates and returns the hidden live region for announcements.
+    \item \textbf{isFocusable(node:Node) \texttt{ -> }\Bool}: returns \texttt{true} if \texttt{node} is focusable. 
+    \item \textbf{applyRovingTabindex(container:Node) \texttt{->} \Bool}: ensures exactly one child is tabbable 
+    and others are reachable via arrow keys.
+    \item \textbf{moveFocus(container:Node, dir:String) \texttt{->} \Bool}: shifts focus to the next or previous roving 
+    item given \texttt{dir} $\in$ \texttt{{ "next","prev","home","end" }}.
+  \end{itemize}
 
-  \newpage
+
+\newpage
 
 \bibliographystyle {plainnat}
 \bibliography {../../../refs/References}
