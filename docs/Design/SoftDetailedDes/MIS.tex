@@ -56,11 +56,10 @@
 
 \section{Revision History}
 
-\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\begin{tabularx}{\textwidth}{p{4cm}p{2cm}X}
   \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
   \midrule
-  Date 1 & 1.0 & Notes\\
-  Date 2 & 1.1 & Notes\\
+  November 13, 2025 & 1.0 &  Rev-1 Design Document\\
   \bottomrule
 \end{tabularx}
 
@@ -211,7 +210,6 @@ None.
 None.
 
 \subsubsection{Assumptions}
-Assumes input images are valid and accessible through the system interface.
 
 \subsubsection{Access Routine Semantics}
 
@@ -305,8 +303,7 @@ None.
 None.
 
 \subsubsection{Environment Variables}
-Active connection to the user interface or backend responsible for displaying generated captions.
-
+None.
 \subsubsection{Assumptions}
 Assumes the output channel (UI or backend) is active and ready to receive data.
 
@@ -389,7 +386,7 @@ Filesystem — stores intermediate checkpoints and model outputs.
 \end{itemize}
 
 \subsubsection{Local Functions}
-splitData(): Divides input data into training and validation portions.
+splitData(NewFilePath:String) \texttt{->} TestPath:String, TrainPath:String, TrainPath:String: Divides input data into training and validation portions.
 
 \section{MIS of CaptionGeneration Module} \label{capgen}
 
@@ -469,7 +466,7 @@ None.
     \hline
     \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
     \hline
-    evaluateCaption & CaptionText & PerformanceScores & EvaluationException \\
+    evaluateCaption & CaptionText:String & PerformanceScores:List & EvaluationException \\
     \hline
   \end{tabular}
 \end{center}
@@ -519,7 +516,7 @@ None.
     \hline
     \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
     \hline
-    updateModel & PerformanceScores & UpdateAck & UpdateException \\
+    updateModel & PerformanceScores:List & UpdateAck:\Bool & UpdateException \\
     \hline
   \end{tabular}
 \end{center}
@@ -548,12 +545,8 @@ Assumes valid performance scores are provided by the FeedbackMetrics module and 
 None.
 
 
-\section{MIS of BackendController Module} \label{Module} \wss{Use labels for
-cross-referencing}
+\section{MIS of BackendController Module} \label{Module} 
 
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
 
 \subsection{Module}
 
@@ -596,14 +589,8 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
 
 \subsubsection{State Variables}
 
-\wss{Not all modules will have state variables.  State variables give the module
-a memory.}
 
 \subsubsection{Environment Variables}
-
-\wss{This section is not necessary for all modules.  Its purpose is to capture
-  when the module has external interaction with the environment, such as for a
-  device driver, screen interface, keyboard, file, etc.}
   \begin{itemize}
     \item Frontend Modules: Receives user requests such as image uploads and returns responses such alt-text generation or error messages.
     \item User Authentication Modules: Sends the user's session token to module to verify users identity. 
@@ -613,8 +600,6 @@ a memory.}
 
 \subsubsection{Assumptions}
 
-\wss{Try to minimize assumptions and anticipate programmer errors via
-  exceptions, but for practical purposes assumptions are sometimes appropriate.}
 \begin{itemize}
   \item Frontend, User authentication, Image validation and machine learning modules are correctly operating and reachable. 
   \item Network connection is available for API communication. 
@@ -683,15 +668,15 @@ a memory.}
   \hline
   \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
   \hline
-  validateToken & userToken & Boolean & InvalidTokenException \\
+  validateToken & userToken:String & Success:\Bool & InvalidTokenException \\
   \hline
   signInUser & credentials & userToken & AuthenticationFailedException \\
   \hline
-  signOutUser & userToken & Boolean & SessionNotFoundException \\
+  signOutUser & userToken:String & Success:\Bool & SessionNotFoundException \\
   \hline
-  getCurrentUser & userToken & userID & UserNotAuthenticatedException \\
+  getCurrentUser & userToken:String & userID & UserNotAuthenticatedException \\
   \hline
-  refreshToken & userToken & newToken & TokenRefreshException \\
+  refreshToken & userToken:String & newToken & TokenRefreshException \\
   \hline
   \end{tabular}
   \end{center}
@@ -1443,7 +1428,7 @@ handle compatibility with screen readers and keyboard navigation.
   \item output: returns \texttt{true} if main landmark was present after the call, returns \texttt{false}
   otherwise.
   \item exception: AccessibilityError.
-  \end{itemize}
+  \end{itemize}  
 
   \noindent \textbf{setInitialFocus(targetSel:String)}:
   \begin{itemize}
