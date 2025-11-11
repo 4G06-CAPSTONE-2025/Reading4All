@@ -287,8 +287,8 @@ requirements with a password.}
     {AuthenticationService Module (\refstepcounter{mnum}\mthemnum \label{mod:auth_table} )(see \ref{mod:auth})}\\ &
     {SessionManagement Module (\refstepcounter{mnum}\mthemnum \label{mod:mess}) (see \ref{mod:mess})}\\ &
     {BackendController Module (\refstepcounter{mnum}\mthemnum \label{mod:bcm_table}) (see \ref{mod:bcm})}\\ &
-    {Logging Module (\refstepcounter{mnum}\mthemnum) (see \ref{mod:logmod})}\\ &
-    {ImageValidation Module (\refstepcounter{mnum}\mthemnum) (see \ref{mod:imgvalidmod})}\\ & 
+    {Logging Module (\refstepcounter{mnum}\mthemnum \label{mod:logmod_table}) (see \ref{mod:logmod})}\\ &
+    {ImageValidation Module (\refstepcounter{mnum}\mthemnum \label{mod:imgvalidmod_table}) (see \ref{mod:imgvalidmod})}\\ & 
     {User Interface Interactions Module (\refstepcounter{mnum}\mthemnum) \label{mod:uii_table} (see \ref{mod: uii})} \\ & 
     {Main Screen Module (\refstepcounter{mnum}\mthemnum) \label{mod:msm_table} (see \ref{mod: msm})} \\ &
     {Show History Screen Module (\refstepcounter{mnum}\mthemnum) \label{mod:showhm_table} (see \ref{mod: showhm})} \\ &
@@ -492,7 +492,7 @@ The modules are defined as their own subsection and follow the following format:
   \item[Type of Module:] Abstract Objects
 \end{description}
 
-\subsubsection{Logging Module}
+\subsubsection{Logging Module (\mref{mod:logmod_table})}
 \label{mod:logmod}
 \begin{description}
   \item[Secrets:] The internal details of which events and errors are logged and the specific format used for log entries.
@@ -501,7 +501,7 @@ The modules are defined as their own subsection and follow the following format:
   \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{ImageValidation Module}
+\subsubsection{ImageValidation Module (\mref{mod:imgvalidmod_table})}
 \label{mod:imgvalidmod}
 \begin{description}
   \item[Secrets:] The internal details of how uploaded images are verified, including how file type, size are checked and whether a file is reachable. 
