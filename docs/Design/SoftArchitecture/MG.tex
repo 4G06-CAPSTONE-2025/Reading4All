@@ -5,15 +5,16 @@
 \usepackage{multirow}
 \usepackage{booktabs}
 \usepackage{tabularx}
-\usepackage{graphicx}
-\usepackage{float}
+\usepackage{graphicx} 
+\usepackage{float} 
 \usepackage{hyperref}
+\usepackage{enumitem}
 \hypersetup{
-    colorlinks,
-    citecolor=blue,
-    filecolor=black,
-    linkcolor=red,
-    urlcolor=blue
+  colorlinks,
+  citecolor=blue,
+  filecolor=black,
+  linkcolor=red,
+  urlcolor=blue
 }
 
 \input{../../Comments}
@@ -33,7 +34,7 @@
 
 \begin{document}
 
-\title{Module Guide for \progname{}} 
+\title{Module Guide for \progname{}}
 \author{\authname}
 \date{\today}
 
@@ -43,12 +44,12 @@
 
 \section{Revision History}
 
-\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
-\midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
-\bottomrule
+\begin{tabularx}{\textwidth}{p{4cm}p{2cm}X}
+  \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+  \midrule
+  November 13 2025 & 1.0 & Rev-1 Design Document\\
+  Date 2 & 1.1 & Notes\\
+  \bottomrule
 \end{tabularx}
 
 \newpage
@@ -60,10 +61,10 @@ This section records information for easy reference.
 \subsection{Abbreviations and Acronyms}
 
 \renewcommand{\arraystretch}{1.2}
-\begin{tabular}{l l} 
-  \toprule		
+\begin{tabular}{l l}
+  \toprule
   \textbf{symbol} & \textbf{description}\\
-  \midrule 
+  \midrule
   AC & Anticipated Change\\
   DAG & Directed Acyclic Graph \\
   M & Module \\
@@ -74,7 +75,13 @@ This section records information for easy reference.
   SRS & Software Requirements Specification\\
   \progname & Explanation of program name\\
   UC & Unlikely Change \\
-  \wss{etc.} & \wss{...}\\
+  WCAG 2.1 &  Web Content Accessibility Guidelines\\
+  AODA & Accessibility for Ontarians with Disabilities Act \\
+  UI & User Interface \\
+  DOM & Document Object Model \\
+  AI & Artificial Intelligence \\
+  ML & Machine Learning \\
+  ARIA & Accessible Rich Internet Applications \\
   \bottomrule
 \end{tabular}\\
 
@@ -99,35 +106,41 @@ based on the principle of information hiding~\citep{Parnas1972a}.  This
 principle supports design for change, because the ``secrets'' that each module
 hides represent likely future changes.  Design for change is valuable in SC,
 where modifications are frequent, especially during initial development as the
-solution space is explored.  
+solution space is explored.
 
 Our design follows the rules layed out by \citet{ParnasEtAl1984}, as follows:
 \begin{itemize}
-\item System details that are likely to change independently should be the
-  secrets of separate modules.
-\item Each data structure is implemented in only one module.
-\item Any other program that requires information stored in a module's data
-  structures must obtain it by calling access programs belonging to that module.
+  \item System details that are likely to change independently should be the
+    secrets of separate modules.
+  \item Each data structure is implemented in only one module.
+  \item Any other program that requires information stored in a module's data
+    structures must obtain it by calling access programs belonging to
+    that module.
 \end{itemize}
 
 After completing the first stage of the design, the Software Requirements
-Specification (SRS), the Module Guide (MG) is developed~\citep{ParnasEtAl1984}. The MG
+Specification (SRS), the Module Guide (MG) is
+developed~\citep{ParnasEtAl1984}. The MG
 specifies the modular structure of the system and is intended to allow both
 designers and maintainers to easily identify the parts of the software.  The
 potential readers of this document are as follows:
 
 \begin{itemize}
-\item New project members: This document can be a guide for a new project member
-  to easily understand the overall structure and quickly find the
-  relevant modules they are searching for.
-\item Maintainers: The hierarchical structure of the module guide improves the
-  maintainers' understanding when they need to make changes to the system. It is
-  important for a maintainer to update the relevant sections of the document
-  after changes have been made.
-\item Designers: Once the module guide has been written, it can be used to
-  check for consistency, feasibility, and flexibility. Designers can verify the
-  system in various ways, such as consistency among modules, feasibility of the
-  decomposition, and flexibility of the design.
+  \item New project members: This document can be a guide for a new
+    project member
+    to easily understand the overall structure and quickly find the
+    relevant modules they are searching for.
+  \item Maintainers: The hierarchical structure of the module guide improves the
+    maintainers' understanding when they need to make changes to the
+    system. It is
+    important for a maintainer to update the relevant sections of the document
+    after changes have been made.
+  \item Designers: Once the module guide has been written, it can be used to
+    check for consistency, feasibility, and flexibility. Designers
+    can verify the
+    system in various ways, such as consistency among modules,
+    feasibility of the
+    decomposition, and flexibility of the design.
 \end{itemize}
 
 The rest of the document is organized as follows. Section
@@ -157,16 +170,30 @@ adapted here is called design for
 change.
 
 \begin{description}
-\item[\refstepcounter{acnum} \actheacnum \label{acHardware}:] The specific
-  hardware on which the software is running.
-\item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the
-  initial input data.
-\item ...
+
+  \item[\refstepcounter{acnum} \actheacnum \label{acInfra}:] The specific
+    infrastructure on which the software is running.
+  \item[\refstepcounter{acnum} \actheacnum \label{acInputFormat}:]
+    The format of the
+    initial input data accepted by the system; in the future the
+    system might extend to support PDFs and other formats.
+  \item [\refstepcounter{acnum} \actheacnum \label{acMLModel}:] The
+    machine learning model used for alt-text generation.
+  \item [\refstepcounter{acnum} \actheacnum \label{acLang}:] The
+    language used for alt-text generation, allowing the system to
+    generate alt-text in multiple languages beyond English.
+  \item [\refstepcounter{acnum} \actheacnum \label{acSession}:] The
+    duration of time the user remains authenticated before being
+    prompted to log in again.
+  \item [\refstepcounter{acnum} \actheacnum \label{acInputTopic}:]
+    The range of images supported for alt-text generation can be
+    extended beyond academic STEM images.
+  \item [\refstepcounter{acnum} \actheacnum \label{acPlatform}:] The
+    platform that the system operates on can be extended beyond a web
+    application to also include desktop or mobile applications.
+
 \end{description}
 
-\wss{Anticipated changes relate to changes that would be made in requirements,
-design or implementation choices.  They are not related to changes that are made
-at run-time, like the values of parameters.}
 
 \subsection{Unlikely Changes} \label{SecUchange}
 
@@ -175,12 +202,28 @@ more complex. Sometimes this complexity is not necessary. Fixing some design
 decisions at the system architecture stage can simplify the software design. If
 these decision should later need to be changed, then many parts of the design
 will potentially need to be modified. Hence, it is not intended that these
-decisions will be changed.
+decisions will be changed.\\
 
+The following are changes that the system is unlikely to incur: 
 \begin{description}
-\item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Input/Output devices
-  (Input: File and/or Keyboard, Output: File, Memory, and/or Screen).
-\item ...
+
+  \item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] The
+    project's evaluation metrics as shown in Table 5 of the
+    Appendix in our \citet{SRS} document will not change as these
+    metrics are concrete and
+    will be used to evaluate the effectiveness of the generated
+    alternative text.
+  \item [\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] The
+    primary output device for this system will remain as a screen,
+    even if the system is later expanded to additional platforms
+    (i.e., mobile) and not just the current web-based tool.
+  \item [\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] The system
+    will always support keyboard input as its primary
+    interaction method, with mouse input also supported for selecting
+    user interface elements. This is to ensure that
+    the functionality of keyboard navigation is always enabled for
+    accessibility.
+
 \end{description}
 
 \section{Module Hierarchy} \label{SecMH}
@@ -190,54 +233,81 @@ in a hierarchy decomposed by secrets in Table \ref{TblMH}. The modules listed
 below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
 
-\begin{description}
-\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
-\item ...
-\end{description}
-
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
-\toprule
-\textbf{Level 1} & \textbf{Level 2}\\
-\midrule
-
-{Hardware-Hiding Module} & ~ \\
-\midrule
-
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\ 
-& ?\\
-\midrule
-
-\multirow{3}{0.3\textwidth}{Software Decision Module} & {?}\\
-& ?\\
-& ?\\
-\bottomrule
-
-\end{tabular}
-\caption{Module Hierarchy}
-\label{TblMH}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}| p{4cm}|}
+  \hline
+  \textbf{AI Model Modules} & \textbf{Backend Modules} & \textbf{Frontend Modules} & \textbf{System Information Modules}\\ \hline
+  
+  DataPreprocess-Module & AuthenticationService Module & UserInterface-Interactions Module & Logging Module\\ \hline
+  WCAGCompliance Module & SessionManagement Module & MainScreen Module & ~\\ \hline
+  ModelOutput Module & ImageHandling-Validation Module & ShowHistoryScreen Module & ~\\ \hline
+  AIModelTraining Module & BackendController Module & LogInScreen Module & ~\\ \hline
+  CaptionGeneration Module & ~ & UserInterface-Accessibility Module & ~\\ \hline
+  InternalMetric-Compliance Module & ~ & ~ & ~\\ \hline
+  FeedbackMetrics Module & ~ & ~ & ~\\ \hline
+  FeedbackIntegration Module & ~ & ~ & ~\\ \hline
+  Feedback Module & ~ & ~ & ~\\ \hline
+  
+  \end{tabular}
+  \caption{Module Hierarchy by Subsystem}
 \end{table}
+
+  
+  
 
 \section{Connection Between Requirements and Design} \label{SecConnection}
 
 The design of the system is intended to satisfy the requirements developed in
 the SRS. In this stage, the system is decomposed into modules. The connection
-between requirements and modules is listed in Table~\ref{TblRT}.
+between requirements and modules is listed in Table~\ref{TblMH}.
 
 \wss{The intention of this section is to document decisions that are made
   ``between'' the requirements and the design.  To satisfy some requirements,
   design decisions need to be made.  Rather than make these decisions implicit,
   they are explicitly recorded here.  For instance, if a program has security
   requirements, a specific design decision may be made to satisfy those
-  requirements with a password.}
+requirements with a password.}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Level 1} & \textbf{Level 2}\\
+    \midrule
+
+    {Hardware-Hiding Module [Section (\ref{hhmmain})]} & N/A \\
+    \midrule
+
+    \multirow{13}{0.3\textwidth}{Behaviour-Hiding Module [Section
+    (\ref{bhmmain})]} &
+    {DataPreprocess Module (\refstepcounter{mnum}\mthemnum \label{mod:preprocessing_table}) (see \ref{mod:preprocessing})}\\ & 
+    {WCAGCompliance Module (\refstepcounter{mnum}\mthemnum \label{mod:wcagcompliance_table}) (see \ref{mod:wcagcompliance})}\\ &
+    {ModelOutput Module (\refstepcounter{mnum}\mthemnum \label{mod:modeloutput_table}) (see \ref{mod:modeloutput})}\\ &
+    {AuthenticationService Module (\refstepcounter{mnum}\mthemnum \label{mod:auth_table} )(see \ref{mod:auth})}\\ &
+    {SessionManagement Module (\refstepcounter{mnum}\mthemnum \label{mod:mess}) (see \ref{mod:mess})}\\ &
+    {BackendController Module (\refstepcounter{mnum}\mthemnum \label{mod:bcm_table}) (see \ref{mod:bcm})}\\ &
+    {Logging Module (\refstepcounter{mnum}\mthemnum \label{mod:logmod_table}) (see \ref{mod:logmod})}\\ &
+    {ImageValidation Module (\refstepcounter{mnum}\mthemnum \label{mod:imgvalidmod_table}) (see \ref{mod:imgvalidmod})}\\ & 
+    {User Interface Interactions Module (\refstepcounter{mnum}\mthemnum) \label{mod:uii_table} (see \ref{mod: uii})} \\ & 
+    {Main Screen Module (\refstepcounter{mnum}\mthemnum) \label{mod:msm_table} (see \ref{mod: msm})} \\ &
+    {Show History Screen Module (\refstepcounter{mnum}\mthemnum) \label{mod:showhm_table} (see \ref{mod: showhm})} \\ &
+    {Log In Screen Module (\refstepcounter{mnum}\mthemnum) \label{mod:lis_table} (see \ref{mod: lis})} \\ &
+    {User Interface Accessibility Module (\refstepcounter{mnum}\mthemnum) \label{mod:uia_table} (see \ref{mod: uia})} \\ 
+    \midrule
+
+    \multirow{6}{0.3\textwidth}{Software Decision Module [Section (\ref{mod:sdmmain})]} &
+    {AIModelTraining Module (\refstepcounter{mnum}\mthemnum \label{mod:modeltraining}) (see \ref{mod:modeltraining})}\\ &
+    {CaptionGeneration Module (\refstepcounter{mnum}\mthemnum \label{mod:captiongeneration_table}) (see \ref{mod:captiongeneration})}\\ &
+    {InternalMetricCompliance (\refstepcounter{mnum}\mthemnum \label{mod:internalmetriccompliance_table}) (see \ref{mod:internalmetriccompliance})}\\ &
+    {FeedbackMetrics Module (\refstepcounter{mnum}\mthemnum \label{mod:feedbackmetrics_table} )(see \ref{mod:feedbackmetrics})}\\ &
+    {FeedbackLoop Module (\refstepcounter{mnum}\mthemnum \label{mod:feedbackloop_table}) (see \ref{mod:feedbackloop})}\\ &
+    {Feedback Module (\refstepcounter{mnum}\mthemnum \label{mod:feedback_table}) (see \ref{mod:feedback})}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Module Hierarchy}
+  \label{TblMH}
+\end{table}
 
 \section{Module Decomposition} \label{SecMD}
 
@@ -248,64 +318,294 @@ module. The \emph{Services} field specifies \emph{what} the module will do
 without documenting \emph{how} to do it. For each module, a suggestion for the
 implementing software is given under the \emph{Implemented By} title. If the
 entry is \emph{OS}, this means that the module is provided by the operating
-system or by standard programming language libraries.  \emph{\progname{}} means the
+system or by standard programming language libraries.
+\emph{\progname{}} means the
 module will be implemented by the \progname{} software.
 
 Only the leaf modules in the hierarchy have to be implemented. If a dash
 (\emph{--}) is shown, this means that the module is not a leaf and will not have
 to be implemented.
 
-\subsection{Hardware Hiding Modules (\mref{mHH})}
+\subsection{Hardware Hiding Modules \label{hhmmain}}
+This subsection is N/A as the Reading4All system has no hardware components.
+
+\subsection{Behaviour-Hiding Modules \label{bhmmain}}
+This subsection includes modules that pertain to the required
+behavior of the Reading4All system.
+The modules are defined as their own subsection and follow the following format:
 
 \begin{description}
-\item[Secrets:]The data structure and algorithm used to implement the virtual
-  hardware.
-\item[Services:]Serves as a virtual hardware used by the rest of the
-  system. This module provides the interface between the hardware and the
-  software. So, the system can use it to display outputs or to accept inputs.
-\item[Implemented By:] OS
+  \item[Secrets:]This part describes the essential behavioral
+    components that define a module's intended functionality.
+  \item[Services:]This component defines the module's programs that
+    implement the
+    externally visible behaviors of the system, as outlined in the
+    Software Requirements Specification (SRS). Any modifications to the
+    SRS will likely require corresponding updates to the programs
+    within this module.
+  \item[Implemented By:] This part mentions if the Reading4All system
+    or external systems will
+    implement the specific module.
+  \item[Type of Module:] This section defines the moduel type into a
+    Record, Library, Abstract
+    Object, or Abstract Data Type. This section also includes
+    information for leaf modules in the decomposition by secrets tree.
 \end{description}
 
-\subsection{Behaviour-Hiding Module}
+\subsubsection{DataPreprocess Module (\mref{mod:preprocessing_table})}
+\label{mod:preprocessing}
+\begin{description}
+  \item[Secrets:] Includes the steps used to prepare input images for
+    further processing.
+  \item[Services:] Normalizes, sorts, and standardizes the image
+    input so it can be correctly used by the training and caption
+    generation modules.
+  \item[Implemented By:] Reading4All
+  \item[Type of Module:] Library
+\end{description}
+
+\subsubsection{WCAGCompliance Module (\mref{mod:wcagcompliance_table})}
+\label{mod:wcagcompliance}
 
 \begin{description}
-\item[Secrets:]The contents of the required behaviours.
-\item[Services:]Includes programs that provide externally visible behaviour of
-  the system as specified in the software requirements specification (SRS)
-  documents. This module serves as a communication layer between the
-  hardware-hiding module and the software decision module. The programs in this
-  module will need to change if there are changes in the SRS.
-\item[Implemented By:] --
+  \item[Secrets:] The rules used to decide whether a caption meets
+    AODA (\cite{AODA}) and WCAG 2.1 AA accessibility standards (\citet{WCAG}).
+  \item[Services:] Checks the generated text against WCAG 2.1 AA (\citet{WCAG})
+    criteria and flags or adjusts any generated alt text that does not meet these standards.
+  \item[Implemented By:] Reading4All
+  \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{Input Format Module (\mref{mInput})}
+\subsubsection{ModelOutput Module (\mref{mod:modeloutput_table})}
+\label{mod:modeloutput}
 
 \begin{description}
-\item[Secrets:]The format and structure of the input data.
-\item[Services:]Converts the input data into the data structure used by the
-  input parameters module.
-\item[Implemented By:] [Your Program Name Here]
-\item[Type of Module:] [Record, Library, Abstract Object, or Abstract Data Type]
-  [Information to include for leaf modules in the decomposition by secrets tree.]
+  \item[Secrets:] The structure used to store and present the final
+    text to the user via the BackendController as mentioned in
+    Section \ref{mod:bcm}.
+  \item[Services:] Produces and formats the final version of the
+    accessibility-compliant text for output or download.
+  \item[Implemented By:] Reading4All
+  \item[Type of Module:] Record
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{AuthenticationService Module (\mref{mod:auth_table})}
+\label{mod:auth}
+\begin{description}
+  \item[Secrets:] The internal logic for credential verification,
+    token structure and signing, token refresh rules, lockout
+    thresholds, and trust boundaries to external identity stores.
+    Includes error classification for authentication failures and
+    audit-safe handling of sensitive data.
+  \item[Services:] Verifies user credentials, issues and refreshes
+    authentication tokens, validates tokens on incoming requests,
+    resolves current user identity (userID/role) for access control,
+    and coordinates with Session Management to create/terminate sessions.
+  \item[Implemented By:] Reading4All
+  \item[Type of Module:] Library
+\end{description}
+
+\subsubsection{UserInterfaceInterfactions Module (\mref{mod:uii_table})}
+\label{mod: uii}
+\begin{description}
+  \item[Secrets:] The internal logic and mapping of user-triggered actions such as clicks and keyboard presses 
+  on the user interface into the backend and display screens modules. 
+  \item[Services:] Captures user actions from the UI and connects UI controls to application 
+  behavior by attaching event handlers that calls on other modules’ access programs with 
+  validated parameters.
+  \item[Implemented By:] Reading4All Team 
+  \item[Type of Module:] Library
+\end{description}
+
+\subsubsection{MainScreen Module (\mref{mod:msm_table})}
+\label{mod: msm}
+\begin{description}
+  \item[Secrets:] The internal layout composition of the main screen.
+  This includes how the upload panel and supporting UI elements are arranged and rendered into the \texttt{DOM}. 
+  \item[Services:] Renders the “Main” screen of the application. This screen displays the image-upload entry point for users.
+  It calls on the UserInterfaceAccessibility module 
+  to assign the main landmark, set initial focus, and announce the screen to screen readers. 
+  \item[Implemented By:] Reading4All Team 
+  \item[Type of Module:] Library
+\end{description}
+
+\subsubsection{ShowHistoryScreen Module (\mref{mod:showhm_table})}
+\label{mod: showhm}
+\begin{description}
+  \item[Secrets:] The internal layout composition of the show history screen when an authenticated user wants to see their 
+  previously generated alt-text history. This includes how the history items are formatted and displayed. 
+  \item[Services:] Renders the user’s current session history to the screen. It relies on the UserInterfaceAccessibility module
+   to set the main landmark, focus the first history item (if any), and announce the screen.
+  \item[Implemented By:] Reading4All Team 
+  \item[Type of Module:] Library
+\end{description}
+
+\subsubsection{LogInScreen Module (\mref{mod:lis_table})}
+\label{mod: lis}
+\begin{description}
+  \item[Secrets:] The internal layout composition of the log in screen including username/email and password fields, and 
+  a log in button.
+  \item[Services:] Renders the system’s Log In screen. It calls on the UserInterfaceAccessibility module 
+  to set focus on the fields on the log in form and announce the screen. 
+  \item[Implemented By:] Reading4All Team 
+  \item[Type of Module:] Library
+\end{description}
+
+\subsubsection{UserInterfaceAccessibility Module (\mref{mod:uia_table})}
+\label{mod: uia}
+\begin{description}
+  \item[Secrets:] The internal mechanism for providing screen reader and keyboard navigation compatibility in the browser.
+  This includes how ARIA (\citet{ARIA}) live regions are implemented, how focus is manipulated, and how keyboard navigation is enabled 
+  internally.
+  \item[Services:] Provides accessibility capabilities to other user interface modules by: assigning and maintaining 
+  the correct main landmark on each screen; managing which element receives initial keyboard focus; sending 
+  announcements to screen readers using ARIA (\citet{ARIA}) live regions; and enabling keyboard navigation patterns. 
+  \item[Implemented By:] Reading4All Team 
+  \item[Type of Module:] Library
+\end{description}
+\subsubsection{SessionManagement Module}
+\label{mod: mess}
+\begin{description}
+  \item[Secrets:] The representation and storage of active sessions,
+    expiry/refresh policies, session-history data structures
+    (interaction entries and Reading4All data references), and
+    eviction/cleanup strategies. Includes indexing strategies for
+    fast token lookups and privacy rules for session-scoped logs.
+  \item[Services:] Creates, validates, refreshes, and deletes
+    sessions; appends interaction entries; links session activity to
+    Reading4All data records; retrieves filtered session history and
+    recent data references for the current session.
+  \item[Implemented By:] Reading4All
+  \item[Type of Module:] Abstract Data Type
+\end{description}
+
+\subsubsection{BackendController Module (\mref{mod:bcm_table})}
+\label{mod:bcm}
+\begin{description}
+  \item[Secrets:] The internal application flow of data and user
+    inputs, including how backend requests are processed and routed
+    between services.
+  \item[Services:]Coordinates backend responses by receiving requests
+    from the frontend and directing it to the appropriate service
+    such as the User Authentication or  AI Model, and returning the results.
+  \item[Implemented By:] Reading4All
+  \item[Type of Module:] Abstract Objects
+\end{description}
+
+\subsubsection{Logging Module (\mref{mod:logmod_table})}
+\label{mod:logmod}
+\begin{description}
+  \item[Secrets:] The internal details of which events and errors are logged and the specific format used for log entries.
+  \item[Services:] Records system events and errors received from the BackendController Module. 
+  \item[Implemented By:] Reading4All
+  \item[Type of Module:] Library
+\end{description}
+
+\subsubsection{ImageValidation Module (\mref{mod:imgvalidmod_table})}
+\label{mod:imgvalidmod}
+\begin{description}
+  \item[Secrets:] The internal details of how uploaded images are verified, including how file type, size are checked and whether a file is reachable. 
+  \item[Services:] Validates uploaded images to ensure that they meet system requirements before the alt text generation process. 
+  \item[Implemented By:] Reading4All
+  \item[Type of Module:] Library
+\end{description}
 
 
-\subsection{Software Decision Module}
+
+\subsection{Software Decision Modules}
+\label{mod:sdmmain}
+This subsection includes the modules' internal operations,
+connections with other modules and decision making components.
+Similar to Section \ref{bhmmain} the modules are defined as their own
+subsection and follow the following format:
 
 \begin{description}
-\item[Secrets:] The design decision based on mathematical theorems, physical
-  facts, or programming considerations. The secrets of this module are
-  \emph{not} described in the SRS.
-\item[Services:] Includes data structure and algorithms used in the system that
-  do not provide direct interaction with the user. 
-  % Changes in these modules are more likely to be motivated by a desire to
-  % improve performance than by externally imposed changes.
-\item[Implemented By:] --
+  \item[Secrets:] Internal logic, data flow, and processing steps
+    that define how the system produces and improves alternative text.
+  \item[Services:] Implements the internal operations of the system,
+    such as model training, caption generation, quality validation,
+    feedback collection, and output production.
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{AIModelTraining Module}
+\label{mod:modeltraining}
+\begin{description}
+  \item[Secrets:] The internal design of how the model is built and
+    improved. This includes how image and text data are linked, how
+    training is divided into sets, and what hidden patterns the model
+    learns. The specific model structure and training process are not
+    exposed to other modules.
+  \item[Services:] Trains the system to understand relationships
+    between images and text so it can later describe new images
+    accurately. Produces a trained model and supporting data (such as
+    validation results) that are used by the CaptionGeneration module.
+  \item[Implemented By:] Reading4All
+  \item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{CaptionGeneration Module (\mref{mod:captiongeneration_table})}
+\label{mod:captiongeneration}
+\begin{description}
+  \item[Secrets:] The process the system uses to generate descriptive
+    text from an image. This includes how image features are
+    interpreted and how words are selected and arranged into sentences.
+  \item[Services:] Uses the trained model from the AIModelTraining module to produce alternative text
+    for a given image. Passes the generated caption to the WCAG (\citet{WCAG}) and
+    InternalMetricCompliance modules to ensure it meets accessibility
+    and clarity standards.
+  \item[Implemented By:] Reading4All
+  \item[Type of Module:] Library
+\end{description}
+
+\subsubsection{InternalMetricCompliance Module (\mref{mod:internalmetriccompliance_table})}
+\label{mod:internalmetriccompliance}
+\begin{description}
+  \item[Secrets:] The internal measures chosen by Team 22 to judge
+    how clear, concise or relevant the generated text is.
+  \item[Services:] Reviews each caption using internal quality checks
+    that complement the AODA (\citet{AODA}) and WCAG 2.1 AA (\citet{WCAG}) validation standards.
+  \item[Implemented By:] Reading4All
+  \item[Type of Module:] Library
+\end{description}
+
+\subsubsection{FeedbackMetrics Module (\mref{mod:feedbackmetrics_table})}
+\label{mod:feedbackmetrics}
+\begin{description}
+  \item[Secrets:] How user feedback is collected, interpreted, and
+    organized for later use in model improvement. The exact method
+    for analyzing or weighting different types of feedback is hidden.
+  \item[Services:] Receives direct input from users in the form of
+    comments, ratings, or corrections about the generated alternative
+    text. Summarizes this information into a structured format that
+    can be used to guide model retraining and future system updates.
+  \item[Implemented By:] Reading4All
+  \item[Type of Module:] Library
+\end{description}
+
+\subsubsection{FeedbackLoop Module (\mref{mod:feedbackloop_table})}
+\label{mod:feedbackloop}
+\begin{description}
+  \item[Secrets:] The rules and internal logic that determine how
+    user feedback is used to update and improve the system’s model.
+    The specific approach to retraining or fine-tuning is hidden.
+  \item[Services:] Takes processed feedback data from the
+    FeedbackMetrics module and uses it to retrain or adjust the model
+    over time. This allows the system to gradually improve its
+    accuracy and produce captions that better reflect user expectations.
+  \item[Implemented By:] Reading4All
+  \item[Type of Module:] Abstract Data Type
+\end{description}
+
+\subsubsection{Feedback Module (\mref{mod:feedback_table})}
+\label{mod:feedback}
+\begin{description}
+  \item[Secrets:] How feedback information is stored and organized.
+  \item[Services:] Stores the user’s feedback entries and makes them
+    available to the FeedbackMetrics and FeedbackLoop modules for
+    review and improvement purposes.
+  \item[Implemented By:] Reading4All
+  \item[Type of Module:] Record
+\end{description}
 
 \section{Traceability Matrix} \label{SecTM}
 
@@ -315,50 +615,272 @@ requirements and between the modules and the anticipated changes.
 % the table should use mref, the requirements should be named, use something
 % like fref
 \begin{table}[H]
-\centering
-\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
-\toprule
-\textbf{Req.} & \textbf{Modules}\\
-\midrule
-R1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-R2 & \mref{mInput}, \mref{mParams}\\
-R3 & \mref{mVerify}\\
-R4 & \mref{mOutput}, \mref{mControl}\\
-R5 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R6 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R7 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R8 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R9 & \mref{mVerifyOut}\\
-R10 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}\\
-R11 & \mref{mOutput}, \mref{mODEs}, \mref{mEnergy}, \mref{mControl}\\
-\bottomrule
-\end{tabular}
-\caption{Trace Between Requirements and Modules}
-\label{TblRT}
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    FR1 & \mref{mod:preprocessing_table}, \mref{mod:imgvalidmod_table}, \mref{mod:bcm_table}\\
+    FR2 & \mref{mod:captiongeneration_table}, \mref{mod:bcm_table}\\
+    FR3 & \mref{}\\
+    FR4 & \mref{mod:bcm_table}\\
+    FR5 &  \mref{mod:bcm_table}, \mref{mod:mess}\\
+    FR6 &  \mref{mod:bcm_table},\mref{mod:auth_table}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between Functional Requirements and Modules}
+  \label{TblFRT}
 \end{table}
 
 \begin{table}[H]
-\centering
-\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
-\toprule
-\textbf{AC} & \textbf{Modules}\\
-\midrule
-\acref{acHardware} & \mref{mHH}\\
-\acref{acInput} & \mref{mInput}\\
-\acref{acParams} & \mref{mParams}\\
-\acref{acVerify} & \mref{mVerify}\\
-\acref{acOutput} & \mref{mOutput}\\
-\acref{acVerifyOut} & \mref{mVerifyOut}\\
-\acref{acODEs} & \mref{mODEs}\\
-\acref{acEnergy} & \mref{mEnergy}\\
-\acref{acControl} & \mref{mControl}\\
-\acref{acSeqDS} & \mref{mSeqDS}\\
-\acref{acSolver} & \mref{mSolver}\\
-\acref{acPlot} & \mref{mPlot}\\
-\bottomrule
-\end{tabular}
-\caption{Trace Between Anticipated Changes and Modules}
-\label{TblACT}
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    LFR-AR1 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    LFR-AR2 & \mref{mod:msm_table}, \mref{mod:uii_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    LFR-AR3 & \mref{mod:msm_table}, \mref{mod:uii_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    LFR-AR4 & \mref{mod:internalmetriccompliance_table}, \mref{mod:msm_table}, \mref{mod:uii_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}. \mref{mod:uia_table}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between Look and Feel Requirements and Modules}
+  \label{TblFRT}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    LFR-SR1 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    LFR-SR2 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    LFR-SR3 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between Style Requirements and Modules}
+  \label{TblSRT}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    UHR-EUR1 & \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}. \mref{mod:uia_table}\\
+    UHR-EUR2 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    UHR-EUR3 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    UHR-EUR4 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between Usability and Humanity Requirements and Modules}
+  \label{TblURT}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    UHR-PIR1 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:uia_table}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between Personalization and Internationalization
+  Requirements and Modules}
+  \label{TblPIRT}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    UHR-LR1 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between Learning Requirements and Modules}
+  \label{TblPIRT}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    UHR-UPR1 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between Understandability and Politeness
+  Requirements and Modules}
+  \label{TblUPRT}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    UHR-AR1 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    UHR-AR2 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between Accessibility Requirements and Modules}
+  \label{TblART}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    PR-SL1 & \mref{mod:captiongeneration_table}\\
+    PR-SL2 &  \mref{mod:uia_table} \\
+    PR-SCR1 & \mref{mod:mess}\\
+    PR-SCR2 & \mref{mod:internalmetriccompliance_table}\\
+    PR-SCR3 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    PR-SR-HA1 & \mref{mod:bcm_table}, \mref{mod:logmod_table},  \mref{mod:mess}, \mref{mod:auth_table}\\
+    PR-SR-HA2 &  \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
+    PR-SR-HA3 &  \mref{mod:bcm_table}, \mref{mod:imgvalidmod_table}\\
+    PR-PAR1 & \mref{mod:captiongeneration_table}\\
+    PR-PAR2 & \mref{mod:internalmetriccompliance_table}\\
+    PR-PAR3 & \mref{mod:feedbackmetrics_table}\\
+    PR-RFT1 & \mref{mod:imgvalidmod_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
+    PR-RFT2 & \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
+    PR-CR1 & \mref{}\\
+    PR-CR2 & \mref{}\\
+    PR-SER1 & \mref{mod:modeltraining_table}\\
+    PR-LR1 & \mref{mod:modeltraining_table}, \mref{mod:wcagcompliance_table}\\
+    PR-LR2 & \mref{}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between Performance Requirements and Modules}
+  \label{TblFRT}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    OER-EP1 & \mref{}\\
+    OER-EP2 & \mref{}\\
+    OER-WE1 & \mref{mod:wcagcompliance_table}\\
+    OER-WE2 & \mref{}\\
+    OER-IAS1 & \mref{mod:preprocessing_table}\\
+    OER-IAS2 & \mref{mod:imgvalidmod_table}\\
+    OER-IAS3 & \mref{mod:internalmetriccompliance_table}\\
+    OER-PR1 & \mref{}\\
+    OER-RL1 & \mref{mod:preprocessing_table}, \mref{mod:modeltraining_table}, \mref{mod:captiongeneration_table}, \mref{mod:wcagcompliance_table}, \mref{mod:internalmetriccompliance_table}\\
+    OER-RL2 & \mref{}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between Operational and Environmental Requirements and Modules}
+  \label{TblOERT}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    MS-MNT1 & \mref{mod:preprocessing_table}, \mref{mod:captiongeneration_table}, \mref{mod:wcagcompliance_table}, \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:bcm_table}\\\\
+    MS-MNT2 & \mref{}\\
+    MS-MNT3 & \mref{}\\
+    MS-SUP1 & \mref{mod:logmod_table}\\
+    MS-AD1 & \mref{mod:modeltraining_table}\\
+    MS-AD2 & \mref{}\\
+    MS-AD3 & \mref{}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between Maintainability and Support Requirements and Modules}
+  \label{TblMSRT}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    SR-AR1 & \mref{mod:bcm_table}, \mref{mod:auth_table}\\
+    SR-AR2 & \mref{mod:bcm_table}, \mref{mod:mess}\\
+    SR-IR1 & \mref{mod:bcm_table}\\
+    SR-IR2 & \mref{mod:bcm_table}, \mref{mod:preprocessing_table}\\
+    SR-PR1 & \mref{mod:bcm_table}\\
+    SR-PR2 & \mref{mod:internalmetriccompliance_table}\\
+    SR-AU1 & \mref{mod:logmod_table}\\
+    SR-AU2 & \mref{mod:logmod_table}\\
+    SR-IM1 & \mref{mod:imgvalidmod_table}\\
+    SR-AIM2 & \mref{}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between all Security Requirements and Modules}
+  \label{TblSR}
+\end{table}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    CR1 & \mref{mod:captiongeneration_table}\\
+    CR2 & \mref{mod:internalmetriccompliance_table}\\
+    CR3 & \mref{mod:internalmetriccompliance_table}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between all Cultural Requirements and Modules}
+  \label{TblCR}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    CR-LR1 & \mref{mod:wcagcompliance_table}\\
+    CR-SCR1 & \mref{}\\
+    CR-SCR2 & \mref{}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between all Compliance Requirements and Modules}
+  \label{TbltCompR}
+\end{table}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{AC} & \textbf{Modules}\\
+    \midrule
+    \acref{acHardware} & \mref{mHH}\\
+    \acref{acInput} & \mref{mInput}\\
+    \acref{acParams} & \mref{mParams}\\
+    \acref{acVerify} & \mref{mVerify}\\
+    \acref{acOutput} & \mref{mOutput}\\
+    \acref{acVerifyOut} & \mref{mVerifyOut}\\
+    \acref{acODEs} & \mref{mODEs}\\
+    \acref{acEnergy} & \mref{mEnergy}\\
+    \acref{acControl} & \mref{mControl}\\
+    \acref{acSeqDS} & \mref{mSeqDS}\\
+    \acref{acSolver} & \mref{mSolver}\\
+    \acref{acPlot} & \mref{mPlot}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between Anticipated Changes and Modules}
+  \label{TblACT}
 \end{table}
 
 \section{Use Hierarchy Between Modules} \label{SecUse}
@@ -375,19 +897,19 @@ system, and modules in the higher level of the hierarchy are essentially simpler
 because they use modules from the lower levels.
 
 \wss{The uses relation is not a data flow diagram.  In the code there will often
-be an import statement in module A when it directly uses module B.  Module B
-provides the services that module A needs.  The code for module A needs to be
-able to see these services (hence the import statement).  Since the uses
-relation is transitive, there is a use relation without an import, but the
+  be an import statement in module A when it directly uses module B.  Module B
+  provides the services that module A needs.  The code for module A needs to be
+  able to see these services (hence the import statement).  Since the uses
+  relation is transitive, there is a use relation without an import, but the
 arrows in the diagram typically correspond to the presence of import statement.}
 
 \wss{If module A uses module B, the arrow is directed from A to B.}
 
 \begin{figure}[H]
-\centering
-%\includegraphics[width=0.7\textwidth]{UsesHierarchy.png}
-\caption{Use hierarchy among modules}
-\label{FigUH}
+  \centering
+  %\includegraphics[width=0.7\textwidth]{UsesHierarchy.png}
+  \caption{Use hierarchy among modules}
+  \label{FigUH}
 \end{figure}
 
 %\section*{References}
