@@ -44,10 +44,10 @@
 
 \section{Revision History}
 
-\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\begin{tabularx}{\textwidth}{p{4cm}p{2cm}X}
   \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
   \midrule
-  Date 1 & 1.0 & Notes\\
+  November 13 2025 & 1.0 & Rev-1 Design Document\\
   Date 2 & 1.1 & Notes\\
   \bottomrule
 \end{tabularx}
@@ -75,7 +75,12 @@ This section records information for easy reference.
   SRS & Software Requirements Specification\\
   \progname & Explanation of program name\\
   UC & Unlikely Change \\
-  \wss{etc.} & \wss{xxx}\\
+  WCAG 2.1 &  Web Content Accessibility Guidelines\\
+  AODA & Accessibility for Ontarians with Disabilities Act \\
+  UI & User Interface \\
+  DOM & Document Object Model \\
+  AI & Artificial Intelligence \\
+  ML & Machine Learning \\
   \bottomrule
 \end{tabular}\\
 
@@ -165,12 +170,8 @@ change.
 
 \begin{description}
 
-  \item[\refstepcounter{acnum} \actheacnum \label{acHardware}:] The specific
-    hardware on which the software is running.
-  \item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the
-    initial input data.
-  \item[\refstepcounter{acnum} \actheacnum \label{acHardware}:] The specific
-    hardware on which the software is running.
+  \item[\refstepcounter{acnum} \actheacnum \label{acInfra}:] The specific
+    infrastructure on which the software is running.
   \item[\refstepcounter{acnum} \actheacnum \label{acInputFormat}:]
     The format of the
     initial input data accepted by the system; in the future the
@@ -192,10 +193,6 @@ change.
 
 \end{description}
 
-\wss{Anticipated changes relate to changes that would be made in requirements,
-  design or implementation choices.  They are not related to changes
-  that are made
-at run-time, like the values of parameters.}
 
 \subsection{Unlikely Changes} \label{SecUchange}
 
@@ -204,12 +201,10 @@ more complex. Sometimes this complexity is not necessary. Fixing some design
 decisions at the system architecture stage can simplify the software design. If
 these decision should later need to be changed, then many parts of the design
 will potentially need to be modified. Hence, it is not intended that these
-decisions will be changed.
+decisions will be changed.\\
 
+The following are changes that the system is unlikely to incur: 
 \begin{description}
-
-  \item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Input/Output devices
-    (Input: File and/or Keyboard, Output: File, Memory, and/or Screen).
 
   \item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] The
     project's evaluation metrics as shown in Table 5 of the
@@ -236,7 +231,6 @@ This section provides an overview of the module design. Modules are summarized
 in a hierarchy decomposed by secrets in Table \ref{TblMH}. The modules listed
 below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
-
 \begin{enumerate}[label=\textbf{M\arabic*}]
   \item Data Preprocess Module
   \item WCAG Compliance Module
@@ -258,6 +252,19 @@ actually be implemented.
   \item User Interface Accessibility Module
 \end{enumerate}
 
+\section{Connection Between Requirements and Design} \label{SecConnection}
+
+The design of the system is intended to satisfy the requirements developed in
+the SRS. In this stage, the system is decomposed into modules. The connection
+between requirements and modules is listed in Table~\ref{TblMH}.
+
+\wss{The intention of this section is to document decisions that are made
+  ``between'' the requirements and the design.  To satisfy some requirements,
+  design decisions need to be made.  Rather than make these decisions implicit,
+  they are explicitly recorded here.  For instance, if a program has security
+  requirements, a specific design decision may be made to satisfy those
+requirements with a password.}
+
 \begin{table}[h!]
   \centering
   \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
@@ -270,47 +277,34 @@ actually be implemented.
 
     \multirow{13}{0.3\textwidth}{Behaviour-Hiding Module [Section
     (\ref{bhmmain})]} &
-    {DataPreprocess Module (\refstepcounter{mnum} \mthemnum \label{mod:preprocessing_table})(see \ref{mod:preprocessing})}\\ & 
-    {WCAGCompliance Module (\refstepcounter{mnum} \mthemnum \label{mod:wcagcompliance_table})(see \ref{mod:wcagcompliance})}\\ &
-    {ModelOutput Module (\refstepcounter{mnum} \mthemnum \label{mod:modeloutput_table})(see \ref{mod:modeloutput})}\\ &
-    {AuthenticationService Module (\refstepcounter{mnum} \mthemnum \label{mod:auth_table})(see \ref{mod:auth})}\\ &
-    {SessionManagement Module (\refstepcounter{mnum} \mthemnum \label{mod:mess_table})(see \ref{mod:mess})}\\ &
-    {BackendController Module (\refstepcounter{mnum} \mthemnum \label{mod:bcm_table})(see \ref{mod:bcm})}\\ &
-    {Logging Module (see \ref{mod:logmod})}\\ &
-    {ImageValidation Module (see \ref{mod:imgvalidmod})}\\ & 
-    {User Interface Interactions Module (see \ref{mod: uii})} \\ & 
-    {Main Screen Module (see \ref{mod: msm})} \\ &
-    {Show History Screen Module (see \ref{mod: showhm})} \\ &
-    {Log In Screen Module (see \ref{mod: lis})} \\ &
-    {User Interface Accessibility Module (see \ref{mod: uia})} \\ 
+    {DataPreprocess Module (\refstepcounter{mnum} \mthemnum \label{mod:preprocessing_table}) (see \ref{mod:preprocessing})}\\ & 
+    {WCAGCompliance Module (\refstepcounter{mnum} \mthemnum \label{mod:wcagcompliance_table}) (see \ref{mod:wcagcompliance})}\\ &
+    {ModelOutput Module (\refstepcounter{mnum} \mthemnum \label{mod:modeloutput_table}) (see \ref{mod:modeloutput})}\\ &
+    {AuthenticationService Module (\refstepcounter{mnum} \mthemnum \label{mod:auth_table} )(see \ref{mod:auth})}\\ &
+    {SessionManagement Module (\refstepcounter{mnum} \mthemnum \label{mod:mess}) (see \ref{mod:mess})}\\ &
+    {BackendController Module (\refstepcounter{mnum} \mthemnum \label{mod:bcm_table}) (see \ref{mod:bcm})}\\ &
+    {Logging Module (\refstepcounter{mnum} \mthemnum) (see \ref{mod:logmod})}\\ &
+    {ImageValidation Module (\refstepcounter{mnum} \mthemnum) (see \ref{mod:imgvalidmod})}\\ & 
+    {User Interface Interactions Module (\refstepcounter{mnum} \mthemnum) \label{mod:uii_table} (see \ref{mod: uii})} \\ & 
+    {Main Screen Module (\refstepcounter{mnum} \mthemnum) (see \ref{mod: msm})} \\ &
+    {Show History Screen Module (\refstepcounter{mnum} \mthemnum) (see \ref{mod: showhm})} \\ &
+    {Log In Screen Module (\refstepcounter{mnum} \mthemnum) (see \ref{mod: lis})} \\ &
+    {User Interface Accessibility Module (\refstepcounter{mnum} \mthemnum) (see \ref{mod: uia})} \\ 
     \midrule
 
 
-    \multirow{6}{0.3\textwidth}{Software Decision Module [Section (\ref{sdmmain})]} &
-    {AIModelTraining Module (\refstepcounter{mnum} \mthemnum \label{mod:modeltraining_table})(see \ref{mod:aimodeltraining})}\\ &
-    {CaptionGeneration Module (\refstepcounter{mnum} \mthemnum \label{mod:captiongeneration_table})(see \ref{mod:captiongeneration})}\\ &
-    {InternalMetricCompliance (\refstepcounter{mnum} \mthemnum \label{mod:internalmetriccompliance_table})(see \ref{mod:internalmetriccompliance})}\\ &
-    {FeedbackMetrics Module (\refstepcounter{mnum} \mthemnum \label{mod:feedbackmetrics_table})(see \ref{mod:feedbackmetrics})}\\ &
-    {FeedbackLoop Module (\refstepcounter{mnum} \mthemnum \label{mod:feedbackloop_table})(see \ref{mod:feedbackloop})}\\ &
-    {Feedback Module (\refstepcounter{mnum} \mthemnum \label{mod:feedback_table})(see \ref{mod:feedback})}\\
+    \multirow{6}{0.3\textwidth}{Software Decision Module [Section (\ref{mod:sdmmain})]} &
+    {AIModelTraining Module (\refstepcounter{mnum} \mthemnum \label{mod:modeltraining}) (see \ref{mod:modeltraining})}\\ &
+    {CaptionGeneration Module (\refstepcounter{mnum} \mthemnum \label{mod:captiongeneration_table}) (see \ref{mod:captiongeneration})}\\ &
+    {InternalMetricCompliance (\refstepcounter{mnum} \mthemnum \label{mod:internalmetriccompliance_table}) (see \ref{mod:internalmetriccompliance})}\\ &
+    {FeedbackMetrics Module (\refstepcounter{mnum} \mthemnum \label{mod:feedbackmetrics_table} )(see \ref{mod:feedbackmetrics})}\\ &
+    {FeedbackLoop Module (\refstepcounter{mnum} \mthemnum \label{mod:feedbackloop_table}) (see \ref{mod:feedbackloop})}\\ &
+    {Feedback Module (\refstepcounter{mnum} \mthemnum \label{mod:feedback_table}) (see \ref{mod:feedback})}\\
     \bottomrule
   \end{tabular}
   \caption{Module Hierarchy}
   \label{TblMH}
 \end{table}
-
-\section{Connection Between Requirements and Design} \label{SecConnection}
-
-The design of the system is intended to satisfy the requirements developed in
-the SRS. In this stage, the system is decomposed into modules. The connection
-between requirements and modules is listed in Table~\ref{TblRT}.
-
-\wss{The intention of this section is to document decisions that are made
-  ``between'' the requirements and the design.  To satisfy some requirements,
-  design decisions need to be made.  Rather than make these decisions implicit,
-  they are explicitly recorded here.  For instance, if a program has security
-  requirements, a specific design decision may be made to satisfy those
-requirements with a password.}
 
 \section{Module Decomposition} \label{SecMD}
 
@@ -374,7 +368,7 @@ The modules are defined as their own subsection and follow the following format:
   \item[Secrets:] The rules used to decide whether a caption meets
     AODA and WCAG 2.1 AA accessibility standards.
   \item[Services:] Checks the generated text against WCAG 2.1 AA
-    criteria and flags or adjusts anything that does not meet these standards.
+    criteria and flags or adjusts any generated alt text that does not meet these standards.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
 \end{description}
@@ -408,19 +402,19 @@ The modules are defined as their own subsection and follow the following format:
   \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{User Interface Interfactions Module}
+\subsubsection{UserInterfaceInterfactions Module (\mref{mod:uii_table})}
 \label{mod: uii}
 \begin{description}
   \item[Secrets:] The internal logic and mapping of user-triggered actions such as clicks and keyboard presses 
   on the user interface into the backend and display screens modules. 
-  \item[Services:] Captures user actions from the browser and connects UI controls to application 
+  \item[Services:] Captures user actions from the UI and connects UI controls to application 
   behavior by attaching event handlers that calls on other modules’ access programs with 
   validated parameters.
   \item[Implemented By:] Reading4All Team 
   \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{Main Screen Module}
+\subsubsection{MainScreen Module}
 \label{mod: msm}
 \begin{description}
   \item[Secrets:] The internal layout composition of the main screen.
@@ -433,7 +427,7 @@ The modules are defined as their own subsection and follow the following format:
   \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{Show History Screen Module}
+\subsubsection{ShowHistoryScreen Module}
 \label{mod: showhm}
 \begin{description}
   \item[Secrets:] The internal layout composition of the show history screen when an authenticated user wants to see their 
@@ -446,7 +440,7 @@ The modules are defined as their own subsection and follow the following format:
   \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{Log In Screen Module}
+\subsubsection{LogInScreen Module}
 \label{mod: lis}
 \begin{description}
   \item[Secrets:] The internal layout composition of the log in screen including username/email and password fields, and 
@@ -458,7 +452,7 @@ The modules are defined as their own subsection and follow the following format:
   \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{User Interface Accessibility Module}
+\subsubsection{UserInterfaceAccessibility Module}
 \label{mod: uia}
 \begin{description}
   \item[Secrets:] The internal mechanism for providing screen reader and keyboard navigation compatibility in the browser.
@@ -508,19 +502,15 @@ The modules are defined as their own subsection and follow the following format:
   \item[Services:] Records system events and errors received from the BackendController Module. 
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
-    [Information to include for leaf modules in the decomposition by
-    secrets tree.]
 \end{description}
 
 \subsubsection{ImageValidation Module}
 \label{mod:imgvalidmod}
 \begin{description}
   \item[Secrets:] The internal details of how uploaded images are verified, including how file type, size are checked and whether a file is reachable. 
-  \item[Services:] Validates uploaded images to ensure they meet system requirements before the alt text generation process. 
+  \item[Services:] Validates uploaded images to ensure that they meet system requirements before the alt text generation process. 
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
-    [Information to include for leaf modules in the decomposition by
-    secrets tree.]
 \end{description}
 
 
@@ -540,7 +530,7 @@ subsection and follow the following format:
     feedback collection, and output production.
 \end{description}
 
-\subsubsection{AIModelTraining Module (\mref{mod:modeltraining_table})}
+\subsubsection{AIModelTraining Module}
 \label{mod:modeltraining}
 \begin{description}
   \item[Secrets:] The internal design of how the model is built and
