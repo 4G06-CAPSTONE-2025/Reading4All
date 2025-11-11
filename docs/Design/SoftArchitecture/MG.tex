@@ -268,37 +268,31 @@ actually be implemented.
     {Hardware-Hiding Module [Section (\ref{hhmmain})]} & N/A \\
     \midrule
 
-    \multirow{6}{0.3\textwidth}{Behaviour-Hiding Module [Section
+    \multirow{13}{0.3\textwidth}{Behaviour-Hiding Module [Section
     (\ref{bhmmain})]} &
-    {DataPreprocess Module (see \ref{mod:preprocessing})}\\ &
-    {WCAGCompliance Module (see \ref{mod:wcagcompliance})}\\ &
-    {ModelOutput Module (see \ref{mod:modeloutput})}\\ &
-    {AuthenticationService Module(see \ref{mod:auth})}\\ &
-    {SessionManagement Module(see \ref{mod: mess})}\\ &
-    {BackendController Module (see \ref{mod:bcm})}\\ &
+    {DataPreprocess Module (\refstepcounter{mnum} \mthemnum \label{mod:preprocessing_table})(see \ref{mod:preprocessing})}\\ & 
+    {WCAGCompliance Module (\refstepcounter{mnum} \mthemnum \label{mod:wcagcompliance_table})(see \ref{mod:wcagcompliance})}\\ &
+    {ModelOutput Module (\refstepcounter{mnum} \mthemnum \label{mod:modeloutput_table})(see \ref{mod:modeloutput})}\\ &
+    {AuthenticationService Module (\refstepcounter{mnum} \mthemnum \label{mod:auth_table})(see \ref{mod:auth})}\\ &
+    {SessionManagement Module (\refstepcounter{mnum} \mthemnum \label{mod:mess_table})(see \ref{mod:mess})}\\ &
+    {BackendController Module (\refstepcounter{mnum} \mthemnum \label{mod:bcm_table})(see \ref{mod:bcm})}\\ &
     {Logging Module (see \ref{mod:logmod})}\\ &
-    {ImageValidation Module (see \ref{mod:imgvalidmod})}\\
+    {ImageValidation Module (see \ref{mod:imgvalidmod})}\\ & 
+    {User Interface Interactions Module (see \ref{mod: uii})} \\ & 
+    {Main Screen Module (see \ref{mod: msm})} \\ &
+    {Show History Screen Module (see \ref{mod: showhm})} \\ &
+    {Log In Screen Module (see \ref{mod: lis})} \\ &
+    {User Interface Accessibility Module (see \ref{mod: uia})} \\ 
     \midrule
 
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} 
-& {User Interface Interactions Module (see \ref{mod: uii})} \\
-& {Main Screen Module (see \ref{mod: msm})} \\
-& {Show History Screen Module (see \ref{mod: showhm})} \\
-& {Log In Screen Module (see \ref{mod: lis})} \\
-& {User Interface Accessibility Module (see \ref{mod: uia})} \\
-& ? \\
-& ? \\ 
-& Backend Controller Module \\
-\midrule
 
-
-    \multirow{4}{0.3\textwidth}{Software Decision Module [Section (\ref{sdmmain})]} &
-    {AIModelTraining Module (see \ref{mod:aimodeltraining})}\\ &
-    {CaptionGeneration Module (see \ref{mod:captiongeneration})}\\ &
-    {InternalMetricCompliance (see \ref{mod:internalmetriccompliance})}\\ &
-    {FeedbackMetrics Module (see \ref{mod:feedbackmetrics})}\\ &
-    {FeedbackLoop Module (see \ref{mod:feedbackloop})}\\ &
-    {Feedback Module (see \ref{mod:feedback})}\\
+    \multirow{6}{0.3\textwidth}{Software Decision Module [Section (\ref{sdmmain})]} &
+    {AIModelTraining Module (\refstepcounter{mnum} \mthemnum \label{mod:modeltraining_table})(see \ref{mod:aimodeltraining})}\\ &
+    {CaptionGeneration Module (\refstepcounter{mnum} \mthemnum \label{mod:captiongeneration_table})(see \ref{mod:captiongeneration})}\\ &
+    {InternalMetricCompliance (\refstepcounter{mnum} \mthemnum \label{mod:internalmetriccompliance_table})(see \ref{mod:internalmetriccompliance})}\\ &
+    {FeedbackMetrics Module (\refstepcounter{mnum} \mthemnum \label{mod:feedbackmetrics_table})(see \ref{mod:feedbackmetrics})}\\ &
+    {FeedbackLoop Module (\refstepcounter{mnum} \mthemnum \label{mod:feedbackloop_table})(see \ref{mod:feedbackloop})}\\ &
+    {Feedback Module (\refstepcounter{mnum} \mthemnum \label{mod:feedback_table})(see \ref{mod:feedback})}\\
     \bottomrule
   \end{tabular}
   \caption{Module Hierarchy}
@@ -336,10 +330,11 @@ Only the leaf modules in the hierarchy have to be implemented. If a dash
 to be implemented.
 
 \subsection{Hardware Hiding Modules \label{hhmmain}}
-This section is N/A as Reading4All has no hardware components.
+This subsection is N/A as the Reading4All system has no hardware components.
 
 \subsection{Behaviour-Hiding Modules \label{bhmmain}}
-This section includes modules that pertain to the required behavior.
+This subsection includes modules that pertain to the required
+behavior of the Reading4All system.
 The modules are defined as their own subsection and follow the following format:
 
 \begin{description}
@@ -351,17 +346,20 @@ The modules are defined as their own subsection and follow the following format:
     Software Requirements Specification (SRS). Any modifications to the
     SRS will likely require corresponding updates to the programs
     within this module.
-  \item[Implemented By:] This part mentioned if Team 22's system, Reading4All, or external systems will
+  \item[Implemented By:] This part mentions if the Reading4All system
+    or external systems will
     implement the specific module.
-  \item[Type of Module:] Is the module a Record, Library, Abstract
-    Object, or Abstract Data Type? This section also includes
+  \item[Type of Module:] This section defines the moduel type into a
+    Record, Library, Abstract
+    Object, or Abstract Data Type. This section also includes
     information for leaf modules in the decomposition by secrets tree.
 \end{description}
 
-\subsubsection{DataPreprocess Module}
+\subsubsection{DataPreprocess Module (\mref{mod:preprocessing_table})}
 \label{mod:preprocessing}
 \begin{description}
-  \item[Secrets:] The steps used to prepare input images for further processing.
+  \item[Secrets:] Includes the steps used to prepare input images for
+    further processing.
   \item[Services:] Normalizes, sorts, and standardizes the image
     input so it can be correctly used by the training and caption
     generation modules.
@@ -369,30 +367,32 @@ The modules are defined as their own subsection and follow the following format:
   \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{WCAGCompliance Module}
+\subsubsection{WCAGCompliance Module (\mref{mod:wcagcompliance_table})}
 \label{mod:wcagcompliance}
 
 \begin{description}
-  \item[Secrets:] The rules used to decide whether a caption meets AODA and WCAG 2.1 AA accessibility standards.
+  \item[Secrets:] The rules used to decide whether a caption meets
+    AODA and WCAG 2.1 AA accessibility standards.
   \item[Services:] Checks the generated text against WCAG 2.1 AA
     criteria and flags or adjusts anything that does not meet these standards.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{ModelOutput Module}
+\subsubsection{ModelOutput Module (\mref{mod:modeloutput_table})}
 \label{mod:modeloutput}
 
 \begin{description}
   \item[Secrets:] The structure used to store and present the final
-    text to the user.
+    text to the user via the BackendController as mentioned in
+    Section \ref{mod:bcm}.
   \item[Services:] Produces and formats the final version of the
     accessibility-compliant text for output or download.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Record
 \end{description}
 
-\subsubsection{AuthenticationService Module}
+\subsubsection{AuthenticationService Module (\mref{mod:auth_table})}
 \label{mod:auth}
 \begin{description}
   \item[Secrets:] The internal logic for credential verification,
@@ -406,8 +406,6 @@ The modules are defined as their own subsection and follow the following format:
     and coordinates with Session Management to create/terminate sessions.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
-    [Information to include for leaf modules in the decomposition by
-    secrets tree.]
 \end{description}
 
 \subsubsection{User Interface Interfactions Module}
@@ -488,11 +486,9 @@ The modules are defined as their own subsection and follow the following format:
     recent data references for the current session.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Abstract Data Type
-    [Information to include for leaf modules in the decomposition by
-    secrets tree.]
 \end{description}
 
-\subsubsection{BackendController Module}
+\subsubsection{BackendController Module (\mref{mod:bcm_table})}
 \label{mod:bcm}
 \begin{description}
   \item[Secrets:] The internal application flow of data and user
@@ -502,9 +498,7 @@ The modules are defined as their own subsection and follow the following format:
     from the frontend and directing it to the appropriate service
     such as the User Authentication or  AI Model, and returning the results.
   \item[Implemented By:] Reading4All
-  \item[Type of Module:] Abstract Object
-    [Information to include for leaf modules in the decomposition by
-    secrets tree.]
+  \item[Type of Module:] Abstract Objects
 \end{description}
 
 \subsubsection{Logging Module}
@@ -533,6 +527,11 @@ The modules are defined as their own subsection and follow the following format:
 
 \subsection{Software Decision Modules}
 \label{mod:sdmmain}
+This subsection includes the modules' internal operations,
+connections with other modules and decision making components.
+Similar to Section \ref{bhmmain} the modules are defined as their own
+subsection and follow the following format:
+
 \begin{description}
   \item[Secrets:] Internal logic, data flow, and processing steps
     that define how the system produces and improves alternative text.
@@ -541,7 +540,7 @@ The modules are defined as their own subsection and follow the following format:
     feedback collection, and output production.
 \end{description}
 
-\subsubsection{AIModelTraining Module}
+\subsubsection{AIModelTraining Module (\mref{mod:modeltraining_table})}
 \label{mod:modeltraining}
 \begin{description}
   \item[Secrets:] The internal design of how the model is built and
@@ -557,13 +556,13 @@ The modules are defined as their own subsection and follow the following format:
   \item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{CaptionGeneration Module}
+\subsubsection{CaptionGeneration Module (\mref{mod:captiongeneration_table})}
 \label{mod:captiongeneration}
 \begin{description}
   \item[Secrets:] The process the system uses to generate descriptive
     text from an image. This includes how image features are
     interpreted and how words are selected and arranged into sentences.
-  \item[Services:] Uses the trained model to produce alternative text
+  \item[Services:] Uses the trained model from the AIModelTraining module to produce alternative text
     for a given image. Passes the generated caption to the WCAG and
     InternalMetricCompliance modules to ensure it meets accessibility
     and clarity standards.
@@ -571,18 +570,18 @@ The modules are defined as their own subsection and follow the following format:
   \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{InternalMetricCompliance Module}
+\subsubsection{InternalMetricCompliance Module (\mref{mod:internalmetriccompliance_table})}
 \label{mod:internalmetriccompliance}
 \begin{description}
-  \item[Secrets:] The internal measures chosen by the team to judge
-    how clear or concise the generated text is.
+  \item[Secrets:] The internal measures chosen by Team 22 to judge
+    how clear, concise or relevant the generated text is.
   \item[Services:] Reviews each caption using internal quality checks
-    that complement the WCAG validation.
+    that complement the AODA and WCAG 2.1 AA validation standards.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{FeedbackMetrics Module}
+\subsubsection{FeedbackMetrics Module (\mref{mod:feedbackmetrics_table})}
 \label{mod:feedbackmetrics}
 \begin{description}
   \item[Secrets:] How user feedback is collected, interpreted, and
@@ -596,7 +595,7 @@ The modules are defined as their own subsection and follow the following format:
   \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{FeedbackLoop Module}
+\subsubsection{FeedbackLoop Module (\mref{mod:feedbackloop_table})}
 \label{mod:feedbackloop}
 \begin{description}
   \item[Secrets:] The rules and internal logic that determine how
@@ -610,7 +609,7 @@ The modules are defined as their own subsection and follow the following format:
   \item[Type of Module:] Abstract Data Type
 \end{description}
 
-\subsubsection{Feedback Module}
+\subsubsection{Feedback Module (\mref{mod:feedback_table})}
 \label{mod:feedback}
 \begin{description}
   \item[Secrets:] How feedback information is stored and organized.
@@ -634,14 +633,12 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    FR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-    FR2 & \mref{mInput}, \mref{mParams}\\
-    FR3 & \mref{mVerify}\\
-    FR4 & \mref{mOutput}, \mref{mControl}\\
-    FR5 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    FR6 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+    FR1 & \mref{mod:preprocessing_table}\\
+    FR2 & \mref{mod:captiongeneration_table}\\
+    FR3 & \mref{}\\
+    FR4 & \mref{}\\
+    FR5 & \mref{}\\
+    FR6 & \mref{}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Functional Requirements and Modules}
@@ -654,10 +651,10 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    LFR-AR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-    LFR-AR2 & \mref{mInput}, \mref{mParams}\\
-    LFR-AR3 & \mref{mVerify}\\
-    LFR-AR4 & \mref{mOutput}, \mref{mControl}\\
+    LFR-AR1 & \mref{}\\
+    LFR-AR2 & \mref{}\\
+    LFR-AR3 & \mref{}\\
+    LFR-AR4 & \mref{mod:internalmetriccompliance_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Look and Feel Requirements and Modules}
@@ -670,9 +667,9 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    LFR-SR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-    LFR-SR2 & \mref{mInput}, \mref{mParams}\\
-    LFR-SR3 & \mref{mVerify}\\
+    LFR-SR1 & \mref{}\\
+    LFR-SR2 & \mref{}\\
+    LFR-SR3 & \mref{}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Style Requirements and Modules}
@@ -685,10 +682,10 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    UHR-EUR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-    UHR-EUR2 & \mref{mInput}, \mref{mParams}\\
-    UHR-EUR3 & \mref{mVerify}\\
-    UHR-EUR4 & \mref{mOutput}, \mref{mControl}\\
+    UHR-EUR1 & \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}\\
+    UHR-EUR2 & \mref{}\\
+    UHR-EUR3 & \mref{}\\
+    UHR-EUR4 & \mref{}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Usability and Humanity Requirements and Modules}
@@ -701,7 +698,7 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    UHR-PIR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+    UHR-PIR1 & \mref{}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Personalization and Internationalization
@@ -715,7 +712,7 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    UHR-LR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+    UHR-LR1 & \mref{}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Learning Requirements and Modules}
@@ -728,7 +725,7 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    UHR-UPR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
+    UHR-UPR1 & \mref{}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Understandability and Politeness
@@ -742,8 +739,8 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    UHR-AR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-    UHR-AR2 & \mref{mInput}, \mref{mParams}\\
+    UHR-AR1 & \mref{}\\
+    UHR-AR2 & \mref{}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Accessibility Requirements and Modules}
@@ -756,38 +753,24 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    PR-SL1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-    PR-SL2 & \mref{mInput}, \mref{mParams}\\
-    PR-SCR1 & \mref{mVerify}\\
-    PR-SCR2 & \mref{mOutput}, \mref{mControl}\\
-    PR-SCR3 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    PR-SR-HA1 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    PR-SR-HA2 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    PR-SR-HA3 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    PR-PAR1 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    PR-PAR2 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    PR-PAR3 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    PR-RFT1 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    PR-RFT2 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    PR-CR1 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    PR-CR2 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    PR-SER1 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    PR-LR1 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-    PR-LR2 & \mref{mOutput}, \mref{mODEs}, \mref{mControl},
-    \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
+    PR-SL1 & \mref{mod:captiongeneration_table}\\
+    PR-SL2 & \mref{}\\
+    PR-SCR1 & \mref{}\\
+    PR-SCR2 & \mref{mod:internalmetriccompliance_table}\\
+    PR-SCR3 & \mref{}\\
+    PR-SR-HA1 & \mref{}\\
+    PR-SR-HA2 & \mref{}\\
+    PR-SR-HA3 & \mref{}\\
+    PR-PAR1 & \mref{mod:captiongeneration_table}\\
+    PR-PAR2 & \mref{mod:internalmetriccompliance_table}\\
+    PR-PAR3 & \mref{mod:feedbackmetrics_table}\\
+    PR-RFT1 & \mref{}\\
+    PR-RFT2 & \mref{}\\
+    PR-CR1 & \mref{}\\
+    PR-CR2 & \mref{}\\
+    PR-SER1 & \mref{mod:modeltraining_table}\\
+    PR-LR1 & \mref{mod:modeltraining_table}, \mref{mod:wcagcompliance_table}\\
+    PR-LR2 & \mref{}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Performance Requirements and Modules}
@@ -800,16 +783,16 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    OER-EP1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-    OER-EP2 & \mref{mInput}, \mref{mParams}\\
-    OER-WE1 & \mref{mVerify}\\
-    OER-WE2 & \mref{mOutput}, \mref{mControl}\\
-    OER-IAS1 & \mref{mVerify}\\
-    OER-IAS2 & \mref{mOutput}, \mref{mControl}\\
-    OER-IAS3 & \mref{mOutput}, \mref{mControl}\\
-    OER-PR1 & \mref{mOutput}, \mref{mControl}\\
-    OER-RL1 & \mref{mOutput}, \mref{mControl}\\
-    OER-RL2 & \mref{mOutput}, \mref{mControl}\\
+    OER-EP1 & \mref{}\\
+    OER-EP2 & \mref{}\\
+    OER-WE1 & \mref{mod:wcagcompliance_table}\\
+    OER-WE2 & \mref{}\\
+    OER-IAS1 & \mref{mod:preprocessing_table}\\
+    OER-IAS2 & \mref{}\\
+    OER-IAS3 & \mref{mod:internalmetriccompliance_table}\\
+    OER-PR1 & \mref{}\\
+    OER-RL1 & \mref{mod:preprocessing_table}, \mref{mod:modeltraining_table}, \mref{mod:captiongeneration_table}, \mref{mod:wcagcompliance_table}, \mref{mod:internalmetriccompliance_table}\\
+    OER-RL2 & \mref{}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Operational and Environmental Requirements and Modules}
@@ -822,19 +805,41 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    MS-MNT1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-    MS-MNT2 & \mref{mInput}, \mref{mParams}\\
-    MS-MNT3 & \mref{mVerify}\\
-    MS-SUP1 & \mref{mOutput}, \mref{mControl}\\
-    MS-AD1 & \mref{mVerify}\\
-    MS-AD2 & \mref{mOutput}, \mref{mControl}\\
-    MS-AD3 & \mref{mOutput}, \mref{mControl}\\
+    MS-MNT1 & \mref{mod:preprocessing_table}, \mref{mod:captiongeneration_table}, \mref{mod:wcagcompliance_table}\\
+    MS-MNT2 & \mref{}\\
+    MS-MNT3 & \mref{}\\
+    MS-SUP1 & \mref{}\\
+    MS-AD1 & \mref{mod:modeltraining_table}\\
+    MS-AD2 & \mref{}\\
+    MS-AD3 & \mref{}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Maintainability and Support Requirements and Modules}
   \label{TblMSRT}
 \end{table}
 
+\begin{table}[H]
+  \centering
+  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Req.} & \textbf{Modules}\\
+    \midrule
+    SR-AR1 & \mref{}\\
+    SR-AR2 & \mref{}\\
+    SR-IR1 & \mref{}\\
+    SR-IR2 & \mref{mod:preprocessing_table}\\
+    SR-PR1 & \mref{}\\
+    SR-PR2 & \mref{mod:internalmetriccompliance_table}\\
+    SR-AU1 & \mref{}\\
+    SR-AU2 & \mref{}\\
+    SR-IM1 & \mref{}\\
+    SR-AIM2 & \mref{}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Trace Between all Security Requirements and Modules}
+  \label{TblSR}
+\end{table}
+
 
 \begin{table}[H]
   \centering
@@ -842,20 +847,13 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    SR-AR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-    SR-AR2 & \mref{mInput}, \mref{mParams}\\
-    SR-IR1 & \mref{mVerify}\\
-    SR-IR2 & \mref{mOutput}, \mref{mControl}\\
-    SR-PR1 & \mref{mVerify}\\
-    SR-PR2 & \mref{mOutput}, \mref{mControl}\\
-    SR-AU1 & \mref{mOutput}, \mref{mControl}\\
-    SR-AU2 & \mref{mOutput}, \mref{mControl}\\
-    SR-IM1 & \mref{mOutput}, \mref{mControl}\\
-    SR-IM2 & \mref{mOutput}, \mref{mControl}\\
+    CR1 & \mref{mod:captiongeneration_table}\\
+    CR2 & \mref{mod:internalmetriccompliance_table}\\
+    CR3 & \mref{mod:internalmetriccompliance_table}\\
     \bottomrule
   \end{tabular}
-  \caption{Trace Between Security Requirements and Modules}
-  \label{TblSecReq}
+  \caption{Trace Between all Cultural Requirements and Modules}
+  \label{TblCR}
 \end{table}
 
 \begin{table}[H]
@@ -864,29 +862,15 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    CR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-    CR2 & \mref{mInput}, \mref{mParams}\\
-    CR3 & \mref{mVerify}\\
+    CR-LR1 & \mref{mod:wcagcompliance_table}\\
+    CR-SCR1 & \mref{}\\
+    CR-SCR2 & \mref{}\\
     \bottomrule
   \end{tabular}
-  \caption{Trace Between Cultural Requirements and Modules}
-  \label{TblCultReq}
+  \caption{Trace Between all Compliance Requirements and Modules}
+  \label{TbltCompR}
 \end{table}
 
-\begin{table}[H]
-  \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
-    \toprule
-    \textbf{Req.} & \textbf{Modules}\\
-    \midrule
-    CR-LR1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-    CR-SCR1 & \mref{mInput}, \mref{mParams}\\
-    CR-SCR2 & \mref{mVerify}\\
-    \bottomrule
-  \end{tabular}
-  \caption{Trace Between Compliance Requirements and Modules}
-  \label{TblComplReq}
-\end{table}
 
 \begin{table}[H]
   \centering
