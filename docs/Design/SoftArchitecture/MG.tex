@@ -620,12 +620,12 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    FR1 & \mref{mod:preprocessing_table}, \mref{mod:imgvalidmod_table}\\
-    FR2 & \mref{mod:captiongeneration_table}\\
+    FR1 & \mref{mod:preprocessing_table}, \mref{mod:imgvalidmod_table}, \mref{mod:bcm_table}\\
+    FR2 & \mref{mod:captiongeneration_table}, \mref{mod:bcm_table}\\
     FR3 & \mref{}\\
-    FR4 & \mref{}\\
-    FR5 & \mref{}\\
-    FR6 & \mref{}\\
+    FR4 & \mref{mod:bcm_table}\\
+    FR5 &  \mref{mod:bcm_table}\\
+    FR6 &  \mref{mod:bcm_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Functional Requirements and Modules}
@@ -745,14 +745,14 @@ requirements and between the modules and the anticipated changes.
     PR-SCR1 & \mref{}\\
     PR-SCR2 & \mref{mod:internalmetriccompliance_table}\\
     PR-SCR3 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
-    PR-SR-HA1 & \mref{}\\
-    PR-SR-HA2 & \mref{}\\
-    PR-SR-HA3 & \mref{mod:imgvalidmod_table}\\
+    PR-SR-HA1 & \mref{mod:bcm_table}\\
+    PR-SR-HA2 &  \mref{mod:bcm_table}\\
+    PR-SR-HA3 &  \mref{mod:bcm_table}, \mref{mod:imgvalidmod_table}\\
     PR-PAR1 & \mref{mod:captiongeneration_table}\\
     PR-PAR2 & \mref{mod:internalmetriccompliance_table}\\
     PR-PAR3 & \mref{mod:feedbackmetrics_table}\\
-    PR-RFT1 & \mref{mod:imgvalidmod_table}\\
-    PR-RFT2 & \mref{}\\
+    PR-RFT1 & \mref{mod:imgvalidmod_table}, \mref{mod:bcm_table}\\
+    PR-RFT2 & \mref{mod:bcm_table}\\
     PR-CR1 & \mref{}\\
     PR-CR2 & \mref{}\\
     PR-SER1 & \mref{mod:modeltraining_table}\\
@@ -792,7 +792,7 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    MS-MNT1 & \mref{mod:preprocessing_table}, \mref{mod:captiongeneration_table}, \mref{mod:wcagcompliance_table}, \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\\\
+    MS-MNT1 & \mref{mod:preprocessing_table}, \mref{mod:captiongeneration_table}, \mref{mod:wcagcompliance_table}, \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:bcm_table}\\\\
     MS-MNT2 & \mref{}\\
     MS-MNT3 & \mref{}\\
     MS-SUP1 & \mref{}\\
@@ -811,11 +811,11 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    SR-AR1 & \mref{}\\
-    SR-AR2 & \mref{}\\
-    SR-IR1 & \mref{}\\
-    SR-IR2 & \mref{mod:preprocessing_table}\\
-    SR-PR1 & \mref{}\\
+    SR-AR1 & \mref{mod:bcm_table}\\
+    SR-AR2 & \mref{mod:bcm_table}\\
+    SR-IR1 & \mref{mod:bcm_table}\\
+    SR-IR2 & \mref{mod:bcm_table}, \mref{mod:preprocessing_table}\\
+    SR-PR1 & \mref{mod:bcm_table}\\
     SR-PR2 & \mref{mod:internalmetriccompliance_table}\\
     SR-AU1 & \mref{}\\
     SR-AU2 & \mref{}\\
