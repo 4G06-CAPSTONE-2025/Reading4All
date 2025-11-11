@@ -87,11 +87,7 @@ The following document details the Module Interface Specifications for
 Complementary documents include the System Requirement Specifications
 and Module Guide.  The full documentation and implementation can be
 found at \url{...}.  \wss{provide the url for your repo}
-
 \section{Notation}
-
-\wss{You should describe your notation.  You can use what is below as
-a starting point.}
 
 The structure of the MIS for modules comes from \citet{HoffmanAndStrooper1995},
 with the addition that template modules have been adapted from
@@ -115,6 +111,7 @@ The following table summarizes the primitive data types used by \progname.
     natural number & $\mathbb{N}$ & a number without a fractional
     component in [1, $\infty$) \\
     real & $\mathbb{R}$ & any number in (-$\infty$, $\infty$)\\
+    boolean & $\mathbb{B}$ & a logical value representing either \texttt{true} or \texttt{false}\\
     \bottomrule
   \end{tabular}
 \end{center}
@@ -278,7 +275,6 @@ ModOut
 
 \subsection{Uses}
 Receives validated captions from the WCAGCompliance module (see Section~\ref{wcagc}) or directly from the CaptionGeneration module (see Section~\ref{capgen}) when compliance checks are bypassed.  
-Sends the final caption output to the user-facing interface or backend display component.
 
 \subsection{Syntax}
 
@@ -326,7 +322,7 @@ None.
 AITrain
 
 \subsection{Uses}
-Takes preprocessed data from the DataPreprocess module and trains a model that will later be used by the CaptionGeneration module for alt-text generation.
+Takes preprocessed data from the DataPreprocess module and trains a model.
 
 \subsection{Syntax}
 \subsubsection{Exported Constants}
@@ -452,7 +448,7 @@ None.
 ModMetric
 
 \subsection{Uses}
-Receives generated captions from the WCAGCompliance module, evaluates their overall quality and accessibility, and sends the resulting performance scores to the FeedbackIntegration module for further model improvement.
+Receives generated captions from the WCAGCompliance module, evaluates their overall quality and accessibility.
 
 \subsection{Syntax}
 
