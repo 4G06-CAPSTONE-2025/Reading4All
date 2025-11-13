@@ -597,17 +597,17 @@ Serves as the coordinator between the frontend, backend and machine learning mod
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-validateUser & userToken:String & \Bool & InvalidTokenException \\
+validateUser & userToken:String & userStatus:\Bool & InvalidTokenException \\
 \hline
-validateImage & image, userToken: & \Bool & InvalidImageException\\
+validateImage & image, userToken: & imageStatus:\Bool & InvalidImageException\\
 \hline
 sendToModel & image, userToken: String & - & AltTextGenerationError\\
 \hline 
 getAltText & image, userToken: String & altText:String & AltTextNotFoundException\\
 \hline 
-returnToFrontend & altText or errorMsg: String, userID: String & None& UIUnreachableException \\
+returnToFrontend & altText or errorMsg: String, userID: String & - & UIUnreachableException \\
 \hline
-updateAltText & altText:String, userID:String & None & SessionStateSaveException\\
+updateAltText & altText:String, userID:String & - & SessionStateSaveException\\
 \end{tabular}
 \end{center}
 
@@ -910,16 +910,11 @@ None
 
 \section{MIS of Image Validation Module } \label{Module: ImageValid}
 
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
-
 \subsection{Module}
   \texttt{ImageValidation}
 
 \subsection{Uses}
-This module is responsible for verifying that uploaded images meet the systems requirements for format and size before the alt-text generation process begins. 
-
+None.
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
@@ -929,11 +924,11 @@ This module is responsible for verifying that uploaded images meet the systems r
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{4 cm} p{4cm} p{2cm} p{4cm}}
+\begin{tabular}{p{4 cm} p{5cm} p{3 cm} p{4cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-validateImageFile & image, userToken & \texttt{boolean} & InvalidImageType-Exception \\
+validateImageFile & image, userToken:String & imageStatus: \(\mathbb{B}\)& InvalidImageType-Exception \\
 \hline
 \end{tabular}
 \end{center}
@@ -944,16 +939,13 @@ validateImageFile & image, userToken & \texttt{boolean} & InvalidImageType-Excep
 None.
 
 \subsubsection{Environment Variables}
-\begin{itemize}
-  \item \textbf{Backend Controller:} Sends uploaded images to be validated and receives the results after validation is completed. 
-\end{itemize}
-
+None.
 
 
 \subsubsection{Assumptions}
 
   \begin{itemize}
-  \item The \texttt{BackendController} module provides the Image Validation module with an image file that is reachable for validation. 
+  \item The \texttt{BackendController} module provides the ImageValidation module with an image file that is reachable for validation. 
   \item The user has successfully been validated through the user authentication process. 
 \end{itemize}
 \subsubsection{Access Routine Semantics}
@@ -991,11 +983,11 @@ The module handles the recording of key system events and any errors encountered
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{2cm} p{6cm} p{2cm} p{4cm}}
+\begin{tabular}{p{2cm} p{7cm} p{3cm} p{3cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-logEvent & eventMessage, logType & - & LogWriteException\\
+logEvent & eventMssg:String, logType:String & - & LogWriteException\\
 \hline
 \end{tabular}
 \end{center}
@@ -1021,7 +1013,7 @@ None.
 \end{itemize}
 \subsubsection{Access Routine Semantics}
 
-\noindent \textbf{logEvent(eventMessage, logType)}:
+\noindent \textbf{logEvent(eventMssg, logType)}:
 \begin{itemize}
 \item transition: Creates an log entry containing the time of event occur, type and message. 
 \item output: An updated log file with new event or error entry added. 
