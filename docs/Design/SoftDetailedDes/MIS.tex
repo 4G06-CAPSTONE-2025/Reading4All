@@ -558,7 +558,7 @@ Serves as the coordinator between the frontend, backend and machine learning mod
   \item Sends uploaded images to the ImageValidation module (see Section~\ref{Module: ImageValid}) and receives validation results. 
   \item Sends validated inputs to the DataPreprocess module (see Section~\ref{datapp} )
   \item Sends errors and log events to the Logging module (see Section ~\ref{LogModule})
-  \item Returns the generated alt text or error message to the MainScreen Module (see Section ~\ref{mainScreen}) 
+  \item Returns the generated alt text or error message to the MainScreen Module (see Section ~\ref{MainScreen}) 
 \end{itemize}
 
 \subsection{Syntax}
@@ -570,19 +570,21 @@ Serves as the coordinator between the frontend, backend and machine learning mod
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{3cm} p{4cm} p{3cm} p{2cm}}
+\begin{tabular}{p{3.5cm} p{5 cm} p{3cm} p{3cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-validateUser & userToken & Boolean & InvalidTokenException \\
+validateUser & userToken:String & userStatus:\(\mathbb{B}\)  & InvalidTokenException \\
 \hline
-validateImage & image, userToken & Boolean & InvalidImageException\\
+validateImage & image, userToken: String & imageStatus:\(\mathbb{B}\)  & InvalidImageException\\
 \hline
-sendToModel & image, userToken & None & AltTextGenerationError\\
+sendToModel & image, userToken: String & None & AltTextGenerationError\\
 \hline 
-getAltText & image, userToken & altText & AltTextNotFoundException\\
+getAltText & image, userToken: String & altText:String & AltTextNotFoundException\\
 \hline 
-returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableException \\
+returnToFrontend & altText or errorMsg: String, userID: String & None& UIUnreachableException \\
+\hline
+updateAltText & altText:String, userID:String & None & SessionStateSaveException\\
 \end{tabular}
 \end{center}
 
@@ -592,17 +594,12 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
 
 
 \subsubsection{Environment Variables}
-  \begin{itemize}
-    \item Frontend Modules: Receives user requests such as image uploads and returns responses such alt-text generation or error messages.
-    \item User Authentication Modules: Sends the user's session token to module to verify users identity. 
-    \item Image Validation Modules: Sends the user's inputted image to be confirm it meets the required format and size, prior to alt-text generation.
-    \item Machine Learning Modules: Sends users validated image to ML model to begin alt text generation.
-  \end{itemize}
+None
 
 \subsubsection{Assumptions}
 
 \begin{itemize}
-  \item Frontend, User authentication, Image validation and machine learning modules are correctly operating and reachable. 
+  \item MainScreen, AuthenticationService, ImageValidation and DataPreprocess modules are correctly operating and reachable. 
   \item Network connection is available for API communication. 
 \end{itemize}
 
@@ -639,6 +636,13 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
 \item transition: Sends the generated alt text or corresponding error message to the Frontend Module. 
 \item output:  None
 \item exception: \texttt{FrontendUnreachableException} is raised if the Frontend Module cannot be reached. 
+\end{itemize}
+
+\noindent \texttt{updateAltText (altText, userID)}:
+\begin{itemize}
+\item transition: Updates the user's existing alt-text generation to include their changes. 
+\item output:  None
+\item exception: \texttt{SessionStorageException} is raised if the system is unable to save the modified alt text to the users session history.
 \end{itemize}
 
   \section{MIS of Authentication Service} \label{Module:AuthenticationService}
