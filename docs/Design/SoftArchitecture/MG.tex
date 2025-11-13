@@ -40,7 +40,7 @@
 
 \maketitle
 
-\pagenumbering{roman}
+\pagenumbering{roman} 
 
 \section{Revision History}
 
@@ -48,7 +48,6 @@
   \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
   \midrule
   November 13 2025 & 1.0 & Rev-1 Design Document\\
-  Date 2 & 1.1 & Notes\\
   \bottomrule
 \end{tabularx}
 
@@ -204,7 +203,7 @@ these decision should later need to be changed, then many parts of the design
 will potentially need to be modified. Hence, it is not intended that these
 decisions will be changed.\\
 
-The following are changes that the system is unlikely to incur: 
+\noindent The following are changes that the system is unlikely to incur: 
 \begin{description}
 
   \item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] The
@@ -253,21 +252,6 @@ actually be implemented.
   \caption{Module Hierarchy by Subsystem}
 \end{table}
 
-  
-  
-
-\section{Connection Between Requirements and Design} \label{SecConnection}
-
-The design of the system is intended to satisfy the requirements developed in
-the SRS. In this stage, the system is decomposed into modules. The connection
-between requirements and modules is listed in Table~\ref{TblMH}.
-
-\wss{The intention of this section is to document decisions that are made
-  ``between'' the requirements and the design.  To satisfy some requirements,
-  design decisions need to be made.  Rather than make these decisions implicit,
-  they are explicitly recorded here.  For instance, if a program has security
-  requirements, a specific design decision may be made to satisfy those
-requirements with a password.}
 
 \begin{table}[h!]
   \centering
@@ -308,6 +292,29 @@ requirements with a password.}
   \caption{Module Hierarchy}
   \label{TblMH}
 \end{table}
+  
+
+\section{Connection Between Requirements and Design} \label{SecConnection}
+
+The design of the system is intended to satisfy the requirements developed in
+the SRS. In this stage, the system is decomposed into modules. The connection
+between requirements and modules is listed in Tables \ref{TblFRT}-\ref{TblACT} in 
+section \ref{SecTM}.\\
+
+The decompositon of the modules was separated by four main subsystems including: Frontend Modules, 
+Backend Modules, AI Model Modules, and System Information Modules. \\
+
+The front-end modules of the \textit{Reading4All} system collectively ensure that the system meets all Look and Feel, Usability, 
+Humanity, and Accessibility requirements through a responsive design and 
+and clear interaction patterns. The \texttt{MainScreen}, \texttt{LogInScreen}, and \texttt{ShowHistoryScreen} modules that are responsible for rendering 
+the different screens of the user interface will use simple and clean layouts, 
+WCAG-compliant contrast ratios, non-color-dependent cues, and fully descriptive alt text for non-text elements. These display modules present 
+only essential information and will remain intuitive to navigate. The \texttt{UserInterfaceInteractions} module will
+ensure usability by providing immediate textual feedback and ensure to support efficient task 
+completion with minimal steps. Lastly, within the frontend modules, the \texttt{UserInterfaceAccessibility} module will ensure compatibility with screen readers and keyboard navigation by 
+managing ARIA landmarks, live-region announcements, and predictable focus order. Together, these modules will deliver an interface that is simple, memorable, 
+inclusive, and fully aligned with WCAG 2.1 Level AA and AODA standards. It will allow all users to operate the system effectively and confidently.
+
 
 \section{Module Decomposition} \label{SecMD}
 
@@ -645,7 +652,7 @@ requirements and between the modules and the anticipated changes.
     \bottomrule
   \end{tabular}
   \caption{Trace Between Look and Feel Requirements and Modules}
-  \label{TblFRT}
+  \label{TblLFRT}
 \end{table}
 
 \begin{table}[H]
@@ -761,7 +768,7 @@ requirements and between the modules and the anticipated changes.
     \bottomrule
   \end{tabular}
   \caption{Trace Between Performance Requirements and Modules}
-  \label{TblFRT}
+  \label{TblPRT}
 \end{table}
 
 \begin{table}[H]
@@ -929,6 +936,7 @@ needed. Drawings, Sketches, Figma}
 
 \wss{You can point to GitHub if this information is included there}
 
+\newpage 
 \bibliographystyle {plainnat}
 \bibliography{../../../refs/References}
 
