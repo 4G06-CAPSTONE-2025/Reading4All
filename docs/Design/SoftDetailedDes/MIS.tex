@@ -677,10 +677,9 @@ None
   \subsection{Uses}
   This module is responsible for managing and validating user authentication across the Reading4All system. It ensures that only verified users can upload, edit, or retrieve images and generated alt text.  
   \begin{itemize}
-    \item Validates user session tokens received from frontend modules.
-    \item Manages the current logged-in user’s credentials and authentication status.
-    \item Communicates with \texttt{SessionManagement} to track and store active sessions.
-    \item Provides user authentication results to \texttt{BackendController} for access control.
+    \item LoginScreen Module: Receives user login and logout requests, sends authentication tokens.
+    \item Session Management Module: Manages active sessions and stores validated tokens.
+    \item Backend Controller Module: Requests user validation before allowing access to backend operations.
   \end{itemize}
   
   \subsection{Syntax}
@@ -698,7 +697,7 @@ None
   \hline
   validateToken & userToken:String & Success:\Bool & InvalidTokenException \\
   \hline
-  signInUser & credentials & userToken:String & AuthenticationFailed-Exception \\
+  signInUser & credentials:String  & userToken:String & AuthenticationFailed-Exception \\
   \hline
   signOutUser & userToken:String & Success:\Bool & SessionNotFoundException \\
   \hline
@@ -718,9 +717,7 @@ None
   
   \subsubsection{Environment Variables}
   \begin{itemize}
-    \item Frontend Module: Receives user login and logout requests, sends authentication tokens.
-    \item Session Management Module: Manages active sessions and stores validated tokens.
-    \item Backend Controller Module: Requests user validation before allowing access to backend operations.
+    \item  LoginAPI to authentication the information of users attempting to sign in.
   \end{itemize}
   
   \subsubsection{Assumptions}
@@ -782,11 +779,9 @@ None
   \subsection{Uses}
   The Session Management module is responsible for creating, storing, and maintaining active user sessions within the Reading4All system. It also tracks the session-specific history of user interactions, referencing corresponding entries in the Reading4All data record. Other modules, such as the Authentication Service and Backend Controller, rely on it for validating active tokens and retrieving user activity logs within the current session.
   \begin{itemize}
-      \item Creates new sessions upon successful authentication.
-      \item Stores mappings between users and their associated session tokens.
-      \item Tracks and records user interactions (e.g., uploads, alt-text generation) linked to Reading4All data records.
-      \item Provides access to current session history and recent data records.
-      \item Invalidates sessions on logout or timeout and clears associated session history.
+    \item \textbf{Authentication Service:} Initiates creation, validation, and deletion of sessions.
+    \item \textbf{Backend Controller:} Updates session history after each major user action (e.g., validateImage, sendToModel, getAltText).
+    \item \textbf{Reading4All Data:} Serves as the persistent storage layer for user images and generated alt-text records, referenced by session data IDs.
   \end{itemize}
   
   \subsection{Syntax}
@@ -799,27 +794,27 @@ None
   \subsubsection{Exported Access Programs}
   
   \begin{center}
-  \begin{tabular}{p{3.3cm} p{4.5cm} p{3cm} p{4cm}}
+  \begin{tabular}{p{3.3cm} p{4.5cm} p{3.2cm} p{4cm}}
   \hline
   \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
   \hline
-  createSession & userID & sessionToken & SessionCreation-Exception \\
+  createSession & userID:String & sessionToken:String & SessionCreation-Exception \\
   \hline
-  storeSession & userID, sessionToken & Boolean & SessionStorageException \\
+  storeSession & userID:String, sessionToken:String & success:\Bool & SessionStorageException \\
   \hline
-  validateSession & userToken & Boolean & InvalidSessionException \\
+  validateSession & userToken:String & success:\Bool & InvalidSessionException \\
   \hline
-  deleteSession & userToken & Boolean & SessionNotFound-Exception \\
+  deleteSession & userToken:String & success:\Bool & SessionNotFound-Exception \\
   \hline
-  getSession & userToken & sessionData & SessionNotFound-Exception \\
+  getSession & userToken:String & sessionData:String& SessionNotFound-Exception \\
   \hline
-  appendInteraction & userToken, interactionEntry & Boolean & SessionNotFound-Exception \\
+  appendInteraction & userToken:String, interactionEntry:String & success:\Bool & SessionNotFound-Exception \\
   \hline
-  getSessionHistory & userToken, filter & interactionList & SessionNotFound-Exception \\
+  getSessionHistory & userToken:String, filter:String & interactionList:List & SessionNotFound-Exception \\
   \hline
-  linkDataRecord & userToken, dataRecordID, metadata & Boolean & SessionNotFound-Exception \\
+  linkDataRecord & userToken:String, dataRecordID:String & success:\Bool & SessionNotFound-Exception \\
   \hline
-  getRecentRecords & userToken, limit & dataRecordRefs & SessionNotFound-Exception \\
+  getRecentRecords & userToken:String, limit: $\mathbb{N}$ & dataRecordRefs:List & SessionNotFound-Exception \\
   \hline
   \end{tabular}
   \end{center}
@@ -836,9 +831,9 @@ None
   
   \subsubsection{Environment Variables}
   \begin{itemize}
-      \item \textbf{Authentication Service:} Initiates creation, validation, and deletion of sessions.
-      \item \textbf{Backend Controller:} Updates session history after each major user action (e.g., validateImage, sendToModel, getAltText).
-      \item \textbf{Reading4All Data:} Serves as the persistent storage layer for user images and generated alt-text records, referenced by session data IDs.
+      \item \texttt{SystemClock}: Provides current time for session expiry calculations.
+      \item \texttt{StorageService}: Fast-access storage for session and interaction data.
+      \item \texttt{Browser}: Storing session tokens for the valid duration of user activity.
   \end{itemize}
   
   \subsubsection{Assumptions}
@@ -872,14 +867,14 @@ None
       \item exception: Raises \texttt{SessionNotFoundException} if the token is not associated with an active session.
   \end{itemize}
   
-  \noindent \textbf{linkDataRecord(userToken, dataRecordID, metadata?)}:
+  \noindent \textbf{linkDataRecord(userToken, dataRecordID)}:
   \begin{itemize}
       \item transition: Associates the provided \texttt{dataRecordID} (from Reading4All data) with the user’s current session for future retrieval.
       \item output: Returns \texttt{True} upon success.
       \item exception: Raises \texttt{SessionNotFoundException} if no active session exists.
   \end{itemize}
   
-  \noindent \textbf{getSessionHistory(userToken, filter?)}:
+  \noindent \textbf{getSessionHistory(userToken, filter)}:
   \begin{itemize}
       \item transition: None.
       \item output: Returns a filtered list of interaction entries (e.g., uploads, alt-text retrieval) for the specified session.
