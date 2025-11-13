@@ -205,7 +205,6 @@ decisions will be changed.\\
 
 \noindent The following are changes that the system is unlikely to incur: 
 \begin{description}
-
   \item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] The
     project's evaluation metrics as shown in Table 5 of the
     Appendix in our \citet{SRS} document will not change as these
@@ -269,7 +268,7 @@ actually be implemented.
     {WCAGCompliance Module (\refstepcounter{mnum}\mthemnum \label{mod:wcagcompliance_table}) (see \ref{mod:wcagcompliance})}\\ &
     {ModelOutput Module (\refstepcounter{mnum}\mthemnum \label{mod:modeloutput_table}) (see \ref{mod:modeloutput})}\\ &
     {AuthenticationService Module (\refstepcounter{mnum}\mthemnum \label{mod:auth_table} )(see \ref{mod:auth})}\\ &
-    {SessionManagement Module (\refstepcounter{mnum}\mthemnum \label{mod:mess}) (see \ref{mod:mess})}\\ &
+    {SessionManagement Module (\refstepcounter{mnum}\mthemnum \label{mod:mess_table}) (see \ref{mod:mess})}\\ &
     {BackendController Module (\refstepcounter{mnum}\mthemnum \label{mod:bcm_table}) (see \ref{mod:bcm})}\\ &
     {Logging Module (\refstepcounter{mnum}\mthemnum \label{mod:logmod_table}) (see \ref{mod:logmod})}\\ &
     {ImageValidation Module (\refstepcounter{mnum}\mthemnum \label{mod:imgvalidmod_table}) (see \ref{mod:imgvalidmod})}\\ & 
@@ -281,7 +280,7 @@ actually be implemented.
     \midrule
 
     \multirow{6}{0.3\textwidth}{Software Decision Module [Section (\ref{mod:sdmmain})]} &
-    {AIModelTraining Module (\refstepcounter{mnum}\mthemnum \label{mod:modeltraining}) (see \ref{mod:modeltraining})}\\ &
+    {AIModelTraining Module (\refstepcounter{mnum}\mthemnum \label{mod:modeltraining_table}) (see \ref{mod:modeltraining})}\\ &
     {CaptionGeneration Module (\refstepcounter{mnum}\mthemnum \label{mod:captiongeneration_table}) (see \ref{mod:captiongeneration})}\\ &
     {InternalMetricCompliance (\refstepcounter{mnum}\mthemnum \label{mod:internalmetriccompliance_table}) (see \ref{mod:internalmetriccompliance})}\\ &
     {FeedbackMetrics Module (\refstepcounter{mnum}\mthemnum \label{mod:feedbackmetrics_table} )(see \ref{mod:feedbackmetrics})}\\ &
@@ -872,18 +871,14 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{AC} & \textbf{Modules}\\
     \midrule
-    \acref{acHardware} & \mref{mHH}\\
-    \acref{acInput} & \mref{mInput}\\
-    \acref{acParams} & \mref{mParams}\\
-    \acref{acVerify} & \mref{mVerify}\\
-    \acref{acOutput} & \mref{mOutput}\\
-    \acref{acVerifyOut} & \mref{mVerifyOut}\\
-    \acref{acODEs} & \mref{mODEs}\\
-    \acref{acEnergy} & \mref{mEnergy}\\
-    \acref{acControl} & \mref{mControl}\\
-    \acref{acSeqDS} & \mref{mSeqDS}\\
-    \acref{acSolver} & \mref{mSolver}\\
-    \acref{acPlot} & \mref{mPlot}\\
+    \acref{acInfra} & \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
+    \acref{acInputFormat} & \mref{mod:preprocessing_table}, \mref{mod:imgvalidmod_table}, \\
+    \acref{acMLModel} &  \mref{mod:preprocessing_table}, \mref{mod:modeltraining_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, \mref{mod:feedbackloop_table}, \\
+    \acref{acLang} & \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, \mref{mod:captiongeneration_table} \\
+    \acref{acSession} &\mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}\\
+    \acref{acInputTopic} & \mref{mod:preprocessing_table}, \mref{mod:captiongeneration_table}\\
+    \acref{acPlatform} & \mref{mod:uii_table},  \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table} \\
+
     \bottomrule
   \end{tabular}
   \caption{Trace Between Anticipated Changes and Modules}
