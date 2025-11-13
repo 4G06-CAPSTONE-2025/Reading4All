@@ -178,7 +178,7 @@ for this project.
 \section{MIS of DataPreprocess Module} \label{datapp}
 
 \subsection{Module}
-DataPP
+\texttt{DataPP}
 
 \subsection{Uses}
 None.
@@ -211,7 +211,7 @@ None.
 
 \subsubsection{Access Routine Semantics}
 
-\noindent filterInput():
+\noindent \textbf{filterInput():}
 \begin{itemize}
   \item transition: None.
   \item output: Returns preprocessed image data suitable for both model training and caption generation.
@@ -224,10 +224,10 @@ None.
 \section{MIS of WCAGCompliance Module} \label{wcagc}
 
 \subsection{Module}
-WCAGComp
+\texttt{WCAGComp}
 
 \subsection{Uses}
-Takes generated captions from the CaptionGeneration module (see Section~\ref{capgen}) and validates them against WCAG 2.1 AA criteria (\citet{WCAG}).
+Takes generated captions from the \texttt{CaptionGeneration} module (see Section~\ref{capgen}) and validates them against WCAG 2.1 AA criteria (\citet{WCAG}).
 
 \subsection{Syntax}
 
@@ -259,7 +259,7 @@ Assumes the input caption text is available and properly formatted for validatio
 
 \subsubsection{Access Routine Semantics}
 
-\noindent checkCompliance():
+\noindent \textbf{checkCompliance()}:
 \begin{itemize}
   \item transition: None.
   \item output: Returns a \texttt{ComplianceReport} summarizing accessibility validation results.
@@ -272,10 +272,11 @@ None.
 \section{MIS of ModelOutput Module} \label{modout}
 
 \subsection{Module}
-ModOut
+\texttt{ModOut}
 
 \subsection{Uses}
-Receives validated captions from the WCAGCompliance module (see Section~\ref{wcagc}) or directly from the CaptionGeneration module (see Section~\ref{capgen}) when compliance checks are bypassed.  
+Receives validated captions from the \texttt{WCAGCompliance} module (see Section~\ref{wcagc}) or directly from the 
+\texttt{CaptionGeneration} module (see Section~\ref{capgen}) when compliance checks are bypassed.  
 Sends the final caption output to the user-facing interface or backend display component.
 
 \subsection{Syntax}
@@ -307,7 +308,7 @@ Assumes the output channel (UI or backend) is active and ready to receive data.
 
 \subsubsection{Access Routine Semantics}
 
-\noindent generateOutput():
+\noindent \textbf{generateOutput():}
 \begin{itemize}
   \item transition: Sends the final caption text to the appropriate user-facing component for display.
   \item output: Returns \texttt{DisplayConfirmation} upon successful output delivery.
@@ -321,7 +322,7 @@ None.
 \section{MIS of AIModelTraining Module} \label{aitrain}
 
 \subsection{Module}
-AITrain
+\texttt{AITrain}
 
 \subsection{Uses}
 Takes preprocessed data from the DataPreprocess module and trains a model that will later be used by the CaptionGeneration module for alt-text generation.
@@ -364,32 +365,32 @@ Filesystem — stores intermediate checkpoints and model outputs.
 
 \subsubsection{Access Routine Semantics}
 
-\noindent initializeModel(configPath):
+\noindent \textbf{initializeModel(configPath):}
 \begin{itemize}
   \item transition: Loads or initializes the model structure and related parameters.
   \item exception: Raises \texttt{ConfigFileNotFoundException} if the configuration is missing or invalid.
 \end{itemize}
 
-\noindent trainModel(trainingData):
+\noindent \textbf{trainModel(trainingData):}
 \begin{itemize}
   \item transition: Trains the model on provided data and updates \texttt{trainedModel}.
   \item output: Returns the trained model.
   \item exception: Raises \texttt{TrainingException} if the process fails.
 \end{itemize}
 
-\noindent saveCheckpoint(progress):
+\noindent \textbf{saveCheckpoint(progress):}
 \begin{itemize}
   \item transition: Saves the model’s current state for future use or recovery.
   \item exception: Raises \texttt{WriteErrorException} if the checkpoint cannot be saved.
 \end{itemize}
 
 \subsubsection{Local Functions}
-splitData(NewFilePath:String) \texttt{->} TestPath:String, TrainPath:String, TrainPath:String: Divides input data into training and validation portions.
+\textbf{splitData(NewFilePath:String) \texttt{->} TestPath:String, TrainPath:String, TrainPath:String}: Divides input data into training and validation portions.
 
 \section{MIS of CaptionGeneration Module} \label{capgen}
 
 \subsection{Module}
-CapGen
+texttt{CapGen}
 
 \subsection{Uses}
 Uses the trained model from the AIModelTraining module to generate descriptive alt-text for input images.
@@ -447,7 +448,7 @@ None.
 \section{MIS of FeedbackMetrics Module} \label{modmetric}
 
 \subsection{Module}
-ModMetric
+\texttt{ModMetric}
 
 \subsection{Uses}
 Receives generated captions from the WCAGCompliance module, evaluates their overall quality and accessibility, and sends the resulting performance scores to the FeedbackIntegration module for further model improvement.
@@ -497,7 +498,7 @@ None.
 \section{MIS of FeedbackIntegration Module} \label{modint}
 
 \subsection{Module}
-ModInt
+texttt{ModInt}
 
 \subsection{Uses}
 Consumes performance scores from the FeedbackMetrics module and applies them to update model parameters in the AIModelTraining module, closing the feedback loop after inference.
@@ -664,7 +665,7 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
   \subsubsection{Exported Access Programs}
   
   \begin{center}
-  \begin{tabular}{p{3cm} p{4cm} p{3cm} p{2cm}}
+  \begin{tabular}{p{3cm} p{4cm} p{3cm} p{2cm}} 
   \hline
   \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
   \hline
@@ -1039,13 +1040,12 @@ None
 
 \subsection{Module}
 
-interactionsUI
+\texttt{InteractionsUI}
 
 \subsection{Uses}
-BackendController \\
-mainScreen \\ 
-logInScreen \\ 
-showHistory 
+This module uses \texttt{BackendController} to authenticate the users that are signing in, and to obtain the 
+generated alternative text. It also uses the display modules (\texttt{MainScreen}, \texttt{LogInScreen},
+\texttt{ShowHistoryScreen}) to render the different screens and interfaces to the users. 
 
 \subsection{Syntax}
 
@@ -1147,7 +1147,7 @@ Otherwise no state change.
 
 \noindent \textbf{showHistory()}:
 \begin{itemize}
-\item transition: requests the showHistoryScreen module to render the History Screen using the current stored alt text session history.
+\item transition: requests the ShowHistoryScreen module to render the History Screen using the current stored alt text session history.
 \item output: None.
 \item exception: Authentication Error.
 \end{itemize}
@@ -1166,16 +1166,15 @@ Otherwise no state change.
 \end{itemize}
 
 
-\section{MIS of MainScreen Module}\label{mainScreen} 
+\section{MIS of MainScreen Module}\label{MainScreen} 
 
 \subsection{Module}
 
-mainScreen
+\texttt{MainScreen}
 
 \subsection{Uses}
-
-accessibilityUI\\
-interactionsUI
+This module uses \texttt{AccessibilityUI} to ensure that the content within the interface is 
+compatible with screen readers and tabbable by a keyboard.
 
 \subsection{Syntax}
 
@@ -1207,15 +1206,15 @@ None
 \subsubsection{Assumptions}
 
 \begin{itemize}
-  \item Accessibility services are provided by the \texttt{accessibilityUI} module for screen reader announcements,
+  \item Accessibility services are provided by the \texttt{AccessibilityUI} module for screen reader announcements,
   landmark management, initial focus, and keyboard navigation helpers. This module will provide notifications to
-  the \texttt{accessibilityUI} module. 
+  the \texttt{AccessibilityUI} module. 
 \end{itemize}
 \subsubsection{Access Routine Semantics}
 
 \noindent \textbf{renderMain()}:
 \begin{itemize}
-  \item transition: update DOM to reflect main screen containing the upload page, then call on \texttt{accessibilityUI} to 
+  \item transition: update DOM to reflect main screen containing the upload page, then call on \texttt{AccessibilityUI} to 
   handle compatibility with screen readers and keyboard navigation.
   \item output: None
   \item exception: Render Error, Accessibility Error.
@@ -1225,11 +1224,11 @@ None
 \subsubsection{Local Functions}
 
 \begin{itemize}
-  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{AccessibilityUI}
   to mark/set the main landmark.
-  \item \textbf{setInitialFocus()\texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{setInitialFocus()\texttt{->} \Bool}: calls \texttt{AccessibilityUI}
    to move focus to the main region.
-  \item \textbf{announceMainLoaded() \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{announceMainLoaded() \texttt{->} \Bool}: calls \texttt{AccessibilityUI}
    to announce screen load.
 
 \end{itemize}
@@ -1238,12 +1237,12 @@ None
 
 \subsection{Module}
 
-showHistoryScreen
+\texttt{ShowHistoryScreen}
 
 \subsection{Uses}
 
-accessibilityUI\\
-interactionsUI
+This module uses \texttt{AccessibilityUI} to ensure that the content within the interface is 
+compatible with screen readers and tabbable by a keyboard.
 
 \subsection{Syntax}
 
@@ -1276,8 +1275,8 @@ None
 
 \begin{itemize}
   \item If history is shown, a valid and authenticated session already exists.
-  \item \texttt{accessibilityUI} is used for announcements and focus.
-  \item History content to display is already prepared by the \texttt{interactionsUI} module through
+  \item \texttt{AccessibilityUI} is used for announcements and focus.
+  \item History content to display is already prepared by the \texttt{InteractionsUI} module through
   the \texttt{BackendController} module.
 \end{itemize}
 
@@ -1285,7 +1284,7 @@ None
 
 \noindent \textbf{showHistory()}:
 \begin{itemize} 
-  \item transition: update DOM to reflect user's current session history, then call on \texttt{accessibilityUI} to 
+  \item transition: update DOM to reflect user's current session history, then call on \texttt{AccessibilityUI} to 
   handle compatibility with screen readers and keyboard navigation.
   \item output: None
   \item exception: Render Error, Accessibility Error.
@@ -1294,25 +1293,25 @@ None
 \subsubsection{Local Functions}
 
 \begin{itemize}
-  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{AccessibilityUI}
   to mark/set the main landmark.
-  \item \textbf{setInitialFocus()\texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{setInitialFocus()\texttt{->} \Bool}: calls \texttt{AccessibilityUI}
    to move focus to the main region.
-  \item \textbf{announceHistoryLoaded() \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{announceHistoryLoaded() \texttt{->} \Bool}: calls \texttt{AccessibilityUI}
    to announce history screen load.
 \end{itemize}
 
-\section{MIS of LogInScreen Module}\label{logInScreen} 
+\section{MIS of LogInScreen Module}\label{LogInScreen} 
 
 
 \subsection{Module}
 
-logInScreen
+\texttt{LogInScreen}
 
 \subsection{Uses}
 
-accessibilityUI\\
-interactionsUI
+This module uses \texttt{AccessibilityUI} to ensure that the content within the interface is 
+compatible with screen readers and tabbable by a keyboard.
 
 \subsection{Syntax}
 
@@ -1322,7 +1321,7 @@ None
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{2.5cm} p{4cm} p{4cm} p{3cm}}
+\begin{tabular}{p{2.5cm} p{3cm} p{3cm} p{4cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
@@ -1344,7 +1343,7 @@ None
 \subsubsection{Assumptions}
 
 \begin{itemize}
-  \item \texttt{accessibilityUI} is used for announcements and focus.
+  \item \texttt{AccessibilityUI} is used for announcements and focus.
 \end{itemize}
 
 \subsubsection{Access Routine Semantics}
@@ -1353,7 +1352,7 @@ None
 \noindent \textbf{renderLogIn()}:
 \begin{itemize}
 \item transition: update DOM to reflect log in screen with username and password fields, 
-then call on \texttt{accessibilityUI} to 
+then call on \texttt{AccessibilityUI} to 
 handle compatibility with screen readers and keyboard navigation.
 \item output: None 
 \item exception: Render Error, Authentication Error.
@@ -1361,12 +1360,12 @@ handle compatibility with screen readers and keyboard navigation.
 
 \subsubsection{Local Functions}
 \begin{itemize}
-  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{AccessibilityUI}
   to mark/set the main landmark.
   \item \textbf{setInitialFocus(username:String)\texttt{ -> }\Bool}:
   calls \texttt{accessibilityUI} to move keyboard focus to the username
   input field after the log in screen is rendered.
-  \item \textbf{announceLogInLoaded() \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{announceLogInLoaded() \texttt{->} \Bool}: calls \texttt{AccessibilityUI}
    to announce log in screen load.
 \end{itemize}
 
@@ -1374,12 +1373,13 @@ handle compatibility with screen readers and keyboard navigation.
   
   \subsection{Module}
   
-  accessibilityUI
+  \texttt{AccessibilityUI}
   
   \subsection{Uses}
-  mainScreen\\
-  logInScreen\\
-  showHistoryScreen
+ 
+  This module uses the display modules (\texttt{MainScreen}, \texttt{LogInScreen},
+  \texttt{showHistorScreeny}) to receive notifications of user activity to announce changes 
+  through a screen reader and apply keyboard navigation to the content in those screens. 
   \subsection{Syntax}
   
   \subsubsection{Exported Constants}
@@ -1415,7 +1415,7 @@ handle compatibility with screen readers and keyboard navigation.
 
     \begin{itemize}
       \item The page allows insertion of valid ARIA (\citet{ARIA}) live region nodes
-      \item \texttt{mainScreen}, \texttt{logInScreen}, \texttt{showHistoryScreen} modules calls \texttt{accessibilityUI} 
+      \item \texttt{MainScreen}, \texttt{LogInScreen}, \texttt{ShowHistoryScreen} modules calls \texttt{AccessibilityUI} 
       to announce changes on the user interface. 
     \end{itemize}
   
