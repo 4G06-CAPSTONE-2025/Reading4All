@@ -553,9 +553,11 @@ None.
 \subsection{Uses}
 Serves as the coordinator between the frontend, backend and machine learning modules. 
 \begin{itemize}
-  \item Forwards frontend requests to the appropriate backend modules, such authentication or image validation.
-  \item Sends validated inputs to the ML Model for alt-text generation. 
-  \item Retrieves generated alt-text and returns it to the frontend modules. 
+  \item Receives authentication and session status from the AuthenticationService Module (see Section~\ref{Module:AuthenticationService}) and SessionManagement module (see Section~\ref{Module:SessionManagement}), respectively.
+  \item Sends uploaded images to the ImageValidation module (see Section~\ref{Module: ImageValid}) and receives validation results. 
+  \item Sends validated inputs to the DataPreprocess module (see Section~\ref{datapp} )
+  \item Sends errors and log events to the Logging module (see Section ~\ref{LogModule})
+  \item Returns the generated alt text or error message to the MainScreen Module (see Section ~\ref{mainScreen}) 
 \end{itemize}
 
 \subsection{Syntax}
@@ -878,7 +880,7 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
       \item \texttt{applyHistoryFilter(history, filter)}: Applies filtering parameters (e.g., type, time range, status) to session history queries.
   \end{itemize}
 
-\section{MIS of Image Validation Module } \label{ImageValid}
+\section{MIS of Image Validation Module } \label{Module: ImageValid}
 
 \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
 
