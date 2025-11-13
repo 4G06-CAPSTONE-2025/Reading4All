@@ -593,17 +593,17 @@ Serves as the coordinator between the frontend, backend and machine learning mod
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{3.5cm} p{5 cm} p{3cm} p{3cm}}
+\begin{tabular}{p{3cm} p{6cm} p{3cm} p{3cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
 validateUser & userToken:String & userStatus:\Bool & InvalidTokenException \\
 \hline
-validateImage & image, userToken: & imageStatus:\Bool & InvalidImageException\\
+validateImage & imagePath:String, userToken: & imagePath:\Bool & InvalidImageException\\
 \hline
-sendToModel & image, userToken: String & - & AltTextGenerationError\\
+sendToModel & imagePath:String, userToken: String & - & AltTextGenerationError\\
 \hline 
-getAltText & image, userToken: String & altText:String & AltTextNotFoundException\\
+getAltText & imagePath:String, userToken: String & altText:String & AltTextNotFoundException\\
 \hline 
 returnToFrontend & altText or errorMsg: String, userID: String & - & UIUnreachableException \\
 \hline
@@ -617,7 +617,7 @@ updateAltText & altText:String, userID:String & - & SessionStateSaveException\\
 None.
 
 \subsubsection{Environment Variables}
-None
+\texttt{Filesystem} - Used to retrieve images using the file path provided by users. 
 
 \subsubsection{Assumptions}
 
@@ -923,7 +923,7 @@ None.
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-validateImageFile & image, userToken:String & imageStatus: \(\mathbb{B}\)& InvalidImageType-Exception \\
+validateImageFile & imagePath:String, userToken:String & imageStatus: \(\mathbb{B}\)& InvalidImageType-Exception \\
 \hline
 \end{tabular}
 \end{center}
@@ -934,7 +934,8 @@ validateImageFile & image, userToken:String & imageStatus: \(\mathbb{B}\)& Inval
 None.
 
 \subsubsection{Environment Variables}
-None.
+\texttt{Filesystem} - Used to retrieve images using the file path provided by users.
+
 
 
 \subsubsection{Assumptions}
@@ -945,7 +946,7 @@ None.
 \end{itemize}
 \subsubsection{Access Routine Semantics}
 
-\noindent \textbf{validateImageFile(image, userToken)}
+\noindent \textbf{validateImageFile(imagePath, userToken)}
 \begin{itemize}
 \item transition: Verifies that the inputted image meets size and format requirements.
 \item output: Returns \texttt{True} if the image meets size and format requirements, otherwise \texttt{False} is returned.
@@ -955,9 +956,9 @@ None.
 
 \subsubsection{Local Functions}
 \begin{itemize}
-  \item \textbf{verifyFileType(image)}: Checks that the images file type matches a type found in \texttt{ACCEPTED\_IMAGE\_TYPES}.
-  \item \textbf{verifyFileSize(image)}: Checks that the images size falls between \texttt{MIN\_IMAGE\_SIZE} and \texttt{MAX\_IMAGE\_SIZE}.
-  \item \textbf{verifyFileReachable(image)}: Checks that the image can be accessed and opened successfully. 
+  \item \textbf{verifyFileType(imagePath)}: Checks that the images file type matches a type found in \texttt{ACCEPTED\_IMAGE\_TYPES}.
+  \item \textbf{verifyFileSize(imagePath)}: Checks that the images size falls between \texttt{MIN\_IMAGE\_SIZE} and \texttt{MAX\_IMAGE\_SIZE}.
+  \item \textbf{verifyFileReachable(imagePath)}: Checks that the image can be accessed and opened successfully. 
 \end{itemize}
 
 
@@ -967,7 +968,8 @@ None.
 \texttt{Logger}
 
 \subsection{Uses}
-The module handles the recording of key system events and any errors encountered. It logs actions such as image uploads,alt-text generation and user validations, as well as system issues like timeouts. This logging will enables developers to debug for effectively and ensure system reliability and security during failures. 
+The module handles the recording of key system events and any errors encountered. It logs actions such as image uploads, alt-text generation and user validations, as well as system issues like timeouts. This logging will enables developers to debug for effectively and ensure system reliability and security during failures. 
+The logging module does not use any other modules. 
 
 \subsection{Syntax}
 
@@ -994,11 +996,7 @@ logEvent & eventMssg:String, logType:String & - & LogWriteException\\
 None.
 
 \subsubsection{Environment Variables}
-
-\begin{itemize}
-  \item The Backend Controller Module sends any key system events and error messages to be logged. 
-  \item File System is used to store the logs written by this module.
-\end{itemize}
+\texttt{Filesystem} - Used to save the log files to the specified path.
 
 \subsubsection{Assumptions}
 \begin{itemize}

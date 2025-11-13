@@ -626,12 +626,12 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    FR1 & \mref{mod:preprocessing_table}, \mref{mod:imgvalidmod_table}, \mref{mod:bcm_table}\\
-    FR2 & \mref{mod:captiongeneration_table}, \mref{mod:bcm_table}\\
-    FR3 & \mref{}\\
+    FR1 & \mref{mod:preprocessing_table},  \mref{mod:bcm_table}, \mref{mod:imgvalidmod_table}\\
+    FR2 & \mref{mod:bcm_table}, \mref{mod:captiongeneration_table}\\
+    FR3 & \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, \mref{mod:bcm_table}, \mref{mod:uia_table}\\
     FR4 & \mref{mod:bcm_table}\\
-    FR5 &  \mref{mod:bcm_table}, \mref{mod:mess}\\
-    FR6 &  \mref{mod:bcm_table},\mref{mod:auth_table}\\
+    FR5 &  \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:showhm_table}\\
+    FR6 &  \mref{mod:auth_table}, \mref{mod:bcm_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Functional Requirements and Modules}
@@ -748,10 +748,10 @@ requirements and between the modules and the anticipated changes.
     \midrule
     PR-SL1 & \mref{mod:captiongeneration_table}\\
     PR-SL2 &  \mref{mod:uia_table} \\
-    PR-SCR1 & \mref{mod:mess}\\
+    PR-SCR1 & \mref{mod:mess_table}\\
     PR-SCR2 & \mref{mod:internalmetriccompliance_table}\\
     PR-SCR3 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
-    PR-SR-HA1 & \mref{mod:bcm_table}, \mref{mod:logmod_table},  \mref{mod:mess}, \mref{mod:auth_table}\\
+    PR-SR-HA1 & \mref{mod:bcm_table}, \mref{mod:logmod_table},  \mref{mod:mess_table}, \mref{mod:auth_table}\\
     PR-SR-HA2 &  \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
     PR-SR-HA3 &  \mref{mod:bcm_table}, \mref{mod:imgvalidmod_table}\\
     PR-PAR1 & \mref{mod:captiongeneration_table}\\
@@ -759,7 +759,7 @@ requirements and between the modules and the anticipated changes.
     PR-PAR3 & \mref{mod:feedbackmetrics_table}\\
     PR-RFT1 & \mref{mod:imgvalidmod_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
     PR-RFT2 & \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
-    PR-CR1 & \mref{}\\
+    PR-CR1 & \mref{mod:mess_table}, \mref{mod:auth_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
     PR-CR2 & \mref{}\\
     PR-SER1 & \mref{mod:modeltraining_table}\\
     PR-LR1 & \mref{mod:modeltraining_table}, \mref{mod:wcagcompliance_table}\\
@@ -803,7 +803,7 @@ requirements and between the modules and the anticipated changes.
     MS-MNT3 & \mref{}\\
     MS-SUP1 & \mref{mod:logmod_table}\\
     MS-AD1 & \mref{mod:modeltraining_table}\\
-    MS-AD2 & \mref{}\\
+    MS-AD2 &  \mref{mod:mess_table},\mref{mod:bcm_table}, \mref{mod:logmod_table}\\
     MS-AD3 & \mref{}\\
     \bottomrule
   \end{tabular}
@@ -818,7 +818,7 @@ requirements and between the modules and the anticipated changes.
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
     SR-AR1 & \mref{mod:bcm_table}, \mref{mod:auth_table}\\
-    SR-AR2 & \mref{mod:bcm_table}, \mref{mod:mess}\\
+    SR-AR2 & \mref{mod:bcm_table}, \mref{mod:mess_table}\\
     SR-IR1 & \mref{mod:bcm_table}\\
     SR-IR2 & \mref{mod:bcm_table}, \mref{mod:preprocessing_table}\\
     SR-PR1 & \mref{mod:bcm_table}\\
@@ -826,7 +826,7 @@ requirements and between the modules and the anticipated changes.
     SR-AU1 & \mref{mod:logmod_table}\\
     SR-AU2 & \mref{mod:logmod_table}\\
     SR-IM1 & \mref{mod:imgvalidmod_table}\\
-    SR-AIM2 & \mref{}\\
+    SR-IM2 & \mref{mod:auth_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between all Security Requirements and Modules}
@@ -856,8 +856,8 @@ requirements and between the modules and the anticipated changes.
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
     CR-LR1 & \mref{mod:wcagcompliance_table}\\
-    CR-SCR1 & \mref{}\\
-    CR-SCR2 & \mref{}\\
+    CR-SCR1 & \mref{mod:bcm_table}\\
+    CR-SCR2 & \mref{mod:logmod_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between all Compliance Requirements and Modules}
