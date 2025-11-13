@@ -450,7 +450,7 @@ None.
 \section{MIS of FeedbackMetrics Module} \label{modmetric}
 
 \subsection{Module}
-ModMetric
+\texttt{ModMetric}
 
 \subsection{Uses}
 Receives generated captions from the WCAGCompliance module, evaluates their overall quality and accessibility, and sends the resulting performance scores to the FeedbackIntegration module for further model improvement.
@@ -500,7 +500,7 @@ None.
 \section{MIS of FeedbackIntegration Module} \label{modint}
 
 \subsection{Module}
-ModInt
+texttt{ModInt}
 
 \subsection{Uses}
 Consumes performance scores from the FeedbackMetrics module and applies them to update model parameters in the AIModelTraining module, closing the feedback loop after inference.
