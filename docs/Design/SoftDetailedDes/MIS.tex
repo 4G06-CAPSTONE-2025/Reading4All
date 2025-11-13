@@ -1063,7 +1063,7 @@ signIn & token:String & Success:\(\mathbb{B}\) & AuthError \\
 \hline
 signOut & - & Success:\(\mathbb{B}\) & AuthError \\
 \hline
-showHistory & - & - & NetworkError \\
+showHistory & - & Success:\(\mathbb{B}\) & NetworkError \\
 
 \hline
 \end{tabular}
@@ -1081,6 +1081,7 @@ None.
   \item \texttt{Clipboard} - system's clipboard interface for copy function.
   \item \texttt{HTTPClient} - used to call backend services.
   \item \texttt{Keyboard} - receives key presses for keyboard navigation. 
+  \item \texttt{FileSystem} - used to access file paths. 
 \end{itemize}
 
 
@@ -1144,7 +1145,7 @@ Otherwise no state change.
 \noindent \textbf{showHistory()}:
 \begin{itemize}
 \item transition: requests the ShowHistoryScreen module to render the History Screen using the current stored alt text session history.
-\item output: None.
+\item output: return \texttt{true} iff history was successfully shown, returns \texttt{false} otherwise.
 \item exception: \texttt{AuthenticationError}.
 \end{itemize}
 
