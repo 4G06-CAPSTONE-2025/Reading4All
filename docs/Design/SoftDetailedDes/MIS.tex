@@ -317,7 +317,7 @@ None.
   
 \subsubsection{Access Routine Semantics}
 
-\noindent \textbf{generateOutput():}
+\noindent \textbf{generateOutput(FinalCaption):}
 \begin{itemize}
   \item transition: Sends the final caption text to the appropriate user-facing component for display.
   \item output: Returns \texttt{DisplayConfirmation} upon successful output delivery.
@@ -501,7 +501,7 @@ None.
 
 \subsubsection{Access Routine Semantics}
 
-\noindent \textbf{evaluateCaption()}:
+\noindent \textbf{evaluateCaption(CaptionText)}:
 \begin{itemize}
   \item transition: None.
   \item output: Returns performance scores summarizing caption quality and accessibility 
@@ -530,11 +530,11 @@ None.
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-  \begin{tabular}{p{3cm} p{3.5cm} p{4cm} p{4cm}}
+  \begin{tabular}{p{3cm} p{4cm} p{4cm} p{4cm}}
     \hline
     \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
     \hline
-    updateModel & Performance-Scores:List & UpdateAck:\Bool & UpdateException \\
+    updateModel & PerformanceScores:List & UpdateAck:\Bool & UpdateException \\
     \hline
   \end{tabular}
 \end{center}
@@ -556,7 +556,7 @@ None.
 
 \subsubsection{Access Routine Semantics}
 
-\noindent \textbf{updateModel():}
+\noindent \textbf{updateModel(PerformanceScores):}
 \begin{itemize}
   \item transition: updates \texttt{modelState} and signals \texttt{AIModelTraining} to (re)train with revised parameters.
   \item output: returns \texttt{UpdateAck} confirming that the update request was accepted.
@@ -661,7 +661,7 @@ None
 \item exception: \texttt{FrontendUnreachableException} is raised if the Frontend Module cannot be reached. 
 \end{itemize}
 
-\noindent \texttt{updateAltText (altText, userID)}:
+\noindent \textbf{updateAltText(altText, userID)}:
 \begin{itemize}
 \item transition: Updates the user's existing alt-text generation to include their changes. 
 \item output:  None
@@ -698,13 +698,13 @@ None
   \hline
   validateToken & userToken:String & Success:\Bool & InvalidTokenException \\
   \hline
-  signInUser & credentials & userToken & AuthenticationFailed-Exception \\
+  signInUser & credentials & userToken:String & AuthenticationFailed-Exception \\
   \hline
   signOutUser & userToken:String & Success:\Bool & SessionNotFoundException \\
   \hline
-  getCurrentUser & userToken:String & userID & UserNotAuthenticated-Exception \\
+  getCurrentUser & userToken:String & userID: String & UserNotAuthenticated-Exception \\
   \hline
-  refreshToken & userToken:String & newToken & TokenRefreshException \\
+  refreshToken & userToken:String & newToken:String & TokenRefreshException \\
   \hline
   \end{tabular}
   \end{center}
