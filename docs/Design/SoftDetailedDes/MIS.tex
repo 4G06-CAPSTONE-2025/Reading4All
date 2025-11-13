@@ -226,7 +226,7 @@ None.
 \section{MIS of WCAGCompliance Module} \label{wcagc}
 
 \subsection{Module}
-WCAGComp
+\texttt{WCAGComp}
 
 \subsection{Uses}
 Takes generated captions from the CaptionGeneration module (see Section~\ref{capgen}) and validates them against WCAG 2.1 AA criteria (\citet{WCAG}).
@@ -274,7 +274,7 @@ None.
 \section{MIS of ModelOutput Module} \label{modout}
 
 \subsection{Module}
-ModOut
+\texttt{ModOut}
 
 \subsection{Uses}
 Receives validated captions from the WCAGCompliance module (see Section~\ref{wcagc}) or directly from the CaptionGeneration module (see Section~\ref{capgen}) when compliance checks are bypassed.  
@@ -323,7 +323,7 @@ None.
 \section{MIS of AIModelTraining Module} \label{aitrain}
 
 \subsection{Module}
-AITrain
+\texttt{AITrain}
 
 \subsection{Uses}
 Takes preprocessed data from the DataPreprocess module and trains a model that will later be used by the CaptionGeneration module for alt-text generation.
@@ -391,7 +391,7 @@ splitData(NewFilePath:String) \texttt{->} TestPath:String, TrainPath:String, Tra
 \section{MIS of CaptionGeneration Module} \label{capgen}
 
 \subsection{Module}
-CapGen
+\texttt{CapGen}
 
 \subsection{Uses}
 Uses the trained model from the AIModelTraining module to generate descriptive alt-text for input images.
@@ -449,7 +449,7 @@ None.
 \section{MIS of FeedbackMetrics Module} \label{modmetric}
 
 \subsection{Module}
-ModMetric
+\texttt{ModMetric}
 
 \subsection{Uses}
 Receives generated captions from the WCAGCompliance module, evaluates their overall quality and accessibility, and sends the resulting performance scores to the FeedbackIntegration module for further model improvement.
@@ -499,7 +499,7 @@ None.
 \section{MIS of FeedbackIntegration Module} \label{modint}
 
 \subsection{Module}
-ModInt
+texttt{ModInt}
 
 \subsection{Uses}
 Consumes performance scores from the FeedbackMetrics module and applies them to update model parameters in the AIModelTraining module, closing the feedback loop after inference.
@@ -1039,7 +1039,7 @@ None
 
 \subsection{Module}
 
-interactionsUI
+\texttt{InteractionsUI}
 
 \subsection{Uses}
 BackendController \\
@@ -1170,7 +1170,7 @@ Otherwise no state change.
 
 \subsection{Module}
 
-mainScreen
+\texttt{MainScreen}
 
 \subsection{Uses}
 
@@ -1238,7 +1238,7 @@ None
 
 \subsection{Module}
 
-showHistoryScreen
+\texttt{ShowHistoryScreen}
 
 \subsection{Uses}
 
@@ -1307,7 +1307,7 @@ None
 
 \subsection{Module}
 
-logInScreen
+\texttt{LogInScreen}
 
 \subsection{Uses}
 
@@ -1374,7 +1374,7 @@ handle compatibility with screen readers and keyboard navigation.
   
   \subsection{Module}
   
-  accessibilityUI
+  \texttt{AccessibilityUI}
   
   \subsection{Uses}
   mainScreen\\
