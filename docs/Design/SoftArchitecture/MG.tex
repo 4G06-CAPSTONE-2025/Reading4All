@@ -40,7 +40,7 @@
 
 \maketitle
 
-\pagenumbering{roman}
+\pagenumbering{roman} 
 
 \section{Revision History}
 
@@ -48,7 +48,6 @@
   \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
   \midrule
   November 13 2025 & 1.0 & Rev-1 Design Document\\
-  Date 2 & 1.1 & Notes\\
   \bottomrule
 \end{tabularx}
 
@@ -204,9 +203,8 @@ these decision should later need to be changed, then many parts of the design
 will potentially need to be modified. Hence, it is not intended that these
 decisions will be changed.\\
 
-The following are changes that the system is unlikely to incur: 
+\noindent The following are changes that the system is unlikely to incur: 
 \begin{description}
-
   \item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] The
     project's evaluation metrics as shown in Table 5 of the
     Appendix in our \citet{SRS} document will not change as these
@@ -229,7 +227,7 @@ The following are changes that the system is unlikely to incur:
 \section{Module Hierarchy} \label{SecMH}
 
 This section provides an overview of the module design. Modules are summarized
-in a hierarchy decomposed by secrets in Table \ref{TblMH}. The modules listed
+in a hierarchy decomposed by secrets in Table \ref{TblMH}. The modules listed in Table \ref{TblMHS}
 below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
 
@@ -251,23 +249,9 @@ actually be implemented.
   
   \end{tabular}
   \caption{Module Hierarchy by Subsystem}
+  \label{TblMHS}
 \end{table}
 
-  
-  
-
-\section{Connection Between Requirements and Design} \label{SecConnection}
-
-The design of the system is intended to satisfy the requirements developed in
-the SRS. In this stage, the system is decomposed into modules. The connection
-between requirements and modules is listed in Table~\ref{TblMH}.
-
-\wss{The intention of this section is to document decisions that are made
-  ``between'' the requirements and the design.  To satisfy some requirements,
-  design decisions need to be made.  Rather than make these decisions implicit,
-  they are explicitly recorded here.  For instance, if a program has security
-  requirements, a specific design decision may be made to satisfy those
-requirements with a password.}
 
 \begin{table}[h!]
   \centering
@@ -285,19 +269,19 @@ requirements with a password.}
     {WCAGCompliance Module (\refstepcounter{mnum}\mthemnum \label{mod:wcagcompliance_table}) (see \ref{mod:wcagcompliance})}\\ &
     {ModelOutput Module (\refstepcounter{mnum}\mthemnum \label{mod:modeloutput_table}) (see \ref{mod:modeloutput})}\\ &
     {AuthenticationService Module (\refstepcounter{mnum}\mthemnum \label{mod:auth_table} )(see \ref{mod:auth})}\\ &
-    {SessionManagement Module (\refstepcounter{mnum}\mthemnum \label{mod:mess}) (see \ref{mod:mess})}\\ &
+    {SessionManagement Module (\refstepcounter{mnum}\mthemnum \label{mod:mess_table}) (see \ref{mod: mess})}\\ &
     {BackendController Module (\refstepcounter{mnum}\mthemnum \label{mod:bcm_table}) (see \ref{mod:bcm})}\\ &
-    {Logging Module (\refstepcounter{mnum}\mthemnum \label{mod:logmod_table}) (see \ref{mod:logmod})}\\ &
+    {LoggingModule (\refstepcounter{mnum}\mthemnum \label{mod:logmod_table}) (see \ref{mod:logmod})}\\ &
     {ImageValidation Module (\refstepcounter{mnum}\mthemnum \label{mod:imgvalidmod_table}) (see \ref{mod:imgvalidmod})}\\ & 
-    {User Interface Interactions Module (\refstepcounter{mnum}\mthemnum) \label{mod:uii_table} (see \ref{mod: uii})} \\ & 
-    {Main Screen Module (\refstepcounter{mnum}\mthemnum) \label{mod:msm_table} (see \ref{mod: msm})} \\ &
-    {Show History Screen Module (\refstepcounter{mnum}\mthemnum) \label{mod:showhm_table} (see \ref{mod: showhm})} \\ &
-    {Log In Screen Module (\refstepcounter{mnum}\mthemnum) \label{mod:lis_table} (see \ref{mod: lis})} \\ &
-    {User Interface Accessibility Module (\refstepcounter{mnum}\mthemnum) \label{mod:uia_table} (see \ref{mod: uia})} \\ 
+    {UserInterfaceInteractions Module (\refstepcounter{mnum}\mthemnum) \label{mod:uii_table} (see \ref{mod: uii})} \\ & 
+    {MainScreen Module (\refstepcounter{mnum}\mthemnum) \label{mod:msm_table} (see \ref{mod: msm})} \\ &
+    {ShowHistoryScreen Module (\refstepcounter{mnum}\mthemnum) \label{mod:showhm_table} (see \ref{mod: showhm})} \\ &
+    {LogInScreen Module (\refstepcounter{mnum}\mthemnum) \label{mod:lis_table} (see \ref{mod: lis})} \\ &
+    {UserInterfaceAccessibility Module (\refstepcounter{mnum}\mthemnum) \label{mod:uia_table} (see \ref{mod: uia})} \\ 
     \midrule
 
     \multirow{6}{0.3\textwidth}{Software Decision Module [Section (\ref{mod:sdmmain})]} &
-    {AIModelTraining Module (\refstepcounter{mnum}\mthemnum \label{mod:modeltraining}) (see \ref{mod:modeltraining})}\\ &
+    {AIModelTraining Module (\refstepcounter{mnum}\mthemnum \label{mod:modeltraining_table}) (see \ref{mod:modeltraining})}\\ &
     {CaptionGeneration Module (\refstepcounter{mnum}\mthemnum \label{mod:captiongeneration_table}) (see \ref{mod:captiongeneration})}\\ &
     {InternalMetricCompliance (\refstepcounter{mnum}\mthemnum \label{mod:internalmetriccompliance_table}) (see \ref{mod:internalmetriccompliance})}\\ &
     {FeedbackMetrics Module (\refstepcounter{mnum}\mthemnum \label{mod:feedbackmetrics_table} )(see \ref{mod:feedbackmetrics})}\\ &
@@ -308,7 +292,42 @@ requirements with a password.}
   \caption{Module Hierarchy}
   \label{TblMH}
 \end{table}
+  
 
+\section{Connection Between Requirements and Design} \label{SecConnection}
+
+The design of the system is intended to satisfy the requirements developed in
+the SRS. In this stage, the system is decomposed into modules. The connection
+between requirements and modules is listed in Tables \ref{TblFRT}-\ref{TblACT} in 
+section \ref{SecTM}.\\
+
+The decompositon of the modules was separated by four main subsystems including: Frontend Modules, 
+Backend Modules, AI Model Modules, and System Information Modules. \\
+
+The front-end modules of the \textit{Reading4All} system collectively ensure that the system meets all Look and Feel, Usability, 
+Humanity, and Accessibility requirements through a responsive design and 
+and clear interaction patterns. The \texttt{MainScreen}, \texttt{LogInScreen}, and \texttt{ShowHistoryScreen} modules that are responsible for rendering 
+the different screens of the user interface will use simple and clean layouts, 
+WCAG-compliant contrast ratios, non-color-dependent cues, and fully descriptive alt text for non-text elements. These display modules present 
+only essential information and will remain intuitive to navigate. The \texttt{UserInterfaceInteractions} module will
+ensure usability by providing immediate textual feedback and ensure to support efficient task 
+completion with minimal steps. Lastly, within the frontend modules, the \texttt{UserInterfaceAccessibility} module will ensure compatibility with screen readers and keyboard navigation by 
+managing ARIA landmarks, live-region announcements, and predictable focus order. Together, these modules will deliver an interface that is simple, memorable, 
+inclusive, and fully aligned with WCAG 2.1 Level AA and AODA standards. It will allow all users to operate the system effectively and confidently.\\
+
+In the backend subsystem, many modules play a role in ensuring that the functional,
+performance, privacy and operational requirements specified are fulfilled. 
+The \texttt{BackendController Module} coordinates the flow of data between the Frontend, AI modules and other Backend modules . It ensures that user's and their inputs are validated, and alternative text is generated by invoking the appropriate modules. 
+The \texttt{BackendController} also ensures that users are presented with the appropriate information and never exposed to technical details. 
+The \texttt{ImageValidation} module fulfills the requirements relating to validating user inputs. This module checks that inputted images are of the correct size and types before the alt text generation process begins. 
+The \texttt{Logging} module records any system events and errors, helping fulfill requirements related to protecting user data and having a reliable system. The \texttt{Logging} module will help ensure that user data is always deleted when any system failure occurs. \\
+
+Furthermore, within the backend subsystem, the \texttt{AuthenticationService} and \texttt{SessionManagement} modules together ensure secure and reliable user interaction with the Reading4All platform. 
+The \texttt{AuthenticationService} module is responsible for verifying user credentials, issuing secure tokens, and validating user identity before granting access to system functionalities. 
+It guarantees that only authenticated users can upload images or retrieve generated alt text, fulfilling the security and privacy requirements defined in the SRS. 
+Supporting this, the \texttt{SessionManagement} module manages each user’s active session lifecycle by creating, validating, refreshing, and terminating session tokens. 
+It also maintains a short-term record of user interactions during the active session, such as image uploads and model outputs, ensuring that users can view their recent activity while preserving system integrity and confidentiality. 
+Together, these two backend modules ensure that all authentication, authorization, and session tracking processes are handled transparently and securely, thereby supporting reliability, data protection, and user trust across the Reading4All system.
 \section{Module Decomposition} \label{SecMD}
 
 Modules are decomposed according to the principle of ``information hiding''
@@ -346,7 +365,7 @@ The modules are defined as their own subsection and follow the following format:
   \item[Implemented By:] This part mentions if the Reading4All system
     or external systems will
     implement the specific module.
-  \item[Type of Module:] This section defines the moduel type into a
+  \item[Type of Module:] This section defines the module type into a
     Record, Library, Abstract
     Object, or Abstract Data Type. This section also includes
     information for leaf modules in the decomposition by secrets tree.
@@ -394,7 +413,7 @@ The modules are defined as their own subsection and follow the following format:
 \begin{description}
   \item[Secrets:] The internal logic for credential verification,
     token structure and signing, token refresh rules, lockout
-    thresholds, and trust boundaries to external identity stores.
+    thresholds, and interactions with external authentication providers.
     Includes error classification for authentication failures and
     audit-safe handling of sensitive data.
   \item[Services:] Verifies user credentials, issues and refreshes
@@ -525,9 +544,16 @@ subsection and follow the following format:
   \item[Services:] Implements the internal operations of the system,
     such as model training, caption generation, quality validation,
     feedback collection, and output production.
+  \item[Implemented By:] This part mentions if the Reading4All system
+    or external systems will
+    implement the specific module.
+  \item[Type of Module:] This section defines the module type into a
+    Record, Library, Abstract
+    Object, or Abstract Data Type. This section also includes
+    information for leaf modules in the decomposition by secrets tree.
 \end{description}
 
-\subsubsection{AIModelTraining Module}
+\subsubsection{AIModelTraining Module (\mref{mod:modeltraining_table})}
 \label{mod:modeltraining}
 \begin{description}
   \item[Secrets:] The internal design of how the model is built and
@@ -609,7 +635,13 @@ subsection and follow the following format:
 
 \section{Traceability Matrix} \label{SecTM}
 
-This section shows two traceability matrices: between the modules and the
+This section shows below how different requirements connect to our modules. This can be seen in Table ~\ref{TblFRT},
+Table ~\ref{TblLFRT}, Table ~\ref{TblLFRT}, Table ~\ref{TblSRT}, Table ~\ref{TblURT}, Table ~\ref{TblPIRT}, Table ~\ref{TblLRMT}, 
+Table ~\ref{TblUPRT}, Table ~\ref{TblART}, Table ~\ref{TblPRT}, Table ~\ref{TblOERT}, Table ~\ref{TblMSRT}, Table ~\ref{TblSRT1},
+ Table ~\ref{TblCR}, Table ~\ref{TbltCompR}. It's important to note some requirements do not map to a module because they describe coding practices or infrastructure details. 
+
+Finally, Table ~\ref{TblACT} shows how our modules connect to the anticipated changes 
+  two traceability matrices: between the modules and the
 requirements and between the modules and the anticipated changes.
 
 % the table should use mref, the requirements should be named, use something
@@ -620,12 +652,12 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    FR1 & \mref{mod:preprocessing_table}, \mref{mod:imgvalidmod_table}, \mref{mod:bcm_table}\\
-    FR2 & \mref{mod:captiongeneration_table}, \mref{mod:bcm_table}\\
-    FR3 & \mref{}\\
+    FR1 & \mref{mod:preprocessing_table},  \mref{mod:bcm_table}, \mref{mod:imgvalidmod_table}\\
+    FR2 & \mref{mod:bcm_table}, \mref{mod:captiongeneration_table}\\
+    FR3 & \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, \mref{mod:bcm_table}, \mref{mod:uia_table}\\
     FR4 & \mref{mod:bcm_table}\\
-    FR5 &  \mref{mod:bcm_table}, \mref{mod:mess}\\
-    FR6 &  \mref{mod:bcm_table},\mref{mod:auth_table}\\
+    FR5 &  \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:showhm_table}\\
+    FR6 &  \mref{mod:auth_table}, \mref{mod:bcm_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Functional Requirements and Modules}
@@ -645,7 +677,7 @@ requirements and between the modules and the anticipated changes.
     \bottomrule
   \end{tabular}
   \caption{Trace Between Look and Feel Requirements and Modules}
-  \label{TblFRT}
+  \label{TblLFRT}
 \end{table}
 
 \begin{table}[H]
@@ -703,7 +735,7 @@ requirements and between the modules and the anticipated changes.
     \bottomrule
   \end{tabular}
   \caption{Trace Between Learning Requirements and Modules}
-  \label{TblPIRT}
+  \label{TblLRMT}
 \end{table}
 
 \begin{table}[H]
@@ -742,10 +774,10 @@ requirements and between the modules and the anticipated changes.
     \midrule
     PR-SL1 & \mref{mod:captiongeneration_table}\\
     PR-SL2 &  \mref{mod:uia_table} \\
-    PR-SCR1 & \mref{mod:mess}\\
+    PR-SCR1 & \mref{mod:mess_table}\\
     PR-SCR2 & \mref{mod:internalmetriccompliance_table}\\
     PR-SCR3 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
-    PR-SR-HA1 & \mref{mod:bcm_table}, \mref{mod:logmod_table},  \mref{mod:mess}, \mref{mod:auth_table}\\
+    PR-SR-HA1 & \mref{mod:bcm_table}, \mref{mod:logmod_table},  \mref{mod:mess_table}, \mref{mod:auth_table}\\
     PR-SR-HA2 &  \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
     PR-SR-HA3 &  \mref{mod:bcm_table}, \mref{mod:imgvalidmod_table}\\
     PR-PAR1 & \mref{mod:captiongeneration_table}\\
@@ -753,15 +785,15 @@ requirements and between the modules and the anticipated changes.
     PR-PAR3 & \mref{mod:feedbackmetrics_table}\\
     PR-RFT1 & \mref{mod:imgvalidmod_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
     PR-RFT2 & \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
-    PR-CR1 & \mref{}\\
-    PR-CR2 & \mref{}\\
+    PR-CR1 & \mref{mod:mess_table}, \mref{mod:auth_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
+    PR-CR2 & No Module\\
     PR-SER1 & \mref{mod:modeltraining_table}\\
     PR-LR1 & \mref{mod:modeltraining_table}, \mref{mod:wcagcompliance_table}\\
-    PR-LR2 & \mref{}\\
+    PR-LR2 & No Module\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Performance Requirements and Modules}
-  \label{TblFRT}
+  \label{TblPRT}
 \end{table}
 
 \begin{table}[H]
@@ -770,16 +802,16 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    OER-EP1 & \mref{}\\
-    OER-EP2 & \mref{}\\
+    OER-EP1 & No Module\\
+    OER-EP2 & No Module\\
     OER-WE1 & \mref{mod:wcagcompliance_table}\\
-    OER-WE2 & \mref{}\\
+    OER-WE2 & No Module\\
     OER-IAS1 & \mref{mod:preprocessing_table}\\
     OER-IAS2 & \mref{mod:imgvalidmod_table}\\
     OER-IAS3 & \mref{mod:internalmetriccompliance_table}\\
-    OER-PR1 & \mref{}\\
+    OER-PR1 & No Module\\
     OER-RL1 & \mref{mod:preprocessing_table}, \mref{mod:modeltraining_table}, \mref{mod:captiongeneration_table}, \mref{mod:wcagcompliance_table}, \mref{mod:internalmetriccompliance_table}\\
-    OER-RL2 & \mref{}\\
+    OER-RL2 & No Module\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Operational and Environmental Requirements and Modules}
@@ -792,13 +824,13 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    MS-MNT1 & \mref{mod:preprocessing_table}, \mref{mod:captiongeneration_table}, \mref{mod:wcagcompliance_table}, \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:bcm_table}\\\\
-    MS-MNT2 & \mref{}\\
-    MS-MNT3 & \mref{}\\
+    MS-MNT1 & \mref{mod:preprocessing_table}, \mref{mod:captiongeneration_table}, \mref{mod:wcagcompliance_table}, \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:bcm_table}\\
+    MS-MNT2 & No Module\\
+    MS-MNT3 & No Module\\
     MS-SUP1 & \mref{mod:logmod_table}\\
     MS-AD1 & \mref{mod:modeltraining_table}\\
-    MS-AD2 & \mref{}\\
-    MS-AD3 & \mref{}\\
+    MS-AD2 &  \mref{mod:mess_table},\mref{mod:bcm_table}, \mref{mod:logmod_table}\\
+    MS-AD3 & No Module\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Maintainability and Support Requirements and Modules}
@@ -812,7 +844,7 @@ requirements and between the modules and the anticipated changes.
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
     SR-AR1 & \mref{mod:bcm_table}, \mref{mod:auth_table}\\
-    SR-AR2 & \mref{mod:bcm_table}, \mref{mod:mess}\\
+    SR-AR2 & \mref{mod:bcm_table}, \mref{mod:mess_table}\\
     SR-IR1 & \mref{mod:bcm_table}\\
     SR-IR2 & \mref{mod:bcm_table}, \mref{mod:preprocessing_table}\\
     SR-PR1 & \mref{mod:bcm_table}\\
@@ -820,11 +852,11 @@ requirements and between the modules and the anticipated changes.
     SR-AU1 & \mref{mod:logmod_table}\\
     SR-AU2 & \mref{mod:logmod_table}\\
     SR-IM1 & \mref{mod:imgvalidmod_table}\\
-    SR-AIM2 & \mref{}\\
+    SR-IM2 & \mref{mod:auth_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between all Security Requirements and Modules}
-  \label{TblSR}
+  \label{TblSRT1}
 \end{table}
 
 
@@ -850,8 +882,8 @@ requirements and between the modules and the anticipated changes.
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
     CR-LR1 & \mref{mod:wcagcompliance_table}\\
-    CR-SCR1 & \mref{}\\
-    CR-SCR2 & \mref{}\\
+    CR-SCR1 & \mref{mod:bcm_table}\\
+    CR-SCR2 & \mref{mod:logmod_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between all Compliance Requirements and Modules}
@@ -865,18 +897,14 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{AC} & \textbf{Modules}\\
     \midrule
-    \acref{acHardware} & \mref{mHH}\\
-    \acref{acInput} & \mref{mInput}\\
-    \acref{acParams} & \mref{mParams}\\
-    \acref{acVerify} & \mref{mVerify}\\
-    \acref{acOutput} & \mref{mOutput}\\
-    \acref{acVerifyOut} & \mref{mVerifyOut}\\
-    \acref{acODEs} & \mref{mODEs}\\
-    \acref{acEnergy} & \mref{mEnergy}\\
-    \acref{acControl} & \mref{mControl}\\
-    \acref{acSeqDS} & \mref{mSeqDS}\\
-    \acref{acSolver} & \mref{mSolver}\\
-    \acref{acPlot} & \mref{mPlot}\\
+    \acref{acInfra} & \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
+    \acref{acInputFormat} & \mref{mod:preprocessing_table}, \mref{mod:imgvalidmod_table}, \\
+    \acref{acMLModel} &  \mref{mod:preprocessing_table}, \mref{mod:modeltraining_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, \mref{mod:feedbackloop_table}, \\
+    \acref{acLang} & \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, \mref{mod:captiongeneration_table} \\
+    \acref{acSession} &\mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}\\
+    \acref{acInputTopic} & \mref{mod:preprocessing_table}, \mref{mod:captiongeneration_table}\\
+    \acref{acPlatform} & \mref{mod:uii_table},  \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table} \\
+
     \bottomrule
   \end{tabular}
   \caption{Trace Between Anticipated Changes and Modules}
@@ -929,6 +957,7 @@ needed. Drawings, Sketches, Figma}
 
 \wss{You can point to GitHub if this information is included there}
 
+\newpage 
 \bibliographystyle {plainnat}
 \bibliography{../../../refs/References}
 

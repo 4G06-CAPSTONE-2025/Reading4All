@@ -67,9 +67,7 @@
 
 \section{Symbols, Abbreviations and Acronyms}
 
-See SRS Documentation at \wss{give url}
-
-\wss{Also add any additional symbols, abbreviations or acronyms}
+See SRS Documentation at \citet{SRS}
 
 \newpage
 
@@ -81,12 +79,16 @@ See SRS Documentation at \wss{give url}
 
 \section{Introduction}
 
-The following document details the Module Interface Specifications for
-\wss{Fill in your project name and description}
+The following document details the Module Interface Specifications for the
+\progname{} system, \textbf{Reading4All}. Reading4All is an artificial intelligence (AI)/machine learning (ML) tool that
+provides detailed and contextually aware alternative text for
+complicated technical graphics, notably those found in postsecondary
+Science, Technology, Engineering, and Mathematics (STEM) course materials.
 
 Complementary documents include the System Requirement Specifications
 and Module Guide.  The full documentation and implementation can be
-found at \url{...}.  \wss{provide the url for your repo}
+found at \url{https://github.com/4G06-CAPSTONE-2025/Reading4All/}.
+
 \section{Notation}
 
 The structure of the MIS for modules comes from \citet{HoffmanAndStrooper1995},
@@ -111,7 +113,7 @@ The following table summarizes the primitive data types used by \progname.
     natural number & $\mathbb{N}$ & a number without a fractional
     component in [1, $\infty$) \\
     real & $\mathbb{R}$ & any number in (-$\infty$, $\infty$)\\
-    boolean & $\mathbb{B}$ & a logical value representing either \texttt{true} or \texttt{false}\\
+    boolean & \Bool & True, False \\
     \bottomrule
   \end{tabular}
 \end{center}
@@ -148,11 +150,11 @@ for this project.
     {BackendController Module}\\ &
     {Logging Module}\\ &
     {ImageValidation Module}\\ & 
-    {User Interface Interactions Module} \\ & 
-    {Main Screen Module} \\ &
-    {Show History Screen Module} \\ &
-    {Log In Screen Module} \\ &
-    {User Interface Accessibility Module} \\ 
+    {UserInterfaceInteractions Module} \\ & 
+    {MainScreen Module} \\ &
+    {ShowHistoryScreen Module} \\ &
+    {LogInScreen Module} \\ &
+    {UserInterfaceAccessibility Module} \\ 
     \midrule
 
     \multirow{6}{0.3\textwidth}{Software Decision Module} &
@@ -175,12 +177,10 @@ for this project.
 \section{MIS of DataPreprocess Module} \label{datapp}
 
 \subsection{Module}
-DataPP
+\texttt{DataPP}
 
 \subsection{Uses}
-Processes and standardizes image data through normalization and validation 
-so it can be correctly used by both the AIModelTraining and CaptionGeneration modules.
-
+None.
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
@@ -189,14 +189,14 @@ None.
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-  \begin{tabular}{|l|l|l|l|}
-    \hline
-    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-    \hline
-    filterInput & Image & PreprocessedImage & InvalidInputException \\
-    \hline
+  \begin{tabular}{p{2cm} p{4cm} p{6cm} p{4cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  filterInput & imageFilePath:String & PreprocessedImagePath:String & InvalidInputException \\
+  \hline
   \end{tabular}
-\end{center}
+  \end{center}
 
 \subsection{Semantics}
 
@@ -207,10 +207,10 @@ None.
 None.
 
 \subsubsection{Assumptions}
-
+None. 
 \subsubsection{Access Routine Semantics}
 
-\noindent filterInput():
+\noindent \textbf{filterInput():}
 \begin{itemize}
   \item transition: None.
   \item output: Returns preprocessed image data suitable for both model training and caption generation.
@@ -223,27 +223,27 @@ None.
 \section{MIS of WCAGCompliance Module} \label{wcagc}
 
 \subsection{Module}
-WCAGComp
+\texttt{WCAGComp}
 
 \subsection{Uses}
-Takes generated captions from the CaptionGeneration module (see Section~\ref{capgen}) and validates them against WCAG 2.1 AA criteria (\citet{WCAG}).
+Takes generated captions from the \texttt{CaptionGeneration} module and validates them against WCAG 2.1 AA criteria (\citet{WCAG}).
 
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
 None.
 
-\subsubsection{Exported Access Programs}
+\subsubsection{Exported Access Programs} 
 
 \begin{center}
-  \begin{tabular}{|l|l|l|l|}
-    \hline
-    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-    \hline
-    checkCompliance & CaptionText & ComplianceReport & ValidationException \\
-    \hline
+  \begin{tabular}{p{3cm} p{4cm} p{4cm} p{4cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  checkCompliance & CaptionText:String & ComplianceReport:List & ValidationException \\
+  \hline
   \end{tabular}
-\end{center}
+  \end{center}
 
 \subsection{Semantics}
 
@@ -254,11 +254,13 @@ None.
 None.
 
 \subsubsection{Assumptions}
-Assumes the input caption text is available and properly formatted for validation.
+\begin{itemize}
+  \item Assumes the input caption text is available and properly formatted for validation.
+\end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
-\noindent checkCompliance():
+\noindent \textbf{checkCompliance()}:
 \begin{itemize}
   \item transition: None.
   \item output: Returns a \texttt{ComplianceReport} summarizing accessibility validation results.
@@ -271,10 +273,12 @@ None.
 \section{MIS of ModelOutput Module} \label{modout}
 
 \subsection{Module}
-ModOut
+\texttt{ModOut}
 
 \subsection{Uses}
-Receives validated captions from the WCAGCompliance module (see Section~\ref{wcagc}) or directly from the CaptionGeneration module (see Section~\ref{capgen}) when compliance checks are bypassed.  
+Receives validated captions from the \texttt{WCAGCompliance} module or directly from the 
+\texttt{CaptionGeneration} module when compliance checks are bypassed.  
+Sends the final caption output to the user-facing interface or backend display component.
 
 \subsection{Syntax}
 
@@ -283,15 +287,16 @@ None.
 
 \subsubsection{Exported Access Programs}
 
+
 \begin{center}
-  \begin{tabular}{|l|l|l|l|}
-    \hline
-    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-    \hline
-    generateOutput & FinalCaption & DisplayConfirmation & OutputException \\
-    \hline
+  \begin{tabular}{p{3cm} p{3.5cm} p{4cm} p{4cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  generateOutput & FinalCaption:String & DisplayConfirmation:\Bool & OutputException \\
+  \hline
   \end{tabular}
-\end{center}
+  \end{center}
 
 \subsection{Semantics}
 
@@ -301,11 +306,13 @@ None.
 \subsubsection{Environment Variables}
 None.
 \subsubsection{Assumptions}
-Assumes the output channel (UI or backend) is active and ready to receive data.
-
+\begin{itemize}
+  \item Assumes the output channel (UI or backend) is active and ready to receive data.
+\end{itemize}
+  
 \subsubsection{Access Routine Semantics}
 
-\noindent generateOutput():
+\noindent \textbf{generateOutput(FinalCaption):}
 \begin{itemize}
   \item transition: Sends the final caption text to the appropriate user-facing component for display.
   \item output: Returns \texttt{DisplayConfirmation} upon successful output delivery.
@@ -319,11 +326,10 @@ None.
 \section{MIS of AIModelTraining Module} \label{aitrain}
 
 \subsection{Module}
-AITrain
+\texttt{AITrain}
 
 \subsection{Uses}
-Takes preprocessed data from the DataPreprocess module and trains a model. 
-Incorporates feedback updates from the FeedbackIntegration module, which consumes performance metrics and adjusts model parameters to improve future training iterations.
+Takes preprocessed data from the \texttt{DataPreprocess} module and trains a model that will later be used by the \texttt{CaptionGeneration} module for alt-text generation.
 
 \subsection{Syntax}
 \subsubsection{Exported Constants}
@@ -332,15 +338,15 @@ None.
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{|l|l|l|l|}
+\begin{tabular}{p{3cm} p{3.5cm} p{4cm} p{4cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-initializeModel & configPath: String & None & ConfigFileNotFoundException \\
+initializeModel & configPath: String & - & ConfigFileNot-FoundException \\
 \hline
 trainModel & trainingData: Dataset & trainedModel: Model & TrainingException \\
 \hline
-saveCheckpoint & progress: Integer & None & WriteErrorException \\
+saveCheckpoint & progress: Integer & - & WriteErrorException \\
 \hline
 \end{tabular}
 \end{center}
@@ -348,11 +354,11 @@ saveCheckpoint & progress: Integer & None & WriteErrorException \\
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-trainedModel: Stores the trained model instance.
+\texttt{trainedModel}: Stores the trained model instance.
 
 \subsubsection{Environment Variables}
-GPU/CPU — used for training operations.  
-Filesystem — stores intermediate checkpoints and model outputs.
+\texttt{GPU/CPU} — used for training operations.  \\
+\texttt{Filesystem} — stores intermediate checkpoints and model outputs.
 
 \subsubsection{Assumptions}
 \begin{itemize}
@@ -363,35 +369,39 @@ Filesystem — stores intermediate checkpoints and model outputs.
 
 \subsubsection{Access Routine Semantics}
 
-\noindent initializeModel(configPath):
+\noindent \textbf{initializeModel(configPath):}
 \begin{itemize}
   \item transition: Loads or initializes the model structure and related parameters.
+  \item output: None.
   \item exception: Raises \texttt{ConfigFileNotFoundException} if the configuration is missing or invalid.
 \end{itemize}
 
-\noindent trainModel(trainingData):
+\noindent \textbf{trainModel(trainingData):}
 \begin{itemize}
   \item transition: Trains the model on provided data and updates \texttt{trainedModel}.
   \item output: Returns the trained model.
   \item exception: Raises \texttt{TrainingException} if the process fails.
 \end{itemize}
 
-\noindent saveCheckpoint(progress):
+\noindent \textbf{saveCheckpoint(progress):}
 \begin{itemize}
   \item transition: Saves the model’s current state for future use or recovery.
+  \item output: None.
   \item exception: Raises \texttt{WriteErrorException} if the checkpoint cannot be saved.
 \end{itemize}
 
 \subsubsection{Local Functions}
-splitData(NewFilePath:String) \texttt{->} TestPath:String, TrainPath:String, TrainPath:String: Divides input data into training and validation portions.
+\begin{itemize}
+  \item \textbf{splitData(NewFilePath:String) \texttt{->} TestPath:String, TrainPath:String, TrainPath:String}: Divides input data into training and validation portions.
 
+\end{itemize}
 \section{MIS of CaptionGeneration Module} \label{capgen}
 
 \subsection{Module}
-CapGen
+\texttt{CapGen}
 
 \subsection{Uses}
-Uses the trained model from the AIModelTraining module to generate descriptive alt-text for input images.
+Uses the trained model from the \texttt{AIModelTraining} module to generate descriptive alt-text for input images.
 
 \subsection{Syntax}
 \subsubsection{Exported Constants}
@@ -400,11 +410,11 @@ None.
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{|l|l|l|l|}
+  \begin{tabular}{p{3cm} p{3.5cm} p{4cm} p{4cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-loadModel & modelPath: String & None & ModelLoadException \\
+loadModel & modelPath: String & - & ModelLoadException \\
 \hline
 generateCaption & image: Image & caption: String & GenerationException \\
 \hline
@@ -414,10 +424,10 @@ generateCaption & image: Image & caption: String & GenerationException \\
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-loadedModel: Stores the active trained model used for caption generation.
+\texttt{loadedModel}: Stores the active trained model used for caption generation.
 
 \subsubsection{Environment Variables}
-GPU/CPU — executes model inference.
+\texttt{GPU/CPU} — executes model inference.
 
 \subsubsection{Assumptions}
 \begin{itemize}
@@ -427,13 +437,14 @@ GPU/CPU — executes model inference.
 
 \subsubsection{Access Routine Semantics}
 
-\noindent loadModel(modelPath):
+\noindent \textbf{loadModel(modelPath)}:
 \begin{itemize}
   \item transition: Loads the trained model into memory.
+  \item output: None.
   \item exception: Raises \texttt{ModelLoadException} if the model file is missing or invalid.
 \end{itemize}
 
-\noindent generateCaption(image):
+\noindent \textbf{generateCaption(image)}:
 \begin{itemize}
   \item transition: Uses the loaded model to produce a descriptive caption.
   \item output: Returns generated alt-text for the input image.
@@ -446,10 +457,12 @@ None.
 \section{MIS of FeedbackMetrics Module} \label{modmetric}
 
 \subsection{Module}
-ModMetric
+\texttt{ModMetric}
 
 \subsection{Uses}
-Receives generated captions from the WCAGCompliance module, evaluates their overall quality and accessibility.
+Receives generated captions from the \texttt{WCAGCompliance} module, evaluates their 
+overall quality and accessibility, and sends the resulting performance scores to the 
+\texttt{FeedbackIntegration} module for further model improvement.
 
 \subsection{Syntax}
 
@@ -459,7 +472,7 @@ None.
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-  \begin{tabular}{|l|l|l|l|}
+  \begin{tabular}{p{3cm} p{3.5cm} p{4cm} p{4cm}}
     \hline
     \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
     \hline
@@ -477,11 +490,13 @@ None.
 None.
 
 \subsubsection{Assumptions}
-Assumes generated captions are available and that predefined evaluation metrics are accessible.
+\begin{itemize}
+  \item Assumes generated captions are available and that predefined evaluation metrics are accessible.
+\end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
-\noindent evaluateCaption():
+\noindent \textbf{evaluateCaption(CaptionText)}:
 \begin{itemize}
   \item transition: None.
   \item output: Returns performance scores summarizing caption quality and accessibility 
@@ -496,10 +511,11 @@ None.
 \section{MIS of FeedbackIntegration Module} \label{modint}
 
 \subsection{Module}
-ModInt
+\texttt{ModInt}
 
 \subsection{Uses}
-Consumes performance scores from the FeedbackMetrics module.
+Consumes performance scores from the \texttt{FeedbackMetrics} module and applies them to update model parameters 
+in the \texttt{AIModelTraining} module, closing the feedback loop after inference.
 
 \subsection{Syntax}
 
@@ -509,7 +525,7 @@ None.
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-  \begin{tabular}{|l|l|l|l|}
+  \begin{tabular}{p{3cm} p{4cm} p{4cm} p{4cm}}
     \hline
     \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
     \hline
@@ -527,13 +543,17 @@ None.
 None.
 
 \subsubsection{Assumptions}
-Assumes valid performance scores are provided by the FeedbackMetrics module and that retraining can be invoked in AIModelTraining.
+\begin{itemize}
+  \item Assumes valid performance scores are provided by the \texttt{FeedbackMetrics} module and that retraining 
+  can be invoked in \texttt{AIModelTraining}.
+
+\end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
-\noindent updateModel():
+\noindent \textbf{updateModel(PerformanceScores):}
 \begin{itemize}
-  \item transition: updates \texttt{modelState} and signals AIModelTraining to (re)train with revised parameters.
+  \item transition: updates \texttt{modelState} and signals \texttt{AIModelTraining} to (re)train with revised parameters.
   \item output: returns \texttt{UpdateAck} confirming that the update request was accepted.
   \item exception: raises \texttt{UpdateException} if parameter update or retraining trigger fails.
 \end{itemize}
@@ -552,9 +572,11 @@ None.
 \subsection{Uses}
 Serves as the coordinator between the frontend, backend and machine learning modules. 
 \begin{itemize}
-  \item Forwards frontend requests to the appropriate backend modules, such authentication or image validation.
-  \item Sends validated inputs to the ML Model for alt-text generation. 
-  \item Retrieves generated alt-text and returns it to the frontend modules. 
+  \item Receives authentication and session status from the AuthenticationService Module (see Section~\ref{Module:AuthenticationService}) and SessionManagement module (see Section~\ref{Module:SessionManagement}), respectively.
+  \item Sends uploaded images to the ImageValidation module (see Section~\ref{Module: ImageValid}) and receives validation results. 
+  \item Sends validated inputs to the DataPreprocess module (see Section~\ref{datapp} )
+  \item Sends errors and log events to the Logging module (see Section ~\ref{LogModule})
+  \item Returns the generated alt text or error message to the MainScreen Module (see Section ~\ref{MainScreen}) 
 \end{itemize}
 
 \subsection{Syntax}
@@ -566,52 +588,51 @@ Serves as the coordinator between the frontend, backend and machine learning mod
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{3cm} p{4cm} p{3cm} p{2cm}}
+\begin{tabular}{p{3cm} p{6cm} p{3cm} p{3cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-validateUser & userToken & Boolean & InvalidTokenException \\
+validateUser & userToken:String & userStatus:\Bool & InvalidTokenException \\
 \hline
-validateImage & image, userToken & Boolean & InvalidImageException\\
+validateImage & imagePath:String, userToken: & imagePath:\Bool & InvalidImageException\\
 \hline
-sendToModel & image, userToken & None & AltTextGenerationError\\
+sendToModel & imagePath:String, userToken: String & - & AltTextGenerationError\\
 \hline 
-getAltText & image, userToken & altText & AltTextNotFoundException\\
+getAltText & imagePath:String, userToken: String & altText:String & AltTextNotFoundException\\
 \hline 
-returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableException \\
+returnToFrontend & altText or errorMsg: String, userID: String & - & UIUnreachableException \\
+\hline
+updateAltText & altText:String, userID:String & - & SessionStateSaveException\\
 \end{tabular}
 \end{center}
 
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-
+None.
 
 \subsubsection{Environment Variables}
-  \begin{itemize}
-    \item Frontend Modules: Receives user requests such as image uploads and returns responses such alt-text generation or error messages.
-    \item User Authentication Modules: Sends the user's session token to module to verify users identity. 
-    \item Image Validation Modules: Sends the user's inputted image to be confirm it meets the required format and size, prior to alt-text generation.
-    \item Machine Learning Modules: Sends users validated image to ML model to begin alt text generation.
-  \end{itemize}
+\texttt{Filesystem} - Used to retrieve images using the file path provided by users. 
 
 \subsubsection{Assumptions}
 
 \begin{itemize}
-  \item Frontend, User authentication, Image validation and machine learning modules are correctly operating and reachable. 
+  \item MainScreen, AuthenticationService, ImageValidation and DataPreprocess modules are correctly operating and reachable. 
   \item Network connection is available for API communication. 
 \end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
-\noindent \texttt{validateUser(userToken)}:
+\noindent \textbf{validateUser(userToken)}:
 \begin{itemize}
 \item transition: Sends the \texttt{userToken} to the User Authentication Module for Verification.
 \item output: Returns \texttt{True} if the user is valid, otherwise \texttt{False} is returned.
 \item exception: \texttt{InvalidTokenException} is raised if token is expired or cannot be validated. 
 \end{itemize}
 
-\noindent \texttt{validateImage(image,userToken)}:
+
+
+\noindent \textbf{validateImage(image,userToken)}:
 \begin{itemize}
 \item transition: Sends the uploaded image and associated user token to the Image Validation Module for verification of file type and size.
 \item output:  Returns \texttt{True} if the image was successfully validated, otherwise \texttt{False} is returned.
@@ -620,22 +641,29 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
 
 
 
-\noindent \texttt{sendToModel(image,userToken)}:
+\noindent \textbf{sendToModel(image,userToken)}:
 \begin{itemize}
 \item transition: Sends the validated image and associated user token to the Machine Learning Module to initiate alt-text generation.  
-\item output:  None
+\item output:  None.
 \item exception: \texttt{AltTextGenerationError} is raised if the Machine Learning Module fails to process image or generate alt text. 
 \end{itemize}
 
 
-\noindent \texttt{returnToFrontend(alt Text or errorMsg, userToken)}:
+\noindent \textbf{returnToFrontend(alt Text or errorMsg, userToken)}:
 \begin{itemize}
 \item transition: Sends the generated alt text or corresponding error message to the Frontend Module. 
-\item output:  None
+\item output:  None.
 \item exception: \texttt{FrontendUnreachableException} is raised if the Frontend Module cannot be reached. 
 \end{itemize}
 
-  \section{MIS of Authentication Service} \label{Module:AuthenticationService}
+\noindent \textbf{updateAltText(altText, userID)}:
+\begin{itemize}
+\item transition: Updates the user's existing alt-text generation to include their changes. 
+\item output:  None
+\item exception: \texttt{SessionStorageException} is raised if the system is unable to save the modified alt text to the users session history.
+\end{itemize}
+
+  \section{MIS of AuthenticationService Module} \label{Module:AuthenticationService}
 
   \subsection{Module}
   
@@ -644,10 +672,9 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
   \subsection{Uses}
   This module is responsible for managing and validating user authentication across the Reading4All system. It ensures that only verified users can upload, edit, or retrieve images and generated alt text.  
   \begin{itemize}
-    \item Validates user session tokens received from frontend modules.
-    \item Manages the current logged-in user’s credentials and authentication status.
-    \item Communicates with \texttt{SessionManagement} to track and store active sessions.
-    \item Provides user authentication results to \texttt{BackendController} for access control.
+    \item LoginScreen Module: Receives user login and logout requests, sends authentication tokens.
+    \item Session Management Module: Manages active sessions and stores validated tokens.
+    \item Backend Controller Module: Requests user validation before allowing access to backend operations.
   \end{itemize}
   
   \subsection{Syntax}
@@ -659,19 +686,19 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
   \subsubsection{Exported Access Programs}
   
   \begin{center}
-  \begin{tabular}{p{3cm} p{4cm} p{3cm} p{2cm}}
+  \begin{tabular}{p{3cm} p{4cm} p{3cm} p{4cm}} 
   \hline
   \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
   \hline
   validateToken & userToken:String & Success:\Bool & InvalidTokenException \\
   \hline
-  signInUser & credentials & userToken & AuthenticationFailedException \\
+  signInUser & credentials:String  & userToken:String & AuthenticationFailed-Exception \\
   \hline
   signOutUser & userToken:String & Success:\Bool & SessionNotFoundException \\
   \hline
-  getCurrentUser & userToken:String & userID & UserNotAuthenticatedException \\
+  getCurrentUser & userToken:String & userID: String & UserNotAuthenticated-Exception \\
   \hline
-  refreshToken & userToken:String & newToken & TokenRefreshException \\
+  refreshToken & userToken:String & newToken:String & TokenRefreshException \\
   \hline
   \end{tabular}
   \end{center}
@@ -685,9 +712,7 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
   
   \subsubsection{Environment Variables}
   \begin{itemize}
-    \item Frontend Module: Receives user login and logout requests, sends authentication tokens.
-    \item Session Management Module: Manages active sessions and stores validated tokens.
-    \item Backend Controller Module: Requests user validation before allowing access to backend operations.
+    \item  LoginAPI to authentication the information of users attempting to sign in.
   \end{itemize}
   
   \subsubsection{Assumptions}
@@ -699,35 +724,35 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
   
   \subsubsection{Access Routine Semantics}
   
-  \noindent \texttt{validateToken(userToken)}:
+  \noindent \textbf{validateToken(userToken)}:
   \begin{itemize}
   \item transition: Compares provided token against valid session records in \texttt{SessionManagement}.
   \item output: Returns \texttt{True} if token is valid and active, otherwise \texttt{False}.
   \item exception: \texttt{InvalidTokenException} is raised if the token has expired or does not exist.
   \end{itemize}
   
-  \noindent \texttt{signInUser(credentials)}:
+  \noindent \textbf{signInUser(credentials)}:
   \begin{itemize}
   \item transition: Verifies credentials (e.g., username and password) and issues a unique token for session creation.
   \item output: Returns a valid \texttt{userToken} on successful authentication.
   \item exception: \texttt{AuthenticationFailedException} is raised if credentials are invalid or user does not exist.
   \end{itemize}
   
-  \noindent \texttt{signOutUser(userToken)}:
+  \noindent \textbf{signOutUser(userToken)}:
   \begin{itemize}
   \item transition: Removes the associated token from the active token list and ends the user’s session.
   \item output: Returns \texttt{True} on successful logout.
   \item exception: \texttt{SessionNotFoundException} is raised if the token is invalid or session not found.
   \end{itemize}
   
-  \noindent \texttt{getCurrentUser(userToken)}:
+  \noindent \textbf{getCurrentUser(userToken)}:
   \begin{itemize}
   \item transition: Queries active sessions to identify the user associated with the token.
   \item output: Returns \texttt{userID} if token corresponds to an active session.
   \item exception: \texttt{UserNotAuthenticatedException} is raised if no active session exists for the token.
   \end{itemize}
   
-  \noindent \texttt{refreshToken(userToken)}:
+  \noindent \textbf{refreshToken(userToken)}:
   \begin{itemize}
   \item transition: Reissues a new token with an updated expiry time after verifying the old token’s validity.
   \item output: Returns \texttt{newToken}.
@@ -741,19 +766,17 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
     \item \texttt{validateCredentials(credentials)} — Confirms user credentials against secure storage.
   \end{itemize}
 
-  \section{MIS of Session Management} \label{Module:SessionManagement}
+  \section{MIS of SessionManagement Module} \label{Module:SessionManagement}
 
   \subsection{Module}
   \texttt{SessionManagement}
   
   \subsection{Uses}
-  The Session Management module is responsible for creating, storing, and maintaining active user sessions within the Reading4All system. It also tracks the session-specific history of user interactions, referencing corresponding entries in the Reading4All data record. Other modules, such as the Authentication Service and Backend Controller, rely on it for validating active tokens and retrieving user activity logs within the current session.
+  The Session Management module is responsible for creating, storing, and maintaining active user sessions within the Reading4All system. It also tracks the session-specific history of user interactions, referencing corresponding entries in the Reading4All data. Other modules, such as the Authentication Service and Backend Controller, rely on it for validating active tokens and retrieving user activity logs within the current session.
   \begin{itemize}
-      \item Creates new sessions upon successful authentication.
-      \item Stores mappings between users and their associated session tokens.
-      \item Tracks and records user interactions (e.g., uploads, alt-text generation) linked to Reading4All data records.
-      \item Provides access to current session history and recent data records.
-      \item Invalidates sessions on logout or timeout and clears associated session history.
+    \item \textbf{Authentication Service:} Initiates creation, validation, and deletion of sessions.
+    \item \textbf{Backend Controller:} Updates session history after each major user action (e.g., validateImage, sendToModel, getAltText).
+    \item \textbf{Reading4All Data:} Serves as the persistent storage layer for user images and generated alt-text records, referenced by session data IDs.
   \end{itemize}
   
   \subsection{Syntax}
@@ -766,27 +789,27 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
   \subsubsection{Exported Access Programs}
   
   \begin{center}
-  \begin{tabular}{p{3.3cm} p{4.5cm} p{3cm} p{3cm}}
+  \begin{tabular}{p{3.3cm} p{4.5cm} p{3.2cm} p{4cm}}
   \hline
   \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
   \hline
-  createSession & userID & sessionToken & SessionCreationException \\
+  createSession & userID:String & sessionToken:String & SessionCreation-Exception \\
   \hline
-  storeSession & userID, sessionToken & Boolean & SessionStorageException \\
+  storeSession & userID:String, sessionToken:String & success:\Bool & SessionStorageException \\
   \hline
-  validateSession & userToken & Boolean & InvalidSessionException \\
+  validateSession & userToken:String & success:\Bool & InvalidSessionException \\
   \hline
-  deleteSession & userToken & Boolean & SessionNotFoundException \\
+  deleteSession & userToken:String & success:\Bool & SessionNotFound-Exception \\
   \hline
-  getSession & userToken & sessionData & SessionNotFoundException \\
+  getSession & userToken:String & sessionData:String& SessionNotFound-Exception \\
   \hline
-  appendInteraction & userToken, interactionEntry & Boolean & SessionNotFoundException \\
+  appendInteraction & userToken:String, interactionEntry:String & success:\Bool & SessionNotFound-Exception \\
   \hline
-  getSessionHistory & userToken, filter & interactionList & SessionNotFoundException \\
+  getSessionHistory & userToken:String, filter:String & interactionList:List & SessionNotFound-Exception \\
   \hline
-  linkDataRecord & userToken, dataRecordID, metadata & Boolean & SessionNotFoundException \\
+  linkDataRecord & userToken:String, dataRecordID:String & success:\Bool & SessionNotFound-Exception \\
   \hline
-  getRecentRecords & userToken, limit & dataRecordRefs & SessionNotFoundException \\
+  getRecentRecords & userToken:String, limit: $\mathbb{N}$ & dataRecordRefs:List & SessionNotFound-Exception \\
   \hline
   \end{tabular}
   \end{center}
@@ -803,9 +826,9 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
   
   \subsubsection{Environment Variables}
   \begin{itemize}
-      \item \textbf{Authentication Service:} Initiates creation, validation, and deletion of sessions.
-      \item \textbf{Backend Controller:} Updates session history after each major user action (e.g., validateImage, sendToModel, getAltText).
-      \item \textbf{Reading4All Data:} Serves as the persistent storage layer for user images and generated alt-text records, referenced by session data IDs.
+      \item \texttt{SystemClock}: Provides current time for session expiry calculations.
+      \item \texttt{StorageService}: Fast-access storage for session and interaction data.
+      \item \texttt{Browser}: Storing session tokens for the valid duration of user activity.
   \end{itemize}
   
   \subsubsection{Assumptions}
@@ -818,49 +841,49 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
   
   \subsubsection{Access Routine Semantics}
   
-  \noindent \texttt{createSession(userID)}:
+  \noindent \textbf{createSession(userID)}:
   \begin{itemize}
       \item transition: Generates a new session token, initializes empty history and data references, and sets the expiry time.
       \item output: Returns the created \texttt{sessionToken}.
       \item exception: Raises \texttt{SessionCreationException} if session creation fails.
   \end{itemize}
   
-  \noindent \texttt{validateSession(userToken)}:
+  \noindent \textbf{validateSession(userToken)}:
   \begin{itemize}
       \item transition: None.
       \item output: Returns \texttt{True} if the session exists and is active, otherwise \texttt{False}.
       \item exception: Raises \texttt{InvalidSessionException} if the token is expired or invalid.
   \end{itemize}
   
-  \noindent \texttt{appendInteraction(userToken, interactionEntry)}:
+  \noindent \textbf{appendInteraction(userToken, interactionEntry)}:
   \begin{itemize}
       \item transition: Appends the provided \texttt{interactionEntry} (with timestamp and type) to \texttt{sessionHistory[userToken]}. If the maximum history size is exceeded, the oldest entry is removed.
       \item output: Returns \texttt{True} upon success.
       \item exception: Raises \texttt{SessionNotFoundException} if the token is not associated with an active session.
   \end{itemize}
   
-  \noindent \texttt{linkDataRecord(userToken, dataRecordID, metadata?)}:
+  \noindent \textbf{linkDataRecord(userToken, dataRecordID)}:
   \begin{itemize}
       \item transition: Associates the provided \texttt{dataRecordID} (from Reading4All data) with the user’s current session for future retrieval.
       \item output: Returns \texttt{True} upon success.
       \item exception: Raises \texttt{SessionNotFoundException} if no active session exists.
   \end{itemize}
   
-  \noindent \texttt{getSessionHistory(userToken, filter?)}:
+  \noindent \textbf{getSessionHistory(userToken, filter)}:
   \begin{itemize}
       \item transition: None.
       \item output: Returns a filtered list of interaction entries (e.g., uploads, alt-text retrieval) for the specified session.
       \item exception: Raises \texttt{SessionNotFoundException} if the token is invalid or no session history exists.
   \end{itemize}
   
-  \noindent \texttt{getRecentRecords(userToken, limit)}:
+  \noindent \textbf{getRecentRecords(userToken, limit)}:
   \begin{itemize}
       \item transition: None.
       \item output: Returns up to the specified number of recent \texttt{dataRecordID} references associated with the current session.
       \item exception: Raises \texttt{SessionNotFoundException} if no active session exists.
   \end{itemize}
   
-  \noindent \texttt{deleteSession(userToken)}:
+  \noindent \textbf{deleteSession(userToken)}:
   \begin{itemize}
       \item transition: Removes the token from active sessions and clears its associated history and data references.
       \item output: Returns \texttt{True} if deletion is successful.
@@ -869,24 +892,19 @@ returnToFrontend & altText or errorMsg, userID & None& FrontendUnreachableExcept
   
   \subsubsection{Local Functions}
   \begin{itemize}
-      \item \texttt{generateSessionToken(userID)}: Creates a secure, unique token for the given user.
-      \item \texttt{updateExpiry(sessionToken)}: Extends the expiry time of a session on continued activity.
-      \item \texttt{cleanExpiredSessions()}: Removes all expired sessions and their histories from storage.
-      \item \texttt{applyHistoryFilter(history, filter)}: Applies filtering parameters (e.g., type, time range, status) to session history queries.
+      \item \textbf{generateSessionToken(userID)}: Creates a secure, unique token for the given user.
+      \item \textbf{updateExpiry(sessionToken)}: Extends the expiry time of a session on continued activity.
+      \item \textbf{cleanExpiredSessions()}: Removes all expired sessions and their histories from storage.
+      \item \textbf{applyHistoryFilter(history, filter)}: Applies filtering parameters (e.g., type, time range, status) to session history queries.
   \end{itemize}
 
-\section{MIS of Image Validation Module } \label{ImageValid}
-
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+\section{MIS of ImageValidation Module} \label{Module: ImageValid}
 
 \subsection{Module}
   \texttt{ImageValidation}
 
 \subsection{Uses}
-This module is responsible for verifying that uploaded images meet the systems requirements for format and size before the alt-text generation process begins. 
-
+None.
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
@@ -896,11 +914,11 @@ This module is responsible for verifying that uploaded images meet the systems r
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{4 cm} p{4cm} p{2cm} p{4cm}}
+\begin{tabular}{p{4 cm} p{5cm} p{3 cm} p{4cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-validateImageFile & image, userToken & \texttt{boolean} & InvalidImageTypeException \\
+validateImageFile & imagePath:String, userToken:String & imageStatus: \(\mathbb{B}\)& InvalidImageType-Exception \\
 \hline
 \end{tabular}
 \end{center}
@@ -908,60 +926,45 @@ validateImageFile & image, userToken & \texttt{boolean} & InvalidImageTypeExcept
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-None
+None.
 
 \subsubsection{Environment Variables}
-\begin{itemize}
-  \item \textbf{Backend Controller:} Sends uploaded images to be validated and receives the results after validation is completed. 
-\end{itemize}
+\texttt{Filesystem} - Used to retrieve images using the file path provided by users.
 
 
 
 \subsubsection{Assumptions}
 
-\wss{Try to minimize assumptions and anticipate programmer errors via
-  exceptions, but for practical purposes assumptions are sometimes appropriate.}
-
   \begin{itemize}
-  \item The Backend Controller module provides the Image Validation module with an image file that is reachable for validation. 
+  \item The \texttt{BackendController} module provides the ImageValidation module with an image file that is reachable for validation. 
   \item The user has successfully been validated through the user authentication process. 
 \end{itemize}
 \subsubsection{Access Routine Semantics}
 
-\noindent \texttt{validateImageFile(image, userToken)}
+\noindent \textbf{validateImageFile(imagePath, userToken)}
 \begin{itemize}
 \item transition: Verifies that the inputted image meets size and format requirements.
 \item output: Returns \texttt{True} if the image meets size and format requirements, otherwise \texttt{False} is returned.
 \item exception: \texttt{InvalidImageException} is raised if the image cannot be reached and therefore cannot be validated. 
 \end{itemize}
 
-\wss{A module without environment variables or state variables is unlikely to
-  have a state transition.  In this case a state transition can only occur if
-  the module is changing the state of another module.} 
-
-\wss{Modules rarely have both a transition and an output.  In most cases you
-  will have one or the other.}
 
 \subsubsection{Local Functions}
 \begin{itemize}
-  \item \texttt{verifyFileType(image)}: Checks that the images file type matches a type found in \texttt{ACCEPTED\_IMAGE\_TYPES}.
-  \item \texttt{verifyFileSize(image)}: Checks that the images size falls between \texttt{MIN\_IMAGE\_SIZE} and \texttt{MAX\_IMAGE\_SIZE}.
-  \item \texttt{verifyFileReachable(image)}: Checks that the image can be accessed and opened successfully. 
+  \item \textbf{verifyFileType(imagePath)}: Checks that the images file type matches a type found in \texttt{ACCEPTED\_IMAGE\_TYPES}.
+  \item \textbf{verifyFileSize(imagePath)}: Checks that the images size falls between \texttt{MIN\_IMAGE\_SIZE} and \texttt{MAX\_IMAGE\_SIZE}.
+  \item \textbf{verifyFileReachable(imagePath)}: Checks that the image can be accessed and opened successfully. 
 \end{itemize}
 
 
-\section{MIS of Logger Module} \label{LogModule} \wss{Use labels for
-  cross-referencing}
-
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+\section{MIS of Logger Module} \label{LogModule} 
 
 \subsection{Module}
 \texttt{Logger}
 
 \subsection{Uses}
-The module handles the recording of key system events and any errors encountered. It logs actions such as image uploads,alt-text generation and user validations, as well as system issues like timeouts. This logging will enables developers to debug for effectively and ensure system reliability and security during failures. 
+The module handles the recording of key system events and any errors encountered. It logs actions such as image uploads, alt-text generation and user validations, as well as system issues like timeouts. This logging will enables developers to debug for effectively and ensure system reliability and security during failures. 
+The logging module does not use any other modules. 
 
 \subsection{Syntax}
 
@@ -972,11 +975,11 @@ The module handles the recording of key system events and any errors encountered
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{2cm} p{6cm} p{2cm} p{4cm}}
+\begin{tabular}{p{2cm} p{7cm} p{3cm} p{3cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-logEvent & eventMessage, logType & None & LogWriteException\\
+logEvent & eventMssg:String, logType:String & - & LogWriteException\\
 \hline
 \end{tabular}
 \end{center}
@@ -985,22 +988,12 @@ logEvent & eventMessage, logType & None & LogWriteException\\
 
 \subsubsection{State Variables}
 
-None
+None.
 
 \subsubsection{Environment Variables}
-
-\wss{This section is not necessary for all modules.  Its purpose is to capture
-  when the module has external interaction with the environment, such as for a
-  device driver, screen interface, keyboard, file, etc.}
-\begin{itemize}
-  \item The Backend Controller Module sends any key system events and error messages to be logged. 
-  \item File System is used to store the logs written by this module.
-\end{itemize}
+\texttt{Filesystem} - Used to save the log files to the specified path.
 
 \subsubsection{Assumptions}
-
-\wss{Try to minimize assumptions and anticipate programmer errors via
-  exceptions, but for practical purposes assumptions are sometimes appropriate.}
 \begin{itemize}
   \item The file system is available and logs can be saved to it. 
   \item The LOG\_FILE\_PATH location can be accessed. 
@@ -1008,39 +1001,28 @@ None
 \end{itemize}
 \subsubsection{Access Routine Semantics}
 
-\noindent \texttt{logEvent(eventMessage, logType)}:
+\noindent \textbf{logEvent(eventMssg, logType)}:
 \begin{itemize}
 \item transition: Creates an log entry containing the time of event occur, type and message. 
 \item output: An updated log file with new event or error entry added. 
 \item exception: \texttt{LogWriteException} is raised if the log file cannot be accessed or written to. 
 \end{itemize}
 
-\wss{A module without environment variables or state variables is unlikely to
-  have a state transition.  In this case a state transition can only occur if
-  the module is changing the state of another module.}
-
-\wss{Modules rarely have both a transition and an output.  In most cases you
-  will have one or the other.}
-
 \subsubsection{Local Functions}
 
-\wss{As appropriate} \wss{These functions are for the purpose of specification.
-  They are not necessarily something that is going to be implemented
-  explicitly.  Even if they are implemented, they are not exported; they only
-  have local scope.}
+None.
 
 
 \section{MIS of UserInterfaceInteractions Module}\label{UI_Interactions}
 
 \subsection{Module}
 
-interactionsUI
+\texttt{InteractionsUI}
 
 \subsection{Uses}
-BackendController \\
-mainScreen \\ 
-logInScreen \\ 
-showHistory 
+This module uses \texttt{BackendController} to authenticate the users that are signing in, and to obtain the 
+generated alternative text. It also uses the display modules (\texttt{MainScreen}, \texttt{LogInScreen},
+\texttt{ShowHistoryScreen}) to render the different screens and interfaces to the users. 
 
 \subsection{Syntax}
 
@@ -1058,12 +1040,18 @@ showHistory
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
 uploadImage & imageFilePath:String & Success:\Bool & FileNotFound, FileTypeNotSupported, FileTooLarge\\
+\hline
 downloadText & altText:String & altTextFile:String & NetworkError \\
+\hline
 copyText & altText:String & Success:\Bool & ClipboardError \\
+\hline
 editText & altText:String, editedText:String & Success:\Bool & NetworkError \\
+\hline
 signIn & token:String & Success:\(\mathbb{B}\) & AuthError \\
+\hline
 signOut & - & Success:\(\mathbb{B}\) & AuthError \\
-showHistory & - & - & NetworkError \\
+\hline
+showHistory & - & Success:\(\mathbb{B}\) & NetworkError \\
 
 \hline
 \end{tabular}
@@ -1073,21 +1061,22 @@ showHistory & - & - & NetworkError \\
 
 \subsubsection{State Variables}
 
-None
+None.
 
 \subsubsection{Environment Variables}
 
 \begin{itemize}
-  \item Clipboard - system's clipboard interface for copy function.
-  \item HTTPClient - used to call backend services.
-  \item Keyboard - receives key presses for keyboard navigation. 
+  \item \texttt{Clipboard} - system's clipboard interface for copy function.
+  \item \texttt{HTTPClient} - used to call backend services.
+  \item \texttt{Keyboard} - receives key presses for keyboard navigation. 
+  \item \texttt{FileSystem} - used to access file paths. 
 \end{itemize}
 
 
 \subsubsection{Assumptions}
   
   \begin{itemize}
-    \item Clipboard access is enabled by the user for \texttt{copyText}.
+    \item \texttt{Clipboard} access is enabled by the user for \texttt{copyText}.
     \item User allows system to access files for uploading images and downloading alt text. 
     \item \texttt{uploadImage} is called before any other access program.
   \end{itemize}
@@ -1100,28 +1089,29 @@ None
 \item transition: \texttt{HTTPClient} sends the image bytes into the backend service which stores the image for that session, and communicates 
 with the AI model for alt text generation. 
 \item output: returns \texttt{true} iff the backend server acknowledges and is able to process the image, returns \texttt{false} otherwise.
-\item exception: FileNotFound, FileTypeNotSupported (not in \texttt{SUPPORT\_IMG\_TYPES}), and FileTooLarge (not within \texttt{MAX\_IMG\_SIZE})
+\item exception: \texttt{FileNotFound}, \texttt{FileTypeNotSupported} (not in \texttt{SUPPORT\_IMG\_TYPES}), 
+and \texttt{FileTooLarge} (not within \texttt{MAX\_IMG\_SIZE})
 \end{itemize}
 
 \noindent \textbf{downloadText(altText)}:
 \begin{itemize}
-\item transition: None (read-only fetch).
+\item transition: None.
 \item output: a \texttt{.txt} payload that contains the generated alt text. 
-\item exception: NetworkError.
+\item exception: \texttt{NetworkError}.
 \end{itemize}
 
 \noindent \textbf{copyText(altText)}:
 \begin{itemize} 
-\item transition: Clipboard := altText
+\item transition: \texttt{Clipboard} := altText
 \item output: returns \texttt{true} iff clipboard write succeeds, returns \texttt{false} otherwise. 
-\item exception: ClipboardError.
+\item exception: \texttt{ClipboardError}.
 \end{itemize}
 
 \noindent \textbf{editText(altText,editedText)}:
 \begin{itemize}
 \item transition: \texttt{HTTPClient} sends update to backend and stored altText for uploaded image is replaced with editedText.
 \item output: return \texttt{true} iff server acknowledges the update, returns \texttt{false} otherwise.
-\item exception: NetworkError.
+\item exception: \texttt{NetworkError}.
 \end{itemize}
 
 \noindent \textbf{signIn(token)}:
@@ -1129,7 +1119,7 @@ with the AI model for alt text generation.
 \item transition: if \texttt{token} is valid according to BackendController then user session becomes active.
 Otherwise no state change.
 \item output: return \texttt{true} iff user session is active, returns \texttt{false} otherwise.
-\item exception: Authentication Error.
+\item exception: \texttt{AuthenticationError}.
 \end{itemize}
 
 \noindent \textbf{signOut()}:
@@ -1137,14 +1127,14 @@ Otherwise no state change.
 \item transition: terminates current active user session if any exists.
 Otherwise no state change.
 \item output: return \texttt{true} iff user session is was terminated, returns \texttt{false} otherwise.
-\item exception: Authentication Error.
+\item exception: \texttt{AuthenticationError}.
 \end{itemize}
 
 \noindent \textbf{showHistory()}:
 \begin{itemize}
-\item transition: requests the showHistoryScreen module to render the History Screen using the current stored alt text session history.
-\item output: None.
-\item exception: Authentication Error.
+\item transition: requests the ShowHistoryScreen module to render the History Screen using the current stored alt text session history.
+\item output: return \texttt{true} iff history was successfully shown, returns \texttt{false} otherwise.
+\item exception: \texttt{AuthenticationError}.
 \end{itemize}
 
 \subsubsection{Local Functions}
@@ -1161,21 +1151,20 @@ Otherwise no state change.
 \end{itemize}
 
 
-\section{MIS of MainScreen Module}\label{mainScreen} 
+\section{MIS of MainScreen Module}\label{MainScreen} 
 
 \subsection{Module}
 
-mainScreen
+\texttt{MainScreen}
 
 \subsection{Uses}
-
-accessibilityUI\\
-interactionsUI
+This module uses \texttt{AccessibilityUI} to ensure that the content within the interface is 
+compatible with screen readers and tabbable by a keyboard.
 
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
-None
+None.
 
 \subsubsection{Exported Access Programs}
 
@@ -1193,7 +1182,7 @@ renderMain & - & - & RenderError, AccessibilityError \\
 
 \subsubsection{State Variables}
 
-None
+None.
 
 \subsubsection{Environment Variables}
 
@@ -1202,29 +1191,29 @@ None
 \subsubsection{Assumptions}
 
 \begin{itemize}
-  \item Accessibility services are provided by the \texttt{accessibilityUI} module for screen reader announcements,
+  \item Accessibility services are provided by the \texttt{AccessibilityUI} module for screen reader announcements,
   landmark management, initial focus, and keyboard navigation helpers. This module will provide notifications to
-  the \texttt{accessibilityUI} module. 
+  the \texttt{AccessibilityUI} module. 
 \end{itemize}
 \subsubsection{Access Routine Semantics}
 
 \noindent \textbf{renderMain()}:
 \begin{itemize}
-  \item transition: update DOM to reflect main screen containing the upload page, then call on \texttt{accessibilityUI} to 
+  \item transition: update DOM to reflect main screen containing the upload page, then call on \texttt{AccessibilityUI} to 
   handle compatibility with screen readers and keyboard navigation.
-  \item output: None
-  \item exception: Render Error, Accessibility Error.
+  \item output: None.
+  \item exception: \texttt{RenderError}, \texttt{AccessibilityError}.
 \end{itemize}
 
 
 \subsubsection{Local Functions}
 
 \begin{itemize}
-  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{AccessibilityUI}
   to mark/set the main landmark.
-  \item \textbf{setInitialFocus()\texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{setInitialFocus()\texttt{->} \Bool}: calls \texttt{AccessibilityUI}
    to move focus to the main region.
-  \item \textbf{announceMainLoaded() \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{announceMainLoaded() \texttt{->} \Bool}: calls \texttt{AccessibilityUI}
    to announce screen load.
 
 \end{itemize}
@@ -1233,17 +1222,17 @@ None
 
 \subsection{Module}
 
-showHistoryScreen
+\texttt{ShowHistoryScreen}
 
 \subsection{Uses}
 
-accessibilityUI\\
-interactionsUI
+This module uses \texttt{AccessibilityUI} to ensure that the content within the interface is 
+compatible with screen readers and tabbable by a keyboard.
 
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
-None
+None.
 
 \subsubsection{Exported Access Programs}
 
@@ -1261,7 +1250,7 @@ showHistory & - & - & RenderError, AccessibilityError\\
 
 \subsubsection{State Variables}
 
-None
+None.
 
 \subsubsection{Environment Variables}
 
@@ -1271,8 +1260,8 @@ None
 
 \begin{itemize}
   \item If history is shown, a valid and authenticated session already exists.
-  \item \texttt{accessibilityUI} is used for announcements and focus.
-  \item History content to display is already prepared by the \texttt{interactionsUI} module through
+  \item \texttt{AccessibilityUI} is used for announcements and focus.
+  \item History content to display is already prepared by the \texttt{InteractionsUI} module through
   the \texttt{BackendController} module.
 \end{itemize}
 
@@ -1280,44 +1269,44 @@ None
 
 \noindent \textbf{showHistory()}:
 \begin{itemize} 
-  \item transition: update DOM to reflect user's current session history, then call on \texttt{accessibilityUI} to 
+  \item transition: update DOM to reflect user's current session history, then call on \texttt{AccessibilityUI} to 
   handle compatibility with screen readers and keyboard navigation.
-  \item output: None
-  \item exception: Render Error, Accessibility Error.
+  \item output: None.
+  \item exception: \texttt{RenderError}, \texttt{AccessibilityError}.
 \end{itemize}
 
 \subsubsection{Local Functions}
 
 \begin{itemize}
-  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{AccessibilityUI}
   to mark/set the main landmark.
-  \item \textbf{setInitialFocus()\texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{setInitialFocus()\texttt{->} \Bool}: calls \texttt{AccessibilityUI}
    to move focus to the main region.
-  \item \textbf{announceHistoryLoaded() \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{announceHistoryLoaded() \texttt{->} \Bool}: calls \texttt{AccessibilityUI}
    to announce history screen load.
 \end{itemize}
 
-\section{MIS of LogInScreen Module}\label{logInScreen} 
+\section{MIS of LogInScreen Module}\label{LogInScreen} 
 
 
 \subsection{Module}
 
-logInScreen
+\texttt{LogInScreen}
 
 \subsection{Uses}
 
-accessibilityUI\\
-interactionsUI
+This module uses \texttt{AccessibilityUI} to ensure that the content within the interface is 
+compatible with screen readers and tabbable by a keyboard.
 
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
-None
+None.
 
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-\begin{tabular}{p{2.5cm} p{4cm} p{4cm} p{3cm}}
+\begin{tabular}{p{2.5cm} p{3cm} p{3cm} p{4cm}}
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
@@ -1330,7 +1319,7 @@ renderLogIn & - & - & RenderError, AccessibilityError \\
 
 \subsubsection{State Variables}
 
-None
+None.
 
 \subsubsection{Environment Variables}
 
@@ -1339,7 +1328,7 @@ None
 \subsubsection{Assumptions}
 
 \begin{itemize}
-  \item \texttt{accessibilityUI} is used for announcements and focus.
+  \item \texttt{AccessibilityUI} is used for announcements and focus.
 \end{itemize}
 
 \subsubsection{Access Routine Semantics}
@@ -1347,21 +1336,21 @@ None
 
 \noindent \textbf{renderLogIn()}:
 \begin{itemize}
-\item transition: update DOM to reflect log in screen with username and password fields, 
-then call on \texttt{accessibilityUI} to 
+\item transition: update \texttt{DOM} to reflect log in screen with username and password fields, 
+then call on \texttt{AccessibilityUI} to 
 handle compatibility with screen readers and keyboard navigation.
-\item output: None 
-\item exception: Render Error, Authentication Error.
+\item output: None.
+\item exception: \texttt{RenderError}, \texttt{AuthenticationError}.
 \end{itemize}
 
 \subsubsection{Local Functions}
 \begin{itemize}
-  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{ensureMainLandmark()  \texttt{->} \Bool}: calls \texttt{AccessibilityUI}
   to mark/set the main landmark.
   \item \textbf{setInitialFocus(username:String)\texttt{ -> }\Bool}:
   calls \texttt{accessibilityUI} to move keyboard focus to the username
   input field after the log in screen is rendered.
-  \item \textbf{announceLogInLoaded() \texttt{->} \Bool}: calls \texttt{accessibilityUI}
+  \item \textbf{announceLogInLoaded() \texttt{->} \Bool}: calls \texttt{AccessibilityUI}
    to announce log in screen load.
 \end{itemize}
 
@@ -1369,12 +1358,13 @@ handle compatibility with screen readers and keyboard navigation.
   
   \subsection{Module}
   
-  accessibilityUI
+  \texttt{AccessibilityUI}
   
   \subsection{Uses}
-  mainScreen\\
-  logInScreen\\
-  showHistoryScreen
+ 
+  This module uses the display modules (\texttt{MainScreen}, \texttt{LogInScreen},
+  \texttt{showHistorScreeny}) to receive notifications of user activity to announce changes 
+  through a screen reader and apply keyboard navigation to the content in those screens. 
   \subsection{Syntax}
   
   \subsubsection{Exported Constants}
@@ -1382,7 +1372,7 @@ handle compatibility with screen readers and keyboard navigation.
   \subsubsection{Exported Access Programs}
   
   \begin{center}
-  \begin{tabular}{p{4cm} p{4cm} p{4cm} p{2cm}}
+  \begin{tabular}{p{4cm} p{4cm} p{3cm} p{3cm}}
   \hline
   \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
   \hline
@@ -1398,7 +1388,7 @@ handle compatibility with screen readers and keyboard navigation.
   
   \subsubsection{State Variables}
 
-  None
+  None.
   
   \subsubsection{Environment Variables}
     \texttt{DOM} - the active HTML document containing interactive elements \\ 
@@ -1410,7 +1400,7 @@ handle compatibility with screen readers and keyboard navigation.
 
     \begin{itemize}
       \item The page allows insertion of valid ARIA (\citet{ARIA}) live region nodes
-      \item \texttt{mainScreen}, \texttt{logInScreen}, \texttt{showHistoryScreen} modules calls \texttt{accessibilityUI} 
+      \item \texttt{MainScreen}, \texttt{LogInScreen}, \texttt{ShowHistoryScreen} modules calls \texttt{AccessibilityUI} 
       to announce changes on the user interface. 
     \end{itemize}
   
@@ -1422,7 +1412,7 @@ handle compatibility with screen readers and keyboard navigation.
   main landmark (i.e. \texttt{<main>}).
   \item output: returns \texttt{true} if main landmark was present after the call, returns \texttt{false}
   otherwise.
-  \item exception: AccessibilityError.
+  \item exception: \texttt{AccessibilityError}.
   \end{itemize}  
 
   \noindent \textbf{setInitialFocus(targetSel:String)}:
@@ -1431,7 +1421,7 @@ handle compatibility with screen readers and keyboard navigation.
   if not focusable, make it focusable for the interaction.
   \item output: returns \texttt{true} if focus was moved, returns \texttt{false}
   otherwise.
-  \item exception: AccessibilityError.
+  \item exception: \texttt{AccessibilityError}.
   \end{itemize}
 
   \noindent \textbf{announce(msg:String)}:
@@ -1440,7 +1430,7 @@ handle compatibility with screen readers and keyboard navigation.
   so screen readers can announce the change.
   \item output: returns \texttt{true} if live region was updated, returns \texttt{false}
   otherwise.
-  \item exception: AccessibilityError.
+  \item exception: \texttt{AccessibilityError}.
   \end{itemize}
 
   \noindent \textbf{applyKeyboardNav(scopeSel:String)}:
@@ -1450,7 +1440,7 @@ handle compatibility with screen readers and keyboard navigation.
   without changing application state.
   \item output: returns \texttt{true} if handlers are attached successfully, returns \texttt{false}
   otherwise.
-  \item exception: AccessibilityError.
+  \item exception: \texttt{AccessibilityError}.
   \end{itemize}
   
   
