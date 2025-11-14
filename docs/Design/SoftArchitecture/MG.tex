@@ -314,7 +314,12 @@ completion with minimal steps. Lastly, within the frontend modules, the \texttt{
 managing ARIA landmarks, live-region announcements, and predictable focus order. Together, these modules will deliver an interface that is simple, memorable, 
 inclusive, and fully aligned with WCAG 2.1 Level AA and AODA standards. It will allow all users to operate the system effectively and confidently.
 
-
+Within the backend subsystem, the \texttt{AuthenticationService} and \texttt{SessionManagement} modules together ensure secure and reliable user interaction with the Reading4All platform. 
+The \texttt{AuthenticationService} module is responsible for verifying user credentials, issuing secure tokens, and validating user identity before granting access to system functionalities. 
+It guarantees that only authenticated users can upload images or retrieve generated alt text, fulfilling the security and privacy requirements defined in the SRS. 
+Supporting this, the \texttt{SessionManagement} module manages each user’s active session lifecycle by creating, validating, refreshing, and terminating session tokens. 
+It also maintains a short-term record of user interactions during the active session, such as image uploads and model outputs, ensuring that users can view their recent activity while preserving system integrity and confidentiality. 
+Together, these two backend modules ensure that all authentication, authorization, and session tracking processes are handled transparently and securely, thereby supporting reliability, data protection, and user trust across the Reading4All system.
 \section{Module Decomposition} \label{SecMD}
 
 Modules are decomposed according to the principle of ``information hiding''
