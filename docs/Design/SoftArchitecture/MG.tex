@@ -352,7 +352,7 @@ The modules are defined as their own subsection and follow the following format:
   \item[Implemented By:] This part mentions if the Reading4All system
     or external systems will
     implement the specific module.
-  \item[Type of Module:] This section defines the moduel type into a
+  \item[Type of Module:] This section defines the module type into a
     Record, Library, Abstract
     Object, or Abstract Data Type. This section also includes
     information for leaf modules in the decomposition by secrets tree.
@@ -531,9 +531,16 @@ subsection and follow the following format:
   \item[Services:] Implements the internal operations of the system,
     such as model training, caption generation, quality validation,
     feedback collection, and output production.
+  \item[Implemented By:] This part mentions if the Reading4All system
+    or external systems will
+    implement the specific module.
+  \item[Type of Module:] This section defines the module type into a
+    Record, Library, Abstract
+    Object, or Abstract Data Type. This section also includes
+    information for leaf modules in the decomposition by secrets tree.
 \end{description}
 
-\subsubsection{AIModelTraining Module}
+\subsubsection{AIModelTraining Module (\mref{mod:modeltraining_table})}
 \label{mod:modeltraining}
 \begin{description}
   \item[Secrets:] The internal design of how the model is built and
