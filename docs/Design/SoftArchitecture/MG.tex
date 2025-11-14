@@ -320,7 +320,12 @@ The \texttt{BackendController Module} coordinates the flow of data between the F
 The \texttt{BackendController} also ensures that users are presented with the appropriate information and never exposed to technical details. 
 The \texttt{ImageValidation} module fulfills the requirements relating to validating user inputs. This module checks that inputted images are of the correct size and types before the alt text generation process begins. 
 The \texttt{Logging} module records any system events and errors, helping fulfill requirements related to protecting user data and having a reliable system. The \texttt{Logging} module will help ensure that user data is always deleted when any system failure occurs. 
-
+Furthermore, within the backend subsystem, the \texttt{AuthenticationService} and \texttt{SessionManagement} modules together ensure secure and reliable user interaction with the Reading4All platform. 
+The \texttt{AuthenticationService} module is responsible for verifying user credentials, issuing secure tokens, and validating user identity before granting access to system functionalities. 
+It guarantees that only authenticated users can upload images or retrieve generated alt text, fulfilling the security and privacy requirements defined in the SRS. 
+Supporting this, the \texttt{SessionManagement} module manages each user’s active session lifecycle by creating, validating, refreshing, and terminating session tokens. 
+It also maintains a short-term record of user interactions during the active session, such as image uploads and model outputs, ensuring that users can view their recent activity while preserving system integrity and confidentiality. 
+Together, these two backend modules ensure that all authentication, authorization, and session tracking processes are handled transparently and securely, thereby supporting reliability, data protection, and user trust across the Reading4All system.
 \section{Module Decomposition} \label{SecMD}
 
 Modules are decomposed according to the principle of ``information hiding''
