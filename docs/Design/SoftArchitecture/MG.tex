@@ -271,13 +271,13 @@ actually be implemented.
     {AuthenticationService Module (\refstepcounter{mnum}\mthemnum \label{mod:auth_table} )(see \ref{mod:auth})}\\ &
     {SessionManagement Module (\refstepcounter{mnum}\mthemnum \label{mod:mess_table}) (see \ref{mod: mess})}\\ &
     {BackendController Module (\refstepcounter{mnum}\mthemnum \label{mod:bcm_table}) (see \ref{mod:bcm})}\\ &
-    {Logging Module (\refstepcounter{mnum}\mthemnum \label{mod:logmod_table}) (see \ref{mod:logmod})}\\ &
+    {LoggingModule (\refstepcounter{mnum}\mthemnum \label{mod:logmod_table}) (see \ref{mod:logmod})}\\ &
     {ImageValidation Module (\refstepcounter{mnum}\mthemnum \label{mod:imgvalidmod_table}) (see \ref{mod:imgvalidmod})}\\ & 
-    {User Interface Interactions Module (\refstepcounter{mnum}\mthemnum) \label{mod:uii_table} (see \ref{mod: uii})} \\ & 
-    {Main Screen Module (\refstepcounter{mnum}\mthemnum) \label{mod:msm_table} (see \ref{mod: msm})} \\ &
-    {Show History Screen Module (\refstepcounter{mnum}\mthemnum) \label{mod:showhm_table} (see \ref{mod: showhm})} \\ &
-    {Log In Screen Module (\refstepcounter{mnum}\mthemnum) \label{mod:lis_table} (see \ref{mod: lis})} \\ &
-    {User Interface Accessibility Module (\refstepcounter{mnum}\mthemnum) \label{mod:uia_table} (see \ref{mod: uia})} \\ 
+    {UserInterfaceInteractions Module (\refstepcounter{mnum}\mthemnum) \label{mod:uii_table} (see \ref{mod: uii})} \\ & 
+    {MainScreen Module (\refstepcounter{mnum}\mthemnum) \label{mod:msm_table} (see \ref{mod: msm})} \\ &
+    {ShowHistoryScreen Module (\refstepcounter{mnum}\mthemnum) \label{mod:showhm_table} (see \ref{mod: showhm})} \\ &
+    {LogInScreen Module (\refstepcounter{mnum}\mthemnum) \label{mod:lis_table} (see \ref{mod: lis})} \\ &
+    {UserInterfaceAccessibility Module (\refstepcounter{mnum}\mthemnum) \label{mod:uia_table} (see \ref{mod: uia})} \\ 
     \midrule
 
     \multirow{6}{0.3\textwidth}{Software Decision Module [Section (\ref{mod:sdmmain})]} &
@@ -786,10 +786,10 @@ requirements and between the modules and the anticipated changes.
     PR-RFT1 & \mref{mod:imgvalidmod_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
     PR-RFT2 & \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
     PR-CR1 & \mref{mod:mess_table}, \mref{mod:auth_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
-    PR-CR2 & \mref{}\\
+    PR-CR2 & No Module\\
     PR-SER1 & \mref{mod:modeltraining_table}\\
     PR-LR1 & \mref{mod:modeltraining_table}, \mref{mod:wcagcompliance_table}\\
-    PR-LR2 & \mref{}\\
+    PR-LR2 & No Module\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Performance Requirements and Modules}
@@ -802,16 +802,16 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    OER-EP1 & \mref{}\\
-    OER-EP2 & \mref{}\\
+    OER-EP1 & No Module\\
+    OER-EP2 & No Module\\
     OER-WE1 & \mref{mod:wcagcompliance_table}\\
-    OER-WE2 & \mref{}\\
+    OER-WE2 & No Module\\
     OER-IAS1 & \mref{mod:preprocessing_table}\\
     OER-IAS2 & \mref{mod:imgvalidmod_table}\\
     OER-IAS3 & \mref{mod:internalmetriccompliance_table}\\
-    OER-PR1 & \mref{}\\
+    OER-PR1 & No Module\\
     OER-RL1 & \mref{mod:preprocessing_table}, \mref{mod:modeltraining_table}, \mref{mod:captiongeneration_table}, \mref{mod:wcagcompliance_table}, \mref{mod:internalmetriccompliance_table}\\
-    OER-RL2 & \mref{}\\
+    OER-RL2 & No Module\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Operational and Environmental Requirements and Modules}
@@ -825,12 +825,12 @@ requirements and between the modules and the anticipated changes.
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
     MS-MNT1 & \mref{mod:preprocessing_table}, \mref{mod:captiongeneration_table}, \mref{mod:wcagcompliance_table}, \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:bcm_table}\\
-    MS-MNT2 & \mref{}\\
-    MS-MNT3 & \mref{}\\
+    MS-MNT2 & No Module\\
+    MS-MNT3 & No Module\\
     MS-SUP1 & \mref{mod:logmod_table}\\
     MS-AD1 & \mref{mod:modeltraining_table}\\
     MS-AD2 &  \mref{mod:mess_table},\mref{mod:bcm_table}, \mref{mod:logmod_table}\\
-    MS-AD3 & \mref{}\\
+    MS-AD3 & No Module\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Maintainability and Support Requirements and Modules}
