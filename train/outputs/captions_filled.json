@@ -1,0 +1,78 @@
+[
+    {
+        "image": "autoencoder.png",
+        "caption": "a street sign with a green arrow pointing to the right "
+    },
+    {
+        "image": "bile-secretion.png",
+        "caption": "a colorful umbrella is shown on a white background "
+    },
+    {
+        "image": "box-whisker.png",
+        "caption": "a series of photos of a person's hair "
+    },
+    {
+        "image": "cardiac-cycle-1.png",
+        "caption": "a toy elephant with a sign on it "
+    },
+    {
+        "image": "cryo_vial.png",
+        "caption": "a black and white photo of a clock "
+    },
+    {
+        "image": "digestive-system-exploded.png",
+        "caption": "a collage of various colored stickers and designs "
+    },
+    {
+        "image": "digestive-system-labeled.png",
+        "caption": "a baby crib with a doll on top of it "
+    },
+    {
+        "image": "dose-effect-link.png",
+        "caption": "a blurry photo of a blurry image of a blue sky "
+    },
+    {
+        "image": "Human_heart.png",
+        "caption": "a cartoon of a penguin and a cartoon of a man "
+    },
+    {
+        "image": "influenza-virus-interior.png",
+        "caption": "a colorful kite is shown in a colorful pattern "
+    },
+    {
+        "image": "influenza-virus.png",
+        "caption": "a clock with a rainbow colored design on it "
+    },
+    {
+        "image": "metabolites.png",
+        "caption": "a collage of a picture of a person holding a kitty "
+    },
+    {
+        "image": "mitochondrium-greenbright.png",
+        "caption": "a sign that says \"no parking\" on it "
+    },
+    {
+        "image": "oral-administration-bloodconcentration.png",
+        "caption": "a blurry photo of a black and white photo of a person "
+    },
+    {
+        "image": "particles-salt-solution.png",
+        "caption": "a green and white square shaped object with a blue background "
+    },
+    {
+        "image": "proline.png",
+        "caption": "a series of images of a person's hands "
+    },
+    {
+        "image": "sars-cov-2-spike-closed.png",
+        "caption": "a colorful flower arrangement with a flower in it "
+    },
+    {
+        "image": "Silver_Nanoparticle.png",
+        "caption": "a white and black sign with a black background "
+    },
+    {
+        "image": "variational-autoencoder.png",
+        "caption": "a series of colorful stickers on a black and white background "
+    }
+]
