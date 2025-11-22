@@ -247,34 +247,21 @@ Our Proof of Concept (POC) in November 2025 will focus on demonstrating the tech
 \begin{enumerate}
     \item Select and prepare target diagram types.
     \begin{itemize}
-        \item Focus on 2--3 representative categories such as flowcharts, simple circuit diagrams, and mathematical figures.
-        \item Collect a small, curated dataset (10--20 examples per type) for validation and evaluation.
+        \item Collect a small, curated dataset of more than 10 open source educational STEM images for validation and evaluation.
     \end{itemize}
 
-    \item Define minimal accessibility and quality criteria.
+    \item Use existing AI models to generate baseline alternative text.
     \begin{itemize}
-        \item Establish evaluation criteria derived from WCAG~2.1 and AODA, emphasizing clarity, conciseness, and semantic accuracy.
-        \item Create a short internal checklist to guide early text evaluation (e.g., describing structure, purpose etc).
+        \item Evaluate at least 2 open source image-captioning models to determine which provides the best baseline performance.
+        \item Ensure the system can successfully pass input images to such models and generate alt test that provides information related to each STEM image. 
+        \item This allows us to show the technical feasibility of producing alt-text for STEM diagrams. This is a key aspect of the tool's functionality and finding a baseline model allows us to ensure its possible to generate meaningful alt-text, as well as provides a starting point for further advancements.
     \end{itemize}
 
-    \item Develop and evaluate the model’s ability to generate alt text for a selected set of diagrams.
+    \item Develop minimal prototypes of the key user interface pages.
     \begin{itemize}
-        \item A baseline prototype will be built to generate alt text for a small, curated dataset of technical diagrams (e.g., 1--2 examples per type). 
-        \item The goal is to demonstrate feasibility by showing that the model can produce coherent and structurally relevant descriptions of diagram content.
-        \item The qualitative review will apply a simplified internal checklist derived from WCAG~2.1 principles to assess clarity, accuracy, and completeness.
-        \item Formal user testing and screen reader validation will be planned for a later project phase (during January) once the technical pipeline has been validated.
-    \end{itemize}
-
-    \item Conduct preliminary evaluation and benchmarking.
-    \begin{itemize}
-        \item Compare generated outputs against baseline approaches such as manual descriptions or generic auto-generation tools.
-        \item Measure improvements in content structure, clarity, and technical accuracy relative to baselines.
-    \end{itemize}
-
-    \item Demonstrate proof of integration with assistive and interface technologies.
-    \begin{itemize}
-        \item Conduct internal checks to ensure alt-text output is compatible with standard screen readers and basic tab-based navigation on the user interface.
-        \item Validate that generated descriptions appear in the correct reading order and are interpretable by assistive software.
+        \item Build a very simple and initial versions of the 3 main screens: Login, Main Page and History. 
+        \item Ensure users can move between different parts of a page using keyboard tab navigation. 
+        \item This step is important because accessible navigation is a key design factor that ensures primary users, who maybe be using a screen reader can effectively use the tool. Additionally, it allows us to begin aligning the user interface with a key WCAG 2.1 criteria. 
     \end{itemize}
 \end{enumerate}
 
