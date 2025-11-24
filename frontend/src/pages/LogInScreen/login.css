@@ -19,11 +19,16 @@
 }
 
 .login-input {
-  width: 97%;
+  width: 94%;
   padding: 10px;
   margin-bottom: 15px;
   border-radius: 6px;
   border: 1px solid #ccc;
+}
+
+.login-input:focus{
+    outline: 3px solid #000;
+    outline-offset: 3px;
 }
 
 .login-button {
@@ -39,6 +44,11 @@
 
 .login-button:hover {
   background-color: #514dcd;
+}
+
+.login-button:focus-visible{
+    outline: 3px solid #000;
+    outline-offset: 3px;
 }
 
 .login-error {
