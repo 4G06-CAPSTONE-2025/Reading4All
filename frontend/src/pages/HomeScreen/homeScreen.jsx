@@ -10,7 +10,7 @@ export default function HomeScreen() {
     const [lastUploadedFile, setLastUploadedFile] = useState(null);
     const [altText, setAltText] = useState("");
     const [isGeneratingAltText, setIsGeneratingAltText] = useState(false);
-    const [isHistoryOpen, setIsHistoryOpen] = useState(true);
+    const [isHistoryOpen, setIsHistoryOpen] = useState(false);
 
     const fileInputRef = useRef(null);
     const navigate = useNavigate();
