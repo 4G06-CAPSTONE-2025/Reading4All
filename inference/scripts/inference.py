@@ -1,23 +1,24 @@
-import os
 import json
 import yaml
-from PIL import Image
+from pathlib import Path
+
 import torch
+from PIL import Image
 from transformers import VisionEncoderDecoderModel, ViTImageProcessor, AutoTokenizer, BlipProcessor, BlipForConditionalGeneration
 
 # ---------------------------
 # Load config.yaml
 # ---------------------------
-config_path = os.path.abspath("./config.yaml")
-with open(config_path, "r") as f:
+config_path = (Path("inference") / "config.yaml").resolve()
+with config_path.open("r", encoding='UTF-8') as f:
     config = yaml.safe_load(f)
 
 # Get model name, dataset, output folder
 model_name = config.get("model_name", "nlpconnect/vit-gpt2-image-captioning")
-dataset_dir = os.path.abspath(os.path.join("..", config.get("dataset_dir", "images")))
-output_dir = os.path.abspath(os.path.join("..", config.get("output_dir", "outputs")))
-os.makedirs(output_dir, exist_ok=True)
-output_json = os.path.join(output_dir, "captions_filled.json")
+dataset_dir = Path(config.get("dataset_dir", "images")).resolve()
+output_dir = Path(config.get("output_dir", "outputs")).resolve()
+output_dir.mkdir(exist_ok=True)
+output_json = output_dir / "captions_filled.json"
 
 # ---------------------------
 # Load model & processor
@@ -41,9 +42,9 @@ model.eval()
 # ---------------------------
 captions_data = []
 
-for img_file in os.listdir(dataset_dir):
-    if img_file.lower().endswith((".png", ".jpg", ".jpeg")):
-        image_path = os.path.join(dataset_dir, img_file)
+for img_file in dataset_dir.iterdir():
+    if img_file.suffix in {".png", ".jpg", ".jpeg"}:
+        image_path = dataset_dir / img_file
         try:
             image = Image.open(image_path).convert("RGB")
         except Exception as e:
@@ -60,13 +61,13 @@ for img_file in os.listdir(dataset_dir):
             output_ids = model.generate(pixel_values, max_length=50)
             caption = tokenizer.decode(output_ids[0], skip_special_tokens=True)
 
-        captions_data.append({"image": img_file, "caption": caption})
+        captions_data.append({"image": str(img_file), "caption": caption})
         print(f"{img_file} : {caption}")
 
 # ---------------------------
 # Save captions to JSON
 # ---------------------------
-with open(output_json, "w") as f:
+with output_json.open("w", encoding="UTF-8") as f:
     json.dump(captions_data, f, indent=4)
 
 print(f"\nAll captions saved to {output_json}")
