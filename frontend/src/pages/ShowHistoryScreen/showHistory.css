@@ -1,0 +1,23 @@
+.history-container {
+    position: relative;
+    padding: 40px;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 120px;
+    background-color: #6b65ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 100;
+    padding: 10px;
+}
+
+
+.back-button:hover {
+    background-color: #514dcd;
+}
