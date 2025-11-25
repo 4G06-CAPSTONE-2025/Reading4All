@@ -16,16 +16,12 @@
     ```
 4. Update the existing `config.yaml` file to reflect the correct model choice.
 
-5. Go to the `train` folder  
+5. Run the inference.py script
     ```bash
-    cd train
-    ```
-6. Run the script
-    ```bash
-    python3 scripts/train.py
+    python3 inference/scripts/inference.py
     ```
 
-7. View the generated captions in terminal or json.
+6. View the generated captions in terminal or json.
     Output will be saved to:
     ```
     ./outputs/captions_filled.json
