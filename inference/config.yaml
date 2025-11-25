@@ -4,7 +4,7 @@
 model_name: "nlpconnect/vit-gpt2-image-captioning"
 
 # Folder containing images (relative to train folder)
-dataset_dir: "./train/images"
+dataset_dir: "inference/images"
 
 # Folder where captions_filled.json will be saved
-output_dir: "./train/outputs"
+output_dir: "inference/outputs"
