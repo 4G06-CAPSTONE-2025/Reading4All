@@ -22,7 +22,7 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
+    <div className="login-container" aria-label="Log in form">
       <h2 className="login-title">Sign In</h2>
 
       <form className="login-form" onSubmit={handleSubmit}>
@@ -32,7 +32,7 @@ export default function Login() {
         <input
           id="email"
           type="email"
-          aria-label="Email address"
+          aria-label="Enter email address"
           className="login-input"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -45,7 +45,7 @@ export default function Login() {
         <input
           id="password"
           type="password"
-          aria-label="Password"
+          aria-label="Enter password"
           className="login-input"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -54,8 +54,8 @@ export default function Login() {
 
         {error && <p className="login-error">{error}</p>}
 
-        <button type="submit" className="login-button">
-          Log In
+        <button type="submit" className="login-button" aria-label="Button for logging in to a session">
+          Log In to Session
         </button>
       </form>
     </div>

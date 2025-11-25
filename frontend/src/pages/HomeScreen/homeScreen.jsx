@@ -10,7 +10,7 @@ export default function HomeScreen() {
     const [lastUploadedFile, setLastUploadedFile] = useState(null);
     const [altText, setAltText] = useState("");
     const [isGeneratingAltText, setIsGeneratingAltText] = useState(false);
-    const [isHistoryOpen, setIsHistoryOpen] = useState(true);
+    const [isHistoryOpen, setIsHistoryOpen] = useState(false);
 
     const fileInputRef = useRef(null);
     const navigate = useNavigate();
@@ -71,9 +71,14 @@ export default function HomeScreen() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!selectedFile) return;
-        const item = { id: Date.now(), name: selectedFile.name };
+        const item = { 
+            id: Date.now(), 
+            name: selectedFile.name, 
+            date: new Date().toLocaleString(), 
+            fileUrl: URL.createObjectURL(selectedFile),
+            altText: null};
         setHistory((prev) => [item, ...prev]);
-        setLastUploadedFile(selectedFile);
+        setLastUploadedFile(item);
         setAltText("");
         setSelectedFile(null);
         if (fileInputRef.current) {
@@ -85,7 +90,14 @@ export default function HomeScreen() {
         if (!lastUploadedFile) return;
         setIsGeneratingAltText(true);
         setAltText("");
-        const generated = `Example alternate text for "${lastUploadedFile.name}". Replace this with output from your alt-text model.`;
+        const generated = `Example alternate text for "${lastUploadedFile.name}". `;
+
+        const updated = {
+            ...history[0],
+            altText: generated
+        };
+        setHistory((prev) => [updated, ...prev.slice(1)]);
+        setLastUploadedFile(updated);
         setAltText(generated);
         setIsGeneratingAltText(false);
     };
@@ -95,7 +107,7 @@ export default function HomeScreen() {
     };
 
     const handleShowFullSessionHistory = () => {
-        navigate("/session-history");
+        navigate("/session-history", { state: { history } });
     };
 
     return (
