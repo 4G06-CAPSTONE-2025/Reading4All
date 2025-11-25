@@ -1,7 +1,7 @@
 # Inference config for auto image captioning
 
 # Model to use: either Salesforce/blip-image-captioning-large or nlpconnect/vit-gpt2-image-captioning
-model_name: "nlpconnect/vit-gpt2-image-captioning"
+model_name: "Salesforce/blip-image-captioning-base"
 
 # Folder containing images (relative to train folder)
 dataset_dir: "inference/images"
