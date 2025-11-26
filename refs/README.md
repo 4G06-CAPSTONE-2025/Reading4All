@@ -14,14 +14,13 @@ last names of the authors.
 
 
 ### References for Model Training
-[1] “Nlpconnect/VIT-GPT2-image-captioning · hugging face,” nlpconnect/vit-gpt2-image-captioning · Hugging Face, https://huggingface.co/nlpconnect/vit-gpt2-image-captioning (accessed Nov. 25, 2025). 
+* In text citations can be found in inference/README.md
 
+[1] “Nlpconnect/VIT-GPT2-image-captioning · hugging face,” nlpconnect/vit-gpt2-image-captioning · Hugging Face, https://huggingface.co/nlpconnect/vit-gpt2-image-captioning (accessed Nov. 25, 2025). 
 
 [2] D. Shah, “Vision Transformer: What it is & how it works [2024 guide],” V7, https://www.v7labs.com/blog/vision-transformer-guide (accessed Nov. 25, 2025). 
 
-
 [3] R. Lamsal, “How llms work: A beginner’s guide to decoder-only Transformers,” Langformers Blog, https://blog.langformers.com/how-llms-work/?utm_source=chatgpt.com (accessed Nov. 25, 2025). 
-
 
 [4] Comment et al., “Transformers in machine learning,” GeeksforGeeks, https://www.geeksforgeeks.org/machine-learning/getting-started-with-transformers/ (accessed Nov. 25, 2025). 
 

@@ -45,3 +45,5 @@ This model uses a Bootstrapping Language-Image Pre-training (BLIP) for Unified V
 This is new Vision-Language Pre-training framework can be used for both vision-language understanding and generation tasks, while previous models focused on one or the other [5]. Model have been able to improve their performance by increasing the size of the dataset used for training, by including noisy image-text pairs found on the internet [5]. BLIP has been able to reduce the noise on these image-text pairs by using a caption generator and a filter, to generate new captions and filter defective ones [5]. 
 
 BLIP uses a similar architecture to the nlpconnect/vit-gpt2-image-captioning as it uses a Vision Encoder (ViT) and a text encoder [6].
+
+* References can be found in refs/README.md
