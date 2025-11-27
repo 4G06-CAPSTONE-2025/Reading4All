@@ -295,6 +295,14 @@ The \autoref{tab:fmea-reading4all} below outlines the hazards found within our s
     Validate tokens on the server &
     SR-AR~1, SR-AR~2 \\ \hline
 
+    HA-11 & Alt Text Generation Model &
+    Model performance degrades over time as new diagram types or formats emerge &
+    Reduced accuracy, misleading alt text, or failure to interpret modern content; users lose trust in system &
+    Outdated training data; distribution shift; lack of periodic retraining or evaluation &
+    Schedule periodic model evaluations; monitor quality metrics; update training dataset; retrain model on newly collected examples; implement feedback loop for reporting inaccurate outputs &
+    PR-PAR~1, SR-IM~2 \\
+
+
     \end{longtable}
     
 \end{landscape}
