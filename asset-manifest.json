@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Reading4All/static/css/main.215c064c.css",
+    "main.js": "/Reading4All/static/js/main.12f8721a.js",
+    "index.html": "/Reading4All/index.html",
+    "main.215c064c.css.map": "/Reading4All/static/css/main.215c064c.css.map",
+    "main.12f8721a.js.map": "/Reading4All/static/js/main.12f8721a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.215c064c.css",
+    "static/js/main.12f8721a.js"
+  ]
+}
