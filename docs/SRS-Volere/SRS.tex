@@ -757,36 +757,80 @@ their inputs and outputs, and the summary of the event.
   \end{tabular} 
 \end{table}
 
-\subsection{Specifying a Business Use Case (BUC)}
+\subsection{Specifying Business Use Cases (BUC)}
+
+To maintain alignment between the business use cases and the work
+partitions defined in Section~6.3, the system functionality is
+described using one primary, end-to-end Business Use Case (BUC),
+supported by several smaller BUCs. The primary BUC captures the
+overall user goal, while the supporting BUCs isolate and describe
+each major system interaction identified in the work partitioning.
+
+\subsubsection*{BUC-0: Generate Alternative Text for Technical Diagrams (Primary)}
+
 The project has one primary business use case, which aims to achieve
-the goal of providing users with visual and cognitive impairments an efficient
-and accessible way to generate accurate alternative text for academic
-images and figures.\\[1ex]
+the goal of providing users with visual and cognitive impairments an
+efficient and accessible way to generate accurate alternative text
+for academic images and figures.
+
 \textbf{Preconditions:}
 \begin{itemize}
   \item The user has access to the web tool
   \item The user has files containing diagrams or images requiring
-    alternative text
+  alternative text
 \end{itemize}
+
 \textbf{Scenario:}
 \begin{enumerate}
   \item The user logs into the system using their McMaster student credentials
   \item The user uploads one or more files (PNG, JPEG) containing diagrams
-  \item The AI model analyzes the uploaded file(s), performs OCR to
-    extract any visible text, and generates
-    alternative text describing each image/figure accurately
-  \item Screen readers use the generated alternative text to read
-    aloud and convey the uploaded image
+  \item The system analyzes the uploaded file(s), performs OCR to
+  extract any visible text, and generates alternative text describing
+  each image or figure
+  \item Screen readers use the generated alternative text to convey
+  the uploaded image
   \item The generated alternative text can be edited, copied, or
-    dowloaded as a \texttt{.txt} file by the user if needed
+  downloaded as a \texttt{.txt} file by the user
   \item The user can view previously uploaded files and generated
-    alternative text for future reference
+  alternative text for future reference
 \end{enumerate}
+
 \textbf{Postcondition:}
 \begin{itemize}
   \item The user obtains accurate and accessible alternative text
-    that complies with AODA and WCAG 2.1 standards.
+  that complies with AODA and WCAG~2.1 standards
 \end{itemize}
+
+\subsubsection*{BUC-1: Authenticate User}
+
+\textbf{Goal:} Allow authorized McMaster users to access the system.\\
+\textbf{Related Work Partition:} Login
+
+\subsubsection*{BUC-2: Upload Images or Figures}
+
+\textbf{Goal:} Allow users to upload technical diagrams for alternative
+text generation.\\
+\textbf{Related Work Partition:} Upload Images/Figures
+
+\subsubsection*{BUC-3: Extract Embedded Text from Images}
+
+\textbf{Goal:} Extract visible text from uploaded images to support
+accurate alternative text generation.\\
+\textbf{Related Work Partition:} Optical Character Recognition (OCR)
+Text Extraction
+
+\subsubsection*{BUC-4: Generate Alternative Text}
+
+\textbf{Goal:} Generate descriptive alternative text using the
+uploaded image and extracted OCR data.\\
+\textbf{Related Work Partition:} Generate Alternative Text
+
+\subsubsection*{BUC-5: View Session History}
+
+\textbf{Goal:} Allow users to review images and alternative text
+generated during the current session.\\
+\textbf{Related Work Partition:} View History
+
 
 \section{Business Data Model and Data Dictionary}
 This section describes the structure and organization of the data flow throughout the system. It explains how the system’s components interact with the stored data, ensuring a consistent and well-defined understanding of the information processed by the tool.
