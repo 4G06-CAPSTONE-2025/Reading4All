@@ -757,36 +757,80 @@ their inputs and outputs, and the summary of the event.
   \end{tabular} 
 \end{table}
 
-\subsection{Specifying a Business Use Case (BUC)}
+\subsection{Specifying Business Use Cases (BUC)}
+
+To maintain alignment between the business use cases and the work
+partitions defined in Section~6.3, the system functionality is
+described using one primary, end-to-end Business Use Case (BUC),
+supported by several smaller BUCs. The primary BUC captures the
+overall user goal, while the supporting BUCs isolate and describe
+each major system interaction identified in the work partitioning.
+
+\subsubsection*{BUC-0: Generate Alternative Text for Technical Diagrams (Primary)}
+
 The project has one primary business use case, which aims to achieve
-the goal of providing users with visual and cognitive impairments an efficient
-and accessible way to generate accurate alternative text for academic
-images and figures.\\[1ex]
+the goal of providing users with visual and cognitive impairments an
+efficient and accessible way to generate accurate alternative text
+for academic images and figures.
+
 \textbf{Preconditions:}
 \begin{itemize}
   \item The user has access to the web tool
   \item The user has files containing diagrams or images requiring
-    alternative text
+  alternative text
 \end{itemize}
+
 \textbf{Scenario:}
 \begin{enumerate}
   \item The user logs into the system using their McMaster student credentials
   \item The user uploads one or more files (PNG, JPEG) containing diagrams
-  \item The AI model analyzes the uploaded file(s), performs OCR to
-    extract any visible text, and generates
-    alternative text describing each image/figure accurately
-  \item Screen readers use the generated alternative text to read
-    aloud and convey the uploaded image
+  \item The system analyzes the uploaded file(s), performs OCR to
+  extract any visible text, and generates alternative text describing
+  each image or figure
+  \item Screen readers use the generated alternative text to convey
+  the uploaded image
   \item The generated alternative text can be edited, copied, or
-    dowloaded as a \texttt{.txt} file by the user if needed
+  downloaded as a \texttt{.txt} file by the user
   \item The user can view previously uploaded files and generated
-    alternative text for future reference
+  alternative text for future reference
 \end{enumerate}
+
 \textbf{Postcondition:}
 \begin{itemize}
   \item The user obtains accurate and accessible alternative text
-    that complies with AODA and WCAG 2.1 standards.
+  that complies with AODA and WCAG~2.1 standards
 \end{itemize}
+
+\subsubsection*{BUC-1: Authenticate User}
+
+\textbf{Goal:} Allow authorized McMaster users to access the system.\\
+\textbf{Related Work Partition:} Login
+
+\subsubsection*{BUC-2: Upload Images or Figures}
+
+\textbf{Goal:} Allow users to upload technical diagrams for alternative
+text generation.\\
+\textbf{Related Work Partition:} Upload Images/Figures
+
+\subsubsection*{BUC-3: Extract Embedded Text from Images}
+
+\textbf{Goal:} Extract visible text from uploaded images to support
+accurate alternative text generation.\\
+\textbf{Related Work Partition:} Optical Character Recognition (OCR)
+Text Extraction
+
+\subsubsection*{BUC-4: Generate Alternative Text}
+
+\textbf{Goal:} Generate descriptive alternative text using the
+uploaded image and extracted OCR data.\\
+\textbf{Related Work Partition:} Generate Alternative Text
+
+\subsubsection*{BUC-5: View Session History}
+
+\textbf{Goal:} Allow users to review images and alternative text
+generated during the current session.\\
+\textbf{Related Work Partition:} View History
+
 
 \section{Business Data Model and Data Dictionary}
 This section describes the structure and organization of the data flow throughout the system. It explains how the system’s components interact with the stored data, ensuring a consistent and well-defined understanding of the information processed by the tool.
@@ -985,17 +1029,17 @@ inputs and outputs to the system and the related requirements.
     of JPEG and PNG.}\\[2mm]
     {\bf Rationale:} The system must process JPEG/PNG images in order
     to output alternative text. \\
-    {\bf Fit Criterion:} The system successfully takes as accepts
-    JPEG/PNG images and provides feedback to users when an invalid
-    file type is inputted.  \\
+   {\bf Fit Criterion:} The system accepts JPEG and PNG images with file sizes $\leq$ IMG\_SIZE\_BIG. 
+   Unsupported file formats or oversized files are rejected 
+   with an accessible error message displayed within T\_ERROR\_HANDLE.\\
     {\bf Priority:} High
   \item \emph{The system shall generate alternative text of uploaded
     images.}\\[2mm]
     {\bf Rationale:} The main purpose of the system is to make
     scientific diagrams more accessible by generating better
     alternative-text. \\
-    {\bf Fit Criterion:} For a set of test diagrams, the alternative
-    text generated must meet the pre-determined criteria.\\
+    {\bf Fit Criterion:} For a predefined evaluation dataset, 
+    at least R\_SUFFICIENCY of generated alternative text outputs are rated as “Sufficient” or higher according to the Evaluation Metrics Summary (Appendix~\ref{sec:evaluation-metrics}).\\
     {\bf Priority:} High
   \item \emph{The system shall output alternative text in a format
     compatible with screen readers.}\\[2mm]
@@ -1013,25 +1057,21 @@ inputs and outputs to the system and the related requirements.
     {\bf Rationale:} Providing users with an option to edit the
     outputted text, enables them to adjust the output to better meet
     their needs if needed.\\
-    {\bf Fit Criterion:} Users can add or delete text in any part of
-    the outputted alternative text and save their changes.\\
+    {\bf Fit Criterion:} Users can modify, save, and view edited alternative text within the same session, with changes reflected immediately in the interface and confirmed through visible feedback.\\
     {\bf Priority:} High
   \item \emph{The system shall store and display all inputted images
     and their generated alternative texts within a session.}\\[2mm]
     {\bf Rationale:} Storing previously inputted images and their
     generated alternative texts, allows users to easily review or
     reuse them without re-uploading. \\
-    {\bf Fit Criterion:} Users can see view all previously inputted
-    images with their generated alternative texts during the same session. \\
+    {\bf Fit Criterion:} All uploaded images and their corresponding generated or edited alternative text remain accessible to the user for the duration of the active session and are removed upon session termination.\\
     {\bf Priority:} Medium
   \item \emph{The system must validate users during login to confirm
     they are McMaster University students.}\\[2mm]
     {\bf Rationale:} User verification will ensure that only McMaster
     University students have access to the system, ensuring that the
     system is used by the intended users.  \\
-    {\bf Fit Criterion:} Users can only gain access to the system
-    features after their McMaster University credentials are
-    successfully validated.  \\
+    {\bf Fit Criterion:} Only users authenticated through McMaster University Single Sign-On (SSO) can access system functionality; unauthenticated users are denied access and redirected to the login page.\\
     {\bf Priority:} High
 \end{enumerate}
 
@@ -1752,40 +1792,61 @@ Inspirations can be taken from existing software components and libraries includ
 
 \subsection{Planning of the Development Phases}
 
-\textbf{Deliverables and Tentative Schedule}
+While the project follows the official course deliverable schedule,
+the development of Reading4All is organized into implementation phases
+that are tailored specifically to the project scope and requirements.
+Each phase reflects concrete development, validation, or delivery
+activities and clearly identifies what system functionality is
+addressed during that period.
 
-\begin{center}
-  \begin{tabularx}{\textwidth}{Xc}
-    \toprule
-    \textbf{Deliverables} & \textbf{Due Date} \\
-    \midrule
-    Problem Statement, Proof of Concept, and Development Plan & Week  04 \\
-    Software Requirements Specifications and Hazards Analysis (Revision 0) & Week 06 \\
-    Verification \& Validation Plan (Revision 0) & Week 08 \\
-    Design Document (Rev-1) & Week 10 \\
-    Proof of Concept Demonstration & Week 11 + 12 \\
-    Design Document (Revision 0) & Week 16 \\
-    Project Demonstration (Revision 0) & Week 18 + 19 \\
-    Verification \& Validation Report (Revision 0) & Week 22 \\
-    Final Demonstration (Revision 1) & Week 24 \\
-    Final Documentation & Week 26 \\
-    Capstone EXPO & Week 26 \\
-    \bottomrule
-  \end{tabularx}
-\end{center}
-
-\textbf{Sprint and Review Cycle}
-
+\subsubsection*{Phase 1: Requirements Finalization and Planning (Early January)}
+\textbf{Planned Activities:}
 \begin{itemize}
-    \item Each sprint will last approximately two weeks and conclude with a structured progress review.  
-    \item Milestones will be verified through peer review, supervisor evaluation, and automated testing.  
-    \item Task reprioritization and milestone adjustments will be based on feedback from the accessibility advisor and project supervisor.  
+  \item Finalize functional and non-functional requirements
+  \item Resolve feedback from document and peer reviews
+  \item Establish implementation priorities and constraints
 \end{itemize}
 
-\noindent By adopting this structured development plan, the team will ensure
-that Reading4All evolves into a reliable and maintainable system
-capable of producing accurate, accessible, and pedagogically useful
-alt text for academic diagrams.
+\subsubsection*{Phase 2: System Design and Architecture (Mid January)}
+\textbf{Planned Activities:}
+\begin{itemize}
+  \item Define system architecture and component boundaries
+  \item Design frontend, backend, and model integration interfaces
+  \item Prepare implementation and testing plans
+\end{itemize}
+
+\subsubsection*{Phase 3: Core Implementation and Initial Validation (February)}
+\textbf{Planned Activities:}
+\begin{itemize}
+  \item Implement core functionality (image upload, OCR, alt text generation)
+  \item Integrate accessibility features into the user interface
+  \item Conduct informal validation and early testing
+\end{itemize}
+
+\subsubsection*{Phase 4: Verification, Validation, and Refinement (March)}
+\textbf{Planned Activities:}
+\begin{itemize}
+  \item Perform formal verification and validation activities
+  \item Conduct usability and accessibility testing
+  \item Refine system outputs based on evaluation metrics and feedback
+\end{itemize}
+
+\subsubsection*{Phase 5: Finalization and Submission (Late March -- Early April)}
+\textbf{Planned Activities:}
+\begin{itemize}
+  \item Stabilize the system and resolve remaining issues
+  \item Prepare final documentation and presentation artifacts
+  \item Complete final submission deliverables
+\end{itemize}
+
+\noindent\textbf{Note on Schedule Completion:}
+The submission of the PDF of the poster represents the final
+substantive development and delivery milestone for the Reading4All
+project. Any tasks scheduled after this point are included solely as
+buffer time, administrative placeholders, or contingency periods and
+do not correspond to additional system functionality or implementation
+phases.
+
 
 \section{Migration to the New Product}
 \subsection{Requirements for Migration to the New Product}

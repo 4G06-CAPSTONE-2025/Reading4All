@@ -238,14 +238,14 @@ actually be implemented.
   \hline
   \textbf{AI Model Modules} & \textbf{Backend Modules} & \textbf{Frontend Modules} & \textbf{System Information Modules}\\ \hline
   
-  DataPreprocess-Module & AuthenticationService Module & UserInterface-Interactions Module & Logging Module\\ \hline
+  DataPreprocess Module & AuthenticationService Module & UserInterfaceInteractions Module & Logging Module\\ \hline
   WCAGCompliance Module & SessionManagement Module & MainScreen Module & ~\\ \hline
-  ModelOutput Module & ImageHandling-Validation Module & ShowHistoryScreen Module & ~\\ \hline
+  ModelOutput Module & ImageValidation Module & ShowHistoryScreen Module & ~\\ \hline
   AIModelTraining Module & BackendController Module & LogInScreen Module & ~\\ \hline
-  CaptionGeneration Module & ~ & UserInterface-Accessibility Module & ~\\ \hline
-  InternalMetric-Compliance Module & ~ & ~ & ~\\ \hline
+  CaptionGeneration Module & ~ & UserInterfaceAccessibility Module & ~\\ \hline
+  InternalMetricCompliance Module & ~ & ~ & ~\\ \hline
   FeedbackMetrics Module & ~ & ~ & ~\\ \hline
-  FeedbackIntegration Module & ~ & ~ & ~\\ \hline
+  FeedbackLoop Module & ~ & ~ & ~\\ \hline
   Feedback Module & ~ & ~ & ~\\ \hline
   
   \end{tabular}
@@ -272,7 +272,7 @@ actually be implemented.
     {AuthenticationService Module (\refstepcounter{mnum}\mthemnum \label{mod:auth_table} )(see \ref{mod:auth})}\\ &
     {SessionManagement Module (\refstepcounter{mnum}\mthemnum \label{mod:mess_table}) (see \ref{mod: mess})}\\ &
     {BackendController Module (\refstepcounter{mnum}\mthemnum \label{mod:bcm_table}) (see \ref{mod:bcm})}\\ &
-    {LoggingModule (\refstepcounter{mnum}\mthemnum \label{mod:logmod_table}) (see \ref{mod:logmod})}\\ &
+    {Logging Module (\refstepcounter{mnum}\mthemnum \label{mod:logmod_table}) (see \ref{mod:logmod})}\\ &
     {ImageValidation Module (\refstepcounter{mnum}\mthemnum \label{mod:imgvalidmod_table}) (see \ref{mod:imgvalidmod})}\\ & 
     {UserInterfaceInteractions Module (\refstepcounter{mnum}\mthemnum) \label{mod:uii_table} (see \ref{mod: uii})} \\ & 
     {MainScreen Module (\refstepcounter{mnum}\mthemnum) \label{mod:msm_table} (see \ref{mod: msm})} \\ &
@@ -425,7 +425,7 @@ The modules are defined as their own subsection and follow the following format:
   \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{UserInterfaceInterfactions Module (\mref{mod:uii_table})}
+\subsubsection{UserInterfaceInteractions Module (\mref{mod:uii_table})}
 \label{mod: uii}
 \begin{description}
   \item[Secrets:] The internal logic and mapping of user-triggered actions such as clicks and keyboard presses 
