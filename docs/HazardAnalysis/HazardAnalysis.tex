@@ -255,9 +255,10 @@ The \autoref{tab:fmea-reading4all} below outlines the hazards found within our s
     HA-5 & Alt Text Generation Model &
     Generates offensive/biased or Personal Interest Information (PII)–leaking text &
     Ethical/privacy risk; loss of user trust &
-    Lack of Model Training and Accuracy; no output filtering &
-    Add additional filters and checks for PII Data and offensive texts &
+    Insufficient training data diversity; lack of output validation &
+    Introduce a post-processing validation step where generated alt text is checked against accessibility standards (e.g., AODA, WCAG 2.1) and team-defined evaluation metrics before being presented to the user; outputs that fail these checks are blocked or flagged for review &
     SR-PR~2 \\ \hline
+
     
     HA-6 & Alt Text Generation Model &
     No output or empty alt text &
