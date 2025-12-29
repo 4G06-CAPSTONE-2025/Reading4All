@@ -1029,17 +1029,17 @@ inputs and outputs to the system and the related requirements.
     of JPEG and PNG.}\\[2mm]
     {\bf Rationale:} The system must process JPEG/PNG images in order
     to output alternative text. \\
-    {\bf Fit Criterion:} The system successfully takes as accepts
-    JPEG/PNG images and provides feedback to users when an invalid
-    file type is inputted.  \\
+   {\bf Fit Criterion:} The system accepts JPEG and PNG images with file sizes $\leq$ IMG\_SIZE\_BIG. 
+   Unsupported file formats or oversized files are rejected 
+   with an accessible error message displayed within T\_ERROR\_HANDLE.\\
     {\bf Priority:} High
   \item \emph{The system shall generate alternative text of uploaded
     images.}\\[2mm]
     {\bf Rationale:} The main purpose of the system is to make
     scientific diagrams more accessible by generating better
     alternative-text. \\
-    {\bf Fit Criterion:} For a set of test diagrams, the alternative
-    text generated must meet the pre-determined criteria.\\
+    {\bf Fit Criterion:} For a predefined evaluation dataset, 
+    at least R\_SUFFICIENCY of generated alternative text outputs are rated as “Sufficient” or higher according to the Evaluation Metrics Summary (Appendix~\ref{sec:evaluation-metrics}).\\
     {\bf Priority:} High
   \item \emph{The system shall output alternative text in a format
     compatible with screen readers.}\\[2mm]
@@ -1057,25 +1057,21 @@ inputs and outputs to the system and the related requirements.
     {\bf Rationale:} Providing users with an option to edit the
     outputted text, enables them to adjust the output to better meet
     their needs if needed.\\
-    {\bf Fit Criterion:} Users can add or delete text in any part of
-    the outputted alternative text and save their changes.\\
+    {\bf Fit Criterion:} Users can modify, save, and view edited alternative text within the same session, with changes reflected immediately in the interface and confirmed through visible feedback.\\
     {\bf Priority:} High
   \item \emph{The system shall store and display all inputted images
     and their generated alternative texts within a session.}\\[2mm]
     {\bf Rationale:} Storing previously inputted images and their
     generated alternative texts, allows users to easily review or
     reuse them without re-uploading. \\
-    {\bf Fit Criterion:} Users can see view all previously inputted
-    images with their generated alternative texts during the same session. \\
+    {\bf Fit Criterion:} All uploaded images and their corresponding generated or edited alternative text remain accessible to the user for the duration of the active session and are removed upon session termination.\\
     {\bf Priority:} Medium
   \item \emph{The system must validate users during login to confirm
     they are McMaster University students.}\\[2mm]
     {\bf Rationale:} User verification will ensure that only McMaster
     University students have access to the system, ensuring that the
     system is used by the intended users.  \\
-    {\bf Fit Criterion:} Users can only gain access to the system
-    features after their McMaster University credentials are
-    successfully validated.  \\
+    {\bf Fit Criterion:} Only users authenticated through McMaster University Single Sign-On (SSO) can access system functionality; unauthenticated users are denied access and redirected to the login page.\\
     {\bf Priority:} High
 \end{enumerate}
 
