@@ -50,4 +50,20 @@ To prepare the dataset:
 
 This preparation step is necessary to ensure that the model learns a clear mapping between visual elements and explanatory descriptions.
 
+\section{Dataset and Annotation Protocol}
+The dataset contains approximately 1,000 instructional physics diagrams, each paired with a human-written alt-text description intended for student use.
+
+Each caption:
+\begin{itemize}
+    \item is two to four sentences long
+    \item mentions only visible elements
+    \item describes what is happening in the diagram
+    \item focuses on entities and relationships
+    \item avoids speculation and unnecessary phrasing
+\end{itemize}
+
+Numeric values are described conceptually unless exact values are required for understanding.
+
+The data is split into training, validation, and test sets using an 80 percent, 10 percent, and 10 percent split, stratified by diagram type.
+
 \end{document}
