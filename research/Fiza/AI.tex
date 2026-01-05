@@ -13,6 +13,7 @@
 
 \begin{document}
 \maketitle
+\vspace{-1.5cm}
 
 \section*{Research Goal (February Demo)}
 The goal of this personal research is to develop a trained model that generates two to four sentence alt text for instructional physics diagrams by the February demo.
@@ -28,11 +29,10 @@ Generated captions will:
 
 This work is conducted independently on a separate development branch.
 
-\section{Problem Scope}
-Rather of addressing all STEM diagrams as one task, this research focuses on physics diagrams. This decreases variety in visual structure and language style, allowing the model to learn consistent, educationally relevant captioning behavior.
+\section{Refined Problem Scope}
+Rather than treating all STEM diagrams as a single task, this research narrows the problem to instructional physics diagrams used in first-year engineering courses. Broad STEM coverage would introduce large variation in diagram structure and annotation style and would require labeling and validating thousands of images across multiple disciplines, which is not realistic within the project timeline.
 
-
-The focus is on first-year engineering physics diagrams, including free-body diagrams, projectile motion, torque and rotational motion, electromagnetic coils, and basic circuit schematics.
+By focusing on first-year engineering physics, the task remains well-defined and feasible while still addressing a meaningful use case for students.
 
 \section{Dataset Alignment and Preparation}
 The dataset consists of instructional physics diagrams sourced from first-year engineering courses at McMaster University. These diagrams are designed to explain physical concepts such as force interactions, motion, torque, electromagnetic behavior, and basic circuit relationships.
