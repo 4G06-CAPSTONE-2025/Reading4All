@@ -34,4 +34,20 @@ Rather of addressing all STEM diagrams as one task, this research focuses on ph
 
 The focus is on first-year engineering physics diagrams, including free-body diagrams, projectile motion, torque and rotational motion, electromagnetic coils, and basic circuit schematics.
 
+\section{Dataset Alignment and Preparation}
+The dataset consists of instructional physics diagrams sourced from first-year engineering courses at McMaster University. These diagrams are designed to explain physical concepts such as force interactions, motion, torque, electromagnetic behavior, and basic circuit relationships.
+
+Some open-source diagram datasets, such as \textbf{SciCap} and \textbf{AI2D}, provide useful reference material but were created for different objectives. SciCap focuses on academic paper figure captions that often assume surrounding context, while AI2D emphasizes diagram structure rather than explanatory descriptions. Using these datasets directly would still require substantial relabeling to meet accessibility and instructional requirements.
+
+For this reason, this research prioritizes creating and labeling a task-aligned dataset rather than relying on open-source alternatives.
+
+To prepare the dataset:
+\begin{itemize}
+    \item diagrams are grouped by physics topic and diagram type
+    \item captions are normalized to a consistent instructional style
+    \item speculative or contextual language is removed
+\end{itemize}
+
+This preparation step is necessary to ensure that the model learns a clear mapping between visual elements and explanatory descriptions.
+
 \end{document}
