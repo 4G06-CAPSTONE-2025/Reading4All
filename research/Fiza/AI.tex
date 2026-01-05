@@ -49,6 +49,7 @@ To prepare the dataset:
 
 This preparation step is necessary to ensure that the model learns a clear mapping between visual elements and explanatory descriptions.
 
+
 \section{Dataset and Annotation Protocol}
 The dataset contains approximately 1,000 instructional physics diagrams, each paired with a human-written alt-text description intended for student use.
 
@@ -63,7 +64,9 @@ Each caption:
 
 Numeric values are described conceptually unless exact values are required for understanding.
 
-The data is split into training, validation, and test sets using an 80 percent, 10 percent, and 10 percent split, stratified by diagram type.
+The data is split into training, validation, and test sets using an 80 percent, 10 percent, and 10 percent split, stratified by diagram type.\\
+
+In later stages of this research, the dataset can be expanded with additional labeled diagrams. Data augmentation techniques may also be explored to improve robustness, provided they preserve the semantic structure and instructional meaning of the diagrams. This can overall increase dataset size as well. 
 
 \subsection{Data Labeling Format}
 
@@ -73,5 +76,17 @@ In this research, each training sample consists of an instructional physics diag
 Labels are stored in a simple JSON-based format, with each entry containing a reference to the image file and its caption.\\
 
 \texttt{\{ "image": "coil\_diagram\_12.png", "text": "A rectangular coil is placed in a uniform magnetic field..." \}}
+\section{Modeling Approach}
+
+The task is formulated as image-to-text generation, where an instructional physics diagram is mapped to a short natural language description. Given the dataset size, training a vision and language model from scratch is not practical, so a transfer learning approach is used.
+
+The selected model is BLIP-2 with a FLAN-T5 language backbone. BLIP-2 uses a frozen image encoder and a Querying Transformer to extract relevant visual information from the diagram, which is then passed to a pretrained language model to generate text conditioned on the image.
+
+This architecture is well suited for instructional diagrams because it emphasizes structured visual elements such as arrows, spatial relationships, and component interactions. The instruction-tuned FLAN-T5 backbone further supports generating concise, factual descriptions that follow predefined stylistic constraints.
+
+Model link:
+\begin{center}
+\url{https://huggingface.co/Salesforce/blip2-flan-t5-xl}
+\end{center}
 
 \end{document}
