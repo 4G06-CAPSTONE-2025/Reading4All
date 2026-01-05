@@ -1,0 +1,37 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\setstretch{1.15}
+
+\title{Personal Research Plan: Alt Text Generation for Instructional Physics Diagrams}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Research Goal (February Demo)}
+The goal of this personal research is to develop a trained model that generates two to four sentence alt text for instructional physics diagrams by the February demo.
+
+Generated captions will:
+\begin{itemize}
+    \item describe only elements visible in the diagram
+    \item explain what is happening in the diagram
+    \item focus on entities and relationships such as forces and directions
+    \item use factual, non-speculative language
+    \item avoid unnecessary phrases such as ``image of''
+\end{itemize}
+
+This work is conducted independently on a separate development branch.
+
+\section{Problem Scope}
+Rather of addressing all STEM diagrams as one task, this research focuses on physics diagrams. This decreases variety in visual structure and language style, allowing the model to learn consistent, educationally relevant captioning behavior.
+
+
+The focus is on first-year engineering physics diagrams, including free-body diagrams, projectile motion, torque and rotational motion, electromagnetic coils, and basic circuit schematics.
+
+\end{document}
