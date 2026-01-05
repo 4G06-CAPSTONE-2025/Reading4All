@@ -508,16 +508,16 @@ the requirements.
 
   \item{}
     {\bf Control:} Automatic\\
-    {\bf Initial State:} User logged in and has uploaded at least one
+    {\bf Initial State:} User is logged in and has uploaded at least one
     image with generated alt text.\\
-    {\bf Input:} Upload multiple images sequentially within the same
+    {\bf Input:} Upload more than \texttt{SESSION\_HISTORY\_MAX} images sequentially within the same
     session, then navigate through the session interface.\\
-    {\bf Output:} All previously uploaded images and their
+    {\bf Output:} The most recent \texttt{SESSION\_HISTORY\_MAX} uploaded images and their
     corresponding alt texts remain visible and accessible until the
-    user logs out or the session ends.\\
-    {\bf  Case Derivation:} According to \textbf{FR 5} criterion, all
-    uploaded images and their corresponding alternative texts should
-    remain visible within the same session. Therefore, the expected
+    user logs out or the session ends. Older history records are not displayed. \\
+    {\bf  Case Derivation:} According to \textbf{FR 5} criterion, users must be 
+    able to view previously uploaded images and their corresponding alternative texts within the same session. To ensure that high system performance, 
+    only the \texttt{SESSION\_HISTORY\_MAX} most recent records are displayed. \\
     outcome is that users can access and review all prior uploads
     without reloading or re-uploading them during an active session.\\
     {\bf How test will be performed:} The test can be performed by
@@ -548,7 +548,20 @@ the requirements.
     credentials and invalid credentials. The system’s behavior will
     be reviewed to confirm that only verified users gain access,
     while invalid attempts produce an appropriate error message.\\
+
+  \item{}
+    {\bf Control:} Automatic\\
+    {\bf Initial State:} User logged in and an active session is established.\\
+    {\bf Input:} User remains logged in for more than \texttt{SESSION\_TIMEOUT} without performing any actions.  \\
+    {\bf Output:} The session expires automatically and the user is prompted to login again before being able to access the \texttt{Reading4All} system again. 
+    {\bf  Case Derivation:} According to \textbf{FR 5} criterion, users must be 
+    able to view previously uploaded images and their corresponding alternative texts within the same session. 
+    To ensure the \texttt{Reading4All} system is as secure as possible, a user session must expire after the  \texttt{SESSION\_TIMEOUT} period of inactivity. This will help prevent unauthorized users from accessing the system. 
+    without reloading or re-uploading them during an active session.\\
+    {\bf How test will be performed:} The test can be performed logging into the system and not completing any actions for a duration exceeding the \texttt{SESSION\_TIMEOUT} and then attempting to access the system. This test will 
+    verify that a session is expiring as expected and users are prompted to login again. \\
 \end{enumerate}
+
 
 \subsection{Tests for Nonfunctional Requirements}
 
