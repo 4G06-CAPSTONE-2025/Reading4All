@@ -1183,6 +1183,8 @@ in the \textit{Reading4All} system.
   SFWR\_RELEASES & previous 2 releases \\
   FEEDBACK\_TIME & 1 second \\
   CAPACITY\_RTIME & 10 seconds \\
+  SESSION\_TIMEOUT & 2 hours \\
+  SESSION\_HISTORY\_MAX & 10 images \\
 
 \bottomrule
 \end{longtable}
@@ -1361,8 +1363,16 @@ Assistive technology to enlarge screen content.
 \paragraph*{Screen Reader}
 Assistive technology that reads text aloud.
 
+\paragraph*{Session}
+A session in the \textit{Reading4All} is defined as the time interval beginning
+when a user successfully logs in and is authenticated and ending when the user explicitly logs out or the session expires due to inactivity or timeout. 
+Sessions have a maximum duration defined by \texttt{SESSION\_TIMEOUT}.
+Session data which includes the users uploaded images and any generated, as well as modified alt-text is stored in the system only for the duration of this session.
+
 \paragraph*{Session History}
-Record of user uploads and generated alt text during the current session.
+Record of user uploads and their associated alt text during the current session. The session history 
+will initially store up to \texttt{SESSION\_HISTORY\_MAX} images and their associated alt text. Once this limit is exceeded, older records will be discarded to ensure that 
+the \textit{Reading4All} does not experience any performance limitations. 
 
 \paragraph*{Stakeholder}
 Anyone affected by or influencing the system.
