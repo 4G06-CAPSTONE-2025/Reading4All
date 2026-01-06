@@ -271,6 +271,10 @@ strategies used for SRS verification:
   specific requirements we have outlined and keep them in
   mind during future validation of our system. 
 \end{itemize}
+All feedback obtained throughout the team, peer and supervisor reviews will be documented through GitHub issues in the \textit{Reading4All} Repository. 
+Each issue title will identify the related document and the description will outline the identified problem. Furthermore, the issue will be labeled accordingly. 
+Issues will only be closed once the problem has been resolved and verified through review from another team member and will be linked to the pull request that implements the fix.  
+
 
 
 \subsection{Design Verification}
@@ -294,6 +298,8 @@ The design verification will be accomplished through the following:
     The formal review will also be conducted in Week 10 and Week 16
     following the due date for submission of these design documents.
 \end{itemize}
+The design verification process will follow the same approach as SRS Verification, with Github 
+Issues being used to track any issues identified during the formal and peer review. 
 
 \subsection{Verification and Validation Plan Verification}
 
@@ -336,14 +342,18 @@ The following details the strategies used for verifying the implementation plan:
   Static analyzers will be used to automatically review any committed
   code for errors, and ensure the implementation meets the specified
   coding standard.
+
   Tools such as Flake8 and Coverage.py will be integrated into our
   development process. Flake8 will identify syntax and style issues,
   while Coverage.py can verify that any new code written has unit tests
   associated.
+
   Additionally, all unit tests will be executed automatically through
   GitHub Actions whenever new code is pushed or a pull request is
   opened. This will ensure that recent changes do not introduce any
-  errors into previously completed features.
+  errors into previously completed features. Any feature that causes previously passing unit tests to fail will not be merged into the \textit{Reading4All} Repository; 
+  this will ensure that the system remains stable and correct.
+
   Using these static analyzers and workflows will help us to
   continuously verify our implementation, ensuring it meets the design
   requirements, functional and non functional requirements.
@@ -358,7 +368,9 @@ The following details the strategies used for verifying the implementation plan:
   the implementation decisions. Additionally it also helps verify that
   the code fulfills the intended functionality.
 \end{itemize}
-
+All issues and errors identified through static analyzers and code inspections will be documented 
+using GitHub issues. Each issue will include a clear description of the problem and labelled accordingly. 
+Once a fix has been implemented, the GitHub Issue will be linked to the related PR and will only be closed after the fix has been verified through code review or manual testing. 
 
 \subsection{Automated Testing and Verification Tools}
 The programming language being used in the front-end will be Hypertext Markup Language (HTML) and 
