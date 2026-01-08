@@ -5,6 +5,23 @@ from datasets import load_dataset
 from transformers import AutoProcessor, BlipForConditionalGeneration, TrainingArguments, Trainer, default_data_collator
 
 
+'''
+This is what input dir should look like
+<BASE_DIR>/
+  train.csv (or train_rel.csv)
+  val.csv   (or val_rel.csv)
+  data/
+    train/
+      img_0001.png
+      img_0002.png
+      ...
+    val/
+      img_0101.png
+      img_0102.png
+      ...
+      where the csv files have two columns: 'image' and 'text'
+      'image' column has relative paths to images like 'data/train/img_0001.png
+      '''
 MODEL_ID = "Salesforce/blip-image-captioning-base"
 BASE_DIR = "PATH/TO/YOUR/DATASET"
 TRAIN_CSV = os.path.join(BASE_DIR, "train_rel.csv")
