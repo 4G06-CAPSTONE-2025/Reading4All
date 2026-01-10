@@ -271,6 +271,11 @@ strategies used for SRS verification:
   specific requirements we have outlined and keep them in
   mind during future validation of our system. 
 \end{itemize}
+All feedback obtained throughout the team, peer and supervisor reviews will be documented through GitHub issues in the \textit{Reading4All} Repository. 
+The team member responsible for the requirement type being reviewed (can be found in Table ~\ref{tab:data-dictionary-reading4all}) will create the GitHub Issue. 
+Each issue title will identify the related document and the description will outline the identified problem. Furthermore, the issue will be labeled accordingly. 
+Issues will only be closed once the problem has been resolved and verified through review from another team member and will be linked to the pull request that implements the fix.  
+
 
 
 \subsection{Design Verification}
@@ -294,6 +299,9 @@ The design verification will be accomplished through the following:
     The formal review will also be conducted in Week 10 and Week 16
     following the due date for submission of these design documents.
 \end{itemize}
+The design verification process will follow the same approach as SRS Verification, with Github 
+Issues being used to track any issues identified during the formal and peer review. Furthermore, issues identified during peer reviews
+are made by the reviewing team, while issues found in the formal review will be made by a team member on the responsible sub-team (AI, Backend, Frontend).
 
 \subsection{Verification and Validation Plan Verification}
 
@@ -336,14 +344,18 @@ The following details the strategies used for verifying the implementation plan:
   Static analyzers will be used to automatically review any committed
   code for errors, and ensure the implementation meets the specified
   coding standard.
+
   Tools such as Flake8 and Coverage.py will be integrated into our
   development process. Flake8 will identify syntax and style issues,
   while Coverage.py can verify that any new code written has unit tests
   associated.
+
   Additionally, all unit tests will be executed automatically through
   GitHub Actions whenever new code is pushed or a pull request is
   opened. This will ensure that recent changes do not introduce any
-  errors into previously completed features.
+  errors into previously completed features. Any feature that causes previously passing unit tests to fail will not be merged into the \textit{Reading4All} Repository; 
+  this will ensure that the system remains stable and correct.
+
   Using these static analyzers and workflows will help us to
   continuously verify our implementation, ensuring it meets the design
   requirements, functional and non functional requirements.
@@ -358,7 +370,9 @@ The following details the strategies used for verifying the implementation plan:
   the implementation decisions. Additionally it also helps verify that
   the code fulfills the intended functionality.
 \end{itemize}
-
+All issues and errors identified through static analyzers and code inspections will be documented 
+using GitHub issues. The team member who identifies the issue will be responsible for creating the issue. Each issue will include a clear description of the problem and labelled accordingly. 
+Once a fix has been implemented, the GitHub Issue will be linked to the related PR and will only be closed after the fix has been verified through code review or manual testing. 
 
 \subsection{Automated Testing and Verification Tools}
 The programming language being used in the front-end will be Hypertext Markup Language (HTML) and 
@@ -508,17 +522,17 @@ the requirements.
 
   \item{}
     {\bf Control:} Automatic\\
-    {\bf Initial State:} User logged in and has uploaded at least one
+    {\bf Initial State:} User is logged in and has uploaded at least one
     image with generated alt text.\\
-    {\bf Input:} Upload multiple images sequentially within the same
+    {\bf Input:} Upload more than \texttt{SESSION\_HISTORY\_MAX} images sequentially within the same
     session, then navigate through the session interface.\\
-    {\bf Output:} All previously uploaded images and their
+    {\bf Output:} The most recent \texttt{SESSION\_HISTORY\_MAX} uploaded images and their
     corresponding alt texts remain visible and accessible until the
-    user logs out or the session ends.\\
-    {\bf  Case Derivation:} According to \textbf{FR 5} criterion, all
-    uploaded images and their corresponding alternative texts should
-    remain visible within the same session. Therefore, the expected
-    outcome is that users can access and review all prior uploads
+    user logs out or the session ends. Older history records are not displayed. \\
+    {\bf  Case Derivation:} According to \textbf{FR 5} criterion, users must be 
+    able to view previously uploaded images and their corresponding alternative texts within the same session. To ensure a high system performance, 
+    only the \texttt{SESSION\_HISTORY\_MAX} most recent records are displayed. \\
+    Therefore, the expected outcome is that users can access and review only the \texttt{SESSION\_HISTORY\_MAX} prior uploads
     without reloading or re-uploading them during an active session.\\
     {\bf How test will be performed:} The test can be performed by
     uploading multiple images within the same session, then
@@ -548,7 +562,20 @@ the requirements.
     credentials and invalid credentials. The system’s behavior will
     be reviewed to confirm that only verified users gain access,
     while invalid attempts produce an appropriate error message.\\
+
+  \item{}
+    {\bf Control:} Automatic\\
+    {\bf Initial State:} User logged in and an active session is established.\\
+    {\bf Input:} User remains logged in for more than \texttt{SESSION\_TIMEOUT} without performing any actions.  \\
+    {\bf Output:} The session expires automatically and the user is prompted to login again before being able to access the \texttt{Reading4All} system again. 
+    {\bf  Case Derivation:} According to \textbf{FR 5} criterion, users must be 
+    able to view previously uploaded images and their corresponding alternative texts within the same session. 
+    To ensure the \texttt{Reading4All} system is as secure as possible, a user session must expire after the  \texttt{SESSION\_TIMEOUT} period of inactivity. This will help prevent unauthorized users from accessing the system. 
+    without reloading or re-uploading them during an active session.\\
+    {\bf How test will be performed:} The test can be performed logging into the system and not completing any actions for a duration exceeding the \texttt{SESSION\_TIMEOUT} and then attempting to access the system. This test will 
+    verify that a session is expiring as expected and users are prompted to login again. \\
 \end{enumerate}
+
 
 \subsection{Tests for Nonfunctional Requirements}
 
@@ -1183,6 +1210,8 @@ in the \textit{Reading4All} system.
   SFWR\_RELEASES & previous 2 releases \\
   FEEDBACK\_TIME & 1 second \\
   CAPACITY\_RTIME & 10 seconds \\
+  SESSION\_TIMEOUT & 2 hours \\
+  SESSION\_HISTORY\_MAX & 10 images \\
 
 \bottomrule
 \end{longtable}
@@ -1361,8 +1390,16 @@ Assistive technology to enlarge screen content.
 \paragraph*{Screen Reader}
 Assistive technology that reads text aloud.
 
+\paragraph*{Session}
+A session in the \textit{Reading4All} is defined as the time interval beginning
+when a user successfully logs in and is authenticated and ending when the user explicitly logs out or the session expires due to inactivity or timeout. 
+Sessions have a maximum duration defined by \texttt{SESSION\_TIMEOUT}.
+Session data which includes the users uploaded images and any generated, as well as modified alt-text is stored in the system only for the duration of this session.
+
 \paragraph*{Session History}
-Record of user uploads and generated alt text during the current session.
+Record of user uploads and their associated alt text during the current session. The session history 
+will initially store up to \texttt{SESSION\_HISTORY\_MAX} images and their associated alt text. Once this limit is exceeded, older records will be discarded to ensure that 
+the \textit{Reading4All} does not experience any performance limitations. 
 
 \paragraph*{Stakeholder}
 Anyone affected by or influencing the system.
