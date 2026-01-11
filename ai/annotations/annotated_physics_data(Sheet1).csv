@@ -18,7 +18,7 @@ A peculiar observation within the spectrum is the relatively narrow band of visi
 This band, nestled within a minuscule fraction of the entire spectrum, stands out because of its biological significance and the way it demarcates the boundaries between non-ionizing and ionizing radiation."
 3,1,PHYS-3-1,"A detailed schematic representation of an Extreme Ultraviolet (EUV) Lithography Exposure System, illustrating its components and functionality. The diagram is segmented into various parts, clearly labeled to indicate their roles. It features a reflective mask, EUV source collector, and illuminator optics, all aligned to focus EUV radiation onto a silicon wafer, specifically stated to be 300 mm in diameter. The system operates using 13.5 nm radiation, which is crucial for achieving high-resolution patterns necessary for advanced semiconductor manufacturing. Key annotations highlight that the optics are entirely reflective and that the entire optical pathway functions within a vacuum environment to prevent interference and ensure accuracy. The organization of this exposure system emphasizes the integration of precise optics in lithography."
 4,1,PHYS-4-1,"The graph displays the cumulative shift of pulsar-orbital time in seconds on the vertical axis against the year on the horizontal axis, ranging from 1975 to 2005. The data points are marked with error bars and follow a smooth, downward-curving line, illustrating a trend of increasing negative cumulative shift over time. The line labeled ""General Relativity prediction"" closely follows the data points, indicating consistency between observed orbital decay and theoretical predictions. The ""Line of zero orbital decay"" is displayed above the data points and prediction line, delineating the lack of orbital decay. The primary finding is that the observed data aligns well with the General Relativity prediction, reinforcing the theory's validity in describing the decay of orbits over time."
-5,1,PHYS-5-1,"Diagram shows five 2?D crystal lattice (Bravais) types as unit cells with lattice vectors a1 and a2 and the angle ? between them. Each cell also marks its symmetry (mirror lines and rotation axes). Here, an “n?fold rotation” means the pattern looks the same after a rotation of 360°/n. Oblique: a1 and a2 at an arbitrary angle (no right angles), with the least symmetry. Rectangular: a1 ? a2 (right angles) with 2?fold rotation symmetry. Centered rectangular: rectangular cell with an extra lattice point at the center, giving additional symmetry compared to simple rectangular. Square: equal sides with 4?fold rotation symmetry (invariant under 90° turns). Hexagonal: a1 and a2 at 60°/120° with 6?fold rotation symmetry."
+5,1,PHYS-5-1,"Diagram shows five 2?D crystal lattice (Bravais) types as unit cells with lattice vectors a1 and a2 and the angle ? between them. Each cell also marks its symmetry (mirror lines and rotation axes). Here, an ï¿½n?fold rotationï¿½ means the pattern looks the same after a rotation of 360ï¿½/n. Oblique: a1 and a2 at an arbitrary angle (no right angles), with the least symmetry. Rectangular: a1 ? a2 (right angles) with 2?fold rotation symmetry. Centered rectangular: rectangular cell with an extra lattice point at the center, giving additional symmetry compared to simple rectangular. Square: equal sides with 4?fold rotation symmetry (invariant under 90ï¿½ turns). Hexagonal: a1 and a2 at 60ï¿½/120ï¿½ with 6?fold rotation symmetry."
 6,1,PHYS-6-1,"The illustration presents varieties of crystal lattice structures: cubic body-centered (bcc (body-centered cubic)), cubic face-centered (fcc (face-centered cubic)), and hexagonal.
 Each structure is characterized by a distinct arrangement of atoms, represented by spheres, and the connecting lines indicate bonds within the lattice.
 The bcc structure features atoms at each corner of a cube and an additional atom at the center of the cube.
@@ -43,22 +43,22 @@ Key elements include the dimensions labeled as ?? for diameter and ?? indicating
 There are also markings for ?? representing the number of turns, and ?? defined as the pitch, which is the distance between successive turns.
 The light blue color of the coil emphasizes its three-dimensionality and spiraling form."
 18,1,PHYS-18-1,"The illustration presents two distinct scenarios related to electromagnetic fields and their behavior concerning closed surfaces. On the left, the diagram represents the electric field around a positive charge (+Q), signifying that the net electric flux through the closed surface is equal to the total charge enclosed, as indicated by the expression ? = Q. The field lines emanate outward from the charge, clearly showing the directional flow and density of the electric field. On the right, the illustration depicts a magnetic field around a closed surface with no enclosed magnetic charge (N and S denote a magnetic dipole), where the net magnetic flux is represented as ? = 0, indicating that magnetic field lines do not start or end within the surface. Both diagrams utilize arrows to communicate the direction of field lines, emphasizing the divergence of electric fields and the absence of magnetic monopoles."
-19,1,PHYS-19-1,"The horizontal ground on which the weightlifter stands is labeled “y equals 0.” The motion of barbell lift at three positions is shown. In the final position, the barbell is right above the lifter’s head with arms fully extended vertically. In this position, two arrows point from the center of the barbell: vector F subscript weightlifter points vertically upward along the vertical axis, and vector w equals vector F subscript gravity points vertically downward, also along the vertical axis. The vertical distance between the ground and the bottom of the barbell is h."
+19,1,PHYS-19-1,"The horizontal ground on which the weightlifter stands is labeled ï¿½y equals 0.ï¿½ The motion of barbell lift at three positions is shown. In the final position, the barbell is right above the lifterï¿½s head with arms fully extended vertically. In this position, two arrows point from the center of the barbell: vector F subscript weightlifter points vertically upward along the vertical axis, and vector w equals vector F subscript gravity points vertically downward, also along the vertical axis. The vertical distance between the ground and the bottom of the barbell is h."
 20,1,PHYS-20-1,"Two opposite poles of two different magnets are placed near to each other. The magnetic flux density 'B' (marked in green) is coming out of north pole and entering into the south pole. There is conductor in between the opposite magnetic pole, carrying a current 'I' (marked in red). The magnetic force 'Fm' is acting downward, perpendicular to the magnetic flux density."
 21,1,PHYS-21-1,Two current flowing loops (indicated as '1' and '2') are placed closely. A vector line 'R21' is connecting two differential elements from these two separate loops.
 22,1,PHYS-22-1,"On left side, a rectangular loop carrying a current 'I' in the magnetic flux density 'B' (marked in blue). The length and width of the rectangular loop are 'L' and 'W', respectively. On right side, the width of the rectangular loop is at an angle with the magnetic flux density 'B' (marked in blue). The forces are acting perpendicular to the flux density 'B'."
 23,1,PHYS-23-1,"The image represents a three-dimensional coordinate system illustrating spherical coordinates, characterized by the radius ??, polar angle ??, and azimuthal angle ??. Key axes are labeled: the x-axis extends horizontally, the y-axis is perpendicular to it, and the z-axis extends vertically. A circular shape, marked in blue, signifies the plane where the angles ?? and ?? are defined, while dashed lines represent the projection of these coordinates onto the respective axes. This system emphasizes the relationship between the spherical coordinates and their Cartesian counterparts, highlighting how points in space can be described through varying combinations of ??, ??, and ??."
-24,1,PHYS-24-1,"Nine panels (a–i) illustrate one full cycle of simple harmonic motion for a horizontal spring–block system. A block on the right is attached to a spring fixed to a wall on the left. A horizontal position line is labeled x = ?A, x = 0 (equilibrium), and x = +A. Long arrows represent the larger?magnitude vector and short arrows the smaller?magnitude vector; arrows are labeled for spring force F and velocity v.
+24,1,PHYS-24-1,"Nine panels (aï¿½i) illustrate one full cycle of simple harmonic motion for a horizontal springï¿½block system. A block on the right is attached to a spring fixed to a wall on the left. A horizontal position line is labeled x = ?A, x = 0 (equilibrium), and x = +A. Long arrows represent the larger?magnitude vector and short arrows the smaller?magnitude vector; arrows are labeled for spring force F and velocity v.
 Stage 1 (starting stretched at +A): v = 0 at the turning point; the spring force points left (toward equilibrium). The block accelerates left.
 Stage 2 (moving toward equilibrium): as x approaches 0, the restoring force decreases in magnitude while speed increases; at x = 0, F = 0 and v is maximum.
 Stage 3 (compressed at ?A): v = 0 at the opposite turning point; the spring force points right. The block accelerates right back toward equilibrium.
 Stage 4 (returning): the pattern repeats as it passes x = 0 again (v maximum, F = 0) and returns to x = +A."
 25,1,PHYS-25-1,A magnet bar is placed in a magnetic field density 'B' (marked in blue). Two forces are acting on opposite direction at two poles of the magnet bar. The torque is trying to align the bar in the direction of the applied magnetic field.
 26,1,PHYS-26-1,"Table/diagram relates quantum numbers to orbital shapes. Rows group orbitals by principal quantum number n and orbital type l (s, p, d, f, g). Columns correspond to different |m?| values, showing how orbitals of the same type can differ mainly by orientation.
-Key patterns: s orbitals (l = 0, m? = 0) are spherical with no angular nodes. p orbitals (l = 1) are two?lobed (“dumbbell”) with one nodal plane; different m? values correspond to different orientations. d orbitals (l = 2) are four?lobed (or a two?lobed shape with a torus), with two angular nodes; f and g orbitals show progressively more lobes and nodal surfaces as l increases. As n increases (down the table), orbitals of the same l become larger and may show additional radial nodes (shells) in the probability density."
+Key patterns: s orbitals (l = 0, m? = 0) are spherical with no angular nodes. p orbitals (l = 1) are two?lobed (ï¿½dumbbellï¿½) with one nodal plane; different m? values correspond to different orientations. d orbitals (l = 2) are four?lobed (or a two?lobed shape with a torus), with two angular nodes; f and g orbitals show progressively more lobes and nodal surfaces as l increases. As n increases (down the table), orbitals of the same l become larger and may show additional radial nodes (shells) in the probability density."
 27,1,PHYS-27-1,"On left side, magnetic dipoles, in small volume, with scattered direction when no external magnetic field is applied. That means B equals 0. On right side, magnetic dipoles, in small volume, oriented in the same direction as applied magnetic field 'B'."
 28,1,PHYS-28-1,"The image features two diagrams illustrating the concept of the cross product of two vectors, A and B.
-On the left, a hand gesture symbolizes the right-hand rule for determining the direction of the resultant vector, ??×??, with the thumb pointing in the direction of the resultant and the fingers curling from vector A to vector B.
+On the left, a hand gesture symbolizes the right-hand rule for determining the direction of the resultant vector, ??ï¿½??, with the thumb pointing in the direction of the resultant and the fingers curling from vector A to vector B.
 The angle ?? is marked, suggesting the orientation between the two vectors.
 On the right, a conical surface visually represents the magnitude of the cross product as the area of the parallelogram formed by A and B, with the same vectors and their resultant indicated.
 The primary implication is the use of the right-hand rule and visualization of the cross product."
@@ -72,11 +72,11 @@ The primary implication is the use of the right-hand rule and visualization of t
 36,1,PHYS-36-1,"The illustration features a series of stylized diagrams that represent the interaction between waves or particles as they transition through a medium. The leftmost section depicts waves propagating linearly, indicated by an arrow. As they reach a boundary in the middle, they appear to encounter resistance. The right section illustrates the resulting phenomena, with lines radiating outward to signify the scattering or diffusion of these waves into the surrounding environment. Key elements include the direction of wave travel, the imposition of a barrier, and the dispersal pattern that highlights changes in behavior upon interaction with different media."
 37,1,PHYS-37-1,"The diagram illustrates a lithography process, focusing on the differences between two exposure scenarios represented on the left and right sides. It consists of five key layers: the mask pattern at the top, followed by representations of the near field and far field light distributions, intensity at resist, and the resulting transferred pattern. The mask pattern shows alternating regions of varying opacity, while the near and far field sections depict the light intensity variations through the use of solid and wavy lines, indicating differences in light behavior during exposure. Color plays a significant role, with orange and blue lines symbolizing different light fields, and green lines highlighting intensity variations at the resist. The transferred pattern at the bottom showcases the final outcome with distinguishable features that mimic the mask design. The primary finding illustrates how variations in exposure conditions can directly affect the quality and clarity of the transferred pattern, emphasizing the significance of optimizing lithographic processes in semiconductor fabrication."
 38,1,PHYS-38-1,"The representation includes a series of diagrams illustrating a scientific process, complemented by a molecular structure and a histogram. The first diagram outlines a process involving multiple components, with labeled distances of 1 m and indications of particle interactions and behavior in a system under a voltage of about -10 kV. The second part showcases a molecular structure with various atoms depicted, relating to specific chemical groups. Lastly, a histogram presents frequency distribution against mass, with values ranging from 20,000 to 30,000 Da, indicating quantifiable data points in a series of peaks. These peaks suggest distinct mass distributions, likely representing different molecular species, highlighting variations in their abundance or stability."
-39,1,PHYS-39-1,"The image presents a scatter plot with a distinct pattern depicting counts recorded over time against the detector position, measured in micrometers (µm). The x-axis is labeled ""Detector position in µm,"" ranging from -150 to +150, while the y-axis indicates ""Counts in 100 s,"" with values reaching up to 400. The data points, represented as grey dots, showcase a series of peaks and troughs, indicating fluctuations in counts as the detector position changes. Notably, there are pronounced peaks around the center, particularly at the position of 0 µm, suggesting a significant concentration of counts at this detector position, while several smaller peaks are also visible on either side, indicating secondary areas of interest. The overall trend demonstrates a clear periodicity, emphasizing areas of higher detection efficacy, which may imply underlying physical phenomena or interactions being measured."
+39,1,PHYS-39-1,"The image presents a scatter plot with a distinct pattern depicting counts recorded over time against the detector position, measured in micrometers (ï¿½m). The x-axis is labeled ""Detector position in ï¿½m,"" ranging from -150 to +150, while the y-axis indicates ""Counts in 100 s,"" with values reaching up to 400. The data points, represented as grey dots, showcase a series of peaks and troughs, indicating fluctuations in counts as the detector position changes. Notably, there are pronounced peaks around the center, particularly at the position of 0 ï¿½m, suggesting a significant concentration of counts at this detector position, while several smaller peaks are also visible on either side, indicating secondary areas of interest. The overall trend demonstrates a clear periodicity, emphasizing areas of higher detection efficacy, which may imply underlying physical phenomena or interactions being measured."
 40,1,PHYS-40-1,"The representation showcases a scatter plot with a smooth curve fitted through the data points. The x-axis is labeled ""Transverse displacement (nm),"" ranging from 0 to 1,000 nanometers, while the y-axis is marked ""Norm counts,"" extending up to 1.5. Blue dots indicate individual data points, highlighting their distribution along the curve. The black line illustrates a sinusoidal trend, revealing periodic fluctuations in normalized counts in response to varying transverse displacements. The primary finding indicates a consistent oscillatory pattern, suggesting a relationship between displacement and counts that could be significant in understanding underlying physical phenomena."
 41,1,PHYS-41-1,"This scatter plot illustrates the relationship between the year and a metric labeled ""Macroscopicity,"" with the years ranging from 1980 to 2020 on the x-axis and values of Macroscopicity from 5 to 15 on the y-axis. Different shapes and colors represent distinct categories or groups, such as blue crosses, green circles, purple squares, and a red diamond, each indicating specific data points related to the time frame. The trend suggests a gradual increase in Macroscopicity over the years, particularly noticeable after 2000, where several points cluster at higher values. The overall implication emphasizes a positive trajectory in Macroscopicity, suggesting advancements or changes in the underlying subject matter over the decades."
-42,1,PHYS-42-1,"Multi?panel figure (a–e) compares how different laser beam phase/wavefront configurations change the interference (intensity) pattern inside a structured medium (e.g., a photonic crystal). Each panel shows an input wavefront (with propagation direction arrows labeled kx and kz), the medium region, and the resulting intensity/interference pattern.
-Overall trend: changing the input wavefront (tilt, phase ramp, or curvature) changes where constructive and destructive interference occur—seen as shifts in fringe orientation, spacing, and symmetry. Panel (a) shows a cross?like interference pattern. Panels (b–e) show variants with more linear (stripe?like) fringes versus more radial/curved patterns, indicating that a linear phase variation produces approximately parallel fringes, while a radial/curved phase produces more circular or curved interference features. The comparison is meant to connect “how the beam is shaped” to “how the intensity distributes” in the medium."
+42,1,PHYS-42-1,"Multi?panel figure (aï¿½e) compares how different laser beam phase/wavefront configurations change the interference (intensity) pattern inside a structured medium (e.g., a photonic crystal). Each panel shows an input wavefront (with propagation direction arrows labeled kx and kz), the medium region, and the resulting intensity/interference pattern.
+Overall trend: changing the input wavefront (tilt, phase ramp, or curvature) changes where constructive and destructive interference occurï¿½seen as shifts in fringe orientation, spacing, and symmetry. Panel (a) shows a cross?like interference pattern. Panels (bï¿½e) show variants with more linear (stripe?like) fringes versus more radial/curved patterns, indicating that a linear phase variation produces approximately parallel fringes, while a radial/curved phase produces more circular or curved interference features. The comparison is meant to connect ï¿½how the beam is shapedï¿½ to ï¿½how the intensity distributesï¿½ in the medium."
 43,1,PHYS-43-1,"The illustration presents a series of horizontal lines representing a specific crystallographic orientation, labeled as the {10} orientation. Each line is populated with evenly spaced dots, which denote atomic or molecular positions within the crystal lattice. A key measurement, denoted by ""D,"" is indicated between two of the lines, suggesting a relevant distance or spacing between the different layers of the lattice. This spacing is crucial for understanding material properties like density and strength. The arrangement highlights the uniformity and periodic nature of the crystalline structure, which is vital for applications in materials science and engineering. The visual representation allows for a quick grasp of the spatial relationships between various components of the crystalline framework."
 44,1,PHYS-44-1,"The graph presents a plot with temperature ratios on the x-axis, labeled as ??/???? ranging from 0 to 1.25, and two distinct curves representing ????1 (in blue) and ????2 (in red) on the y-axis. The blue curve for ????1 is a monotonically increasing function, starting from near zero at ??/????=0 and approaching a value close to 0.5 as ??/???? increases, indicating a relatively moderate response to temperature changes. In contrast, the red curve for ????2 exhibits a decreasing trend, starting at 1 and dropping significantly as the temperature ratio increases. This behavior suggests that as the system temperature rises, the phenomena represented by ????2 becomes less favorable, while ????1 increases, showing a contrasting relationship between these two parameters. The intersection of these curves would provide key insights into the critical conditions influencing the system's behavior."
 45,1,PHYS-45-1,"STM (scanning tunneling microscopy) Image of NbSe^2, 1 T, 1.8K. Scale is 6000 Angstroms and the atoms are arranged equally spaced out."
@@ -89,49 +89,49 @@ Overall trend: changing the input wavefront (tilt, phase ramp, or curvature) cha
 2,2,PHYS-2-2,
 3,2,PHYS-3-2,
 4,2,PHYS-4-2,
-5,2,,
-6,2,,
-7,2,,
-8,2,,
-9,2,,
-10,2,,
-11,2,,
-12,2,,
-13,2,,
-14,2,,
-15,2,,
-16,2,,
-17,2,,
-18,2,,
-19,2,,
-20,2,,
-21,2,,
-22,2,,
-23,2,,
-24,2,,
-25,2,,
-26,2,,
-27,2,,
-28,2,,
-29,2,,
-30,2,,
-31,2,,
-32,2,,
-33,2,,
-34,2,,
-35,2,,
-36,2,,
-37,2,,
-38,2,,
-39,2,,
-40,2,,
-41,2,,
-42,2,,
-43,2,,
-44,2,,
-45,2,,
-46,2,,
-47,2,,
-48,2,,
-49,2,,
-50,2,,
+5,2,PHYS-5-2,
+6,2,PHYS-6-2,
+7,2,PHYS-7-2,
+8,2,PHYS-8-2,
+9,2,PHYS-9-2,
+10,2,PHYS-10-2,
+11,2,PHYS-11-2,
+12,2,PHYS-12-2,
+13,2,PHYS-13-2,
+14,2,PHYS-14-2,
+15,2,PHYS-15-2,
+16,2,PHYS-16-2,
+17,2,PHYS-17-2,
+18,2,PHYS-18-2,
+19,2,PHYS-19-2,
+20,2,PHYS-20-2,
+21,2,PHYS-21-2,
+22,2,PHYS-22-2,
+23,2,PHYS-23-2,
+24,2,PHYS-24-2,
+25,2,PHYS-25-2,
+26,2,PHYS-26-2,
+27,2,PHYS-27-2,
+28,2,PHYS-28-2,
+29,2,PHYS-29-2,
+30,2,PHYS-30-2,
+31,2,PHYS-31-2,
+32,2,PHYS-32-2,
+33,2,PHYS-33-2,
+34,2,PHYS-34-2,
+35,2,PHYS-35-2,
+36,2,PHYS-36-2,
+37,2,PHYS-37-2,
+38,2,PHYS-38-2,
+39,2,PHYS-39-2,
+40,2,PHYS-40-2,
+41,2,PHYS-41-2,
+42,2,PHYS-42-2,
+43,2,PHYS-43-2,
+44,2,PHYS-44-2,
+45,2,PHYS-45-2,
+46,2,PHYS-46-2,
+47,2,PHYS-47-2,
+48,2,PHYS-48-2,
+49,2,PHYS-49-2,
+50,2,PHYS-50-2,
