@@ -71,16 +71,20 @@ export default function HomeScreen() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!selectedFile) return;
-        const item = { 
-            id: Date.now(), 
-            name: selectedFile.name, 
-            date: new Date().toLocaleString(), 
+
+        const item = {
+            id: Date.now(),
+            name: selectedFile.name,
+            date: new Date().toLocaleString(),
             fileUrl: URL.createObjectURL(selectedFile),
-            altText: null};
+            altText: null,
+        };
+
         setHistory((prev) => [item, ...prev]);
         setLastUploadedFile(item);
         setAltText("");
         setSelectedFile(null);
+
         if (fileInputRef.current) {
             fileInputRef.current.value = null;
         }
@@ -88,14 +92,17 @@ export default function HomeScreen() {
 
     const handleGenerateAltText = () => {
         if (!lastUploadedFile) return;
+
         setIsGeneratingAltText(true);
         setAltText("");
-        const generated = `Example alternate text for "${lastUploadedFile.name}". `;
+
+        const generated = `Example alternate text for "${lastUploadedFile.name}".`;
 
         const updated = {
             ...history[0],
-            altText: generated
+            altText: generated,
         };
+
         setHistory((prev) => [updated, ...prev.slice(1)]);
         setLastUploadedFile(updated);
         setAltText(generated);
@@ -110,8 +117,23 @@ export default function HomeScreen() {
         navigate("/session-history", { state: { history } });
     };
 
+    const dropzoneAriaDescribedBy = error
+        ? "upload-instructions upload-error"
+        : "upload-instructions";
+
     return (
         <div className="home-container">
+            {/* Logout button - top right */}
+            <button
+                type="button"
+                className="logout-button"
+                onClick={() => navigate("/")}
+                aria-label="Log out and return to the login screen"
+            >
+                Logout
+            </button>
+
+            {/* Session history toggle (like ChatGPT sidebar toggle) */}
             <button
                 type="button"
                 className="history-toggle"
@@ -121,8 +143,12 @@ export default function HomeScreen() {
             >
                 {isHistoryOpen ? "Hide Session History" : "Show Session History"}
             </button>
+
             {isHistoryOpen && (
-                <aside className="home-sidebar" aria-label="Session history for this login">
+                <aside
+                    className="home-sidebar"
+                    aria-label="Session history for this session"
+                >
                     <h2 className="sidebar-title">Session History</h2>
                     {history.length === 0 ? (
                         <p className="sidebar-empty">No images submitted yet.</p>
@@ -130,7 +156,11 @@ export default function HomeScreen() {
                         <ul className="history-list">
                             {history.map((item) => (
                                 <li className="history-item" key={item.id}>
-                                    {item.name}
+                                    <span className="history-item-name">{item.name}</span>
+                                    <span className="history-item-date">
+                                        <span className="sr-only">Uploaded on </span>
+                                        {item.date}
+                                    </span>
                                 </li>
                             ))}
                         </ul>
@@ -139,41 +169,57 @@ export default function HomeScreen() {
                         type="button"
                         className="history-full-button"
                         onClick={handleShowFullSessionHistory}
+                        aria-label="Go to full session history page"
                     >
                         Show full session history
                     </button>
                 </aside>
             )}
-            <main className="home-main">
+
+            <main className="home-main" role="main">
                 <div className="home-main-inner">
                     <h1 className="home-title">Home Screen</h1>
-                    <form className="upload-form" onSubmit={handleSubmit}>
+
+                    <form
+                        className="upload-form"
+                        onSubmit={handleSubmit}
+                        aria-label="Image upload form"
+                    >
                         <div
                             className={`upload-dropzone ${isDragging ? "upload-dropzone--dragging" : ""}`}
                             tabIndex={0}
                             role="button"
                             aria-label="Upload image. Press Enter or Space to browse, or drag and drop a JPEG, JPG, or PNG file here."
+                            aria-describedby={dropzoneAriaDescribedBy}
                             onDrop={handleDrop}
                             onDragOver={handleDragOver}
                             onDragLeave={handleDragLeave}
                             onKeyDown={handleDropzoneKeyDown}
                         >
-                            <p className="upload-dropzone-main-text">Drag and drop an image here</p>
-                            <p className="upload-dropzone-sub-text">or use the button below</p>
+                            <p className="upload-dropzone-main-text">
+                                Drag and drop an image here
+                            </p>
+                            <p className="upload-dropzone-sub-text">
+                                or use the button below
+                            </p>
                             <button
                                 type="button"
                                 className="upload-choose-button"
                                 onClick={() => fileInputRef.current && fileInputRef.current.click()}
+                                aria-label="Browse files to choose an image"
                             >
                                 Choose File
                             </button>
                         </div>
+
                         <input
                             id="image-upload"
                             ref={fileInputRef}
                             type="file"
                             accept="image/jpeg, image/jpg, image/png"
                             onChange={handleFileChange}
+                            aria-label="Image file chooser"
+                            aria-describedby={dropzoneAriaDescribedBy}
                             style={{
                                 position: "absolute",
                                 width: "1px",
@@ -185,38 +231,74 @@ export default function HomeScreen() {
                                 border: 0,
                             }}
                         />
-                        <p id="upload-instructions" className="upload-helper-text">
+
+                        <p
+                            id="upload-instructions"
+                            className="upload-helper-text"
+                        >
                             Acceptable formats: JPEG, JPG, PNG.
                         </p>
+
                         {error && (
-                            <p id="upload-error" className="upload-error" role="alert" aria-live="polite">
+                            <p
+                                id="upload-error"
+                                className="upload-error"
+                                role="alert"
+                                aria-live="polite"
+                            >
                                 {error}
                             </p>
                         )}
+
                         {selectedFile && (
                             <p className="selected-file">
                                 Selected: <strong>{selectedFile.name}</strong>
                             </p>
                         )}
-                        <button type="submit" className="upload-submit-button" disabled={!selectedFile}>
+
+                        <button
+                            type="submit"
+                            className="upload-submit-button"
+                            disabled={!selectedFile}
+                            aria-disabled={!selectedFile}
+                        >
                             Submit
                         </button>
                     </form>
+
                     {lastUploadedFile && (
-                        <section className="alt-text-section" aria-label="Generate alternate text for last uploaded image">
-                            <h2 className="alt-text-title">Alternate Text</h2>
-                            <p className="alt-text-file-name">
-                                Last uploaded file: <strong>{lastUploadedFile.name}</strong>
+                        <section
+                            className="alt-text-section"
+                            aria-labelledby="alt-text-title"
+                            aria-describedby="alt-text-description"
+                        >
+                            <h2 id="alt-text-title" className="alt-text-title">
+                                Alternate Text
+                            </h2>
+                            <p
+                                id="alt-text-description"
+                                className="alt-text-file-name"
+                            >
+                                Last uploaded file:{" "}
+                                <strong>{lastUploadedFile.name}</strong>
                             </p>
                             <button
                                 type="button"
                                 className="alt-text-button"
                                 onClick={handleGenerateAltText}
                                 disabled={isGeneratingAltText}
+                                aria-disabled={isGeneratingAltText}
+                                aria-label="Generate alternate text for the last uploaded image"
                             >
-                                {isGeneratingAltText ? "Generating..." : "Generate Alternate Text"}
+                                {isGeneratingAltText
+                                    ? "Generating..."
+                                    : "Generate Alternate Text"}
                             </button>
-                            <p className="alt-text-output" role="status" aria-live="polite">
+                            <p
+                                className="alt-text-output"
+                                role="status"
+                                aria-live="polite"
+                            >
                                 {altText}
                             </p>
                         </section>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./login.css";
 
 export default function Login() {
@@ -6,16 +7,17 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
 
-    // temporary login for POC
     const fakeEmail = "student@mcmaster.ca";
     const fakePassword = "password";
 
     if (email === fakeEmail && password === fakePassword) {
-      window.location.href = "/main";
+      navigate("/main");
     } else {
       setError("Invalid email or password.");
     }
@@ -54,7 +56,11 @@ export default function Login() {
 
         {error && <p className="login-error">{error}</p>}
 
-        <button type="submit" className="login-button" aria-label="Button for logging in to a session">
+        <button
+          type="submit"
+          className="login-button"
+          aria-label="Button for logging in to a session"
+        >
           Log In to Session
         </button>
       </form>
