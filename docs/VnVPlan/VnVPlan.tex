@@ -37,7 +37,7 @@
   \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
   \midrule
   Oct 27, 2025 & 1.0 & Initial version of document.\\ 
-  Jan 11, 2025 & 1.1 & Peer Review \texttt{\#149} Applied \\
+  Jan 11, 2025 & 1.1 & Peer Review \texttt{\#146,\#149} Applied \\
   \bottomrule
 \end{tabularx}
 \newpage
@@ -602,7 +602,9 @@ the requirements.
     accessibility thresholds; all images have alternative text. \\[2mm]
     \textbf{How test will be performed:} The tester will manually
     adjust zoom levels, use color contrast tools, and run screen
-    reader tests to confirm accessibility compliance.
+    reader tests to confirm accessibility compliance. If accessibility issues are identified 
+    such as low or insufficient contrast, the UI styling will be revised to meet WCAG 2.1 Level 
+    AA requirements and the test will be re-executed.
 
   \item \textbf{Interface Style and Branding Verification}. \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic. \\
@@ -615,7 +617,9 @@ the requirements.
     usability, and design elements comply with Norman’s principles. \\[2mm]
     \textbf{How test will be performed:} Tester will review the
     interface against the style guide, branding requirements, and
-    Norman’s design checklist to ensure compliance.
+    Norman’s design checklist to ensure compliance. If there are any inconsistencies or usability conflicts,
+    the interface design will be adjusted to ensure alignment with Norman’s design principles, and a thorough
+    human visual inspection will be done.
 
   \item \textbf{Usability Efficiency and Learnability}. \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic. \\
@@ -630,6 +634,10 @@ the requirements.
     \textbf{How test will be performed:} Conduct usability sessions
     with participants performing all major tasks while timing
     actions, recording feedback response, and monitoring error recovery.
+    If users take longer than expected or report difficulty completing tasks, 
+    feedback will be analyzed to identify usability issues, followed by interface 
+    adjustments. A follow-up usability evaluation will be conducted
+    to ensure that the issues are fixed.
 
   \item \textbf{Alt Text Storage and Personalization Options} \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic. \\
@@ -679,7 +687,9 @@ the requirements.
     technical details. \\ [2mm]
     \textbf{How test will be performed:} Tester simulates timeouts
     and verifies notifications, data cleanup, and absence of
-    technical information in messages.
+    technical information in messages. If the system fails to handle timeouts safely, 
+    error handling logic and mechanisms will be revised and the test will 
+    be repeated to confirm safe recovery.
 
   \item \textbf{Alt Text Accuracy and Usability Evaluation} \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic \\
@@ -715,7 +725,9 @@ the requirements.
     response times $\le$ CAPACITY\_RTIME; storage handles CAP\_STORAGE datasets. \\[2mm]
     \textbf{How test will be performed:} Load testing scripts
     simulate multiple concurrent requests and image uploads;
-    performance and storage usage monitored.
+    performance and storage usage monitored. If concurrency or storage limits are exceeded, 
+    resource management strategies will be adjusted, 
+    followed by re-execution of load testing to confirm compliance.
 
   \item \textbf{System Extensibility and Maintainability} \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic \\
