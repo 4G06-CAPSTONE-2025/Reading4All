@@ -1068,7 +1068,7 @@ None.
 \begin{itemize}
   \item \texttt{Clipboard} - system's clipboard interface for copy function.
   \item \texttt{HTTPClient} - used to call backend services.
-  \item \texttt{Keyboard} - receives key presses for keyboard navigation. 
+  \item \texttt{Keyboard} - provides key press events that trigger corresponding UI action handlers such as sign in and upload image. 
   \item \texttt{FileSystem} - used to access file paths. 
 \end{itemize}
 
@@ -1079,6 +1079,7 @@ None.
     \item \texttt{Clipboard} access is enabled by the user for \texttt{copyText}.
     \item User allows system to access files for uploading images and downloading alt text. 
     \item \texttt{uploadImage} is called before any other access program.
+    \item Each exported access program represents an event handler that is invoked in response to user-triggered actions such as mouse clicks and keyboard presses on the user interface.
   \end{itemize}
 
 
