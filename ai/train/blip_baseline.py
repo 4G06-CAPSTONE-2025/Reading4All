@@ -189,3 +189,4 @@ if __name__ == "__main__":
     )
 
     trainer.train()
+    trainer.save_model(MODEL_DIR)

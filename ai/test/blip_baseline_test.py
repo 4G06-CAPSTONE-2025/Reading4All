@@ -23,9 +23,24 @@ os.makedirs(TEST_OUTPUT_ROOT, exist_ok=True)
 # -----------------------------
 # Choose the model to test
 # -----------------------------
-MODEL_NAME = sorted(os.listdir(MODEL_ROOT))[-1] #pick the last model created dynamically
 #MODEL_NAME = "scicap_blip_model_final_2026_01_12_2100"
-MODEL_PATH = os.path.join(MODEL_ROOT, MODEL_NAME)
+MODEL_NAME = sorted(os.listdir(MODEL_ROOT))[-1] #pick the last model created dynamically
+MODEL_BASE_PATH = os.path.join(MODEL_ROOT, MODEL_NAME)
+
+# Find latest checkpoint
+checkpoints = [d for d in os.listdir(MODEL_BASE_PATH) if d.startswith("checkpoint-")]
+
+if not checkpoints:
+    raise RuntimeError("No checkpoints found in model directory.")
+
+LATEST_CHECKPOINT = sorted(
+    checkpoints,
+    key=lambda x: int(x.split("-")[-1])
+)[-1]
+
+MODEL_PATH = os.path.join(MODEL_BASE_PATH, LATEST_CHECKPOINT)
+
+print("Loading model from:", MODEL_PATH)
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
