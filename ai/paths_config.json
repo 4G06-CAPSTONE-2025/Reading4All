@@ -1,0 +1,8 @@
+{
+  "base_data_dir": "C:/Users/nawaa/Downloads/scicap_data_extracted/scicap_data",
+  "img_no_dir": "SciCap-No-Subfig-Img",
+  "img_yes_dir": "SciCap-Yes-Subfig-Img",
+  "captions_dir": "SciCap-Caption-All",
+  "model_dir": "model/scicap_blip_model_final",
+  "test_images_dir": "inference/images"
+}
