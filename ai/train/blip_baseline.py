@@ -3,18 +3,36 @@ import json
 import torch
 from PIL import Image
 from transformers import BlipProcessor, BlipForConditionalGeneration, TrainingArguments, Trainer
-
-print("TRAINING SCRIPT STARTED")
+from datetime import datetime
 
 # -----------------------------
-# Paths
+# Hardcoded dataset paths
 # -----------------------------
 BASE = r"C:/Users/nawaa/Downloads/scicap_data_extracted/scicap_data"
 IMG_NO = os.path.join(BASE, "Scicap-No-Subfig-Img")
 IMG_YES = os.path.join(BASE, "SciCap-Yes-Subfig-Img")
 CAP_ALL = os.path.join(BASE, "SciCap-Caption-All")
-MODEL_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "model", "scicap_blip_model_final")
+
+# -----------------------------
+# Paths for model, test images, and configs
+# -----------------------------
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))  # ai/train
+PROJECT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_DIR))  # Reading4All
+
+CONFIG_PATH = os.path.join(SCRIPT_DIR, "paths_config.json")
+with open(CONFIG_PATH, "r") as f:
+    paths_config = json.load(f)
+
+# Model folder
+MODEL_DIR = os.path.join(PROJECT_ROOT, paths_config["model_dir"])
 os.makedirs(MODEL_DIR, exist_ok=True)
+
+# Test images folder
+TEST_IMAGES_DIR = os.path.join(PROJECT_ROOT, paths_config["test_images_dir"])
+
+# print("Project root:", PROJECT_ROOT)
+# print("Model directory:", MODEL_DIR)
+# print("Test images directory:", TEST_IMAGES_DIR)
 
 # -----------------------------
 # Custom Trainer
@@ -39,6 +57,8 @@ def load_split(split):
         raise FileNotFoundError(f"No caption folder found for split '{split}'")
 
     records = []
+    corrupted_images = []
+
     for jf in [f for f in os.listdir(split_folder) if f.endswith(".json")]:
         with open(os.path.join(split_folder, jf), "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -49,10 +69,9 @@ def load_split(split):
                 img_id = os.path.splitext(item["figure-ID"])[0].lower()
                 caption = item["2-normalized"]["2-1-basic-num"]["caption"]
 
-                # Decide which image folders to search based on split
-                img_folders = [IMG_NO]  # Always include No-Subfig
+                img_folders = [IMG_NO]
                 if split.lower() == "train":
-                    img_folders.append(IMG_YES)  # Only check Yes-Subfig for train
+                    img_folders.append(IMG_YES)
 
                 found = False
                 for folder in img_folders:
@@ -62,17 +81,28 @@ def load_split(split):
                     for ext in [".png", ".jpg", ".jpeg"]:
                         img_path = os.path.join(folder_split, img_id + ext)
                         if os.path.exists(img_path):
-                            records.append({"image_path": img_path, "caption": caption})
-                            found = True
+                            # Check if the image can be opened
+                            try:
+                                with Image.open(img_path) as img:
+                                    img.verify()  # verify the image is not corrupted
+                                records.append({"image_path": img_path, "caption": caption})
+                                found = True
+                            except (IOError, OSError, SyntaxError) as e:
+                                corrupted_images.append(img_path)
+                                print(f"Skipping corrupted image: {img_path} ({e})")
                             break
                     if found:
                         break
+
                 if len(records) % 1000 == 0:
                     print(f"{len(records)} samples loaded so far for {split}")
 
     if not records:
         raise RuntimeError(f"No samples loaded for split '{split}'")
+
     print(f"Loaded {len(records)} samples for {split}")
+    if corrupted_images:
+        print(f"Skipped {len(corrupted_images)} corrupted images. Example: {corrupted_images[:5]}")
     return records
 
 
@@ -89,14 +119,19 @@ class OnTheFlyDataset(torch.utils.data.Dataset):
 
     def __getitem__(self, idx):
         rec = self.records[idx]
-        img = Image.open(rec["image_path"]).convert("RGB")
+        try:
+            img = Image.open(rec["image_path"]).convert("RGB")
+        except (IOError, OSError, SyntaxError) as e:
+            print(f"Warning: Failed to load image {rec['image_path']} ({e}). Skipping.")
+            # Return a blank image to keep batch size consistent
+            img = Image.new("RGB", (self.image_size, self.image_size), color=(0, 0, 0))
         return {"image": img, "caption": rec["caption"]}
 
+# -----------------------------
+# Processor & collate function
+# -----------------------------
 processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
 
-# -----------------------------
-# Collate function
-# -----------------------------
 def collate_fn(batch):
     images = [x["image"] for x in batch]
     captions = [x["caption"] for x in batch]
@@ -107,7 +142,7 @@ def collate_fn(batch):
     return inputs
 
 # -----------------------------
-# Main
+# Main training
 # -----------------------------
 if __name__ == "__main__":
     print("ABOUT TO LOAD TRAIN SPLIT")
@@ -121,15 +156,28 @@ if __name__ == "__main__":
     train_ds = OnTheFlyDataset(train_data)
     val_ds = OnTheFlyDataset(val_data)
 
-    
     model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
     for param in model.vision_model.parameters():
         param.requires_grad = False
     model.to(torch.device("cuda" if torch.cuda.is_available() else "cpu"))
 
-    with open(os.path.join(os.path.dirname(__file__), "training_config.json"), "r") as f:
+    # Load training configuration
+    training_config_path = os.path.join(SCRIPT_DIR, "training_config.json")
+    with open(training_config_path, "r") as f:
         config = json.load(f)
+    # -----------------------------
+    # Dynamic output_dir for saving this training run
+    # -----------------------------
+    MODEL_NAME = f"scicap_blip_model_final_{datetime.now().strftime('%Y_%m_%d_%H%M')}"
+    MODEL_DIR = os.path.join(PROJECT_ROOT, "ai", "model", MODEL_NAME)
+    os.makedirs(MODEL_DIR, exist_ok=True)
+    config["output_dir"] = MODEL_DIR
 
+    print("Trained model will be saved in:", MODEL_DIR)
+
+    # -----------------------------
+    # Training
+    # -----------------------------
     training_args = TrainingArguments(**config)
 
     trainer = BlipTrainer(
