@@ -349,7 +349,7 @@ None.
 \subsubsection{Local Functions}
 None.
 
-
+%----------------------------------------------------------
 \section{MIS of AIModelTraining Module} \label{aitrain}
 
 \subsection{Module}
@@ -359,8 +359,15 @@ None.
 Takes preprocessed data from the \texttt{DataPreprocess} module and trains a model that will later be used by the \texttt{CaptionGeneration} module for alt-text generation.
 
 \subsection{Syntax}
+
 \subsubsection{Exported Constants}
-None.
+\texttt{DEFAULT\_MODEL\_ID}: String -- Default model identifier/architecture used for training (may be hardcoded).\\
+\texttt{MAX\_EPOCHS}: $\mathbb{N}$ -- Maximum number of training epochs (may be hardcoded).\\
+\texttt{BATCH\_SIZE}: $\mathbb{N}$ -- Training batch size (may be hardcoded).\\
+\texttt{LEARNING\_RATE}: \Real -- Default learning rate (may be hardcoded).\\
+\texttt{CHECKPOINT\_DIR}: String -- Directory where checkpoints are written (may be hardcoded).\\
+\texttt{CHECKPOINT\_FREQ}: $\mathbb{N}$ -- Save checkpoint every k steps/epochs (may be hardcoded).\\
+\texttt{RANDOM\_SEED}: $\mathbb{N}$ -- Seed for reproducibility (optional; may be omitted in early versions).
 
 \subsubsection{Exported Access Programs}
 
@@ -369,7 +376,7 @@ None.
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-initializeModel & configPath: String & - & ConfigFileNot-FoundException \\
+initializeModel & configPath: String & - & ConfigFileNotFoundException \\
 \hline
 trainModel & trainingData: Dataset & trainedModel: Model & TrainingException \\
 \hline
@@ -384,44 +391,47 @@ saveCheckpoint & progress: Integer & - & WriteErrorException \\
 \texttt{trainedModel}: Stores the trained model instance.
 
 \subsubsection{Environment Variables}
-\texttt{GPU/CPU} — used for training operations.  \\
+\texttt{GPU/CPU} — used for training operations.\\
 \texttt{Filesystem} — stores intermediate checkpoints and model outputs.
 
 \subsubsection{Assumptions}
 \begin{itemize}
   \item The input data is valid and preprocessed.
   \item The system has sufficient computational resources.
-  \item The configuration file exists and can be accessed.
+  \item The configuration file exists and can be accessed (may be a default/hardcoded configuration in early versions).
+  \item Constants may be hardcoded in the current implementation and moved to configuration later.
 \end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
 \noindent \textbf{initializeModel(configPath):}
 \begin{itemize}
-  \item transition: Loads or initializes the model structure and related parameters.
+  \item transition: Loads or initializes the model structure and related parameters based on \texttt{configPath} (or defaults).
   \item output: None.
-  \item exception: Raises \texttt{ConfigFileNotFoundException} if the configuration is missing or invalid.
+  \item exception: Raises \texttt{ConfigFileNotFoundException} if the configuration is missing, unreadable, or invalid.
 \end{itemize}
 
 \noindent \textbf{trainModel(trainingData):}
 \begin{itemize}
   \item transition: Trains the model on provided data and updates \texttt{trainedModel}.
   \item output: Returns the trained model.
-  \item exception: Raises \texttt{TrainingException} if the process fails.
+  \item exception: Raises \texttt{TrainingException} if training fails due to invalid data, insufficient resources, or runtime errors.
 \end{itemize}
 
 \noindent \textbf{saveCheckpoint(progress):}
 \begin{itemize}
-  \item transition: Saves the model’s current state for future use or recovery.
+  \item transition: Saves the model’s current state to \texttt{CHECKPOINT\_DIR} for recovery and future use.
   \item output: None.
-  \item exception: Raises \texttt{WriteErrorException} if the checkpoint cannot be saved.
+  \item exception: Raises \texttt{WriteErrorException} if the checkpoint cannot be written (e.g., permission issues, missing directory, or I/O failure).
 \end{itemize}
 
 \subsubsection{Local Functions}
 \begin{itemize}
-  \item \textbf{splitData(NewFilePath:String) \texttt{->} TestPath:String, TrainPath:String, TrainPath:String}: Divides input data into training and validation portions.
-
+  \item \textbf{splitData(NewFilePath:String) \texttt{->} TestPath:String, TrainPath:String, ValPath:String}: Divides input data into training, validation, and testing portions.
 \end{itemize}
+
+
+%----------------------------------------------------------
 \section{MIS of CaptionGeneration Module} \label{capgen}
 
 \subsection{Module}
@@ -431,8 +441,11 @@ saveCheckpoint & progress: Integer & - & WriteErrorException \\
 Uses the trained model from the \texttt{AIModelTraining} module to generate descriptive alt-text for input images.
 
 \subsection{Syntax}
+
 \subsubsection{Exported Constants}
-None.
+\texttt{MAX\_CAPTION\_LEN}: $\mathbb{N}$ -- Maximum generated caption length (tokens/words) (may be hardcoded).\\
+\texttt{MIN\_CAPTION\_LEN}: $\mathbb{N}$ -- Minimum caption length to avoid under-description (optional).\\
+\texttt{DECODE\_STRATEGY}: String -- Decoding strategy (e.g., \{"greedy","beam"\}) (may be hardcoded).\\
 
 \subsubsection{Exported Access Programs}
 
@@ -460,26 +473,28 @@ generateCaption & image: Image & caption: String & GenerationException \\
 \begin{itemize}
   \item A valid trained model is available and compatible with the input format.
   \item Input images are properly preprocessed.
+  \item Constants may be hardcoded in the current implementation and moved to configuration later.
 \end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
 \noindent \textbf{loadModel(modelPath)}:
 \begin{itemize}
-  \item transition: Loads the trained model into memory.
+  \item transition: Loads the trained model from \texttt{modelPath} into memory as \texttt{loadedModel}.
   \item output: None.
-  \item exception: Raises \texttt{ModelLoadException} if the model file is missing or invalid.
+  \item exception: Raises \texttt{ModelLoadException} if the model file is missing, unreadable, or incompatible.
 \end{itemize}
 
 \noindent \textbf{generateCaption(image)}:
 \begin{itemize}
-  \item transition: Uses the loaded model to produce a descriptive caption.
+  \item transition: Uses \texttt{loadedModel} to generate a caption for \texttt{image} using \texttt{DECODE\_STRATEGY}.
   \item output: Returns generated alt-text for the input image.
-  \item exception: Raises \texttt{GenerationException} if caption generation fails.
+  \item exception: Raises \texttt{GenerationException} if inference fails or a valid caption cannot be produced.
 \end{itemize}
 
 \subsubsection{Local Functions}
 None.
+
 
 \section{MIS of FeedbackMetrics Module} \label{modmetric}
 
