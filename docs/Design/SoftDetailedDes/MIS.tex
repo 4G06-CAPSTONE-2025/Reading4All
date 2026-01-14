@@ -181,13 +181,16 @@ for this project.
 
 \subsection{Uses}
 None.
+
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
-None.
+\texttt{SUPPORTED\_IMAGE\_TYPES}: \texttt{List[String]} -- Accepted input formats (e.g., \{"PNG","JPEG"\}).\\
+\texttt{TARGET\_WIDTH}: $\mathbb{N}$ -- Desired output width in pixels (may be hardcoded in early versions).\\
+\texttt{TARGET\_HEIGHT}: $\mathbb{N}$ -- Desired output height in pixels (may be hardcoded in early versions).\\
+\texttt{NORMALIZE\_MODE}: String -- Normalization scheme (e.g., \{"none","imagenet"\}); may be hardcoded.
 
 \subsubsection{Exported Access Programs}
-
 \begin{center}
   \begin{tabular}{p{2cm} p{4cm} p{6cm} p{4cm}}
   \hline
@@ -196,25 +199,38 @@ None.
   filterInput & imageFilePath:String & PreprocessedImagePath:String & InvalidInputException \\
   \hline
   \end{tabular}
-  \end{center}
+\end{center}
 
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-None.
+\texttt{lastInputPath}: String -- (Optional) caches most recently processed input path for debugging/traceability.\\
+\texttt{lastOutputPath}: String -- (Optional) caches most recently produced output path for debugging/traceability.
 
 \subsubsection{Environment Variables}
-None.
+\texttt{Filesystem} -- Used to read input images and write preprocessed outputs.\\
+\texttt{ImageCodec} -- System/library support for decoding/encoding image formats.
 
 \subsubsection{Assumptions}
-None. 
+\begin{itemize}
+  \item Constants may be hardcoded in the current implementation and moved to configuration later.
+  \item State variables are optional; omitting them does not affect functional correctness.
+\end{itemize}
+
 \subsubsection{Access Routine Semantics}
 
-\noindent \textbf{filterInput():}
+\noindent \textbf{filterInput(imageFilePath):}
 \begin{itemize}
-  \item transition: None.
-  \item output: Returns preprocessed image data suitable for both model training and caption generation.
-  \item exception: Raises \texttt{InvalidInputException} if the input image format or type is unsupported.
+  \item transition:
+  \begin{itemize}
+    \item (Optional) \texttt{lastInputPath} := imageFilePath
+    \item Verify that the file type is supported and the file is readable
+    \item Apply resizing to (\texttt{TARGET\_WIDTH}, \texttt{TARGET\_HEIGHT}) and normalization according to \texttt{NORMALIZE\_MODE}
+    \item Write the processed image to disk and produce \texttt{PreprocessedImagePath}
+    \item (Optional) \texttt{lastOutputPath} := PreprocessedImagePath
+  \end{itemize}
+  \item output: Returns \texttt{PreprocessedImagePath} referencing the stored preprocessed image suitable for training and inference.
+  \item exception: Raises \texttt{InvalidInputException} if the input is unsupported, unreadable, or corrupt.
 \end{itemize}
 
 \subsubsection{Local Functions}
@@ -231,10 +247,11 @@ Takes generated captions from the \texttt{CaptionGeneration} module and validate
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
-None.
+\texttt{WCAG\_LEVEL}: String -- Target conformance level (e.g., \{"AA"\}); may be hardcoded.\\
+\texttt{MIN\_CAPTION\_LEN}: $\mathbb{N}$ -- Minimum caption length (characters), may be hardcoded.\\
+\texttt{MAX\_CAPTION\_LEN}: $\mathbb{N}$ -- Maximum caption length (characters), may be hardcoded.
 
 \subsubsection{Exported Access Programs} 
-
 \begin{center}
   \begin{tabular}{p{3cm} p{4cm} p{4cm} p{4cm}}
   \hline
@@ -243,26 +260,35 @@ None.
   checkCompliance & CaptionText:String & ComplianceReport:List & ValidationException \\
   \hline
   \end{tabular}
-  \end{center}
+\end{center}
 
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-None.
+\texttt{lastCheckedCaption}: String -- (Optional) caches the most recently validated caption for debugging/traceability.\\
+\texttt{lastReport}: List -- (Optional) caches the most recently produced compliance report.
 
 \subsubsection{Environment Variables}
 None.
 
 \subsubsection{Assumptions}
 \begin{itemize}
+  \item Constants may be hardcoded in the current implementation and moved to configuration later.
+  \item State variables are optional; omitting them does not affect functional correctness.
   \item Assumes the input caption text is available and properly formatted for validation.
 \end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
-\noindent \textbf{checkCompliance()}:
+\noindent \textbf{checkCompliance(CaptionText)}:
 \begin{itemize}
-  \item transition: None.
+  \item transition:
+  \begin{itemize}
+    \item (Optional) \texttt{lastCheckedCaption} := CaptionText
+    \item Validate basic WCAG-aligned constraints (e.g. length bounds using \texttt{MIN\_CAPTION\_LEN} and \texttt{MAX\_CAPTION\_LEN})
+    \item Construct a \texttt{ComplianceReport} summarizing pass/fail, warnings, and violations
+    \item (Optional) \texttt{lastReport} := ComplianceReport
+  \end{itemize}
   \item output: Returns a \texttt{ComplianceReport} summarizing accessibility validation results.
   \item exception: Raises \texttt{ValidationException} if validation cannot be completed or the input is invalid.
 \end{itemize}
@@ -467,10 +493,11 @@ overall quality and accessibility, and sends the resulting performance scores to
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
-None.
+\texttt{SCORE\_RANGE}: Tuple -- Allowed score range (e.g. (0, 100)); may be hardcoded.\\
+\texttt{PASS\_THRESHOLD}: $\mathbb{N}$ -- Minimum acceptable aggregate score; may be hardcoded.\\
+\texttt{METRIC\_WEIGHTS}: Tuple -- (Optional) weighting factors for aggregate scoring; may be omitted in early versions.
 
 \subsubsection{Exported Access Programs}
-
 \begin{center}
   \begin{tabular}{p{3cm} p{3.5cm} p{4cm} p{4cm}}
     \hline
@@ -484,21 +511,29 @@ None.
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-None.
+\texttt{lastScores}: List -- (Optional) caches the most recently produced \texttt{PerformanceScores}.\\
+\texttt{aggregateScore}: $\mathbb{Z}$ -- (Optional) most recent computed overall score.
 
 \subsubsection{Environment Variables}
 None.
 
 \subsubsection{Assumptions}
 \begin{itemize}
-  \item Assumes generated captions are available and that predefined evaluation metrics are accessible.
+  \item Constants may be hardcoded in the current implementation and moved to configuration later.
+  \item State variables are optional; omitting them does not affect functional correctness.
+  \item Assumes generated captions are available and that the chosen evaluation metrics are accessible.
 \end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
 \noindent \textbf{evaluateCaption(CaptionText)}:
 \begin{itemize}
-  \item transition: None.
+  \item transition:
+  \begin{itemize}
+    \item Compute performance indicators according to the selected metrics (may be a simplified scoring approach in early versions)
+    \item (Optional) compute \texttt{aggregateScore} and clamp to \texttt{SCORE\_RANGE}
+    \item (Optional) \texttt{lastScores} := PerformanceScores
+  \end{itemize}
   \item output: Returns performance scores summarizing caption quality and accessibility 
   (see Appendix for Jing's evaluation metrics).
   \item exception: Raises \texttt{EvaluationException} if evaluation cannot be completed.
