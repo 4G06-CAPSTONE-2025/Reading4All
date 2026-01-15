@@ -4,13 +4,11 @@
 ```json
 {
   "type" : "object",
-  "required" : [ "image", "user_id"],
+  "required" : [ "image"],
   "properties" : {
     "image" : {
-      "type" : "string"
-    },
-    "user_id" : {
-      "type" : "string"
+      "type" : "string",
+      "description": "The image is sent using multipart/form-data as binary data (BLOB)"
     }
   }
 }
@@ -19,19 +17,14 @@
 #### Success Response Data Schema
 ```json
 {
-    "type" : "object",
-  "required" : ["status"],
+  "type" : "object",
   "properties" : {
     "image_id" : {
       "type" : "string"
     },
-    "status" : {
-      "type" : "string",
-      "enum": ["SUCCESS", "ERROR"]
-    },
     "error":{
         "type": "string",
-        "enum":["INVALID_FILE_TYPE", "FILE_SIZE_INVALID", "UNAUTHORIZED_ACCESS"]
+        "enum":["INVALID_FILE_TYPE", "FILE_SIZE_INVALID", "UNAUTHORIZED_ACCESS", "MISSING_IMAGE"]
 
     }
   }
@@ -59,12 +52,7 @@
 ```json
 {
   "type" : "object",
-  "required" : [ "status"],
   "properties" : {
-    "status" : {
-      "type" : "string",
-       "enum": ["SUCCESS", "ERROR"]
-    },
     "alt_text":{
         "type":"string"
     },
@@ -99,12 +87,7 @@
 ```json
 {
   "type" : "object",
-  "required" : [ "status"],
   "properties" : {
-    "status" : {
-      "type" : "string",
-       "enum": ["SUCCESS", "ERROR"]
-    },
     "alt_text":{
         "type":"string"
     },
