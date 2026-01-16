@@ -3,61 +3,76 @@ import shutil
 from pathlib import Path
 from sklearn.model_selection import train_test_split
 
+TESTER = 2    # CHANGE THIS 
 CSV_PATH = "ai/annotations/annotated_physics_data(Sheet1).csv"
-local_prefix = "/Users/francinebulaclac/Desktop/capstone/"
-relative_folder = "ai/data/"
-IMAGE_ROOT = Path(local_prefix+relative_folder)
+local_root = "/Users/francinebulaclac/Desktop/capstone/"        # CHANGE THIS
+IMAGE_ROOT = Path(local_root)
 TRAIN_DIR = Path("ai/train/train_data")
 VAL_DIR = Path("ai/train/val_data")
 TRAIN_SPLIT = 0.8
 RANDOM_SEED = 42
 
-# Create output folders
-TRAIN_DIR.mkdir(exist_ok=True)
-VAL_DIR.mkdir(exist_ok=True)
+'''
+Directery will look like: 
+>ai
+    >train
+        >train_data **(splitData2.py makes this)**
+        >val_data  **(splitData2.py makes this)**
+        base_train.py
+        blip_baseline.py
+        train.csv **(splitData2.py makes this)**
+        val.csv  **(splitData2.py makes this)**
+'''
 
-# # Load CSV
-# df = pd.read_csv(CSV_PATH)
+# deletes folders if they already exist and remakes 
+for d in [TRAIN_DIR, VAL_DIR]:
+    if d.exists():
+        shutil.rmtree(d)
+    d.mkdir(parents=True)
 
-# # Train / validation split
-# train_df, val_df = train_test_split(
-#     df,
-#     test_size=1 - TRAIN_SPLIT,
-#     random_state=RANDOM_SEED,
-#     shuffle=True
-# )
+# load csv
+df = pd.read_csv(CSV_PATH)
 
-# def copy_images_and_update_paths(split_df, target_dir):
-#     new_rows = []
 
-#     for _, row in split_df.iterrows():
-#         src_path = Path(row["Image-Path"])
+# filters by tester - COMMENT IF WANT TO TEST BOTH 
+df = df[df["Tester-ID"] == TESTER].copy()
 
-#         # If image path is relative, resolve it from IMAGE_ROOT
-#         if not src_path.is_absolute():
-#             src_path = IMAGE_ROOT / src_path
 
-#         if not src_path.exists():
-#             raise FileNotFoundError(f"Image not found: {src_path}")
+# split train and val images
+train_df, val_df = train_test_split(
+    df,
+    test_size=1 - TRAIN_SPLIT,
+    random_state=RANDOM_SEED,
+    shuffle=True
+)
 
-#         dst_path = target_dir / src_path.name
-#         shutil.copy(src_path, dst_path)
+def copyImages(split_df, target_dir):
+    new_rows = []
 
-#         # Update Image-Path to new relative location
-#         row = row.copy()
-#         row["Image-Path"] = str(dst_path)
-#         new_rows.append(row)
+    for _, row in split_df.iterrows():
+        src_path = Path(row["Image-Path"])
 
-#     return pd.DataFrame(new_rows)
+        # If image path is relative, resolve it from IMAGE_ROOT
+        if not src_path.is_absolute():
+            src_path = IMAGE_ROOT / src_path
 
-# # Copy images + update paths
-# train_df = copy_images_and_update_paths(train_df, TRAIN_DIR)
-# val_df = copy_images_and_update_paths(val_df, VAL_DIR)
+        if not src_path.exists():
+            raise FileNotFoundError(f"Image not found: {src_path}")
 
-# # Save CSVs
-# train_df.to_csv("train.csv", index=False)
-# val_df.to_csv("val.csv", index=False)
+        dst_path = target_dir / src_path.name
+        shutil.copy(src_path, dst_path)
 
-# print("✅ Dataset split complete")
-# print(f"Train samples: {len(train_df)}")
-# print(f"Validation samples: {len(val_df)}")
+        # updates the image path to new location 
+        row = row.copy()
+        row["Image-Path"] = str(dst_path)
+        new_rows.append(row)
+
+    return pd.DataFrame(new_rows)
+
+# copy images
+train_df = copyImages(train_df, TRAIN_DIR)
+val_df = copyImages(val_df, VAL_DIR)
+
+# savs csvs to get labels 
+train_df.to_csv("ai/train/train.csv", index=False)
+val_df.to_csv("ai/train/val.csv", index=False)
