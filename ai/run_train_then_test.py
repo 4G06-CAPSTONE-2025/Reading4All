@@ -28,8 +28,8 @@ def run_script(script_path):
 if __name__ == "__main__":
     base_dir =os.path.dirname(os.path.abspath(__file__))
 
-    train_script = os.path.join(base_dir, "train", "blip_baseline.py")
-    test_script = os.path.join(base_dir, "test", "blip_baseline_test.py")
+    train_script = os.path.join(base_dir, "train", "blip_onPubLayNet.py")
+    test_script = os.path.join(base_dir, "test", "blip_onPubLayNet_test.py")
 
     # Run training
     success, elapsed = run_script(train_script)
