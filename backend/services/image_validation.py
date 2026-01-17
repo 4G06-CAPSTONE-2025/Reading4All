@@ -29,6 +29,6 @@ class ImageValidation:
 
 
         except Exception:
-            return "UNAUTHORIZED_ACCESS"
+            return "UNAUTHORIZED_ACCESS_OR_CORRUPTED"
     
         return "Success"
