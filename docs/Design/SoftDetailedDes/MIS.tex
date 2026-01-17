@@ -595,15 +595,15 @@ Serves as the coordinator between the frontend, backend and machine learning mod
 \hline
 validateUser & userToken:String & userStatus:\Bool & InvalidTokenException \\
 \hline
-validateImage & imagePath:String, userToken: & imagePath:\Bool & InvalidImageException\\
+validateImage & imagePath:String, userToken: UUID & imagePath:\Bool & InvalidImageException\\
 \hline
-sendToModel & imagePath:String, userToken: String & - & AltTextGenerationError\\
+sendToModel & imagePath:String, userToken: UUID & - & AltTextGenerationError\\
 \hline 
-getAltText & imagePath:String, userToken: String & altText:String & AltTextNotFoundException\\
+getAltText & imagePath:String, userToken: UUID & altText:String & AltTextNotFoundException\\
 \hline 
-returnToFrontend & altText or errorMsg: String, userID: String & - & UIUnreachableException \\
+returnToFrontend & altText or errorMsg: String, userID: UUID & - & UIUnreachableException \\
 \hline
-updateAltText & altText:String, userID:String & - & SessionStateSaveException\\
+updateAltText & altText:String, userID:UUID & - & SessionStateSaveException\\
 \end{tabular}
 \end{center}
 
