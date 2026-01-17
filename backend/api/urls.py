@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import validate_image, csrf
+from .POST_upload import validate_image_api, csrf
 
 urlpatterns = [
-    path("upload/", validate_image),
+    path("upload/", validate_image_api),
     path("cookie/", csrf)
 ]
