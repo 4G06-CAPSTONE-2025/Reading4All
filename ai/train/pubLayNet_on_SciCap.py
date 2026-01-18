@@ -2,21 +2,11 @@ import os
 import json
 import torch
 from PIL import Image
+from torchvision import transforms
 from transformers import BlipProcessor, BlipForConditionalGeneration, TrainingArguments, Trainer
-from datetime import datetime
 
 # -----------------------------
-# Boosted training parameters
-# -----------------------------
-MAX_SAMPLES_TRAIN = 500
-MAX_SAMPLES_VAL = 200
-NUM_EPOCHS = 2
-BATCH_SIZE = 8
-MAX_CAPTION_LEN = 128
-TRAINABLE_VISION_LAYERS = 2  # unfreeze last N layers of vision encoder
-
-# -----------------------------
-# Paths
+# Dataset paths
 # -----------------------------
 BASE = r"C:/Users/nawaa/Downloads/scicap_data_extracted/scicap_data"
 IMG_NO = os.path.join(BASE, "Scicap-No-Subfig-Img")
@@ -24,12 +14,33 @@ IMG_YES = os.path.join(BASE, "SciCap-Yes-Subfig-Img")
 CAP_ALL = os.path.join(BASE, "SciCap-Caption-All")
 
 # -----------------------------
-# Dataset class
+# Training parameters
 # -----------------------------
+MAX_CAPTION_LEN = 150
+MODEL_FOLDER_PUBLAYNET = r"C:/Users/nawaa/OneDrive/Desktop/Reading4All/ai/model/blip_publaynet_vision_20260117_1258"
+MODEL_FOLDER_OUT = r"C:/Users/nawaa/OneDrive/Desktop/Reading4All/ai/model/blip_sciCap_finetuned"
+os.makedirs(MODEL_FOLDER_OUT, exist_ok=True)
+
+MAX_SAMPLES_TRAIN = 5000  # Increase dataset size for better learning
+MAX_SAMPLES_VAL = 500
+
+IMAGE_SIZE = 384
+BATCH_SIZE = 8  # Reduce batch size if GPU memory is limited
+
+# -----------------------------
+# Dataset class with augmentation
+# -----------------------------
+transform = transforms.Compose([
+    transforms.Resize((IMAGE_SIZE, IMAGE_SIZE)),
+    transforms.RandomRotation(5),
+    transforms.ColorJitter(brightness=0.1, contrast=0.1),
+])
+
 class OnTheFlyDataset(torch.utils.data.Dataset):
-    def __init__(self, records, image_size=384):
+    def __init__(self, records, image_size=IMAGE_SIZE, augment=False):
         self.records = records
         self.image_size = image_size
+        self.augment = augment
 
     def __len__(self):
         return len(self.records)
@@ -38,7 +49,9 @@ class OnTheFlyDataset(torch.utils.data.Dataset):
         rec = self.records[idx]
         try:
             img = Image.open(rec["image_path"]).convert("RGB")
-        except:
+            if self.augment:
+                img = transform(img)
+        except (OSError, IOError, SyntaxError):
             img = Image.new("RGB", (self.image_size, self.image_size), color=(0, 0, 0))
         return {"image": img, "caption": rec["caption"]}
 
@@ -55,6 +68,8 @@ def load_split(split, max_samples=None):
         raise FileNotFoundError(f"No caption folder found for split '{split}'")
 
     records = []
+    corrupted_images = []
+
     for jf in [f for f in os.listdir(split_folder) if f.endswith(".json")]:
         with open(os.path.join(split_folder, jf), "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -63,20 +78,37 @@ def load_split(split, max_samples=None):
             for item in data:
                 img_id = os.path.splitext(item["figure-ID"])[0].lower()
                 caption = item["2-normalized"]["2-1-basic-num"]["caption"].strip()
+                if len(caption) == 0:
+                    continue
+
+                img_folders = [IMG_NO]
+                if split.lower() == "train":
+                    img_folders.append(IMG_YES)
+
                 found = False
-                for folder in [IMG_NO, IMG_YES] if split.lower() == "train" else [IMG_NO]:
+                for folder in img_folders:
                     folder_split = os.path.join(folder, split.lower())
+                    if not os.path.exists(folder_split):
+                        continue
                     for ext in [".png", ".jpg", ".jpeg"]:
                         img_path = os.path.join(folder_split, img_id + ext)
                         if os.path.exists(img_path):
-                            records.append({"image_path": img_path, "caption": caption})
-                            found = True
+                            try:
+                                with Image.open(img_path) as img:
+                                    img.verify()
+                                records.append({"image_path": img_path, "caption": caption})
+                                found = True
+                            except Exception:
+                                corrupted_images.append(img_path)
                             break
                     if found:
                         break
+
                 if max_samples and len(records) >= max_samples:
                     print(f"[{split}] stopping early at {max_samples} samples")
                     return records
+
+    print(f"[{split}] Loaded {len(records)} samples. Skipped {len(corrupted_images)} corrupted images.")
     return records
 
 # -----------------------------
@@ -104,51 +136,52 @@ class BlipTrainer(Trainer):
         return (loss, outputs) if return_outputs else loss
 
 # -----------------------------
-# Main
+# Main training
 # -----------------------------
 if __name__ == "__main__":
-    train_data = load_split("train", MAX_SAMPLES_TRAIN)
-    val_data   = load_split("val", MAX_SAMPLES_VAL)
-    train_ds = OnTheFlyDataset(train_data)
-    val_ds = OnTheFlyDataset(val_data)
+    # Load datasets
+    train_data = load_split("train", max_samples=MAX_SAMPLES_TRAIN)
+    val_data = load_split("val", max_samples=MAX_SAMPLES_VAL)
+    train_ds = OnTheFlyDataset(train_data, augment=True)
+    val_ds = OnTheFlyDataset(val_data, augment=False)
 
-    model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
+    # Load pretrained PubLayNet weights
+    model = BlipForConditionalGeneration.from_pretrained(MODEL_FOLDER_PUBLAYNET)
 
-    # Freeze all first
+    # Freeze everything first
     for param in model.parameters():
         param.requires_grad = False
 
-    # Unfreeze all text decoder
+    # Unfreeze decoder (text) for fine-tuning
     for param in model.text_decoder.parameters():
         param.requires_grad = True
 
-    # Optionally unfreeze last N vision layers
-    if hasattr(model, "vision_encoder") and hasattr(model.vision_encoder, "layer"):
-        vision_layers = model.vision_encoder.layer
-        for layer in vision_layers[-TRAINABLE_VISION_LAYERS:]:
-            for param in layer.parameters():
-                param.requires_grad = True
+    # Unfreeze last 6 vision layers to adapt to SciCap
+    for param in model.vision_model.encoder.layers[-6:].parameters():
+        param.requires_grad = True
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)
 
-    MODEL_DIR = os.path.join("model_test", f"boosted_training_{datetime.now().strftime('%H%M')}")
-    os.makedirs(MODEL_DIR, exist_ok=True)
-
+    # Training arguments
     training_args = TrainingArguments(
-        output_dir=MODEL_DIR,
+        output_dir=MODEL_FOLDER_OUT,
         per_device_train_batch_size=BATCH_SIZE,
         per_device_eval_batch_size=BATCH_SIZE,
-        num_train_epochs=NUM_EPOCHS,
+        gradient_accumulation_steps=2,  # simulate larger batch
+        num_train_epochs=10,            # more epochs for convergence
         eval_strategy="steps",
-        eval_steps=50,
+        eval_steps=500,
         save_strategy="steps",
-        save_steps=50,
-        logging_steps=25,
+        save_steps=500,
+        logging_steps=100,
         learning_rate=1e-5,
         fp16=torch.cuda.is_available(),
-        save_total_limit=2,
         remove_unused_columns=False,
+        logging_strategy="steps",
+        dataloader_num_workers=4,
+        dataloader_pin_memory=True,
+        save_total_limit=2,
         report_to="none"
     )
 
@@ -160,15 +193,15 @@ if __name__ == "__main__":
         data_collator=collate_fn
     )
 
-    print("\n=== STARTING BOOSTED TRAINING ===\n")
+    print("\n=== STARTING TRAINING ===\n")
     trainer.train()
-    trainer.save_model(MODEL_DIR)
-    print(f"\nModel saved to: {MODEL_DIR}\n")
+    trainer.save_model(MODEL_FOLDER_OUT)
+    print(f"\nModel saved to: {MODEL_FOLDER_OUT}/model.safetensors\n")
 
     # -----------------------------
     # Sanity-check inference
     # -----------------------------
-    print("=== SANITY-CHECK INFERENCE ===\n")
+    print("=== SANITY-CHECK INFERENCE ===")
     model.eval()
     sample_batch = [val_ds[i] for i in range(min(5, len(val_ds)))]
     images = [x["image"] for x in sample_batch]
