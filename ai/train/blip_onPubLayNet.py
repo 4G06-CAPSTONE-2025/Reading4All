@@ -167,7 +167,7 @@ if __name__ == "__main__":
     "creative-graphic-design/PubLayNet",
     split="train")
 
-    records = load_publaynet_hf(max_samples=5000) #CHANGE THIS BEFORE ACTUAL TRAINING
+    records = load_publaynet_hf() #CHANGE THIS BEFORE ACTUAL TRAINING
     dataset = PubLayNetDataset(hf_dataset, records)
 
 
