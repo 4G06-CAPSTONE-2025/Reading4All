@@ -5,13 +5,9 @@ from django.http import HttpResponse, JsonResponse
 
 from backend_controller import backend_controller
 
-#This function is only needed to get a cookie when running the api locally 
-@ensure_csrf_cookie
-def csrf(request):
-    return HttpResponse(status=200)
 
-#upload image api 
-def validate_image_api(request):
+#generate alt text api 
+def gen_alt_text_api(request):
 
     #API endpoint should only be used in post requests
     if request.method != 'POST':
@@ -21,17 +17,18 @@ def validate_image_api(request):
         )
         return response
     
-    file_uploaded = request
-    message = backend_controller.validate_image(request)
 
-    if message != "Success":
-        print("MESSAGE", message)
+    
+    image = request.FILES['image']
+    message = backend_controller.gen_alt_text(image)
+
+    if message:
+        return HttpResponse(status=200)
+    else:
         response = JsonResponse(
             {
-                "error": message
+                "error": "ERROR_GENERATING"
             },
             status = 400
         )
         return response
-    else: 
-        return HttpResponse(status=200)
