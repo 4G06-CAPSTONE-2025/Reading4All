@@ -257,3 +257,4 @@ if __name__ == "__main__":
     print(f"\n=== TRAINING COMPLETE ({elapsed:.2f} min) ===\n")
 
     trainer.save_model(OUTPUT_DIR)
+    processor.save_pretrained(OUTPUT_DIR)
