@@ -1,0 +1,5 @@
+{
+  "test_input": "Human heart diagram with chambers: right atrium, left atrium, right ventricle, left ventricle. Valves: semilunar valve, atrioventricular valve. Blood vessels: aorta, pulmonary artery, pulmonary veins, vena cava.",
+  "generated_alt_text": "True",
+  "model": "t5-base"
+}

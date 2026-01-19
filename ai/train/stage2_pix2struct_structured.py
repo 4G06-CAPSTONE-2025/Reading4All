@@ -15,15 +15,18 @@ from utils.logging_utils import setup_logger, log_metrics
 from utils.progress_utils import progress
 from utils.safety_utils import log_health, cooldown
 
+BASE_DIR = r"C:/Users/nawaa/OneDrive/Desktop/Reading4All/ai"
+MODEL_DIR = os.path.join(BASE_DIR, "model")
+
 CFG = {
-    "model": r"C:/Users/nawaa/OneDrive/Desktop/Reading4All/ai/train/models/stage1_visual/epoch_2",
+    "model": os.path.join(MODEL_DIR, "stage1_visual", "epoch_2"),
     "dataset_path": r"C:\Users\nawaa\Downloads\ai2d-all\ai2d",
     "epochs": 1,
     "max_steps": 7000,
     "lr": 3e-5,
     "seed": 42
 }
-OUT = "models/stage2_structured"
+OUT = os.path.join(MODEL_DIR, "stage2_structured")
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Set seed and setup logging

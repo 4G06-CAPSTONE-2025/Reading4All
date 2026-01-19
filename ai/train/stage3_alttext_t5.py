@@ -3,10 +3,19 @@ from datasets import load_dataset
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 from torch.optim import AdamW
 
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(script_dir)
+sys.path.insert(0, parent_dir)
+
 from utils.reproducibility import set_seed, save_config
 from utils.logging_utils import setup_logger, log_metrics
 from utils.progress_utils import progress
 from utils.safety_utils import log_health, cooldown
+
+BASE_DIR = r"C:/Users/nawaa/OneDrive/Desktop/Reading4All/ai"
+MODEL_DIR = os.path.join(BASE_DIR, "model")
+DATA_DIR = os.path.join(BASE_DIR, "data")
 
 CFG = {
     "model": "t5-base",
@@ -14,9 +23,10 @@ CFG = {
     "batch_size": 2,
     "lr": 3e-5,
     "seed": 42,
-    "data": "structured_alttext.json"
+    "data": os.path.join(DATA_DIR, "structured_alttext.json")
 }
-OUT = "models/stage3_alttext"
+
+OUT = os.path.join(MODEL_DIR, "stage3_alttext")
 DEVICE = "cuda"
 
 set_seed(CFG["seed"])

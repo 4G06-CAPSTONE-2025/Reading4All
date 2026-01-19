@@ -1,21 +1,28 @@
-import os
+import os, sys, json
 import torch
 from datasets import load_dataset
 from transformers import Pix2StructProcessor, Pix2StructForConditionalGeneration, get_scheduler
 from torch.optim import AdamW
 import math
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(script_dir)
+sys.path.insert(0, parent_dir)
+
 from utils.reproducibility import set_seed, save_config
 from utils.logging_utils import setup_logger, log_metrics
 from utils.progress_utils import progress
 from utils.safety_utils import log_health, cooldown
+
+BASE_DIR = r"C:/Users/nawaa/OneDrive/Desktop/Reading4All/ai"
+MODEL_DIR = os.path.join(BASE_DIR, "model")
 
 # ---------------- OPTIMIZED CONFIG ----------------
 CFG = {
     "model": "google/pix2struct-base",
     "dataset": "PubLayNet",
     "epochs": 2,                    # Full epochs
-    "batch_size": 4,                # Increased batch size for efficiency
+    "batch_size": 2,                # Increased batch size for efficiency
     "lr": 5e-5,
     "warmup_steps": 1000,           # Learning rate warmup
     "seed": 42,
@@ -24,7 +31,7 @@ CFG = {
     "logging_steps": 100            # Log every 100 steps
 }
 
-OUT = "models/stage1_visual_full"
+OUT = os.path.join(MODEL_DIR, "stage1_visual")
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 # -------- SYSTEM SAFETY --------
@@ -194,7 +201,7 @@ for epoch in range(CFG["epochs"]):
                         "samples_processed": epoch_samples
                     }
                     
-                    import json
+                    
                     with open(os.path.join(checkpoint_dir, "checkpoint_info.json"), "w") as f:
                         json.dump(checkpoint_info, f, indent=2)
                     

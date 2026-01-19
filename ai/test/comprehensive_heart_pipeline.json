@@ -1,0 +1,32 @@
+{
+  "image": "Human_heart.png",
+  "timestamp": "2026-01-19T14:02:00.432567",
+  "stages": {
+    "stage1_visual": {
+      "prompt": "describe the diagram structure in detail",
+      "output": "describe the diagram structure in detail of the pulmonary artery and the right ventricle.>"
+    },
+    "stage2_structured": {
+      "prompt": "list all anatomical components and their relationships",
+      "output": "list all anatomical components and their relationships to the right and left ventricles.> <img_src=diastole-veins-1 img_alt=diastole-veins-1> <img_src=diastole-veins-2 img_alt=diastole-veins-2> <img_src=diastole-veins-3 img_alt=diastole-veins-3> <img_src=diastole-veins-4 img_alt=diastole-veins-4> <img_src=diastole-veins-5 img_alt=diastole-veins-5> <img_src=diastole-veins-6 img_alt=diastole-veins-6> <img_src=diastole-veins-7 img",
+      "expected_labels": [
+        "Semilunar valve",
+        "Aorta",
+        "Pulmonary artery",
+        "Right and left Atrium",
+        "Pulmonary veins",
+        "Atrioventricular valve",
+        "Posterior vena cava",
+        "Diastole (filling)",
+        "Systole (pumping)"
+      ],
+      "detected_labels": [],
+      "detection_rate": "0/9"
+    },
+    "stage3_alttext": {
+      "input": "Generate accessible alt text for this diagram description: list all anatomical components and their relationships to the right and left ventricles.> <img_src=diastole-veins-1 img_alt=diastole-veins-1>...",
+      "generated_alt_text": "True",
+      "reference_alt_text": "Diagram of the human heart showing its anatomical structure with labeled chambers (right and left atria, right and left ventricles), valves (semilunar and atrioventricular), and major blood vessels (aorta, pulmonary artery, pulmonary veins, vena cava). Arrows indicate blood flow through the cardiac cycle during diastole (filling phase) and systole (pumping phase)."
+    }
+  }
+}
