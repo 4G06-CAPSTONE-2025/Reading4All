@@ -16,7 +16,7 @@ This is what input dir should look like
                 img_0001.png
                 img_0002.png
                 ...
-            val/
+            val_data/
                 img_0101.png
                 img_0102.png
                 ...
@@ -27,7 +27,7 @@ MODEL_ID = "Salesforce/blip-image-captioning-base"
 BASE_DIR = "ai/train/"
 TRAIN_CSV = os.path.join(BASE_DIR, "train.csv")
 VAL_CSV = os.path.join(BASE_DIR, "val.csv")
-OUT_DIR = "ai/train/"
+OUT_DIR = "ai/train/model/"
 
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 
@@ -39,9 +39,9 @@ ds = load_dataset("csv", data_files={"train": TRAIN_CSV, "validation": VAL_CSV})
 MAX_LEN = 128
 
 def preprocess(examples):
-    image_paths = [os.path.join(BASE_DIR, p) for p in examples["image"]]
+    image_paths = examples["Image-Path"]
     images = [Image.open(p).convert("RGB") for p in image_paths]
-    texts = ["Describe this engineering diagram: " + t for t in examples["text"]]
+    texts = ["Describe this physics diagram: " + t for t in examples["Modified-Alt-Text"]]
     enc = processor(
         images=images,
         text=texts,
@@ -79,6 +79,29 @@ args = TrainingArguments(
     dataloader_num_workers=0,
     dataloader_pin_memory=False,
 )
+
+
+# for quick train debug
+# FAST_DEBUG = True 
+# args = TrainingArguments(
+#     output_dir=OUT_DIR,
+#     per_device_train_batch_size=1,
+#     per_device_eval_batch_size=1,
+#     gradient_accumulation_steps=1 if FAST_DEBUG else 8,
+#     learning_rate=5e-5,
+#     num_train_epochs=1 if FAST_DEBUG else 3,
+#     max_steps=20 if FAST_DEBUG else -1,  
+#     eval_strategy="no" if FAST_DEBUG else "epoch",
+#     save_strategy="no",
+#     logging_steps=1 if FAST_DEBUG else 25,
+#     fp16=False,
+#     dataloader_num_workers=0 if FAST_DEBUG else 2,
+#     dataloader_pin_memory=False,
+#     disable_tqdm=False if FAST_DEBUG else False,
+#     report_to="none",
+#     remove_unused_columns=False,
+# )
+
 
 
 trainer = FixedTrainer(
