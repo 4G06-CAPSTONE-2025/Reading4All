@@ -53,6 +53,15 @@ margin-bottom:10px;
  
 }
 
+.hiding-classic-button{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+}
+
 .upload-button{
   font-family: "Istok Web";
   font-size: 22px;

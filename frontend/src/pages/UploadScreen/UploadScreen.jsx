@@ -8,7 +8,8 @@ export default function HomeScreen(){
     const [selectedFile, setSelectedFile] = useState(null);
     const [previewImg, setPreviewImg] = useState(null)
     const [error, setError] = useState(""); 
-    
+
+    const fileInputRef = useRef(null);
     
     const handleDragOver = (e) => {
     e.preventDefault();
@@ -84,17 +85,18 @@ export default function HomeScreen(){
 
             <input
 				type="file"
-                id = "image-upload-button"
-                hidden
+                ref={fileInputRef}
 				accept="image/png, image/jpeg, image/jpg"
 				onChange={handleFileSelect}
+                className="hiding-classic-button"
 			/>
 
-            <label htmlFor="image-upload-button"
+            <button
             className="upload-button"
+            onClick={()=>fileInputRef.current?.click()}
             >
 				Choose File
-			</label>
+			</button>
 
             <p className="upload-info-text">
                 Supported formats: JPG, PNG or JPEG files up to 10 Megabytes
