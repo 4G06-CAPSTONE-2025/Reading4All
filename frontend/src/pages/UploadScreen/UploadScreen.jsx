@@ -50,6 +50,16 @@ export default function HomeScreen(){
         setPreviewImg(null);
     }
 
+    const handleImageDropBox = (e) =>
+    {
+         if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            if (fileInputRef.current) {
+                fileInputRef.current.click();
+            }
+        }
+    };
+
 
     return (
     <div className="upload-page">
@@ -69,9 +79,12 @@ export default function HomeScreen(){
         <div className="page-content">
 
         <div className={`upload-frame ${isDragging ? "upload-frame-dragging" : ""}`}
+        tabIndex={0}
+        aria-label="Upload image. Press Enter or Space to browse, or drag and drop a JPEG, JPG, or PNG file here."
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleImageDrop}
+        onKeyDown={handleImageDropBox}
         >
             <div className="upload-frame-content">
 
