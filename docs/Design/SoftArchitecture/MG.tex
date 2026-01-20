@@ -6,7 +6,6 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{graphicx} 
-
 \usepackage{float} 
 \usepackage{hyperref}
 \usepackage{enumitem}
@@ -1000,10 +999,91 @@ needed. Drawings, Sketches, Figma}
 \wss{If appropriate}
 
 \section{Timeline}
-
 \wss{Schedule of tasks and who is responsible}
+\wss{You can point to GitHub if this information is included there}\\
+\wss{Detailed timeline (down to the level of modules) on what needs to happen for the implementation of Rev 0 to be complete.  Detailed data on who will do what.  Full testing/verification does not have to be part of the timeline, but enough testing has to be included to have confidence in Rev 0.} \\
 
-\wss{You can point to GitHub if this information is included there}
+The team will split the project into three main subgroups. These three subgroups and the current
+team members within each subgroup for Rev 0 are outlined below. Design decisions across each subgroup 
+will be discussed and made together by the entire team. 
+\begin{enumerate}
+  \item \textbf{AI:} Nawaal, Fiza, Francine
+  \item \textbf{Backend:} Dhruv, Moly, Francine (backup)
+  \item \textbf{Frontend} Dhruv, Moly, Francine (backup)
+\end{enumerate}
+The development schedule per subgroup for Rev 0 is outlined below in Tables~\ref{tab:ai-dev-schedule}-\ref{tab:backend-dev-schedule}. From September 2025 
+up to the Proof of Concept demontration on November 26th, 2025, planning 
+and elicitation for the Reading4All system was conducted. The official development stages began at the 
+end of December 2025.   \\ \\ 
+\textbf{AI Subgroup}
+\begin{table}[H]
+  \centering
+  \caption{AI Subgroup Development Schedule}
+  \label{tab:ai-dev-schedule}
+  \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|p{4cm}|} 
+  \hline
+  \textbf{Date} &
+  \textbf{Task} &
+  \textbf{Module Associated} &
+  \textbf{Team Member(s) Responsible} \\ \hline
+
+  12/25/2025 -- 01/05/2026 & Lock scope of data, set up environments, and acquire datasets & None &  All team members \\ \hline 
+  01/06/2026 -- 01/11/2026 & Data preprocessing, begin training on dataset, metadata labelling & None &  Nawaal, Fiza, Francine \\ \hline 
+  01/11/2026 -- 01/23/2026 & Model fine-tuning and training using Jing's dataset & AIModelTraining, CaptionGeneration &  Nawaal, Fiza, Francine \\ \hline 
+  01/23/2026 -- 01/30/2026 & Implement WCAG compliance checks, and internal metric compliance & InternalMetric-Compliance, WCAGCompliance &  Nawaal, Fiza, Francine \\ \hline 
+  02/02/2026 -- 02/06/2026 & \textbf{Rev0} &  &  All team members \\ \hline 
+  02/09/2026 -- 02/13/2026 & User testing for generated alt text & None &  All team members \\ \hline 
+  02/14/2026 -- 02/27/2026 & Implement feedback from user testing to AI model & FeedbackMetrics, FeedbackLoop, Feedback &  Nawaal, Fiza, Francine \\ \hline 
+  02/27/2026 -- 03/15/2026 & Evaluation of metrics, system integration with backend/frontend & FeedbackMetrics, FeedbackLoop, Feedback &  Nawaal, Fiza, Francine \\ \hline 
+
+  \end{tabular}
+\end{table}
+
+\noindent\textbf{Frontend Subgroup}
+
+\begin{table}[H]
+  \centering
+  \caption{Frontend Subgroup Development Schedule}
+  \label{tab:frontend-dev-schedule}
+  \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|p{4cm}|} 
+  \hline
+  \textbf{Date} &
+  \textbf{Task} &
+  \textbf{Module Associated} &
+  \textbf{Team Member(s) Responsible} \\ \hline
+
+  01/05/2026 -- 01/12/2026 & Create figma designs for each page & None & Dhruv, Moly, Francine \\ \hline 
+  01/12/2026 -- 01/21/2026 & Implement UI pages and test screen reader compatibility & LogInScreen, MainScreen, Show-HistoryScreen, UserInterface-Accessibility, UserInterface-Interactions &  Dhruv and Moly \\ \hline 
+  01/21/2026 -- 01/30/2026 & Integration with backend system and WCAG testing& None &  Dhruv, Moly, Francine \\ \hline 
+  02/02/2026 -- 02/06/2026 & \textbf{Rev0} & None &  All team members \\ \hline 
+  02/09/2026 -- 02/13/2026 & User testing & None &  All team members \\ \hline 
+  02/14/2026 -- 02/27/2026 & Revise UI if needed after testing & None &  Dhruv, Moly, Francine \\ \hline 
+
+  \end{tabular}
+\end{table}
+
+\noindent\textbf{Backend Subgroup}
+
+\begin{table}[H]
+  \centering
+  \caption{Backend Subgroup Development Schedule}
+  \label{tab:backend-dev-schedule}
+  \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|p{4cm}|} 
+  \hline
+  \textbf{Date} &
+  \textbf{Task} &
+  \textbf{Module Associated} &
+  \textbf{Team Member(s) Responsible} \\ \hline
+
+  01/05/2026 -- 01/12/2026 & Planning APIs and creating schemas & None &  Dhruv, Moly, Francine \\ \hline 
+  01/13/2026 -- 01/21/2026 & Implement APIs and manual testing & AuthenticationService, BackendController, SessionManagement, ImageValidation &  Dhruv, Moly, Francine \\ \hline 
+  01/21/2026 -- 01/30/2026 & API testing and integration with Frontend and AI systems & Logging  & Dhruv, Moly, Francine \\ \hline 
+  02/02/2026 -- 02/06/2026 & \textbf{Rev0} & None &  All team members \\ \hline 
+  02/09/2026 -- 02/13/2026 & User testing & None &  All team members \\ \hline 
+  02/14/2026 -- 02/27/2026 & Revise backend logic if needed after user tesing & None &  Dhruv, Moly, Francine \\ \hline 
+
+  \end{tabular}
+\end{table}
 
 \newpage 
 \bibliographystyle {plainnat}
