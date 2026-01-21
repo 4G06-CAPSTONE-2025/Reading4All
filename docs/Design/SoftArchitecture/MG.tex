@@ -237,12 +237,12 @@ actually be implemented.
   \hline
   \textbf{AI Model Modules} & \textbf{Backend Modules} & \textbf{Frontend Modules} & \textbf{System Information Modules}\\ \hline
   
-  DataPreprocess Module & AuthenticationService Module & UserInterfaceInteractions Module & Logging Module\\ \hline
+  DataPreprocess Module & AuthenticationService Module & UserInterface-Interactions Module & Logging Module\\ \hline
   WCAGCompliance Module & SessionManagement Module & MainScreen Module & ~\\ \hline
   ModelOutput Module & ImageValidation Module & ShowHistoryScreen Module & ~\\ \hline
   AIModelTraining Module & BackendController Module & LogInScreen Module & ~\\ \hline
-  CaptionGeneration Module & ~ & UserInterfaceAccessibility Module & ~\\ \hline
-  InternalMetricCompliance Module & ~ & ~ & ~\\ \hline
+  CaptionGeneration Module & ~ & UserInterface-Accessibility Module & ~\\ \hline
+  InternalMetric-Compliance Module & ~ & ~ & ~\\ \hline
   FeedbackMetrics Module & ~ & ~ & ~\\ \hline
   FeedbackLoop Module & ~ & ~ & ~\\ \hline
   Feedback Module & ~ & ~ & ~\\ \hline
@@ -322,7 +322,7 @@ The \texttt{BackendController} also ensures that users are presented with the ap
 The \texttt{ImageValidation} module fulfills the requirements relating to validating user inputs. This module checks that inputted images are of the correct size and types before the alt text generation process begins. 
 The \texttt{Logging} module records any system events and errors, helping fulfill requirements related to protecting user data and having a reliable system. The \texttt{Logging} module will help ensure that user data is always deleted when any system failure occurs. \\
 
-Furthermore, within the backend subsystem, the \texttt{AuthenticationService} and \texttt{SessionManagement} modules together ensure secure and reliable user interaction with the Reading4All platform. 
+Furthermore, within the backend subsystem, the \texttt{AuthenticationService} and \\\texttt{SessionManagement} modules together ensure secure and reliable user interaction with the Reading4All platform. 
 The \texttt{AuthenticationService} module is responsible for verifying user credentials, issuing secure tokens, and validating user identity before granting access to system functionalities. 
 It guarantees that only authenticated users can upload images or retrieve generated alt text, fulfilling the security and privacy requirements defined in the SRS. 
 Supporting this, the \texttt{SessionManagement} module manages each user’s active session lifecycle by creating, validating, refreshing, and terminating session tokens. 
@@ -1012,7 +1012,8 @@ will be discussed and made together by the entire team.
   \item \textbf{Backend:} Dhruv, Moly, Francine (backup)
   \item \textbf{Frontend} Dhruv, Moly, Francine (backup)
 \end{enumerate}
-The development schedule per subgroup for Rev 0 is outlined below in Tables~\ref{tab:ai-dev-schedule}-\ref{tab:backend-dev-schedule}. From September 2025 
+The development schedules per subgroup for Rev 0 (including tentative dates past Rev 0 and moving towards Rev 1)
+are outlined below in Tables~\ref{tab:ai-dev-schedule}-\ref{tab:backend-dev-schedule}. From September 2025 
 up to the Proof of Concept demontration on November 26th, 2025, planning 
 and elicitation for the Reading4All system was conducted. The official development stages began at the 
 end of December 2025.   \\ \\ 
