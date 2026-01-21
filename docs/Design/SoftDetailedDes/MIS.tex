@@ -485,7 +485,9 @@ generateCaption & image: Image & caption: String & GenerationException \\
 \texttt{loadedModel}: Stores the active trained model used for caption generation.
 
 \subsubsection{Environment Variables}
-\texttt{GPU/CPU} — executes model inference.
+\texttt{cpu}: Device. This is the CPU execution device.\\
+\texttt{gpu}: Device. This is the GPU execution device (it may be unavailable).\\
+\texttt{device}: Device. This is the selected device used for inference.
 
 \subsubsection{Assumptions}
 \begin{itemize}
