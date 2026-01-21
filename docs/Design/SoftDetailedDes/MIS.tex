@@ -209,8 +209,10 @@ None.
 \texttt{lastOutputPath}: String -- (Optional) caches most recently produced output path for debugging/traceability.
 
 \subsubsection{Environment Variables}
+\texttt{InputImage}: Image -- Image loaded from \texttt{imageFilePath} via the filesystem.\\
+\texttt{OutputImage}: Image -- Processed image produced by this module and made available to downstream modules in the system.\\
 \texttt{Filesystem} -- Used to read input images and write preprocessed outputs.\\
-\texttt{ImageCodec} -- System/library support for decoding/encoding image formats.
+\texttt{ImageCodec} -- System/library support for decoding and encoding image formats.
 
 \subsubsection{Assumptions}
 \begin{itemize}
@@ -225,13 +227,19 @@ None.
   \item transition:
   \begin{itemize}
     \item (Optional) \texttt{lastInputPath} := imageFilePath
-    \item Verify that the file type is supported and the file is readable
-    \item Apply resizing to (\texttt{TARGET\_WIDTH}, \texttt{TARGET\_HEIGHT}) and normalization according to \texttt{NORMALIZE\_MODE}
-    \item Write the processed image to disk and produce \texttt{PreprocessedImagePath}
-    \item (Optional) \texttt{lastOutputPath} := PreprocessedImagePath
+    \item Read \texttt{InputImage} from \texttt{Filesystem} using \texttt{ImageCodec}
+    \item Verify that \texttt{InputImage} is readable and its format is in \texttt{SUPPORTED\_IMAGE\_TYPES}
+    \item Transform \texttt{InputImage} by:
+    \begin{itemize}
+      \item resizing it to (\texttt{TARGET\_WIDTH}, \texttt{TARGET\_HEIGHT})
+      \item applying pixel-value normalization according to \texttt{NORMALIZE\_MODE}
+    \end{itemize}
+    \item Assign the transformed image to \texttt{OutputImage}
+    \item Make \texttt{OutputImage} available to downstream modules
+    \item (Optional) update internal state to reflect successful preprocessing
   \end{itemize}
-  \item output: Returns \texttt{PreprocessedImagePath} referencing the stored preprocessed image suitable for training and inference.
-  \item exception: Raises \texttt{InvalidInputException} if the input is unsupported, unreadable, or corrupt.
+  \item output: Returns \texttt{OutputImage}.
+  \item exception: Raises \texttt{InvalidInputException} if the input image is unsupported, unreadable, or corrupt.
 \end{itemize}
 
 \subsubsection{Local Functions}
