@@ -508,7 +508,7 @@ generateCaption & image: Image & caption: String & GenerationException \\
 \noindent \textbf{generateCaption(image)}:
 \begin{itemize}
   \item transition: Uses \texttt{loadedModel} to generate a caption for \texttt{image} using \texttt{DECODE\_STRATEGY}.
-  \item output: Returns generated alt-text for the input image.
+\item output: \texttt{caption}.
   \item exception: Raises \texttt{GenerationException} if inference fails or a valid caption cannot be produced.
 \end{itemize}
 
