@@ -647,7 +647,7 @@ Serves as the coordinator between the frontend, backend and machine learning mod
   \item Sends uploaded images to the ImageValidation module (see Section~\ref{Module: ImageValid}) and receives validation results. 
   \item Sends validated inputs to the DataPreprocess module (see Section~\ref{datapp} )
   \item Sends errors and log events to the Logging module (see Section ~\ref{LogModule})
-  \item Returns the generated alt text or error message to the MainScreen Module (see Section ~\ref{MainScreen}) 
+  \item Receives the generated alt text from the ModelOutput module (see Section \ref{modout}) to be presented to the user.
 \end{itemize}
 
 \subsection{Syntax}
@@ -675,7 +675,6 @@ returnToFrontend & altText or errorMsg: String, userID: UUID & - & UIUnreachable
 \hline
 updateAltText & altText:String, userID:UUID & - & SessionStateSaveException\\
 \hline 
-init & fileDirectory:String &-& AccessError\\
 \end{tabular}
 \end{center}
 
@@ -692,7 +691,6 @@ None.
 \begin{itemize}
   \item MainScreen, AuthenticationService, ImageValidation and DataPreprocess modules are correctly operating and reachable. 
   \item Network connection is available for API communication. 
-  \item \texttt{init} will be called prior to any of the other exported access programs.
 \end{itemize}
 
 \subsubsection{Access Routine Semantics}
