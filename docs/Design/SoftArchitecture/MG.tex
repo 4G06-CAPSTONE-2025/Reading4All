@@ -638,7 +638,7 @@ subsection and follow the following format:
 This section shows below how different requirements connect to our modules. This can be seen in Table ~\ref{TblFRT},
 Table ~\ref{TblLFRT}, Table ~\ref{TblLFRT}, Table ~\ref{TblSRT}, Table ~\ref{TblURT}, Table ~\ref{TblPIRT}, Table ~\ref{TblLRMT}, 
 Table ~\ref{TblUPRT}, Table ~\ref{TblART}, Table ~\ref{TblPRT}, Table ~\ref{TblOERT}, Table ~\ref{TblMSRT}, Table ~\ref{TblSRT1},
- Table ~\ref{TblCR}, Table ~\ref{TbltCompR}. It's important to note some requirements do not map to a module because they describe coding practices, infrastructure details and performance metrics. 
+ Table ~\ref{TblCR}, Table ~\ref{TbltCompR}. 
 
 Finally, Table ~\ref{TblACT} shows how our modules connect to the anticipated changes 
   two traceability matrices: between the modules and the
@@ -789,7 +789,7 @@ requirements and between the modules and the anticipated changes.
     PR-CR2 & \mref{mod:auth_table}, \mref{mod:showhm_table}\\
     PR-SER1 & \mref{mod:modeltraining_table}\\
     PR-LR1 & \mref{mod:modeltraining_table}, \mref{mod:wcagcompliance_table}\\
-    PR-LR2 & No Module\\
+    PR-LR2 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Performance Requirements and Modules}
@@ -802,16 +802,32 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    OER-EP1 & No Module\\
+    OER-EP1 &  \mref{mod:preprocessing_table}, \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, 
+    \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}, \mref{mod:imgvalidmod_table}, \mref{mod:uii_table}, 
+    \mref{mod:msm_table},  \mref{mod:showhm_table},  \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table}, 
+    \mref{mod:captiongeneration_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, 
+    \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
     OER-EP2 & \mref{mod:uii_table}\\
     OER-WE1 & \mref{mod:wcagcompliance_table}\\
-    OER-WE2 & No Module\\
+    OER-WE2 & \mref{mod:preprocessing_table}, \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, 
+    \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}, \mref{mod:imgvalidmod_table}, \mref{mod:uii_table}, 
+    \mref{mod:msm_table},  \mref{mod:showhm_table},  \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table}, 
+    \mref{mod:captiongeneration_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, 
+    \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
     OER-IAS1 & \mref{mod:preprocessing_table}\\
     OER-IAS2 & \mref{mod:imgvalidmod_table}\\
     OER-IAS3 & \mref{mod:internalmetriccompliance_table}\\
-    OER-PR1 & No Module\\
+    OER-PR1 &  \mref{mod:preprocessing_table}, \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, 
+    \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}, \mref{mod:imgvalidmod_table}, \mref{mod:uii_table}, 
+    \mref{mod:msm_table},  \mref{mod:showhm_table},  \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table}, 
+    \mref{mod:captiongeneration_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, 
+    \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
     OER-RL1 & \mref{mod:preprocessing_table}, \mref{mod:modeltraining_table}, \mref{mod:captiongeneration_table}, \mref{mod:wcagcompliance_table}, \mref{mod:internalmetriccompliance_table}\\
-    OER-RL2 & No Module\\
+    OER-RL2 & \mref{mod:preprocessing_table}, \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, 
+    \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}, \mref{mod:imgvalidmod_table}, \mref{mod:uii_table}, 
+    \mref{mod:msm_table},  \mref{mod:showhm_table},  \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table}, 
+    \mref{mod:captiongeneration_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, 
+    \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Operational and Environmental Requirements and Modules}
@@ -830,11 +846,19 @@ requirements and between the modules and the anticipated changes.
     \mref{mod:msm_table},  \mref{mod:showhm_table},  \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table}, 
     \mref{mod:captiongeneration_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, 
     \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
-    MS-MNT3 & No Module\\
+    MS-MNT3 & \mref{mod:preprocessing_table}, \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, 
+    \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}, \mref{mod:imgvalidmod_table}, \mref{mod:uii_table}, 
+    \mref{mod:msm_table},  \mref{mod:showhm_table},  \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table}, 
+    \mref{mod:captiongeneration_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, 
+    \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
     MS-SUP1 & \mref{mod:logmod_table}\\
     MS-AD1 & \mref{mod:modeltraining_table}\\
     MS-AD2 &  \mref{mod:mess_table},\mref{mod:bcm_table}, \mref{mod:logmod_table}\\
-    MS-AD3 & No Module\\
+    MS-AD3 & \mref{mod:preprocessing_table}, \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, 
+    \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}, \mref{mod:imgvalidmod_table}, \mref{mod:uii_table}, 
+    \mref{mod:msm_table},  \mref{mod:showhm_table},  \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table}, 
+    \mref{mod:captiongeneration_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, 
+    \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Maintainability and Support Requirements and Modules}
