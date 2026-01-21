@@ -382,6 +382,9 @@ trainModel & trainingData: Dataset & trainedModel: Model & TrainingException \\
 \hline
 saveCheckpoint & progress: Integer & - & WriteErrorException \\
 \hline
+\hline
+saveTrainedModel & - & - & WriteErrorException \\
+
 \end{tabular}
 \end{center}
 
@@ -405,6 +408,8 @@ saveCheckpoint & progress: Integer & - & WriteErrorException \\
   \item The system has sufficient computational resources.
   \item The configuration file exists and can be accessed (may be a default/hardcoded configuration in early versions).
   \item Constants may be hardcoded in the current implementation and moved to configuration later.
+  \item \texttt{initializeModel} is called before \texttt{trainModel} and \texttt{saveCheckpoint}.
+
 \end{itemize}
 
 \subsubsection{Access Routine Semantics}
