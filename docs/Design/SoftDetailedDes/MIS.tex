@@ -654,6 +654,8 @@ getAltText & imagePath:String, userToken: UUID & altText:String & AltTextNotFoun
 returnToFrontend & altText or errorMsg: String, userID: UUID & - & UIUnreachableException \\
 \hline
 updateAltText & altText:String, userID:UUID & - & SessionStateSaveException\\
+\hline 
+init & fileDirectory:String &-& AccessError\\
 \end{tabular}
 \end{center}
 
@@ -663,13 +665,14 @@ updateAltText & altText:String, userID:UUID & - & SessionStateSaveException\\
 None.
 
 \subsubsection{Environment Variables}
-\texttt{Filesystem} - Used to retrieve images using the file path provided by users. 
+\texttt{Filesystem} -  Used to access image data that is passed between coordinated modules.  
 
 \subsubsection{Assumptions}
 
 \begin{itemize}
   \item MainScreen, AuthenticationService, ImageValidation and DataPreprocess modules are correctly operating and reachable. 
   \item Network connection is available for API communication. 
+  \item \texttt{init} will be called prior to any of the other exported access programs.
 \end{itemize}
 
 \subsubsection{Access Routine Semantics}
