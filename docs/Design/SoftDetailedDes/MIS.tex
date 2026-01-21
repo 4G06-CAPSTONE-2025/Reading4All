@@ -1549,6 +1549,24 @@ graduate attribute of Problem Analysis and Design.
   correctly, and asked for extra clarification regarding the module types.
 \end{enumerate}
 
+\textbf{Nawaal Fatima - Reflection}
+\begin{enumerate}
+  \item \textbf{What went well while writing this deliverable?} \\
+  During this deliverable, knowing precisely what had to be changed was good. It provided me with direction and structure. 
+  I wasn't left feeling frustrated on why we had lost marks on certain sections due to the very detailed feedback. Also, 
+  communication among the team vastly improved and expectations were properly met. We had more consistent updates between meetings in 
+  our team, and toour supervisor.
+
+  \item \textbf{What pain points did you experience during this deliverable, and how
+    did you resolve them?} \\
+  Juggling between coding and fixing past mistakes, then inplementing into the code any changes in an agile way was a bit hectic for me. 
+  I had to think ahead and 2 steps behind at the same time which is still hard for me to do but Im learning! To resolve these issues, 
+  I first revisited all that had to be done and then made a sequential plan to iterate through changes, discussing with the team/subteam 
+  when required. It taught me to be agile. I'm also slowly learning to not be a perfect coder - I have to make it exist first before it can 
+  be "good" and even then there's a ton of trade offs! 
+  
+\end{enumerate}
+
 \textbf{Team Reflection}
 \begin{enumerate}
   \item What went well while writing this deliverable? 
@@ -1562,28 +1580,61 @@ graduate attribute of Problem Analysis and Design.
   LogInScreen, our supervisor, Jing, provided very useful guidance on the layout, logic and 
   style of these interfaces. Jing had experience in working with our potential users so 
   she was able to give us advice on how to design our frontend modules. These suggestions 
-  helped ensure the design was optimized for accessibility.
+  helped ensure the design was optimized for accessibility. \\
+  For the AI, our team chose 
+  to train non Large Language Model (LLM) models. This is because of training constraints 
+  (training would be done primarily on our personal computers using open sourced datasets)
+  and to address privacy concerns. Additionally, Jing expressed that the learning material 
+  would be the intellectual property of the professors/instructors so the optimal choice 
+  would be not to save these materials. \\
+  The AuthenticationService module was also designed upon getting feedback from Jing. 
+  Initially, the team planned to have a single sign on but after discussing, we learned that 
+  this may result in extra steps for our potential users. \\
+  For design decisions that did not stem from speaking to clients or proxies, our team 
+  kept in mind software design principles such as single responsibility. 
 
   \item \textbf{While creating the design doc, what parts of your other documents (e.g.
-  requirements, hazard analysis, etc), it any, needed to be changed, and why?}
-  When creating the Module Guide and Module Interface Specification documents, we had 
-  to make modifications to our Software Requirements Specification to ensure that 
-  each of our modules aligned with the written requirements. For example - 
+  requirements, hazard analysis, etc), it any, needed to be changed, and why?}\\
+  When creating the Module Guide and Module Interface Specification documents, specifically for 
+  Rev -1, we had to make modifications to our Verification and Validation (VnV) document. Upon 
+  creating the SessionManagement module, the team received feedback and discussed that the 
+  definition of a "session" was not clear. Therefore, we added a more clear definition for this in 
+  our VnV as this is an important terminology in our system. Other than this small addition, 
+  nothing had to be changed in the other documents while creating the design document as the team 
+  tried to stick with the original requirements written. 
 
 
   \item \textbf{What are the limitations of your solution?  Put another way, given
   unlimited resources, what could you do to make the project better? (LO\_ProbSolutions)}
-  One limitation of our solution is that the performance of the AI model is constrained 
+  One limitation of our solution is that the training of the AI model is constrained 
   by available computational resources and data for training the model. With access 
-  to more powerful resources such as GPUs and greater storage capacity, we could train 
-  more complex models which may perform better. Additionally, access to more data would allow 
-  the model to learn better and improve accuracy when generating alternative text for images.
+  to more powerful resources such as GPUs, RAM, and greater storage capacity, we could train 
+  more complex models in a faster, more efficient manner. Additionally, access to more professors
+  data (academic learning materials) would allow the model to learn better and improve accuracy 
+  when generating alternative text for images. Furthermore, having human in the loop for captions 
+  generated would highly improve how our model understands language. Additionally, a limitation 
+  in our current backend system is the database restriction (maximum 500 rows per 
+  table) which limits the amount of users that can use the web tool. This also restricts the 
+  systems scalability in the future if needed. 
 
   \item \textbf{Give a brief overview of other design solutions you considered.  What
   are the benefits and tradeoffs of those other designs compared with the chosen
   design?  From all the potential options, why did you select the documented design?
-  (LO\_Explores)}
-  
+  (LO\_Explores)} \\
+  One of the design solutions the team considered was making our own authentication system. 
+  However, in our chosen design, the team decided to use a third party authentication service 
+  (Supabase) to authenticate our users. This design decision allowed us to easily set up the 
+  databases and collaborate during development rather than having everything locally. It is also 
+  more secure and helps the team take steps towards preparing for production. If the team had made
+  our own authentication system, it would be easier to control during development and have likeliness
+  restrictions on the database (i.e. rows, number of users, etc.). \\
+  Another design solution considered was using all STEM diagrams for training. In our chosen design,
+  however, the team decided to narrow it down to physics diagrams. This is because the open-sourced
+  datasets available were to generic and fine-tuning would be a problem unless the scope was narrowed 
+  down. Had we used all STEM diagrams, it would be applicable to more students but our team wants to 
+  prioritize the accuracy of our generated alt text over diverse consumers. We hope to build 
+  on this model given more data in the future. 
+
 
   \item \textbf{(After you have implemented another team's module, which means this
   isn't filled in until after the original deadline). What did you learn by
