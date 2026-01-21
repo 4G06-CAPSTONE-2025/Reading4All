@@ -3,7 +3,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 
 from django.http import HttpResponse, JsonResponse
 
-from backend_controller import backend_controller
+from backend.controller.backend_controller import backend_controller
 
 
 #generate alt text api 
@@ -20,10 +20,20 @@ def gen_alt_text_api(request):
 
     
     image = request.FILES['image']
-    message = backend_controller.gen_alt_text(image)
 
-    if message:
-        return HttpResponse(status=200)
+    #mock
+    session_id = 2026
+    alt_text = backend_controller.gen_alt_text(image,session_id)
+
+    if alt_text:
+        response =  JsonResponse(
+            {
+                "alt_text": alt_text
+            },
+            status = 200
+        )
+        return response
+    
     else:
         response = JsonResponse(
             {
