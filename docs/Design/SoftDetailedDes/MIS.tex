@@ -391,8 +391,10 @@ saveCheckpoint & progress: Integer & - & WriteErrorException \\
 \texttt{trainedModel}: Stores the trained model instance.
 
 \subsubsection{Environment Variables}
-\texttt{GPU/CPU} — used for training operations.\\
-\texttt{Filesystem} — stores intermediate checkpoints and model outputs.
+\texttt{cpu}: Device. This is the CPU execution device.\\
+\texttt{gpu}: Device. This is the GPU execution device (it may be unavailable).\\
+\texttt{checkpointDir}: String. This is the writable checkpoint directory path.\\
+\texttt{modelSavePath}: String. This is the writable file path for the final trained model.
 
 \subsubsection{Assumptions}
 \begin{itemize}
