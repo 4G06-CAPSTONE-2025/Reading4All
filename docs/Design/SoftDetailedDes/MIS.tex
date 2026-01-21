@@ -743,28 +743,22 @@ other modules before timing out.\\
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-  \begin{tabular}{p{3cm} p{6cm} p{3cm} p{3cm}}
-    \hline
-    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-    \hline
-    validateUser & userToken:String & userStatus:\Bool &
-    InvalidTokenException \\
-    \hline
-    validateImage & imagePath:String, userToken: UUID &
-    imagePath:\Bool & InvalidImageException\\
-    \hline
-    sendToModel & imagePath:String, userToken: UUID & - &
-    AltTextGenerationError\\
-    \hline
-    getAltText & imagePath:String, userToken: UUID & altText:String &
-    AltTextNotFoundException\\
-    \hline
-    returnToFrontend & altText or errorMsg: String, userID: UUID & -
-    & UIUnreachableException \\
-    \hline
-    updateAltText & altText:String, userID:UUID & - &
-    SessionStateSaveException\\
-  \end{tabular}
+\begin{tabular}{p{3cm} p{6cm} p{3cm} p{3cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+validateUser & userToken:String & userStatus:\Bool & InvalidTokenException \\
+\hline
+validateImage & imagePath:String, userToken: UUID & imagePath:\Bool & InvalidImageException\\
+\hline
+sendToModel & imagePath:String, userToken: UUID & - & AltTextGenerationError\\
+\hline 
+getAltText & imagePath:String, userToken: UUID & altText:String & AltTextNotFoundException\\
+\hline 
+returnToFrontend & altText or errorMsg: String, userID: UUID & - & UIUnreachableException \\
+\hline
+updateAltText & altText:String, userID:UUID & - & SessionStateSaveException\\
+\end{tabular}
 \end{center}
 
 \subsection{Semantics}
@@ -773,15 +767,13 @@ other modules before timing out.\\
 None.
 
 \subsubsection{Environment Variables}
-\texttt{Filesystem} - Used to retrieve images using the file path
-provided by users.
+\texttt{Filesystem} - Used to retrieve images using the file path provided by users. 
 
 \subsubsection{Assumptions}
 
 \begin{itemize}
-  \item MainScreen, AuthenticationService, ImageValidation and
-    DataPreprocess modules are correctly operating and reachable.
-  \item Network connection is available for API communication.
+  \item MainScreen, AuthenticationService, ImageValidation and DataPreprocess modules are correctly operating and reachable. 
+  \item Network connection is available for API communication. 
 \end{itemize}
 
 \subsubsection{Access Routine Semantics}
@@ -1840,59 +1832,59 @@ graduate attribute of Problem Analysis and Design.
     correctly, and asked for extra clarification regarding the module types.
 \end{enumerate}
 
+\textbf{Nawaal Fatima - Reflection}
+\begin{enumerate}
+  \item \textbf{What went well while writing this deliverable?} \\
+  During this deliverable, knowing precisely what had to be changed was good. It provided me with direction and structure. 
+  I wasn't left feeling frustrated on why we had lost marks on certain sections due to the very detailed feedback. Also, 
+  communication among the team vastly improved and expectations were properly met. We had more consistent updates between meetings in 
+  our team, and toour supervisor.
+
+  \item \textbf{What pain points did you experience during this deliverable, and how
+    did you resolve them?} \\
+  Juggling between coding and fixing past mistakes, then inplementing into the code any changes in an agile way was a bit hectic for me. 
+  I had to think ahead and 2 steps behind at the same time which is still hard for me to do but Im learning! To resolve these issues, 
+  I first revisited all that had to be done and then made a sequential plan to iterate through changes, discussing with the team/subteam 
+  when required. It taught me to be agile. I'm also slowly learning to not be a perfect coder - I have to make it exist first before it can 
+  be "good" and even then there's a ton of trade offs! 
+  
+\end{enumerate}
+
 \textbf{Team Reflection}
 \begin{enumerate}
   \item What went well while writing this deliverable?
   \item What pain points did you experience during this deliverable, and how
     did you resolve them?
 
-  \item \textbf{Which of your design decisions stemmed from speaking
-      to your client(s)
-      or a proxy (e.g. your peers, stakeholders, potential users)?
-      For those that
-    were not, why, and where did they come from?} \\
-    When designing the frontend modules, including MainScreen,
-    ShowHistoryScreen, and
-    LogInScreen, our supervisor, Jing, provided very useful guidance
-    on the layout, logic and
-    style of these interfaces. Jing had experience in working with
-    our potential users so
-    she was able to give us advice on how to design our frontend
-    modules. These suggestions
-    helped ensure the design was optimized for accessibility.
+  \item \textbf{Which of your design decisions stemmed from speaking to your client(s)
+  or a proxy (e.g. your peers, stakeholders, potential users)? For those that
+  were not, why, and where did they come from?} \\
+  When designing the frontend modules, including MainScreen, ShowHistoryScreen, and 
+  LogInScreen, our supervisor, Jing, provided very useful guidance on the layout, logic and 
+  style of these interfaces. Jing had experience in working with our potential users so 
+  she was able to give us advice on how to design our frontend modules. These suggestions 
+  helped ensure the design was optimized for accessibility.
 
-  \item \textbf{While creating the design doc, what parts of your
-      other documents (e.g.
-    requirements, hazard analysis, etc), it any, needed to be changed, and why?}
-    When creating the Module Guide and Module Interface Specification
-    documents, we had
-    to make modifications to our Software Requirements Specification
-    to ensure that
-    each of our modules aligned with the written requirements. For example -
+  \item \textbf{While creating the design doc, what parts of your other documents (e.g.
+  requirements, hazard analysis, etc), it any, needed to be changed, and why?}
+  When creating the Module Guide and Module Interface Specification documents, we had 
+  to make modifications to our Software Requirements Specification to ensure that 
+  each of our modules aligned with the written requirements. For example - 
 
-  \item \textbf{What are the limitations of your solution?  Put
-      another way, given
-      unlimited resources, what could you do to make the project
-    better? (LO\_ProbSolutions)}
-    One limitation of our solution is that the performance of the AI
-    model is constrained
-    by available computational resources and data for training the
-    model. With access
-    to more powerful resources such as GPUs and greater storage
-    capacity, we could train
-    more complex models which may perform better. Additionally,
-    access to more data would allow
-    the model to learn better and improve accuracy when generating
-    alternative text for images.
 
-  \item \textbf{Give a brief overview of other design solutions you
-      considered.  What
-      are the benefits and tradeoffs of those other designs compared
-      with the chosen
-      design?  From all the potential options, why did you select the
-      documented design?
-    (LO\_Explores)}
+  \item \textbf{What are the limitations of your solution?  Put another way, given
+  unlimited resources, what could you do to make the project better? (LO\_ProbSolutions)}
+  One limitation of our solution is that the performance of the AI model is constrained 
+  by available computational resources and data for training the model. With access 
+  to more powerful resources such as GPUs and greater storage capacity, we could train 
+  more complex models which may perform better. Additionally, access to more data would allow 
+  the model to learn better and improve accuracy when generating alternative text for images.
 
+  \item \textbf{Give a brief overview of other design solutions you considered.  What
+  are the benefits and tradeoffs of those other designs compared with the chosen
+  design?  From all the potential options, why did you select the documented design?
+  (LO\_Explores)}
+  
 
   \item \textbf{(After you have implemented another team's module,
         which means this
