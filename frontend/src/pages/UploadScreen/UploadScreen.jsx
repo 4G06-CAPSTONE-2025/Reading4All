@@ -29,6 +29,8 @@ export default function HomeScreen(){
         const url = URL.createObjectURL(image_uploaded)
 
         if (!image_uploaded) return;
+        if (!validateFile(image_uploaded)) return;
+
 
         setError("")
         setSelectedFile(image_uploaded)
@@ -40,6 +42,8 @@ export default function HomeScreen(){
         const url = URL.createObjectURL(image_uploaded)
         
         if (!image_uploaded) return;
+        if (!validateFile(image_uploaded)) return;
+
         setError("");
         setSelectedFile(image_uploaded)
         setPreviewImg(url)
@@ -59,6 +63,22 @@ export default function HomeScreen(){
             }
         }
     };
+
+    const MAX_FILE_SIZE = 10485760;
+
+    const validateFile = (file) => {
+        if(!file) return false
+
+        if(file.size>MAX_FILE_SIZE)
+        {
+        setError("File size exceeds 10 Megabytes");
+        setSelectedFile(null);
+        setPreviewImg(null);
+        return false;
+        }
+        setError("");
+        return true;
+    }
 
 
     return (
@@ -122,7 +142,7 @@ export default function HomeScreen(){
         </div>
 
          { selectedFile && (
-            <div className="upload-success-encloses">
+            <div className="upload-status-encloses">
                 <div className="upload-success-view">
                 <p className="success-title">                        
                 Successfully Uploaded Image!
@@ -152,16 +172,29 @@ export default function HomeScreen(){
         ) }
         
 
-    { error && (
-            <p className="upload-error-mssg">
-                Upload Failed
-            </p>
-        )  }
+    { error && !selectedFile && (
+            <div className="upload-status-encloses">
+                <div className="upload-error-view"
+                role="alert"
+                aria-live="assertive"
+                >
+                <div className="error-content">
+                    <div className="error-logo"> 
+                        !
+                    </div>
+                    <div className="error-text">
+                    <p className="error-title">
+                        Upload Failed
+                    </p>
+                    <p className="error-message">
+                       File size exceeds 10 Megabytes. Please Try again!   
+                    </p>
+
+                   </div>
+            </div>
+        </div>
     </div>
-
-
-)
-
+)}
+    </div>
+    );
 }
-
-

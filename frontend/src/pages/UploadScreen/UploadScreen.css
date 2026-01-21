@@ -122,7 +122,7 @@ margin-bottom:10px;
   justify-content: center;
 }
 
-.upload-success-encloses{
+.upload-status-encloses{
   width:100%;
   display:flex;
   justify-content: center;
@@ -143,11 +143,28 @@ margin-bottom:10px;
   gap:10px;
 }
 
+.upload-error-view{
+  max-width: 1159px;
+  width:100%;
+  margin: 30px auto 0 auto;
+  padding: 60px 20px;
+
+  border: 2.3px solid #7A003C;
+  background-color:white;
+  border-radius:36px;
+
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
+
+
 .image-del-sec{
 display: flex;
 align-items: center;
 gap:200px;
 }
+
 
 .file-name-gen-button{
   display: flex;
@@ -158,8 +175,8 @@ gap:200px;
 
 .upload-success-view p{
   font-family: "Roboto";
-  font-size: 22px;
-  font-weight: 505;      
+  font-size: 23px;
+  font-weight: 515;      
   color: black;   
   margin-bottom:10px;
 }
@@ -219,3 +236,38 @@ gap:200px;
   margin-top: 0px;
 }
 
+.error-content{
+  display: flex;
+  align-items: flex-start;
+  gap:80px;
+}
+
+.error-logo{
+  width:150px;
+  height:150px;
+  background-color: black;
+  color:white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size:100px;
+  font-weight: 900;
+  margin-left: 50px;
+  border-radius:50%
+}
+
+.error-title{
+  font-family: "Roboto";
+  font-size: 35px;
+  font-weight: 500;      
+  color: black;   
+  margin-bottom:5px;
+}
+
+.error-message{
+  font-family: "Roboto";
+  font-size: 25px;
+  font-weight: 600;      
+  color: black;   
+  margin-bottom:10px; 
+}
