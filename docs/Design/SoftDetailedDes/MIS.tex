@@ -553,7 +553,8 @@ overall quality and accessibility, and sends the resulting performance scores to
     \hline
     \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
     \hline
-    evaluateCaption & CaptionText:String & PerformanceScores:List & EvaluationException \\
+    evaluateCaption & CaptionText:String & PerformanceScores: List[Tuple[String, Float]]
+ & EvaluationException \\
     \hline
   \end{tabular}
 \end{center}
@@ -580,12 +581,11 @@ None.
 \begin{itemize}
   \item transition:
   \begin{itemize}
-    \item Compute performance indicators according to the selected metrics (may be a simplified scoring approach in early versions)
+    \item Compute performance indicators according to the selected metrics
     \item (Optional) compute \texttt{aggregateScore} and clamp to \texttt{SCORE\_RANGE}
-    \item (Optional) \texttt{lastScores} := PerformanceScores
+    \item (Optional) \texttt{lastScores} := PerformanceScores(List[Tuple[String, Float]])
   \end{itemize}
-  \item output: Returns performance scores summarizing caption quality and accessibility 
-  (see Appendix for Jing's evaluation metrics).
+  \item output: Returns \texttt{PerformanceScores}, a list of numerical scores summarizing caption quality and accessibility.
   \item exception: Raises \texttt{EvaluationException} if evaluation cannot be completed.
 \end{itemize}
 
@@ -610,11 +610,11 @@ None.
 \subsubsection{Exported Access Programs}
 
 \begin{center}
-  \begin{tabular}{p{3cm} p{4cm} p{4cm} p{4cm}}
+  \begin{tabular}{p{3cm} p{6cm} p{3cm} p{3cm}}
     \hline
     \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
     \hline
-    updateModel & PerformanceScores:List & UpdateAck:\Bool & UpdateException \\
+    updateModel & PerformanceScores: (List[Tuple[String, Float]]) & UpdateAck:\Bool & UpdateException \\
     \hline
   \end{tabular}
 \end{center}
