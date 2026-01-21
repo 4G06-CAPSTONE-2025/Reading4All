@@ -4,7 +4,7 @@ class ImageValidation:
 
     def __init__(self):
         self.img_types = ['image/png','image/jpeg','image.jpg']
-        self.max_img_size = 10485760
+        self.max_img_size = 10485760 #equivalent to 10 MB
 
     def validate_image(self,uploaded_file):
         
@@ -23,7 +23,7 @@ class ImageValidation:
         if uploaded_img.size > self.max_img_size:
             return "FILE_SIZE_INVALID"
         
-        # Must check if image can be opened 
+        # Must check if image can be opened, otherwise permission issue or corrupted
         try: 
             Image.open(uploaded_img).verify()
 

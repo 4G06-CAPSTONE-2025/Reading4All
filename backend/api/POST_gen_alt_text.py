@@ -21,7 +21,7 @@ def gen_alt_text_api(request):
     
     image = request.FILES['image']
 
-    #mock
+    #mocking getting a session_id from the table
     session_id = 2026
     alt_text = backend_controller.gen_alt_text(image,session_id)
 
