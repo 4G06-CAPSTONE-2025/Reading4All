@@ -435,6 +435,14 @@ saveTrainedModel & - & - & WriteErrorException \\
   \item exception: Raises \texttt{WriteErrorException} if the checkpoint cannot be written (e.g., permission issues, missing directory, or I/O failure).
 \end{itemize}
 
+\noindent \textbf{saveTrainedModel():}
+\begin{itemize}
+  \item transition: Serializes \texttt{trainedModel} to \texttt{modelSavePath}.
+  \item output: None.
+  \item exception: Raises \texttt{WriteErrorException} if the model cannot be written to \texttt{modelSavePath}.
+\end{itemize}
+
+
 \subsubsection{Local Functions}
 \begin{itemize}
   \item \textbf{splitData(NewFilePath:String) \texttt{->} TestPath:String, TrainPath:String, ValPath:String}: Divides input data into training, validation, and testing portions.
