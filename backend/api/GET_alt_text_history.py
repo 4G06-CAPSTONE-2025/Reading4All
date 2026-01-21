@@ -15,7 +15,7 @@ def get_history(request):
             status = 405
         )
         return response
-    if backend_controller.get_alt_text_history():
+    if backend_controller.get_alt_text_history(session_id=2026):
          return HttpResponse(status=200)
     else:
         response = JsonResponse(
