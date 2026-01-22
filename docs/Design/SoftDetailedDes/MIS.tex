@@ -641,7 +641,7 @@ None.
 None.
 
 %----------------------------------------------------------
-\section{MIS of FeedbackIntegration Module} \label{modint}
+\section{MIS of FeedbackLoop Module} \label{modint}
 
 \subsection{Module}
 \texttt{ModInt}
@@ -704,7 +704,86 @@ None.
 
 \subsubsection{Local Functions}
 None.
+%---------------------------------------------------------
+\section{MIS of Feedback Module} \label{modfeedback}
 
+\subsection{Module}
+\texttt{ModFeedback}
+
+\subsection{Uses}
+Receives generated captions and performance scores for storage, and provides them to other modules when requested.
+\begin{itemize}
+  \item Receives captions and performance scores from the \texttt{FeedbackMetrics} module.
+  \item Provides stored feedback data to the \texttt{FeedbackLoop} module for model updates.
+\end{itemize}
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+\texttt{MAX\_STORAGE}: $\mathbb{N}$ -- Maximum number of feedback entries to store.
+
+\subsubsection{Exported Access Programs}
+\begin{center}
+  \begin{tabular}{p{3cm} p{4cm} p{4cm} p{3cm}}
+    \hline
+    \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+    initialize & - & - & - \\
+    \hline
+    storeFeedback & Caption:String, Scores:List[Tuple[String, Float]] & FeedbackID:String & StorageException \\
+    \hline
+    getFeedback & FeedbackID:String & FeedbackRecord & RetrievalException \\
+    \hline
+    getAllFeedback & - & List[FeedbackRecord] & - \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\texttt{feedbackDB}: Map[String, FeedbackRecord] -- Stores feedback records keyed by FeedbackID.
+
+\subsubsection{Environment Variables}
+None.
+
+\subsubsection{Assumptions}
+\begin{itemize}
+  \item \texttt{initialize} is called before other operations.
+  \item Feedback data comes from \texttt{FeedbackMetrics} module.
+  \item Storage capacity is sufficient for system operation.
+\end{itemize}
+
+\subsubsection{Access Routine Semantics}
+\noindent \textbf{initialize():}
+\begin{itemize}
+  \item transition: Initializes \texttt{feedbackDB} as empty.
+  \item output: None.
+\end{itemize}
+
+\noindent \textbf{storeFeedback(Caption, Scores):}
+\begin{itemize}
+  \item transition: Creates new entry in \texttt{feedbackDB} with unique FeedbackID.
+  \item output: Returns generated FeedbackID.
+  \item exception: Raises \texttt{StorageException} if storage limit exceeded.
+\end{itemize}
+
+\noindent \textbf{getFeedback(FeedbackID):}
+\begin{itemize}
+  \item transition: None.
+  \item output: Returns the FeedbackRecord for given ID.
+  \item exception: Raises \texttt{RetrievalException} if ID not found.
+\end{itemize}
+
+\noindent \textbf{getAllFeedback():}
+\begin{itemize}
+  \item transition: None.
+  \item output: Returns all stored FeedbackRecords.
+  \item exception: None.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None.
 %---------------------------------------------------------
 \section{MIS of BackendController Module} \label{Module}
 
