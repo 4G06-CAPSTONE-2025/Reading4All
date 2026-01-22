@@ -1,8 +1,9 @@
 import yaml
 from supabase import create_client
 
-with open("backend/config.yaml") as f:
+with open("backend/config.yaml", encoding="utf-8") as f:
     config = yaml.safe_load(f)
+
 SUPABASE_URL = config["PROJECT_URL"]
 SUPABASE_KEY = config["SUPABASE_SERVICE_ROLE_KEY"]
 
