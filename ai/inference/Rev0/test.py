@@ -37,7 +37,7 @@ model.eval()
 
 image_paths = sorted([p for p in Path(IMAGE_DIR).iterdir() if p.is_file() and is_image(p)])
 
-print(f"Found {len(image_paths)} images in {IMAGE_DIR}\n")
+logger.info(f"Found {len(image_paths)} images in {IMAGE_DIR}")
 
 for p in image_paths:
     try:
@@ -58,7 +58,9 @@ for p in image_paths:
             )
 
         caption = processor.decode(ids[0], skip_special_tokens=True, clean_up_tokenization_spaces=True)
-        print(f"{p.name}: {caption}")
+        logger.info(f"{p.name}: {caption}")
+
 
     except Exception as e:
-        print(f"{p.name}: ERROR -> {e}")
+        logger.exception(f"{p.name}: ERROR")
+
