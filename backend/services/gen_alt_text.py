@@ -6,7 +6,7 @@ from databases.connect_supabase import get_supabase_client
 
 class GenAltText:
     def __init__(self):
-        pass
+        self.supabase = get_supabase_client()
 
     def trigger_model(self, image, session_id):
         # needs to be changed to trigger real model
@@ -26,14 +26,14 @@ class GenAltText:
         image_b64 = base64.b64encode(image_bytes).decode("utf-8")
 
         # dont need to give time stamp it will by default use current time
-        supabase.table("history").insert(
+        self.supabase.table("history").insert(
             {"session_id": session_id, "image": image_b64, "alt_text": alt_text}
         ).execute()
 
     # this function is for testing purposes to store images from database
     def save_image(self, entry_id=1):
         response = (
-            supabase.table("history")
+            self.supabase.table("history")
             .select("image")
             .eq("entry_id", entry_id)
             .single()
