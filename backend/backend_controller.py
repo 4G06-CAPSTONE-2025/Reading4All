@@ -1,6 +1,6 @@
-from services.image_validation import ImageValidation
 from services.alt_text_history import AltTextHistory
 from services.gen_alt_text import GenAltText
+from services.image_validation import ImageValidation
 
 
 class BackendController:
