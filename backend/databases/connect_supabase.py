@@ -1,15 +1,11 @@
-from pathlib import Path
-import yaml
+import os
 from supabase import create_client
 
-CONFIG_PATH = Path(__file__).resolve().parents[1] / "config.yaml"
-# __file__ = backend/databases/connect_supabase.py
-# parents[1] = backend/
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 
-with CONFIG_PATH.open(encoding="utf-8") as f:
-    config = yaml.safe_load(f)
-
-SUPABASE_URL = config["PROJECT_URL"]
-SUPABASE_KEY = config["SUPABASE_SERVICE_ROLE_KEY"]
-
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+supabase = None
+if SUPABASE_URL and SUPABASE_KEY:
+    supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+else:
+    raise EnvironmentError("Supabase URL or Key not found in environment variables.")
