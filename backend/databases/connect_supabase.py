@@ -1,5 +1,5 @@
-from supabase import create_client
 import yaml
+from supabase import create_client
 
 with open("backend/config.yaml") as f:
     config = yaml.safe_load(f)

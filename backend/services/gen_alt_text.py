@@ -1,6 +1,6 @@
 import base64
-import pandas as pd
 import uuid
+
 from databases.connect_supabase import supabase
 
 
