@@ -460,8 +460,10 @@ The modules are defined as their own subsection and follow the following format:
     audit-safe handling of sensitive data.
   \item[Services:] Verifies user credentials, issues and refreshes
     authentication tokens, validates tokens on incoming requests,
-    resolves current user identity (userID/role) for access control,
-    and coordinates with Session Management to create/terminate sessions.
+    resolves current user identity (userID/role) for access control.
+    This module is used to sign up new users, log in existing users. 
+    This is also used to protect user data and ensure only necessary sign up information
+    is collected and stored. 
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
 \end{description}
