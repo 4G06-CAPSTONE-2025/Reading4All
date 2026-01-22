@@ -1,0 +1,602 @@
+[
+    {
+        "image": "ai/data/image1.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image2.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image3.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image4.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image5.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image6.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image7.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image8.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image9.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image10.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image11.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image12.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image13.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image14.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image15.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image16.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image17.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image18.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image19.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image20.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image21.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image22.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image23.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image24.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image25.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image26.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image27.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image28.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image29.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image30.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image31.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image32.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image33.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image34.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image35.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image36.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image37.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image38.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image39.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image40.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image41.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image42.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image43.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image44.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image45.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image46.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image47.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image48.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image49.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image50.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image1.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image2.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image3.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image4.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image5.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image6.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image7.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image8.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image9.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image10.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image11.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image12.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image13.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image14.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image15.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image16.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image17.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image18.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image19.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image20.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image21.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image22.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image23.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image24.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image25.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image26.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image27.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image28.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image29.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image30.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image31.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image32.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image33.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image34.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image35.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image36.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image37.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image38.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image39.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image40.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image41.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image42.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image43.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image44.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image45.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image46.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image47.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image48.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image49.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    },
+    {
+        "image": "ai/data/image50.png",
+        "ground_truth": "annotation_present: no",
+        "stage2_output": "image_missing",
+        "match": false
+    }
+]

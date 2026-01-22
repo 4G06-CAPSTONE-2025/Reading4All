@@ -1,271 +1,275 @@
-import os, sys, json
+import os
+import time
 import torch
+from datetime import datetime
+from collections import Counter
 from datasets import load_dataset
-from transformers import Pix2StructProcessor, Pix2StructForConditionalGeneration, get_scheduler
-from torch.optim import AdamW
-import math
-
-script_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(script_dir)
-sys.path.insert(0, parent_dir)
-
-from utils.reproducibility import set_seed, save_config
-from utils.logging_utils import setup_logger, log_metrics
-from utils.progress_utils import progress
-from utils.safety_utils import log_health, cooldown
-
-BASE_DIR = r"C:/Users/nawaa/OneDrive/Desktop/Reading4All/ai"
-MODEL_DIR = os.path.join(BASE_DIR, "model")
-
-# ---------------- OPTIMIZED CONFIG ----------------
-CFG = {
-    "model": "google/pix2struct-base",
-    "dataset": "PubLayNet",
-    "epochs": 2,                    # Full epochs
-    "batch_size": 2,                # Increased batch size for efficiency
-    "lr": 5e-5,
-    "warmup_steps": 1000,           # Learning rate warmup
-    "seed": 42,
-    "gradient_accumulation_steps": 2,  # Simulate larger batch size
-    "save_steps": 5000,             # Save checkpoint every 5000 steps
-    "logging_steps": 100            # Log every 100 steps
-}
-
-OUT = os.path.join(MODEL_DIR, "stage1_visual")
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-
-# -------- SYSTEM SAFETY --------
-torch.set_num_threads(6)
-os.environ["OMP_NUM_THREADS"] = "6"
-if torch.cuda.is_available():
-    os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"
-    torch.backends.cudnn.benchmark = True  # Enable cuDNN autotuner
-
-# -------- SETUP --------
-set_seed(CFG["seed"])
-save_config(CFG, OUT)
-logger = setup_logger("stage1_full", OUT)
-logger.info(f"Training on device: {DEVICE}")
-logger.info(f"Configuration: {CFG}")
-
-# -------- DATA --------
-# PubLayNet has ~335,703 training images
-dataset = load_dataset("jordanparker6/publaynet", split="train", streaming=True)
-logger.info("PubLayNet dataset loaded (streaming mode)")
-
-# Calculate approximate total steps
-# PubLayNet size: ~335,703 images
-if CFG.get("max_steps"):
-    total_steps = CFG["max_steps"]
-else:
-    total_steps = math.ceil(335703 / CFG["batch_size"]) * CFG["epochs"]
-    
-logger.info(f"Approximate total steps: {total_steps:,}")
-logger.info(f"Training for {CFG['epochs']} epochs")
-logger.info(f"Batch size: {CFG['batch_size']}")
-
-# -------- MODEL --------
-processor = Pix2StructProcessor.from_pretrained(CFG["model"])
-model = Pix2StructForConditionalGeneration.from_pretrained(
-    CFG["model"], 
-    torch_dtype=torch.float16 if DEVICE == "cuda" else torch.float32
-).to(DEVICE)
-
-# Enable gradient checkpointing to save memory
-model.gradient_checkpointing_enable()
-
-optimizer = AdamW(model.parameters(), lr=CFG["lr"])
-
-# Learning rate scheduler
-lr_scheduler = get_scheduler(
-    "linear",
-    optimizer=optimizer,
-    num_warmup_steps=CFG["warmup_steps"],
-    num_training_steps=total_steps
+from transformers import (
+    Pix2StructProcessor,
+    Pix2StructForConditionalGeneration,
+    TrainingArguments,
+    Trainer,
+    TrainerCallback
 )
 
-logger.info(f"Model loaded: {CFG['model']}")
-logger.info(f"Model parameters: {sum(p.numel() for p in model.parameters()):,}")
+# ============================================================
+# Paths
+# ============================================================
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_DIR))
+MODEL_BASE_DIR = os.path.join(PROJECT_ROOT, "ai", "model")
+os.makedirs(MODEL_BASE_DIR, exist_ok=True)
 
-# -------- SAVE INITIAL MODEL --------
-initial_out = f"{OUT}/initial"
-os.makedirs(initial_out, exist_ok=True)
-model.save_pretrained(initial_out)
-processor.save_pretrained(initial_out)
-logger.info(f"Saved initial model to {initial_out}")
+# ============================================================
+# Labels (PubLayNet official)
+# ============================================================
+LABELS = ["text", "title", "list", "table", "figure"]
 
-# -------- TRAINING --------
-step = 0
-global_step = 0
-model.train()
-loss_history = []
-gradient_accumulation_counter = 0
+# ============================================================
+# Heartbeat callback
+# ============================================================
+class HeartbeatCallback(TrainerCallback):
+    def on_step_end(self, args, state, control, **kwargs):
+        if state.global_step % 100 == 0 and state.global_step > 0:
+            loss = state.log_history[-1].get("loss", "N/A")
+            print(
+                f"[HEARTBEAT] step={state.global_step} "
+                f"epoch={state.epoch:.2f} loss={loss}"
+            )
 
-for epoch in range(CFG["epochs"]):
-    epoch_loss = 0
-    epoch_samples = 0
-    batch_images = []
-    
-    logger.info(f"Starting epoch {epoch + 1}/{CFG['epochs']}")
-    
-    for sample in progress(dataset, f"Epoch {epoch+1}"):
-        try:
-            # Add to batch
-            batch_images.append(sample["image"])
-            
-            # Process batch when full
-            if len(batch_images) == CFG["batch_size"]:
-                # Prepare batch inputs
-                inputs = processor(images=batch_images, return_tensors="pt", padding=True)
-                
-                # Move to device
-                if DEVICE == "cuda":
-                    inputs = {k: v.to(DEVICE, dtype=torch.float16) for k, v in inputs.items()}
-                else:
-                    inputs = {k: v.to(DEVICE) for k, v in inputs.items()}
-                
-                # Prepare labels for each image in batch
-                batch_labels = processor.tokenizer(
-                    ["describe the diagram structure"] * CFG["batch_size"],
-                    return_tensors="pt",
-                    padding=True
-                ).input_ids.to(DEVICE)
-                
-                # Forward pass
-                out = model(**inputs, labels=batch_labels)
-                loss = out.loss
-                
-                # Scale loss for gradient accumulation
-                loss = loss / CFG["gradient_accumulation_steps"]
-                loss.backward()
-                
-                gradient_accumulation_counter += 1
-                epoch_loss += loss.item() * CFG["gradient_accumulation_steps"]
-                epoch_samples += CFG["batch_size"]
-                
-                # Update weights when accumulation steps reached
-                if gradient_accumulation_counter >= CFG["gradient_accumulation_steps"]:
-                    torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)  # Gradient clipping
-                    optimizer.step()
-                    lr_scheduler.step()
-                    optimizer.zero_grad()
-                    gradient_accumulation_counter = 0
-                    
-                    step += 1
-                    global_step += 1
-                    loss_history.append(loss.item() * CFG["gradient_accumulation_steps"])
-                
-                # Clear batch
-                batch_images = []
-                
-                # Logging
-                if step % CFG["logging_steps"] == 0 and step > 0:
-                    avg_loss = sum(loss_history[-CFG["logging_steps"]:]) / min(len(loss_history), CFG["logging_steps"])
-                    current_lr = optimizer.param_groups[0]["lr"]
-                    
-                    logger.info(
-                        f"Step {step:,} | Loss: {loss.item() * CFG['gradient_accumulation_steps']:.4f} | "
-                        f"Avg Loss: {avg_loss:.4f} | LR: {current_lr:.2e} | "
-                        f"Samples: {epoch_samples:,}"
-                    )
-                    
-                    log_health(logger)
-                    log_metrics({
-                        "step": step,
-                        "global_step": global_step,
-                        "loss": loss.item() * CFG["gradient_accumulation_steps"],
-                        "avg_loss": avg_loss,
-                        "learning_rate": current_lr,
-                        "epoch": epoch + 1,
-                        "samples_processed": epoch_samples
-                    }, OUT)
-                    
-                    if torch.cuda.is_available():
-                        torch.cuda.empty_cache()
-                    cooldown()
-                
-                # Save checkpoint
-                if step % CFG["save_steps"] == 0 and step > 0:
-                    checkpoint_dir = f"{OUT}/step_{step}"
-                    os.makedirs(checkpoint_dir, exist_ok=True)
-                    model.save_pretrained(checkpoint_dir)
-                    processor.save_pretrained(checkpoint_dir)
-                    
-                    checkpoint_info = {
-                        "step": step,
-                        "global_step": global_step,
-                        "epoch": epoch + 1,
-                        "loss": loss.item() * CFG["gradient_accumulation_steps"],
-                        "avg_loss": sum(loss_history[-100:]) / min(len(loss_history), 100),
-                        "learning_rate": optimizer.param_groups[0]["lr"],
-                        "samples_processed": epoch_samples
-                    }
-                    
-                    
-                    with open(os.path.join(checkpoint_dir, "checkpoint_info.json"), "w") as f:
-                        json.dump(checkpoint_info, f, indent=2)
-                    
-                    logger.info(f"✅ Saved checkpoint at step {step:,}")
-        
-        except Exception as e:
-            logger.error(f"Error processing batch at step {step}: {e}")
-            batch_images = []  # Reset batch on error
-            continue
-    
-    # -------- SAVE EPOCH CHECKPOINT --------
-    epoch_dir = f"{OUT}/epoch_{epoch+1}"
-    os.makedirs(epoch_dir, exist_ok=True)
-    
-    # Save model and processor
-    model.save_pretrained(epoch_dir)
-    processor.save_pretrained(epoch_dir)
-    
-    # Save epoch summary
-    epoch_avg_loss = epoch_loss / max(step, 1)
-    epoch_info = {
-        "epoch": epoch + 1,
-        "total_steps": step,
-        "global_steps": global_step,
-        "average_loss": epoch_avg_loss,
-        "samples_processed": epoch_samples,
-        "learning_rate": optimizer.param_groups[0]["lr"],
-        "config": CFG
+# ============================================================
+# Dataset loader
+# ============================================================
+def load_publaynet_hf(split="train", max_samples=None):
+    print("\n=== Loading PubLayNet ===\n")
+
+    dataset = load_dataset(
+        "creative-graphic-design/PubLayNet",
+        split=split,
+        streaming=False
+    )
+
+    PUBLAYNET_ID2LABEL = {
+        0: "text",
+        1: "title",
+        2: "list",
+        3: "table",
+        4: "figure",
     }
+
+    records = []
+    skipped = 0
+
+    for idx, item in enumerate(dataset):
+        if idx % 1000 == 0 and idx > 0:
+            print(f"[HEARTBEAT] processed {idx} | kept {len(records)}")
+
+        ann = item.get("annotations", {})
+        category_ids = ann.get("category_id", [])
+
+        if not category_ids:
+            skipped += 1
+            continue
+
+        categories = [
+            PUBLAYNET_ID2LABEL[cid]
+            for cid in category_ids
+            if cid in PUBLAYNET_ID2LABEL
+        ]
+
+        if not categories:
+            skipped += 1
+            continue
+
+        dominant_label = Counter(categories).most_common(1)[0][0]
+
+        records.append({
+            "index": idx,
+            "text": dominant_label
+        })
+
+        if max_samples and len(records) >= max_samples:
+            break
+
+    print(f"\nLoaded {len(records)} samples | skipped {skipped}\n")
+    return records
+
+# ============================================================
+# Dataset wrapper
+# ============================================================
+class PubLayNetDataset(torch.utils.data.Dataset):
+    def __init__(self, hf_dataset, records):
+        self.dataset = hf_dataset
+        self.records = records
+
+    def __len__(self):
+        return len(self.records)
+
+    def __getitem__(self, idx):
+        rec = self.records[idx]
+        item = self.dataset[rec["index"]]
+
+        image = item["image"].convert("RGB")
+        text = rec["text"]
+
+        return {
+            "image": image,
+            "text": text
+        }
+
+# ============================================================
+# Processor & collate (Pix2Struct-style)
+# ============================================================
+processor = Pix2StructProcessor.from_pretrained(
+    "google/pix2struct-base"
+)
+
+# LIMIT visual tokens (VERY IMPORTANT)
+processor.image_processor.max_patches = 512
+
+def shift_tokens_right(labels, pad_token_id, decoder_start_token_id):
+    shifted = labels.new_zeros(labels.shape)
+    shifted[:, 1:] = labels[:, :-1].clone()
+    shifted[:, 0] = decoder_start_token_id
+    shifted.masked_fill_(shifted == -100, pad_token_id)
+    return shifted
+
+
+def collate_fn(batch):
+    images = [b["image"] for b in batch]
+    texts = [b["text"] for b in batch]
+
+    # Pix2Struct image processing (IMPORTANT)
+    image_inputs = processor.image_processor(
+        images,
+        return_tensors="pt"
+    )
+
+    # Tokenize labels
+    labels = processor.tokenizer(
+        texts,
+        padding="longest",
+        truncation=True,
+        return_tensors="pt"
+    ).input_ids
+
+    # Ignore padding tokens in loss
+    labels[labels == processor.tokenizer.pad_token_id] = -100
+
+    # Shift decoder inputs
+    decoder_input_ids = shift_tokens_right(
+        labels,
+        pad_token_id=-100,
+        decoder_start_token_id=model.config.decoder_start_token_id
+    )
+
+    return {
+        "flattened_patches": image_inputs["flattened_patches"],
+        "attention_mask": image_inputs["attention_mask"],
+        "labels": labels,
+        "decoder_input_ids": decoder_input_ids,
+    }
+
+# ============================================================
+# Trainable parameters logger
+# ============================================================
+def log_trainable_parameters(model):
+    print("\n=== TRAINABLE PARAMETERS ===")
+    for name, param in model.named_parameters():
+        if param.requires_grad:
+            print(name)
+    print("============================\n")
+
+# ============================================================
+# Main
+# ============================================================
+if __name__ == "__main__":
+
+    # -----------------------------
+    # Load dataset
+    # -----------------------------
+    hf_dataset = load_dataset(
+        "creative-graphic-design/PubLayNet",
+        split="train"
+    )
+
+    records = load_publaynet_hf()
+    dataset = PubLayNetDataset(hf_dataset, records)
+
+    # -----------------------------
+    # Load Pix2Struct
+    # -----------------------------
+    model = Pix2StructForConditionalGeneration.from_pretrained(
+        "google/pix2struct-base"
+    )
+
+    # -----------------------------
+    # Freeze everything
+    # -----------------------------
+    for param in model.parameters():
+        param.requires_grad = False
+
+    # Unfreeze decoder token embeddings
+    # (this learns the label vocabulary: text/title/list/table/figure):
+    for param in model.decoder.embed_tokens.parameters():
+        param.requires_grad = True
     
-    import json
-    with open(os.path.join(epoch_dir, "epoch_info.json"), "w") as f:
-        json.dump(epoch_info, f, indent=2)
-    
-    logger.info(f"✅ Epoch {epoch+1} complete")
-    logger.info(f"   Steps: {step:,}")
-    logger.info(f"   Samples: {epoch_samples:,}")
-    logger.info(f"   Average Loss: {epoch_avg_loss:.4f}")
-    logger.info(f"   Saved to: {epoch_dir}")
+    # Unfreeze LayerNorms in encoder for stability
+    # (acts like lightweight adapters)
+    # -----------------------------
+    for name, param in model.encoder.named_parameters():
+        if "layernorm" in name.lower():
+            param.requires_grad = True
 
-# -------- SAVE FINAL MODEL --------
-final_dir = f"{OUT}/final"
-os.makedirs(final_dir, exist_ok=True)
+    # -----------------------------
+    # Device
+    # -----------------------------
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model.to(device)
 
-model.save_pretrained(final_dir)
-processor.save_pretrained(final_dir)
+    log_trainable_parameters(model)
 
-final_info = {
-    "total_steps": step,
-    "global_steps": global_step,
-    "total_epochs": CFG["epochs"],
-    "final_loss": loss_history[-1] if loss_history else 0,
-    "average_loss": sum(loss_history) / max(len(loss_history), 1),
-    "config": CFG,
-    "device": DEVICE,
-    "total_parameters": sum(p.numel() for p in model.parameters()),
-    "trainable_parameters": sum(p.numel() for p in model.parameters() if p.requires_grad)
-}
+    # -----------------------------
+    # Output dir
+    # -----------------------------
+    MODEL_NAME = f"pix2struct_publaynet_stage1_{datetime.now().strftime('%Y%m%d_%H%M')}"
+    OUTPUT_DIR = os.path.join(MODEL_BASE_DIR, MODEL_NAME)
 
-with open(os.path.join(final_dir, "final_info.json"), "w") as f:
-    json.dump(final_info, f, indent=2)
+    # -----------------------------
+    # Training args
+    # -----------------------------
+    training_args = TrainingArguments(
+        output_dir=OUTPUT_DIR,
+        per_device_train_batch_size=1,
+        gradient_accumulation_steps=8,   # effective batch = 8
+        learning_rate=1e-4,
+        num_train_epochs=2,
+        logging_steps=50,
+        save_strategy="epoch",
+        remove_unused_columns=False,
+        report_to="none",
+        fp16=True,
+    )
 
-logger.info("=" * 60)
-logger.info("TRAINING COMPLETE!")
-logger.info(f"Total steps: {step:,}")
-logger.info(f"Final model saved to: {final_dir}")
-logger.info("=" * 60)
+
+    trainer = Trainer(
+        model=model,
+        args=training_args,
+        train_dataset=dataset,
+        data_collator=collate_fn,
+        callbacks=[HeartbeatCallback()],
+    )
+
+    # -----------------------------
+    # Train
+    # -----------------------------
+    print("\n=== STARTING PubLayNet PIX2STRUCT STAGE 1 (IMAGE → LABEL TEXT) ===\n")
+    start = time.time()
+
+    trainer.train()
+
+    elapsed = (time.time() - start) / 60
+    print(f"\n=== TRAINING COMPLETE ({elapsed:.2f} min) ===\n")
+
+    trainer.save_model(OUTPUT_DIR)
+    processor.save_pretrained(OUTPUT_DIR)
