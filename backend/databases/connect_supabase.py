@@ -1,18 +1,20 @@
 import os
+from pathlib import Path
+from dotenv import load_dotenv
 from supabase import create_client
 
-supabase = None
+# Load backend/.env no matter how this module is imported
+BACKEND_DIR = Path(__file__).resolve().parents[1]  # .../backend/
+load_dotenv(BACKEND_DIR / ".env")
 
 def get_supabase_client():
-    global supabase
+    url = os.getenv("SUPABASE_URL")
+    key = os.getenv("SUPABASE_KEY")  # matches your env var names
 
-    if supabase is None:
-        SUPABASE_URL = os.getenv("SUPABASE_URL")
-        SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+    if not url or not key:
+        raise EnvironmentError(
+            "Supabase URL or Key not found in environment variables. "
+            "Expected SUPABASE_URL and SUPABASE_KEY in backend/.env"
+        )
 
-        if not SUPABASE_URL or not SUPABASE_KEY:
-            raise EnvironmentError("Supabase URL or Key not found in environment variables.")
-        supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
-
-
-    return supabase
+    return create_client(url, key)
