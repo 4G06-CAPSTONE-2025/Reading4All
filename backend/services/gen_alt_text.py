@@ -1,7 +1,7 @@
 import base64
 import uuid
 
-from databases.connect_supabase import supabase
+from databases.connect_supabase import get_supabase_client
 
 
 class GenAltText:

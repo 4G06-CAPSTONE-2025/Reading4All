@@ -1,4 +1,4 @@
-from databases.connect_supabase import supabase
+from databases.connect_supabase import get_supabase_client
 
 
 class AltTextHistory:
