@@ -5,8 +5,6 @@ from datasets import load_dataset
 from transformers import AutoProcessor, BlipForConditionalGeneration, TrainingArguments, Trainer, default_data_collator
 import torch
 
-
-
 '''
 This is what input dir should look like
 <BASE_DIR>/
@@ -29,7 +27,7 @@ MODEL_ID = "Salesforce/blip-image-captioning-base"
 BASE_DIR = "ai/train/"
 TRAIN_CSV = os.path.join(BASE_DIR, "train.csv")
 VAL_CSV = os.path.join(BASE_DIR, "val.csv")
-OUT_DIR = "ai/train/model3/"
+OUT_DIR = "/Users/fizasehar/GitHub/Reading4All/ai/models/TesterOneFrozen"
 
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 torch.backends.mps.enable_fallback = True
@@ -37,8 +35,8 @@ torch.backends.mps.enable_fallback = True
 processor = AutoProcessor.from_pretrained(MODEL_ID)
 model = BlipForConditionalGeneration.from_pretrained(MODEL_ID).to(DEVICE)
  
-# for param in model.vision_model.parameters():
-#     param.requires_grad = False
+for param in model.vision_model.parameters():
+    param.requires_grad = False
 
 
 ds = load_dataset("csv", data_files={"train": TRAIN_CSV, "validation": VAL_CSV})

@@ -4,7 +4,6 @@ from PIL import Image
 from datasets import load_dataset
 from transformers import AutoProcessor, BlipForConditionalGeneration, TrainingArguments, Trainer, default_data_collator
 
-
 '''
 This is what input dir should look like
 <BASE_DIR>/
@@ -23,10 +22,10 @@ This is what input dir should look like
       'image' column has relative paths to images like 'data/train/img_0001.png
       '''
 MODEL_ID = "Salesforce/blip-image-captioning-base"
-BASE_DIR = "PATH/TO/YOUR/DATASET"
+BASE_DIR = "/Users/fizasehar/GitHub/Reading4All/ai/train/blip_mock"
 TRAIN_CSV = os.path.join(BASE_DIR, "train_rel.csv")
 VAL_CSV = os.path.join(BASE_DIR, "val_rel.csv")
-OUT_DIR = "PATH/TO/YOUR/OUTPUT/DIR"
+OUT_DIR = "/Users/fizasehar/GitHub/Reading4Al l/ai/models"
 
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 
