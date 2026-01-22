@@ -795,18 +795,11 @@ None.
 Serves as the coordinator between the frontend, backend and machine
 learning modules.
 \begin{itemize}
-  \item Receives authentication and session status from the
-    AuthenticationService Module (see
-    Section~\ref{Module:AuthenticationService}) and SessionManagement
-    module (see Section~\ref{Module:SessionManagement}), respectively.
-  \item Sends uploaded images to the ImageValidation module (see
-    Section~\ref{Module: ImageValid}) and receives validation results.
-  \item Sends validated inputs to the DataPreprocess module (see
-    Section~\ref{datapp} )
-  \item Sends errors and log events to the Logging module (see
-    Section ~\ref{LogModule})
-  \item Returns the generated alt text or error message to the
-    MainScreen Module (see Section ~\ref{MainScreen})
+  \item Receives authentication and session status from the AuthenticationService Module (see Section~\ref{Module:AuthenticationService}) and SessionManagement module (see Section~\ref{Module:SessionManagement}), respectively.
+  \item Sends uploaded images to the ImageValidation module (see Section~\ref{Module: ImageValid}) and receives validation results. 
+  \item Sends validated inputs to the DataPreprocess module (see Section~\ref{datapp} )
+  \item Sends errors and log events to the Logging module (see Section ~\ref{LogModule})
+  \item Receives the generated alt text from the ModelOutput module (see Section \ref{modout}) to be presented to the user.
 \end{itemize}
 
 \subsection{Syntax}
@@ -837,6 +830,7 @@ getAltText & imagePath:String, userToken: UUID & altText:String & AltTextNotFoun
 returnToFrontend & altText or errorMsg: String, userID: UUID & - & UIUnreachableException \\
 \hline
 updateAltText & altText:String, userID:UUID & - & SessionStateSaveException\\
+\hline 
 \end{tabular}
 \end{center}
 
@@ -1929,6 +1923,37 @@ graduate attribute of Problem Analysis and Design.
   
 \end{enumerate}
 
+\textbf{Fiza Sehar Individual - Reflection}
+
+\begin{enumerate}
+  \item \textbf{What went well while writing this deliverable?}\\
+  Since we had already discussed many implementation details while building, the TA feedback was clear and actionable. I refined the environment variables to be more specific and consistent across modules by separating \texttt{cpu} and \texttt{gpu}, and replacing vague terms like ``Filesystem'' with explicit paths such as \texttt{checkpointDir} and \texttt{modelSavePath}. I also tightened the access routine semantics so the outputs match what is declared in the access program tables.
+
+  \item \textbf{What pain points did you experience during this deliverable, and how did you resolve them?}\\
+  The main pain point was deciding how detailed the MIS should be without adding unnecessary complexity. In particular, it was unclear whether model save locations should be treated as parameters or environment variables, and how to describe CPU/GPU usage consistently. I resolved this by aligning directly with the TA comments, making dependencies explicit by naming the file paths, standardizing device naming (\texttt{cpu}, \texttt{gpu}, \texttt{device}), and adding a simple precondition assumption (model initialized or loaded before use) to remove ambiguity.
+\end{enumerate}
+
+
+\textbf{Moly Mikhail Individual - Reflection}
+
+\begin{enumerate}
+  \item \textbf{What went well while writing this deliverable?}\\
+  I believe many things went well while writing this deliverable. Firstly having to iterations was greatly beneficial. 
+  This allowed us to iterate on our design and make improvements based on numerous things. 
+  We made changes based on our TA feedback from the Rev0 Design Document deliverable, as well as peer feedback. 
+  This was really helpful as a lot of the feedback pointed out inconsistences and gaps within our design.
+  I also found it helpful to reflect on our design after beginning the implementation process. Often when beginning to code 
+  and implement our design, small differences were revealed. It was helpful to compare our initial design to how we were implementing and make decisions on how on the best way to proceed. 
+  \item \textbf{What pain points did you experience during this deliverable, and how did you resolve them?}\\
+  The first pain point I experienced during this deliverable was reviewing the module types we had initially chosen
+  and ensuring they made sense and aligned with the definition of the types. 
+  Looking specifically, at abstract objects it was initially confusing what an initializer method was and the difference between a constrcutor. However, 
+  after meeting with our TA, I was able to ask about this and get clarification, which was really helpful.
+
+\end{enumerate}
+
+
+
 \textbf{Team Reflection}
 \begin{enumerate}
   \item What went well while writing this deliverable?
@@ -1977,30 +2002,6 @@ graduate attribute of Problem Analysis and Design.
     ``outsider'' completes some of the implementation?}
 \end{enumerate}
 
-\textbf{Fiza Individual Reflection}
 
-\begin{enumerate}
-  \item \textbf{What went well while writing this deliverable?}\\
-    Since we had already discussed many implementation details while
-    building, the TA feedback was clear and actionable. I refined the
-    environment variables to be more specific and consistent across
-    modules by separating \texttt{cpu} and \texttt{gpu}, and
-    replacing vague terms like ``Filesystem'' with explicit paths
-    such as \texttt{checkpointDir} and \texttt{modelSavePath}. I also
-    tightened the access routine semantics so the outputs match what
-    is declared in the access program tables.
-
-  \item \textbf{What pain points did you experience during this
-    deliverable, and how did you resolve them?}\\
-    The main pain point was deciding how detailed the MIS should be
-    without adding unnecessary complexity. In particular, it was
-    unclear whether model save locations should be treated as
-    parameters or environment variables, and how to describe CPU/GPU
-    usage consistently. I resolved this by aligning directly with the
-    TA comments, making dependencies explicit by naming the file
-    paths, standardizing device naming (\texttt{cpu}, \texttt{gpu},
-    \texttt{device}), and adding a simple precondition assumption
-    (model initialized or loaded before use) to remove ambiguity.
-\end{enumerate}
 
 \end{document}

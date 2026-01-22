@@ -7,6 +7,31 @@
     position: relative;
   }
   
+  /* Logout button - top right */
+  .logout-button {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 20;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    border-radius: 999px;
+    border: 1px solid #fca5a5;
+    background-color: #ef4444;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .logout-button:hover {
+    background-color: #dc2626;
+  }
+  
+  .logout-button:focus-visible {
+    outline: 3px solid #000;
+    outline-offset: 3px;
+  }
+  
   /* History toggle button (like ChatGPT's sidebar toggle) */
   .history-toggle {
     position: fixed;
@@ -58,6 +83,17 @@
     border-radius: 6px;
     border: 1px solid #e0e3e8;
     font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .history-item-name {
+    font-weight: 500;
+  }
+  
+  .history-item-date {
+    font-size: 0.8rem;
+    color: #6b7280;
   }
   
   /* Button to go to /session-history */
@@ -170,7 +206,7 @@
     outline-offset: 3px;
   }
   
-  /* File input (kept visible but simple; you can hide it completely if you want) */
+  /* File input (hidden for visual users; accessed via button) */
   .upload-input {
     margin-top: 10px;
     margin-bottom: 6px;
@@ -254,23 +290,24 @@
   }
   
   .alt-text-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  
-  
-  .alt-text-button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
-  }
-  
-  .alt-text-button:focus-visible {
-    outline: 3px solid #000;
-    outline-offset: 3px;
   }
   
   .alt-text-output {
     font-size: 0.95rem;
     line-height: 1.4;
+  }
+  
+  /* Screen reader only utility (for dates etc.) */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
   }
   
