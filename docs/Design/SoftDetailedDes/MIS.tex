@@ -1162,7 +1162,7 @@ the accepted image file types.
     \hline
     \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
     \hline
-    validateImageFile & imagePath:String, userToken:String &
+    validateImageFile & imagePath:String, userToken:UUID &
     imageStatus: \(\mathbb{B}\)& InvalidImageType-Exception \\
     \hline
   \end{tabular}
@@ -1214,12 +1214,7 @@ provided by users.
 \texttt{Logger}
 
 \subsection{Uses}
-The module handles the recording of key system events and any errors
-encountered. It logs actions such as image uploads, alt-text
-generation and user validations, as well as system issues like
-timeouts. This logging will enables developers to debug for
-effectively and ensure system reliability and security during failures.
-The logging module does not use any other modules.
+None.
 
 \subsection{Syntax}
 
