@@ -12,7 +12,8 @@ class GenAltText:
         # needs to be changed to trigger real model
         mock_alt_text = uuid.uuid4().hex
 
-        # after alt text has been successfully generated, the alt text and image is saved to the history
+        # after alt text has been successfully generated, the alt text 
+        # and image is saved to the history
         self.insert_history(image, mock_alt_text, session_id)
 
         # returns alt text to show user
