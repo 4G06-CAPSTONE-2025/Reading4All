@@ -1,4 +1,3 @@
-import pandas as pd
 from databases.connect_supabase import supabase
 
 
