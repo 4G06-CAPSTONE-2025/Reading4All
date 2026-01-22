@@ -22,9 +22,9 @@ This is what input dir should look like
                 ...
 where the csv files have all the columns in the original annotated csv in ai/annotations/annotated_physics_data(Sheet1).csv
 '''
-
+TESTER=1
 MODEL_ID = "Salesforce/blip-image-captioning-base"
-BASE_DIR = "ai/train/"
+BASE_DIR = f"ai/data/tester_{TESTER}"
 TRAIN_CSV = os.path.join(BASE_DIR, "train.csv")
 VAL_CSV = os.path.join(BASE_DIR, "val.csv")
 OUT_DIR = "/Users/fizasehar/GitHub/Reading4All/ai/models/TesterOneFrozen"
