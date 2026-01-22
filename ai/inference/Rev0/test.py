@@ -6,8 +6,8 @@ import logging
 from transformers import AutoProcessor, BlipForConditionalGeneration
 
 MODEL_DIR = "ai/models/TesterOneFrozen"
-LOGGER_PATH = "/Users/fizasehar/GitHub/Reading4All/ai/logger"
-IMAGE_DIR = "/Users/fizasehar/GitHub/Reading4All/ai/data/tester_1/val_data"  
+LOGGER_PATH = "ai/logger"
+IMAGE_DIR = "ai/data/tester_1/val_data"  
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 LOG_FILE = Path(LOGGER_PATH) / "log.txt"
 PROMPT = "Describe this physics diagram:"
