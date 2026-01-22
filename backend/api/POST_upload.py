@@ -1,7 +1,5 @@
-from django.shortcuts import render
-from django.views.decorators.csrf import ensure_csrf_cookie
-
 from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 from backend.backend_controller import backend_controller
 
@@ -22,7 +20,6 @@ def validate_image_api(request):
         )
         return response
 
-    file_uploaded = request
     message = backend_controller.validate_image(request)
 
     if message != "Success":
