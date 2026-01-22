@@ -163,7 +163,6 @@ for this project.
     {CaptionGeneration Module}\\ &
     {InternalMetricCompliance}\\ &
     {FeedbackMetrics Module}\\ &
-    {FeedbackIntegration Module}\\ &
     {FeedbackLoop Module}\\
     \bottomrule
   \end{tabular}
@@ -575,7 +574,7 @@ None.
 \subsection{Uses}
 Receives generated captions from the \texttt{WCAGCompliance} module, evaluates their 
 overall quality and accessibility, and sends the resulting performance scores to the 
-\texttt{FeedbackIntegration} module for further model improvement.
+\texttt{FeedbackLoop} module for further model improvement.
 
 \subsection{Syntax}
 
@@ -641,7 +640,7 @@ None.
 None.
 
 %----------------------------------------------------------
-\section{MIS of FeedbackIntegration Module} \label{modint}
+\section{MIS of FeedbackLoop Module} \label{modint}
 
 \subsection{Module}
 \texttt{ModInt}
@@ -803,11 +802,11 @@ None.
 
 \noindent \textbf{returnToFrontend(alt Text or errorMsg, userToken)}:
 \begin{itemize}
-  \item transition: Sends the generated alt text or corresponding
-    error message to the Frontend Module.
+  \item transition: Returns the generated alt text or corresponding
+    error message to the UserInterfaceInteractions module to be displayed to the user. 
   \item output:  None.
   \item exception: \texttt{FrontendUnreachableException} is raised if
-    the Frontend Module cannot be reached.
+    the Frontend cannot be reached.
 \end{itemize}
 
 \noindent \textbf{updateAltText(altText, userID)}:
