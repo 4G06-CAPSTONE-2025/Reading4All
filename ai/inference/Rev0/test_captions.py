@@ -3,7 +3,7 @@ from PIL import Image
 from transformers import AutoProcessor, BlipForConditionalGeneration
 
 MODEL_DIR = "ai/train"
-IMAGE_PATH = "/Users/francinebulaclac/Desktop/Reading4All/ai/train/val_data/image14.png"
+IMAGE_PATH = "/Users/fizasehar/GitHub/Reading4All/ai/train/val_data/image14.png"
 
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 
