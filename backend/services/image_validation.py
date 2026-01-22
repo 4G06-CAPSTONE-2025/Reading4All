@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 
 
 class ImageValidation:
@@ -26,8 +26,7 @@ class ImageValidation:
         # Must check if image can be opened, otherwise permission issue or corrupted
         try:
             Image.open(uploaded_img).verify()
-
-        except Exception:
+        except (UnidentifiedImageError, OSError, ValueError):
             return "UNAUTHORIZED_ACCESS_OR_CORRUPTED"
 
         return "Success"
