@@ -2,11 +2,14 @@ import os
 from pathlib import Path
 import torch
 from PIL import Image
+import logging
 from transformers import AutoProcessor, BlipForConditionalGeneration
 
 MODEL_DIR = "ai/models/TesterOneFrozen"
 IMAGE_DIR = "/Users/fizasehar/GitHub/Reading4All/ai/data/tester_1/val_data"  
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
+LOG_FILE = Path(MODEL_DIR) / "log.txt"
+
 
 PROMPT = "Describe this physics diagram:"
 
