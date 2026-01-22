@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 
-from backend.backend_controller import backend_controller
+from controller.backend_controller import backend_controller
 
 
 # generate alt text api

@@ -1,7 +1,7 @@
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 
-from backend.backend_controller import backend_controller
+from controller.backend_controller import backend_controller
 
 
 # This function is only needed to get a cookie when running the api locally
