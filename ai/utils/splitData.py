@@ -11,7 +11,7 @@ IMAGE_ROOT = Path(local_root)
 TRAIN_SPLIT = 0.8
 RANDOM_SEED = 42
 
-OUT_ROOT = Path("ai/datasets") / f"tester_{TESTER}_seed_{RANDOM_SEED}"
+OUT_ROOT = Path("ai/data") / f"tester_{TESTER}"
 
 TRAIN_DIR = OUT_ROOT / "train_data"
 VAL_DIR = OUT_ROOT / "val_data"
