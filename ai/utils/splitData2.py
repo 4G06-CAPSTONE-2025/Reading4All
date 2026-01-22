@@ -3,9 +3,9 @@ import shutil
 from pathlib import Path
 from sklearn.model_selection import train_test_split
 
-TESTER = 2    # CHANGE THIS 
+TESTER = 1    # CHANGE THIS 
 CSV_PATH = "ai/annotations/annotated_physics_data(Sheet1).csv"
-local_root = "/Users/francinebulaclac/Desktop/capstone/"        # CHANGE THIS
+local_root = "/Users/fizasehar/Downloads/"        # CHANGE THIS
 IMAGE_ROOT = Path(local_root)
 TRAIN_DIR = Path("ai/train/train_data")
 VAL_DIR = Path("ai/train/val_data")
