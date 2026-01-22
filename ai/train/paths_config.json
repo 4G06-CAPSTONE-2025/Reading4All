@@ -3,6 +3,7 @@
   "img_no_dir": "Scicap-No-Subfig-Img",
   "img_yes_dir": "SciCap-Yes-Subfig-Img",
   "captions_dir": "SciCap-Caption-All",
-  "model_dir": "model/scicap_blip_model_final",
+  "model_dir": "model",
+  "data_dir": "data",
   "test_images_dir": "inference/images"
 }
