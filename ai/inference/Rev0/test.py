@@ -9,9 +9,24 @@ MODEL_DIR = "ai/models/TesterOneFrozen"
 IMAGE_DIR = "/Users/fizasehar/GitHub/Reading4All/ai/data/tester_1/val_data"  
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 LOG_FILE = Path(MODEL_DIR) / "log.txt"
-
-
 PROMPT = "Describe this physics diagram:"
+
+def setup_logger(log_path: Path) -> logging.Logger:
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+
+    logger = logging.getLogger("blip_eval_logger")
+    logger.setLevel(logging.INFO)
+
+    if not logger.handlers:
+        fmt = logging.Formatter("%(asctime)s | %(levelname)s | %(message)s")
+        fh = logging.FileHandler(log_path, mode="a", encoding="utf-8")
+        fh.setFormatter(fmt)
+        logger.addHandler(fh)
+
+    return logger
+
+logger = setup_logger(LOG_FILE)
+
 
 def is_image(p: Path) -> bool:
     return p.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp"}
