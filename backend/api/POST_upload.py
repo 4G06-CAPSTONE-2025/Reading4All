@@ -26,5 +26,4 @@ def validate_image_api(request):
         print("MESSAGE", message)
         response = JsonResponse({"error": message}, status=400)
         return response
-    else:
-        return HttpResponse(status=200)
+    return HttpResponse(status=200)
