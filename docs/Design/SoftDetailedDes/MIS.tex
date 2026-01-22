@@ -1292,7 +1292,7 @@ provided by users.
 \texttt{Logger}
 
 \subsection{Uses}
-None.
+None. 
 
 \subsection{Syntax}
 
@@ -1402,16 +1402,16 @@ interfaces to the users.
 None.
 
 \subsubsection{Environment Variables}
-
-\begin{itemize}
-  \item \texttt{Clipboard} - system's clipboard interface for copy function.
-  \item \texttt{HTTPClient} - used to call backend services.
-  \item \texttt{Keyboard} - provides key press events that trigger
-    corresponding UI action handlers such as sign in and upload image.
-  \item \texttt{FileSystem} - used to access file paths.
-\end{itemize}
+None.
 
 \subsubsection{Assumptions}
+  
+  \begin{itemize}
+    \item Clipboard access is enabled by the user for \texttt{copyText}.
+    \item User allows system to access files for uploading images and downloading alt text. 
+    \item \texttt{uploadImage} is called before any other access program.
+    \item Each exported access program represents an event handler that is invoked in response to user-triggered actions such as mouse clicks and keyboard presses on the user interface.
+  \end{itemize}
 
 \begin{itemize}
   \item \texttt{Clipboard} access is enabled by the user for \texttt{copyText}.
@@ -1427,16 +1427,11 @@ None.
 
 \noindent \textbf{uploadImage(imageFilePath)}:
 \begin{itemize}
-  \item transition: \texttt{HTTPClient} sends the image bytes into
-    the backend service which stores the image for that session, and
-    communicates
-    with the AI model for alt text generation.
-  \item output: returns \texttt{true} iff the backend server
-    acknowledges and is able to process the image, returns
-    \texttt{false} otherwise.
-  \item exception: \texttt{FileNotFound},
-    \texttt{FileTypeNotSupported} (not in \texttt{SUPPORT\_IMG\_TYPES}),
-    and \texttt{FileTooLarge} (not within \texttt{MAX\_IMG\_SIZE})
+\item transition: The HTTP client sends the image bytes into the backend service which stores the image for that session, and communicates 
+with the AI model for alt text generation. 
+\item output: returns \texttt{true} iff the backend server acknowledges and is able to process the image, returns \texttt{false} otherwise.
+\item exception: \texttt{FileNotFound}, \texttt{FileTypeNotSupported} (not in \texttt{SUPPORT\_IMG\_TYPES}), 
+and \texttt{FileTooLarge} (not within \texttt{MAX\_IMG\_SIZE})
 \end{itemize}
 
 \noindent \textbf{downloadText(altText)}:
@@ -1447,20 +1442,17 @@ None.
 \end{itemize}
 
 \noindent \textbf{copyText(altText)}:
-\begin{itemize}
-  \item transition: \texttt{Clipboard} := altText
-  \item output: returns \texttt{true} iff clipboard write succeeds,
-    returns \texttt{false} otherwise.
-  \item exception: \texttt{ClipboardError}.
+\begin{itemize} 
+\item transition: clipboard is set to \texttt{altText}.
+\item output: returns \texttt{true} iff clipboard write succeeds, returns \texttt{false} otherwise. 
+\item exception: \texttt{ClipboardError}.
 \end{itemize}
 
 \noindent \textbf{editText(altText,editedText)}:
 \begin{itemize}
-  \item transition: \texttt{HTTPClient} sends update to backend and
-    stored altText for uploaded image is replaced with editedText.
-  \item output: return \texttt{true} iff server acknowledges the
-    update, returns \texttt{false} otherwise.
-  \item exception: \texttt{NetworkError}.
+\item transition: The HTTP client sends update to backend and stored altText for uploaded image is replaced with editedText.
+\item output: return \texttt{true} iff server acknowledges the update, returns \texttt{false} otherwise.
+\item exception: \texttt{NetworkError}.
 \end{itemize}
 
 \noindent \textbf{signIn(token)}:
@@ -1545,7 +1537,7 @@ None.
 
 \subsubsection{Environment Variables}
 
-\texttt{DOM} - active document element into which UI is rendered.
+None. 
 
 \subsubsection{Assumptions}
 
@@ -1620,7 +1612,7 @@ None.
 
 \subsubsection{Environment Variables}
 
-\texttt{DOM} - active document element into which UI is rendered.
+None. 
 
 \subsubsection{Assumptions}
 
@@ -1695,7 +1687,7 @@ None.
 
 \subsubsection{Environment Variables}
 
-\texttt{DOM} - active document element into which UI is rendered.
+None. 
 
 \subsubsection{Assumptions}
 
@@ -1707,12 +1699,11 @@ None.
 
 \noindent \textbf{renderLogIn()}:
 \begin{itemize}
-  \item transition: update \texttt{DOM} to reflect log in screen with
-    username and password fields,
-    then call on \texttt{AccessibilityUI} to
-    handle compatibility with screen readers and keyboard navigation.
-  \item output: None.
-  \item exception: \texttt{RenderError}, \texttt{AuthenticationError}.
+\item transition: update DOM to reflect log in screen with username and password fields, 
+then call on \texttt{AccessibilityUI} to 
+handle compatibility with screen readers and keyboard navigation.
+\item output: None.
+\item exception: \texttt{RenderError}, \texttt{AuthenticationError}.
 \end{itemize}
 
 \subsubsection{Local Functions}
@@ -1764,7 +1755,12 @@ in those screens.
   \end{tabular}
 \end{center}
 
-\subsection{Semantics}
+  None.
+  
+  \subsubsection{Environment Variables}
+  None.
+  
+  \subsubsection{Assumptions}
 
 \subsubsection{State Variables}
 
