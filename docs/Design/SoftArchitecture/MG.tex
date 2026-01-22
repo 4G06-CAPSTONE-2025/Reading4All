@@ -166,8 +166,10 @@ unlikely changes are listed in Section \ref{SecUchange}.
 Anticipated changes are the source of the information that is to be hidden
 inside the modules. Ideally, changing one of the anticipated changes will only
 require changing the one module that hides the associated decision. The approach
-adapted here is called design for
-change.
+adapted here is called design for change. The traceability matrix between the Anticipated
+(Likely) Changes and Modules is highlighted in table~\ref{TblACT}. \texttt{AC7} is mapped
+to multiple modules as each of these modules encapsulates the frontend subsystem and 
+this anticipated change affects the entire frontend subsystem. 
 
 \begin{description}
 
@@ -925,12 +927,12 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{AC} & \textbf{Modules}\\
     \midrule
-    \acref{acInfra} & \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
-    \acref{acInputFormat} & \mref{mod:preprocessing_table}, \mref{mod:imgvalidmod_table}, \\
-    \acref{acMLModel} &  \mref{mod:preprocessing_table}, \mref{mod:modeltraining_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, \mref{mod:feedbackloop_table}, \\
-    \acref{acLang} & \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, \mref{mod:captiongeneration_table} \\
-    \acref{acSession} &\mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}\\
-    \acref{acInputTopic} & \mref{mod:preprocessing_table}, \mref{mod:captiongeneration_table}\\
+    \acref{acInfra} & \mref{mod:bcm_table}\\
+    \acref{acInputFormat} & \mref{mod:imgvalidmod_table} \\
+    \acref{acMLModel} &  \mref{mod:modeltraining_table} \\
+    \acref{acLang} & \mref{mod:modeloutput_table} \\
+    \acref{acSession} & \mref{mod:mess_table}\\
+    \acref{acInputTopic} & \mref{mod:captiongeneration_table}\\
     \acref{acPlatform} & \mref{mod:uii_table},  \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table} \\
 
     \bottomrule
