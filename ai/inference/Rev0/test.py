@@ -2,9 +2,8 @@ import torch
 from PIL import Image
 from transformers import AutoProcessor, BlipForConditionalGeneration
 
-MODEL_DIR = "ai/train"
-IMAGE_PATH = "/Users/francinebulaclac/Desktop/Reading4All/ai/train/val_data/image14.png"
-
+MODEL_DIR = "ai/models/TesterOneFrozen"
+IMAGE_PATH = "/Users/fizasehar/GitHub/Reading4All/ai/train/val_data/image14.png"
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 
 processor = AutoProcessor.from_pretrained(MODEL_DIR)
@@ -17,14 +16,20 @@ inputs = processor(
     images=image,
     text="Describe this physics diagram:",
     return_tensors="pt"
-).to(DEVICE)
+)
+inputs = {k: v.to(DEVICE) for k, v in inputs.items()}
 
 with torch.no_grad():
-    output_ids = model.generate(
-        **inputs,
-        max_length=128
-    )
+    ids = model.generate(
+    **inputs,
+    max_new_tokens=40,
+    num_beams=6,
+    length_penalty=0.8,
+    no_repeat_ngram_size=4,
+    repetition_penalty=1.35,
+    early_stopping=True,
+)
 
-caption = processor.decode(output_ids[0], skip_special_tokens=True)
-print("Caption:")
+
+caption = processor.decode(ids[0], skip_special_tokens=True, clean_up_tokenization_spaces=True)
 print(caption)
