@@ -1,7 +1,4 @@
-from django.shortcuts import render
-from django.views.decorators.csrf import ensure_csrf_cookie
-
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 
 from backend.backend_controller import backend_controller
 
@@ -26,6 +23,5 @@ def gen_alt_text_api(request):
         response = JsonResponse({"alt_text": alt_text}, status=200)
         return response
 
-    else:
-        response = JsonResponse({"error": "ERROR_GENERATING"}, status=400)
-        return response
+    response = JsonResponse({"error": "ERROR_GENERATING"}, status=400)
+    return response
