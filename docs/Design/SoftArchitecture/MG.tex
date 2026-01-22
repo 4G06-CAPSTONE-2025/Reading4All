@@ -1,12 +1,22 @@
 \documentclass[12pt, titlepage]{article}
 
+% ===============================
+% Math packages (DO NOT REMOVE)
+% ===============================
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{mathtools}
+% ===============================
+
 \usepackage{fullpage}
 \usepackage[round]{natbib}
 \usepackage{multirow}
 \usepackage{booktabs}
 \usepackage{tabularx}
-\usepackage{graphicx} 
-\usepackage{float} 
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage{hyperref}
 \usepackage{enumitem}
 \hypersetup{
@@ -40,7 +50,7 @@
 
 \maketitle
 
-\pagenumbering{roman} 
+\pagenumbering{roman}
 
 \section{Revision History}
 
@@ -48,7 +58,7 @@
   \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
   \midrule
   November 13 2025 & 1.0 & Rev-1 Design Document\\
-  January 21, 2026 & 1.1 & Rev 0 MG Design Document \\
+  January 21 2026 & 2.0 & Rev-0 Design Document\\
   \bottomrule
 \end{tabularx}
 
@@ -195,7 +205,6 @@ this anticipated change affects the entire frontend subsystem.
 
 \end{description}
 
-
 \subsection{Unlikely Changes} \label{SecUchange}
 
 The module design should be as general as possible. However, a general system is
@@ -205,7 +214,7 @@ these decision should later need to be changed, then many parts of the design
 will potentially need to be modified. Hence, it is not intended that these
 decisions will be changed.\\
 
-\noindent The following are changes that the system is unlikely to incur: 
+\noindent The following are changes that the system is unlikely to incur:
 \begin{description}
   \item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] The
     project's evaluation metrics as shown in Table 5 of the
@@ -229,31 +238,37 @@ decisions will be changed.\\
 \section{Module Hierarchy} \label{SecMH}
 
 This section provides an overview of the module design. Modules are summarized
-in a hierarchy decomposed by secrets in Table \ref{TblMH}. The modules listed in Table \ref{TblMHS}
+in a hierarchy decomposed by secrets in Table \ref{TblMH}. The
+modules listed in Table \ref{TblMHS}
 below, which are leaves in the hierarchy tree, are the modules that will
-actually be implemented. 
+actually be implemented.
 
 \begin{table}[H]
   \centering
   \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}| p{4cm}|}
-  \hline
-  \textbf{AI Model Modules} & \textbf{Backend Modules} & \textbf{Frontend Modules} & \textbf{System Information Modules}\\ \hline
-  
-  DataPreprocess Module & AuthenticationService Module & UserInterface-Interactions Module & Logging Module\\ \hline
-  WCAGCompliance Module & SessionManagement Module & MainScreen Module & ~\\ \hline
-  ModelOutput Module & ImageValidation Module & ShowHistoryScreen Module & ~\\ \hline
-  AIModelTraining Module & BackendController Module & LogInScreen Module & ~\\ \hline
-  CaptionGeneration Module & ~ & UserInterface-Accessibility Module & ~\\ \hline
-  InternalMetric-Compliance Module & ~ & ~ & ~\\ \hline
-  FeedbackMetrics Module & ~ & ~ & ~\\ \hline
-  FeedbackLoop Module & ~ & ~ & ~\\ \hline
-  Feedback Module & ~ & ~ & ~\\ \hline
-  
+    \hline
+    \textbf{AI Model Modules} & \textbf{Backend Modules} &
+    \textbf{Frontend Modules} & \textbf{System Information Modules}\\ \hline
+
+    DataPreprocess Module & AuthenticationService Module &
+    UserInterfaceInteractions Module & Logging Module\\ \hline
+    WCAGCompliance Module & SessionManagement Module & MainScreen
+    Module & ~\\ \hline
+    ModelOutput Module & ImageValidation Module & ShowHistoryScreen
+    Module & ~\\ \hline
+    AIModelTraining Module & BackendController Module & LogInScreen
+    Module & ~\\ \hline
+    CaptionGeneration Module & ~ & UserInterfaceAccessibility Module
+    & ~\\ \hline
+    InternalMetricCompliance Module & ~ & ~ & ~\\ \hline
+    FeedbackMetrics Module & ~ & ~ & ~\\ \hline
+    FeedbackLoop Module & ~ & ~ & ~\\ \hline
+    Feedback Module & ~ & ~ & ~\\ \hline
+
   \end{tabular}
   \caption{Module Hierarchy by Subsystem}
   \label{TblMHS}
 \end{table}
-
 
 \begin{table}[h!]
   \centering
@@ -267,43 +282,67 @@ actually be implemented.
 
     \multirow{13}{0.3\textwidth}{Behaviour-Hiding Module [Section
     (\ref{bhmmain})]} &
-    {DataPreprocess Module (\refstepcounter{mnum}\mthemnum \label{mod:preprocessing_table}) (see \ref{mod:preprocessing})}\\ & 
-    {WCAGCompliance Module (\refstepcounter{mnum}\mthemnum \label{mod:wcagcompliance_table}) (see \ref{mod:wcagcompliance})}\\ &
-    {ModelOutput Module (\refstepcounter{mnum}\mthemnum \label{mod:modeloutput_table}) (see \ref{mod:modeloutput})}\\ &
-    {AuthenticationService Module (\refstepcounter{mnum}\mthemnum \label{mod:auth_table} )(see \ref{mod:auth})}\\ &
-    {SessionManagement Module (\refstepcounter{mnum}\mthemnum \label{mod:mess_table}) (see \ref{mod: mess})}\\ &
-    {BackendController Module (\refstepcounter{mnum}\mthemnum \label{mod:bcm_table}) (see \ref{mod:bcm})}\\ &
-    {Logging Module (\refstepcounter{mnum}\mthemnum \label{mod:logmod_table}) (see \ref{mod:logmod})}\\ &
-    {ImageValidation Module (\refstepcounter{mnum}\mthemnum \label{mod:imgvalidmod_table}) (see \ref{mod:imgvalidmod})}\\ & 
-    {UserInterfaceInteractions Module (\refstepcounter{mnum}\mthemnum) \label{mod:uii_table} (see \ref{mod: uii})} \\ & 
-    {MainScreen Module (\refstepcounter{mnum}\mthemnum) \label{mod:msm_table} (see \ref{mod: msm})} \\ &
-    {ShowHistoryScreen Module (\refstepcounter{mnum}\mthemnum) \label{mod:showhm_table} (see \ref{mod: showhm})} \\ &
-    {LogInScreen Module (\refstepcounter{mnum}\mthemnum) \label{mod:lis_table} (see \ref{mod: lis})} \\ &
-    {UserInterfaceAccessibility Module (\refstepcounter{mnum}\mthemnum) \label{mod:uia_table} (see \ref{mod: uia})} \\ 
+    {DataPreprocess Module (\refstepcounter{mnum}\mthemnum
+    \label{mod:preprocessing_table}) (see \ref{mod:preprocessing})}\\ &
+    {WCAGCompliance Module (\refstepcounter{mnum}\mthemnum
+    \label{mod:wcagcompliance_table}) (see \ref{mod:wcagcompliance})}\\ &
+    {ModelOutput Module (\refstepcounter{mnum}\mthemnum
+    \label{mod:modeloutput_table}) (see \ref{mod:modeloutput})}\\ &
+    {AuthenticationService Module (\refstepcounter{mnum}\mthemnum
+    \label{mod:auth_table} )(see \ref{mod:auth})}\\ &
+    {SessionManagement Module (\refstepcounter{mnum}\mthemnum
+    \label{mod:mess_table}) (see \ref{mod: mess})}\\ &
+    {BackendController Module (\refstepcounter{mnum}\mthemnum
+    \label{mod:bcm_table}) (see \ref{mod:bcm})}\\ &
+    {Logging Module (\refstepcounter{mnum}\mthemnum
+    \label{mod:logmod_table}) (see \ref{mod:logmod})}\\ &
+    {ImageValidation Module (\refstepcounter{mnum}\mthemnum
+    \label{mod:imgvalidmod_table}) (see \ref{mod:imgvalidmod})}\\ &
+    {UserInterfaceInteractions Module
+      (\refstepcounter{mnum}\mthemnum) \label{mod:uii_table} (see
+    \ref{mod: uii})} \\ &
+    {MainScreen Module (\refstepcounter{mnum}\mthemnum)
+    \label{mod:msm_table} (see \ref{mod: msm})} \\ &
+    {ShowHistoryScreen Module (\refstepcounter{mnum}\mthemnum)
+    \label{mod:showhm_table} (see \ref{mod: showhm})} \\ &
+    {LogInScreen Module (\refstepcounter{mnum}\mthemnum)
+    \label{mod:lis_table} (see \ref{mod: lis})} \\ &
+    {UserInterfaceAccessibility Module
+      (\refstepcounter{mnum}\mthemnum) \label{mod:uia_table} (see
+    \ref{mod: uia})} \\
     \midrule
 
-    \multirow{6}{0.3\textwidth}{Software Decision Module [Section (\ref{mod:sdmmain})]} &
-    {AIModelTraining Module (\refstepcounter{mnum}\mthemnum \label{mod:modeltraining_table}) (see \ref{mod:modeltraining})}\\ &
-    {CaptionGeneration Module (\refstepcounter{mnum}\mthemnum \label{mod:captiongeneration_table}) (see \ref{mod:captiongeneration})}\\ &
-    {InternalMetricCompliance (\refstepcounter{mnum}\mthemnum \label{mod:internalmetriccompliance_table}) (see \ref{mod:internalmetriccompliance})}\\ &
-    {FeedbackMetrics Module (\refstepcounter{mnum}\mthemnum \label{mod:feedbackmetrics_table} )(see \ref{mod:feedbackmetrics})}\\ &
-    {FeedbackLoop Module (\refstepcounter{mnum}\mthemnum \label{mod:feedbackloop_table}) (see \ref{mod:feedbackloop})}\\ &
-    {Feedback Module (\refstepcounter{mnum}\mthemnum \label{mod:feedback_table}) (see \ref{mod:feedback})}\\
+    \multirow{6}{0.3\textwidth}{Software Decision Module [Section
+    (\ref{mod:sdmmain})]} &
+    {AIModelTraining Module (\refstepcounter{mnum}\mthemnum
+    \label{mod:modeltraining_table}) (see \ref{mod:modeltraining})}\\ &
+    {CaptionGeneration Module (\refstepcounter{mnum}\mthemnum
+    \label{mod:captiongeneration_table}) (see \ref{mod:captiongeneration})}\\ &
+    {InternalMetricCompliance (\refstepcounter{mnum}\mthemnum
+      \label{mod:internalmetriccompliance_table}) (see
+    \ref{mod:internalmetriccompliance})}\\ &
+    {FeedbackMetrics Module (\refstepcounter{mnum}\mthemnum
+    \label{mod:feedbackmetrics_table} )(see \ref{mod:feedbackmetrics})}\\ &
+    {FeedbackLoop Module (\refstepcounter{mnum}\mthemnum
+    \label{mod:feedbackloop_table}) (see \ref{mod:feedbackloop})}\\ &
+    {Feedback Module (\refstepcounter{mnum}\mthemnum
+    \label{mod:feedback_table}) (see \ref{mod:feedback})}\\
     \bottomrule
   \end{tabular}
   \caption{Module Hierarchy}
   \label{TblMH}
 \end{table}
-  
 
 \section{Connection Between Requirements and Design} \label{SecConnection}
 
 The design of the system is intended to satisfy the requirements developed in
 the SRS. In this stage, the system is decomposed into modules. The connection
-between requirements and modules is listed in Tables \ref{TblFRT}-\ref{TblACT} in 
+between requirements and modules is listed in Tables
+\ref{TblFRT}-\ref{TblACT} in
 section \ref{SecTM}.\\
 
-The decompositon of the modules was separated by four main subsystems including: Frontend Modules, 
+The decompositon of the modules was separated by four main subsystems
+including: Frontend Modules,
 Backend Modules, AI Model Modules, and System Information Modules. \\
 
 The front-end modules of the \textit{Reading4All} system collectively ensure that the system meets all Look and Feel, Usability, 
@@ -392,7 +431,8 @@ The modules are defined as their own subsection and follow the following format:
   \item[Secrets:] The rules used to decide whether a caption meets
     AODA (\cite{AODA}) and WCAG 2.1 AA accessibility standards (\citet{WCAG}).
   \item[Services:] Checks the generated text against WCAG 2.1 AA (\citet{WCAG})
-    criteria and flags or adjusts any generated alt text that does not meet these standards.
+    criteria and flags or adjusts any generated alt text that does
+    not meet these standards.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
 \end{description}
@@ -429,12 +469,15 @@ The modules are defined as their own subsection and follow the following format:
 \subsubsection{UserInterfaceInteractions Module (\mref{mod:uii_table})}
 \label{mod: uii}
 \begin{description}
-  \item[Secrets:] The internal logic and mapping of user-triggered actions such as clicks and keyboard presses 
-  on the user interface into the backend and display screens modules. 
-  \item[Services:] Captures user actions from the UI and connects UI controls to application 
-  behavior by attaching event handlers that calls on other modules’ access programs with 
-  validated parameters.
-  \item[Implemented By:] Reading4All Team 
+  \item[Secrets:] The internal logic and mapping of user-triggered
+    actions such as clicks and keyboard presses
+    on the user interface into the backend and display screens modules.
+  \item[Services:] Captures user actions from the UI and connects UI
+    controls to application
+    behavior by attaching event handlers that calls on other modules’
+    access programs with
+    validated parameters.
+  \item[Implemented By:] Reading4All Team
   \item[Type of Module:] Library
 \end{description}
 
@@ -442,46 +485,61 @@ The modules are defined as their own subsection and follow the following format:
 \label{mod: msm}
 \begin{description}
   \item[Secrets:] The internal layout composition of the main screen.
-  This includes how the upload panel and supporting UI elements are arranged and rendered into the \texttt{DOM}. 
-  \item[Services:] Renders the “Main” screen of the application. This screen displays the image-upload entry point for users.
-  It calls on the UserInterfaceAccessibility module 
-  to assign the main landmark, set initial focus, and announce the screen to screen readers. 
-  \item[Implemented By:] Reading4All Team 
+    This includes how the upload panel and supporting UI elements are
+    arranged and rendered into the \texttt{DOM}.
+  \item[Services:] Renders the “Main” screen of the application. This
+    screen displays the image-upload entry point for users.
+    It calls on the UserInterfaceAccessibility module
+    to assign the main landmark, set initial focus, and announce the
+    screen to screen readers.
+  \item[Implemented By:] Reading4All Team
   \item[Type of Module:] Library
 \end{description}
 
 \subsubsection{ShowHistoryScreen Module (\mref{mod:showhm_table})}
 \label{mod: showhm}
 \begin{description}
-  \item[Secrets:] The internal layout composition of the show history screen when an authenticated user wants to see their 
-  previously generated alt-text history. This includes how the history items are formatted and displayed. 
-  \item[Services:] Renders the user’s current session history to the screen. It relies on the UserInterfaceAccessibility module
-   to set the main landmark, focus the first history item (if any), and announce the screen.
-  \item[Implemented By:] Reading4All Team 
+  \item[Secrets:] The internal layout composition of the show history
+    screen when an authenticated user wants to see their
+    previously generated alt-text history. This includes how the
+    history items are formatted and displayed.
+  \item[Services:] Renders the user’s current session history to the
+    screen. It relies on the UserInterfaceAccessibility module
+    to set the main landmark, focus the first history item (if any),
+    and announce the screen.
+  \item[Implemented By:] Reading4All Team
   \item[Type of Module:] Library
 \end{description}
 
 \subsubsection{LogInScreen Module (\mref{mod:lis_table})}
 \label{mod: lis}
 \begin{description}
-  \item[Secrets:] The internal layout composition of the log in screen including username/email and password fields, and 
-  a log in button.
-  \item[Services:] Renders the system’s Log In screen. It calls on the UserInterfaceAccessibility module 
-  to set focus on the fields on the log in form and announce the screen. 
-  \item[Implemented By:] Reading4All Team 
+  \item[Secrets:] The internal layout composition of the log in
+    screen including username/email and password fields, and
+    a log in button.
+  \item[Services:] Renders the system’s Log In screen. It calls on
+    the UserInterfaceAccessibility module
+    to set focus on the fields on the log in form and announce the screen.
+  \item[Implemented By:] Reading4All Team
   \item[Type of Module:] Library
 \end{description}
 
 \subsubsection{UserInterfaceAccessibility Module (\mref{mod:uia_table})}
 \label{mod: uia}
 \begin{description}
-  \item[Secrets:] The internal mechanism for providing screen reader and keyboard navigation compatibility in the browser.
-  This includes how ARIA (\citet{ARIA}) live regions are implemented, how focus is manipulated, and how keyboard navigation is enabled 
-  internally.
-  \item[Services:] Provides accessibility capabilities to other user interface modules by: assigning and maintaining 
-  the correct main landmark on each screen; managing which element receives initial keyboard focus; sending 
-  announcements to screen readers using ARIA (\citet{ARIA}) live regions; and enabling keyboard navigation patterns. 
-  \item[Implemented By:] Reading4All Team 
+  \item[Secrets:] The internal mechanism for providing screen reader
+    and keyboard navigation compatibility in the browser.
+    This includes how ARIA (\citet{ARIA}) live regions are
+    implemented, how focus is manipulated, and how keyboard
+    navigation is enabled
+    internally.
+  \item[Services:] Provides accessibility capabilities to other user
+    interface modules by: assigning and maintaining
+    the correct main landmark on each screen; managing which element
+    receives initial keyboard focus; sending
+    announcements to screen readers using ARIA (\citet{ARIA}) live
+    regions; and enabling keyboard navigation patterns.
+  \item[Implemented By:] Reading4All Team
   \item[Type of Module:] Library
 \end{description}
 \subsubsection{SessionManagement Module}
@@ -510,14 +568,16 @@ The modules are defined as their own subsection and follow the following format:
     from the frontend and directing it to the appropriate service
     such as the User Authentication or  AI Model, and returning the results.
   \item[Implemented By:] Reading4All
-  \item[Type of Module:] Abstract Objects
+  \item[Type of Module:] Library
 \end{description}
 
 \subsubsection{Logging Module (\mref{mod:logmod_table})}
 \label{mod:logmod}
 \begin{description}
-  \item[Secrets:] The internal details of which events and errors are logged and the specific format used for log entries.
-  \item[Services:] Records system events and errors received from the BackendController Module. 
+  \item[Secrets:] The internal details of which events and errors are
+    logged and the specific format used for log entries.
+  \item[Services:] Records system events and errors received from the
+    BackendController Module.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
 \end{description}
@@ -525,13 +585,14 @@ The modules are defined as their own subsection and follow the following format:
 \subsubsection{ImageValidation Module (\mref{mod:imgvalidmod_table})}
 \label{mod:imgvalidmod}
 \begin{description}
-  \item[Secrets:] The internal details of how uploaded images are verified, including how file type, size are checked and whether a file is reachable. 
-  \item[Services:] Validates uploaded images to ensure that they meet system requirements before the alt text generation process. 
+  \item[Secrets:] The internal details of how uploaded images are
+    verified, including how file type/size are checked and whether a
+    file is reachable.
+  \item[Services:] Validates uploaded images to ensure that they meet
+    system requirements before the alt text generation process.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
 \end{description}
-
-
 
 \subsection{Software Decision Modules}
 \label{mod:sdmmain}
@@ -577,21 +638,25 @@ subsection and follow the following format:
   \item[Secrets:] The process the system uses to generate descriptive
     text from an image. This includes how image features are
     interpreted and how words are selected and arranged into sentences.
-  \item[Services:] Uses the trained model from the AIModelTraining module to produce alternative text
-    for a given image. Passes the generated caption to the WCAG (\citet{WCAG}) and
+  \item[Services:] Uses the trained model from the AIModelTraining
+    module to produce alternative text
+    for a given image. Passes the generated caption to the WCAG
+    (\citet{WCAG}) and
     InternalMetricCompliance modules to ensure it meets accessibility
     and clarity standards.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{InternalMetricCompliance Module (\mref{mod:internalmetriccompliance_table})}
+\subsubsection{InternalMetricCompliance Module
+(\mref{mod:internalmetriccompliance_table})}
 \label{mod:internalmetriccompliance}
 \begin{description}
   \item[Secrets:] The internal measures chosen by Team 22 to judge
     how clear, concise or relevant the generated text is.
   \item[Services:] Reviews each caption using internal quality checks
-    that complement the AODA (\citet{AODA}) and WCAG 2.1 AA (\citet{WCAG}) validation standards.
+    that complement the AODA (\citet{AODA}) and WCAG 2.1 AA
+    (\citet{WCAG}) validation standards.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Library
 \end{description}
@@ -637,13 +702,17 @@ subsection and follow the following format:
 
 \section{Traceability Matrix} \label{SecTM}
 
-This section shows below how different requirements connect to our modules. This can be seen in Table ~\ref{TblFRT},
-Table ~\ref{TblLFRT}, Table ~\ref{TblLFRT}, Table ~\ref{TblSRT}, Table ~\ref{TblURT}, Table ~\ref{TblPIRT}, Table ~\ref{TblLRMT}, 
-Table ~\ref{TblUPRT}, Table ~\ref{TblART}, Table ~\ref{TblPRT}, Table ~\ref{TblOERT}, Table ~\ref{TblMSRT}, Table ~\ref{TblSRT1},
- Table ~\ref{TblCR}, Table ~\ref{TbltCompR}. 
+This section shows below how different requirements connect to our
+modules. This can be seen in Table ~\ref{TblFRT},
+Table ~\ref{TblLFRT}, Table ~\ref{TblLFRT}, Table ~\ref{TblSRT},
+Table ~\ref{TblURT}, Table ~\ref{TblPIRT}, Table ~\ref{TblLRMT},
+Table ~\ref{TblUPRT}, Table ~\ref{TblART}, Table ~\ref{TblPRT}, Table
+~\ref{TblOERT}, Table ~\ref{TblMSRT}, Table ~\ref{TblSRT1},
+Table ~\ref{TblCR}, Table ~\ref{TbltCompR}.
 
-Finally, Table ~\ref{TblACT} shows how our modules connect to the anticipated changes 
-  two traceability matrices: between the modules and the
+Finally, Table ~\ref{TblACT} shows how our modules connect to the
+anticipated changes
+two traceability matrices: between the modules and the
 requirements and between the modules and the anticipated changes.
 
 % the table should use mref, the requirements should be named, use something
@@ -654,11 +723,16 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    FR1 & \mref{mod:preprocessing_table},  \mref{mod:bcm_table}, \mref{mod:imgvalidmod_table}\\
-    FR2 & \mref{mod:bcm_table}, \mref{mod:captiongeneration_table}, \mref{mod:feedbackmetrics_table}, \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
-    FR3 & \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, \mref{mod:bcm_table}, \mref{mod:uia_table}\\
+    FR1 & \mref{mod:preprocessing_table},  \mref{mod:bcm_table},
+    \mref{mod:imgvalidmod_table}\\
+    FR2 & \mref{mod:bcm_table}, \mref{mod:captiongeneration_table},
+    \mref{mod:feedbackmetrics_table}, \mref{mod:feedbackloop_table},
+    \mref{mod:feedback_table}\\
+    FR3 & \mref{mod:wcagcompliance_table},
+    \mref{mod:modeloutput_table}, \mref{mod:bcm_table}, \mref{mod:uia_table}\\
     FR4 & \mref{mod:bcm_table}\\
-    FR5 &  \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:showhm_table}\\
+    FR5 &  \mref{mod:mess_table}, \mref{mod:bcm_table},
+    \mref{mod:showhm_table}\\
     FR6 &  \mref{mod:auth_table}, \mref{mod:bcm_table}\\
     \bottomrule
   \end{tabular}
@@ -672,10 +746,15 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    LFR-AR1 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
-    LFR-AR2 & \mref{mod:msm_table}, \mref{mod:uii_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
-    LFR-AR3 & \mref{mod:msm_table}, \mref{mod:uii_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
-    LFR-AR4 & \mref{mod:internalmetriccompliance_table}, \mref{mod:msm_table}, \mref{mod:uii_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}. \mref{mod:uia_table}\\
+    LFR-AR1 & \mref{mod:uii_table}, \mref{mod:msm_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    LFR-AR2 & \mref{mod:msm_table}, \mref{mod:uii_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    LFR-AR3 & \mref{mod:msm_table}, \mref{mod:uii_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    LFR-AR4 & \mref{mod:internalmetriccompliance_table},
+    \mref{mod:msm_table}, \mref{mod:uii_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}. \mref{mod:uia_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Look and Feel Requirements and Modules}
@@ -688,9 +767,12 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    LFR-SR1 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
-    LFR-SR2 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
-    LFR-SR3 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    LFR-SR1 & \mref{mod:uii_table}, \mref{mod:msm_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    LFR-SR2 & \mref{mod:uii_table}, \mref{mod:msm_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    LFR-SR3 & \mref{mod:uii_table}, \mref{mod:msm_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Style Requirements and Modules}
@@ -703,10 +785,16 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    UHR-EUR1 & \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}. \mref{mod:uia_table}\\
-    UHR-EUR2 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
-    UHR-EUR3 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
-    UHR-EUR4 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    UHR-EUR1 & \mref{mod:wcagcompliance_table},
+    \mref{mod:modeloutput_table}, \mref{mod:uii_table},
+    \mref{mod:msm_table}, \mref{mod:showhm_table},
+    \mref{mod:lis_table}. \mref{mod:uia_table}\\
+    UHR-EUR2 & \mref{mod:uii_table}, \mref{mod:msm_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    UHR-EUR3 & \mref{mod:uii_table}, \mref{mod:msm_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    UHR-EUR4 & \mref{mod:uii_table}, \mref{mod:msm_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Usability and Humanity Requirements and Modules}
@@ -719,7 +807,8 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    UHR-PIR1 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:uia_table}\\
+    UHR-PIR1 & \mref{mod:uii_table}, \mref{mod:msm_table},
+    \mref{mod:uia_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Personalization and Internationalization
@@ -733,7 +822,8 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    UHR-LR1 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    UHR-LR1 & \mref{mod:uii_table}, \mref{mod:msm_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Learning Requirements and Modules}
@@ -746,7 +836,8 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    UHR-UPR1 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    UHR-UPR1 & \mref{mod:uii_table}, \mref{mod:msm_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Understandability and Politeness
@@ -760,8 +851,10 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    UHR-AR1 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
-    UHR-AR2 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    UHR-AR1 & \mref{mod:uii_table}, \mref{mod:msm_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    UHR-AR2 & \mref{mod:uii_table}, \mref{mod:msm_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Accessibility Requirements and Modules}
@@ -778,20 +871,25 @@ requirements and between the modules and the anticipated changes.
     PR-SL2 &  \mref{mod:uia_table} \\
     PR-SCR1 & \mref{mod:mess_table}\\
     PR-SCR2 & \mref{mod:internalmetriccompliance_table}\\
-    PR-SCR3 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
-    PR-SR-HA1 & \mref{mod:bcm_table}, \mref{mod:logmod_table},  \mref{mod:mess_table}, \mref{mod:auth_table}\\
+    PR-SCR3 & \mref{mod:uii_table}, \mref{mod:msm_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    PR-SR-HA1 & \mref{mod:bcm_table}, \mref{mod:logmod_table},
+    \mref{mod:mess_table}, \mref{mod:auth_table}\\
     PR-SR-HA2 &  \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
     PR-SR-HA3 &  \mref{mod:bcm_table}, \mref{mod:imgvalidmod_table}\\
     PR-PAR1 & \mref{mod:captiongeneration_table}\\
     PR-PAR2 & \mref{mod:internalmetriccompliance_table}\\
     PR-PAR3 & \mref{mod:feedbackmetrics_table}\\
-    PR-RFT1 & \mref{mod:imgvalidmod_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
+    PR-RFT1 & \mref{mod:imgvalidmod_table}, \mref{mod:bcm_table},
+    \mref{mod:logmod_table}\\
     PR-RFT2 & \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
-    PR-CR1 & \mref{mod:mess_table}, \mref{mod:auth_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
+    PR-CR1 & \mref{mod:mess_table}, \mref{mod:auth_table},
+    \mref{mod:bcm_table}, \mref{mod:logmod_table}\\
     PR-CR2 & \mref{mod:auth_table}, \mref{mod:showhm_table}\\
     PR-SER1 & \mref{mod:modeltraining_table}\\
     PR-LR1 & \mref{mod:modeltraining_table}, \mref{mod:wcagcompliance_table}\\
-    PR-LR2 & \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
+    PR-LR2 & \mref{mod:uii_table}, \mref{mod:msm_table},
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     \bottomrule
   \end{tabular}
   \caption{Trace Between Performance Requirements and Modules}
@@ -804,31 +902,54 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    OER-EP1 &  \mref{mod:preprocessing_table}, \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, 
-    \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}, \mref{mod:imgvalidmod_table}, \mref{mod:uii_table}, 
-    \mref{mod:msm_table},  \mref{mod:showhm_table},  \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table}, 
-    \mref{mod:captiongeneration_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, 
+    OER-EP1 &  \mref{mod:preprocessing_table},
+    \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table},
+    \mref{mod:auth_table}, \mref{mod:mess_table},
+    \mref{mod:bcm_table}, \mref{mod:logmod_table},
+    \mref{mod:imgvalidmod_table}, \mref{mod:uii_table},
+    \mref{mod:msm_table},  \mref{mod:showhm_table},
+    \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table},
+    \mref{mod:captiongeneration_table},
+    \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table},
     \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
     OER-EP2 & \mref{mod:uii_table}\\
     OER-WE1 & \mref{mod:wcagcompliance_table}\\
-    OER-WE2 & \mref{mod:preprocessing_table}, \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, 
-    \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}, \mref{mod:imgvalidmod_table}, \mref{mod:uii_table}, 
-    \mref{mod:msm_table},  \mref{mod:showhm_table},  \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table}, 
-    \mref{mod:captiongeneration_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, 
+    OER-WE2 & \mref{mod:preprocessing_table},
+    \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table},
+    \mref{mod:auth_table}, \mref{mod:mess_table},
+    \mref{mod:bcm_table}, \mref{mod:logmod_table},
+    \mref{mod:imgvalidmod_table}, \mref{mod:uii_table},
+    \mref{mod:msm_table},  \mref{mod:showhm_table},
+    \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table},
+    \mref{mod:captiongeneration_table},
+    \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table},
     \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
     OER-IAS1 & \mref{mod:preprocessing_table}\\
     OER-IAS2 & \mref{mod:imgvalidmod_table}\\
     OER-IAS3 & \mref{mod:internalmetriccompliance_table}\\
-    OER-PR1 &  \mref{mod:preprocessing_table}, \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, 
-    \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}, \mref{mod:imgvalidmod_table}, \mref{mod:uii_table}, 
-    \mref{mod:msm_table},  \mref{mod:showhm_table},  \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table}, 
-    \mref{mod:captiongeneration_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, 
+    OER-PR1 &  \mref{mod:preprocessing_table},
+    \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table},
+    \mref{mod:auth_table}, \mref{mod:mess_table},
+    \mref{mod:bcm_table}, \mref{mod:logmod_table},
+    \mref{mod:imgvalidmod_table}, \mref{mod:uii_table},
+    \mref{mod:msm_table},  \mref{mod:showhm_table},
+    \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table},
+    \mref{mod:captiongeneration_table},
+    \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table},
     \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
-    OER-RL1 & \mref{mod:preprocessing_table}, \mref{mod:modeltraining_table}, \mref{mod:captiongeneration_table}, \mref{mod:wcagcompliance_table}, \mref{mod:internalmetriccompliance_table}\\
-    OER-RL2 & \mref{mod:preprocessing_table}, \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, 
-    \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}, \mref{mod:imgvalidmod_table}, \mref{mod:uii_table}, 
-    \mref{mod:msm_table},  \mref{mod:showhm_table},  \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table}, 
-    \mref{mod:captiongeneration_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, 
+    OER-RL1 & \mref{mod:preprocessing_table},
+    \mref{mod:modeltraining_table},
+    \mref{mod:captiongeneration_table},
+    \mref{mod:wcagcompliance_table}, \mref{mod:internalmetriccompliance_table}\\
+    OER-RL2 & \mref{mod:preprocessing_table},
+    \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table},
+    \mref{mod:auth_table}, \mref{mod:mess_table},
+    \mref{mod:bcm_table}, \mref{mod:logmod_table},
+    \mref{mod:imgvalidmod_table}, \mref{mod:uii_table},
+    \mref{mod:msm_table},  \mref{mod:showhm_table},
+    \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table},
+    \mref{mod:captiongeneration_table},
+    \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table},
     \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
     \bottomrule
   \end{tabular}
@@ -842,24 +963,44 @@ requirements and between the modules and the anticipated changes.
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
-    MS-MNT1 & \mref{mod:preprocessing_table}, \mref{mod:captiongeneration_table}, \mref{mod:wcagcompliance_table}, \mref{mod:uii_table}, \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:bcm_table}\\
-    MS-MNT2 & \mref{mod:preprocessing_table}, \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, 
-    \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}, \mref{mod:imgvalidmod_table}, \mref{mod:uii_table}, 
-    \mref{mod:msm_table},  \mref{mod:showhm_table},  \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table}, 
-    \mref{mod:captiongeneration_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, 
+    MS-MNT1 & \mref{mod:preprocessing_table},
+    \mref{mod:captiongeneration_table},
+    \mref{mod:wcagcompliance_table}, \mref{mod:uii_table},
+    \mref{mod:msm_table}, \mref{mod:showhm_table},
+    \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:bcm_table}\\
+    MS-MNT2 & \mref{mod:preprocessing_table},
+    \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table},
+    \mref{mod:auth_table}, \mref{mod:mess_table},
+    \mref{mod:bcm_table}, \mref{mod:logmod_table},
+    \mref{mod:imgvalidmod_table}, \mref{mod:uii_table},
+    \mref{mod:msm_table},  \mref{mod:showhm_table},
+    \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table},
+    \mref{mod:captiongeneration_table},
+    \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table},
     \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
-    MS-MNT3 & \mref{mod:preprocessing_table}, \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, 
-    \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}, \mref{mod:imgvalidmod_table}, \mref{mod:uii_table}, 
-    \mref{mod:msm_table},  \mref{mod:showhm_table},  \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table}, 
-    \mref{mod:captiongeneration_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, 
+    MS-MNT3 & \mref{mod:preprocessing_table},
+    \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table},
+    \mref{mod:auth_table}, \mref{mod:mess_table},
+    \mref{mod:bcm_table}, \mref{mod:logmod_table},
+    \mref{mod:imgvalidmod_table}, \mref{mod:uii_table},
+    \mref{mod:msm_table},  \mref{mod:showhm_table},
+    \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table},
+    \mref{mod:captiongeneration_table},
+    \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table},
     \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
     MS-SUP1 & \mref{mod:logmod_table}\\
     MS-AD1 & \mref{mod:modeltraining_table}\\
-    MS-AD2 &  \mref{mod:mess_table},\mref{mod:bcm_table}, \mref{mod:logmod_table}\\
-    MS-AD3 & \mref{mod:preprocessing_table}, \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table}, 
-    \mref{mod:auth_table}, \mref{mod:mess_table}, \mref{mod:bcm_table}, \mref{mod:logmod_table}, \mref{mod:imgvalidmod_table}, \mref{mod:uii_table}, 
-    \mref{mod:msm_table},  \mref{mod:showhm_table},  \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table}, 
-    \mref{mod:captiongeneration_table}, \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table}, 
+    MS-AD2 &  \mref{mod:mess_table},\mref{mod:bcm_table},
+    \mref{mod:logmod_table}\\
+    MS-AD3 & \mref{mod:preprocessing_table},
+    \mref{mod:wcagcompliance_table}, \mref{mod:modeloutput_table},
+    \mref{mod:auth_table}, \mref{mod:mess_table},
+    \mref{mod:bcm_table}, \mref{mod:logmod_table},
+    \mref{mod:imgvalidmod_table}, \mref{mod:uii_table},
+    \mref{mod:msm_table},  \mref{mod:showhm_table},
+    \mref{mod:lis_table}, \mref{mod:uia_table}, \mref{mod:modeltraining_table},
+    \mref{mod:captiongeneration_table},
+    \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table},
     \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
     \bottomrule
   \end{tabular}
@@ -888,7 +1029,6 @@ requirements and between the modules and the anticipated changes.
   \caption{Trace Between all Security Requirements and Modules}
   \label{TblSRT1}
 \end{table}
-
 
 \begin{table}[H]
   \centering
@@ -919,7 +1059,6 @@ requirements and between the modules and the anticipated changes.
   \caption{Trace Between all Compliance Requirements and Modules}
   \label{TbltCompR}
 \end{table}
-
 
 \begin{table}[H]
   \centering
@@ -965,7 +1104,7 @@ arrows in the diagram typically correspond to the presence of import statement.}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.1\textwidth]{UsesHierarchy.jpg}
+  \includegraphics[width=1.1\textwidth]{HierachyDiagramFinal.jpg}
   \caption{Use hierarchy among modules}
   \label{FigUH}
 \end{figure}
@@ -974,16 +1113,68 @@ arrows in the diagram typically correspond to the presence of import statement.}
 
 \section{User Interfaces}
 
-The \textit{Reading4All} interface is composed of multiple pages. The user is able 
-to upload their images of diagrams through the interface shown in Figure \ref{UploadMain}. 
-Furthermore, the system directs the user to a success or failure page accordingly, as highlighted Figure \ref{UploadSuccess} and Figure \ref{UploadFail}, respectively. 
-Once the user has successfully uploaded an image, they can initiate the alt text generation process by selecting the button seen in Figure 
-\ref{UploadSuccess}. Finally, the user is presented their generated alt text and an option to copy it, as shown in Figure \ref{AltTextGenFig}. 
+The \textit{Reading4All} interface is composed of multiple pages. The home page, shown in Figure \ref{HomePage}, 
+serves as the primary entry point to the \textit{Reading4All} system. From this interface, users are introduced 
+to the purpose of the application and are provided with clear navigation options to either sign up for a new account 
+or log in to an existing one. The home page is designed to be minimal and accessible, ensuring that users can quickly 
+understand the system’s functionality and proceed to authentication without unnecessary complexity.
+The sign-up page, shown in Figure \ref{SignUpPage}, allows new users to create an account by providing the required 
+registration information. Upon submission, the system validates the provided details and directs the user to either a
+sign-up success page (Figure \ref{SignUpSuccessFigma}) or a sign-up failure page (Figure \ref{SignUpFailureFigma}),
+clearly indicating whether the account creation process was successful.
+The login page enables returning users to authenticate using their existing credentials. As shown in Figures \ref{LoginPageSuccessFigma} 
+and \ref{LoginPageFailureFigma}, the system provides explicit feedback by redirecting users to either a login success page upon successful
+authentication or a failure page when invalid credentials are detected.
+The user is able to upload their images of diagrams through the interface shown in Figure \ref{UploadMain}. 
+Furthermore, the system directs the user to a success or failure page accordingly, as highlighted Figure
+\ref{UploadSuccess} and Figure \ref{UploadFail}, respectively. Once the user has successfully uploaded an 
+image, they can initiate the alt text generation process by selecting the button seen in Figure \ref{UploadSuccess}.
+Finally, the user is presented their generated alt text and an option to copy it, as shown in Figure \ref{AltTextGenFig}.
 Moreover, the user is able to view their history and sign out at any time through the top bar of each page. The history page allows 
 users to view their 10 latest alt text generations and can be seen in Figure \ref{HistoryPage}.
 
-\wss{Design of user interface for software and hardware.  Attach an appendix if
-needed. Drawings, Sketches, Figma}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Homepage_Reading4ALL.png}
+  \caption{Home Page UI}
+  \label{HomePage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{SignUpFigma.png}
+  \caption{Sign Up Page UI}
+  \label{SignUpPage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{SignUpSuccessFigma.png}
+  \caption{Sign Up Success Page UI}
+  \label{SignUpSuccessFigma}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{SignUpFailureFigma.png}
+  \caption{Sign Up Failure Page UI}
+  \label{SignUpFailureFigma}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{LoginPageSuccessFigma.png}
+  \caption{Login Page Success UI}
+  \label{LoginPageSuccessFigma}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{LoginPageFailureFigma.png}
+  \caption{Login Page Failure UI}
+  \label{LoginPageFailureFigma}
+\end{figure}
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{UploadFigma.png}
@@ -1012,14 +1203,12 @@ needed. Drawings, Sketches, Figma}
   \label{AltTextGenFig}
 \end{figure}
 
-
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{HistoryPageFigma.png}
   \caption{History Page UI}
   \label{HistoryPage}
 \end{figure}
-
 
 \section{Design of Communication Protocols}
 
@@ -1028,11 +1217,17 @@ needed. Drawings, Sketches, Figma}
 \section{Timeline}
 \wss{Schedule of tasks and who is responsible}
 \wss{You can point to GitHub if this information is included there}\\
-\wss{Detailed timeline (down to the level of modules) on what needs to happen for the implementation of Rev 0 to be complete.  Detailed data on who will do what.  Full testing/verification does not have to be part of the timeline, but enough testing has to be included to have confidence in Rev 0.} \\
+\wss{Detailed timeline (down to the level of modules) on what needs
+  to happen for the implementation of Rev 0 to be complete.  Detailed
+  data on who will do what.  Full testing/verification does not have to
+  be part of the timeline, but enough testing has to be included to
+have confidence in Rev 0.} \\
 
-The team will split the project into three main subgroups. These three subgroups and the current
-team members within each subgroup for Rev 0 are outlined below. Design decisions across each subgroup 
-will be discussed and made together by the entire team. 
+The team will split the project into three main subgroups. These
+three subgroups and the current
+team members within each subgroup for Rev 0 are outlined below.
+Design decisions across each subgroup
+will be discussed and made together by the entire team.
 \begin{enumerate}
   \item \textbf{AI:} Nawaal, Fiza, Francine
   \item \textbf{Backend:} Dhruv, Moly, Francine (backup)
@@ -1048,21 +1243,32 @@ end of December 2025.   \\ \\
   \centering
   \caption{AI Subgroup Development Schedule}
   \label{tab:ai-dev-schedule}
-  \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|p{4cm}|} 
-  \hline
-  \textbf{Date} &
-  \textbf{Task} &
-  \textbf{Module Associated} &
-  \textbf{Team Member(s) Responsible} \\ \hline
+  \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|p{4cm}|}
+    \hline
+    \textbf{Date} &
+    \textbf{Task} &
+    \textbf{Module Associated} &
+    \textbf{Team Member(s) Responsible} \\ \hline
 
-  12/25/2025 -- 01/05/2026 & Lock scope of data, set up environments, and acquire datasets & None &  All team members \\ \hline 
-  01/06/2026 -- 01/11/2026 & Data preprocessing, begin training on dataset, metadata labelling & None &  Nawaal, Fiza, Francine \\ \hline 
-  01/11/2026 -- 01/23/2026 & Model fine-tuning and training using Jing's dataset & AIModelTraining, CaptionGeneration &  Nawaal, Fiza, Francine \\ \hline 
-  01/23/2026 -- 01/30/2026 & Implement WCAG compliance checks, and internal metric compliance & InternalMetric-Compliance, WCAGCompliance &  Nawaal, Fiza, Francine \\ \hline 
-  02/02/2026 -- 02/06/2026 & \textbf{Rev0} &  &  All team members \\ \hline 
-  02/09/2026 -- 02/13/2026 & User testing for generated alt text & None &  All team members \\ \hline 
-  02/14/2026 -- 02/27/2026 & Implement feedback from user testing to AI model & FeedbackMetrics, FeedbackLoop, Feedback &  Nawaal, Fiza, Francine \\ \hline 
-  02/27/2026 -- 03/15/2026 & Evaluation of metrics, system integration with backend/frontend & FeedbackMetrics, FeedbackLoop, Feedback &  Nawaal, Fiza, Francine \\ \hline 
+    12/25/2025 -- 01/05/2026 & Lock scope of data, set up
+    environments, and acquire datasets & None &  All team members \\ \hline
+    01/06/2026 -- 01/11/2026 & Data preprocessing, begin training on
+    dataset, metadata labelling & None &  Nawaal, Fiza, Francine \\ \hline
+    01/11/2026 -- 01/23/2026 & Model fine-tuning and training using
+    Jing's dataset & AIModelTraining, CaptionGeneration &  Nawaal,
+    Fiza, Francine \\ \hline
+    01/23/2026 -- 01/30/2026 & Implement WCAG compliance checks, and
+    internal metric compliance & InternalMetric-Compliance,
+    WCAGCompliance &  Nawaal, Fiza, Francine \\ \hline
+    02/02/2026 -- 02/06/2026 & \textbf{Rev0} &  &  All team members \\ \hline
+    02/09/2026 -- 02/13/2026 & User testing for generated alt text &
+    None &  All team members \\ \hline
+    02/14/2026 -- 02/27/2026 & Implement feedback from user testing
+    to AI model & FeedbackMetrics, FeedbackLoop, Feedback &  Nawaal,
+    Fiza, Francine \\ \hline
+    02/27/2026 -- 03/15/2026 & Evaluation of metrics, system
+    integration with backend/frontend & FeedbackMetrics,
+    FeedbackLoop, Feedback &  Nawaal, Fiza, Francine \\ \hline
 
   \end{tabular}
 \end{table}
@@ -1073,19 +1279,26 @@ end of December 2025.   \\ \\
   \centering
   \caption{Frontend Subgroup Development Schedule}
   \label{tab:frontend-dev-schedule}
-  \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|p{4cm}|} 
-  \hline
-  \textbf{Date} &
-  \textbf{Task} &
-  \textbf{Module Associated} &
-  \textbf{Team Member(s) Responsible} \\ \hline
+  \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|p{4cm}|}
+    \hline
+    \textbf{Date} &
+    \textbf{Task} &
+    \textbf{Module Associated} &
+    \textbf{Team Member(s) Responsible} \\ \hline
 
-  01/05/2026 -- 01/12/2026 & Create figma designs for each page & None & Dhruv, Moly, Francine \\ \hline 
-  01/12/2026 -- 01/21/2026 & Implement UI pages and test screen reader compatibility & LogInScreen, MainScreen, Show-HistoryScreen, UserInterface-Accessibility, UserInterface-Interactions &  Dhruv and Moly \\ \hline 
-  01/21/2026 -- 01/30/2026 & Integration with backend system and WCAG testing& None &  Dhruv, Moly, Francine \\ \hline 
-  02/02/2026 -- 02/06/2026 & \textbf{Rev0} & None &  All team members \\ \hline 
-  02/09/2026 -- 02/13/2026 & User testing & None &  All team members \\ \hline 
-  02/14/2026 -- 02/27/2026 & Revise UI if needed after testing & None &  Dhruv, Moly, Francine \\ \hline 
+    01/05/2026 -- 01/12/2026 & Create figma designs for each page &
+    None & Dhruv, Moly, Francine \\ \hline
+    01/12/2026 -- 01/21/2026 & Implement UI pages and test screen
+    reader compatibility & LogInScreen, MainScreen,
+    Show-HistoryScreen, UserInterface-Accessibility,
+    UserInterface-Interactions &  Dhruv and Moly \\ \hline
+    01/21/2026 -- 01/30/2026 & Integration with backend system and
+    WCAG testing& None &  Dhruv, Moly, Francine \\ \hline
+    02/02/2026 -- 02/06/2026 & \textbf{Rev0} & None &  All team
+    members \\ \hline
+    02/09/2026 -- 02/13/2026 & User testing & None &  All team members \\ \hline
+    02/14/2026 -- 02/27/2026 & Revise UI if needed after testing &
+    None &  Dhruv, Moly, Francine \\ \hline
 
   \end{tabular}
 \end{table}
@@ -1096,24 +1309,304 @@ end of December 2025.   \\ \\
   \centering
   \caption{Backend Subgroup Development Schedule}
   \label{tab:backend-dev-schedule}
-  \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|p{4cm}|} 
-  \hline
-  \textbf{Date} &
-  \textbf{Task} &
-  \textbf{Module Associated} &
-  \textbf{Team Member(s) Responsible} \\ \hline
+  \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|p{4cm}|}
+    \hline
+    \textbf{Date} &
+    \textbf{Task} &
+    \textbf{Module Associated} &
+    \textbf{Team Member(s) Responsible} \\ \hline
 
-  01/05/2026 -- 01/12/2026 & Planning APIs and creating schemas & None &  Dhruv, Moly, Francine \\ \hline 
-  01/13/2026 -- 01/21/2026 & Implement APIs and manual testing & AuthenticationService, BackendController, SessionManagement, ImageValidation &  Dhruv, Moly, Francine \\ \hline 
-  01/21/2026 -- 01/30/2026 & API testing and integration with Frontend and AI systems & Logging  & Dhruv, Moly, Francine \\ \hline 
-  02/02/2026 -- 02/06/2026 & \textbf{Rev0} & None &  All team members \\ \hline 
-  02/09/2026 -- 02/13/2026 & User testing & None &  All team members \\ \hline 
-  02/14/2026 -- 02/27/2026 & Revise backend logic if needed after user tesing & None &  Dhruv, Moly, Francine \\ \hline 
+    01/05/2026 -- 01/12/2026 & Planning APIs and creating schemas &
+    None &  Dhruv, Moly, Francine \\ \hline
+    01/13/2026 -- 01/21/2026 & Implement APIs and manual testing &
+    AuthenticationService, BackendController, SessionManagement,
+    ImageValidation &  Dhruv, Moly, Francine \\ \hline
+    01/21/2026 -- 01/30/2026 & API testing and integration with
+    Frontend and AI systems & Logging  & Dhruv, Moly, Francine \\ \hline
+    02/02/2026 -- 02/06/2026 & \textbf{Rev0} & None &  All team
+    members \\ \hline
+    02/09/2026 -- 02/13/2026 & User testing & None &  All team members \\ \hline
+    02/14/2026 -- 02/27/2026 & Revise backend logic if needed after
+    user tesing & None &  Dhruv, Moly, Francine \\ \hline
 
   \end{tabular}
 \end{table}
 
-\newpage 
+\newpage
+\section{Appendix A - Mathematical Representation for
+\textit{Reading4All - AI Subsystem}}
+This section provides an overall formal mathematical representation of the
+\textit{Reading4All} system such that the system can be understood
+independently of its implementation. Furthermore, specific attempts for the
+AI trained under the \textit{AI Subgroup} are mathematically denoted with the
+goal being to explicitly document all attempts made during the training
+process and how intermediate representations are constructed.
+
+\subsection{Reading4All - AI Subsystem Overview}
+
+The \textit{Reading4All - AI Subsystem} is a multi-stage vision--language system
+designed to automatically generate accessible alternative (alt) text for STEM
+figures. The subsystem operates by progressively transforming a visual input
+into increasingly abstract representations, culminating in natural-language
+descriptions suitable for assistive technologies such as screen readers.
+
+\paragraph{Input Space}
+Let,
+\[
+I \in \mathbb{R}^{H \times W \times 3}
+\]
+denote a single RGB input image, where $H$ and $W$ correspond to the height and
+width of the image in pixels, and the third dimension represents color channels (which are red, green and blue).
+
+\paragraph{Output Space}
+The final output of the AI Subsystem is a sequence of textual tokens:
+\[
+A = (a_1, a_2, \dots, a_T),
+\]
+where each $a_t$ belongs to a discrete vocabulary $\mathcal{V}$ and $T$ denotes
+the length of the generated alt text.
+
+\paragraph{System-Level Mapping}
+At a high level, the \textit{Reading4All - AI Subsystem} implements a conditional mapping:
+\[
+\mathcal{F}: \mathbb{R}^{H \times W \times 3} \rightarrow \mathcal{V}^T,
+\]
+which is instantiated through multiple training scenarios described in the
+subsequent sections.
+
+\subsection{Mathematical Preliminaries and Shared Notation}
+
+The following notation is used consistently throughout this appendix:
+
+\begin{itemize}
+    \item $I$: input image
+    \item $P$: number of visual patches extracted from $I$
+    \item $p$: patch side length in pixels
+    \item $d$: hidden embedding dimension of transformer models
+    \item $L$: number of transformer layers
+    \item $\theta$: set of trainable parameters
+    \item $\mathcal{L}$: loss function
+\end{itemize}
+
+All models used within the \textit{Reading4All - AI Subsystem} are based on transformer
+architectures and employ attention mechanisms and residual connections.
+
+\subsection{Vision Transformer Encoding}
+
+All training scenarios begin by converting the input image $I$ into a latent
+visual representation using a vision transformer encoder.
+
+\subsubsection{Patch Extraction}
+
+The image $I$ is partitioned into non-overlapping square patches of size
+$p \times p$. The total number of patches is given by:
+\[
+P = \frac{H \cdot W}{p^2}.
+\]
+
+Each patch is flattened into a vector:
+\[
+\mathbf{x}_i \in \mathbb{R}^{3p^2}, \quad i = 1,\dots,P.
+\]
+
+\subsubsection{Patch Embedding}
+
+Each flattened patch vector is projected into a $d$-dimensional embedding space
+using a learned linear transformation:
+\[
+\mathbf{e}_i = \mathbf{W}_E \mathbf{x}_i + \mathbf{b}_E,
+\]
+where $\mathbf{W}_E \in \mathbb{R}^{d \times 3p^2}$ and
+$\mathbf{b}_E \in \mathbb{R}^d$ are trainable parameters.
+
+A special learnable classification token
+$\mathbf{e}_{\text{CLS}} \in \mathbb{R}^d$ is prepended to the patch sequence,
+yielding:
+\[
+\mathbf{Z}_0 =
+[\mathbf{e}_{\text{CLS}}, \mathbf{e}_1, \mathbf{e}_2, \dots, \mathbf{e}_P].
+\]
+
+\subsubsection{Transformer Encoder Layers}
+
+The embedded patch sequence is processed by $L$ stacked transformer layers. For
+layer $\ell \in \{1,\dots,L\}$, the hidden representation is computed as:
+\[
+\mathbf{Z}_\ell =
+\text{LayerNorm}\left(
+\mathbf{Z}_{\ell-1} +
+\text{FFN}\big(\text{MSA}(\mathbf{Z}_{\ell-1})\big)
+\right).
+\]
+
+Multi-head self-attention (MSA) is defined by:
+\[
+\text{MSA}(\mathbf{Q}, \mathbf{K}, \mathbf{V}) =
+\text{softmax}\left(
+\frac{\mathbf{Q}\mathbf{K}^\top}{\sqrt{d}}
+\right)\mathbf{V},
+\]
+where $\mathbf{Q}$, $\mathbf{K}$, and $\mathbf{V}$ are linear projections of
+$\mathbf{Z}_{\ell-1}$.
+
+The final image representation is taken as the output corresponding to the
+classification token:
+\[
+\mathbf{h}_{\text{img}} = \mathbf{Z}_L^{(0)}.
+\]
+
+\subsection{Scenario 1: Caption-Centric Vision--Language Learning}
+
+Scenario 1 implements a direct vision-to-language pipeline using a small BLIP-based
+model and scientific caption supervision.
+
+\subsubsection{Stage 1: PubLayNet Layout Classification [\cite{zhong2019publaynet}]}
+
+\paragraph{Task Definition}
+Given an input image $I$, the model predicts a dominant layout category
+\[
+y \in \{\text{text}, \text{title}, \text{list}, \text{table}, \text{figure}\}.
+\]
+
+\paragraph{Classification Head}
+A linear classifier maps the image embedding $\mathbf{h}_{\text{img}}$ to
+unnormalized logits:
+\[
+\mathbf{o} = \mathbf{W}_C \mathbf{h}_{\text{img}} + \mathbf{b}_C,
+\]
+where $\mathbf{W}_C \in \mathbb{R}^{5 \times d}$ and
+$\mathbf{b}_C \in \mathbb{R}^5$.
+
+\paragraph{Loss Function}
+The layout classification loss is defined as the categorical cross-entropy:
+\[
+\mathcal{L}_{\text{layout}} =
+- \log \frac{\exp(o_y)}{\sum_{k=1}^{5} \exp(o_k)}.
+\]
+
+At the time of this document submission, only the vision encoder parameters are updated during this stage, while the language model parameters remain frozen to prevent premature or unstable updates to the uninitialized decoder.
+
+\subsubsection{Stage 2: SciCap Caption Generation [\cite{hsu-etal-2021-scicap-generating}]}
+
+\paragraph{Caption Representation}
+Let a reference scientific caption be represented as a token sequence:
+\[
+C = (c_1, c_2, \dots, c_T).
+\]
+
+\paragraph{Autoregressive Decoding}
+The decoder models the conditional probability of each token given previous
+tokens and the image representation:
+\[
+p(C \mid I) = \prod_{t=1}^{T} p(c_t \mid c_{<t}, \mathbf{h}_{\text{img}}).
+\]
+
+\paragraph{Cross-Attention}
+Decoder hidden states attend to visual embeddings via cross-attention:
+\[
+\text{Attn}_{\text{cross}} =
+\text{softmax}\left(
+\frac{\mathbf{Q}\mathbf{K}^\top}{\sqrt{d}}
+\right)\mathbf{V}.
+\]
+
+\paragraph{Loss Function}
+The captioning objective is the negative log-likelihood:
+\[
+\mathcal{L}_{\text{caption}} =
+- \sum_{t=1}^{T} \log p(c_t \mid c_{<t}, I).
+\]
+
+As per our initial attempt the vision encoder is frozen while only the decoder and cross-attention parameters are updated. Freezing the encoder stabilizes training and ensures that the visual features learned in Stage 1 are preserved.
+
+
+\subsection{Scenario 2: Structured Reasoning-Based Alt Text Generation}
+
+Scenario~2 introduces an explicit structured intermediate representation
+between visual understanding and language generation.
+
+\subsubsection{Stage 1: PubLayNet Layout Supervision [\cite{zhong2019publaynet}]}
+
+This stage mirrors the layout supervision described in Scenario~1 and is used
+to initialize a layout-aware vision encoder for subsequent stages.
+
+\subsubsection{Stage 2: AI2D Structured Representation Learning [\cite{kembhavi2016diagram}]}
+
+\paragraph{Structured Output Space}
+Given an image $I$, the model generates a structured token sequence:
+\[
+S = (s_1, s_2, \dots, s_K),
+\]
+where each $s_k$ represents a symbolic component or relationship extracted
+from the diagram.
+Example of Structured Components: For instance, each $s_k$ can represent a symbolic component or relationship extracted from a diagram, e.g.,
+\[
+s_k = \text{``arrow: connects A $\rightarrow$ B''} \quad \text{or} \quad
+s_k = \text{``circle: highlights key element''}.
+\]
+
+\paragraph{Conditional Modeling}
+The structured representation is generated autoregressively:
+\[
+p(S \mid I) = \prod_{k=1}^{K} p(s_k \mid s_{<k}, I).
+\]
+
+\paragraph{Loss Function}
+\[
+\mathcal{L}_{\text{struct}} =
+- \sum_{k=1}^{K} \log p(s_k \mid s_{<k}, I).
+\]
+
+At the time of the attempt during this stage, the vision encoder is frozen during this stage, and only the decoder cross-attention parameters are updated. This preserves the layout-aware visual features while allowing the model to learn structured symbolic representations from diagrams.
+
+\subsubsection{Stage 3: T5-Based Alt Text Generation [\cite{2020t5}]}
+
+\paragraph{Input Transformation}
+The structured sequence $S$ is serialized into text and provided as input to a T5-based language model.
+
+\paragraph{Alt Text Generation}
+The T5 model produces alt text tokens autoregressively:
+\[
+p(A \mid S) = \prod_{t=1}^{T} p(a_t \mid a_{<t}, S),
+\]
+where $A = (a_1, a_2, \dots, a_T)$ is the generated alt text token sequence.
+
+\paragraph{Loss Function}
+The alt text generation objective is the negative log-likelihood:
+\[
+\mathcal{L}_{\text{alt}} =
+- \sum_{t=1}^{T} \log p(a_t \mid a_{<t}, S).
+\]
+
+At the time of this document's submission and during this stage, the vision encoder remains frozen, the decoder cross-attention parameters from the previous stage are reused, and only the T5 model parameters are updated. Freezing the encoder preserves the learned visual and structured representations, while allowing the language model to specialize in generating descriptive alt text.
+
+\subsection{End-to-End System Composition}
+
+The final \textit{Reading4All - AI subsystem} is a choice between the two scenarios attempted so far:
+\[
+A =
+\begin{cases}
+\text{BLIP}_{\text{SciCap}}(\text{BLIP}_{\text{PubLayNet}}(I)), & \text{Scenario 1} \\
+\text{T5}(\text{Pix2Struct}_{\text{AI2D}}(\text{Pix2Struct}_{\text{PubLayNet}}(I))), & \text{Scenario 2}
+\end{cases}
+\]\\
+Where,
+\begin{itemize}
+  \item Scenario 1: end-to-end captioning;
+  \item Scenario 2: structured reasoning with interpretable intermediate representations.
+\end{itemize}  
+
+\paragraph{Design Rationale}
+Each scenario represents a distinct design choice within the \textit{Reading4All - AI subsystem} framework:
+
+\begin{itemize}
+    \item \textbf{Scenario 1:} Optimized for end-to-end caption generation using BLIP-based models, with direct supervision from scientific captions.
+    \item \textbf{Scenario 2:} Introduces structured intermediate representations (e.g., $s_k =$ ``arrow: connects A $\rightarrow$ B'', ``circle: highlights key element'') to improve interpretability and accessibility while maintaining accurate alt text generation via a T5 language model.
+\end{itemize}
+
+To iterate, freezing certain parameters at each stage ensures stability, preserves previously learned representations, and prevents overfitting when training downstream components on limited data.
+
+\newpage
 \bibliographystyle {plainnat}
 \bibliography{../../../refs/References}
 
