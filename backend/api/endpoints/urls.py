@@ -6,6 +6,8 @@ from api.impl.POST_upload import csrf, validate_image_api
 from api.impl.POST_signup import signup
 from api.impl.PUT_edit import edit_alt_text
 
+from ..impl.POST_send_verification import send_verification
+from ..impl.POST_verify import verify
 
 urlpatterns = [
     path("upload/", validate_image_api),
@@ -13,5 +15,7 @@ urlpatterns = [
     path("alt-text-history/", get_history),
     path("signup/", signup),
     path("cookie/", csrf),
+    path("send-verification/", send_verification),
+    path("verify/", verify),
     path("edit-alt-text/", edit_alt_text)
 ]
