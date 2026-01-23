@@ -19,8 +19,8 @@ def validate_image_api(request):
             {"error": "Only POST Methods allowed on this endpoint"}, status=405
         )
         return response
-
-    message = backend_controller.validate_image(request)
+    file_uploaded = request.FILES
+    message = backend_controller.validate_image(file_uploaded)
 
     if message != "Success":
         print("MESSAGE", message)
