@@ -41,12 +41,14 @@ for param in model.vision_model.parameters():
 
 ds = load_dataset("csv", data_files={"train": TRAIN_CSV, "validation": VAL_CSV})
 
-MAX_LEN = 128
+MAX_LEN = 256
 
 def preprocess(examples):
     image_paths = examples["Image-Path"]
     images = [Image.open(p).convert("RGB") for p in image_paths]
-    texts = ["Describe this physics diagram: " + t for t in examples["Modified-Alt-Text"]]
+
+    texts = [t.strip() for t in examples["Modified-Alt-Text"]]
+
     enc = processor(
         images=images,
         text=texts,
@@ -55,7 +57,10 @@ def preprocess(examples):
         max_length=MAX_LEN,
         return_tensors="pt",
     )
-    enc["labels"] = enc["input_ids"].clone()
+
+    labels = enc["input_ids"].clone()
+    labels[labels == processor.tokenizer.pad_token_id] = -100
+    enc["labels"] = labels
     return enc
 
 ds = ds.map(preprocess, batched=True, remove_columns=ds["train"].column_names)
