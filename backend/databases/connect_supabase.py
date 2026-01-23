@@ -7,14 +7,37 @@ from supabase import create_client
 BACKEND_DIR = Path(__file__).resolve().parents[1]  # .../backend/
 load_dotenv(BACKEND_DIR / ".env")
 
-def get_supabase_client():
-    url = os.getenv("SUPABASE_URL")
-    key = os.getenv("SUPABASE_KEY")  # matches your env var names
 
-    if not url or not key:
+def get_supabase_client():
+    """
+    Public / user-scoped Supabase client.
+    Uses ANON key.
+    """
+    url = os.getenv("SUPABASE_URL")
+    anon_key = os.getenv("SUPABASE_ANON_KEY")
+
+    if not url or not anon_key:
         raise EnvironmentError(
-            "Supabase URL or Key not found in environment variables. "
-            "Expected SUPABASE_URL and SUPABASE_KEY in backend/.env"
+            "Missing Supabase ANON credentials. "
+            "Expected SUPABASE_URL and SUPABASE_ANON_KEY in backend/.env"
         )
 
-    return create_client(url, key)
+    return create_client(url, anon_key)
+
+
+def get_supabase_admin_client():
+    """
+    Admin Supabase client.
+    Uses SERVICE ROLE key.
+    Backend-only. Never expose this to frontend.
+    """
+    url = os.getenv("SUPABASE_URL")
+    role_key = os.getenv("SUPABASE_ROLE_KEY")
+
+    if not url or not role_key:
+        raise EnvironmentError(
+            "Missing Supabase SERVICE ROLE credentials. "
+            "Expected SUPABASE_URL and SUPABASE_ROLE_KEY in backend/.env"
+        )
+
+    return create_client(url, role_key)
