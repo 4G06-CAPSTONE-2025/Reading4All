@@ -93,3 +93,34 @@
     - Testability
     - Long-term scalability
 
+## Supabase for Database Layer
+
+### Supabase 
+- Supabase is an open-source backend platform designed to simplify application development by providing managed backend services
+- It offers a PostgreSQL database, authentication, file storage, and API access through a unified platform. 
+- Supabase is commonly used as an alternative to traditional backend-as-a-service solutions while retaining the flexibility of a relational database.
+
+### PostgreSQL-Based Database
+- Supabase is built on top of PostgreSQL, a widely used relational database management system. 
+- This allows developers to take advantage of structured schemas, relational constraints, and transactional guarantees. Because PostgreSQL is fully SQL-compliant, Supabase supports complex queries, joins, and indexing, which makes it suitable for applications that manage structured and interrelated data.
+
+### Authentication and Authorization
+- Supabase provides built-in authentication services that support email/password login and token-based authentication. 
+- It also includes row-level security (RLS) policies, which allow developers to define fine-grained access controls directly at the database level. These features help ensure that users can only access or modify data they are authorized to interact with.
+
+### Storage and Data Management
+- In addition to structured data storage, Supabase offers object storage for handling files such as images and documents. 
+- This enables applications to manage both structured and unstructured data within the same backend ecosystem. 
+- Supabase also provides automatic data persistence and backup features, reducing the operational overhead required to manage storage infrastructure.
+
+### Supabase for Reading4All System
+- In the Reading4All system, Supabase is used as the primary data storage solution for images, generated alt-text, and alt-text edit history. Its PostgreSQL foundation allows structured relational data to be stored efficiently while supporting complex queries and constraints.
+
+## Django and Supabase Integration
+- In the Reading4All backend subsystem, Django serves as the API and application logic layer, while Supabase functions as the persistent data store. 
+- Django is responsible for handling HTTP requests, validating input data, enforcing authentication and authorization rules, and coordinating interactions with the database. 
+- Supabase is responsible for storing and managing the system’s data, including alt-text records and edit history.
+- For the ``PUT`` API:
+    - When a user edits alt-text, the Django API processes the PUT /api/alt-text/edit request
+    - Upon successful validation, writes the updated alt-text to the appropriate table in Supabase. 
+    - This layered architecture separates business logic from data storage, improving maintainability, security, and scalability of the Reading4All system.
