@@ -14,12 +14,12 @@ def get_supabase_client():
     Uses ANON key.
     """
     url = os.getenv("SUPABASE_URL")
-    anon_key = os.getenv("SUPABASE_ANON_KEY")
+    anon_key = os.getenv("SUPABASE_SERVICE_ANON_KEY")
 
     if not url or not anon_key:
         raise EnvironmentError(
             "Missing Supabase ANON credentials. "
-            "Expected SUPABASE_URL and SUPABASE_ANON_KEY in backend/.env"
+            "Expected SUPABASE_URL and SUPABASE_ANON_KEY in environment variables"
         )
 
     return create_client(url, anon_key)
@@ -32,12 +32,12 @@ def get_supabase_admin_client():
     Backend-only. Never expose this to frontend.
     """
     url = os.getenv("SUPABASE_URL")
-    role_key = os.getenv("SUPABASE_ROLE_KEY")
+    role_key = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 
     if not url or not role_key:
         raise EnvironmentError(
             "Missing Supabase SERVICE ROLE credentials. "
-            "Expected SUPABASE_URL and SUPABASE_ROLE_KEY in backend/.env"
+            "Expected SUPABASE_URL and SUPABASE_ROLE_KEY in environment variables"
         )
 
     return create_client(url, role_key)
