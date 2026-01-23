@@ -27,3 +27,33 @@ class AltTextHistory:
                 }
             history.append(entry)
         return history
+
+    def update_edited_alt_text(self, session_id, image, edited_alt_text):
+        try:
+            # get most recent history entry for this session
+            # edits only apply to latest entry (current generated alt text 
+            response = (
+                supabase.table("history")
+                .select("entry_id")
+                .eq("session_id", session_id)
+                .eq("image", image)
+                .order("time_gen", desc=True)
+                .limit(1)
+                .execute()
+            )
+
+            if not response.data:
+                return False
+
+            entry_id = response.data[0]["entry_id"]
+
+            # updates the edited_alt_text col
+            supabase.table("history").update(
+                {"edited_alt_text": edited_alt_text}
+            ).eq("entry_id", entry_id).execute()
+
+            return True
+
+        except Exception as e:
+            print("UPDATE EDITED ALT TEXT ERROR:", e)
+            return False
