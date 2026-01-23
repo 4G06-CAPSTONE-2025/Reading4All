@@ -21,7 +21,7 @@ def edit_alt_text(request):
 
         # Add edited alt-text as a new entry in the history table 
         # Original alt text also stays 
-        success = history.add_alt_text_edit(
+        success = history.update_edited_alt_text(
             session_id=session_id,
             image=image,
             edited_alt_text=edited_alt_text
