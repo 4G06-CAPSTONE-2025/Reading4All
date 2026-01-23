@@ -53,9 +53,9 @@ for p in image_paths:
         inputs = {k: v.to(DEVICE) for k, v in inputs.items()}
 
         with torch.no_grad():
-            ids = model.generate(
+            ids = model.generate (
                 **inputs,
-                max_new_tokens=40,
+                max_new_tokens=512,
                 num_beams=6,
                 length_penalty=0.8,
                 no_repeat_ngram_size=4,
