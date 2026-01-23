@@ -20,7 +20,8 @@ def validate_image_api(request):
         )
         return response
 
-    message = backend_controller.validate_image(request)
+    uploaded_file = request.FILES
+    message = backend_controller.validate_image(uploaded_file)
 
     if message != "Success":
         print("MESSAGE", message)
