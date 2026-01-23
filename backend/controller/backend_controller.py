@@ -1,6 +1,7 @@
 from services.alt_text_history import AltTextHistory
 from services.gen_alt_text import GenAltText
 from services.image_validation import ImageValidation
+from services.edit_alt_text import edit_alt_text
 from services.auth_service import AuthService
 
 
