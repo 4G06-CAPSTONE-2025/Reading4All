@@ -1,4 +1,4 @@
-import React, { useState, useRef, use } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./HistoryPage.css";
 import { useEffect } from "react";
@@ -96,7 +96,7 @@ export default function HistoryPage(){
                             <div className="history-card-left-col">
                             <img 
                             src={ `data:image/png;base64,${item.image}`} 
-                            alt="Uploaded image preview"
+                            alt="Uploaded preview"
                             className="history-image"
                             />
                             </div>                            
