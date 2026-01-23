@@ -1,6 +1,7 @@
 from services.alt_text_history import AltTextHistory
 from services.gen_alt_text import GenAltText
 from services.image_validation import ImageValidation
+from services.edit_alt_text import edit_alt_text
 from services.auth_service import AuthService
 from services.edit_alt_text import edit_alt_text
 from services.auth_service import AuthService
@@ -21,6 +22,9 @@ class BackendController:
 
     def get_alt_text_history(self, session_id):
         return self.history_info.get_alt_text_history(session_id)
+    
+    def edit_alt_text(self, request):
+        return edit_alt_text(request)
 
     def signup_user(self, email, password):
         return self.auth_service.signup(email, password)
