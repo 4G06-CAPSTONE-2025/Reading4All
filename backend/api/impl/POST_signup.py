@@ -3,7 +3,10 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from controller.backend_controller import backend_controller
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5b5029b (Moving files under impl and endpoints folder for cleaner file structure)
 @csrf_exempt
 def signup(request):
     if request.method != "POST":
