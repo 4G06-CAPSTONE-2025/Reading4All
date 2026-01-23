@@ -22,5 +22,6 @@ class BackendController:
 
     def signup_user(self, email, password):
         return self.auth_service.signup(email, password)
-    
+
+
 backend_controller = BackendController()
