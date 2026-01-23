@@ -19,8 +19,7 @@ def edit_alt_text(request):
         if not image or not edited_alt_text:
             return "INVALID_REQUEST"
 
-        # Add edited alt-text as a new entry in the history table 
-        # Original alt text also stays 
+        # edits the edited_alt_text col in the last row of history table
         success = history.update_edited_alt_text(
             session_id=session_id,
             image=image,
