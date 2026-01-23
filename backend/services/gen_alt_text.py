@@ -1,22 +1,23 @@
 import base64
-import pandas as pd
 import uuid
-from databases.connect_supabase import supabase
+
+from databases.connect_supabase import get_supabase_admin_client
+
 
 class GenAltText:
     def __init__(self):
-        pass
-    
-    def trigger_model(self,image,session_id):
-        # needs to be changed to trigger real model 
+        self.supabase = get_supabase_admin_client()
+
+    def trigger_model(self, image, session_id):
+        # needs to be changed to trigger real model
         mock_alt_text = uuid.uuid4().hex
 
-        # after alt text has been successfully generated, the alt text and image is saved to the history 
-        self.insert_history(image,mock_alt_text, session_id)
+        # after alt text has been successfully generated, the alt text
+        # and image is saved to the history
+        self.insert_history(image, mock_alt_text, session_id)
 
         # returns alt text to show user
         return mock_alt_text
-    
 
     def insert_history(self, image, alt_text, session_id):
 
@@ -24,20 +25,17 @@ class GenAltText:
         image_bytes = image.read()
         image_b64 = base64.b64encode(image_bytes).decode("utf-8")
 
-        #dont need to give time stamp it will by default use current time
-        supabase.table("history").insert({
-            "session_id":session_id,
-            "image":image_b64,
-            "alt_text": alt_text
-        }).execute()
-        
+        # dont need to give time stamp it will by default use current time
+        self.supabase.table("history").insert(
+            {"session_id": session_id, "image": image_b64, "alt_text": alt_text}
+        ).execute()
 
     # this function is for testing purposes to store images from database
-    def save_image(self,entry_id=1):
+    def save_image(self, entry_id=1):
         response = (
-            supabase.table("history")
+            self.supabase.table("history")
             .select("image")
-            .eq("entry_id",entry_id)
+            .eq("entry_id", entry_id)
             .single()
             .execute()
         )

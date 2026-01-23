@@ -5,8 +5,6 @@ from datasets import load_dataset
 from transformers import AutoProcessor, BlipForConditionalGeneration, TrainingArguments, Trainer, default_data_collator
 import torch
 
-
-
 '''
 This is what input dir should look like
 <BASE_DIR>/
@@ -24,12 +22,12 @@ This is what input dir should look like
                 ...
 where the csv files have all the columns in the original annotated csv in ai/annotations/annotated_physics_data(Sheet1).csv
 '''
-
+TESTER=1
 MODEL_ID = "Salesforce/blip-image-captioning-base"
-BASE_DIR = "ai/train/"
+BASE_DIR = f"ai/data/tester_{TESTER}"
 TRAIN_CSV = os.path.join(BASE_DIR, "train.csv")
 VAL_CSV = os.path.join(BASE_DIR, "val.csv")
-OUT_DIR = "ai/train/model3/"
+OUT_DIR = "/Users/fizasehar/GitHub/Reading4All/ai/models/TesterOneFrozen"
 
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 torch.backends.mps.enable_fallback = True
@@ -37,18 +35,20 @@ torch.backends.mps.enable_fallback = True
 processor = AutoProcessor.from_pretrained(MODEL_ID)
 model = BlipForConditionalGeneration.from_pretrained(MODEL_ID).to(DEVICE)
  
-# for param in model.vision_model.parameters():
-#     param.requires_grad = False
+for param in model.vision_model.parameters():
+    param.requires_grad = False
 
 
 ds = load_dataset("csv", data_files={"train": TRAIN_CSV, "validation": VAL_CSV})
 
-MAX_LEN = 128
+MAX_LEN = 256
 
 def preprocess(examples):
     image_paths = examples["Image-Path"]
     images = [Image.open(p).convert("RGB") for p in image_paths]
-    texts = ["Describe this physics diagram: " + t for t in examples["Modified-Alt-Text"]]
+
+    texts = [t.strip() for t in examples["Modified-Alt-Text"]]
+
     enc = processor(
         images=images,
         text=texts,
@@ -57,7 +57,10 @@ def preprocess(examples):
         max_length=MAX_LEN,
         return_tensors="pt",
     )
-    enc["labels"] = enc["input_ids"].clone()
+
+    labels = enc["input_ids"].clone()
+    labels[labels == processor.tokenizer.pad_token_id] = -100
+    enc["labels"] = labels
     return enc
 
 ds = ds.map(preprocess, batched=True, remove_columns=ds["train"].column_names)
