@@ -1,12 +1,12 @@
 import base64
 import uuid
 
-from databases.connect_supabase import get_supabase_client
+from databases.connect_supabase import get_supabase_admin_client
 
 
 class GenAltText:
     def __init__(self):
-        self.supabase = get_supabase_client()
+        self.supabase = get_supabase_admin_client()
 
     def trigger_model(self, image, session_id):
         # needs to be changed to trigger real model

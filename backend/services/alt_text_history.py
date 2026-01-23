@@ -1,11 +1,11 @@
-from databases.connect_supabase import get_supabase_client
+from databases.connect_supabase import get_supabase_admin_client
 
 
 class AltTextHistory:
 
     def __init__(self):
         self.max_entries = 10
-        self.supabase = get_supabase_client()
+        self.supabase = get_supabase_admin_client()
 
     def get_alt_text_history(self, session_id):
         results_history = (
