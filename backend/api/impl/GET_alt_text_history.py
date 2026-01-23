@@ -2,6 +2,7 @@ from django.http import HttpResponse, JsonResponse
 
 from controller.backend_controller import backend_controller
 
+
 # get alt text history api
 def get_history(request):
 
