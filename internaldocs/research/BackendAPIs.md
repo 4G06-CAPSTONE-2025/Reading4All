@@ -124,3 +124,8 @@
     - When a user edits alt-text, the Django API processes the PUT /api/alt-text/edit request
     - Upon successful validation, writes the updated alt-text to the appropriate table in Supabase. 
     - This layered architecture separates business logic from data storage, improving maintainability, security, and scalability of the Reading4All system.
+
+
+## Reason for research 
+- Minimal experience in backend systems and implementing APIs. 
+- Need to implement the PUT /api/alt-text/edit but want to learn more about backend first. 
