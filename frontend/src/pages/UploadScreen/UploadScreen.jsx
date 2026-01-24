@@ -9,6 +9,21 @@ export default function HomeScreen(){
     const [previewImg, setPreviewImg] = useState(null)
     const [error, setError] = useState(""); 
 
+    const [altText, setAltText] = useState("")
+
+    const mockAltText = `
+    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+    there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
+     the Semantics, a large language ocean. A small river named Duden flows by their place
+      and supplies it with the necessary regelialia. It is a paradisematic country, in which 
+      roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no 
+      control about the blind texts it is an almost unorthographic life One day however a 
+      small line of blind text by the name of Lorem Ipsum decided to leave for the far World
+       of Grammar. The Big Oxmox advised her not to do so, because there were thousands
+    `
+
+    const hasAltText = altText && altText.trim().length > 0;
+
     const fileInputRef = useRef(null);
     
     const handleDragOver = (e) => {
@@ -32,9 +47,10 @@ export default function HomeScreen(){
         if (!validateFile(image_uploaded)) return;
 
 
-        setError("")
-        setSelectedFile(image_uploaded)
-        setPreviewImg(url)
+        setError("");
+        setSelectedFile(image_uploaded);
+        setPreviewImg(url);
+        resetAltTextGenProcess();
     };
 
     const handleFileSelect = (e) => {
@@ -45,14 +61,18 @@ export default function HomeScreen(){
         if (!validateFile(image_uploaded)) return;
 
         setError("");
-        setSelectedFile(image_uploaded)
-        setPreviewImg(url)
+        setSelectedFile(image_uploaded);
+        setPreviewImg(url);
+        resetAltTextGenProcess();
     };
 
     const handleRemoveImg = (e) => {
         setSelectedFile(null);
         setPreviewImg(null);
+        resetAltTextGenProcess();
     }
+        console.log("altText:", altText);
+        console.log("hasAltText:", hasAltText);
 
     const handleImageDropBox = (e) =>
     {
@@ -78,6 +98,10 @@ export default function HomeScreen(){
         }
         setError("");
         return true;
+    }
+
+    const resetAltTextGenProcess = () => {
+        setAltText("");
     }
 
 
@@ -155,15 +179,48 @@ export default function HomeScreen(){
                 </button>
                  </div>
                 <div className="file-name-gen-button">
+                {!hasAltText ? (
+                     <p className="file-name-text"
+                >
+                    {selectedFile.name}
+                    
+                </p> ): ""}
+               
 
-                <p className="file-name-text">{selectedFile.name}</p>
-
-                <button className="gen-alt-text-button">
+                {!hasAltText ? (
+                    <button className="gen-alt-text-button"
+                        onClick={() => setAltText(mockAltText)}
+                    >
                     Generate Alt Text
-                </button>
+                    </button>
+
+                ): ""}
+                
+                {hasAltText ? (
+
+                 <textarea
+                    className="computed-alt-text-box"
+                    onChange = {(e) => setAltText(e.target.value)}
+                    value={altText}
+                    rows={20}
+                    cols={70}
+                />
+                
+                    
+                ) : "" }
+               
+                
+                {hasAltText ? (
+                    <button 
+                    className="save-edits-button"
+                    hidden={!hasAltText}
+                    >
+                    Save Edits
+                    </button>
+                ) : "" }
 
                 </div>
-
+       
                 </div>
                     </div>
 
