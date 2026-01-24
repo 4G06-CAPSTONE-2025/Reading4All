@@ -1,4 +1,4 @@
-# BLIP Single-Image Inference (Backend)
+# BLIP Single-Image Inference
 
 
 ## Definitions (Repo Folders / Purpose)
@@ -29,7 +29,7 @@ This script runs a saved BLIP captioning model on **every image in a given folde
    - appends a line to the log: `<image_name>: <caption>`
 4. If any image fails, it logs `ERROR` plus a stack trace (and continues to the next image)
 
-All results are appended to: `ai/logger/log.txt`
+All results are appended to: `logger.txt`
 
 ---
 
@@ -40,9 +40,9 @@ To run BLIP inference on **one image at a time** and return a caption.
 Users must provide:
 
 ```python
-MODEL_DIR = "ai/models/TesterOneFrozen"
-LOGGER_PATH = "ai/logger"
-IMAGE_DIR = "ai/data/tester_1/val_data"
+MODEL_DIR = "PATH TO THE MODEL FOLDER"
+LOGGER_PATH = "PATH TO A FOLDER FOR LOGS"
+IMAGE_DIR = "IMAGE INPUT PATH"
 PROMPT = "Describe this physics diagram:"
 ```
 
