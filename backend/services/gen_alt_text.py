@@ -26,8 +26,10 @@ class GenAltText:
         image_b64 = base64.b64encode(image_bytes).decode("utf-8")
 
         # dont need to give time stamp it will by default use current time
-        supabase.table("history").insert(
-            {"session_id": session_id, "image": image_b64, "alt_text": alt_text, "edited_alt_text": "NULL"}
+        self.supabase.table("history").insert(
+            {"session_id": session_id, 
+             "image": image_b64, "alt_text": 
+             alt_text, "edited_alt_text": "NULL"}
         ).execute()
 
     # this function is for testing purposes to store images from database

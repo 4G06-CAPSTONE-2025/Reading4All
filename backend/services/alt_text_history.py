@@ -33,7 +33,7 @@ class AltTextHistory:
             # get most recent history entry for this session
             # edits only apply to latest entry (current generated alt text 
             response = (
-                supabase.table("history")
+                self.supabase.table("history")
                 .select("entry_id")
                 .eq("session_id", session_id)
                 .eq("entry_id", entry_id)
@@ -48,7 +48,7 @@ class AltTextHistory:
             entry_id = response.data[0]["entry_id"]
 
             # updates the edited_alt_text col
-            supabase.table("history").update(
+            self.supabase.table("history").update(
                 {"edited_alt_text": edited_alt_text}
             ).eq("entry_id", entry_id).execute()
 
