@@ -3,7 +3,6 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from controller.backend_controller import backend_controller
 
-
 @csrf_exempt
 def signup(request):
     if request.method != "POST":
