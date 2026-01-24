@@ -28,7 +28,7 @@ class AltTextHistory:
             history.append(entry)
         return history
 
-    def update_edited_alt_text(self, session_id, image, edited_alt_text):
+    def update_edited_alt_text(self, session_id, entry_id, edited_alt_text):
         try:
             # get most recent history entry for this session
             # edits only apply to latest entry (current generated alt text 
@@ -36,7 +36,7 @@ class AltTextHistory:
                 supabase.table("history")
                 .select("entry_id")
                 .eq("session_id", session_id)
-                .eq("image", image)
+                .eq("entry_id", entry_id)
                 .order("time_gen", desc=True)
                 .limit(1)
                 .execute()
