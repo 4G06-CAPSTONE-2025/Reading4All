@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from databases.connect_supabase import get_supabase_client
 
+
 @csrf_exempt
 def send_verification(request):
     if request.method != "POST":
@@ -16,16 +17,38 @@ def send_verification(request):
     email = (body.get("email") or "").strip().lower()
 
     if not email.endswith("@mcmaster.ca"):
-        return JsonResponse({"error": "Email must be a @mcmaster.ca address"}, status=400)
+        return JsonResponse(
+            {"error": "Email must be a @mcmaster.ca address"},
+            status=400
+        )
 
     supabase = get_supabase_client()
 
     try:
+        # 1️⃣ Check if user already exists
+        existing_user = supabase.auth.admin.get_user_by_email(email)
+
+        if existing_user and existing_user.user:
+            return JsonResponse(
+                {"error": "User already registered. Please log in."},
+                status=400
+            )
+
+        # 2️⃣ User does NOT exist → send OTP
         supabase.auth.sign_in_with_otp({
             "email": email,
-            "options": {"should_create_user": True}
+            "options": {
+                "should_create_user": True
+            }
         })
-        return JsonResponse({"ok": True, "message": "OTP code sent"}, status=200)
-    except Exception as e:
-        return JsonResponse({"error": str(e)}, status=400)
 
+        return JsonResponse(
+            {"ok": True, "message": "OTP code sent"},
+            status=200
+        )
+
+    except Exception:
+        return JsonResponse(
+            {"error": "Failed to send verification code"},
+            status=400
+        )

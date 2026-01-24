@@ -8,7 +8,6 @@ export default function SignUpScreen() {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
   const [confirmPw, setConfirmPw] = useState("");
-
   const [otp, setOtp] = useState("");
 
   const [isSending, setIsSending] = useState(false);
@@ -20,25 +19,72 @@ export default function SignUpScreen() {
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  const emailOk = useMemo(() => email.trim().toLowerCase().endsWith("@mcmaster.ca"), [email]);
+  const emailOk = useMemo(
+    () => email.trim().toLowerCase().endsWith("@mcmaster.ca"),
+    [email]
+  );
 
-  // ✅ MOCK: "Send verification code" (pretend we emailed OTP = 123456)
-  async function sendVerificationMock() {
-    await new Promise((r) => setTimeout(r, 500));
+  /* =========================
+     API CALLS
+  ========================= */
+
+  async function sendVerificationApi({ email, password }) {
+    const res = await fetch(
+      "https://reading4all-backend.onrender.com/api/send-verification/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ email, password }),
+      }
+    );
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      return {
+        ok: false,
+        error: data.error || "Failed to send verification code",
+      };
+    }
+
     return { ok: true };
   }
 
-  // ✅ MOCK: verify OTP
-  async function verifyOtpMock(code) {
-    await new Promise((r) => setTimeout(r, 400));
-    return { ok: code === "123456" };
-  }
+  async function verifyOtpApi({ email, token, password }) {
+    const res = await fetch(
+      "https://reading4all-backend.onrender.com/api/verify/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          email,
+          token,
+          password,
+        }),
+      }
+    );
 
-  // ✅ MOCK: signup
-  async function signUpMock() {
-    await new Promise((r) => setTimeout(r, 500));
+    const data = await res.json();
+
+    if (!res.ok) {
+      return {
+        ok: false,
+        error: data.error || "Verification failed",
+      };
+    }
+
     return { ok: true };
   }
+
+  /* =========================
+     HANDLERS
+  ========================= */
 
   const handleSendVerification = async () => {
     setErrorMsg("");
@@ -53,7 +99,7 @@ export default function SignUpScreen() {
       setErrorMsg("Please use your McMaster email (@mcmaster.ca).");
       return;
     }
-    if (!pw || pw.length < 6) {
+    if (!pw || pw.length < 8) {
       setErrorMsg("Password must be at least 6 characters.");
       return;
     }
@@ -64,13 +110,18 @@ export default function SignUpScreen() {
 
     setIsSending(true);
     try {
-      const res = await sendVerificationMock();
+      const res = await sendVerificationApi({
+        email: email.trim().toLowerCase(),
+        password: pw,
+      });
+
       if (!res.ok) {
-        setErrorMsg("Could not send verification code. Retry.");
+        setErrorMsg(res.error);
         return;
       }
+
       setVerificationSent(true);
-      setSuccessMsg("Verification code sent. (Mock OTP: 123456)");
+      setSuccessMsg("Verification code sent to your email.");
     } catch {
       setErrorMsg("Could not send verification code. Retry.");
     } finally {
@@ -88,24 +139,27 @@ export default function SignUpScreen() {
       return;
     }
 
+    if (!otp.trim()) {
+      setErrorMsg("Verification code is required.");
+      return;
+    }
+
     setIsSigningUp(true);
     try {
-      const verify = await verifyOtpMock(otp.trim());
+      const verify = await verifyOtpApi({
+        email: email.trim().toLowerCase(),
+        token: otp.trim(),
+        password: pw,
+      });
+
       if (!verify.ok) {
         setIsVerified(false);
-        setErrorMsg("Verification Code Incorrect! Retry");
+        setErrorMsg(verify.error);
         return;
       }
 
       setIsVerified(true);
-
-      const signup = await signUpMock();
-      if (!signup.ok) {
-        setErrorMsg("Sign up failed. Please retry.");
-        return;
-      }
-
-      setSuccessMsg("Verification Code Correct! Sign Up Successful");
+      setSuccessMsg("Verification successful! Account created.");
     } catch {
       setErrorMsg("Sign up failed. Please retry.");
     } finally {
@@ -114,6 +168,10 @@ export default function SignUpScreen() {
   };
 
   const signUpDisabled = !verificationSent || isSigningUp;
+
+  /* =========================
+     UI
+  ========================= */
 
   return (
     <div className="auth-page">
@@ -179,7 +237,6 @@ export default function SignUpScreen() {
             {isSigningUp ? "Signing up..." : "Sign Up"}
           </button>
 
-          {/* Success message + Login button (like your screenshot) */}
           {isVerified && successMsg && (
             <>
               <div className="signup-success">{successMsg}</div>
@@ -194,7 +251,6 @@ export default function SignUpScreen() {
           )}
         </form>
 
-        {/* Error bubble (only for error state like your failure screenshot) */}
         {errorMsg && (
           <div className="auth-error">
             <div className="error-icon">!</div>
