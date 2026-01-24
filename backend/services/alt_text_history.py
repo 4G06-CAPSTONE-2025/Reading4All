@@ -17,11 +17,13 @@ class AltTextHistory:
             .execute()
         )
 
-        history = {"imageBytes": [], "altText": []}
+        history = []
 
         for entry in results_history.data:
-            history["imageBytes"].append(entry["image"])
-            history["altText"].append(entry["alt_text"])
 
-        print(history["altText"])
+            entry = {
+                "image": entry["image"],
+                "altText": entry["alt_text"]
+                }
+            history.append(entry)
         return history

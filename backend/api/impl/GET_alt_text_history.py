@@ -15,7 +15,8 @@ def get_history(request):
 
     # calls backend_controller in order to reach service
     # session is hardcoded temporarily
-    if backend_controller.get_alt_text_history(session_id=2026):
-        return HttpResponse(status=200)
+    history = backend_controller.get_alt_text_history(session_id=2026)
+    if history:
+        return JsonResponse({"history": history}, status=200)
     response = JsonResponse({"error": "NO_HISTORY_FOUND"}, status=400)
     return response
