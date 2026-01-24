@@ -31,7 +31,7 @@ class AltTextHistory:
     def update_edited_alt_text(self, session_id, entry_id, edited_alt_text):
         try:
             # get most recent history entry for this session
-            # edits only apply to latest entry (current generated alt text 
+            # edits only apply to latest entry (current generated alt text
             response = (
                 self.supabase.table("history")
                 .select("entry_id")
@@ -54,6 +54,6 @@ class AltTextHistory:
 
             return True
 
-        except Exception as e:
+        except Exception as e: # pylint: disable=broad-exception-caught
             print("UPDATE EDITED ALT TEXT ERROR:", e)
             return False

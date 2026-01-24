@@ -1,13 +1,13 @@
 import json
 from services.alt_text_history import AltTextHistory
 
-# get history service to interact with Supabase history table 
+# get history service to interact with Supabase history table
 history = AltTextHistory()
 
 
 def edit_alt_text(request):
     try:
-        # parse request 
+        # parse request
         body = json.loads(request.body)
 
         entry_id = body.get("entry_id")
@@ -31,6 +31,7 @@ def edit_alt_text(request):
 
         return "Success"
 
-    except Exception as e:
+    except Exception as e: # pylint: disable=broad-exception-caught
+
         print("EDIT ALT TEXT CONTROLLER ERROR:", e)
         return "UNABLE_TO_SAVE"
