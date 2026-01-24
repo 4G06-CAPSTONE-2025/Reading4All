@@ -1,9 +1,11 @@
 from django.urls import path
 
-from ..impl.GET_alt_text_history import get_history
-from ..impl.POST_gen_alt_text import gen_alt_text_api
-from ..impl.POST_upload import csrf, validate_image_api
-from ..impl.POST_signup import signup
+from api.impl.GET_alt_text_history import get_history
+from api.impl.POST_gen_alt_text import gen_alt_text_api
+from api.impl.POST_upload import csrf, validate_image_api
+from api.impl.POST_signup import signup
+from api.impl.PUT_edit import edit_alt_text
+
 
 urlpatterns = [
     path("upload/", validate_image_api),
@@ -11,4 +13,5 @@ urlpatterns = [
     path("alt-text-history/", get_history),
     path("signup/", signup),
     path("cookie/", csrf),
+    path("edit-alt-text/", edit_alt_text)
 ]
