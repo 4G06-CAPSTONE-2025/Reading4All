@@ -23,7 +23,8 @@ class GenAltText:
 
     def session_entries_count(self, session_id):
 
-        # before adding new entires to the history table, must check if entries exceed max amt per session
+        # before adding new entires to the history table,
+        # must check if entries exceed max amt per session
 
         # returns the amount of entries for the inputted session id
         response = (
@@ -34,7 +35,7 @@ class GenAltText:
         )
 
         return response.count
-    
+
 
     def find_oldest_entry(self, session_id):
 
@@ -51,7 +52,7 @@ class GenAltText:
         if not response.data:
             return False
 
-        return response.data[0]["entry_id"]  
+        return response.data[0]["entry_id"]
 
 
     def remove_oldest_entry(self, oldest_entry_id):
@@ -61,14 +62,14 @@ class GenAltText:
             self.supabase.table("history")
             .delete()
             .eq("entry_id", oldest_entry_id)
-            .execute()  
+            .execute()
         )
-    
+
 
     def insert_history(self, image, alt_text, session_id):
 
         if self.session_entries_count(session_id) == self.max_entries:
-            
+
             oldest_entry_id = self.find_oldest_entry(session_id)
 
             if oldest_entry_id:
