@@ -29,8 +29,8 @@ def create_db():
 
     cursor.execute(
         "CREATE TABLE IF NOT EXISTS history"
-        " (entry_id INT AUTO_INCREMENT PRIMARY KEY, session_id INT NOT NULL, " \
-        "image LONGBLOB NOT NULL," \
+        " (entry_id INT AUTO_INCREMENT PRIMARY KEY, session_id INT NOT NULL, "
+        "image LONGBLOB NOT NULL,"
         " alt_text LONGTEXT NOT NULL)"
     )
     connection.commit()

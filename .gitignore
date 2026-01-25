@@ -279,3 +279,8 @@ TSWLatexianTemp*
 .DS_Store
 
 backend/.env
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
