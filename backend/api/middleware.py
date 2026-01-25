@@ -25,7 +25,8 @@ class SessionAuthMiddleware:
         if not token:
             return JsonResponse({"error": "Not authenticated"}, status=401)
 
-        s = UserSession.objects.filter(session_token=token, revoked_at__isnull=True).first()
+        s = UserSession.objects.filter(session_token=token,
+                                       revoked_at__isnull=True).first()
         if not s or timezone.now() >= s.expires_at:
             return JsonResponse({"error": "Session expired"}, status=401)
 
