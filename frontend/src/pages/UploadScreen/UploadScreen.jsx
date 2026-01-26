@@ -11,6 +11,8 @@ export default function HomeScreen(){
 
     const [altText, setAltText] = useState("")
 
+    const [copiedAltText, setCopiedAltText] = useState(false);
+
     const mockAltText = `
     Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
     there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
@@ -104,6 +106,17 @@ export default function HomeScreen(){
         setAltText("");
     }
 
+    const handleCopyAltText= async () => {
+        try {
+            await navigator.clipboard.writeText(altText);
+            setTimeout(() => {
+                setCopiedAltText(true);
+            }, 1500);
+        } 
+        catch (err) {
+            setError("Failed to copy to clipboard.");
+        }
+    };
 
     return (
     <div className="upload-page">
@@ -212,6 +225,7 @@ export default function HomeScreen(){
                     
                 ) : "" }
                
+               <div className= "save-changes-copy-alt-text-buttons">
                 
                 {hasAltText ? (
                     <button 
@@ -221,6 +235,16 @@ export default function HomeScreen(){
                     Save Edits
                     </button>
                 ) : "" }
+
+                {hasAltText ? (
+                    <button className="copy-individual-text-button-upload-pg"
+                        onClick={handleCopyAltText}
+                     >
+                    {copiedAltText? "✓ Copied" : "Copy Alt Text"}
+                    </button>
+                ): ""}
+                </div>
+
 
                 </div>
        

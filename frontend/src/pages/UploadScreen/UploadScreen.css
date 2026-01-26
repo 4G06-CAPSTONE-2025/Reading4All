@@ -287,6 +287,13 @@ gap: 32px;
   margin: 20px 20px;
   padding: 20px;
 }
+.save-changes-copy-alt-text-buttons{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  width:100%;
+  gap:15px;
+}
 
 .save-edits-button{
   font-size: 18px;
@@ -294,14 +301,26 @@ gap: 32px;
 
   background-color:#7A003C;
   color:white;
-  width: 250px;
+  width: 100%;
+  max-width: 300px;
   height:60px;
   
   border-radius: 8px;
   cursor: pointer;
   user-select: none;
+}
 
-  display:flex;
-  align-items: center;
-  justify-content: center;
+.copy-individual-text-button-upload-pg{
+  font-size: 18px;
+  font-weight : 510;
+
+  background-color:#7A003C;
+  color:white;
+  width: 100%;
+  max-width: 300px;
+  height:60px;
+  
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
 }
