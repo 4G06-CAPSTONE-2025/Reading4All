@@ -109,8 +109,9 @@ export default function HomeScreen(){
     const handleCopyAltText= async () => {
         try {
             await navigator.clipboard.writeText(altText);
+            setCopiedAltText(true);
             setTimeout(() => {
-                setCopiedAltText(true);
+                setCopiedAltText(false);
             }, 1500);
         } 
         catch (err) {
