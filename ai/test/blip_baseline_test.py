@@ -1,3 +1,43 @@
+"""
+BLIP Image Captioning Test Script for Latest Model Checkpoint
+
+This script performs image captioning inference on a set of test images using 
+the latest trained BLIP model checkpoint. It dynamically identifies the most 
+recent model folder and checkpoint, loads the BLIP processor and model, and 
+generates captions for all images in the specified inference directory. 
+The results are saved as a JSON file for further analysis.
+
+Workflow:
+1. Set up project paths for inference images, model checkpoints, and test outputs.
+2. Dynamically select the latest model folder and checkpoint.
+3. Load BLIP processor (can remain base) and the fine-tuned model checkpoint.
+4. Define a helper function `generate_caption` to produce a caption for a single image.
+5. Iterate through all supported image files (.png, .jpg, .jpeg):
+   - Generate captions using the BLIP model.
+   - Store captions in a dictionary keyed by image filename.
+6. Save all generated captions to a JSON file under a model-specific folder.
+
+Outputs:
+- JSON file containing captions for each image:
+  {
+      "image_filename1.png": "Generated caption text",
+      "image_filename2.jpg": "Generated caption text",
+      ...
+  }
+
+Dependencies:
+- torch
+- transformers
+- PIL (Pillow)
+- json
+- os
+
+Hardware:
+- Supports GPU acceleration with CUDA if available.
+
+Example usage:
+$ python blip_baseline_test.py
+"""
 import os
 import json
 import torch

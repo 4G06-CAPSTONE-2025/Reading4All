@@ -1,3 +1,42 @@
+"""
+BLIP Image Captioning Inference Script for SciCap Dataset
+
+This script generates captions for images in the SciCap inference dataset using a 
+fine-tuned BLIP model. It loads a pre-trained BLIP processor and a fine-tuned model 
+checkpoint, performs inference on all images in a specified directory, and saves 
+the resulting captions as a JSON file.
+
+Workflow:
+1. Set up project paths for inference images, model checkpoint, and output directory.
+2. Perform safety checks to ensure the model checkpoint exists and contains weights.
+3. Load BLIP processor and model to the specified device (GPU if available).
+4. Define a helper function `generate_caption` to produce captions for a single image.
+5. Iterate through all supported image files (.png, .jpg, .jpeg) in the inference directory:
+   - Generate a caption using the BLIP model.
+   - Store captions in a dictionary keyed by filename.
+6. Save all generated captions to a JSON file under a run-specific output folder.
+
+Outputs:
+- JSON file containing captions for each image:
+  {
+      "image_filename1.png": "Generated caption text",
+      "image_filename2.jpg": "Generated caption text",
+      ...
+  }
+
+Dependencies:
+- torch
+- transformers
+- PIL (Pillow)
+- json
+- os
+
+Hardware:
+- Supports GPU acceleration with CUDA if available.
+
+Example usage:
+$ python pubLayNet_on_SciCap_test.py
+"""
 import os
 import json
 import torch

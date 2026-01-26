@@ -1,4 +1,3 @@
-# test_pipeline_fixed.py
 """
 COMPLETE PIPELINE TESTING SCRIPT FOR READING4ALL - FIXED VERSION
 """

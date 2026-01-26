@@ -1,3 +1,27 @@
+"""
+Stage 2 Pix2Struct Single-Image Inference Script
+
+This script generates a structured semantic representation for a single AI2D diagram 
+using a pre-trained Stage 2 Pix2Struct model.
+
+Workflow:
+1. Set device to GPU if available, otherwise CPU.
+2. Load the Pix2Struct processor and model from a specified directory.
+3. Load a single image and convert it to RGB.
+4. Process the image using the Pix2Struct processor to get model inputs.
+5. Perform inference with the model using `generate()`.
+   - Uses `flattened_patches` if available, otherwise falls back to `pixel_values`.
+6. Decode the generated output to obtain the structured text.
+7. Print the structured representation for the image.
+
+Dependencies:
+- torch
+- transformers
+- PIL (Pillow)
+
+Example usage:
+$ python iter2_stage2_validation.py
+"""
 from transformers import Pix2StructProcessor, Pix2StructForConditionalGeneration
 from PIL import Image
 import torch

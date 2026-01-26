@@ -1,3 +1,82 @@
+'''
+============================================================
+Multi-Stage Pix2Struct + T5 Pipeline
+============================================================
+
+Description:
+------------
+This script implements a full end-to-end pipeline for training and 
+inference using a three-stage workflow:
+
+1. Stage 1: Pix2Struct visual model training and diagram description.
+2. Stage 2: Pix2Struct structured model training and component/relationship extraction.
+3. Stage 3: T5-based alt-text generation from structured data.
+
+The pipeline:
+- Executes training scripts for each stage sequentially.
+- Loads inference images from a specified folder.
+- Performs inference using the trained models for all stages.
+- Saves results in JSON files for each stage.
+
+Directory Structure:
+--------------------
+BASE_DIR           : Main project directory
+MODEL_DIR          : Saved models for all stages
+TRAIN_DIR          : Training scripts directory
+TEST_DIR           : Directory where inference results are saved
+DATA_DIR           : Dataset directory for structured alt-text
+INFERENCE_IMAGES_DIR: Folder containing images for inference
+
+Dependencies:
+-------------
+- Python >=3.8
+- PyTorch
+- Transformers
+- Datasets
+- Pillow (PIL)
+
+Key Components:
+---------------
+1. load_images_from_folder(folder)
+   - Loads all .png, .jpg, .jpeg images from a folder.
+   - Returns a list of tuples: (filename, PIL.Image object).
+
+2. Training Script Execution
+   - Sequentially runs:
+       stage1_pix2struct_visual.py
+       stage2_pix2struct_structured.py
+       stage3_alttext_t5.py
+   - Stops pipeline if any script fails.
+
+3. Stage 1 Inference
+   - Uses Pix2Struct visual model to describe diagram structure.
+   - Outputs JSON: stage1_outputs.json
+
+4. Stage 2 Inference
+   - Uses Pix2Struct structured model to extract components and relationships.
+   - Outputs JSON: stage2_outputs.json
+
+5. Stage 3 Inference
+   - Uses T5 model to generate alt-text from structured data.
+   - Loads structured data from structured_alttext.json.
+   - Outputs JSON: stage3_outputs.json
+
+Usage:
+------
+python run_all_stages.py
+
+Outputs:
+--------
+- stage1_outputs.json
+- stage2_outputs.json
+- stage3_outputs.json
+
+Notes:
+------
+- The script automatically detects GPU availability and uses it if available.
+- Models are saved in the respective stage directories.
+- Subprocesses inherit the project PYTHONPATH for proper module resolution.
+'''
 import os
 import copy
 import sys

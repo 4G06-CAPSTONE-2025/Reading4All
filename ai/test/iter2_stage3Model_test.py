@@ -1,3 +1,47 @@
+"""
+STEM Diagram Alt-Text Generation Pipeline using Stage 2 Pix2Struct and Majunga v3 (FLAN-T5)
+
+This script performs a two-stage inference pipeline to generate concise, 
+accessible alt-text for STEM diagrams. It combines a Pix2Struct model 
+(Stage 2) to extract structured representations of diagrams with a 
+Majunga v3 FLAN-T5 model (Stage 3) to generate natural language alt-text 
+from the structured output.
+
+Workflow:
+1. Set up project paths for models, unseen images, and output CSV.
+2. Initialize logger for progress and error reporting.
+3. Load images safely, resizing and padding as necessary.
+4. Load Stage 2 Pix2Struct model and processor for structured diagram extraction.
+5. Load Majunga v3 FLAN-T5 model and tokenizer for alt-text generation.
+6. For each image in the unseen directory:
+   - Generate structured representation using Stage 2 Pix2Struct.
+   - Build a prompt including the structured output.
+   - Generate alt-text using Majunga v3.
+   - Record processing time and results.
+7. Save results as a CSV file with columns:
+   ["image_path", "stage2_structured", "majunga_alt_text", "time_seconds"]
+
+Features:
+- Safe image loading with verification, resizing, and padding.
+- Two-stage pipeline for structured understanding → natural language alt-text.
+- Progress tracking and logging for monitoring.
+- GPU support if available.
+
+Dependencies:
+- torch
+- transformers
+- PIL (Pillow)
+- pandas
+- utils.logging_utils (custom)
+- utils.progress_utils (custom)
+
+Outputs:
+- CSV file containing alt-text generation results and timing metrics for each image.
+
+Example usage:
+$ python iter2_stage3Model_test.py
+"""
+
 import sys, os, torch, time
 from pathlib import Path
 from PIL import Image, ImageOps

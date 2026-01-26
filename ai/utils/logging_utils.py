@@ -1,3 +1,17 @@
+'''
+Description:
+Custom logging utility designed for NF's dedicated PC to monitor machine learning 
+training runs. This script provides:
+
+1. `setup_logger(name, out)`: Initializes a logger that writes both to a file 
+   ('training.log') and the console, with timestamps for easy tracking.
+2. `log_metrics(metrics, out)`: Appends training metrics (e.g., loss, accuracy) 
+   to a JSONL file ('metrics.jsonl') for structured storage and later analysis.
+
+The script ensures that all logs and metrics are consistently formatted, stored, 
+and easily accessible for monitoring and debugging training processes.
+'''
+
 import logging, os, json
 
 def setup_logger(name, out):

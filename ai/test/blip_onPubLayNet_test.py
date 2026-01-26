@@ -1,3 +1,46 @@
+"""
+BLIP Image Captioning Inference Script – Automatically Select Latest Checkpoint
+
+This script performs image captioning on a set of inference images using the 
+most recently modified checkpoint across all BLIP models in the project. It 
+dynamically identifies the latest checkpoint, loads the BLIP processor and model, 
+and generates captions for all images in the specified inference directory. 
+Results are saved as a JSON file in a model-specific folder under the test output directory.
+
+Workflow:
+1. Set up project paths for inference images, model directories, and test outputs.
+2. Determine the device to use (GPU if available, else CPU).
+3. Scan all model directories to identify the latest checkpoint by modification time.
+4. Load BLIP processor (can remain base) and the latest fine-tuned model checkpoint.
+5. Define a helper function `generate_caption` to generate a caption for a single image.
+6. Iterate over all supported image files (.png, .jpg, .jpeg):
+   - Generate captions using the BLIP model.
+   - Store results in a dictionary keyed by image filename.
+7. Save all generated captions to a JSON file under a folder named after the model.
+
+Outputs:
+- JSON file containing captions for each image:
+  {
+      "image1.png": "Generated caption text",
+      "image2.jpg": "Generated caption text",
+      ...
+  }
+
+Dependencies:
+- torch
+- transformers
+- PIL (Pillow)
+- json
+- os
+- time
+
+Hardware:
+- Supports GPU acceleration with CUDA if available.
+
+Example usage:
+$ python blip_onPubLayNet_test.py
+"""
+
 import os
 import time
 import json

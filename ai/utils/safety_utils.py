@@ -1,6 +1,31 @@
 """
-Safety and Monitoring Utilities for Training
-Memory monitoring, cooling, and system health checks
+Description:
+Comprehensive safety and monitoring utility for machine learning training on NF's dedicated PC. 
+Provides real-time insights into system health, memory usage, GPU status, and overall resource safety. 
+
+Key Features:
+1. System Health Logging:
+   - Logs RAM, CPU, and GPU usage along with temperatures using `psutil` and `GPUtil`.
+   - `log_health(logger)` provides a concise, timestamped status update.
+
+2. Memory and Safety Checks:
+   - `memory_is_safe()` evaluates RAM and GPU VRAM against configurable thresholds.
+   - `clear_memory_caches()` frees PyTorch GPU cache and triggers Python garbage collection.
+
+3. Detailed System Reports:
+   - `get_system_info()` returns a full snapshot of CPU, RAM, GPU, swap, and disk usage.
+   - `format_memory_report()` generates a human-readable, safety-aware memory report.
+
+4. GPU and CPU Utilities:
+   - Fetch detailed GPU memory and utilization info via PyTorch and GPUtil.
+   - Monitor CPU utilization, cores, threads, and frequency.
+
+5. Training-Friendly Utilities:
+   - `cooldown(sec)` allows brief pauses to prevent overheating during training loops.
+   - Backward-compatible `get_memory_usage_simple()` for legacy scripts.
+
+This script is intended for continuous monitoring during intensive ML training, helping 
+prevent out-of-memory errors, overheating, and other system-related interruptions.
 """
 
 import torch

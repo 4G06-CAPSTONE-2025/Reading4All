@@ -1,3 +1,85 @@
+"""
+============================================================
+SciCap BLIP Fine-Tuning Script (Final Version)
+============================================================
+
+Description:
+------------
+This script fine-tunes the Salesforce BLIP image captioning 
+model on the SciCap dataset. It uses on-the-fly dataset 
+loading and a custom Trainer to handle loss computation. 
+The script focuses on freezing the vision encoder while 
+training the captioning head for image caption generation.
+
+Main Features:
+--------------
+1. Loads SciCap train/validation splits from JSON captions 
+   and corresponding images.
+2. Verifies image integrity and skips corrupted files.
+3. Lazy dataset class `OnTheFlyDataset` that loads images 
+   only when needed.
+4. Custom Trainer `BlipTrainer` to safely compute loss.
+5. Freezes vision encoder parameters while fine-tuning 
+   the BLIP text decoder.
+6. Supports dynamic training configuration from JSON file.
+7. Automatically generates a timestamped output directory 
+   for saving fine-tuned models.
+8. Provides console feedback on loaded samples and corrupted 
+   images.
+
+File Paths:
+-----------
+- BASE: Root directory of SciCap dataset (extracted images & captions)
+- IMG_NO: Images without subfigures
+- IMG_YES: Images with subfigures (used only for train split)
+- CAP_ALL: Folder containing caption JSONs
+- SCRIPT_DIR: Current script directory
+- PROJECT_ROOT: Root of the project (two levels up)
+- MODEL_DIR: Folder to save trained models (dynamic timestamped)
+- TEST_IMAGES_DIR: Folder for test images (from JSON config)
+
+Key Classes & Functions:
+------------------------
+1. BlipTrainer(Trainer)
+   - Custom Hugging Face Trainer.
+   - Overrides `compute_loss` to handle additional input fields 
+     and return both loss and outputs if needed.
+
+2. load_split(split: str) -> list[dict]
+   - Loads a dataset split ('train' or 'val').
+   - Verifies images, skips corrupted files, and logs progress.
+   - Returns list of dictionaries with keys: "image_path" and "caption".
+
+3. OnTheFlyDataset(torch.utils.data.Dataset)
+   - Lazy dataset that loads images when accessed.
+   - Returns a dict with keys "image" and "caption".
+   - Substitutes corrupted images with blank placeholder images 
+     to maintain batch consistency.
+
+4. collate_fn(batch: list[dict]) -> dict
+   - Converts a batch of images and captions into tensors 
+     using `BlipProcessor`.
+   - Prepares `input_ids` and `labels` for training.
+
+Usage:
+------
+Run the script directly:
+
+    python iter1_blip_onPubLayNet.py
+
+Requirements:
+-------------
+- Python >= 3.8
+- torch, transformers, Pillow
+- SciCap dataset extracted to `BASE`
+- `paths_config.json` and `training_config.json` present in script directory
+
+Outputs:
+--------
+- Fine-tuned BLIP model saved in a dynamic, timestamped 
+  subfolder of `MODEL_DIR`.
+- Processed model ready for inference or further fine-tuning.
+"""
 import os
 import json
 import torch

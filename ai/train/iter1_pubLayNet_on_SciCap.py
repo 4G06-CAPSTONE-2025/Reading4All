@@ -1,3 +1,79 @@
+"""
+============================================================
+SciCap BLIP Fine-Tuning Script
+============================================================
+
+Description:
+------------
+This script fine-tunes the Salesforce BLIP image captioning 
+model on the SciCap dataset, focusing on cross-attention 
+layers of the text decoder. The pipeline includes:
+
+1. Loading SciCap image-caption data (train/val splits).
+2. Lazy on-the-fly dataset creation with image verification.
+3. Custom Trainer class (BlipTrainer) to handle loss 
+   computation and batch nuances.
+4. BLIP model loading and selective layer freezing/unfreezing:
+   - Freeze all parameters initially.
+   - Unfreeze cross-attention layers in the text decoder.
+   - Unfreeze the text decoder LM head for caption generation.
+5. Fine-tuning using Hugging Face Trainer and configurable 
+   training arguments.
+6. Saving the trained model and processor for downstream use.
+7. Testing on a small subset of validation images for qualitative 
+   evaluation.
+
+File Structure & Paths:
+----------------------
+- BASE: Root SciCap dataset folder (extracted images and captions)
+- IMG_NO: Images without subfigures
+- IMG_YES: Images with subfigures
+- CAP_ALL: Caption JSON files
+- MODEL_BASE_DIR: Directory where checkpoints and fine-tuned models are saved
+- CONFIG_PATH: JSON file specifying path configurations
+- training_config.json: JSON file containing TrainingArguments for Trainer
+
+Key Classes & Functions:
+------------------------
+1. BlipTrainer(Trainer):
+   - Custom Trainer overriding compute_loss to safely handle 
+     model inputs.
+   
+2. load_split(split: str) -> list:
+   - Loads a train/val split, validates images, and returns 
+     a list of records: {"image_path": str, "caption": str}.
+   - Skips corrupted images and logs progress every 1000 samples.
+
+3. OnTheFlyDataset(torch.utils.data.Dataset):
+   - Lazy dataset that loads images on-the-fly to save memory.
+   - __getitem__ returns a dictionary with keys "image" and "caption".
+
+4. collate_fn(batch: list) -> dict:
+   - Collates a batch of images and captions using BlipProcessor.
+   - Prepares input tensors and labels for training.
+
+Usage:
+------
+Run the script directly for training:
+
+    python iter1_pubLayNet_on_SciCap.py
+
+Requirements:
+-------------
+- Python >= 3.8
+- torch, transformers, safetensors, datasets, Pillow
+- SciCap dataset extracted to BASE folder
+- training_config.json present in the script directory
+
+Output:
+-------
+- Fine-tuned BLIP model saved in MODEL_BASE_DIR/<timestamp>
+- Processor saved alongside the model
+- Optional small-scale test outputs printed to console
+"""
+
+
+
 import os
 import json
 import torch

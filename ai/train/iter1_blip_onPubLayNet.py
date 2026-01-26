@@ -1,3 +1,84 @@
+"""
+============================================================
+PubLayNet BLIP Vision Pretraining Script
+============================================================
+
+Description:
+------------
+This script fine-tunes the Salesforce BLIP image captioning 
+model for vision-only classification on the PubLayNet dataset.
+It freezes the BLIP text decoder and focuses on training a 
+linear classification head on top of the vision encoder.
+
+Main Features:
+--------------
+1. Loads PubLayNet dataset from Hugging Face (HF) datasets.
+2. Maps multi-annotation PubLayNet items to a dominant label 
+   among ["text", "title", "list", "table", "figure"].
+3. Supports max_samples for quick debugging or smaller training.
+4. Custom Trainer `BlipTrainer` to compute cross-entropy loss 
+   for classification tasks.
+5. HeartbeatCallback prints periodic progress every 100 steps.
+6. Wraps HF dataset in `PubLayNetDataset` for PyTorch DataLoader.
+7. Collate function prepares batches for vision-only input.
+8. Logs trainable parameters before training.
+9. Automatically generates timestamped output directory for saving models.
+10. Fine-tunes BLIP vision encoder while freezing the text decoder.
+
+File Paths:
+-----------
+- MODEL_BASE_DIR: Folder to store trained vision models.
+- PROJECT_ROOT: Root of project (two levels up from script directory).
+
+Key Classes & Functions:
+------------------------
+1. BlipTrainer(Trainer)
+   - Overrides `compute_loss` to calculate cross-entropy loss 
+     for vision-only classification.
+
+2. HeartbeatCallback(TrainerCallback)
+   - Logs training step, epoch, and loss every 100 steps.
+
+3. load_publaynet_hf(split="train", max_samples=None) -> list[dict]
+   - Loads PubLayNet dataset and returns a list of records with:
+     {"index": int, "label": int}
+   - Skips samples without valid annotations.
+
+4. PubLayNetDataset(torch.utils.data.Dataset)
+   - Wraps HF dataset with preprocessed record indices.
+   - Returns a dictionary {"image": PIL.Image, "label": int}.
+
+5. collate_fn(batch: list[dict]) -> dict
+   - Converts batch of images and labels into tensors using 
+     BLIP processor.
+   - Returns {"pixel_values": ..., "labels": ...} for training.
+
+6. log_trainable_parameters(model)
+   - Prints all parameters that will be updated during training.
+
+Usage:
+------
+Run the script directly:
+
+    python iter1_blip_onPubLayNet.py
+
+Requirements:
+-------------
+- Python >= 3.8
+- torch, transformers, datasets, Pillow
+- HF PubLayNet dataset (downloaded automatically if missing)
+- GPU recommended for training
+
+Outputs:
+--------
+- Fine-tuned BLIP vision model saved in a timestamped subfolder 
+  of `MODEL_BASE_DIR`.
+- Processor saved for inference compatibility.
+
+Author:
+-------
+Nawaal Fatima
+"""
 import os
 import time
 import torch

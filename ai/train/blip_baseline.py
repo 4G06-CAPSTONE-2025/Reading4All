@@ -1,3 +1,54 @@
+'''
+Description:
+Fine-tuning pipeline for BLIP (Bootstrapped Language–Image Pretraining) on the
+SciCap dataset to learn high-quality scientific figure captioning.
+
+This script trains a BLIP image-captioning model using SciCap’s normalized
+captions and figure images, with support for both subfigure and non-subfigure
+figures. Images are loaded on-the-fly to reduce memory overhead and enable
+scalable training on large scientific datasets.
+
+Key Features:
+1. Supports SciCap images with and without subfigures:
+   - SciCap-No-Subfig-Img
+   - SciCap-Yes-Subfig-Img (train split only)
+2. Loads normalized captions from SciCap-Caption-All JSON files.
+3. Robust image loading with corruption detection and graceful fallback.
+4. On-the-fly PyTorch Dataset to avoid pre-serialization of image tensors.
+5. Uses HuggingFace BLIPProcessor for joint image–text preprocessing.
+6. Freezes the BLIP vision encoder to focus training on language generation.
+7. Custom Trainer override to safely handle batch metadata.
+8. Dynamically generates a timestamped output directory for each training run.
+9. Fully configurable via external JSON files:
+   - paths_config.json
+   - training_config.json
+
+Training Objective:
+Learn domain-specific caption generation for scientific figures, improving:
+- Caption fluency and structure
+- Alignment between visual content and scientific language
+- Robustness to diverse figure styles and layouts
+
+Intended Use:
+- Stage-1 scientific captioning pretraining
+- Initialization for downstream diagram understanding or alt-text generation
+- Foundation model adaptation prior to Pix2Struct or structured reasoning stages
+
+Outputs:
+- Fine-tuned BLIP model checkpoints saved to:
+  ai/model/scicap_blip_model_final_<timestamp>/
+
+Dependencies:
+- PyTorch
+- HuggingFace Transformers
+- PIL (Pillow)
+
+Hardware:
+- GPU strongly recommended
+- Vision encoder frozen for reduced compute and memory usage
+'''
+
+
 import os
 import json
 import torch

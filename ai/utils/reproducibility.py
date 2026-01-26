@@ -1,3 +1,19 @@
+'''
+Description:
+Utility functions for reproducibility and configuration management in machine learning workflows.
+
+Key Features:
+1. `set_seed(seed)`:
+   - Sets seeds for Python `random`, NumPy, and PyTorch (CPU and all available GPUs) to ensure deterministic behavior.
+   - Configures PyTorch's cuDNN backend for reproducible results (deterministic operations, disables benchmarking).
+
+2. `save_config(cfg, out)`:
+   - Saves a Python dictionary of configuration parameters to a JSON file (`config.json`) in the specified output directory.
+   - Creates the output directory if it does not exist.
+
+These utilities help maintain reproducibility across experiments and preserve experiment configurations for future reference.
+'''
+
 import random, json, os, numpy as np, torch
 
 def set_seed(seed):
