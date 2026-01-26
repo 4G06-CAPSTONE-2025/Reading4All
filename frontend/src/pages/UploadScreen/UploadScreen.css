@@ -270,3 +270,35 @@ gap:200px;
   color: black;   
   margin-bottom:10px; 
 }
+
+.computed-alt-text-box
+{
+  font-family: "Roboto";
+  font-size: 20px;
+  font-weight: 500;
+  line-height:1.5;
+  color:black ;
+  background-color: white;
+  border-radius:20px;
+  border:2.5px solid #7A003C;  
+  width:80%;
+  margin-bottom:20px;
+}
+
+.save-edits-button{
+  font-size: 18px;
+  font-weight : 510;
+
+  background-color:#7A003C;
+  color:white;
+  width: 250px;
+  height:60px;
+  
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
