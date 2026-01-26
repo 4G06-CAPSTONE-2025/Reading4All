@@ -120,9 +120,9 @@ export default function HomeScreen(){
         
         </div>
         
-        <div className="page-content">
+        <div className="upload-page-content">
         <div className="upload-section">
-        <div className={`upload-frame ${isDragging ? "upload-frame-dragging" : ""}`}
+        <div className={`upload-drag-file-box${isDragging ? "upload-frame-dragging" : ""}`}
         tabIndex={0}
         aria-label="Upload image. Press Enter or Space to browse, or drag and drop a JPEG, JPG, or PNG file here."
         onDragOver={handleDragOver}
@@ -205,7 +205,7 @@ export default function HomeScreen(){
                     className="computed-alt-text-box"
                     onChange = {(e) => setAltText(e.target.value)}
                     value={altText}
-                    rows={20}
+                    rows={16}
                     cols={70}
                 />
                 
