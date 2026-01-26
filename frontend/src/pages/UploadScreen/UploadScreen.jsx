@@ -121,7 +121,7 @@ export default function HomeScreen(){
         </div>
         
         <div className="page-content">
-
+        <div className="upload-section">
         <div className={`upload-frame ${isDragging ? "upload-frame-dragging" : ""}`}
         tabIndex={0}
         aria-label="Upload image. Press Enter or Space to browse, or drag and drop a JPEG, JPG, or PNG file here."
@@ -160,7 +160,7 @@ export default function HomeScreen(){
             </p>
             </div>
 
-           
+           </div>
             </div>
 
         </div>

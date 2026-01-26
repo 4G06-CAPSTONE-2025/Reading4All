@@ -1,6 +1,6 @@
 .page-content{
-  max-width: 1200px;    
-  margin: 0 auto;        
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 
@@ -16,8 +16,6 @@
 
 .title-section {
   text-align: left;
-  padding: 20px 64px;
-
 }
 
 .upload-page-title h1{
@@ -33,7 +31,6 @@ margin-bottom:10px;
   font-size: 22px;
   font-weight: 505;      
   color: black;   
-  margin-bottom:10px;
 }
 
 .upload-frame-title{
@@ -81,6 +78,14 @@ margin-bottom:10px;
   justify-content: center;
 }
 
+.upload-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display:block;
+  padding-left: 40%;
+}
+
 .upload-info-text{
 
   font-family: "Istok Web";
@@ -88,21 +93,17 @@ margin-bottom:10px;
   font-weight : 495;
   color: black;   
   margin-top:10px;
+  padding-inline: 100px;
 }
 
 .upload-frame{
   max-width: 1159px;
   height:415px;
-  margin: 4px auto 0 auto;
+  margin: 0 auto;
   display: flex;  
-  justify-content: center;
-  padding-top:20px;
-  padding-left:  100px;
-  padding-right: 100px;
-            
-
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;   
+  max-width:100%;
+  
   border: 2.3px solid #7A003C;
   background-color:rgba(122,0,60,0.15);
   border-radius:36px;
@@ -114,8 +115,6 @@ margin-bottom:10px;
   gap:10px;
   display:flex;
   flex-direction: column;
-  margin-top: -100px;
-  margin-bottom:-20px;
 
   display:flex;
   align-items: center;
