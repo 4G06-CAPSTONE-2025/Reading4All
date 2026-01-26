@@ -168,8 +168,11 @@ export default function HomeScreen(){
          { selectedFile && (
             <div className="upload-status-encloses">
                 <div className="upload-success-view">
-                <p className="success-title">                        
-                Successfully Uploaded Image!
+                <p className="success-title">     
+                    {
+                        hasAltText? "Successfully Generated Alt Text!" :
+                        "Successfully Uploaded Image!"
+                    }                   
                 </p>
                 <div className="image-del-sec">
                 <div className="upload-view-of-img">
