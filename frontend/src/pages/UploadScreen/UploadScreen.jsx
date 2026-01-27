@@ -9,6 +9,23 @@ export default function HomeScreen(){
     const [previewImg, setPreviewImg] = useState(null)
     const [error, setError] = useState(""); 
 
+    const [altText, setAltText] = useState("")
+
+    const [copiedAltText, setCopiedAltText] = useState(false);
+
+    const mockAltText = `
+    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+    there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
+     the Semantics, a large language ocean. A small river named Duden flows by their place
+      and supplies it with the necessary regelialia. It is a paradisematic country, in which 
+      roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no 
+      control about the blind texts it is an almost unorthographic life One day however a 
+      small line of blind text by the name of Lorem Ipsum decided to leave for the far World
+       of Grammar. The Big Oxmox advised her not to do so, because there were thousands
+    `
+
+    const hasAltText = altText && altText.trim().length > 0;
+
     const fileInputRef = useRef(null);
     
     const handleDragOver = (e) => {
@@ -32,9 +49,10 @@ export default function HomeScreen(){
         if (!validateFile(image_uploaded)) return;
 
 
-        setError("")
-        setSelectedFile(image_uploaded)
-        setPreviewImg(url)
+        setError("");
+        setSelectedFile(image_uploaded);
+        setPreviewImg(url);
+        resetAltTextGenProcess();
     };
 
     const handleFileSelect = (e) => {
@@ -45,14 +63,18 @@ export default function HomeScreen(){
         if (!validateFile(image_uploaded)) return;
 
         setError("");
-        setSelectedFile(image_uploaded)
-        setPreviewImg(url)
+        setSelectedFile(image_uploaded);
+        setPreviewImg(url);
+        resetAltTextGenProcess();
     };
 
     const handleRemoveImg = (e) => {
         setSelectedFile(null);
         setPreviewImg(null);
+        resetAltTextGenProcess();
     }
+        console.log("altText:", altText);
+        console.log("hasAltText:", hasAltText);
 
     const handleImageDropBox = (e) =>
     {
@@ -80,6 +102,22 @@ export default function HomeScreen(){
         return true;
     }
 
+    const resetAltTextGenProcess = () => {
+        setAltText("");
+    }
+
+    const handleCopyAltText= async () => {
+        try {
+            await navigator.clipboard.writeText(altText);
+            setCopiedAltText(true);
+            setTimeout(() => {
+                setCopiedAltText(false);
+            }, 1500);
+        } 
+        catch (err) {
+            setError("Failed to copy to clipboard.");
+        }
+    };
 
     return (
     <div className="upload-page">
@@ -96,9 +134,9 @@ export default function HomeScreen(){
         
         </div>
         
-        <div className="page-content">
-
-        <div className={`upload-frame ${isDragging ? "upload-frame-dragging" : ""}`}
+        <div className="upload-page-content">
+        <div className="upload-section">
+        <div className={`upload-drag-file-box${isDragging ? "upload-frame-dragging" : ""}`}
         tabIndex={0}
         aria-label="Upload image. Press Enter or Space to browse, or drag and drop a JPEG, JPG, or PNG file here."
         onDragOver={handleDragOver}
@@ -136,7 +174,7 @@ export default function HomeScreen(){
             </p>
             </div>
 
-           
+           </div>
             </div>
 
         </div>
@@ -144,8 +182,11 @@ export default function HomeScreen(){
          { selectedFile && (
             <div className="upload-status-encloses">
                 <div className="upload-success-view">
-                <p className="success-title">                        
-                Successfully Uploaded Image!
+                <p className="success-title">     
+                    {
+                        hasAltText? "Successfully Generated Alt Text!" :
+                        "Successfully Uploaded Image!"
+                    }                   
                 </p>
                 <div className="image-del-sec">
                 <div className="upload-view-of-img">
@@ -155,15 +196,59 @@ export default function HomeScreen(){
                 </button>
                  </div>
                 <div className="file-name-gen-button">
+                {!hasAltText ? (
+                     <p className="file-name-text"
+                >
+                    {selectedFile.name}
+                    
+                </p> ): ""}
+               
 
-                <p className="file-name-text">{selectedFile.name}</p>
-
-                <button className="gen-alt-text-button">
+                {!hasAltText ? (
+                    <button className="gen-alt-text-button"
+                        onClick={() => setAltText(mockAltText)}
+                    >
                     Generate Alt Text
-                </button>
+                    </button>
 
+                ): ""}
+                
+                {hasAltText ? (
+
+                 <textarea
+                    className="computed-alt-text-box"
+                    onChange = {(e) => setAltText(e.target.value)}
+                    value={altText}
+                    rows={16}
+                    cols={70}
+                />
+                
+                    
+                ) : "" }
+               
+               <div className= "save-changes-copy-alt-text-buttons">
+                
+                {hasAltText ? (
+                    <button 
+                    className="save-edits-button"
+                    hidden={!hasAltText}
+                    >
+                    Save Edits
+                    </button>
+                ) : "" }
+
+                {hasAltText ? (
+                    <button className="copy-individual-text-button-upload-pg"
+                        onClick={handleCopyAltText}
+                     >
+                    {copiedAltText? "✓ Copied" : "Copy Alt Text"}
+                    </button>
+                ): ""}
                 </div>
 
+
+                </div>
+       
                 </div>
                     </div>
 

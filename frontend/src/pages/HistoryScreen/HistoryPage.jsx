@@ -54,7 +54,7 @@ export default function HistoryPage(){
 
     return (
         <div className="history-page">
-            <div className="page-content"> 
+            <div className="history-page-content"> 
             <div className="back-button-header">
             <button
             className="back-button" 
