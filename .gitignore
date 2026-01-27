@@ -308,3 +308,9 @@ training_config.json
 
 # Ignore VSCode specific files
 .vscode/
+backend/.env
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

@@ -1,0 +1,12 @@
+asgiref==3.11.0
+Django==4.2.11
+sqlparse==0.5.5
+pylint==3.0.3
+pylint-django==2.5.5
+mysql-connector-python==9.1.0
+django-cors-headers==4.9.0
+Pillow==10.4.0
+supabase
+PyYAML==6.0.1
+pandas
+dotenv

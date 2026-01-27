@@ -37,6 +37,7 @@
   \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
   \midrule
   Oct 27, 2025 & 1.0 & Initial version of document.\\ 
+  Jan 11, 2025 & 1.1 & Peer Review \texttt{\#146,\#149} Applied \\
   \bottomrule
 \end{tabularx}
 \newpage
@@ -271,6 +272,11 @@ strategies used for SRS verification:
   specific requirements we have outlined and keep them in
   mind during future validation of our system. 
 \end{itemize}
+All feedback obtained throughout the team, peer and supervisor reviews will be documented through GitHub issues in the \textit{Reading4All} Repository. 
+The team member responsible for the requirement type being reviewed (can be found in Table ~\ref{tab:data-dictionary-reading4all}) will create the GitHub Issue. 
+Each issue title will identify the related document and the description will outline the identified problem. Furthermore, the issue will be labeled accordingly. 
+Issues will only be closed once the problem has been resolved and verified through review from another team member and will be linked to the pull request that implements the fix.  
+
 
 
 \subsection{Design Verification}
@@ -294,6 +300,9 @@ The design verification will be accomplished through the following:
     The formal review will also be conducted in Week 10 and Week 16
     following the due date for submission of these design documents.
 \end{itemize}
+The design verification process will follow the same approach as SRS Verification, with Github 
+Issues being used to track any issues identified during the formal and peer review. Furthermore, issues identified during peer reviews
+are made by the reviewing team, while issues found in the formal review will be made by a team member on the responsible sub-team (AI, Backend, Frontend).
 
 \subsection{Verification and Validation Plan Verification}
 
@@ -336,14 +345,18 @@ The following details the strategies used for verifying the implementation plan:
   Static analyzers will be used to automatically review any committed
   code for errors, and ensure the implementation meets the specified
   coding standard.
+
   Tools such as Flake8 and Coverage.py will be integrated into our
   development process. Flake8 will identify syntax and style issues,
   while Coverage.py can verify that any new code written has unit tests
   associated.
+
   Additionally, all unit tests will be executed automatically through
   GitHub Actions whenever new code is pushed or a pull request is
   opened. This will ensure that recent changes do not introduce any
-  errors into previously completed features.
+  errors into previously completed features. Any feature that causes previously passing unit tests to fail will not be merged into the \textit{Reading4All} Repository; 
+  this will ensure that the system remains stable and correct.
+
   Using these static analyzers and workflows will help us to
   continuously verify our implementation, ensuring it meets the design
   requirements, functional and non functional requirements.
@@ -358,7 +371,9 @@ The following details the strategies used for verifying the implementation plan:
   the implementation decisions. Additionally it also helps verify that
   the code fulfills the intended functionality.
 \end{itemize}
-
+All issues and errors identified through static analyzers and code inspections will be documented 
+using GitHub issues. The team member who identifies the issue will be responsible for creating the issue. Each issue will include a clear description of the problem and labelled accordingly. 
+Once a fix has been implemented, the GitHub Issue will be linked to the related PR and will only be closed after the fix has been verified through code review or manual testing. 
 
 \subsection{Automated Testing and Verification Tools}
 The programming language being used in the front-end will be Hypertext Markup Language (HTML) and 
@@ -454,9 +469,9 @@ the requirements.
     functionality active.\\
     {\bf Input:} Upload a set of test diagrams (diagram1.png, diagram2.jpeg).\\
     {\bf Output:} The system generates alternative text descriptions
-    for each uploaded image that meet pre-determined quality or
-    clarity criteria (e.g., contains key diagram elements, concise
-    description, no missing components).\\
+    for each uploaded image that meet the pre-defined evaluation metrics in Appendix ~\ref{appendix:evaluation-metrics}. 
+    This includes a sufficiency of description and length of appropriateness score of at least 3, and 
+    accessibility/usability and learning impact score of at least 2. \\
     {\bf  Case Derivation:} As specified by \textbf{FR 2} criterion,
     the system must correctly process JPEG and PNG files while
     rejecting all other formats. Therefore, the expected outcome is
@@ -465,7 +480,8 @@ the requirements.
     {\bf How test will be performed:} The test can be performed by
     uploading a test set of sample diagrams to the system and
     reviewing the generated alternative text. The generated text will
-    be compared against predetermined quality criteria or expected
+    be evaluated using the evaluation metrics and acceptable ranges defined in 
+    Appendix ~\ref{appendix:evaluation-metrics} or expected
     reference outputs to verify accuracy and completeness.\\
 
   \item{}
@@ -508,17 +524,17 @@ the requirements.
 
   \item{}
     {\bf Control:} Automatic\\
-    {\bf Initial State:} User logged in and has uploaded at least one
+    {\bf Initial State:} User is logged in and has uploaded at least one
     image with generated alt text.\\
-    {\bf Input:} Upload multiple images sequentially within the same
+    {\bf Input:} Upload more than \texttt{SESSION\_HISTORY\_MAX} images sequentially within the same
     session, then navigate through the session interface.\\
-    {\bf Output:} All previously uploaded images and their
+    {\bf Output:} The most recent \texttt{SESSION\_HISTORY\_MAX} uploaded images and their
     corresponding alt texts remain visible and accessible until the
-    user logs out or the session ends.\\
-    {\bf  Case Derivation:} According to \textbf{FR 5} criterion, all
-    uploaded images and their corresponding alternative texts should
-    remain visible within the same session. Therefore, the expected
-    outcome is that users can access and review all prior uploads
+    user logs out or the session ends. Older history records are not displayed. \\
+    {\bf  Case Derivation:} According to \textbf{FR 5} criterion, users must be 
+    able to view previously uploaded images and their corresponding alternative texts within the same session. To ensure a high system performance, 
+    only the \texttt{SESSION\_HISTORY\_MAX} most recent records are displayed. \\
+    Therefore, the expected outcome is that users can access and review only the \texttt{SESSION\_HISTORY\_MAX} prior uploads
     without reloading or re-uploading them during an active session.\\
     {\bf How test will be performed:} The test can be performed by
     uploading multiple images within the same session, then
@@ -548,7 +564,20 @@ the requirements.
     credentials and invalid credentials. The system’s behavior will
     be reviewed to confirm that only verified users gain access,
     while invalid attempts produce an appropriate error message.\\
+
+  \item{}
+    {\bf Control:} Automatic\\
+    {\bf Initial State:} User logged in and an active session is established.\\
+    {\bf Input:} User remains logged in for more than \texttt{SESSION\_TIMEOUT} without performing any actions.  \\
+    {\bf Output:} The session expires automatically and the user is prompted to login again before being able to access the \texttt{Reading4All} system again. 
+    {\bf  Case Derivation:} According to \textbf{FR 5} criterion, users must be 
+    able to view previously uploaded images and their corresponding alternative texts within the same session. 
+    To ensure the \texttt{Reading4All} system is as secure as possible, a user session must expire after the  \texttt{SESSION\_TIMEOUT} period of inactivity. This will help prevent unauthorized users from accessing the system. 
+    without reloading or re-uploading them during an active session.\\
+    {\bf How test will be performed:} The test can be performed logging into the system and not completing any actions for a duration exceeding the \texttt{SESSION\_TIMEOUT} and then attempting to access the system. This test will 
+    verify that a session is expiring as expected and users are prompted to login again. \\
 \end{enumerate}
+
 
 \subsection{Tests for Nonfunctional Requirements}
 
@@ -573,7 +602,9 @@ the requirements.
     accessibility thresholds; all images have alternative text. \\[2mm]
     \textbf{How test will be performed:} The tester will manually
     adjust zoom levels, use color contrast tools, and run screen
-    reader tests to confirm accessibility compliance.
+    reader tests to confirm accessibility compliance. If accessibility issues are identified 
+    such as low or insufficient contrast, the UI styling will be revised to meet WCAG 2.1 Level 
+    AA requirements and the test will be re-executed.
 
   \item \textbf{Interface Style and Branding Verification}. \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic. \\
@@ -586,7 +617,9 @@ the requirements.
     usability, and design elements comply with Norman’s principles. \\[2mm]
     \textbf{How test will be performed:} Tester will review the
     interface against the style guide, branding requirements, and
-    Norman’s design checklist to ensure compliance.
+    Norman’s design checklist to ensure compliance. If there are any inconsistencies or usability conflicts,
+    the interface design will be adjusted to ensure alignment with Norman’s design principles, and a thorough
+    human visual inspection will be done.
 
   \item \textbf{Usability Efficiency and Learnability}. \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic. \\
@@ -601,6 +634,10 @@ the requirements.
     \textbf{How test will be performed:} Conduct usability sessions
     with participants performing all major tasks while timing
     actions, recording feedback response, and monitoring error recovery.
+    If users take longer than expected or report difficulty completing tasks, 
+    feedback will be analyzed to identify usability issues, followed by interface 
+    adjustments. A follow-up usability evaluation will be conducted
+    to ensure that the issues are fixed.
 
   \item \textbf{Alt Text Storage and Personalization Options} \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic. \\
@@ -650,7 +687,9 @@ the requirements.
     technical details. \\ [2mm]
     \textbf{How test will be performed:} Tester simulates timeouts
     and verifies notifications, data cleanup, and absence of
-    technical information in messages.
+    technical information in messages. If the system fails to handle timeouts safely, 
+    error handling logic and mechanisms will be revised and the test will 
+    be repeated to confirm safe recovery.
 
   \item \textbf{Alt Text Accuracy and Usability Evaluation} \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic \\
@@ -686,7 +725,9 @@ the requirements.
     response times $\le$ CAPACITY\_RTIME; storage handles CAP\_STORAGE datasets. \\[2mm]
     \textbf{How test will be performed:} Load testing scripts
     simulate multiple concurrent requests and image uploads;
-    performance and storage usage monitored.
+    performance and storage usage monitored. If concurrency or storage limits are exceeded, 
+    resource management strategies will be adjusted, 
+    followed by re-execution of load testing to confirm compliance.
 
   \item \textbf{System Extensibility and Maintainability} \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic \\
@@ -1183,6 +1224,8 @@ in the \textit{Reading4All} system.
   SFWR\_RELEASES & previous 2 releases \\
   FEEDBACK\_TIME & 1 second \\
   CAPACITY\_RTIME & 10 seconds \\
+  SESSION\_TIMEOUT & 2 hours \\
+  SESSION\_HISTORY\_MAX & 10 images \\
 
 \bottomrule
 \end{longtable}
@@ -1361,8 +1404,16 @@ Assistive technology to enlarge screen content.
 \paragraph*{Screen Reader}
 Assistive technology that reads text aloud.
 
+\paragraph*{Session}
+A session in the \textit{Reading4All} is defined as the time interval beginning
+when a user successfully logs in and is authenticated and ending when the user explicitly logs out or the session expires due to inactivity or timeout. 
+Sessions have a maximum duration defined by \texttt{SESSION\_TIMEOUT}.
+Session data which includes the users uploaded images and any generated, as well as modified alt-text is stored in the system only for the duration of this session.
+
 \paragraph*{Session History}
-Record of user uploads and generated alt text during the current session.
+Record of user uploads and their associated alt text during the current session. The session history 
+will initially store up to \texttt{SESSION\_HISTORY\_MAX} images and their associated alt text. Once this limit is exceeded, older records will be discarded to ensure that 
+the \textit{Reading4All} does not experience any performance limitations. 
 
 \paragraph*{Stakeholder}
 Anyone affected by or influencing the system.
