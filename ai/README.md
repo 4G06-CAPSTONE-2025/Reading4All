@@ -9,8 +9,8 @@
 - **Model**  
   **OUTPUT only**. Storage location for saved model checkpoints / exported models.
 
-- **Test**  
-  Testing happens here (accuracy checks, evaluation scripts, metrics, etc.).
+- **Logger**  
+  Contains inference results
 
 - **Train**  
   Where we train **multiple versions** of our model to compare against inference baselines.
