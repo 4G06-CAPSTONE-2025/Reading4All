@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./UploadScreen.css";
 
@@ -12,6 +12,15 @@ export default function HomeScreen(){
     const [altText, setAltText] = useState("")
 
     const [copiedAltText, setCopiedAltText] = useState(false);
+
+
+    // for the screen reader to announce to user success alerts
+    const successMessageRef = useRef(null); 
+
+    // for the screen reader to announce to user error alerts
+    const errorMessageRef = useRef(null);
+
+
 
     const mockAltText = `
     Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
@@ -73,8 +82,7 @@ export default function HomeScreen(){
         setPreviewImg(null);
         resetAltTextGenProcess();
     }
-        console.log("altText:", altText);
-        console.log("hasAltText:", hasAltText);
+     
 
     const handleImageDropBox = (e) =>
     {
@@ -98,6 +106,7 @@ export default function HomeScreen(){
         setPreviewImg(null);
         return false;
         }
+
         setError("");
         return true;
     }
@@ -119,6 +128,17 @@ export default function HomeScreen(){
         }
     };
 
+     useEffect(() => {
+        if (error && errorMessageRef.current) {
+            errorMessageRef.current.focus();
+            return
+        }
+        if ((selectedFile || hasAltText) && successMessageRef.current) {
+            successMessageRef.current.focus();
+        }
+    }, [error, selectedFile, hasAltText]);
+
+
     return (
     <div className="upload-page">
 
@@ -136,7 +156,7 @@ export default function HomeScreen(){
         
         <div className="upload-page-content">
         <div className="upload-section">
-        <div className={`upload-drag-file-box${isDragging ? "upload-frame-dragging" : ""}`}
+        <div className={`upload-drag-file-box ${isDragging ? "upload-frame-dragging" : ""}`}
         tabIndex={0}
         aria-label="Upload image. Press Enter or Space to browse, or drag and drop a JPEG, JPG, or PNG file here."
         onDragOver={handleDragOver}
@@ -160,6 +180,7 @@ export default function HomeScreen(){
 				accept="image/png, image/jpeg, image/jpg"
 				onChange={handleFileSelect}
                 className="hiding-classic-button"
+                aria-label="Upload image for alt text generation"
 			/>
 
             <button
@@ -182,16 +203,25 @@ export default function HomeScreen(){
          { selectedFile && (
             <div className="upload-status-encloses">
                 <div className="upload-success-view">
-                <p className="success-title">     
+                <p className="success-title"
+                ref={successMessageRef}
+                tabIndex="-1"
+                >
                     {
                         hasAltText? "Successfully Generated Alt Text!" :
                         "Successfully Uploaded Image!"
                     }                   
                 </p>
+
+
                 <div className="image-del-sec">
                 <div className="upload-view-of-img">
                 <img src={previewImg} alt="Uploaded preview" className="img-preview"/>
-                 <button className="delete-button" onClick={handleRemoveImg}>
+                 <button 
+                    className="delete-button" 
+                    onClick={handleRemoveImg}
+                    aria-label="Remove uploaded image"
+                >
                     Remove
                 </button>
                  </div>
@@ -221,6 +251,7 @@ export default function HomeScreen(){
                     value={altText}
                     rows={16}
                     cols={70}
+                    aria-label="Generated alt text for the uploaded image that can be edited"
                 />
                 
                     
@@ -231,7 +262,6 @@ export default function HomeScreen(){
                 {hasAltText ? (
                     <button 
                     className="save-edits-button"
-                    hidden={!hasAltText}
                     >
                     Save Edits
                     </button>
@@ -260,8 +290,8 @@ export default function HomeScreen(){
     { error && !selectedFile && (
             <div className="upload-status-encloses">
                 <div className="upload-error-view"
-                role="alert"
-                aria-live="assertive"
+                    role="alert"
+                    aria-live="assertive"
                 >
                 <div className="error-content">
                     <div className="error-logo"> 
@@ -271,7 +301,10 @@ export default function HomeScreen(){
                     <p className="error-title">
                         Upload Failed
                     </p>
-                    <p className="error-message">
+                    <p className="error-message"
+                        ref={errorMessageRef}
+                        tabIndex="-1"
+                    >
                        File size exceeds 10 Megabytes. Please Try again!   
                     </p>
 
