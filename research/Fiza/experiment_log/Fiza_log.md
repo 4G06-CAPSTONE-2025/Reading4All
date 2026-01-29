@@ -53,11 +53,10 @@
 **Run:**  
 - condition_A: dataset_size≈50 images  
 - condition_B: dataset_size≈100 images  
-- (other args held constant as much as possible to isolate dataset size effect)
 
 **Outcome:**  
 - **50-image condition produced worse results** (more errors / more generic captions)  
-- **100-image condition was noticeably better**, but still limited and not “production-level”  
+- **100-image condition was noticeably better**, but still limited.  
 - Trend indicates performance is strongly dataset-size dependent
 
 **Decision:**  
