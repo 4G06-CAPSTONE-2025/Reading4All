@@ -41,3 +41,26 @@
 - Keep dataset-cleaning step as **required preprocessing** before any future training  
 - Continue training only on cleaned annotations moving forward
 
+### [2026-01-24 2:00PM] <Dataset size sensitivity: 50 vs 100 images>
+
+**Hypothesis:**  
+- Smaller datasets (ex: 50 images) will cause weaker generalization and more generic/incorrect captions. Increasing to 100 images should improve stability, but overall performance will still be limited by dataset scale.
+
+**Test:**  
+- Trained/evaluated with **~50 images** vs **~100 images** (same general setup)  
+- Compared caption quality across a small fixed set of validation examples (qualitative comparison)
+
+**Run:**  
+- condition_A: dataset_size≈50 images  
+- condition_B: dataset_size≈100 images  
+- (other args held constant as much as possible to isolate dataset size effect)
+
+**Outcome:**  
+- **50-image condition produced worse results** (more errors / more generic captions)  
+- **100-image condition was noticeably better**, but still limited and not “production-level”  
+- Trend indicates performance is strongly dataset-size dependent
+
+**Decision:**  
+- Treat 100 images as **only a sanity-check baseline**, not a final dataset  
+- Prioritize scaling labels rather than over-tuning hyperparameters at this stage
+
