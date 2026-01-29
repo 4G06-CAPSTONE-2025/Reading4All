@@ -145,7 +145,23 @@ Must run `GET /api/alt-text-history/`
         -   The body outputted will have the images in base64 (can be converted as need) and their associated alt-text. 
 
 
-
+### Get Session Info
+Must run `GET /api/session/`
+-   In Postman:
+    -   set the API Method to `PUT`
+    -   set the URL to `http://127.0.0.1:8000/api/session/`
+     -   set the body type to `raw`
+            -   Input this JSON: 
+            ```py
+            {
+            "email": "<mcmaster_email_goes_here>",
+            "password": "<password_goes_here>"
+            }
+    - In the headers section, add these values: 
+        -   key: `X-CSRFToken`, value: <was_obtained_from_login_api>
+    -   Send request
+        -  If request is successful you will get a status 200!
+        - The body outputted will have whether the user is authenticated, user_id and when their session expires.
  
 
 
