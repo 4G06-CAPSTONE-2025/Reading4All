@@ -49,10 +49,20 @@ export default function HistoryPage(){
                 credentials: "include"
             }
         )
-        .then(response => response.json())
-        .then(data => 
-            {setHistory(data.history); })
-        .catch(() => setError("Failed to get alt text history."));
+        .then(response => {
+            if (response.ok)
+            {
+                return response.json()
+            }
+            throw new Error("Unable to get alt text history") 
+        })
+        .then(data => {
+            setHistory(data.history);
+            setError("");
+        })
+        .catch(() =>{
+            setError("Failed to get alt text history.");
+        });
         }, []);
         
 
@@ -92,8 +102,8 @@ export default function HistoryPage(){
 
 
             <div className="history-list">
-                {history.length === 0 ? (
-                    <p>No history available.</p>
+                {(history.length === 0 && !error) ? (
+                    <p>No alternative text has been generated yet!</p>
                 ) : (
                     history.map((item, index) => (
                         <div key={index} className="history-item">
