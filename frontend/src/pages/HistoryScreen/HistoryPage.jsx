@@ -44,7 +44,11 @@ export default function HistoryPage(){
     };
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/alt-text-history/")
+        fetch("http://127.0.0.1:8000/api/alt-text-history/",
+            {
+                credentials: "include"
+            }
+        )
         .then(response => response.json())
         .then(data => 
             {setHistory(data.history); })
