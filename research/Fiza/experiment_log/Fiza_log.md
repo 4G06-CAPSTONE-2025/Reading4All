@@ -18,3 +18,26 @@
 **Decision:**  
 - fix the annotated data to not have ??? as that disrupts model training
 
+### [2026-01-22 12:30AM] <Post-cleaning check: remove “???” from CSV>
+
+**Hypothesis:**  
+- Replacing/removing the `"???"` placeholder tokens in the annotated CSV will reduce noisy targets and improve caption quality because the model won’t learn to emit unknown-symbol garbage during generation.
+
+**Test:**  
+- Cleaned annotated CSV by converting to UTF-8   
+- Re-ran inference on the trained model using the same evaluation approach as before  
+- Compared generations *before vs after* cleaning for presence of `"???"` and “physics-ness” of language
+
+**Run:**  
+- dataset_size=100 images | eval_prompt="Describe this physics diagram:" | compared to prior run with `"???"`-contaminated CSV  
+- (training args same as previous unless otherwise noted)
+
+**Outcome:**  
+- Generations **no longer contained `"???"`** tokens  
+- Outputs were **more physics-style / diagram-relevant** (more consistent with expected domain language)  
+- This supported the idea that `"???"` in labels was actively harming learning
+
+**Decision:**  
+- Keep dataset-cleaning step as **required preprocessing** before any future training  
+- Continue training only on cleaned annotations moving forward
+
