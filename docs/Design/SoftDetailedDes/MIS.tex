@@ -2029,15 +2029,56 @@ graduate attribute of Problem Analysis and Design.
   
 
   \item \textbf{(After you have implemented another team's module,
-        which means this
-      isn't filled in until after the original deadline). What did you learn by
-      implementing another team's module? Were all the details you needed in the
+      which means this isn't filled in until after the original deadline). 
+      What did you learn by implementing another team's module? Were all the details you needed in the
       documentation, or did you need to make assumptions, or ask the other team
       questions?  If your team also had another team implement one of
-      your modules,
-      what was this experience like?  Are there things in your documentation you
+      your modules, what was this experience like?  Are there things in your documentation you
       could have changed to make the process go more smoothly for when an
-    ``outsider'' completes some of the implementation?}
+    ``outsider'' completes some of the implementation?} \\
+
+    Implementing another team’s logging module helped us interpret the effectiveness of our peer’s design documentation.
+    It also helped us reflect on our own design document to double check any areas of confusion. Overall, the Logger MIS 
+    by Team 17 was very well-structured and clearly written, and most of the required functionality was straightforward 
+    to implement directly from their specification. We didn’t ask the team questions directly as most of their MIS was 
+    mostly clear, however, we made a few assumptions. 
+
+    Some areas required assumptions or interpretation due to a few missing specification or confusion. One major assumption 
+    involved log rotation and archival behaviour. The MIS states that logs are “rotated” once they exceed a maximum size 
+    but it doesn’t define how to rotate these files when archiving. We assumed a rolling log shere older log files are shifted 
+    (e.g., file 1 → file 2 → file 3) within the same log directory. Additionally, although a \texttt{logDir} environment variable is 
+    referenced, its path and structure were not specified, so we assumed that all log files reside within a single configurable 
+    directory called “/log”. The representation of a \texttt{LogEntry} was another area of interpretation. While the MIS defines its 
+    fields abstractly, it does not specify how entries are stored. We assumed a dictionary-based representation serialized to 
+    JSON, which is shown in our implementation.
+
+    Some details required assumptions during implementation. For example, we assumed that the limit parameter in \texttt{getRecentLogs} 
+    is an integer that specifies how many log entries should be returned. To efficiently retrieve recent logs from large log files, 
+    we implemented a helper function (\texttt{\texttt{read\_last\_n\_lines}}) that reads the file in fixed-size chunks instead of loading the entire 
+    file into memory. Since the MIS did not specify how file reading should be handled, we assumed a reasonable chunk size 
+    and defined a constant \texttt{block\_size} = 4096 bytes as part of the implementation.
+
+    Multiple access to logging was also an assumption and a design consideration that we implemented for the team. We assumed that multiple 
+    API requests could call logging simultaneously, which explains our use of locking during archival operations to ensure 
+    thread safety. Additionally, the purpose of the \texttt{emitAlert} local function was a little unclear, as severe events already 
+    raise errors. Therefore, interpreted \texttt{emitAlert} as an optional feature for notifying external monitoring or alerting systems. 
+    However, its role was unclear since errors are already raised through exceptions. Finally, while the MIS is generally thorough, 
+    implementation could have been eased by including explicit data types directly in the exported access program table and by 
+    further clarifying helper function behavior such as \texttt{formatLogEntry}. 
+
+    We believe theres changes that could be made to the documentation to ensure outsiders can better implement the logger module, with more clarity
+    and confidence. Looking at both groups that implemented our modules, it is clear they determined the appropriate format and structure
+    of the logs. For example, both groups included a time stamp in their log entries even though this was not explicitly stated in our MIS. Therefore, in order 
+    to make the process go more smoothly for outsiders, we should update the documentation to explicitly define the log entry format and required fields. 
+    Furthermore, one external group implemented a \texttt{RotatingFileHandler} for log rotation. This highlights that our documentation could have better specified how
+    edge cases should be handled, such as the log file exceeding the maximum allowed size. 
+    Beyond this, we believe our documentation correctly specified the intended behavior and functionality of the Logging module.
+    This is evident in that both external teams were able to correctly implement the modules that could be used the 
+    \texttt{Reading4all} system without major assumptions made.
+    
+
+
+  
 \end{enumerate}
 
 

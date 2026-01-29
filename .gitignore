@@ -278,4 +278,39 @@ TSWLatexianTemp*
 # DS_Store file from Mac computers
 .DS_Store
 
+# Ignore model outputs
+/model/
+/ai/model/
+/model/scicap_blip_model_final/
+/**/scicap_blip_model_final/
+
+# Ignore checkpoints, temp training files
+**/checkpoint*/ 
+**/pytorch_model.bin
+**/optimizer.pt
+**/scheduler.pt
+
+# Ignore data caches and processed images (if any)
+**/__pycache__/
+**/*.pt
+**/*.cache
+**/*.pth
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+**/*.log
+
+# Ignore training configs(Don't store local-only)
+training_config.json
+
+# Ignore VSCode specific files
+.vscode/
 backend/.env
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
