@@ -61,7 +61,7 @@ export default function HistoryPage(){
             setError("");
         })
         .catch(() =>{
-            setError("Failed to get alt text history.");
+            setError("Failed to Load Alt text History. Please try again!");
         });
         }, []);
         
@@ -84,14 +84,16 @@ export default function HistoryPage(){
                 View and copy previously generated alternative text for your 10 most recent uploaded images, 
                 with the most recent shown first.
             </p>
+            { history.length> 0 && !error && (
             <button 
             className="copy-all-button"
             onClick={handleCopyAll}
            >
                 {copiedAllHistory ? "✓ Copied" : "Copy All Alt Texts"}
-            </button>            
+            </button>   
+            )}         
             </div>
-
+          
             {/* if unable to copy all text */}
             {
                 error && (
