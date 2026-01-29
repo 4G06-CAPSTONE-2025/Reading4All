@@ -44,7 +44,7 @@
 ### [2026-01-24 2:00PM] <Dataset size sensitivity: 50 vs 100 images>
 
 **Hypothesis:**  
-- Smaller datasets (ex: 50 images) will cause weaker generalization and more generic/incorrect captions. Increasing to 100 images should improve stability, but overall performance will still be limited by dataset scale.
+- Smaller datasets (ex: 50 images) causes weaker generalization and more generic/incorrect captions. Increasing to 100 images should improve stability, but overall performance will still be limited by dataset scale.
 
 **Test:**  
 - Trained/evaluated with **~50 images** vs **~100 images** (same general setup)  
@@ -64,3 +64,23 @@
 - Treat 100 images as **only a sanity-check baseline**, not a final dataset  
 - Prioritize scaling labels rather than over-tuning hyperparameters at this stage
 
+
+### [2026-01-25 3:00PM] <Scaling decision: dataset target and labeling recommendation>
+
+**Hypothesis:**  
+- To meaningfully improve captioning quality and generalization for physics diagrams, we likely need to increase labeled data.
+
+**Test:**  
+- Synthesized results from:  
+  - `"???"` cleaning improvement  
+  - 50 vs 100 image comparison
+
+**Run:**  
+- n/a (decision log / planning based on observed experiments)
+
+**Outcome:**  
+- Cleaning annotations fixed a major label-noise issue  
+- Increasing dataset size improved results, but **100 images is still too small**
+
+**Decision:**  
+- Team should label up to **~500-1000 images** (target scale)  
