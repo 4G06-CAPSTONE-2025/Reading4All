@@ -61,7 +61,7 @@ export default function HistoryPage(){
             setError("");
         })
         .catch(() =>{
-            setError("Failed to Load Alt text History. Please try again!");
+            setError("Failed to Load History. Please try again!");
         });
         }, []);
         
@@ -94,13 +94,21 @@ export default function HistoryPage(){
             )}         
             </div>
           
-            {/* if unable to copy all text */}
+            {/* if unable to copy all text or load history data */}
+            <div className="error-case-box">
             {
                 error && (
-                <p className="error-text">
-                {error}
-                </p>
+                    <>
+                    <p className="error-symbol">
+                           ⚠
+                    </p>
+
+                    <p className="error-text">
+                        {error}
+                     </p>
+                    </>
             )}
+            </div>
 
 
             <div className="history-list">
