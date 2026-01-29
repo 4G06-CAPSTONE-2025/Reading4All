@@ -2064,7 +2064,20 @@ graduate attribute of Problem Analysis and Design.
     raise errors. Therefore, interpreted \texttt{emitAlert} as an optional feature for notifying external monitoring or alerting systems. 
     However, its role was unclear since errors are already raised through exceptions. Finally, while the MIS is generally thorough, 
     implementation could have been eased by including explicit data types directly in the exported access program table and by 
-    further clarifying helper function behaviour such as \texttt{formatLogEntry}. 
+    further clarifying helper function behavior such as \texttt{formatLogEntry}. 
+
+    We believe theres changes that could be made to the documentation to ensure outsiders can better implement the logger module, with more clarity
+    and confidence. Looking at both groups that implemented our modules, it is clear they determined the appropriate format and structure
+    of the logs. For example, both groups included a time stamp in their log entries even though this was not explicitly stated in our MIS. Therefore, in order 
+    to make the process go more smoothly for outsiders, we should update the documentation to explicitly define the log entry format and required fields. 
+    Furthermore, one external group implemented a \texttt{RotatingFileHandler} for log rotation. This highlights that our documentation could have better specified how
+    edge cases should be handled, such as the log file exceeding the maximum allowed size. 
+    Beyond this, we believe our documentation correctly specified the intended behavior and functionality of the Logging module.
+    This is evident in that both external teams were able to correctly implement the modules that could be used the 
+    \texttt{Reading4all} system without major assumptions made.
+    
+
+
   
 \end{enumerate}
 
