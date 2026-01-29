@@ -1,5 +1,3 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Header.css";
 import mac_logo from "./mcmaster-logo.png"
 
