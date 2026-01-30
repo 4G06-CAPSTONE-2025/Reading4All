@@ -44,11 +44,25 @@ export default function HistoryPage(){
     };
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/alt-text-history/")
-        .then(response => response.json())
-        .then(data => 
-            {setHistory(data.history); })
-        .catch(() => setError("Failed to get alt text history."));
+        fetch("http://127.0.0.1:8000/api/alt-text-history/",
+            {
+                credentials: "include"
+            }
+        )
+        .then(response => {
+            if (response.ok)
+            {
+                return response.json()
+            }
+            throw new Error("Unable to get alt text history") 
+        })
+        .then(data => {
+            setHistory(data.history);
+            setError("");
+        })
+        .catch(() =>{
+            setError("Failed to Load History. Please try again!");
+        });
         }, []);
         
 
@@ -70,26 +84,36 @@ export default function HistoryPage(){
                 View and copy previously generated alternative text for your 10 most recent uploaded images, 
                 with the most recent shown first.
             </p>
+            { history.length> 0 && !error && (
             <button 
             className="copy-all-button"
             onClick={handleCopyAll}
            >
                 {copiedAllHistory ? "✓ Copied" : "Copy All Alt Texts"}
-            </button>            
+            </button>   
+            )}         
             </div>
-
-            {/* if unable to copy all text */}
+          
+            {/* if unable to copy all text or load history data */}
+            <div className="error-case-box">
             {
                 error && (
-                <p className="error-text">
-                {error}
-                </p>
+                    <>
+                    <p className="error-symbol">
+                           ⚠
+                    </p>
+
+                    <p className="error-text">
+                        {error}
+                     </p>
+                    </>
             )}
+            </div>
 
 
             <div className="history-list">
-                {history.length === 0 ? (
-                    <p>No history available.</p>
+                {(history.length === 0 && !error) ? (
+                    <p>No alternative text has been generated yet!</p>
                 ) : (
                     history.map((item, index) => (
                         <div key={index} className="history-item">
