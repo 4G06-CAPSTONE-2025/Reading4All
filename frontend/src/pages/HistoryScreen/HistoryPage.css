@@ -82,10 +82,10 @@
 }
 
 .history-image{
-  width: 150px;
-  height:170px;
-  object-fit: contain;
-  border-radius: 20px;
+    width: 150px;
+    height:170px;
+    object-fit: contain;
+    border-radius: 20px;
 }
 
 .alt-text{
@@ -130,8 +130,35 @@
 }
 
 .alt-text-label{
-display: flex;
-flex-direction: column;
-align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.error-case-box{
+    max-width: 1200px;
+    width: 100%;
+    padding: 18px 20px;
+    border: 2.3px solid #7A003C;
+    border-radius:36px;
+    background-color:white;
+
+    display: flex;
+    align-items: center;
+}
+
+.error-text{
+    font-family: "Roboto";
+    font-size: 22px;
+    font-weight : 505;
+    color: black;
+    margin: 0;
+    text-align: left;
+}
+
+.error-symbol{
+    font-size: 80px;
+    font-weight : 515;
+    margin: 0;
+    color: black;
+}
