@@ -9,8 +9,8 @@
 - **Model**  
   **OUTPUT only**. Storage location for saved model checkpoints / exported models.
 
-- **Test**  
-  Testing happens here (accuracy checks, evaluation scripts, metrics, etc.).
+- **Logger**  
+  Contains inference results
 
 - **Train**  
   Where we train **multiple versions** of our model to compare against inference baselines.
@@ -46,6 +46,17 @@ IMAGE_DIR = "IMAGE INPUT PATH"
 PROMPT = "Describe this physics diagram:"
 ```
 
+## Where to run the script (file location)
+
+The inference script is located at:
+
+`ai/inference/rev0/test.py`
+
+Run it either from the repo root:
+
+```bash
+python ai/inference/rev0/test.py
+```
 ## Requirements
 
 - Python 3.9+ recommended
