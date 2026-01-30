@@ -16,7 +16,11 @@ def get_history(request):
     # calls backend_controller in order to reach service
     # session is hardcoded temporarily
     history = backend_controller.get_alt_text_history(session_id=2026)
-    if history:
-        return JsonResponse({"history": history}, status=200)
-    response = JsonResponse({"error": "NO_HISTORY_FOUND"}, status=400)
+
+    # in the case where history is empty it wil still be returned as an empty list
+    # ensures history is never undefined in frontend.
+    response = JsonResponse(
+        {"history": history},
+        status=200
+    )
     return response
