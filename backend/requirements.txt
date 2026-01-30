@@ -10,3 +10,4 @@ supabase
 PyYAML==6.0.1
 pandas
 dotenv
+psycopg[binary]>=3.1
