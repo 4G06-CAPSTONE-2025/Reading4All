@@ -4,7 +4,7 @@ from pathlib import Path
 from sklearn.model_selection import train_test_split
 
 TESTER = 1
-CSV_PATH = "ai/annotations/annotated_physics_data(Sheet1).csv"
+CSV_PATH = "/ai/annotations/annotated_physics_data(Sheet1).csv"
 local_root = "/Users/fizasehar/Downloads/"
 IMAGE_ROOT = Path(local_root)
 
@@ -22,7 +22,16 @@ TRAIN_DIR.mkdir(parents=True, exist_ok=True)
 VAL_DIR.mkdir(parents=True, exist_ok=True)
 
 df = pd.read_csv(CSV_PATH)
+df.columns = df.columns.str.strip()
+
+df["Tester-ID"] = pd.to_numeric(df["Tester-ID"], errors="coerce")
 df = df[df["Tester-ID"] == TESTER].copy()
+
+if df.empty:
+    raise SystemExit(
+        f"ERROR: 0 rows after filtering Tester-ID == {TESTER}. "
+        f"Unique Tester-ID values: {df['Tester-ID'].dropna().unique()[:20]}"
+    )
 
 train_df, val_df = train_test_split(
     df,
