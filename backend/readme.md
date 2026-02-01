@@ -6,15 +6,27 @@ To run in terminal:
 
 ```bash
 export SUPABASE_URL=https://nrukxjmzrkjepsdpbmhd.supabase.co
+export SUPABASE_SERVICE_ANON_KEY=<your-service-anon-key>
 export SUPABASE_SERVICE_ROLE_KEY=<your-service-role-key>
+export DB_NAME=postgres
+export DB_USER=postgres
+export DB_PASSWORD=<db-password>
+export DB_HOST=db.<project-ref>.supabase.co
+export DB_PORT=5432
 ```
 
 To use a `.env` file
 - Create a .`env` file in the `backend/` directory 
 - Follow this format: 
 ```bash
-SUPABASE_URL = https://nrukxjmzrkjepsdpbmhd.supabase.co
-SUPABASE_SERVICE_ANON_KEY = <your-service-role-key>
+SUPABASE_URL=https://nrukxjmzrkjepsdpbmhd.supabase.co
+SUPABASE_SERVICE_ANON_KEY=<your-service-anon-key>
+SUPABASE_SERVICE_ROLE_KEY=<your-service-role-key>
+DB_NAME=postgres
+DB_USER=postgres
+DB_PASSWORD=<db-password>
+DB_HOST=db.<project-ref>.supabase.co
+DB_PORT=5432
 ```
 
 
@@ -95,7 +107,7 @@ Must run `POST /api/verify/`
     -   set the body type to `form-data`
         -  Add a key named `image` and ensure the type is file 
         -  Add the corresponding value to be the image that you want to upload. 
-    - In the headers section, add these values: 
+    - In the headers section or cookies, add these values: 
         -   key: `session_token`, value: <was_obtained_from_login_api>
         -   key: `X-CSRFToken`, value: <was_obtained_from_login_api>
     -   Send request
@@ -109,7 +121,9 @@ Must run `POST /api/generate-alt-text/`
     -   set the body type to `form-data`
         -  Add a key named `image` and ensure the type is file 
         -  Add the corresponding value to be the image that you want to generate alt text for. 
-    - In the headers section, add these values: 
+        -  Add a key named `session_id` and ensure the type is text
+        -  Add the corresponding value to be the session_id from the table `api_usersession`
+    - In the headers section or cookies, add these values: 
         -   key: `session_token`, value: <was_obtained_from_login_api>
         -   key: `X-CSRFToken`, value: <was_obtained_from_login_api>
     -   Send request
@@ -128,7 +142,7 @@ Must run `PUT /api/edit-alt-text/`
             "entry_id": "<entry_id_goes_here>",
             "edited_alt_text": "<edited_alt_text_goes_here>"
             }
-    - In the headers section, add these values: 
+    - In the headers section or cookies, add these values: 
         -   key: `X-CSRFToken`, value: <was_obtained_from_login_api>
     -   Send request
         -   If request is successful you will get a status 200!
@@ -137,8 +151,9 @@ Must run `PUT /api/edit-alt-text/`
 Must run `GET /api/alt-text-history/`
 -   In Postman:
     -   set the API Method to `GET`
-    -   set the URL to `http://127.0.0.1:8000/api/alt-text-history/`
-    - In the headers section, add these values: 
+    -   set the URL to `http://127.0.0.1:8000/api/alt-text-history/?session_id=<session_d>`
+    - In the headers section or cookies, add these values: 
+        -   key: `session_token`, value: <was_obtained_from_login_api>
         -   key: `X-CSRFToken`, value: <was_obtained_from_login_api>
     -   Send request
         -   If request is successful you will get a status 200!
@@ -157,7 +172,7 @@ Must run `GET /api/session/`
             "email": "<mcmaster_email_goes_here>",
             "password": "<password_goes_here>"
             }
-    - In the headers section, add these values: 
+    - In the headers section or cookies, add these values: 
         -   key: `X-CSRFToken`, value: <was_obtained_from_login_api>
     -   Send request
         -  If request is successful you will get a status 200!
