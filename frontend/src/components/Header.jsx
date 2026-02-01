@@ -12,17 +12,29 @@ export default function Header(){
     return (
        <header className="Reading4All-header">
 
-        <div classname="header-navigation">
-        { 
-            // only the upload pg should have a header to go to history pg
-            currLocation==="/upload" && (
+        <div className="header-navigation">
+        
+             {/* only the upload pg should have a header to go to history pg  */}
+            {
+                currLocation==="/upload" && (
                 <button
-                    className="history-page-navigation-button" 
+                    className="navigation-button" 
                     onClick={() => navigate("/session-history")}>
                         View History
                 </button>
-            )
-        }
+            )}
+
+
+            {
+                currLocation==="/session-history" && (
+                    <button
+                        className="navigation-button" 
+                        onClick={() => navigate(-1)}>
+                            ← Back
+                     </button>
+                )
+            }
+            
         </div>
 
         <div className="header-logo-side">

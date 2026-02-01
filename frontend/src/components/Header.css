@@ -21,7 +21,7 @@
    align-items: center;
 }
 
-.history-page-navigation-button{
+.navigation-button{
 
     font-size: 18px;
     font-weight : 500;
@@ -33,6 +33,6 @@
     cursor: pointer;
 }
 
-.history-page-navigation-button:hover{
+.navigation-button:hover{
     background-color:rgba(122,0,60,0.15);
 }
