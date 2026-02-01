@@ -1,13 +1,38 @@
 .Reading4All-header{
     width:100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding-top:10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 
 .mcmaster-logo{
     height: 80px;
-    margin-top:20px;
-    margin-right: 20px;
     width:auto;
+}
+
+
+.header-navigation{
+   display: flex;
+   align-items: center;
+}
+
+.history-page-navigation-button{
+
+    font-size: 18px;
+    font-weight : 500;
+
+    background:none;
+    border:none;
+
+    color:black;
+    cursor: pointer;
+}
+
+.history-page-navigation-button:hover{
+    background-color:rgba(122,0,60,0.15);
 }
