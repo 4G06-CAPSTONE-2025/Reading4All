@@ -17,7 +17,7 @@ export default function Login() {
     const fakePassword = "password";
 
     if (email === fakeEmail && password === fakePassword) {
-      navigate("/main");
+      navigate("/upload");
     } else {
       setError("Invalid email or password.");
     }

@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./HistoryPage.css";
 import { useEffect } from "react";
 
 export default function HistoryPage(){
-
-    const navigate = useNavigate();
 
     const [history, setHistory] = useState([]);
     const [copiedAllHistory, setCopiedAllHistory] = useState(false);
@@ -69,14 +66,6 @@ export default function HistoryPage(){
     return (
         <div className="history-page">
             <div className="history-page-content"> 
-            <div className="back-button-header">
-            <button
-            className="back-button" 
-            onClick={() => navigate(-1)}>
-                ← Back
-            </button>
-            </div>
-
 
             <div className="history-page-title">
                 <h1>Alt Text History</h1>
