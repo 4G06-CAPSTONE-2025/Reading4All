@@ -4,7 +4,6 @@ from api.models import UserSession
 
 PUBLIC_PATHS = {
     "/api/login/",
-    "/api/signup/",
     "/api/send-verification/",
     "/api/verify/",
     "/api/session/",
