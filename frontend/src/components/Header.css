@@ -36,3 +36,24 @@
 .navigation-button:hover{
     background-color:rgba(122,0,60,0.15);
 }
+
+.header-logo-side{
+    display: flex;
+    align-items: center;
+    gap:50px;
+}
+
+.sign-out-button{
+    font-family: "Istok Web";
+    font-size: 17px;
+    font-weight : 505;
+
+    background-color:#7A003C;
+    color:white;
+    padding: 5px 12px;
+    height: fit-content;
+
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+}

@@ -38,6 +38,17 @@ export default function Header(){
         </div>
 
         <div className="header-logo-side">
+
+            {
+                currLocation !=="/" && (
+                    <button
+                        className="sign-out-button" 
+                        onClick={() => navigate("/")}>
+                    Sign Out
+                    </button>
+                )
+            }
+
             <img
             className="mcmaster-logo"
             src={mac_logo}
