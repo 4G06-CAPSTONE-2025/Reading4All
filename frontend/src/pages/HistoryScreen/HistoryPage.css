@@ -4,31 +4,6 @@
     padding: 0 10px;
 }
 
-.back-button-header{
-    position: relative;
-    margin-bottom: 50px;
-    width: 100%;
-}
-
-.back-button{
-    position: absolute;
-    left: 0;
-    top: 0;
-
-    font-size: 18px;
-    font-weight : 500;
-
-    background:none;
-    border:none;
-
-    color:black;
-    cursor: pointer;
-}
-
-.back-button:hover{
-    background-color:rgba(122,0,60,0.15);
-}
-
 .history-page {
     min-height: 100vh;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
