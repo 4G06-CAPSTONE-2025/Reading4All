@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 
-from databases.connect_supabase import get_supabase_client
+from databases.connect_supabase import get_supabase_admin_client
 from api.models import UserSession
 
 
@@ -25,7 +25,7 @@ def login(request):
         return JsonResponse({"error": "Email and password are required"}, status=400)
 
     try:
-        supabase = get_supabase_client()
+        supabase = get_supabase_admin_client()
         resp = supabase.auth.sign_in_with_password({"email": email, "password": password})
 
         user = getattr(resp, "user", None) or (resp.get("user") if isinstance(resp, dict) else None)
