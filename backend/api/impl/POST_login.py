@@ -28,11 +28,17 @@ def login(request):
         supabase = get_supabase_admin_client()
         resp = supabase.auth.sign_in_with_password({"email": email, "password": password})
 
-        user = getattr(resp, "user", None) or (resp.get("user") if isinstance(resp, dict) else None)
-        if not user:
+        user = None
+
+        if hasattr(resp, "user") and resp.user:
+            user = resp.user
+        elif isinstance(resp, dict):
+            user = resp.get("user")
+
+        if not user or not getattr(user, "id", None):
             return JsonResponse({"error": "Invalid credentials"}, status=401)
 
-        user_id = getattr(user, "id", None)
+        user_id = user.id
 
         # Create YOUR app session token (2 hours)
         session_token = secrets.token_urlsafe(32)
