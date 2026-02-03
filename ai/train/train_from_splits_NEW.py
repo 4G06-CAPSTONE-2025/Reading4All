@@ -24,10 +24,10 @@ where the csv files have all the columns in the original annotated csv in ai/ann
 '''
 # TESTER=1
 MODEL_ID = "Salesforce/blip-image-captioning-base"
-BASE_DIR = "/Users/francinebulaclac/Desktop/capstone/ai/trainSplit"     # CHANGE THIS to your local path
+BASE_DIR = "/Users/francinebulaclac/Desktop/capstone/ai/trainSplit"     # CHANGE THIS to your local path where your split is 
 TRAIN_CSV = os.path.join(BASE_DIR, "train.csv")
 VAL_CSV = os.path.join(BASE_DIR, "val.csv")
-OUT_DIR = "/Users/francinebulaclac/Desktop/Reading4All/ai/train/models"     # CHANGE THIS to your local path
+OUT_DIR = "/Users/francinebulaclac/Desktop/Reading4All/ai/train/models"     # CHANGE THIS to your local path 
 
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 torch.backends.mps.enable_fallback = True

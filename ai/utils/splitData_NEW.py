@@ -5,13 +5,14 @@ from sklearn.model_selection import train_test_split
 
 # TESTER = 1
 CSV_PATH = "/Users/francinebulaclac/Desktop/Reading4All/ai/annotations/combinedData.csv"    # CHANGE THIS to your local path
-local_root = "/Users/francinebulaclac/Desktop/capstone/ai/data"      # CHANGE THIS to your local path
+local_root = "/Users/francinebulaclac/Desktop/capstone/ai/data"      # CHANGE THIS to your local path where your images are
 IMAGE_ROOT = Path(local_root)
 
 TRAIN_SPLIT = 0.8
 RANDOM_SEED = 42
 
-OUT_ROOT = Path("/Users/francinebulaclac/Desktop/capstone/ai/") / "trainSplit"   # CHANGE THIS to your local path
+OUT_ROOT = Path("/Users/francinebulaclac/Desktop/capstone/ai/") / "trainSplit"   # CHANGE THIS to your local path where you 
+                                                                                # want your split data to be 
 
 TRAIN_DIR = OUT_ROOT / "train_data"
 VAL_DIR = OUT_ROOT / "val_data"
@@ -59,9 +60,10 @@ def copyImages(split_df, target_dir):
 train_df = copyImages(train_df, TRAIN_DIR)
 val_df = copyImages(val_df, VAL_DIR)
 
-CSV_OUT_ROOT = Path("/Users/francinebulaclac/Desktop/Reading4All/ai/train/")    # CHANGE THIS to your local path
+CSV_OUT_ROOT = Path("/Users/francinebulaclac/Desktop/Reading4All/ai/train/")    # CHANGE THIS to your local path 
+                                                                                # where you want your local CSVs to be
 
-# copy to reading4all project
+# copy to reading4all project for quick reference 
 train_df.to_csv(CSV_OUT_ROOT / "train.csv", index=False)
 val_df.to_csv(CSV_OUT_ROOT / "val.csv", index=False)
 
