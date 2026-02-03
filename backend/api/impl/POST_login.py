@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 
-from databases.connect_supabase import get_supabase_admin_client
+from databases.connect_supabase import get_supabase_client
 from api.models import UserSession
 
 
@@ -25,26 +25,14 @@ def login(request):
         return JsonResponse({"error": "Email and password are required"}, status=400)
 
     try:
-        supabase = get_supabase_admin_client()
-        resp = supabase.auth.sign_in_with_password({
-            "email": email,
-            "password": password
-        })
+        supabase = get_supabase_client()
+        resp = supabase.auth.sign_in_with_password({"email": email, "password": password})
 
-        print("SUPABASE LOGIN RESPONSE TYPE:", type(resp))
-        print("SUPABASE LOGIN RESPONSE:", resp)
-
-        user = None
-
-        if hasattr(resp, "user") and resp.user:
-            user = resp.user
-        elif isinstance(resp, dict):
-            user = resp.get("user")
-
-        if not user or not getattr(user, "id", None):
+        user = getattr(resp, "user", None) or (resp.get("user") if isinstance(resp, dict) else None)
+        if not user:
             return JsonResponse({"error": "Invalid credentials"}, status=401)
 
-        user_id = user.id
+        user_id = getattr(user, "id", None)
 
         # Create YOUR app session token (2 hours)
         session_token = secrets.token_urlsafe(32)

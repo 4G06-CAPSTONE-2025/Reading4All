@@ -95,8 +95,6 @@ DATABASES = {
 
 }
 
-print("look here for database info")
-print(DATABASES["default"])
 
 
 # Password validation
