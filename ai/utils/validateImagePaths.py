@@ -12,6 +12,7 @@ CSV_PATH = "ai/annotations/combinedData.csv"
 # col name in CSV that contains image paths 
 IMAGE_COLUMN = "Image-Path"
 # path to the local folder containing images
+# ***change this path to the folder path of the images in ur local system** 
 IMAGE_FOLDER = "/Users/francinebulaclac/Desktop/capstone/ai/data"
 
 # allowed image extensions (adjust if needed)
