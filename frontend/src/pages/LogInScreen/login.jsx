@@ -1,69 +1,105 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "./login.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  // 🔹 MOCK LOGIN API
+  async function loginApiMock({ email, password }) {
+    await new Promise((r) => setTimeout(r, 500));
+
+    // Domain check
+    if (!email.endsWith("@mcmaster.ca")) {
+      return {
+        ok: false,
+        error: "Please use your McMaster email (@mcmaster.ca).",
+      };
+    }
+
+    // Hardcoded credentials (for now)
+    if (email === "student@mcmaster.ca" && password === "student") {
+      return { ok: true };
+    }
+
+    return {
+      ok: false,
+      error: "Invalid email or password. Retry.",
+    };
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setErrorMsg("");
 
-    const fakeEmail = "student@mcmaster.ca";
-    const fakePassword = "password";
+    if (!email.trim() || !password) {
+      setErrorMsg("Email and password are required.");
+      return;
+    }
 
-    if (email === fakeEmail && password === fakePassword) {
+    setIsLoading(true);
+    try {
+      const res = await loginApiMock({ email, password });
+
+      if (!res.ok) {
+        setErrorMsg(res.error);
+        return;
+      }
+
+      // ✅ Successful login
       navigate("/upload");
-    } else {
-      setError("Invalid email or password.");
+    } catch {
+      setErrorMsg("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="login-container" aria-label="Log in form">
-      <h2 className="login-title">Sign In</h2>
+    <div className="auth-page">
+      <div className="auth-heading">
+        <h1>Alternative Text Generation</h1>
+        <p>Generate clear, concise alternative text for STEM diagrams</p>
+      </div>
 
-      <form className="login-form" onSubmit={handleSubmit}>
-        <label htmlFor="email" className="login-label">
-          Email
-        </label>
-        <input
-          id="email"
-          type="email"
-          aria-label="Enter email address"
-          className="login-input"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+      <div className="auth-card">
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <label className="auth-label">Email</label>
+          <input
+            className="auth-input"
+            type="email"
+            placeholder="student@mcmaster.ca"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <label htmlFor="password" className="login-label">
-          Password
-        </label>
-        <input
-          id="password"
-          type="password"
-          aria-label="Enter password"
-          className="login-input"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+          <label className="auth-label">Password</label>
+          <input
+            className="auth-input"
+            type="password"
+            placeholder="••••••••"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        {error && <p className="login-error">{error}</p>}
+          <button className="auth-button" type="submit" disabled={isLoading}>
+            {isLoading ? "Logging in..." : "Login"}
+          </button>
+        </form>
 
-        <button
-          type="submit"
-          className="login-button"
-          aria-label="Button for logging in to a session"
-        >
-          Log In to Session
-        </button>
-      </form>
+        {errorMsg && (
+          <div className="auth-error">
+            <div className="error-icon">!</div>
+            <div className="error-text">{errorMsg}</div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
