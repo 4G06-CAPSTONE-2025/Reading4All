@@ -12,10 +12,18 @@ def get_history(request):
             {"error": "Only GET Methods allowed on this endpoint"}, status=405
         )
         return response
+    
+    session_id = request.GET.get("session_id") # should be passed in as query parameter.
+
+    if not session_id:
+        response = JsonResponse(
+            {"error": "session_id query parameter is needed"}, status=400
+        )
+        return response
 
     # calls backend_controller in order to reach service
     # session is hardcoded temporarily
-    history = backend_controller.get_alt_text_history(session_id=2026)
+    history = backend_controller.get_alt_text_history(session_id)
 
     # in the case where history is empty it wil still be returned as an empty list
     # ensures history is never undefined in frontend.
