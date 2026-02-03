@@ -26,7 +26,13 @@ def login(request):
 
     try:
         supabase = get_supabase_admin_client()
-        resp = supabase.auth.sign_in_with_password({"email": email, "password": password})
+        resp = supabase.auth.sign_in_with_password({
+            "email": email,
+            "password": password
+        })
+
+        print("SUPABASE LOGIN RESPONSE TYPE:", type(resp))
+        print("SUPABASE LOGIN RESPONSE:", resp)
 
         user = None
 
