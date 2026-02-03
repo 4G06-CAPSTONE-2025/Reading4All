@@ -234,7 +234,7 @@ Diagram-ID,Page-Number,Image-Index,Image-Path,Modified-Alt-Text
 420,645,0,ai/data/page0645_img000.png, "A circuit with two resistors: blue and red, in parallel."
 421,645,1,ai/data/page0645_img001.png, "A circuit with a resistor (R_equiv) of 8.6 ohms."
 422,646,0,ai/data/page0646_img000.png, "A circuit with two resistors: R_1(35 ohms) and R_2(55 ohms), in parallel."
-424,647,1,ai/data/page0647_img001.png, ""Simple circuit diagram with battery (12 v) and resistor (100 ohms), used to demonstrate electric power consumption and calculation using Power = Current times Voltage."
+424,647,1,ai/data/page0647_img001.png, "Simple circuit diagram with battery (12 v) and resistor (100 ohms), used to demonstrate electric power consumption and calculation using Power = Current times Voltage."
 425,648,0,ai/data/page0648_img000.png, "Circular formula wheel diagram divided into sections showing relationships between voltage, current, resistance, and power. Inner quarter circles contain variables that equal corresponding outer quarter circle equations, providing quick reference for Ohm's law and power calculations."
 426,649,0,ai/data/page0649_img000.png, "A complex circuit showing 6 resistors in parallel or series connections.""" 
 427,653,4,ai/data/page0653_img004.png, "Simple circuit with a switch and a resistor."
