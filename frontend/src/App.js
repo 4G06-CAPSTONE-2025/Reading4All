@@ -1,23 +1,30 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./pages/LogInScreen/login";
-import HomeScreen from "./pages/HomeScreen/homeScreen";
-import HistoryPage from "./pages/HistoryScreen/HistoryPage";
-import Header from "./components/Header";
 
+import Header from "./components/Header";
+import HomeScreen from "./pages/HomeScreen/homeScreen";
+import Login from "./pages/LogInScreen/login";
+import SignUpScreen from "./pages/SignUpScreen/SignUpScreen";
+import UploadScreen from "./pages/UploadScreen/UploadScreen";
+import HistoryPage from "./pages/HistoryScreen/HistoryPage";
 
 function App() {
   return (
-    <>
-    <Header />
     <Router>
+      <Header />
+
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/main" element={<HomeScreen />} />
+        {/* DEFAULT LANDING PAGE */}
+        <Route path="/" element={<HomeScreen />} />
+
+        {/* Auth */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUpScreen />} />
+
+        {/* App */}
+        <Route path="/upload" element={<UploadScreen />} />
         <Route path="/session-history" element={<HistoryPage />} />
       </Routes>
     </Router>
-    </>
-
   );
 }
 

@@ -1,13 +1,59 @@
 .Reading4All-header{
     width:100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding-top:10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 
 .mcmaster-logo{
     height: 80px;
-    margin-top:20px;
-    margin-right: 20px;
     width:auto;
+}
+
+
+.header-navigation{
+   display: flex;
+   align-items: center;
+}
+
+.navigation-button{
+
+    font-size: 18px;
+    font-weight : 500;
+
+    background:none;
+    border:none;
+
+    color:black;
+    cursor: pointer;
+}
+
+.navigation-button:hover{
+    background-color:rgba(122,0,60,0.15);
+}
+
+.header-logo-side{
+    display: flex;
+    align-items: center;
+    gap:50px;
+}
+
+.sign-out-button{
+    font-family: "Istok Web";
+    font-size: 17px;
+    font-weight : 505;
+
+    background-color:#7A003C;
+    color:white;
+    padding: 5px 12px;
+    height: fit-content;
+
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
 }

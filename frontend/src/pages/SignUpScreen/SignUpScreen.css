@@ -1,0 +1,131 @@
+/* Reuse the same global auth styles as Login (same page look) */
+.auth-page {
+    padding: 24px;
+  }
+  
+  .auth-heading h1 {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 700;
+  }
+  
+  .auth-heading p {
+    margin: 6px 0 18px 0;
+    color: #333;
+    font-size: 13px;
+  }
+  
+  .auth-card {
+    width: min(860px, 92vw);
+    margin: 0 auto;
+    background: #ead5dc;
+    border: 2px solid #7a003c;
+    border-radius: 18px;
+    padding: 26px 24px 70px;
+    position: relative;
+  }
+  
+  .auth-form {
+    width: min(340px, 90%);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  
+  .auth-label {
+    font-size: 13px;
+    margin-top: 6px;
+  }
+  
+  .auth-input {
+    height: 28px;
+    border: 1px solid #777;
+    border-radius: 2px;
+    padding: 2px 8px;
+    font-size: 12px;
+    outline: none;
+    background: #fff;
+  }
+  
+  .auth-input:focus {
+    border-color: #7a003c;
+    box-shadow: 0 0 0 2px rgba(122, 0, 60, 0.12);
+  }
+  
+  .auth-button {
+    margin-top: 10px;
+    height: 34px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #7a003c;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .auth-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .signup-title {
+    text-align: center;
+    margin: 6px 0 6px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  
+  .otp-block {
+    margin-top: 8px;
+    text-align: center;
+  }
+  
+  .otp-label {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  
+  .otp-input {
+    width: 120px;
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  
+  .signup-success {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: #1f1f1f;
+  }
+  
+  /* Error bubble like your figma failure screen */
+  .auth-error {
+    position: absolute;
+    left: 22px;
+    bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .error-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #1f1f1f;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+  }
+  
+  .error-text {
+    font-size: 13px;
+    color: #1f1f1f;
+  }
+  

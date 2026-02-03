@@ -15,7 +15,7 @@ export default function ShowHistory() {
         <div className="history-page">
             <button
                 className="back-button"
-                onClick={() => navigate("/main")}
+                onClick={() => navigate("/upload")}
                 aria-label="Return to the main screen to upload images"
             >
                 Back to Home

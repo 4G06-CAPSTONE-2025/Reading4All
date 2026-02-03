@@ -1,313 +1,41 @@
 .home-container {
-    display: flex;
-    min-height: 100vh;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      sans-serif;
-    background-color: #f3f4f8;
-    position: relative;
-  }
-  
-  /* Logout button - top right */
-  .logout-button {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    z-index: 20;
-    padding: 8px 14px;
-    font-size: 0.9rem;
-    border-radius: 999px;
-    border: 1px solid #fca5a5;
-    background-color: #ef4444;
-    color: #ffffff;
-    cursor: pointer;
-    font-weight: 600;
-  }
-  
-  .logout-button:hover {
-    background-color: #dc2626;
-  }
-  
-  .logout-button:focus-visible {
-    outline: 3px solid #000;
-    outline-offset: 3px;
-  }
-  
-  /* History toggle button (like ChatGPT's sidebar toggle) */
-  .history-toggle {
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    z-index: 20;
-    padding: 8px 14px;
-    font-size: 0.9rem;
-    border-radius: 999px;
-    border: 1px solid #d1d5db;
-    background-color: #ffffff;
-    cursor: pointer;
-  }
-  
-  .history-toggle:focus-visible {
-    outline: 3px solid #000;
-    outline-offset: 3px;
-  }
-  
-  /* Sidebar (Session History) */
-  .home-sidebar {
-    width: 260px;
-    padding: 20px;
-    background-color: #f4f5f7;
-    border-right: 1px solid #dcdfe3;
-    box-sizing: border-box;
-  }
-  
-  .sidebar-title {
-    margin: 0 0 12px;
-    font-size: 1.25rem;
-  }
-  
-  .sidebar-empty {
-    color: #555;
-    font-size: 0.95rem;
-  }
-  
-  .history-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 16px;
-  }
-  
-  .history-item {
-    padding: 8px 10px;
-    margin-bottom: 6px;
-    background-color: #ffffff;
-    border-radius: 6px;
-    border: 1px solid #e0e3e8;
-    font-size: 0.9rem;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .history-item-name {
-    font-weight: 500;
-  }
-  
-  .history-item-date {
-    font-size: 0.8rem;
-    color: #6b7280;
-  }
-  
-  /* Button to go to /session-history */
-  .history-full-button {
-    padding: 8px 12px;
-    width: 100%;
-    border-radius: 6px;
-    border: 1px solid #5b6df8;
-    background-color: #ffffff;
-    color: #1f2937;
-    font-size: 0.9rem;
-    cursor: pointer;
-  }
-  
-  .history-full-button:hover {
-    background-color: #eef2ff;
-  }
-  
-  .history-full-button:focus-visible {
-    outline: 3px solid #000;
-    outline-offset: 3px;
-  }
-  
-  /* Main centered content */
-  .home-main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 16px;
-    box-sizing: border-box;
-  }
-  
-  .home-main-inner {
-    max-width: 520px;
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 16px;
-    padding: 28px 28px 32px;
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.07);
-  }
-  
-  .home-title {
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 1.7rem;
-    text-align: center;
-  }
-  
-  /* Upload form */
-  .upload-form {
-    width: 100%;
-  }
-  
-  /* Drag & drop zone */
-  .upload-dropzone {
-    border-radius: 16px;
-    padding: 24px 18px;
-    background: linear-gradient(135deg, #eef2ff, #f5f3ff);
-    text-align: center;
-    margin-bottom: 12px;
-    cursor: pointer;
-    border: 1px solid #e5e7eb;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .upload-dropzone--dragging {
-    background: linear-gradient(135deg, #e0e7ff, #ede9fe);
-    border-color: #4f46e5;
-  }
-  
-  /* Focus outline for keyboard navigation */
-  .upload-dropzone:focus-visible {
-    outline: 3px solid #000;
-    outline-offset: 3px;
-  }
-  
-  .upload-dropzone-main-text {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
-  }
-  
-  .upload-dropzone-sub-text {
-    margin: 4px 0 12px;
-    font-size: 0.9rem;
-    color: #555;
-  }
-  
-  /* Sleek "Choose File" button inside dropzone */
-  .upload-choose-button {
-    padding: 8px 16px;
-    border-radius: 999px;
-    border: none;
-    background-color: #4f46e5;
-    color: #ffffff;
-    font-size: 0.95rem;
-    cursor: pointer;
-  }
-  
-  .upload-choose-button:hover {
-    background-color: #4338ca;
-  }
-  
-  .upload-choose-button:focus-visible {
-    outline: 3px solid #000;
-    outline-offset: 3px;
-  }
-  
-  /* File input (hidden for visual users; accessed via button) */
-  .upload-input {
-    margin-top: 10px;
-    margin-bottom: 6px;
-  }
-  
-  .upload-helper-text {
-    margin: 4px 0 10px;
-    font-size: 0.9rem;
-    color: #555;
-  }
-  
-  .upload-error {
-    margin: 4px 0 10px;
-    font-size: 0.9rem;
-    color: #b00020; /* high contrast red */
-  }
-  
-  .selected-file {
-    margin: 4px 0 16px;
-    font-size: 0.95rem;
-  }
-  
-  /* Submit button */
-  .upload-submit-button {
-    width: 100%;
-    padding: 10px 18px;
-    background-color: #5b6df8;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    cursor: pointer;
-  }
-  
-  .upload-submit-button:focus-visible {
-    outline: 3px solid #000;
-    outline-offset: 3px;
-  }
-  
-  .upload-submit-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  
-  /* Alt text section */
-  .alt-text-section {
-    margin-top: 28px;
-    padding-top: 18px;
-    border-top: 1px solid #e5e7eb;
-  }
-  
-  .alt-text-title {
-    margin: 0 0 8px;
-    font-size: 1.2rem;
-  }
-  
-  .alt-text-file-name {
-    margin: 0 0 12px;
-    font-size: 0.95rem;
-  }
-  
-  .alt-text-button {
-    width: 100%;
-    padding: 12px 20px;
-    background-color: #1b9c85;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin: 12px 0;
-  }
-  
-  .alt-text-button:hover {
-    background-color: #158a75;
-  }
-  
-  .alt-text-button:focus-visible {
-    outline: 3px solid #000;
-    outline-offset: 3px;
-  }
-  
-  .alt-text-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-  
-  .alt-text-output {
-    font-size: 0.95rem;
-    line-height: 1.4;
-  }
-  
-  /* Screen reader only utility (for dates etc.) */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
-  
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.home-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.home-subtitle {
+  font-size: 16px;
+  margin-bottom: 40px;
+  color: #444;
+}
+
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #7a003c;
+  color: white;
+}
+
+.secondary-btn {
+  background-color: #7a003c;
+}
