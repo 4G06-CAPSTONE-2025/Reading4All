@@ -13,10 +13,21 @@ def gen_alt_text_api(request):
         )
         return response
 
-    image = request.FILES["image"]
+    image = request.FILES.get("image")
+    session_id = request.POST.get("session_id") # should also be passed in as form-data
+    
+    if not image: 
+        response = JsonResponse(
+            {"error": "image is required"}, status=400
+        )
+        return response
 
-    # mocking getting a session_id from the table
-    session_id = 2026
+    if not session_id:
+        response = JsonResponse(
+            {"error": "session_id is required"}, status=400
+        )
+        return response
+
     alt_text = backend_controller.gen_alt_text(image, session_id)
 
     if alt_text:
