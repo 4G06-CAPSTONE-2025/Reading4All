@@ -5,16 +5,25 @@ import logging
 from transformers import AutoProcessor, BlipForConditionalGeneration
 import pandas as pd
 
+SPLIT = "val"  # change to "val" / "train" when needed - FOR MOONBEAM input data s
+
 MODEL_DIR = "ai/train/models"
 LOGGER_PATH = "ai/logger"
-IMAGE_DIR = "/Users/francinebulaclac/Desktop/capstone/ai/trainSplit/val_data2"  
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 LOG_FILE = Path(LOGGER_PATH) / "log_BLIP_3epochs2.txt"
 PROMPT = "Describe this physics diagram:"
+CSV_OUT_DIR = "/Users/francinebulaclac/Desktop/Reading4All/ai/train"
 
 # For getting draft captions - MOONBEAM
-VAL_CSV = "/Users/francinebulaclac/Desktop/capstone/ai/trainSplit/val.csv"
-CSV_OUT_DIR = "/Users/francinebulaclac/Desktop/Reading4All/ai/train"
+if SPLIT == "train":
+    IMAGE_DIR = "/Users/francinebulaclac/Desktop/capstone/ai/trainSplit/train_data2"
+    CSV_PATH = "/Users/francinebulaclac/Desktop/capstone/ai/trainSplit/train.csv"
+    OUT_NAME = "BLIP_draftCaptions_train.csv"
+else: # val 
+    IMAGE_DIR = "/Users/francinebulaclac/Desktop/capstone/ai/trainSplit/val_data2"
+    CSV_PATH = "/Users/francinebulaclac/Desktop/capstone/ai/trainSplit/val.csv"
+    OUT_NAME = "BLIP_draftCaptions_val.csv"
+
 
 def setup_logger(log_path: Path) -> logging.Logger:
     log_path.parent.mkdir(parents=True, exist_ok=True)
@@ -51,7 +60,7 @@ logger.info(f"Found {len(image_paths)} images in {IMAGE_DIR}")
 
 
 # Get modified alt text from val csv
-val_df = pd.read_csv(VAL_CSV)
+val_df = pd.read_csv(CSV_PATH)
 IMAGE_PATH_COL = "Image-Path"
 MOD_ALT_COL = "Modified-Alt-Text"
 
@@ -99,7 +108,7 @@ for p in image_paths:
 CSV_OUT_DIR = Path(CSV_OUT_DIR)
 CSV_OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-out_csv = CSV_OUT_DIR / "BLIP_draftCaptions.csv"
+out_csv = CSV_OUT_DIR / OUT_NAME
 out_df = pd.DataFrame(draftAltText)
 out_df.to_csv(out_csv, index=False, encoding="utf-8")
 
