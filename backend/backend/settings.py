@@ -73,6 +73,7 @@ CORS_ALLOW_HEADERS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
+    "https://reading4-all.vercel.app/",
 ]
 
 
