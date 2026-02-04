@@ -41,8 +41,9 @@ export default function HistoryPage(){
     };
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/alt-text-history/",
+        fetch("https://reading4all-backend.onrender.com/api/alt-text-history/?session_id=72281e69-4bed-4e0c-9ec5-fea1db9af802",
             {
+                method: "GET",
                 credentials: "include"
             }
         )
