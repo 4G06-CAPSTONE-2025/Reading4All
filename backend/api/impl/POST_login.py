@@ -52,8 +52,8 @@ def login(request):
             "session_token",
             session_token,
             httponly=True,
-            samesite="Lax",
-            secure=False,
+            samesite="None",
+            secure=True,
             max_age=2 * 60 * 60,
         )
         return resp_json
