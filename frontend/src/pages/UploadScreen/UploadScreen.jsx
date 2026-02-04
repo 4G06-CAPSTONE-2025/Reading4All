@@ -19,19 +19,6 @@ export default function HomeScreen(){
     // for the screen reader to announce to user error alerts
     const errorMessageRef = useRef(null);
 
-
-
-    const mockAltText = `
-    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-    there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
-     the Semantics, a large language ocean. A small river named Duden flows by their place
-      and supplies it with the necessary regelialia. It is a paradisematic country, in which 
-      roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no 
-      control about the blind texts it is an almost unorthographic life One day however a 
-      small line of blind text by the name of Lorem Ipsum decided to leave for the far World
-       of Grammar. The Big Oxmox advised her not to do so, because there were thousands
-    `
-
     const hasAltText = altText && altText.trim().length > 0;
 
     const fileInputRef = useRef(null);
@@ -125,6 +112,33 @@ export default function HomeScreen(){
         catch (err) {
             setError("Failed to copy to clipboard.");
         }
+    };
+
+    const handleGenerateAltText = () =>{
+        const formData = new FormData();
+        formData.append("image", selectedFile);
+
+        fetch("https://reading4all-backend.onrender.com/api/generate-alt-text/",
+            {
+                method: "POST",
+                body:formData,
+                credentials: "include"
+            }
+        )
+        .then(response => {
+            if (response.ok)
+            {
+                return response.json()
+            }
+            throw new Error("Unable to get alt text history") 
+        })
+        .then(data => {
+            setAltText(data.alt_text);
+            setError("");
+        })
+        .catch(() =>{
+            setError("Failed to Generate Alt Text. Please try again!");
+        });
     };
 
      useEffect(() => {
@@ -235,7 +249,7 @@ export default function HomeScreen(){
 
                 {!hasAltText ? (
                     <button className="gen-alt-text-button"
-                        onClick={() => setAltText(mockAltText)}
+                        onClick={handleGenerateAltText}
                     >
                     Generate Alt Text
                     </button>

@@ -31,4 +31,5 @@ class SessionAuthMiddleware:
 
         # Attach user_id for handlers to use
         request.user_id = s.user_id
+        request.session_id = str(s.id)
         return self.get_response(request)
