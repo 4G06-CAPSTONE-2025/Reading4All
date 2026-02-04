@@ -1,9 +1,11 @@
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from controller.backend_controller import backend_controller
 
 
 # generate alt text api
+@csrf_exempt
 def gen_alt_text_api(request):
 
     # API endpoint should only be used in post requests
