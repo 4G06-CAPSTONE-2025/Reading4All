@@ -4,11 +4,11 @@ from PIL import Image
 import logging
 from transformers import Pix2StructProcessor, Pix2StructForConditionalGeneration
 
-MODEL_DIR = "C:/Users/nawaa/OneDrive/Desktop/Reading4All/ai/model/iter3_pix2struct_3epochs" #custom for NF'c PC
+MODEL_DIR = "C:/Users/nawaa/OneDrive/Desktop/Reading4All/ai/model/iter3_pix2struct_5epochs" #custom for NF'c PC
 LOGGER_PATH = "logger"
 IMAGE_DIR = "C:/Users/nawaa/OneDrive/Desktop/capstoneAI/trainSplit/val_data"  #custom for NF'c PC
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-LOG_FILE = Path(LOGGER_PATH) / "log_3epochs.txt"
+LOG_FILE = Path(LOGGER_PATH) / "log_5epochs.txt"
 PROMPT = "Describe this physics diagram:"
 
 def setup_logger(log_path: Path) -> logging.Logger:
