@@ -1,5 +1,5 @@
 from django.http import HttpResponse, JsonResponse
-from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
 
 from controller.backend_controller import backend_controller
 
@@ -11,6 +11,7 @@ def csrf(request):
 
 
 # upload image api
+@csrf_exempt
 def validate_image_api(request):
 
     # API endpoint should only be used in post requests
