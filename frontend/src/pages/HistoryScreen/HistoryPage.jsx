@@ -41,7 +41,7 @@ export default function HistoryPage(){
     };
 
     useEffect(() => {
-        fetch("https://reading4all-backend.onrender.com/api/alt-text-history/?session_id=72281e69-4bed-4e0c-9ec5-fea1db9af802",
+        fetch("https://reading4all-backend.onrender.com/api/alt-text-history/",
             {
                 method: "GET",
                 credentials: "include"
@@ -85,10 +85,9 @@ export default function HistoryPage(){
             </div>
           
             {/* if unable to copy all text or load history data */}
+            {error && (
             <div className="error-case-box">
-            {
-                error && (
-                    <>
+
                     <p className="error-symbol">
                            ⚠
                     </p>
@@ -96,9 +95,8 @@ export default function HistoryPage(){
                     <p className="error-text">
                         {error}
                      </p>
-                    </>
-            )}
             </div>
+            )}
 
 
             <div className="history-list">
