@@ -32,31 +32,90 @@ export default function HomeScreen(){
         setIsDragging(false);
     };
 
-    const handleImageDrop = (e) =>{
+
+    const handleImageValidationBackend = async (image) => {
+        const formData = new FormData();
+        formData.append("image", image);
+
+        const response = await fetch("https://reading4all-backend.onrender.com/api/upload/",
+            {
+                method: "POST",
+                body:formData,
+                credentials: "include"
+            }
+        )
+        if (response.ok){
+            return true
+        }
+        const msg= await response.json();
+        throw new Error(msg.error);
+    }
+
+    const handleUploadError = (errorMssg) => {
+        if (errorMssg === "MISSING_IMAGE")
+        {
+            setError("No image was uploaded. Please select an image")
+        }
+        else if (errorMssg === "INVALID_FILE_TYPE")
+        {
+            setError("Invalid File Type. Please upload a PNG, JPEG or JPG image")
+        }
+        else if (errorMssg === "FILE_SIZE_INVALID")
+        {
+            setError("Image size exceeds 10 Megabytes.")
+        }
+        else if (errorMssg === "UNAUTHORIZED_ACCESS_OR_CORRUPTED")
+        {
+            setError("Image file is corrupted or cannot be opened")
+        }
+        else
+        {
+            setError("Image validation failed. Please try again")
+        }
+    }
+
+    const handleImageDrop = async (e) =>{
 
         e.preventDefault();
         setIsDragging(false)
 
         const image_uploaded = e.dataTransfer.files[0]
-        const url = URL.createObjectURL(image_uploaded)
 
         if (!image_uploaded) return;
-        if (!validateFile(image_uploaded)) return;
 
-
+        try 
+        {
+            await handleImageValidationBackend(image_uploaded)
+        }
+        catch (err)
+        {
+            handleUploadError(err.message)
+            return
+        }
+        
+        const url = URL.createObjectURL(image_uploaded)
         setError("");
         setSelectedFile(image_uploaded);
         setPreviewImg(url);
         resetAltTextGenProcess();
     };
 
-    const handleFileSelect = (e) => {
+    const handleFileSelect = async (e) => {
         const image_uploaded = e.target.files[0]
-        const url = URL.createObjectURL(image_uploaded)
         
         if (!image_uploaded) return;
-        if (!validateFile(image_uploaded)) return;
 
+        try
+        {
+            await handleImageValidationBackend(image_uploaded)
+        }
+        catch (err)
+        {
+            handleUploadError(err.message)
+            return
+        }
+
+        const url = URL.createObjectURL(image_uploaded)
         setError("");
         setSelectedFile(image_uploaded);
         setPreviewImg(url);
@@ -64,6 +123,7 @@ export default function HomeScreen(){
     };
 
     const handleRemoveImg = (e) => {
+        setError("")
         setSelectedFile(null);
         setPreviewImg(null);
         resetAltTextGenProcess();
@@ -79,23 +139,6 @@ export default function HomeScreen(){
             }
         }
     };
-
-    const MAX_FILE_SIZE = 10485760;
-
-    const validateFile = (file) => {
-        if(!file) return false
-
-        if(file.size>MAX_FILE_SIZE)
-        {
-        setError("File size exceeds 10 Megabytes");
-        setSelectedFile(null);
-        setPreviewImg(null);
-        return false;
-        }
-
-        setError("");
-        return true;
-    }
 
     const resetAltTextGenProcess = () => {
         setAltText("");
@@ -318,7 +361,7 @@ export default function HomeScreen(){
                         ref={errorMessageRef}
                         tabIndex="-1"
                     >
-                       File size exceeds 10 Megabytes. Please Try again!   
+                        {error}
                     </p>
 
                    </div>
