@@ -78,8 +78,16 @@ export default function HomeScreen(){
 
         e.preventDefault();
         setIsDragging(false)
+        let image_uploaded = null;
 
-        const image_uploaded = e.dataTransfer.files[0]
+        if (e.dataTransfer.files && e.dataTransfer.files.length >0)
+        {
+            image_uploaded =  e.dataTransfer.files[0]
+        }
+        else
+        {
+            return
+        }
 
         if (!image_uploaded) return;
 
@@ -92,16 +100,35 @@ export default function HomeScreen(){
             handleUploadError(err.message)
             return
         }
+
+        if (previewImg)
+        {
+            URL.revokeObjectURL(previewImg);
+        }
         
         const url = URL.createObjectURL(image_uploaded)
         setError("");
         setSelectedFile(image_uploaded);
         setPreviewImg(url);
         resetAltTextGenProcess();
+        if (fileInputRef.current)
+        {
+            fileInputRef.current.value = "";
+        }
     };
 
     const handleFileSelect = async (e) => {
-        const image_uploaded = e.target.files[0]
+       
+        let image_uploaded = null;
+
+        if (e.target.files && e.target.files.length >0)
+        {
+            image_uploaded =  e.target.files[0]
+        }
+        else
+        {
+            return
+        }
         
         if (!image_uploaded) return;
 
@@ -115,14 +142,27 @@ export default function HomeScreen(){
             return
         }
 
+        if (previewImg)
+        {
+            URL.revokeObjectURL(previewImg);
+        }
+        
         const url = URL.createObjectURL(image_uploaded)
         setError("");
         setSelectedFile(image_uploaded);
         setPreviewImg(url);
         resetAltTextGenProcess();
+        if (fileInputRef.current)
+        {
+            fileInputRef.current.value = "";
+        }
     };
 
     const handleRemoveImg = (e) => {
+        if (previewImg)
+        {
+            URL.revokeObjectURL(previewImg)
+        }
         setError("")
         setSelectedFile(null);
         setPreviewImg(null);
