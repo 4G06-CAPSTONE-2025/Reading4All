@@ -40,8 +40,13 @@ Then you should see files updated on Hugging Face.
 
 ---
 
-### Endpoints on Git 
+### Endpoints on hugging face 
 
 - Endpoints are stored on *Inference Endpoints*
 - Pause when its not in use 
 - ```Endpoint URL``` is what we use to access inference. 
+
+### Tokens on hugging face
+- We have a read token for inference
+- We have a write token for pushing 
+- Do **NOT** push any tokens on github: it wont let you and cause issues
