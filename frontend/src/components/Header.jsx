@@ -26,7 +26,7 @@ export default function Header(){
 
 
             {
-                currLocation==="/session-history" && (
+                (currLocation==="/session-history" || currLocation==="/signup") && (
                     <button
                         className="navigation-button" 
                         onClick={() => navigate(-1)}>
