@@ -7,6 +7,7 @@ PUBLIC_PATHS = {
     "/api/send-verification/",
     "/api/verify/",
     "/api/session/",
+    "/api/logout/",
 }
 
 class SessionAuthMiddleware:
@@ -14,6 +15,10 @@ class SessionAuthMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
+        # 🔑 ALWAYS allow preflight requests
+        if request.method == "OPTIONS":
+            return self.get_response(request)
+
         path = request.path
 
         # Allow public endpoints + non-API paths
@@ -24,12 +29,14 @@ class SessionAuthMiddleware:
         if not token:
             return JsonResponse({"error": "Not authenticated"}, status=401)
 
-        s = UserSession.objects.filter(session_token=token,
-                                       revoked_at__isnull=True).first()
+        s = UserSession.objects.filter(
+            session_token=token,
+            revoked_at__isnull=True
+        ).first()
+
         if not s or timezone.now() >= s.expires_at:
             return JsonResponse({"error": "Session expired"}, status=401)
 
-        # Attach user_id for handlers to use
         request.user_id = s.user_id
         request.session_id = str(s.id)
         return self.get_response(request)

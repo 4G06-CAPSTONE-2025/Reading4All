@@ -1,6 +1,7 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
+import RequireAuth from "./pages/RequireAuth";
 import HomeScreen from "./pages/HomeScreen/homeScreen";
 import Login from "./pages/LogInScreen/login";
 import SignUpScreen from "./pages/SignUpScreen/SignUpScreen";
@@ -13,16 +14,28 @@ function App() {
       <Header />
 
       <Routes>
-        {/* DEFAULT LANDING PAGE */}
         <Route path="/" element={<HomeScreen />} />
 
-        {/* Auth */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUpScreen />} />
 
-        {/* App */}
-        <Route path="/upload" element={<UploadScreen />} />
-        <Route path="/session-history" element={<HistoryPage />} />
+        <Route
+          path="/upload"
+          element={
+            <RequireAuth>
+              <UploadScreen />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="/session-history"
+          element={
+            <RequireAuth>
+              <HistoryPage />
+            </RequireAuth>
+          }
+        />
       </Routes>
     </Router>
   );
