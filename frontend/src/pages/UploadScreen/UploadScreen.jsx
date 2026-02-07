@@ -11,6 +11,7 @@ export default function HomeScreen(){
     const [altText, setAltText] = useState("")
 
     const [copiedAltText, setCopiedAltText] = useState(false);
+    const [entryId, setEntryID] = useState(null)
 
 
     // for the screen reader to announce to user success alerts
@@ -72,6 +73,30 @@ export default function HomeScreen(){
         {
             setError("Image validation failed. Please try again")
         }
+    }
+
+    async function handleEditGeneratedAltText({entry_id, edited_alt_text }) {
+        const editTextResults = await fetch(
+        "https://reading4all-backend.onrender.com/api/edit-alt-text/",
+        {
+            method: "PUT",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                entry_id,
+                edited_alt_text
+            }),
+        }
+    );
+
+    if(!editTextResults.ok)
+    {
+        return false;
+    }
+
+    return true;
     }
 
     const handleImageDrop = async (e) =>{
@@ -182,6 +207,7 @@ export default function HomeScreen(){
 
     const resetAltTextGenProcess = () => {
         setAltText("");
+        setEntryID(null);
     }
 
     const handleCopyAltText= async () => {
@@ -217,6 +243,7 @@ export default function HomeScreen(){
         })
         .then(data => {
             setAltText(data.alt_text);
+            setEntryID(data.entry_id);
             setError("");
         })
         .catch(() =>{
@@ -358,6 +385,15 @@ export default function HomeScreen(){
                 {hasAltText ? (
                     <button 
                     className="save-edits-button"
+                    onClick={() =>
+
+                        handleEditGeneratedAltText(
+                            {
+                                entry_id: entryId, 
+                                edited_alt_text:altText,
+                            }
+                        )
+                    }
                     >
                     Save Edits
                     </button>
