@@ -86,7 +86,9 @@ export default function HistoryPage(){
           
             {/* if unable to copy all text or load history data */}
             {error && (
-            <div className="error-case-box">
+            <div className="error-case-box"
+            role="alert"
+            >
 
                     <p className="error-symbol">
                            ⚠
@@ -108,7 +110,7 @@ export default function HistoryPage(){
                             <div className="history-card-left-col">
                             <img 
                             src={ `data:image/png;base64,${item.image}`} 
-                            alt="Uploaded preview"
+                            alt=""
                             className="history-image"
                             />
                             </div>                            
@@ -120,6 +122,7 @@ export default function HistoryPage(){
                                 </p>
                                 </div>
                                 <button className="copy-individual-text-button"
+                                aria-label = {`Copy alternative text: ${item.altText}`}
                                 onClick={() => handleCopyIndividualAltText(item.altText, index)}
                                 >
                                 {copiedEntryID === index? "✓ Copied" : "Copy Alt Text"}
