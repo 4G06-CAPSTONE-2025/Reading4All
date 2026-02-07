@@ -10,7 +10,7 @@ class AltTextHistory:
     def get_alt_text_history(self, session_id):
         results_history = (
             self.supabase.table("history")
-            .select("image, alt_text")
+            .select("image, alt_text, edited_alt_text")
             .eq("session_id", session_id)
             .order("time_gen", desc=True)
             .limit(self.max_entries)
@@ -21,9 +21,14 @@ class AltTextHistory:
 
         for entry in results_history.data:
 
+            if entry["edited_alt_text"] is not None: 
+                altTextToShow = entry["edited_alt_text"]
+            else: 
+                altTextToShow = entry["alt_text"]
+
             entry = {
                 "image": entry["image"],
-                "altText": entry["alt_text"]
+                "altText": altTextToShow
                 }
             history.append(entry)
         return history
