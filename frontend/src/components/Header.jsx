@@ -43,7 +43,9 @@ export default function Header(){
                 currLocation !=="/" && (
                     <button
                         className="sign-out-button" 
-                        onClick={() => navigate("/")}>
+                        alt="McMaster University Logo"
+                        onClick={() => navigate("/")}
+                    >
                     Sign Out
                     </button>
                 )
