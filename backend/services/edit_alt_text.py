@@ -15,7 +15,7 @@ def edit_alt_text(request):
 
 
         session_id = request.session_id
-        
+
         if not entry_id or not edited_alt_text:
             return "INVALID_REQUEST"
 

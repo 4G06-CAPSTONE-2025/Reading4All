@@ -14,12 +14,16 @@ class GenAltText:
         # needs to be changed to trigger real model
         mock_alt_text = uuid.uuid4().hex
 
-        # after alt text has been successfully generated, the alt text
-        # and image is saved to the history
-        self.insert_history(image, mock_alt_text, session_id)
 
         # returns alt text to show user
-        return mock_alt_text
+        if mock_alt_text: 
+            # after alt text has been successfully generated, the alt text
+            # and image is saved to the history
+            entry_id = self.insert_history(image, mock_alt_text, session_id)
+            return mock_alt_text, entry_id
+
+        else:
+            return None, None
 
     def session_entries_count(self, session_id):
 
@@ -80,11 +84,14 @@ class GenAltText:
         image_b64 = base64.b64encode(image_bytes).decode("utf-8")
 
         # dont need to give time stamp it will by default use current time
-        self.supabase.table("history").insert(
-            {"session_id": session_id,
-             "image": image_b64, "alt_text":
-             alt_text, "edited_alt_text": "NULL"}
-        ).execute()
+        response = (
+                self.supabase.table("history").insert(
+                    {"session_id": session_id,
+                    "image": image_b64, "alt_text":
+                    alt_text, "edited_alt_text": "NULL"}
+                    ).execute()
+                )   
+        return response.data[0]["entry_id"]
 
     # this function is for testing purposes to store images from database
     def save_image(self, entry_id=1):
