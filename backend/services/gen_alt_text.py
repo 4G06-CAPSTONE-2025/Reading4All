@@ -10,9 +10,8 @@ class GenAltText:
         self.supabase = get_supabase_admin_client()
         self.max_entries = 10
         self.hf_token = os.getenv("HUGGINGFACE_READ_TOKEN")
-        self.hf_url = """
-            https://hdzn5l02irp5ygnw.us-east-1.aws.endpoints.huggingface.cloud/"
-        """
+        # pylint: disable=line-too-long
+        self.hf_url = "https://hdzn5l02irp5ygnw.us-east-1.aws.endpoints.huggingface.cloud/"
 
 
     def trigger_model(self, image, session_id):
