@@ -13,9 +13,9 @@ def edit_alt_text(request):
         entry_id = body.get("entry_id")
         edited_alt_text = body.get("edited_alt_text")
 
-        # same as in GET_alt_test_hisotry.py
-        session_id = 2026
 
+        session_id = request.session_id
+        
         if not entry_id or not edited_alt_text:
             return "INVALID_REQUEST"
 
