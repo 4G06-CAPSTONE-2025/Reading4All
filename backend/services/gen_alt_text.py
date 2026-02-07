@@ -1,6 +1,5 @@
 import base64
 import os
-import uuid
 import requests
 
 from databases.connect_supabase import get_supabase_admin_client
@@ -10,8 +9,10 @@ class GenAltText:
     def __init__(self):
         self.supabase = get_supabase_admin_client()
         self.max_entries = 10
-        self.hf_token = os.get("HUGGINGFACE_READ_TOKEN")
-        self.hf_url = "https://hdzn5l02irp5ygnw.us-east-1.aws.endpoints.huggingface.cloud/"
+        self.hf_token = os.getenv("HUGGINGFACE_READ_TOKEN")
+        self.hf_url = """
+            https://hdzn5l02irp5ygnw.us-east-1.aws.endpoints.huggingface.cloud/"
+        """
 
 
     def trigger_model(self, image, session_id):
@@ -23,8 +24,10 @@ class GenAltText:
         response = requests.post(
             self.hf_url,
             headers=headers,
-            data=image
+            data=image,
+            timeout=30
         )
+
         print(response.json())
         alt_text = response.json()[0]['alt_text']
 
