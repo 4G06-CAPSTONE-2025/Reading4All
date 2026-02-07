@@ -22,6 +22,7 @@ export default function HomeScreen(){
     const errorMessageRef = useRef(null);
 
     const hasAltText = altText && altText.trim().length > 0;
+    const [hasGeneratedAltText, setHasGeneratedAltText] = useState(false)
 
     const fileInputRef = useRef(null);
     
@@ -209,6 +210,7 @@ export default function HomeScreen(){
     const resetAltTextGenProcess = () => {
         setAltText("");
         setEntryID(null);
+        setHasGeneratedAltText(false);
     }
 
     const handleCopyAltText= async () => {
@@ -246,6 +248,7 @@ export default function HomeScreen(){
             setAltText(data.alt_text);
             setEntryID(data.entry_id);
             setError("");
+            setHasGeneratedAltText(true);
         })
         .catch(() =>{
             setError("Failed to Generate Alt Text. Please try again!");
@@ -367,7 +370,7 @@ export default function HomeScreen(){
 
                 ): ""}
                 
-                {hasAltText ? (
+                {hasGeneratedAltText ? (
 
                  <textarea
                     className="computed-alt-text-box"
@@ -386,7 +389,7 @@ export default function HomeScreen(){
                
                <div className= "save-changes-copy-alt-text-buttons">
                 
-                {hasAltText ? (
+                {hasGeneratedAltText ? (
                     <button 
                     className="save-edits-button"
                     onClick={async () =>{
