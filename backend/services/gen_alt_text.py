@@ -16,14 +16,14 @@ class GenAltText:
 
 
         # returns alt text to show user
-        if mock_alt_text: 
-            # after alt text has been successfully generated, the alt text
-            # and image is saved to the history
-            entry_id = self.insert_history(image, mock_alt_text, session_id)
-            return mock_alt_text, entry_id
-
-        else:
+        if not mock_alt_text:
             return None, None
+        # after alt text has been successfully generated, the alt text
+        # and image is saved to the history
+        entry_id = self.insert_history(image, mock_alt_text, session_id)
+        return mock_alt_text, entry_id
+
+
 
     def session_entries_count(self, session_id):
 
@@ -90,7 +90,7 @@ class GenAltText:
                     "image": image_b64, "alt_text":
                     alt_text, "edited_alt_text": "NULL"}
                     ).execute()
-                )   
+                )
         return response.data[0]["entry_id"]
 
     # this function is for testing purposes to store images from database
