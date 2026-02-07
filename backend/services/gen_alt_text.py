@@ -27,8 +27,11 @@ class GenAltText:
             data=image,
             timeout=30
         )
+        print("status:", response.status_code)
+        print("header:", response.headers)
+        print("text:", response.text)
 
-        print(response.json())
+
         alt_text = response.json()[0]['alt_text']
 
 
