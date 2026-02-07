@@ -24,7 +24,7 @@ class GenAltText:
             self.hf_url,
             headers=headers,
             data=image,
-            timeout=30
+            timeout=180
         )
         print("status:", response.status_code)
         print("header:", response.headers)
