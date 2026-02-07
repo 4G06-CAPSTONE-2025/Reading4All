@@ -11,6 +11,7 @@ export default function HomeScreen(){
     const [altText, setAltText] = useState("")
 
     const [copiedAltText, setCopiedAltText] = useState(false);
+    const [saved, setSaved] = useState(false);
     const [entryId, setEntryID] = useState(null)
 
 
@@ -370,7 +371,10 @@ export default function HomeScreen(){
 
                  <textarea
                     className="computed-alt-text-box"
-                    onChange = {(e) => setAltText(e.target.value)}
+                    onChange = {(e) => {
+                        setAltText(e.target.value)
+                        setSaved(false);
+                    }}
                     value={altText}
                     rows={16}
                     cols={70}
@@ -385,17 +389,25 @@ export default function HomeScreen(){
                 {hasAltText ? (
                     <button 
                     className="save-edits-button"
-                    onClick={() =>
+                    onClick={async () =>{
 
-                        handleEditGeneratedAltText(
+                        const saveStatus = await handleEditGeneratedAltText(
                             {
                                 entry_id: entryId, 
                                 edited_alt_text:altText,
                             }
-                        )
+                        );
+                        if (saveStatus)
+                        {
+                            setSaved(true);
+                            setTimeout( () => setSaved(false), 1500);
+                        }
                     }
+
+                    }
+
                     >
-                    Save Edits
+                    {saved? "✓ Saved": "Save Edits"}
                     </button>
                 ) : "" }
 
