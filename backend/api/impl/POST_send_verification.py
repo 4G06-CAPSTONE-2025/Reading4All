@@ -24,17 +24,20 @@ def send_verification(request):
 
     supabase = get_supabase_client()
 
+    # 1️⃣ Check if user already exists
     try:
-        # 1️⃣ Check if user already exists
         existing_user = supabase.auth.admin.get_user_by_email(email)
-
         if existing_user and existing_user.user:
             return JsonResponse(
                 {"error": "User already registered. Please log in."},
                 status=400
             )
+    except Exception:
+        # ✅ Exception means user does NOT exist
+        pass
 
-        # 2️⃣ User does NOT exist → send OTP
+    # 2️⃣ Send OTP for new user
+    try:
         supabase.auth.sign_in_with_otp({
             "email": email,
             "options": {
@@ -47,7 +50,8 @@ def send_verification(request):
             status=200
         )
 
-    except Exception:
+    except Exception as e:
+        # Optional: log e for debugging
         return JsonResponse(
             {"error": "Failed to send verification code"},
             status=400
