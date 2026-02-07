@@ -2,7 +2,8 @@ from django.http import JsonResponse
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 
-from api.models import UserSession, History
+from api.models import UserSession
+from databases.connect_supabase import get_supabase_client
 
 
 @csrf_exempt
@@ -19,10 +20,14 @@ def logout(request):
         ).first()
 
         if session:
-            # delete all history rows for this session
-            History.objects.filter(session_id=session.id).delete()
+            # 1️⃣ Delete history for this session from Supabase
+            supabase = get_supabase_client()
+            supabase.table("history").delete().eq(
+                "session_id",
+                str(session.id)
+            ).execute()
 
-            # revoke the session
+            # 2️⃣ Revoke session
             session.revoked_at = timezone.now()
             session.save(update_fields=["revoked_at"])
 
