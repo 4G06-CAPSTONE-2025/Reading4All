@@ -1,5 +1,7 @@
 import base64
+import os
 import uuid
+import requests
 
 from databases.connect_supabase import get_supabase_admin_client
 
@@ -8,20 +10,33 @@ class GenAltText:
     def __init__(self):
         self.supabase = get_supabase_admin_client()
         self.max_entries = 10
+        self.hf_token = os.get("HUGGINGFACE_READ_TOKEN")
+        self.hf_url = "https://hdzn5l02irp5ygnw.us-east-1.aws.endpoints.huggingface.cloud/"
 
 
     def trigger_model(self, image, session_id):
-        # needs to be changed to trigger real model
-        mock_alt_text = uuid.uuid4().hex
+
+        headers = {
+            "Authorization": f"Bearer {self.hf_token}",
+            "Content-Type": "image/png"   # or image/jpeg
+        }
+        response = requests.post(
+            self.hf_url,
+            headers=headers,
+            data=image
+        )
+        print(response.json())
+        alt_text = response.json()[0]['alt_text']
+
 
 
         # returns alt text to show user
-        if not mock_alt_text:
+        if not alt_text:
             return None, None
         # after alt text has been successfully generated, the alt text
         # and image is saved to the history
-        entry_id = self.insert_history(image, mock_alt_text, session_id)
-        return mock_alt_text, entry_id
+        entry_id = self.insert_history(image, alt_text, session_id)
+        return alt_text, entry_id
 
 
 
