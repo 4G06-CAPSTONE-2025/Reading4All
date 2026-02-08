@@ -15,13 +15,16 @@ class GenAltText:
 
 
     def trigger_model(self, image, session_id):
+        image_bytes= image.read()
+
         headers = {
-            "Authorization": f"Bearer {self.hf_token}"
+            "Authorization": f"Bearer {self.hf_token}",
+            "Content-Type": image.content_type, 
         }
         response = requests.post(
             self.hf_url,
             headers=headers,
-            data=image.read(),
+            data=image_bytes,
             timeout=180
         )
         print("status:", response.status_code)
@@ -38,7 +41,7 @@ class GenAltText:
             return None, None
         # after alt text has been successfully generated, the alt text
         # and image is saved to the history
-        entry_id = self.insert_history(image, alt_text, session_id)
+        entry_id = self.insert_history(image_bytes, alt_text, session_id)
         return alt_text, entry_id
 
 
@@ -98,8 +101,7 @@ class GenAltText:
                 self.remove_oldest_entry(oldest_entry_id)
 
         # need to convert bytes to a string in order to send to superbase with json
-        image_bytes = image.read()
-        image_b64 = base64.b64encode(image_bytes).decode("utf-8")
+        image_b64 = base64.b64encode(image).decode("utf-8")
 
         # dont need to give time stamp it will by default use current time
         response = (
