@@ -15,15 +15,13 @@ class GenAltText:
 
 
     def trigger_model(self, image, session_id):
-
         headers = {
-            "Authorization": f"Bearer {self.hf_token}",
-            "Content-Type": "image/png"   # or image/jpeg
+            "Authorization": f"Bearer {self.hf_token}"
         }
         response = requests.post(
             self.hf_url,
             headers=headers,
-            data=image,
+            data=image.read(),
             timeout=180
         )
         print("status:", response.status_code)
