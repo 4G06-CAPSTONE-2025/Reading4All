@@ -21,7 +21,7 @@ class AltTextHistory:
 
         for entry in results_history.data:
 
-            if entry["edited_alt_text"] is not None:
+            if entry["edited_alt_text"] not in (None, "NULL"):
                 altTextToShow = entry["edited_alt_text"]
             else:
                 altTextToShow = entry["alt_text"]
