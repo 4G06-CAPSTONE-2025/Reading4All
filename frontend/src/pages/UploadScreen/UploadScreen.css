@@ -224,6 +224,11 @@ gap: 32px;
   margin: auto auto auto auto;
 }
 
+.gen-alt-text-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .delete-button{
   background-color: transparent;
   border:none;

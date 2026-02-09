@@ -23,6 +23,7 @@ export default function HomeScreen(){
 
     const hasAltText = altText && altText.trim().length > 0;
     const [hasGeneratedAltText, setHasGeneratedAltText] = useState(false)
+    const [isGeneratingAltText, setIsGeneratingAltText] = useState(false)
 
     const fileInputRef = useRef(null);
     
@@ -230,6 +231,8 @@ export default function HomeScreen(){
         const formData = new FormData();
         formData.append("image", selectedFile);
 
+        setIsGeneratingAltText(true)
+
         fetch("https://reading4all-backend.onrender.com/api/generate-alt-text/",
             {
                 method: "POST",
@@ -252,6 +255,9 @@ export default function HomeScreen(){
         })
         .catch(() =>{
             setError("Failed to Generate Alt Text. Please try again!");
+        })
+        .finally(()=>{
+            setIsGeneratingAltText(false);
         });
     };
 
@@ -364,8 +370,11 @@ export default function HomeScreen(){
                 {!hasAltText ? (
                     <button className="gen-alt-text-button"
                         onClick={handleGenerateAltText}
+                        disabled={isGeneratingAltText}
+                        aria-disabled={isGeneratingAltText}
                     >
-                    Generate Alt Text
+                        {isGeneratingAltText? "Generating Alt Text..." :   "Generate Alt Text"}
+                  
                     </button>
 
                 ): ""}
@@ -434,7 +443,7 @@ export default function HomeScreen(){
         ) }
         
 
-    { error && !selectedFile && (
+    { error && (
             <div className="upload-status-encloses">
                 <div className="upload-error-view"
                     role="alert"
@@ -446,7 +455,7 @@ export default function HomeScreen(){
                     </div>
                     <div className="error-text">
                     <p className="error-title">
-                        Upload Failed
+                       {hasGeneratedAltText || selectedFile?  "Alternative Text Generation Failed": "Upload Failed"}
                     </p>
                     <p className="error-message"
                         ref={errorMessageRef}
