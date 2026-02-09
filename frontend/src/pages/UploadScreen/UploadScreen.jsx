@@ -278,10 +278,10 @@ export default function HomeScreen(){
          <div className="title-section">
 
         <header className = "upload-page-title">
-        <h1>Alternative Text Generation</h1>
+        <h1>Physics Alternative Text Generation</h1>
 
         <p>
-        Generate clear, concise alternative text for STEM diagrams 
+        Generate clear, concise alternative text for Physics diagrams 
         </p>
         </header>
         
