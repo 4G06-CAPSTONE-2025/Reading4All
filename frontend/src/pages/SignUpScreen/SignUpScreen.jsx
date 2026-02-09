@@ -176,8 +176,8 @@ export default function SignUpScreen() {
   return (
     <div className="auth-page">
       <div className="auth-heading">
-        <h1>Alternative Text Generation</h1>
-        <p>Generate clear, concise alternative text for STEM diagrams</p>
+        <h1> Physics Alternative Text Generation</h1>
+        <p>Generate clear, concise alternative text for physics diagrams</p>
       </div>
 
       <div className="auth-card signup-card">
