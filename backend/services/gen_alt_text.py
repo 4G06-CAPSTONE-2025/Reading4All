@@ -39,6 +39,9 @@ class GenAltText:
             return None, None
         # after alt text has been successfully generated, the alt text
         # and image is saved to the history
+
+        # removing prompt used in model from alt-text returned
+        alt_text = alt_text.split(":", 1)[1].strip()
         entry_id = self.insert_history(image_bytes, alt_text, session_id)
         return alt_text, entry_id
 
