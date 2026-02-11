@@ -41,8 +41,9 @@ export default function HistoryPage(){
     };
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/alt-text-history/",
+        fetch("https://reading4all-backend.onrender.com/api/alt-text-history/",
             {
+                method: "GET",
                 credentials: "include"
             }
         )
@@ -84,10 +85,11 @@ export default function HistoryPage(){
             </div>
           
             {/* if unable to copy all text or load history data */}
-            <div className="error-case-box">
-            {
-                error && (
-                    <>
+            {error && (
+            <div className="error-case-box"
+            role="alert"
+            >
+
                     <p className="error-symbol">
                            ⚠
                     </p>
@@ -95,9 +97,8 @@ export default function HistoryPage(){
                     <p className="error-text">
                         {error}
                      </p>
-                    </>
-            )}
             </div>
+            )}
 
 
             <div className="history-list">
@@ -109,7 +110,7 @@ export default function HistoryPage(){
                             <div className="history-card-left-col">
                             <img 
                             src={ `data:image/png;base64,${item.image}`} 
-                            alt="Uploaded preview"
+                            alt=""
                             className="history-image"
                             />
                             </div>                            
@@ -121,6 +122,7 @@ export default function HistoryPage(){
                                 </p>
                                 </div>
                                 <button className="copy-individual-text-button"
+                                aria-label = {`Copy alternative text: ${item.altText}`}
                                 onClick={() => handleCopyIndividualAltText(item.altText, index)}
                                 >
                                 {copiedEntryID === index? "✓ Copied" : "Copy Alt Text"}

@@ -1,7 +1,8 @@
 from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from controller.backend_controller import backend_controller
 
-
+@csrf_exempt
 def edit_alt_text(request):
 
     if request.method != "PUT":

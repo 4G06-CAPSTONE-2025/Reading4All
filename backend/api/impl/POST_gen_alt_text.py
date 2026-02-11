@@ -1,9 +1,11 @@
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from controller.backend_controller import backend_controller
 
 
 # generate alt text api
+@csrf_exempt
 def gen_alt_text_api(request):
 
     # API endpoint should only be used in post requests
@@ -14,7 +16,6 @@ def gen_alt_text_api(request):
         return response
 
     image = request.FILES.get("image")
-    session_id = request.POST.get("session_id") # should also be passed in as form-data
     
     if not image: 
         response = JsonResponse(
@@ -22,16 +23,12 @@ def gen_alt_text_api(request):
         )
         return response
 
-    if not session_id:
-        response = JsonResponse(
-            {"error": "session_id is required"}, status=400
-        )
-        return response
+    session_id = request.session_id
 
-    alt_text = backend_controller.gen_alt_text(image, session_id)
+    alt_text, entry_id = backend_controller.gen_alt_text(image, session_id)
 
-    if alt_text:
-        response = JsonResponse({"alt_text": alt_text}, status=200)
+    if alt_text and entry_id:
+        response = JsonResponse({"alt_text": alt_text, "entry_id": entry_id }, status=200)
         return response
 
     response = JsonResponse({"error": "ERROR_GENERATING"}, status=400)

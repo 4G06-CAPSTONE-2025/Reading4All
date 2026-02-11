@@ -11,6 +11,8 @@ export default function HomeScreen(){
     const [altText, setAltText] = useState("")
 
     const [copiedAltText, setCopiedAltText] = useState(false);
+    const [saved, setSaved] = useState(false);
+    const [entryId, setEntryID] = useState(null)
 
 
     // for the screen reader to announce to user success alerts
@@ -19,20 +21,9 @@ export default function HomeScreen(){
     // for the screen reader to announce to user error alerts
     const errorMessageRef = useRef(null);
 
-
-
-    const mockAltText = `
-    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-    there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
-     the Semantics, a large language ocean. A small river named Duden flows by their place
-      and supplies it with the necessary regelialia. It is a paradisematic country, in which 
-      roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no 
-      control about the blind texts it is an almost unorthographic life One day however a 
-      small line of blind text by the name of Lorem Ipsum decided to leave for the far World
-       of Grammar. The Big Oxmox advised her not to do so, because there were thousands
-    `
-
     const hasAltText = altText && altText.trim().length > 0;
+    const [hasGeneratedAltText, setHasGeneratedAltText] = useState(false)
+    const [isGeneratingAltText, setIsGeneratingAltText] = useState(false)
 
     const fileInputRef = useRef(null);
     
@@ -45,38 +36,162 @@ export default function HomeScreen(){
         setIsDragging(false);
     };
 
-    const handleImageDrop = (e) =>{
+
+    const handleImageValidationBackend = async (image) => {
+        const formData = new FormData();
+        formData.append("image", image);
+
+        const response = await fetch("https://reading4all-backend.onrender.com/api/upload/",
+            {
+                method: "POST",
+                body:formData,
+                credentials: "include"
+            }
+        )
+        if (response.ok){
+            return true
+        }
+        const msg= await response.json();
+        throw new Error(msg.error);
+    }
+
+    const handleUploadError = (errorMssg) => {
+        if (errorMssg === "MISSING_IMAGE")
+        {
+            setError("No image was uploaded. Please select an image")
+        }
+        else if (errorMssg === "INVALID_FILE_TYPE")
+        {
+            setError("Invalid File Type. Please upload a PNG, JPEG or JPG image")
+        }
+        else if (errorMssg === "FILE_SIZE_INVALID")
+        {
+            setError("Image size exceeds 10 Megabytes.")
+        }
+        else if (errorMssg === "UNAUTHORIZED_ACCESS_OR_CORRUPTED")
+        {
+            setError("Image file is corrupted or cannot be opened")
+        }
+        else
+        {
+            setError("Image validation failed. Please try again")
+        }
+    }
+
+    async function handleEditGeneratedAltText({entry_id, edited_alt_text }) {
+        const editTextResults = await fetch(
+        "https://reading4all-backend.onrender.com/api/edit-alt-text/",
+        {
+            method: "PUT",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                entry_id,
+                edited_alt_text
+            }),
+        }
+    );
+
+    if(!editTextResults.ok)
+    {
+        return false;
+    }
+
+    return true;
+    }
+
+    const handleImageDrop = async (e) =>{
 
         e.preventDefault();
         setIsDragging(false)
+        let image_uploaded = null;
 
-        const image_uploaded = e.dataTransfer.files[0]
-        const url = URL.createObjectURL(image_uploaded)
+        if (e.dataTransfer.files && e.dataTransfer.files.length >0)
+        {
+            image_uploaded =  e.dataTransfer.files[0]
+        }
+        else
+        {
+            return
+        }
 
         if (!image_uploaded) return;
-        if (!validateFile(image_uploaded)) return;
 
+        try 
+        {
+            await handleImageValidationBackend(image_uploaded)
+        }
+        catch (err)
+        {
+            handleUploadError(err.message)
+            return
+        }
 
+        if (previewImg)
+        {
+            URL.revokeObjectURL(previewImg);
+        }
+        
+        const url = URL.createObjectURL(image_uploaded)
         setError("");
         setSelectedFile(image_uploaded);
         setPreviewImg(url);
         resetAltTextGenProcess();
+        if (fileInputRef.current)
+        {
+            fileInputRef.current.value = "";
+        }
     };
 
-    const handleFileSelect = (e) => {
-        const image_uploaded = e.target.files[0]
-        const url = URL.createObjectURL(image_uploaded)
+    const handleFileSelect = async (e) => {
+       
+        let image_uploaded = null;
+
+        if (e.target.files && e.target.files.length >0)
+        {
+            image_uploaded =  e.target.files[0]
+        }
+        else
+        {
+            return
+        }
         
         if (!image_uploaded) return;
-        if (!validateFile(image_uploaded)) return;
 
+        try
+        {
+            await handleImageValidationBackend(image_uploaded)
+        }
+        catch (err)
+        {
+            handleUploadError(err.message)
+            return
+        }
+
+        if (previewImg)
+        {
+            URL.revokeObjectURL(previewImg);
+        }
+        
+        const url = URL.createObjectURL(image_uploaded)
         setError("");
         setSelectedFile(image_uploaded);
         setPreviewImg(url);
         resetAltTextGenProcess();
+        if (fileInputRef.current)
+        {
+            fileInputRef.current.value = "";
+        }
     };
 
     const handleRemoveImg = (e) => {
+        if (previewImg)
+        {
+            URL.revokeObjectURL(previewImg)
+        }
+        setError("")
         setSelectedFile(null);
         setPreviewImg(null);
         resetAltTextGenProcess();
@@ -93,25 +208,10 @@ export default function HomeScreen(){
         }
     };
 
-    const MAX_FILE_SIZE = 10485760;
-
-    const validateFile = (file) => {
-        if(!file) return false
-
-        if(file.size>MAX_FILE_SIZE)
-        {
-        setError("File size exceeds 10 Megabytes");
-        setSelectedFile(null);
-        setPreviewImg(null);
-        return false;
-        }
-
-        setError("");
-        return true;
-    }
-
     const resetAltTextGenProcess = () => {
         setAltText("");
+        setEntryID(null);
+        setHasGeneratedAltText(false);
     }
 
     const handleCopyAltText= async () => {
@@ -125,6 +225,40 @@ export default function HomeScreen(){
         catch (err) {
             setError("Failed to copy to clipboard.");
         }
+    };
+
+    const handleGenerateAltText = () =>{
+        const formData = new FormData();
+        formData.append("image", selectedFile);
+
+        setIsGeneratingAltText(true)
+
+        fetch("https://reading4all-backend.onrender.com/api/generate-alt-text/",
+            {
+                method: "POST",
+                body:formData,
+                credentials: "include"
+            }
+        )
+        .then(response => {
+            if (response.ok)
+            {
+                return response.json()
+            }
+            throw new Error("Unable to get alt text history") 
+        })
+        .then(data => {
+            setAltText(data.alt_text);
+            setEntryID(data.entry_id);
+            setError("");
+            setHasGeneratedAltText(true);
+        })
+        .catch(() =>{
+            setError("Failed to Generate Alt Text. Please try again!");
+        })
+        .finally(()=>{
+            setIsGeneratingAltText(false);
+        });
     };
 
      useEffect(() => {
@@ -144,10 +278,10 @@ export default function HomeScreen(){
          <div className="title-section">
 
         <header className = "upload-page-title">
-        <h1>Alternative Text Generation</h1>
+        <h1>Physics Alternative Text Generation</h1>
 
         <p>
-        Generate clear, concise alternative text for STEM diagrams 
+        Generate clear, concise alternative text for Physics diagrams 
         </p>
         </header>
         
@@ -235,18 +369,24 @@ export default function HomeScreen(){
 
                 {!hasAltText ? (
                     <button className="gen-alt-text-button"
-                        onClick={() => setAltText(mockAltText)}
+                        onClick={handleGenerateAltText}
+                        disabled={isGeneratingAltText}
+                        aria-disabled={isGeneratingAltText}
                     >
-                    Generate Alt Text
+                        {isGeneratingAltText? "Generating Alt Text..." :   "Generate Alt Text"}
+                  
                     </button>
 
                 ): ""}
                 
-                {hasAltText ? (
+                {hasGeneratedAltText ? (
 
                  <textarea
                     className="computed-alt-text-box"
-                    onChange = {(e) => setAltText(e.target.value)}
+                    onChange = {(e) => {
+                        setAltText(e.target.value)
+                        setSaved(false);
+                    }}
                     value={altText}
                     rows={16}
                     cols={70}
@@ -258,11 +398,28 @@ export default function HomeScreen(){
                
                <div className= "save-changes-copy-alt-text-buttons">
                 
-                {hasAltText ? (
+                {hasGeneratedAltText ? (
                     <button 
                     className="save-edits-button"
+                    onClick={async () =>{
+
+                        const saveStatus = await handleEditGeneratedAltText(
+                            {
+                                entry_id: entryId, 
+                                edited_alt_text:altText,
+                            }
+                        );
+                        if (saveStatus)
+                        {
+                            setSaved(true);
+                            setTimeout( () => setSaved(false), 1500);
+                        }
+                    }
+
+                    }
+
                     >
-                    Save Edits
+                    {saved? "✓ Saved": "Save Edits"}
                     </button>
                 ) : "" }
 
@@ -286,7 +443,7 @@ export default function HomeScreen(){
         ) }
         
 
-    { error && !selectedFile && (
+    { error && (
             <div className="upload-status-encloses">
                 <div className="upload-error-view"
                     role="alert"
@@ -298,13 +455,13 @@ export default function HomeScreen(){
                     </div>
                     <div className="error-text">
                     <p className="error-title">
-                        Upload Failed
+                       {hasGeneratedAltText || selectedFile?  "Alternative Text Generation Failed": "Upload Failed"}
                     </p>
                     <p className="error-message"
                         ref={errorMessageRef}
                         tabIndex="-1"
                     >
-                       File size exceeds 10 Megabytes. Please Try again!   
+                        {error}
                     </p>
 
                    </div>

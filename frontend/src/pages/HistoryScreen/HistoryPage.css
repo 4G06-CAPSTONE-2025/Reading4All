@@ -6,8 +6,6 @@
 
 .history-page {
     min-height: 100vh;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
     background-color: white;
     flex-direction: column;
     display: flex;
@@ -20,7 +18,6 @@
 }
 
 .copy-all-button {
-    font-family: "Istok Web";
     font-size: 22px;
     font-weight : 550;
 
@@ -64,7 +61,6 @@
 }
 
 .alt-text{
-    font-family: "Roboto";
     font-size: 18px;
     font-weight : 505;
     color: black;
@@ -76,7 +72,6 @@
 }
 
 .copy-individual-text-button{
-    font-family: "Istok Web";
     font-size: 18px;
     font-weight : 550;
 
@@ -123,7 +118,6 @@
 }
 
 .error-text{
-    font-family: "Roboto";
     font-size: 22px;
     font-weight : 505;
     color: black;
