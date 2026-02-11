@@ -789,8 +789,7 @@ for academic images and figures.
   each image or figure
   \item Screen readers use the generated alternative text to convey
   the uploaded image
-  \item The generated alternative text can be edited, copied, or
-  downloaded as a \texttt{.txt} file by the user
+  \item The generated alternative text can be edited, and copied by the user
   \item The user can view previously uploaded files and generated
   alternative text for future reference
 \end{enumerate}
@@ -926,9 +925,9 @@ inputs and outputs to the system and the related requirements.
     Faculty, Alt Text Generation ML Model, UI, Backend Component & Uploaded image
     (input), Generated alternative text  & FR 2, FR 3\\
     \hline
-    PUC 4 & Copy or Download Text & McMaster Student and Faculty, UI, Backend Component &
-    User decision to copy or download (input), text copied to
-    clipboard or downloaded & UHR-PIR 1\\
+    PUC 4 & Copy Alt Text & McMaster Student and Faculty, UI, Backend Component &
+    User decision to copy (input), text copied to
+    clipboard & UHR-PIR 1\\
     \hline
     PUC 5 & View History of Inputted Images and their Alternative
     Text& McMaster Student and Faculty, UI, Backend Component, Session History Manager & User request to view
@@ -982,7 +981,7 @@ inputs and outputs to the system and the related requirements.
 \end{quote}
 \textbf{PUC 4: Edit Generated Alternative Text}
 \begin{quote}
-\textbf{Trigger:} User decides to modify the generated alternative text before copying or downloading it.\\
+\textbf{Trigger:} User decides to modify the generated alternative text before copying it.\\
 \textbf{Preconditions:}
 \begin{itemize}
   \item System has successfully generated alternative text for an uploaded image.
@@ -990,11 +989,11 @@ inputs and outputs to the system and the related requirements.
 \textbf{Actors:} McMaster Student or Faculty, UI, Backend Component.\\
 \textbf{Outcome:} The user edits and saves the updated alternative text. \\
 \textbf{Input:} User edits to the generated alternative text.\\
-\textbf{Output:} The edited alternative text is displayed to the user and stored within the session, to be copied or downloaded later.
+\textbf{Output:} The edited alternative text is displayed to the user and stored within the session, to be copied later.
 \end{quote}
-\textbf{PUC 5: Copy or Download Generated Alternative Text }
+\textbf{PUC 5: Copy the Generated Alternative Text }
 \begin{quote}
-\textbf{Trigger:} User selects copy or download .txt after generating alternative text.\\
+\textbf{Trigger:} User selects copy after generating alternative text.\\
 \textbf{Preconditions:}
 \begin{itemize}
   \item System has successfully generated alternative text for an uploaded image.
@@ -1002,8 +1001,8 @@ inputs and outputs to the system and the related requirements.
 \end{itemize}
 \textbf{Actors:} McMaster Student or Faculty, UI, Backend Component.\\
 \textbf{Outcome:} The user receives the alternative text through their preferred method. \\
-\textbf{Input:} User decision to copy or download.\\
-\textbf{Output:} Text is copied or downloaded as .txt file on the users device.
+\textbf{Input:} User decision to copy.\\
+\textbf{Output:} Text is copied to the users clipboard.
 \end{quote}
 \textbf{PUC 6: View History of Uploaded Images and Generated Alternative Text}
 \begin{quote}
@@ -1152,9 +1151,9 @@ inputs and outputs to the system and the related requirements.
 
 \subsection{Personalization and Internationalization Requirements}
 \begin{enumerate}[label=UHR-PIR \arabic*., wide=0pt, leftmargin=*]
-\item \emph{The system interface must allow users to choose how generated alternative text is stored or copied.}\\[2mm] 
-    {\bf Rationale:} Providing users with the option to either copy generated text or download it as file, helps tailor the output to the users specific needs.  \\
-    {\bf Fit Criterion:} After generating the alternative text users can choose to copy or download as .txt" from the interface and system successfully completes the chosen option.\\
+\item \emph{The system interface must allow users to choose how generated alternative text is copied.}\\[2mm] 
+    {\bf Rationale:} Allowing users to copy alternative text immediately after generation or in bulk from their session history users supports different user workflows.
+    {\bf Fit Criterion:} After generating the alternative text users can either copy individual entries at generation time or copy them from their session history, and the system successfully copies the selected text to the clipboard.\\
     {\bf Priority:} High
 \end{enumerate}
 

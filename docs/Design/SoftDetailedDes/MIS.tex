@@ -1377,8 +1377,6 @@ interfaces to the users.
     uploadImage & imageFilePath:String & Success:\Bool &
     FileNotFound, FileTypeNotSupported, FileTooLarge\\
     \hline
-    downloadText & altText:String & altTextFile:String & NetworkError \\
-    \hline
     copyText & altText:String & Success:\Bool & ClipboardError \\
     \hline
     editText & altText:String, editedText:String & Success:\Bool &
@@ -1407,7 +1405,7 @@ None.
   
   \begin{itemize}
     \item Clipboard access is enabled by the user for \texttt{copyText}.
-    \item User allows system to access files for uploading images and downloading alt text. 
+    \item User allows system to access files for uploading images.
     \item \texttt{uploadImage} is called before any other access program.
     \item Each exported access program represents an event handler that is invoked in response to user-triggered actions such as mouse clicks and keyboard presses on the user interface.
   \end{itemize}
@@ -1415,7 +1413,7 @@ None.
 \begin{itemize}
   \item \texttt{Clipboard} access is enabled by the user for \texttt{copyText}.
   \item User allows system to access files for uploading images and
-    downloading alt text.
+    copying the alt text.
   \item \texttt{uploadImage} is called before any other access program.
   \item Each exported access program represents an event handler that
     is invoked in response to user-triggered actions such as mouse
@@ -1431,13 +1429,6 @@ with the AI model for alt text generation.
 \item output: returns \texttt{true} iff the backend server acknowledges and is able to process the image, returns \texttt{false} otherwise.
 \item exception: \texttt{FileNotFound}, \texttt{FileTypeNotSupported} (not in \texttt{SUPPORT\_IMG\_TYPES}), 
 and \texttt{FileTooLarge} (not within \texttt{MAX\_IMG\_SIZE})
-\end{itemize}
-
-\noindent \textbf{downloadText(altText)}:
-\begin{itemize}
-  \item transition: None.
-  \item output: a \texttt{.txt} payload that contains the generated alt text.
-  \item exception: \texttt{NetworkError}.
 \end{itemize}
 
 \noindent \textbf{copyText(altText)}:
@@ -1491,9 +1482,6 @@ and \texttt{FileTooLarge} (not within \texttt{MAX\_IMG\_SIZE})
   \item \textbf{checkImgSize(filePath:String) \texttt{->} \Bool}:
     returns \texttt{true} if
     the size of the image $\le$ \texttt{MAX\_IMG\_SIZE}.
-  \item \textbf{saveAsTxt(altText: String) \texttt{->}
-    filePath:String}: wraps generated alt text
-    into a \texttt{.txt} file for \texttt{downloadText()}.
   \item \textbf{buildUploadPayload(filePath: String) \texttt{->}
     Binary}: reads the file and constructs the binary payload for the
     \texttt{uploadImage} function to send to the BackendController module.
