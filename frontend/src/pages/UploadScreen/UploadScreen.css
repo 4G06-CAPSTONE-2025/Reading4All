@@ -165,6 +165,14 @@ gap: 32px;
   margin-bottom: 10px;
 }
 
+
+.upload-success-view .edit-info-text {
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
 .upload-view-of-img{
   display: flex;
   align-items: center;

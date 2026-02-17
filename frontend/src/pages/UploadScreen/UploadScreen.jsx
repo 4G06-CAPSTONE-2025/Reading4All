@@ -368,14 +368,18 @@ export default function HomeScreen(){
                
 
                 {!hasAltText ? (
+                    <>
                     <button className="gen-alt-text-button"
                         onClick={handleGenerateAltText}
                         disabled={isGeneratingAltText}
                         aria-disabled={isGeneratingAltText}
                     >
                         {isGeneratingAltText? "Generating Alt Text..." :   "Generate Alt Text"}
-                  
                     </button>
+                    <p className="edit-info-text">
+                        You can review and edit the generated alt text before copying.
+                    </p>
+                    </>
 
                 ): ""}
                 
