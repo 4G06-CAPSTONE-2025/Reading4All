@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import "./SignUpScreen.css";
 import { useNavigate } from "react-router-dom";
 
@@ -19,16 +19,11 @@ export default function SignUpScreen() {
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  const emailOk = useMemo(
-    () => email.trim().toLowerCase().endsWith("@mcmaster.ca"),
-    [email]
-  );
-
   /* =========================
      API CALLS
   ========================= */
 
-  async function sendVerificationApi({ email, password }) {
+  async function sendVerificationApi({ email }) {
     const res = await fetch(
       "https://reading4all-backend.onrender.com/api/send-verification/",
       {
@@ -37,7 +32,7 @@ export default function SignUpScreen() {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email }),
       }
     );
 
@@ -95,14 +90,12 @@ export default function SignUpScreen() {
       setErrorMsg("Email is required.");
       return;
     }
-    if (!emailOk) {
-      setErrorMsg("Please use your McMaster email (@mcmaster.ca).");
-      return;
-    }
+
     if (!pw || pw.length < 8) {
-      setErrorMsg("Password must be at least 6 characters.");
+      setErrorMsg("Password must be at least 8 characters.");
       return;
     }
+
     if (pw !== confirmPw) {
       setErrorMsg("Passwords do not match.");
       return;
@@ -112,7 +105,6 @@ export default function SignUpScreen() {
     try {
       const res = await sendVerificationApi({
         email: email.trim().toLowerCase(),
-        password: pw,
       });
 
       if (!res.ok) {
@@ -176,19 +168,19 @@ export default function SignUpScreen() {
   return (
     <div className="auth-page">
       <div className="auth-heading">
-        <h1> Physics Alternative Text Generation</h1>
+        <h1>Physics Alternative Text Generation</h1>
         <p>Generate clear, concise alternative text for physics diagrams</p>
       </div>
 
       <div className="auth-card signup-card">
         <form className="auth-form" onSubmit={handleSignUp}>
-          <h2 className="signup-title">Sign up using McMaster Email</h2>
+          <h2 className="signup-title">Create an Account</h2>
 
           <label className="auth-label">Email</label>
           <input
             className="auth-input"
             type="email"
-            placeholder="student@mcmaster.ca"
+            placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -197,7 +189,7 @@ export default function SignUpScreen() {
           <input
             className="auth-input"
             type="password"
-            placeholder="••••••••"
+            placeholder="Minimum 8 characters"
             value={pw}
             onChange={(e) => setPw(e.target.value)}
           />
@@ -206,7 +198,7 @@ export default function SignUpScreen() {
           <input
             className="auth-input"
             type="password"
-            placeholder="••••••••"
+            placeholder="Re-enter password"
             value={confirmPw}
             onChange={(e) => setConfirmPw(e.target.value)}
           />
@@ -221,7 +213,7 @@ export default function SignUpScreen() {
           </button>
 
           <div className="otp-block">
-            <div className="otp-label">Enter One Time Verification Code</div>
+            <div className="otp-label">Enter Verification Code</div>
             <input
               className="auth-input otp-input"
               type="text"
@@ -233,7 +225,11 @@ export default function SignUpScreen() {
             />
           </div>
 
-          <button className="auth-button" type="submit" disabled={signUpDisabled}>
+          <button
+            className="auth-button"
+            type="submit"
+            disabled={signUpDisabled}
+          >
             {isSigningUp ? "Signing up..." : "Sign Up"}
           </button>
 
