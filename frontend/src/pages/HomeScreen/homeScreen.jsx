@@ -6,9 +6,9 @@ export default function HomeScreen() {
 
   return (
     <div className="home-container">
-      <h1 className="home-title">Alternative Text Generation</h1>
+      <h1 className="home-title">Physics Alternative Text Generation</h1>
       <p className="home-subtitle">
-        Generate clear, concise alternative text for STEM diagrams
+        Generate clear, concise alternative text for physics diagrams
       </p>
 
       <div className="home-buttons">

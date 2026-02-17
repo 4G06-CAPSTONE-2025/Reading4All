@@ -1,5 +1,6 @@
 import base64
-import uuid
+import os
+import requests
 
 from databases.connect_supabase import get_supabase_admin_client
 
@@ -8,18 +9,43 @@ class GenAltText:
     def __init__(self):
         self.supabase = get_supabase_admin_client()
         self.max_entries = 10
+        self.hf_token = os.getenv("HUGGINGFACE_READ_TOKEN")
+        # pylint: disable=line-too-long
+        self.hf_url = "https://adexn5i2xzlhi5pn.us-east-1.aws.endpoints.huggingface.cloud"
 
 
     def trigger_model(self, image, session_id):
-        # needs to be changed to trigger real model
-        mock_alt_text = uuid.uuid4().hex
+        image_bytes= image.read()
 
-        # after alt text has been successfully generated, the alt text
-        # and image is saved to the history
-        self.insert_history(image, mock_alt_text, session_id)
+        headers = {
+            "Authorization": f"Bearer {self.hf_token}",
+            "Content-Type": image.content_type, 
+        }
+        response = requests.post(
+            self.hf_url,
+            headers=headers,
+            data=image_bytes,
+            timeout=180
+        )
+
+
+
+        alt_text = response.json().get('alt_text')
+
+
 
         # returns alt text to show user
-        return mock_alt_text
+        if not alt_text:
+            return None, None
+        # after alt text has been successfully generated, the alt text
+        # and image is saved to the history
+
+        # removing prompt used in model from alt-text returned
+        alt_text = alt_text.split(":", 1)[1].strip()
+        entry_id = self.insert_history(image_bytes, alt_text, session_id)
+        return alt_text, entry_id
+
+
 
     def session_entries_count(self, session_id):
 
@@ -76,15 +102,17 @@ class GenAltText:
                 self.remove_oldest_entry(oldest_entry_id)
 
         # need to convert bytes to a string in order to send to superbase with json
-        image_bytes = image.read()
-        image_b64 = base64.b64encode(image_bytes).decode("utf-8")
+        image_b64 = base64.b64encode(image).decode("utf-8")
 
         # dont need to give time stamp it will by default use current time
-        self.supabase.table("history").insert(
-            {"session_id": session_id,
-             "image": image_b64, "alt_text":
-             alt_text, "edited_alt_text": "NULL"}
-        ).execute()
+        response = (
+                self.supabase.table("history").insert(
+                    {"session_id": session_id,
+                    "image": image_b64, "alt_text":
+                    alt_text, "edited_alt_text": "NULL"}
+                    ).execute()
+                )
+        return response.data[0]["entry_id"]
 
     # this function is for testing purposes to store images from database
     def save_image(self, entry_id=1):

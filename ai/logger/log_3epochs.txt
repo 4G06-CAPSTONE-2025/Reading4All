@@ -1,0 +1,310 @@
+2026-02-04 11:51:13,064 | INFO | ==========================================================================================
+2026-02-04 11:51:13,064 | INFO | RUN | MODEL_DIR=C:/Users/nawaa/OneDrive/Desktop/Reading4All/ai/model/iter3_pix2struct_3epochs | IMAGE_DIR=C:/Users/nawaa/OneDrive/Desktop/capstoneAI/trainSplit/val_data | DEVICE=cuda
+2026-02-04 11:51:13,065 | INFO | ==========================================================================================
+2026-02-04 11:51:13,690 | INFO | Found 102 images in C:/Users/nawaa/OneDrive/Desktop/capstoneAI/trainSplit/val_data
+2026-02-04 11:51:13,737 | INFO | angularVelocity.png: starting generation
+2026-02-04 11:51:14,955 | INFO | angularVelocity.png: generation finished
+2026-02-04 11:51:14,955 | INFO | angularVelocity.png: Describe this physics diagram:θ is a magnetic field with a magnetic field of 100 ohms.
+2026-02-04 11:51:14,972 | INFO | blockDiagram3.png: starting generation
+2026-02-04 11:51:15,970 | INFO | blockDiagram3.png: generation finished
+2026-02-04 11:51:15,971 | INFO | blockDiagram3.png: Describe this physics diagram:-axis vector (N) is drawn from the left to the right, with a horizontal axis labeled N and a vertical axis labeled N. The horizontal axis is labeled N, indicating the direction of motion in the field.
+2026-02-04 11:51:15,996 | INFO | circuitDiagram4.png: starting generation
+2026-02-04 11:51:16,916 | INFO | circuitDiagram4.png: generation finished
+2026-02-04 11:51:16,916 | INFO | circuitDiagram4.png: Describe this physics diagram:V is a 100 ohms resistor with 10 ohms and 20 ohms.
+2026-02-04 11:51:17,001 | INFO | densityTemperature.png: starting generation
+2026-02-04 11:51:17,614 | INFO | densityTemperature.png: generation finished
+2026-02-04 11:51:17,614 | INFO | densityTemperature.png: Describe this physics diagram:-axis temperature vs temperature, temperature vs temperature. Demonstrates how temperature increases with time, while temperature decreases with time.
+2026-02-04 11:51:17,641 | INFO | electricField.png: starting generation
+2026-02-04 11:51:19,518 | INFO | electricField.png: generation finished
+2026-02-04 11:51:19,519 | INFO | electricField.png: Describe this physics diagram: (a) is a magnetic field that travels through a magnetic field. A magnetic field travels through the magnetic field, where the magnetic field travels to the magnetic field. The magnetic field travels from the magnetic field to the electric field, where magnetic field travels across the magnetic field and travels through the electric field.
+2026-02-04 11:51:19,572 | INFO | energyTime.png: starting generation
+2026-02-04 11:51:20,938 | INFO | energyTime.png: generation finished
+2026-02-04 11:51:20,939 | INFO | energyTime.png: Describe this physics diagram: = 0.4997, 0 = 1.000, and 1 = 2.001.
+2026-02-04 11:51:20,955 | INFO | freewayTraffic.png: starting generation
+2026-02-04 11:51:22,120 | INFO | freewayTraffic.png: generation finished
+2026-02-04 11:51:22,120 | INFO | freewayTraffic.png: Describe this physics diagram:-axis diagram showing a vertical axis with a horizontal axis. The vertical axis is labeled as the vertical axis, and the horizontal axis is denoted as the horizontal axis.
+2026-02-04 11:51:22,141 | INFO | image1.png: starting generation
+2026-02-04 11:51:24,477 | INFO | image1.png: generation finished
+2026-02-04 11:51:24,477 | INFO | image1.png: Describe this physics diagram:-line diagram showing a single line with 1000 lines, and 1010 lines. This diagram illustrates how the two lines are connected in parallel, demonstrating how the three lines are connected together.
+2026-02-04 11:51:24,490 | INFO | image10.png: starting generation
+2026-02-04 11:51:26,618 | INFO | image10.png: generation finished
+2026-02-04 11:51:26,618 | INFO | image10.png: Describe this physics diagram: (in) and (out) of a magnetic field, with a magnetic field labeled θ (in) in the center. The field is labeled θ(in) and θ(out) in the middle, with a red line labeled θ = θ (out). The field lines are labeled B (in), and B (out) and B (in). The diagram illustrates how magnetic field lines can be used to determine the direction of magnetic field.
+2026-02-04 11:51:26,628 | INFO | image11.png: starting generation
+2026-02-04 11:51:27,369 | INFO | image11.png: generation finished
+2026-02-04 11:51:27,369 | INFO | image11.png: Describe this physics diagram: = 10 cm, 20 cm, and 50 cm.
+2026-02-04 11:51:27,380 | INFO | image12.png: starting generation
+2026-02-04 11:51:28,188 | INFO | image12.png: generation finished
+2026-02-04 11:51:28,188 | INFO | image12.png: Describe this physics diagram: = 100 ohms, θ = 22 ohms, λ = 50 ohms, and λ = +10 ohms.
+2026-02-04 11:51:28,197 | INFO | image14.png: starting generation
+2026-02-04 11:51:28,732 | INFO | image14.png: generation finished
+2026-02-04 11:51:28,733 | INFO | image14.png: Describe this physics diagram: = 100 ohms, 105 ohms, and 106 ohms.
+2026-02-04 11:51:28,746 | INFO | image19.png: starting generation
+2026-02-04 11:51:30,539 | INFO | image19.png: generation finished
+2026-02-04 11:51:30,539 | INFO | image19.png: Describe this physics diagram: = 0. The figure illustrates how the weight lifter is raised by a weight lifter. The weight lifter increases the height of the weight, while the height lifter decreases the height, while the weight lifters increase the height, and the height lifters decrease the height.
+2026-02-04 11:51:30,550 | INFO | image20.png: starting generation
+2026-02-04 11:51:31,152 | INFO | image20.png: generation finished
+2026-02-04 11:51:31,152 | INFO | image20.png: Describe this physics diagram: = 100 ohms, θ = 20 ohms, and π = 50 ohms.
+2026-02-04 11:51:31,164 | INFO | image21.png: starting generation
+2026-02-04 11:51:32,852 | INFO | image21.png: generation finished
+2026-02-04 11:51:32,853 | INFO | image21.png: Describe this physics diagram:1 (a) and 2 (b) are connected in parallel, with a magnetic field labeled θ1 (b) and θ2 (b). This diagram illustrates how the magnetic field is connected to the magnetic field.
+2026-02-04 11:51:32,866 | INFO | image23.png: starting generation
+2026-02-04 11:51:34,221 | INFO | image23.png: generation finished
+2026-02-04 11:51:34,221 | INFO | image23.png: Describe this physics diagram: (a) and θ (b) are connected in parallel, with a magnetic field on the left and a magnetic field at the right. This diagram illustrates how magnetic field is connected to a magnetic field, where magnetic field is placed in parallel.
+2026-02-04 11:51:34,240 | INFO | image24.png: starting generation
+2026-02-04 11:51:39,874 | INFO | image24.png: generation finished
+2026-02-04 11:51:39,874 | INFO | image24.png: Describe this physics diagram: = 0, θ = 0 and θ = + 0. The diagram illustrates how a block is placed at a rest at x = 0; the rest is placed at the rest at x=0, and the rest is located at the rest of x = 1. The block is placed on a rest at a rest in a rest. The rest is placed on the rest at the rest, where the rest passes through the rest, while the rest is passed through the rest. The figure illustrates how the block is placed in a rest at rest, where a block passes through a rest, where it passes through a resting force, where it reaches the rest at a maximum speed, where it travels through the rest at an maximum speed, and where the rest moves away from the rest.
+2026-02-04 11:51:39,890 | INFO | image27.png: starting generation
+2026-02-04 11:51:40,390 | INFO | image27.png: generation finished
+2026-02-04 11:51:40,391 | INFO | image27.png: Describe this physics diagram: = 0 = 0, θ = 0 and λ = 0.
+2026-02-04 11:51:40,400 | INFO | image28.png: starting generation
+2026-02-04 11:51:41,481 | INFO | image28.png: generation finished
+2026-02-04 11:51:41,482 | INFO | image28.png: Describe this physics diagram: (a) is a magnetic field with a magnetic field A (b) and a magnetic field B (c). This diagram illustrates how magnetic fields are formed by a magnetic field.
+2026-02-04 11:51:41,493 | INFO | image29.png: starting generation
+2026-02-04 11:51:42,937 | INFO | image29.png: generation finished
+2026-02-04 11:51:42,937 | INFO | image29.png: Describe this physics diagram: (a) and (b) are connected in parallel, with a straight line pointing to the right. The horizontal line is labeled θ (b) and θ (θ) and is marked θ(θ). The horizontal line represents the direction of the magnetic field, indicating the direction of magnetic field.
+2026-02-04 11:51:42,952 | INFO | image3.png: starting generation
+2026-02-04 11:51:43,958 | INFO | image3.png: generation finished
+2026-02-04 11:51:43,958 | INFO | image3.png: Describe this physics diagram: 6-part diagram of refraction and refraction in a refraction system. This diagram illustrates how refraction produces refraction, where refraction is measured by refraction.
+2026-02-04 11:51:43,987 | INFO | image30.png: starting generation
+2026-02-04 11:51:45,877 | INFO | image30.png: generation finished
+2026-02-04 11:51:45,878 | INFO | image30.png: Describe this physics diagram:0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 30, 40, 50, 60, 70, 80, and 100.
+2026-02-04 11:51:45,886 | INFO | image31.png: starting generation
+2026-02-04 11:51:46,476 | INFO | image31.png: generation finished
+2026-02-04 11:51:46,476 | INFO | image31.png: Describe this physics diagram: = 100 ohms, 105 ohms, and 109 ohms.
+2026-02-04 11:51:46,514 | INFO | image33.png: starting generation
+2026-02-04 11:51:48,179 | INFO | image33.png: generation finished
+2026-02-04 11:51:48,179 | INFO | image33.png: Describe this physics diagram: 1000, 2000 and 2020. This diagram illustrates how the design of a transistor is used to determine the direction of electron transfer in a semiconductor. The diagram illustrates how electron transfer is used to identify the direction of electrons in a semiconductor, demonstrating how electron transfer can be used to determine electron transfer.
+2026-02-04 11:51:48,193 | INFO | image34.png: starting generation
+2026-02-04 11:51:48,804 | INFO | image34.png: generation finished
+2026-02-04 11:51:48,804 | INFO | image34.png: Describe this physics diagram: 100 nm wafer size, 200 nm wavelength, and 105 nm wavelength.
+2026-02-04 11:51:48,814 | INFO | image35.png: starting generation
+2026-02-04 11:51:50,346 | INFO | image35.png: generation finished
+2026-02-04 11:51:50,347 | INFO | image35.png: Describe this physics diagram:-part diagram showing spectral parts (UV, IR, IR-B, IR-A, IR-b) and spectral parts (IR-B, IRB, IR-a, IR-c). The diagram illustrates how spectral parts are arranged in a single diagram, illustrating how spectral parts differ from each other.
+2026-02-04 11:51:50,356 | INFO | image40.png: starting generation
+2026-02-04 11:51:52,013 | INFO | image40.png: generation finished
+2026-02-04 11:51:52,013 | INFO | image40.png: Describe this physics diagram:000,000 and 1000 atoms are connected to a single electron. This diagram illustrates how electrons move from one electron to another, showing how the electron moves through the electron, creating a magnetic field.
+2026-02-04 11:51:52,023 | INFO | image41.png: starting generation
+2026-02-04 11:51:52,746 | INFO | image41.png: generation finished
+2026-02-04 11:51:52,746 | INFO | image41.png: Describe this physics diagram:-axis velocity vs time graph with 10000, 1500, and 2000.
+2026-02-04 11:51:52,758 | INFO | image44.png: starting generation
+2026-02-04 11:51:53,351 | INFO | image44.png: generation finished
+2026-02-04 11:51:53,352 | INFO | image44.png: Describe this physics diagram: 1.000, 250, and 500 degrees.
+2026-02-04 11:51:53,362 | INFO | image47.png: starting generation
+2026-02-04 11:51:54,600 | INFO | image47.png: generation finished
+2026-02-04 11:51:54,601 | INFO | image47.png: Describe this physics diagram: (a) is a magnetic field with a magnetic field of 100 ohms, and (b) is an electric field with a voltage of 200 ohms.
+2026-02-04 11:51:54,611 | INFO | image6.png: starting generation
+2026-02-04 11:51:56,102 | INFO | image6.png: generation finished
+2026-02-04 11:51:56,102 | INFO | image6.png: Describe this physics diagram:-body interaction between two atoms is shown in a circular loop. The loop is connected to a magnetic field, where the current flows through the loop, and the current flows from the loop to the loop.
+2026-02-04 11:51:56,120 | INFO | image7.png: starting generation
+2026-02-04 11:51:57,502 | INFO | image7.png: generation finished
+2026-02-04 11:51:57,502 | INFO | image7.png: Describe this physics diagram: (θ) is a magnetic field with a magnetic field of 0.000 ohms, and θ (θ) has a magnetic field that is perpendicular to the magnetic field. This diagram illustrates how magnetic field is connected to the magnetic fields.
+2026-02-04 11:51:57,553 | INFO | kineticTheory.png: starting generation
+2026-02-04 11:51:58,748 | INFO | kineticTheory.png: generation finished
+2026-02-04 11:51:58,748 | INFO | kineticTheory.png: Describe this physics diagram: (a) is a magnetic field with a magnetic field that is connected to a magnetic field.
+2026-02-04 11:51:58,759 | INFO | page0064_img000.png: starting generation
+2026-02-04 11:51:59,765 | INFO | page0064_img000.png: generation finished
+2026-02-04 11:51:59,765 | INFO | page0064_img000.png: Describe this physics diagram:-axis velocity vs time graph with a slope of 10,000 km.
+2026-02-04 11:51:59,777 | INFO | page0091_img000.png: starting generation
+2026-02-04 11:52:00,399 | INFO | page0091_img000.png: generation finished
+2026-02-04 11:52:00,400 | INFO | page0091_img000.png: Describe this physics diagram:-axis velocity vs time graph with 100, 200, and 400 points.
+2026-02-04 11:52:00,410 | INFO | page0098_img001.png: starting generation
+2026-02-04 11:52:01,026 | INFO | page0098_img001.png: generation finished
+2026-02-04 11:52:01,027 | INFO | page0098_img001.png: Describe this physics diagram: = 100 ohms, θ = 80 ohms, and θ = +20 ohms.
+2026-02-04 11:52:01,036 | INFO | page0099_img000.png: starting generation
+2026-02-04 11:52:02,346 | INFO | page0099_img000.png: generation finished
+2026-02-04 11:52:02,346 | INFO | page0099_img000.png: Describe this physics diagram:(θ) is a horizontal axis with a vertical axis (θ) and a horizontal axis (θ). The horizontal axis is labeled θ = θ, and the vertical axis is labeled π = θ.
+2026-02-04 11:52:02,357 | INFO | page0103_img000.png: starting generation
+2026-02-04 11:52:02,843 | INFO | page0103_img000.png: generation finished
+2026-02-04 11:52:02,843 | INFO | page0103_img000.png: Describe this physics diagram: = 100, 200, and 300.
+2026-02-04 11:52:02,852 | INFO | page0105_img000.png: starting generation
+2026-02-04 11:52:03,393 | INFO | page0105_img000.png: generation finished
+2026-02-04 11:52:03,393 | INFO | page0105_img000.png: Describe this physics diagram: = 100, 50, 20, and 30 lines.
+2026-02-04 11:52:03,404 | INFO | page0105_img002.png: starting generation
+2026-02-04 11:52:05,323 | INFO | page0105_img002.png: generation finished
+2026-02-04 11:52:05,323 | INFO | page0105_img002.png: Describe this physics diagram: (a) and θ (b) are connected in parallel, with a magnetic field labeled θ (c), and a magnetic field called θ (d). The magnetic field is labeled θ(c), and the magnetic field is labelled θ(d), and the electric field labeled θε (d) is labeled δ (d).
+2026-02-04 11:52:05,331 | INFO | page0114_img001.png: starting generation
+2026-02-04 11:52:06,340 | INFO | page0114_img001.png: generation finished
+2026-02-04 11:52:06,341 | INFO | page0114_img001.png: Describe this physics diagram:(θ) is a magnetic field that travels through a magnetic field. This field is labeled as θ (θ) and θ(θ) and is shown as θ, indicating the direction of the magnetic field.
+2026-02-04 11:52:06,353 | INFO | page0160_img000.png: starting generation
+2026-02-04 11:52:07,486 | INFO | page0160_img000.png: generation finished
+2026-02-04 11:52:07,486 | INFO | page0160_img000.png: Describe this physics diagram: (a) is a magnetic field with 100 ohms and 200 ohms. This diagram illustrates how magnetic fields are connected to a magnetic field.
+2026-02-04 11:52:07,501 | INFO | page0172_img000.png: starting generation
+2026-02-04 11:52:08,678 | INFO | page0172_img000.png: generation finished
+2026-02-04 11:52:08,679 | INFO | page0172_img000.png: Describe this physics diagram: = A + B = B = B. This diagram illustrates how a magnetic field is connected to a magnetic field, where the magnetic field is placed in a magnetic field.
+2026-02-04 11:52:08,687 | INFO | page0177_img001.png: starting generation
+2026-02-04 11:52:09,642 | INFO | page0177_img001.png: generation finished
+2026-02-04 11:52:09,643 | INFO | page0177_img001.png: Describe this physics diagram: (a) is a magnetic field with a magnetic field that is connected to a magnetic field. The diagram illustrates how magnetic fields are connected to the magnetic field, showing how magnetic fields interact with the magnetic field.
+2026-02-04 11:52:09,651 | INFO | page0180_img000.png: starting generation
+2026-02-04 11:52:10,870 | INFO | page0180_img000.png: generation finished
+2026-02-04 11:52:10,870 | INFO | page0180_img000.png: Describe this physics diagram: (a) and θ (b) are connected in parallel, with a single resistor labeled θ (c), and a series of resistors labeled θ(c), which is connected in parallel.
+2026-02-04 11:52:10,880 | INFO | page0305_img000.png: starting generation
+2026-02-04 11:52:20,441 | INFO | page0305_img000.png: generation finished
+2026-02-04 11:52:20,442 | INFO | page0305_img000.png: Describe this physics diagram: = r = r = R = r = m = r = n = r = y = r = h = r = f = r = k = r = x = r = v = r = l = r = z = r = q = r = p = r = c = r = d = r = b = r = g = r = i = r = w = r = j = r = u = r = a = r = F = r = L = r = Y = r = Q = r = T = r = V = r = N = r = S = r = A = r = B = r = C = r = P = r = I = r = (r = r = + r = r) = r = e = r = o = r = K = r = H = r = D = r = Z = r = X = r = ^ r = r <= r = r => r = r= r = r - r = r + r = R.
+2026-02-04 11:52:20,461 | INFO | page0327_img000.png: starting generation
+2026-02-04 11:52:22,344 | INFO | page0327_img000.png: generation finished
+2026-02-04 11:52:22,345 | INFO | page0327_img000.png: Describe this physics diagram: (a) and (b) are connected in parallel, with a single source (a) connected in parallel. This diagram illustrates how light enters the source and travels through the source, showing how light travels from the source to the source.
+2026-02-04 11:52:22,356 | INFO | page0329_img000.png: starting generation
+2026-02-04 11:52:22,957 | INFO | page0329_img000.png: generation finished
+2026-02-04 11:52:22,957 | INFO | page0329_img000.png: Describe this physics diagram:-axis velocity vs time graph with 100 degrees, 20 degrees, and 10 degrees.
+2026-02-04 11:52:22,965 | INFO | page0350_img000.png: starting generation
+2026-02-04 11:52:25,591 | INFO | page0350_img000.png: generation finished
+2026-02-04 11:52:25,591 | INFO | page0350_img000.png: Describe this physics diagram:-air air cooled by a single room. The air cooled by the room is cooled by an air cooled air cooled by two separate rooms. The air coolers the air, while the air coolers it, which is cooled by a separate room. The cooling air is cooled by two rooms, where the air cooled by another room is cooled with a separate room, where it is cooled by the same room. This diagram illustrates how air cooled by air cooling by a room can be cooled by a different room.
+2026-02-04 11:52:25,598 | INFO | page0375_img000.png: starting generation
+2026-02-04 11:52:29,879 | INFO | page0375_img000.png: generation finished
+2026-02-04 11:52:29,879 | INFO | page0375_img000.png: Describe this physics diagram: = Q = Q = V = V = v = v = y = v = q = v = x = y = y = z = y = q = y = t = y = x = x = z = x + y = x + q = y + q = x = q = q = sq = q = Q = y = sq = x = sq = sq = z = sq = y = Q = sq = Q = q = z = q = x + x = x - q = q=q = q = qu = q = θ = q = b = q = n = q = r = q = k = q = c = q = d = q = w = q = l = q = p = q = a + q = q + q = v.
+2026-02-04 11:52:29,887 | INFO | page0385_img000.png: starting generation
+2026-02-04 11:52:31,165 | INFO | page0385_img000.png: generation finished
+2026-02-04 11:52:31,166 | INFO | page0385_img000.png: Describe this physics diagram: (a) is a circular magnet with a magnetic field that is perpendicular to the magnetic field. The magnetic field is connected to the magnetic fields, where the magnetic field is parallel to the current. This diagram illustrates how the magnetic field can be used to determine the direction of magnetic field.
+2026-02-04 11:52:31,174 | INFO | page0405_img001.png: starting generation
+2026-02-04 11:52:31,644 | INFO | page0405_img001.png: generation finished
+2026-02-04 11:52:31,644 | INFO | page0405_img001.png: Describe this physics diagram: = 100 ohms, 20 ohms, and 30 ohms.
+2026-02-04 11:52:31,656 | INFO | page0406_img000.png: starting generation
+2026-02-04 11:52:32,334 | INFO | page0406_img000.png: generation finished
+2026-02-04 11:52:32,334 | INFO | page0406_img000.png: Describe this physics diagram:-amp circuit with two resistors: 10 ohms and 20 ohms.
+2026-02-04 11:52:32,341 | INFO | page0416_img000.png: starting generation
+2026-02-04 11:52:33,096 | INFO | page0416_img000.png: generation finished
+2026-02-04 11:52:33,096 | INFO | page0416_img000.png: Describe this physics diagram:-wave wave pattern with wave amplitudes ranging from 1 to 200 ohms. Wave amplitudes range from 2 to 50 ohms.
+2026-02-04 11:52:33,103 | INFO | page0430_img000.png: starting generation
+2026-02-04 11:52:34,339 | INFO | page0430_img000.png: generation finished
+2026-02-04 11:52:34,340 | INFO | page0430_img000.png: Describe this physics diagram:θ (a) is a magnetic field that travels through a magnetic field. This field is connected to a magnetic field, where the magnetic field travels through the magnetic field.
+2026-02-04 11:52:34,346 | INFO | page0452_img001.png: starting generation
+2026-02-04 11:52:35,277 | INFO | page0452_img001.png: generation finished
+2026-02-04 11:52:35,277 | INFO | page0452_img001.png: Describe this physics diagram: (L) is a magnetic field with a magnetic field that is perpendicular to the magnetic field.
+2026-02-04 11:52:35,286 | INFO | page0478_img001.png: starting generation
+2026-02-04 11:52:36,441 | INFO | page0478_img001.png: generation finished
+2026-02-04 11:52:36,442 | INFO | page0478_img001.png: Describe this physics diagram: (a) is a magnetic field that is connected to a magnetic field. This diagram illustrates how magnetic field is connected to the magnetic field.
+2026-02-04 11:52:36,452 | INFO | page0494_img000.png: starting generation
+2026-02-04 11:52:37,532 | INFO | page0494_img000.png: generation finished
+2026-02-04 11:52:37,532 | INFO | page0494_img000.png: Describe this physics diagram: (a) and (b) are connected in parallel, with a magnetic field that is perpendicular to the magnetic field. This diagram illustrates how magnetic field is connected to the magnetic fields.
+2026-02-04 11:52:37,541 | INFO | page0496_img000.png: starting generation
+2026-02-04 11:52:49,073 | INFO | page0496_img000.png: generation finished
+2026-02-04 11:52:49,073 | INFO | page0496_img000.png: Describe this physics diagram: = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 45, 48, 47, 49, 50, 51, 52, 53, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 66, 67, 68, 69, 70, 72, 73, 75, 77, 79, 80, 82, 83, 84, 85, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 76, 86, 46, '9', '10, and 95.
+2026-02-04 11:52:49,080 | INFO | page0498_img001.png: starting generation
+2026-02-04 11:52:50,288 | INFO | page0498_img001.png: generation finished
+2026-02-04 11:52:50,288 | INFO | page0498_img001.png: Describe this physics diagram:-dimensional electron diffraction (f) and electron diffraction (m) are shown. The diffraction pattern is shown as a series of arrows pointing to the right, indicating the direction of electron diffraction.
+2026-02-04 11:52:50,297 | INFO | page0498_img002.png: starting generation
+2026-02-04 11:52:53,300 | INFO | page0498_img002.png: generation finished
+2026-02-04 11:52:53,300 | INFO | page0498_img002.png: Describe this physics diagram:-body light rays are placed in a car, with light rays moving from the car to the light rays. The light rays move through the car, creating a bright light ray, which is reflected from the car. The light ray travels through the car and enters the car, producing a bright light rays, which are reflected from the light rays, and then passes through the car.
+2026-02-04 11:52:53,309 | INFO | page0499_img000.png: starting generation
+2026-02-04 11:52:56,569 | INFO | page0499_img000.png: generation finished
+2026-02-04 11:52:56,569 | INFO | page0499_img000.png: Describe this physics diagram:1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 40, 50, 60, 70, 80, 90, and 100.
+2026-02-04 11:52:56,577 | INFO | page0508_img001.png: starting generation
+2026-02-04 11:52:58,504 | INFO | page0508_img001.png: generation finished
+2026-02-04 11:52:58,504 | INFO | page0508_img001.png: Describe this physics diagram:-axis prism with light rays 1, 2, and 3. Light rays 4, 5, and 6 are placed in the prism, while light rays 7, 8, and 10 are placed on the prism. This diagram illustrates how light rays interact with the prism, showing how light rays move through the prism, creating an image of light from the prism to the prism.
+2026-02-04 11:52:58,517 | INFO | page0519_img000.png: starting generation
+2026-02-04 11:52:59,448 | INFO | page0519_img000.png: generation finished
+2026-02-04 11:52:59,448 | INFO | page0519_img000.png: Describe this physics diagram:-dimensional electron diffraction (f) and electron diffraction (d) are the most common types of optical interference. This diagram illustrates how electron diffraction is used to determine the direction of electron diffraction.
+2026-02-04 11:52:59,459 | INFO | page0544_img000.png: starting generation
+2026-02-04 11:53:01,039 | INFO | page0544_img000.png: generation finished
+2026-02-04 11:53:01,039 | INFO | page0544_img000.png: Describe this physics diagram: = m and dy = m. The diagram illustrates how a magnetic field is connected to a magnetic field, where the magnetic field is located in a magnetic field. The diagram demonstrates how magnetic field is formed by a magnetic field that is connected to the magnetic field. This diagram illustrates how magnetic field can be used to determine the direction of magnetic field.
+2026-02-04 11:53:01,045 | INFO | page0550_img001.png: starting generation
+2026-02-04 11:53:01,765 | INFO | page0550_img001.png: generation finished
+2026-02-04 11:53:01,766 | INFO | page0550_img001.png: Describe this physics diagram:-axis electromagnetic field with two resistors: 70 ohms and 100 ohms.
+2026-02-04 11:53:01,774 | INFO | page0565_img000.png: starting generation
+2026-02-04 11:53:02,468 | INFO | page0565_img000.png: generation finished
+2026-02-04 11:53:02,468 | INFO | page0565_img000.png: Describe this physics diagram:-electron circuit with two resistors: 10 ohms and 20 ohms.
+2026-02-04 11:53:02,476 | INFO | page0567_img001.png: starting generation
+2026-02-04 11:53:03,402 | INFO | page0567_img001.png: generation finished
+2026-02-04 11:53:03,402 | INFO | page0567_img001.png: Describe this physics diagram: (a) is a magnetic field with a magnetic field that is perpendicular to the magnetic field.
+2026-02-04 11:53:03,413 | INFO | page0569_img000.png: starting generation
+2026-02-04 11:53:04,686 | INFO | page0569_img000.png: generation finished
+2026-02-04 11:53:04,687 | INFO | page0569_img000.png: Describe this physics diagram:-electrostatic force (I) is applied to a magnetic field, where the electric field is perpendicular to the magnetic field. The direction of the electric field depends on the direction of the magnetic field, and the direction of magnetic field is proportional to the direction of electric field.
+2026-02-04 11:53:04,693 | INFO | page0570_img000.png: starting generation
+2026-02-04 11:53:06,436 | INFO | page0570_img000.png: generation finished
+2026-02-04 11:53:06,436 | INFO | page0570_img000.png: Describe this physics diagram: (a) and (b) are connected in parallel, with a magnetic field (a) on the left and a magnet (b) on the right. The magnetic field (b) is connected to the magnetic field (c) and is shown as a straight line, with a horizontal line (c) pointing upward.
+2026-02-04 11:53:06,446 | INFO | page0587_img000.png: starting generation
+2026-02-04 11:53:07,251 | INFO | page0587_img000.png: generation finished
+2026-02-04 11:53:07,251 | INFO | page0587_img000.png: Describe this physics diagram:-part diagram of electron energy. Part (a): electron energy increases with increasing electron energy, while part (b): electron energy decreases with increased electron energy.
+2026-02-04 11:53:07,259 | INFO | page0618_img000.png: starting generation
+2026-02-04 11:53:08,087 | INFO | page0618_img000.png: generation finished
+2026-02-04 11:53:08,087 | INFO | page0618_img000.png: Describe this physics diagram: (positive terminal) is a positive terminal with negative terminal. The negative terminal is a positive term, indicating positive terminal. The positive terminal is a negative terminal, indicating negative terminal.
+2026-02-04 11:53:08,097 | INFO | page0637_img000.png: starting generation
+2026-02-04 11:53:08,665 | INFO | page0637_img000.png: generation finished
+2026-02-04 11:53:08,665 | INFO | page0637_img000.png: Describe this physics diagram: = 100, 150, and 250.
+2026-02-04 11:53:08,673 | INFO | page0643_img000.png: starting generation
+2026-02-04 11:53:09,569 | INFO | page0643_img000.png: generation finished
+2026-02-04 11:53:09,569 | INFO | page0643_img000.png: Describe this physics diagram: = 7500 ohms, 1000 ohms and 10,00 ohms.
+2026-02-04 11:53:09,581 | INFO | page0648_img000.png: starting generation
+2026-02-04 11:53:10,053 | INFO | page0648_img000.png: generation finished
+2026-02-04 11:53:10,054 | INFO | page0648_img000.png: Describe this physics diagram: = voltage vs voltage, R = voltage, V = voltage, and V = voltage.
+2026-02-04 11:53:10,061 | INFO | page0653_img004.png: starting generation
+2026-02-04 11:53:10,603 | INFO | page0653_img004.png: generation finished
+2026-02-04 11:53:10,604 | INFO | page0653_img004.png: Describe this physics diagram: = 100 ohms, 105 ohms, and 200 ohms.
+2026-02-04 11:53:10,612 | INFO | page0657_img000.png: starting generation
+2026-02-04 11:53:12,275 | INFO | page0657_img000.png: generation finished
+2026-02-04 11:53:12,275 | INFO | page0657_img000.png: Describe this physics diagram:V is a voltage source with a voltage of 6.8 volts. The voltage is measured as 6.5 volts, while the voltage is measured at 6.9 volts. The current is measured as a voltage of approximately 6.0 volts, and the voltage is shown as a voltage between 6.3 volts and 6.1 volts.
+2026-02-04 11:53:12,281 | INFO | page0665_img001.png: starting generation
+2026-02-04 11:53:12,968 | INFO | page0665_img001.png: generation finished
+2026-02-04 11:53:12,969 | INFO | page0665_img001.png: Describe this physics diagram:-axis diagram of a magnetic field with a magnetic field labeled Attractive.
+2026-02-04 11:53:12,978 | INFO | page0668_img000.png: starting generation
+2026-02-04 11:53:13,979 | INFO | page0668_img000.png: generation finished
+2026-02-04 11:53:13,979 | INFO | page0668_img000.png: Describe this physics diagram: (a) is a magnetic field with a magnetic field that is connected to a magnetic field. This diagram illustrates how magnetic field is connected to the magnetic field.
+2026-02-04 11:53:13,995 | INFO | page0672_img000.png: starting generation
+2026-02-04 11:53:15,200 | INFO | page0672_img000.png: generation finished
+2026-02-04 11:53:15,200 | INFO | page0672_img000.png: Describe this physics diagram: (a) is a magnetic field that travels through a magnetic field. This field is connected to a magnetic field, where the magnetic field travels through the magnetic field.
+2026-02-04 11:53:15,207 | INFO | page0682_img000.png: starting generation
+2026-02-04 11:53:16,176 | INFO | page0682_img000.png: generation finished
+2026-02-04 11:53:16,177 | INFO | page0682_img000.png: Describe this physics diagram: (R) is a magnetic field with 100 ohms and 200 ohms.
+2026-02-04 11:53:16,183 | INFO | page0683_img000.png: starting generation
+2026-02-04 11:53:17,008 | INFO | page0683_img000.png: generation finished
+2026-02-04 11:53:17,009 | INFO | page0683_img000.png: Describe this physics diagram:-axis magnetic field, with a magnetic field perpendicular to the magnetic field.
+2026-02-04 11:53:17,018 | INFO | page0706_img000.png: starting generation
+2026-02-04 11:53:18,755 | INFO | page0706_img000.png: generation finished
+2026-02-04 11:53:18,756 | INFO | page0706_img000.png: Describe this physics diagram: (UV 1000 k) is a magnetic field that travels through a magnetic field. The current flows through the magnetic field and travels through the field to the magnetic field, where the magnetic field travels through the magnet. The magnetic field travels from the magnetic field to the electric field, where it travels through the magnetic fields, where it reaches the magnetic field at the magnetic field.
+2026-02-04 11:53:18,764 | INFO | page0727_img000.png: starting generation
+2026-02-04 11:53:20,506 | INFO | page0727_img000.png: generation finished
+2026-02-04 11:53:20,506 | INFO | page0727_img000.png: Describe this physics diagram: (UV 1000 k) is a magnetic field that travels through a magnetic field. The current flows through the magnetic field and travels through the field to the magnetic field, where the magnetic field travels through the magnet. The magnetic field travels from the magnetic field to the electric field, where it travels through the magnetic fields, where it reaches the magnetic field at the magnetic field.
+2026-02-04 11:53:20,516 | INFO | page0737_img000.png: starting generation
+2026-02-04 11:53:21,740 | INFO | page0737_img000.png: generation finished
+2026-02-04 11:53:21,740 | INFO | page0737_img000.png: Describe this physics diagram:-axis atomic force (atomic force) is a constant force, with a constant force of 10 to 150 ohms. This force is proportional to the total force of the atomic force.
+2026-02-04 11:53:21,751 | INFO | page0739_img001.png: starting generation
+2026-02-04 11:53:22,381 | INFO | page0739_img001.png: generation finished
+2026-02-04 11:53:22,381 | INFO | page0739_img001.png: Describe this physics diagram: θ = 1000 ohms, θ=100 ohms and θ=200 ohms.
+2026-02-04 11:53:22,389 | INFO | page0750_img000.png: starting generation
+2026-02-04 11:53:22,781 | INFO | page0750_img000.png: generation finished
+2026-02-04 11:53:22,781 | INFO | page0750_img000.png: Describe this physics diagram:-axis circuit with resistors, and resistors.
+2026-02-04 11:53:22,787 | INFO | page0751_img000.png: starting generation
+2026-02-04 11:53:23,554 | INFO | page0751_img000.png: generation finished
+2026-02-04 11:53:23,554 | INFO | page0751_img000.png: Describe this physics diagram:-body circuit with two resistors: 10 ohms and 20 ohms.
+2026-02-04 11:53:23,563 | INFO | page0762_img000.png: starting generation
+2026-02-04 11:53:24,678 | INFO | page0762_img000.png: generation finished
+2026-02-04 11:53:24,678 | INFO | page0762_img000.png: Describe this physics diagram: (a) is a magnetic field with a magnetic field (b) that is connected to a magnetic field. This diagram illustrates how magnetic field is connected to the magnetic field.
+2026-02-04 11:53:24,686 | INFO | page0766_img001.png: starting generation
+2026-02-04 11:53:26,399 | INFO | page0766_img001.png: generation finished
+2026-02-04 11:53:26,400 | INFO | page0766_img001.png: Describe this physics diagram: (a) is a magnetic field with a magnetic field of 0, and the magnetic field is 0. The magnetic field is labeled as 0, while the magnetic field represents 0, with the magnetic field labeled as 1, and 2. This diagram illustrates how magnetic field is used to determine the direction of magnetic field.
+2026-02-04 11:53:26,409 | INFO | page0772_img000.png: starting generation
+2026-02-04 11:53:27,778 | INFO | page0772_img000.png: generation finished
+2026-02-04 11:53:27,778 | INFO | page0772_img000.png: Describe this physics diagram:-axis electron beam with a magnetic field. A magnetic field is placed in the center of the sphere, where the magnetic field is perpendicular to the magnetic field. The magnetic field is located in the center, where magnetic field is parallel to the surface, where magnetic fields are perpendicular to the surface.
+2026-02-04 11:53:27,787 | INFO | page0773_img001.png: starting generation
+2026-02-04 11:53:28,191 | INFO | page0773_img001.png: generation finished
+2026-02-04 11:53:28,191 | INFO | page0773_img001.png: Describe this physics diagram: +θ = θ = γ = θ.
+2026-02-04 11:53:28,210 | INFO | page0785_img000.png: starting generation
+2026-02-04 11:53:29,242 | INFO | page0785_img000.png: generation finished
+2026-02-04 11:53:29,242 | INFO | page0785_img000.png: Describe this physics diagram:-body circuit with two resistors connected in parallel.
+2026-02-04 11:53:29,249 | INFO | page0789_img000.png: starting generation
+2026-02-04 11:53:31,474 | INFO | page0789_img000.png: generation finished
+2026-02-04 11:53:31,474 | INFO | page0789_img000.png: Describe this physics diagram: (a) is a magnetic field that travels through a magnetic field. A magnetic field travels through the magnetic field, where the magnetic field travels in parallel to the magnetic field. The magnetic field travels along the magnetic field and passes through the field, where it travels through the field. The direction of the magnetic field is determined by the direction of the field.
+2026-02-04 11:53:31,483 | INFO | page0790_img000.png: starting generation
+2026-02-04 11:53:31,881 | INFO | page0790_img000.png: generation finished
+2026-02-04 11:53:31,881 | INFO | page0790_img000.png: Describe this physics diagram:-axis electron beam with a magnetic field, and a magnetic field.
+2026-02-04 11:53:31,894 | INFO | page0791_img000.png: starting generation
+2026-02-04 11:53:34,280 | INFO | page0791_img000.png: generation finished
+2026-02-04 11:53:34,280 | INFO | page0791_img000.png: Describe this physics diagram:-conductor circuit with two resistors: B and C. The circuit is connected to a magnetic field, where the magnetic field is connected to the magnetic field. The current flows through the circuit, where the electric field passes through the magnetic field, while the current flows through a magnetic field.
+2026-02-04 11:53:34,288 | INFO | page0796_img000.png: starting generation
+2026-02-04 11:53:54,454 | INFO | page0796_img000.png: generation finished
+2026-02-04 11:53:54,454 | INFO | page0796_img000.png: Describe this physics diagram: = R = G = G = R = R = RG = R = RG = R = r = R = g = r = r = g = rg = r = y = r = x = y = y = z = y = x = r = t = y = n = y = k = y = q = y = v = x = x = Y = y = d = y = b = y = c = y = g = y = l = y = h = y = f = y = i = y = u = y = p = y = a + y = y= y = y <= y = y + y = x + y = z^ y = y^ y = x^ y = r= y = r_y = r_g = r_q = r_c = r_d = r_f = r_r = r_t = r_k = r_h = r_n = r_v = r_b = r_x = r_z = r_m = r_s = r_l = r_p = r_e = r_i = r_j = r_a = r_o = r_u = r_w = r_2 = r_1 = r_3 = r_5 = r_6 = r_4 = r_0 = r_7 = r_9 = r_8 = r_in = r_F = r_R = r_G = r_B = r_I = r_Q = r_A = r_L = r_E = r_T = r_N = r_C = r_D = r_X = r_K = r_S = r_Y = r_Z = r_V = r_P = r_U = r_H = r_J = r_W = r_M = r_O = r_ta = r_dt = r_gt = r_ga = r_gs = r_gu = r_kg = r_gy = r_ng = r_fg = r_gc = r_gr = r_lg = r_gg = r_ge = r_gz = r_gm = r_gp = r_gk = r_gx = r_gf = r_gh = r_gi = r_gj = r_gal = r_
+2026-02-04 11:53:54,471 | INFO | page0798_img001.png: starting generation
+2026-02-04 11:53:55,601 | INFO | page0798_img001.png: generation finished
+2026-02-04 11:53:55,601 | INFO | page0798_img001.png: Describe this physics diagram:θ (a) is a neutron source with protons and neutrons. The protons are labeled as protons, neutrons, neutrons, protons, and neutrons.
+2026-02-04 11:53:55,622 | INFO | page0807_img000.png: starting generation
+2026-02-04 11:53:56,578 | INFO | page0807_img000.png: generation finished
+2026-02-04 11:53:56,578 | INFO | page0807_img000.png: Describe this physics diagram: 100 GeV, 1 GeV, and 2 GeV.
+2026-02-04 11:53:56,608 | INFO | page0821_img000.png: starting generation
+2026-02-04 11:53:59,521 | INFO | page0821_img000.png: generation finished
+2026-02-04 11:53:59,521 | INFO | page0821_img000.png: Describe this physics diagram:-axis atomic number, atomic number, and atomic mass. The atomic number is 1,008, and the atomic number 2,100, and atomic number 3,101. The atomic numbers are 1,102, and 1,200, respectively.
+2026-02-04 11:53:59,566 | INFO | vectorAddition2.png: starting generation
+2026-02-04 11:54:00,158 | INFO | vectorAddition2.png: generation finished
+2026-02-04 11:54:00,158 | INFO | vectorAddition2.png: Describe this physics diagram: 1000 ohms, 1020 ohms, and 2220 ohms.
+2026-02-04 11:54:00,195 | INFO | voltageCurrent.png: starting generation
+2026-02-04 11:54:02,045 | INFO | voltageCurrent.png: generation finished
+2026-02-04 11:54:02,045 | INFO | voltageCurrent.png: Describe this physics diagram: = 0.000, 0 = 1.50, 1 = 2.00, and 3 = 5.00. This diagram illustrates how current flows through a circuit, showing how current flows from the circuit to the circuit. The diagram illustrates how voltage increases as a result of current passing through the circuit.

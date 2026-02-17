@@ -11,27 +11,29 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  // 🔹 MOCK LOGIN API
   async function loginApiMock({ email, password }) {
-    await new Promise((r) => setTimeout(r, 500));
+    const loginResult = await fetch(
+      "https://reading4all-backend.onrender.com/api/login/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({email,password}),
+      }
+    );
 
-    // Domain check
-    if (!email.endsWith("@mcmaster.ca")) {
+    const data = await loginResult.json();
+
+    if (!loginResult.ok) 
+      {
       return {
         ok: false,
-        error: "Please use your McMaster email (@mcmaster.ca).",
+        error: data.error || "Login failed",
       };
     }
-
-    // Hardcoded credentials (for now)
-    if (email === "student@mcmaster.ca" && password === "student") {
-      return { ok: true };
-    }
-
-    return {
-      ok: false,
-      error: "Invalid email or password. Retry.",
-    };
+    return { ok: true };
   }
 
   const handleSubmit = async (e) => {
@@ -64,8 +66,8 @@ export default function Login() {
   return (
     <div className="auth-page">
       <div className="auth-heading">
-        <h1>Alternative Text Generation</h1>
-        <p>Generate clear, concise alternative text for STEM diagrams</p>
+        <h1>Physics Alternative Text Generation</h1>
+        <p>Generate clear, concise alternative text for physics diagrams</p>
       </div>
 
       <div className="auth-card">

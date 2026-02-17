@@ -1,7 +1,11 @@
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from databases.connect_supabase import get_supabase_client
+from databases.connect_supabase import (
+    get_supabase_client,
+    get_supabase_admin_client,
+)
+
 
 @csrf_exempt
 def send_verification(request):
@@ -16,16 +20,40 @@ def send_verification(request):
     email = (body.get("email") or "").strip().lower()
 
     if not email.endswith("@mcmaster.ca"):
-        return JsonResponse({"error": "Email must be a @mcmaster.ca address"}, status=400)
+        return JsonResponse(
+            {"error": "Email must be a @mcmaster.ca address"},
+            status=400,
+        )
 
-    supabase = get_supabase_client()
+    admin = get_supabase_admin_client()
+    public = get_supabase_client()
 
+    # 1️⃣ Check if user already exists (ADMIN)
     try:
-        supabase.auth.sign_in_with_otp({
-            "email": email,
-            "options": {"should_create_user": True}
-        })
-        return JsonResponse({"ok": True, "message": "OTP code sent"}, status=200)
-    except Exception as e:
-        return JsonResponse({"error": str(e)}, status=400)
+        admin.auth.admin.get_user_by_email(email)
+        return JsonResponse(
+            {"error": "User already registered. Please log in."},
+            status=400,
+        )
+    except Exception:
+        # user does not exist → expected
+        pass
 
+    # 2️⃣ Send OTP (PUBLIC)
+    try:
+        public.auth.sign_in_with_otp({
+            "email": email,
+            "options": {"should_create_user": True},
+        })
+
+        return JsonResponse(
+            {"ok": True, "message": "OTP code sent"},
+            status=200,
+        )
+
+    except Exception as e:
+        print("OTP SEND ERROR:", e)
+        return JsonResponse(
+            {"error": str(e)},
+            status=400,
+        )

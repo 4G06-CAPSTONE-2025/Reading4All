@@ -83,3 +83,28 @@
 
 **Decision:**  
 - Team should label up to **~500-1000 images** (target scale)  
+
+### [2026-02-03 8:45PM] <Scale-up run: 500+ annotations (BLIP) + qualitative eval>
+
+**Hypothesis:**  
+- Scaling to **500+ labeled annotations** should reduce generic captions and improve visual grounding, but some hallucinations and instability may remain.
+
+**Test:**  
+- Trained **BLIP** on **500+ annotations**.  
+- Ran inference on the **val split** and reviewed outputs qualitatively across several diagram types (circuits, graphs, fields, mechanics).
+
+**Run:**  
+- MODEL_DIR=`ai/models`  
+- IMAGE_DIR=`ai/data/trainSplit/val_data`  
+- DEVICE=`mps`  
+- Val set size: **102 images**  
+- Inference prompt: `"describe this physics diagram : ..."`
+
+**Outcome:**  
+- **Better high-level diagram recognition** in some cases (e.g., “inclined plane forces”, “simple circuit”, “voltage vs current”).  
+
+**Decision / Next steps:**  
+- **Add more labeled data** to improve generalization and stability.  
+- Use a **larger model (e.g., Gemini)** to:  
+  - help **design/optimize a better prompt** (prompt search + refinement), and  
+  - support **fine-tuning / distillation** to improve caption quality and reduce inconsistency.

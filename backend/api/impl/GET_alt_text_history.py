@@ -13,16 +13,8 @@ def get_history(request):
         )
         return response
     
-    session_id = request.GET.get("session_id") # should be passed in as query parameter.
-
-    if not session_id:
-        response = JsonResponse(
-            {"error": "session_id query parameter is needed"}, status=400
-        )
-        return response
-
     # calls backend_controller in order to reach service
-    # session is hardcoded temporarily
+    session_id = request.session_id
     history = backend_controller.get_alt_text_history(session_id)
 
     # in the case where history is empty it wil still be returned as an empty list
