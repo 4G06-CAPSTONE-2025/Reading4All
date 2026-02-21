@@ -1,0 +1,3708 @@
+{
+  "extraction_date": "2026-02-20T13:16:47.867610",
+  "source_pdf": "ai/largeModelTesting/utils/physicsTextbook2.pdf",
+  "statistics": {
+    "total_pages": 755,
+    "images_extracted": 462,
+    "captions_found": 461,
+    "errors": 0
+  },
+  "images": [
+    {
+      "page_number": 1,
+      "image_index": 0,
+      "image_path": "images/page0001_img000.png",
+      "caption": "",
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "page_number": 3,
+      "image_index": 0,
+      "image_path": "images/page0003_img000.jpeg",
+      "caption": "LibreTexts is the adaptable, user-friendly non-profit open education resource platform that educators",
+      "width": 700,
+      "height": 220
+    },
+    {
+      "page_number": 12,
+      "image_index": 0,
+      "image_path": "images/page0012_img000.jpeg",
+      "caption": ": Galaxies are as immense as atoms are small. Yet the same laws of physics describe both, and all the rest of nature—an",
+      "width": 1000,
+      "height": 335
+    },
+    {
+      "page_number": 13,
+      "image_index": 0,
+      "image_path": "images/page0013_img000.jpeg",
+      "caption": ": The flight formations of migratory birds such as Canada geese are governed by the laws of physics. (credit: David",
+      "width": 400,
+      "height": 228
+    },
+    {
+      "page_number": 14,
+      "image_index": 0,
+      "image_path": "images/page0014_img000.jpeg",
+      "caption": ": The laws of physics help us understand how common appliances work. For example, the laws of physics can help",
+      "width": 234,
+      "height": 156
+    },
+    {
+      "page_number": 15,
+      "image_index": 0,
+      "image_path": "images/page0015_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46139 : Isaac Newton (1642–1727) was very reluctant to publish his revolutionary work and had to be convinced to do so. In",
+      "width": 256,
+      "height": 375
+    },
+    {
+      "page_number": 15,
+      "image_index": 1,
+      "image_path": "images/page0015_img001.jpeg",
+      "caption": ": An artist’s rendition of the the structure of a cell membrane. Membranes form the boundaries of animal cells and are",
+      "width": 500,
+      "height": 206
+    },
+    {
+      "page_number": 15,
+      "image_index": 3,
+      "image_path": "images/page0015_img003.jpeg",
+      "caption": ": These two applications of physics have more in common than meets the eye. Microwave ovens use electromagnetic",
+      "width": 175,
+      "height": 211
+    },
+    {
+      "page_number": 16,
+      "image_index": 1,
+      "image_path": "images/page0016_img001.jpeg",
+      "caption": ": Marie Curie (1867–1934) sacrificed monetary assets to help finance her early research and damaged her physical",
+      "width": 163,
+      "height": 210
+    },
+    {
+      "page_number": 17,
+      "image_index": 0,
+      "image_path": "images/page0017_img000.jpeg",
+      "caption": ": Over the centuries, natural philosophy has evolved into more specialized disciplines, as illustrated by the",
+      "width": 157,
+      "height": 210
+    },
+    {
+      "page_number": 18,
+      "image_index": 1,
+      "image_path": "images/page0018_img001.jpeg",
+      "caption": ": Niels Bohr (1885–1962) made fundamental contributions to the development of quantum mechanics, one part of",
+      "width": 168,
+      "height": 202
+    },
+    {
+      "page_number": 18,
+      "image_index": 2,
+      "image_path": "images/page0018_img002.jpeg",
+      "caption": ": Galileo Galilei (1564–1642) laid the foundation of modern experimentation and made contributions in mathematics,",
+      "width": 167,
+      "height": 210
+    },
+    {
+      "page_number": 21,
+      "image_index": 0,
+      "image_path": "images/page0021_img000.jpeg",
+      "caption": ": Distances given in unknown units are maddeningly useless.",
+      "width": 350,
+      "height": 303
+    },
+    {
+      "page_number": 21,
+      "image_index": 1,
+      "image_path": "images/page0021_img001.jpeg",
+      "caption": ": The distance from Earth to the Moon may seem immense, but it is just a tiny fraction of the distances from Earth to",
+      "width": 400,
+      "height": 225
+    },
+    {
+      "page_number": 22,
+      "image_index": 1,
+      "image_path": "images/page0022_img001.jpeg",
+      "caption": ": An atomic clock such as this one uses the vibrations of cesium atoms to keep time to a precision of better than a",
+      "width": 207,
+      "height": 207
+    },
+    {
+      "page_number": 31,
+      "image_index": 0,
+      "image_path": "images/page0031_img000.jpeg",
+      "caption": ": The motion of an American kestrel through the air can be described by the bird’s displacement, speed, velocity, and",
+      "width": 1000,
+      "height": 478
+    },
+    {
+      "page_number": 32,
+      "image_index": 0,
+      "image_path": "images/page0032_img000.jpeg",
+      "caption": ": These cyclists in Vietnam can be described by their position relative to buildings and a canal. Their motion can be",
+      "width": 281,
+      "height": 210
+    },
+    {
+      "page_number": 33,
+      "image_index": 0,
+      "image_path": "images/page0033_img000.jpeg",
+      "caption": ": A passenger moves from his seat to the back of the plane. His location relative to the airplane is given by . The −4.0-",
+      "width": 427,
+      "height": 315
+    },
+    {
+      "page_number": 33,
+      "image_index": 1,
+      "image_path": "images/page0033_img001.jpeg",
+      "caption": ": A professor paces left and right while lecturing. Her position relative to Earth is given by . The +2.0 m displacement",
+      "width": 281,
+      "height": 223
+    },
+    {
+      "page_number": 36,
+      "image_index": 0,
+      "image_path": "images/page0036_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46144 : It is usually convenient to consider motion upward or to the right as positive (+) and motion downward or to the left",
+      "width": 260,
+      "height": 250
+    },
+    {
+      "page_number": 36,
+      "image_index": 1,
+      "image_path": "images/page0036_img001.jpeg",
+      "caption": ": The motion of this Eclipse Concept jet can be described in terms of the distance it has traveled (a scalar quantity) or",
+      "width": 281,
+      "height": 200
+    },
+    {
+      "page_number": 38,
+      "image_index": 0,
+      "image_path": "images/page0038_img000.jpeg",
+      "caption": ": The motion of these racing snails can be described by their speeds and their velocities. (credit: tobitasflickr, Flickr)",
+      "width": 281,
+      "height": 187
+    },
+    {
+      "page_number": 39,
+      "image_index": 0,
+      "image_path": "images/page0039_img000.jpeg",
+      "caption": ": A more detailed record of an airplane passenger heading toward the back of the plane, showing smaller segments of",
+      "width": 328,
+      "height": 195
+    },
+    {
+      "page_number": 40,
+      "image_index": 0,
+      "image_path": "images/page0040_img000.jpeg",
+      "caption": ": Position vs. time, velocity vs. time, and speed vs. time on a trip. Note that the velocity for the return trip is negative.",
+      "width": 287,
+      "height": 667
+    },
+    {
+      "page_number": 40,
+      "image_index": 1,
+      "image_path": "images/page0040_img001.jpeg",
+      "caption": ": During a 30-minute round trip to the store, the total distance traveled is 6 km. The average speed is 12 km/h. The",
+      "width": 328,
+      "height": 156
+    },
+    {
+      "page_number": 43,
+      "image_index": 1,
+      "image_path": "images/page0043_img001.jpeg",
+      "caption": ": A plane slows down as it comes in for landing in St. Maarten. It is accelerating in a direction opposite to its velocity.",
+      "width": 275,
+      "height": 183
+    },
+    {
+      "page_number": 44,
+      "image_index": 1,
+      "image_path": "images/page0044_img001.jpeg",
+      "caption": "First we draw a sketch and assign a coordinate system to the problem. This is a simple problem, but it always helps to visualize",
+      "width": 275,
+      "height": 206
+    },
+    {
+      "page_number": 45,
+      "image_index": 0,
+      "image_path": "images/page0045_img000.jpeg",
+      "caption": ": One-dimensional motion of a subway train considered in Example",
+      "width": 562,
+      "height": 319
+    },
+    {
+      "page_number": 45,
+      "image_index": 1,
+      "image_path": "images/page0045_img001.jpeg",
+      "caption": ": Graphs of instantaneous acceleration versus time for two different one-dimensional motions. (a) Here acceleration",
+      "width": 550,
+      "height": 264
+    },
+    {
+      "page_number": 48,
+      "image_index": 1,
+      "image_path": "images/page0048_img001.jpeg",
+      "caption": ": (a) Position of the train over time. Notice that the train’s position changes slowly at the beginning of the journey, then",
+      "width": 270,
+      "height": 550
+    },
+    {
+      "page_number": 51,
+      "image_index": 0,
+      "image_path": "images/page0051_img000.jpeg",
+      "caption": ": Kinematic equations can help us describe and predict the motion of moving objects such as these kayaks racing in",
+      "width": 275,
+      "height": 185
+    },
+    {
+      "page_number": 52,
+      "image_index": 0,
+      "image_path": "images/page0052_img000.jpeg",
+      "caption": "The final position is given by the equation To find , we identify the values of",
+      "width": 550,
+      "height": 168
+    },
+    {
+      "page_number": 53,
+      "image_index": 1,
+      "image_path": "images/page0053_img001.jpeg",
+      "caption": ": There is a linear relationship between displacement and average velocity. For a given time , an object moving twice",
+      "width": 281,
+      "height": 272
+    },
+    {
+      "page_number": 54,
+      "image_index": 0,
+      "image_path": "images/page0054_img000.jpeg",
+      "caption": ": The Space Shuttle Endeavor blasts off from the Kennedy Space Center in February 2010. (credit: Matthew",
+      "width": 275,
+      "height": 169
+    },
+    {
+      "page_number": 55,
+      "image_index": 1,
+      "image_path": "images/page0055_img001.jpeg",
+      "caption": ": U.S. Army Top Fuel pilot Tony “The Sarge” Schumacher begins a race with a controlled burnout. (credit: Lt. Col.",
+      "width": 234,
+      "height": 189
+    },
+    {
+      "page_number": 57,
+      "image_index": 0,
+      "image_path": "images/page0057_img000.jpeg",
+      "caption": "In order to determine which equations are best to use, we need to list all of the known values and identify exactly what we need",
+      "width": 456,
+      "height": 253
+    },
+    {
+      "page_number": 58,
+      "image_index": 0,
+      "image_path": "images/page0058_img000.jpeg",
+      "caption": ": The distance necessary to stop a car varies greatly, depending on road conditions and driver reaction time.",
+      "width": 544,
+      "height": 189
+    },
+    {
+      "page_number": 62,
+      "image_index": 0,
+      "image_path": "images/page0062_img000.jpeg",
+      "caption": ": Vertical position, vertical velocity, and vertical acceleration vs. time for a rock thrown vertically up at the edge of",
+      "width": 285,
+      "height": 550
+    },
+    {
+      "page_number": 64,
+      "image_index": 0,
+      "image_path": "images/page0064_img000.jpeg",
+      "caption": ": (a) A person throws a rock straight up, as explored in Example",
+      "width": 417,
+      "height": 550
+    },
+    {
+      "page_number": 65,
+      "image_index": 1,
+      "image_path": "images/page0065_img001.jpeg",
+      "caption": ": Positions and velocities of a metal ball released from rest when air resistance is negligible. Velocity is seen to",
+      "width": 458,
+      "height": 550
+    },
+    {
+      "page_number": 67,
+      "image_index": 0,
+      "image_path": "images/page0067_img000.jpeg",
+      "caption": ": (a) We analyze two-dimensional projectile motion by breaking it into two independent one-dimensional motions",
+      "width": 381,
+      "height": 562
+    },
+    {
+      "page_number": 68,
+      "image_index": 0,
+      "image_path": "images/page0068_img000.jpeg",
+      "caption": ": Projectile to satellite. In each case shown here, a projectile is launched from a very high tower to avoid air resistance.",
+      "width": 185,
+      "height": 200
+    },
+    {
+      "page_number": 68,
+      "image_index": 1,
+      "image_path": "images/page0068_img001.jpeg",
+      "caption": ": Trajectories of projectiles on level ground. (a) The greater the initial speed",
+      "width": 368,
+      "height": 400
+    },
+    {
+      "page_number": 70,
+      "image_index": 0,
+      "image_path": "images/page0070_img000.jpeg",
+      "caption": ": The directions of the velocity of an object at two different points are shown, and the change in velocity",
+      "width": 230,
+      "height": 275
+    },
+    {
+      "page_number": 76,
+      "image_index": 0,
+      "image_path": "images/page0076_img000.jpeg",
+      "caption": ": Issac Newton’s monumental work, Philosophiae Naturalis Principia Mathematica, was published in 1687. It",
+      "width": 200,
+      "height": 235
+    },
+    {
+      "page_number": 76,
+      "image_index": 1,
+      "image_path": "images/page0076_img001.jpeg",
+      "caption": ": Newton’s laws of motion describe the motion of the dolphin’s path. (credit: Jin Jang)",
+      "width": 875,
+      "height": 583
+    },
+    {
+      "page_number": 78,
+      "image_index": 0,
+      "image_path": "images/page0078_img000.jpeg",
+      "caption": ": The force exerted by a stretched spring can be used as a standard unit of force. (a) This spring has a length when",
+      "width": 550,
+      "height": 201
+    },
+    {
+      "page_number": 81,
+      "image_index": 0,
+      "image_path": "images/page0081_img000.jpeg",
+      "caption": ": Different forces exerted on the same mass produce different accelerations. (a) Two children push a wagon with a child",
+      "width": 550,
+      "height": 480
+    },
+    {
+      "page_number": 82,
+      "image_index": 0,
+      "image_path": "images/page0082_img000.jpeg",
+      "caption": ": The same force exerted on systems of different masses produces different accelerations. (a) A basketball player pushes",
+      "width": 550,
+      "height": 261
+    },
+    {
+      "page_number": 84,
+      "image_index": 0,
+      "image_path": "images/page0084_img000.jpeg",
+      "caption": ": The net force on a lawn mower is 51 N to the right. At what rate does the lawn mower accelerate to the right?",
+      "width": 329,
+      "height": 204
+    },
+    {
+      "page_number": 85,
+      "image_index": 0,
+      "image_path": "images/page0085_img000.jpeg",
+      "caption": ": A sled experiences a rocket thrust that accelerates it to the right. Each rocket creates an identical thrust . As in",
+      "width": 400,
+      "height": 326
+    },
+    {
+      "page_number": 88,
+      "image_index": 0,
+      "image_path": "images/page0088_img000.jpeg",
+      "caption": ": When the swimmer exerts a force on the wall, she accelerates in the direction opposite to that of her push.",
+      "width": 562,
+      "height": 211
+    },
+    {
+      "page_number": 89,
+      "image_index": 0,
+      "image_path": "images/page0089_img000.jpeg",
+      "caption": ": A professor pushes a cart of demonstration equipment. The lengths of the arrows are proportional to the",
+      "width": 550,
+      "height": 318
+    },
+    {
+      "page_number": 92,
+      "image_index": 0,
+      "image_path": "images/page0092_img000.jpeg",
+      "caption": ": (a) The person holding the bag of dog food must supply an upward force",
+      "width": 200,
+      "height": 200
+    },
+    {
+      "page_number": 93,
+      "image_index": 0,
+      "image_path": "images/page0093_img000.jpeg",
+      "caption": ": When a perfectly flexible connector (one requiring no force to bend it) such as this rope transmits a force T, that force",
+      "width": 187,
+      "height": 261
+    },
+    {
+      "page_number": 94,
+      "image_index": 0,
+      "image_path": "images/page0094_img000.jpeg",
+      "caption": ": Unless an infinite tension is exerted, any flexible connector—such as the chain at the bottom of the picture—will sag",
+      "width": 450,
+      "height": 337
+    },
+    {
+      "page_number": 94,
+      "image_index": 1,
+      "image_path": "images/page0094_img001.jpeg",
+      "caption": ": (a) Tendons in the finger carry force T from the muscles to other parts of the finger, usually changing the force’s",
+      "width": 368,
+      "height": 450
+    },
+    {
+      "page_number": 95,
+      "image_index": 0,
+      "image_path": "images/page0095_img000.jpeg",
+      "caption": ": (a) The various forces acting when a person stands on a bathroom scale in an elevator. The arrows are",
+      "width": 812,
+      "height": 691
+    },
+    {
+      "page_number": 98,
+      "image_index": 1,
+      "image_path": "images/page0098_img001.jpeg",
+      "caption": ": When displaced from its vertical equilibrium position, this plastic ruler oscillates back and forth because of the",
+      "width": 187,
+      "height": 208
+    },
+    {
+      "page_number": 99,
+      "image_index": 0,
+      "image_path": "images/page0099_img000.jpeg",
+      "caption": ": The mass of a car increases due to the introduction of a passenger. This affects the displacement of the car on its",
+      "width": 164,
+      "height": 249
+    },
+    {
+      "page_number": 99,
+      "image_index": 1,
+      "image_path": "images/page0099_img001.jpeg",
+      "caption": ": (a) A graph of absolute value of the restoring force versus displacement is displayed. The fact that the graph is a",
+      "width": 509,
+      "height": 550
+    },
+    {
+      "page_number": 104,
+      "image_index": 0,
+      "image_path": "images/page0104_img000.jpeg",
+      "caption": ": Two rough surfaces in contact have a much smaller area of actual contact than their total area. When there is a greater",
+      "width": 234,
+      "height": 173
+    },
+    {
+      "page_number": 104,
+      "image_index": 1,
+      "image_path": "images/page0104_img001.jpeg",
+      "caption": ": Artificial knee replacement is a procedure that has been performed for more than 20 years. In this figure, we see the",
+      "width": 234,
+      "height": 346
+    },
+    {
+      "page_number": 105,
+      "image_index": 0,
+      "image_path": "images/page0105_img000.jpeg",
+      "caption": ": The tip of a probe is deformed sideways by frictional force as the probe is dragged across a surface. Measurements of",
+      "width": 275,
+      "height": 247
+    },
+    {
+      "page_number": 106,
+      "image_index": 0,
+      "image_path": "images/page0106_img000.jpeg",
+      "caption": ": According to early accounts, Newton was inspired to make the connection between falling bodies and astronomical",
+      "width": 210,
+      "height": 341
+    },
+    {
+      "page_number": 107,
+      "image_index": 0,
+      "image_path": "images/page0107_img000.jpeg",
+      "caption": ": Gravitational attraction is along a line joining the centers of mass of these two bodies. The magnitude of the force is",
+      "width": 275,
+      "height": 247
+    },
+    {
+      "page_number": 109,
+      "image_index": 0,
+      "image_path": "images/page0109_img000.jpeg",
+      "caption": ": A black hole is an object with such strong gravity that not even light can escape it. This black hole was created by the",
+      "width": 275,
+      "height": 233
+    },
+    {
+      "page_number": 109,
+      "image_index": 1,
+      "image_path": "images/page0109_img001.jpeg",
+      "caption": ": (a, b) Spring tides: The highest tides occur when Earth, the Moon, and the Sun are aligned. (c) Neap tide: The lowest",
+      "width": 550,
+      "height": 457
+    },
+    {
+      "page_number": 109,
+      "image_index": 2,
+      "image_path": "images/page0109_img002.jpeg",
+      "caption": ": The Moon causes ocean tides by attracting the water on the near side more than Earth, and by attracting Earth more",
+      "width": 550,
+      "height": 187
+    },
+    {
+      "page_number": 110,
+      "image_index": 0,
+      "image_path": "images/page0110_img000.jpeg",
+      "caption": ": Astronauts experiencing weightlessness on board the International Space Station. (credit: NASA)",
+      "width": 328,
+      "height": 217
+    },
+    {
+      "page_number": 112,
+      "image_index": 0,
+      "image_path": "images/page0112_img000.jpeg",
+      "caption": ": The frictional force supplies the centripetal force and is numerically equal to it. Centripetal force is perpendicular to",
+      "width": 187,
+      "height": 318
+    },
+    {
+      "page_number": 113,
+      "image_index": 0,
+      "image_path": "images/page0113_img000.jpeg",
+      "caption": ": This car on level ground is moving away and turning to the left. The centripetal force causing the car to turn in a",
+      "width": 275,
+      "height": 260
+    },
+    {
+      "page_number": 114,
+      "image_index": 0,
+      "image_path": "images/page0114_img000.jpeg",
+      "caption": ": The car on this banked curve is moving away and turning to the left.",
+      "width": 275,
+      "height": 209
+    },
+    {
+      "page_number": 115,
+      "image_index": 0,
+      "image_path": "images/page0115_img000.jpeg",
+      "caption": ": The same force exerted on systems of different masses produces different accelerations. (a) A basketball player",
+      "width": 550,
+      "height": 261
+    },
+    {
+      "page_number": 117,
+      "image_index": 0,
+      "image_path": "images/page0117_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/57531 : Amusement rides with a vertical loop are an example of a form of curved motion.",
+      "width": 275,
+      "height": 255
+    },
+    {
+      "page_number": 117,
+      "image_index": 1,
+      "image_path": "images/page0117_img001.jpeg",
+      "caption": ": Two paths around a race track curve are shown. Race car drivers will take the inside path (called cutting the corner)",
+      "width": 188,
+      "height": 254
+    },
+    {
+      "page_number": 118,
+      "image_index": 0,
+      "image_path": "images/page0118_img000.jpeg",
+      "caption": ": A mass attached to a nail on a frictionless table moves in a circular path. The force stretching the string is real and not",
+      "width": 234,
+      "height": 215
+    },
+    {
+      "page_number": 118,
+      "image_index": 1,
+      "image_path": "images/page0118_img001.jpeg",
+      "caption": ": A child riding on a merry-go-round releases her lunch box at point P. This is a view from above the clockwise",
+      "width": 275,
+      "height": 274
+    },
+    {
+      "page_number": 122,
+      "image_index": 0,
+      "image_path": "images/page0122_img000.jpeg",
+      "caption": ": How many forms of energy can you identify in this photograph of a wind farm in Iowa? (credit: Jürgen from",
+      "width": 1000,
+      "height": 369
+    },
+    {
+      "page_number": 124,
+      "image_index": 0,
+      "image_path": "images/page0124_img000.jpeg",
+      "caption": ": Work done when lifting a mass. Work is positive on the way up because force and displacement point in the same",
+      "width": 300,
+      "height": 230
+    },
+    {
+      "page_number": 124,
+      "image_index": 1,
+      "image_path": "images/page0124_img001.jpeg",
+      "caption": ": Examples of work. (a) Note that the force is in the direction of motion. (b) A person holding a briefcase does no work",
+      "width": 526,
+      "height": 550
+    },
+    {
+      "page_number": 127,
+      "image_index": 0,
+      "image_path": "images/page0127_img000.jpeg",
+      "caption": ": A package on a roller belt is pushed horizontally through a distance d.",
+      "width": 550,
+      "height": 163
+    },
+    {
+      "page_number": 133,
+      "image_index": 0,
+      "image_path": "images/page0133_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46165 : The change in gravitational potential energy (",
+      "width": 164,
+      "height": 341
+    },
+    {
+      "page_number": 133,
+      "image_index": 1,
+      "image_path": "images/page0133_img001.jpeg",
+      "caption": ": (a) The work done to lift the weight is stored in the mass-Earth system as gravitational potential energy. (b) As the",
+      "width": 492,
+      "height": 550
+    },
+    {
+      "page_number": 134,
+      "image_index": 0,
+      "image_path": "images/page0134_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46165 : The work done by the ground upon the kangaroo reduces its kinetic energy to zero as it lands. However, by applying",
+      "width": 213,
+      "height": 275
+    },
+    {
+      "page_number": 135,
+      "image_index": 0,
+      "image_path": "images/page0135_img000.jpeg",
+      "caption": ": The speed of a roller coaster increases as gravity pulls it downhill and is greatest at its lowest point. Viewed in",
+      "width": 550,
+      "height": 207
+    },
+    {
+      "page_number": 140,
+      "image_index": 0,
+      "image_path": "images/page0140_img000.jpeg",
+      "caption": ": Solar energy is converted into electrical energy by solar cells, which is used to run a motor in this solar-power",
+      "width": 275,
+      "height": 180
+    },
+    {
+      "page_number": 142,
+      "image_index": 0,
+      "image_path": "images/page0142_img000.jpeg",
+      "caption": ": A graph of applied force versus distance for the deformation of a system that can be described by Hooke’s law is",
+      "width": 550,
+      "height": 267
+    },
+    {
+      "page_number": 143,
+      "image_index": 0,
+      "image_path": "images/page0143_img000.jpeg",
+      "caption": ": (a) In this image of the gun, the spring is uncompressed before being cocked. (b) The spring has been compressed",
+      "width": 234,
+      "height": 254
+    },
+    {
+      "page_number": 145,
+      "image_index": 0,
+      "image_path": "images/page0145_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46813 : When this woman runs upstairs starting from rest, she converts the chemical energy originally from food into",
+      "width": 304,
+      "height": 259
+    },
+    {
+      "page_number": 145,
+      "image_index": 1,
+      "image_path": "images/page0145_img001.jpeg",
+      "caption": ": This powerful rocket on the Space Shuttle Endeavor did work and consumed energy at a very high rate. (credit:",
+      "width": 275,
+      "height": 213
+    },
+    {
+      "page_number": 147,
+      "image_index": 0,
+      "image_path": "images/page0147_img000.jpeg",
+      "caption": ": Tremendous amounts of electric power are generated by coal-fired power plants such as this one in China, but an even",
+      "width": 275,
+      "height": 206
+    },
+    {
+      "page_number": 151,
+      "image_index": 0,
+      "image_path": "images/page0151_img000.jpeg",
+      "caption": ": A car experiencing non-negligible friction coasts down a hill, over a small crest, then downhill again, and comes to a",
+      "width": 550,
+      "height": 236
+    },
+    {
+      "page_number": 153,
+      "image_index": 2,
+      "image_path": "images/page0153_img002.jpeg",
+      "caption": ": Each rugby player has great momentum, which will affect the outcome of their collisions with each other and the",
+      "width": 875,
+      "height": 583
+    },
+    {
+      "page_number": 158,
+      "image_index": 0,
+      "image_path": "images/page0158_img000.jpeg",
+      "caption": ": A graph of force versus time with time along the -axis and force along the -axis for an actual force and an",
+      "width": 281,
+      "height": 199
+    },
+    {
+      "page_number": 159,
+      "image_index": 0,
+      "image_path": "images/page0159_img000.jpeg",
+      "caption": ": A car of mass moving with a velocity of",
+      "width": 550,
+      "height": 331
+    },
+    {
+      "page_number": 160,
+      "image_index": 0,
+      "image_path": "images/page0160_img000.jpeg",
+      "caption": ": The horizontal component of a projectile’s momentum is conserved if air resistance is negligible, even in this case",
+      "width": 550,
+      "height": 288
+    },
+    {
+      "page_number": 162,
+      "image_index": 0,
+      "image_path": "images/page0162_img000.jpeg",
+      "caption": ": An elastic one-dimensional two-object collision. Momentum and internal kinetic energy are conserved.",
+      "width": 281,
+      "height": 328
+    },
+    {
+      "page_number": 165,
+      "image_index": 0,
+      "image_path": "images/page0165_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46819 : An ice hockey goalie catches a hockey puck and recoils backward. The initial kinetic energy of the puck is almost",
+      "width": 550,
+      "height": 226
+    },
+    {
+      "page_number": 165,
+      "image_index": 1,
+      "image_path": "images/page0165_img001.jpeg",
+      "caption": ": An inelastic one-dimensional two-object collision. Momentum is conserved, but total kinetic energy is not conserved.",
+      "width": 550,
+      "height": 190
+    },
+    {
+      "page_number": 167,
+      "image_index": 0,
+      "image_path": "images/page0167_img000.jpeg",
+      "caption": ": An air track is nearly frictionless, so that momentum is conserved. Motion is one-dimensional. In this collision,",
+      "width": 550,
+      "height": 427
+    },
+    {
+      "page_number": 172,
+      "image_index": 0,
+      "image_path": "images/page0172_img000.jpeg",
+      "caption": ": There are at least four types of waves in this picture—only the water waves are evident. There are also sound waves,",
+      "width": 875,
+      "height": 478
+    },
+    {
+      "page_number": 173,
+      "image_index": 0,
+      "image_path": "images/page0173_img000.jpeg",
+      "caption": ": The strings on this guitar vibrate at regular time intervals. (credit: JAR)",
+      "width": 210,
+      "height": 175
+    },
+    {
+      "page_number": 176,
+      "image_index": 0,
+      "image_path": "images/page0176_img000.jpeg",
+      "caption": ": An object attached to a spring sliding on a frictionless surface is an uncomplicated simple harmonic oscillator. When",
+      "width": 550,
+      "height": 380
+    },
+    {
+      "page_number": 178,
+      "image_index": 0,
+      "image_path": "images/page0178_img000.jpeg",
+      "caption": ": Graphs of versus for the motion of an object on a spring. The net force on the object can be",
+      "width": 303,
+      "height": 539
+    },
+    {
+      "page_number": 178,
+      "image_index": 1,
+      "image_path": "images/page0178_img001.jpeg",
+      "caption": ": The vertical position of an object bouncing on a spring is recorded on a strip of moving paper, leaving a sine wave.",
+      "width": 169,
+      "height": 183
+    },
+    {
+      "page_number": 180,
+      "image_index": 0,
+      "image_path": "images/page0180_img000.jpeg",
+      "caption": ": The paddle ball on its rubber band moves in response to the finger supporting it. If the finger moves with the natural",
+      "width": 550,
+      "height": 275
+    },
+    {
+      "page_number": 180,
+      "image_index": 1,
+      "image_path": "images/page0180_img001.jpeg",
+      "caption": ": You can cause the strings in a piano to vibrate simply by producing sound waves from your voice. (credit: Matt",
+      "width": 258,
+      "height": 170
+    },
+    {
+      "page_number": 181,
+      "image_index": 0,
+      "image_path": "images/page0181_img000.jpeg",
+      "caption": ": In 1940, the Tacoma Narrows Bridge in Washington state collapsed. Heavy cross winds drove the bridge into",
+      "width": 400,
+      "height": 279
+    },
+    {
+      "page_number": 181,
+      "image_index": 1,
+      "image_path": "images/page0181_img001.jpeg",
+      "caption": ": Amplitude of a harmonic oscillator as a function of the frequency of the driving force. The curves represent the same",
+      "width": 400,
+      "height": 291
+    },
+    {
+      "page_number": 183,
+      "image_index": 0,
+      "image_path": "images/page0183_img000.jpeg",
+      "caption": ": An idealized ocean wave passes under a sea gull that bobs up and down in simple harmonic motion. The wave has a",
+      "width": 550,
+      "height": 254
+    },
+    {
+      "page_number": 183,
+      "image_index": 1,
+      "image_path": "images/page0183_img001.jpeg",
+      "caption": ": Waves in the ocean behave similarly to all other types of waves. (credit: Steve Jurveston, Flickr)",
+      "width": 257,
+      "height": 180
+    },
+    {
+      "page_number": 185,
+      "image_index": 0,
+      "image_path": "images/page0185_img000.jpeg",
+      "caption": ": The wave on a guitar string is transverse. The sound wave rattles a sheet of paper in a direction that shows the sound",
+      "width": 253,
+      "height": 234
+    },
+    {
+      "page_number": 187,
+      "image_index": 0,
+      "image_path": "images/page0187_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46180 : Pure destructive interference of two identical waves produces zero amplitude, or complete cancellation.",
+      "width": 400,
+      "height": 246
+    },
+    {
+      "page_number": 187,
+      "image_index": 1,
+      "image_path": "images/page0187_img001.jpeg",
+      "caption": ": Pure constructive interference of two identical waves produces one with twice the amplitude, but the same",
+      "width": 400,
+      "height": 238
+    },
+    {
+      "page_number": 187,
+      "image_index": 2,
+      "image_path": "images/page0187_img002.jpeg",
+      "caption": ": These waves result from the superposition of several waves from different sources, producing a complex pattern.",
+      "width": 400,
+      "height": 250
+    },
+    {
+      "page_number": 188,
+      "image_index": 0,
+      "image_path": "images/page0188_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46180 : Standing wave created by the superposition of two identical waves moving in opposite directions. The oscillations are",
+      "width": 656,
+      "height": 265
+    },
+    {
+      "page_number": 188,
+      "image_index": 1,
+      "image_path": "images/page0188_img001.jpeg",
+      "caption": ": Superposition of non-identical waves exhibits both constructive and destructive interference.",
+      "width": 187,
+      "height": 172
+    },
+    {
+      "page_number": 189,
+      "image_index": 0,
+      "image_path": "images/page0189_img000.jpeg",
+      "caption": ": Beats are produced by the superposition of two waves of slightly different frequencies but identical amplitudes. The",
+      "width": 550,
+      "height": 156
+    },
+    {
+      "page_number": 189,
+      "image_index": 1,
+      "image_path": "images/page0189_img001.jpeg",
+      "caption": ": First and second harmonic frequencies are shown.",
+      "width": 400,
+      "height": 206
+    },
+    {
+      "page_number": 189,
+      "image_index": 2,
+      "image_path": "images/page0189_img002.jpeg",
+      "caption": ": The figure shows a string oscillating at its fundamental frequency.",
+      "width": 328,
+      "height": 232
+    },
+    {
+      "page_number": 193,
+      "image_index": 0,
+      "image_path": "images/page0193_img000.jpeg",
+      "caption": ": Sound wave compressions and rarefactions travel up the ear canal and force the eardrum to vibrate. There is a net",
+      "width": 187,
+      "height": 221
+    },
+    {
+      "page_number": 193,
+      "image_index": 1,
+      "image_path": "images/page0193_img001.jpeg",
+      "caption": ": After many vibrations, there are a series of compressions and rarefactions moving out from the string as a sound",
+      "width": 183,
+      "height": 178
+    },
+    {
+      "page_number": 195,
+      "image_index": 0,
+      "image_path": "images/page0195_img000.jpeg",
+      "caption": ": A sound wave emanates from a source vibrating at a frequency , propagates at",
+      "width": 329,
+      "height": 179
+    },
+    {
+      "page_number": 197,
+      "image_index": 0,
+      "image_path": "images/page0197_img000.jpeg",
+      "caption": ": Because they travel at the same speed in a given medium, low-frequency sounds must have a greater wavelength than",
+      "width": 183,
+      "height": 152
+    },
+    {
+      "page_number": 200,
+      "image_index": 0,
+      "image_path": "images/page0200_img000.jpeg",
+      "caption": ": Sounds emitted by a source moving to the right spread out from the points at which they were emitted. The",
+      "width": 235,
+      "height": 150
+    },
+    {
+      "page_number": 200,
+      "image_index": 1,
+      "image_path": "images/page0200_img001.jpeg",
+      "caption": ": Sounds emitted by a source spread out in spherical waves. Because the source, observers, and air are stationary, the",
+      "width": 235,
+      "height": 150
+    },
+    {
+      "page_number": 201,
+      "image_index": 1,
+      "image_path": "images/page0201_img001.jpeg",
+      "caption": ": The same effect is produced when the observers move relative to the source. Motion toward the source increases",
+      "width": 234,
+      "height": 151
+    },
+    {
+      "page_number": 202,
+      "image_index": 0,
+      "image_path": "images/page0202_img000.jpeg",
+      "caption": ": The blue glow in this research reactor pool is Cherenkov radiation caused by subatomic particles traveling faster than",
+      "width": 187,
+      "height": 237
+    },
+    {
+      "page_number": 202,
+      "image_index": 2,
+      "image_path": "images/page0202_img002.jpeg",
+      "caption": ": Two sonic booms, created by the nose and tail of an aircraft, are observed on the ground after the plane has passed by.",
+      "width": 183,
+      "height": 181
+    },
+    {
+      "page_number": 205,
+      "image_index": 0,
+      "image_path": "images/page0205_img000.jpeg",
+      "caption": ": Because they travel at the same speed in a given medium, low-frequency sounds must have a greater wavelength than",
+      "width": 183,
+      "height": 152
+    },
+    {
+      "page_number": 207,
+      "image_index": 0,
+      "image_path": "images/page0207_img000.jpeg",
+      "caption": ": This figure skater increases her rate of spin by pulling her arms and her extended leg closer to her axis of rotation.",
+      "width": 266,
+      "height": 400
+    },
+    {
+      "page_number": 207,
+      "image_index": 1,
+      "image_path": "images/page0207_img001.jpeg",
+      "caption": ": The mention of a tornado conjures up images of raw destructive power. Tornadoes blow houses away as if they were",
+      "width": 875,
+      "height": 432
+    },
+    {
+      "page_number": 211,
+      "image_index": 0,
+      "image_path": "images/page0211_img000.jpeg",
+      "caption": ": Centripetal acceleration occurs as the direction of velocity changes; it is perpendicular to the circular motion.",
+      "width": 187,
+      "height": 214
+    },
+    {
+      "page_number": 211,
+      "image_index": 1,
+      "image_path": "images/page0211_img001.jpeg",
+      "caption": ": In circular motion, linear acceleration , occurs as the magnitude of the velocity changes: is tangent to the motion.",
+      "width": 188,
+      "height": 239
+    },
+    {
+      "page_number": 214,
+      "image_index": 0,
+      "image_path": "images/page0214_img000.jpeg",
+      "caption": ": Force is required to spin the bike wheel. The greater the force, the greater the angular acceleration produced. The",
+      "width": 188,
+      "height": 167
+    },
+    {
+      "page_number": 216,
+      "image_index": 0,
+      "image_path": "images/page0216_img000.jpeg",
+      "caption": ": Some rotational inertias. Torque is the analog of force and moment of inertia is the analog of mass. Force and mass are physical quantities that depend",
+      "width": 465,
+      "height": 550
+    },
+    {
+      "page_number": 218,
+      "image_index": 1,
+      "image_path": "images/page0218_img001.jpeg",
+      "caption": ": The motor works in spinning the grindstone, giving it rotational kinetic energy. That energy is then converted to heat,",
+      "width": 234,
+      "height": 156
+    },
+    {
+      "page_number": 220,
+      "image_index": 0,
+      "image_path": "images/page0220_img000.jpeg",
+      "caption": ": Three cans of soup with identical masses race down an incline. The first can has a low friction coating and does not",
+      "width": 400,
+      "height": 180
+    },
+    {
+      "page_number": 220,
+      "image_index": 1,
+      "image_path": "images/page0220_img001.jpeg",
+      "caption": ": The first image shows how helicopters store large amounts of rotational kinetic energy in their blades. This energy",
+      "width": 260,
+      "height": 400
+    },
+    {
+      "page_number": 225,
+      "image_index": 0,
+      "image_path": "images/page0225_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46188 : (a) An ice skater is spinning on the tip of her skate with her arms extended. Her angular momentum is conserved",
+      "width": 257,
+      "height": 156
+    },
+    {
+      "page_number": 227,
+      "image_index": 0,
+      "image_path": "images/page0227_img000.jpeg",
+      "caption": ": The Solar System coalesced from a cloud of gas and dust that was originally rotating. The orbital motions and spins",
+      "width": 400,
+      "height": 285
+    },
+    {
+      "page_number": 228,
+      "image_index": 0,
+      "image_path": "images/page0228_img000.jpeg",
+      "caption": ": In figure (a), the torque is perpendicular to the plane formed by and and is the direction your right thumb would",
+      "width": 187,
+      "height": 187
+    },
+    {
+      "page_number": 229,
+      "image_index": 0,
+      "image_path": "images/page0229_img000.jpeg",
+      "caption": ": As seen in figure (a), the forces on a spinning gyroscope are its weight and the supporting force from the stand. These",
+      "width": 400,
+      "height": 325
+    },
+    {
+      "page_number": 229,
+      "image_index": 1,
+      "image_path": "images/page0229_img001.jpeg",
+      "caption": ": In figure (a), a person holding the spinning bike wheel lifts it with her right hand and pushes down with her left hand",
+      "width": 272,
+      "height": 400
+    },
+    {
+      "page_number": 231,
+      "image_index": 0,
+      "image_path": "images/page0231_img000.jpeg",
+      "caption": ": The image shows a side view of a racing bicycle. Can you see evidence in the design of the wheels on this racing",
+      "width": 234,
+      "height": 160
+    },
+    {
+      "page_number": 232,
+      "image_index": 0,
+      "image_path": "images/page0232_img000.jpeg",
+      "caption": ": A child may jump off a merry-go-round in a variety of directions.",
+      "width": 400,
+      "height": 312
+    },
+    {
+      "page_number": 232,
+      "image_index": 1,
+      "image_path": "images/page0232_img001.jpeg",
+      "caption": ": An immense cloud of rotating gas and dust contracted under the influence of gravity to form the Earth and in the",
+      "width": 200,
+      "height": 150
+    },
+    {
+      "page_number": 233,
+      "image_index": 0,
+      "image_path": "images/page0233_img000.jpeg",
+      "caption": ": The image shows a view down the barrel of a cannon, emphasizing its rifling. Rifling in the barrel of a canon causes",
+      "width": 200,
+      "height": 150
+    },
+    {
+      "page_number": 233,
+      "image_index": 1,
+      "image_path": "images/page0233_img001.jpeg",
+      "caption": ": The diver spins rapidly when curled up and slows when she extends her limbs before entering the water.",
+      "width": 200,
+      "height": 229
+    },
+    {
+      "page_number": 235,
+      "image_index": 0,
+      "image_path": "images/page0235_img000.jpeg",
+      "caption": ": The fluid essential to all life has a beauty of its own. It also helps support the weight of this swimmer. (credit: Terren,",
+      "width": 343,
+      "height": 156
+    },
+    {
+      "page_number": 236,
+      "image_index": 0,
+      "image_path": "images/page0236_img000.jpeg",
+      "caption": ": (a) Atoms in a solid always have the same neighbors, held near home by forces represented here by springs. These",
+      "width": 550,
+      "height": 200
+    },
+    {
+      "page_number": 240,
+      "image_index": 0,
+      "image_path": "images/page0240_img000.jpeg",
+      "caption": ": Three Gorges Dam in central China. When completed in 2008, this became the world’s largest hydroelectric plant,",
+      "width": 329,
+      "height": 195
+    },
+    {
+      "page_number": 242,
+      "image_index": 0,
+      "image_path": "images/page0242_img000.jpeg",
+      "caption": ": (a) While the person being poked with the finger might be irritated, the force has little lasting effect. (b) In contrast,",
+      "width": 351,
+      "height": 163
+    },
+    {
+      "page_number": 243,
+      "image_index": 0,
+      "image_path": "images/page0243_img000.jpeg",
+      "caption": ": Pressure is exerted on all sides of this swimmer, since the water would flow into the space he occupies if he were not",
+      "width": 375,
+      "height": 173
+    },
+    {
+      "page_number": 243,
+      "image_index": 1,
+      "image_path": "images/page0243_img001.jpeg",
+      "caption": ": Pressure inside this tire exerts forces perpendicular to all surfaces it contacts. The arrows give representative",
+      "width": 281,
+      "height": 217
+    },
+    {
+      "page_number": 244,
+      "image_index": 0,
+      "image_path": "images/page0244_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46194 : The bottom of this container supports the entire weight of the fluid in it. The vertical sides cannot exert an upward",
+      "width": 210,
+      "height": 186
+    },
+    {
+      "page_number": 245,
+      "image_index": 0,
+      "image_path": "images/page0245_img000.jpeg",
+      "caption": ": The dam must withstand the force exerted against it by the water it retains. This force is small compared with the",
+      "width": 275,
+      "height": 197
+    },
+    {
+      "page_number": 246,
+      "image_index": 0,
+      "image_path": "images/page0246_img000.jpeg",
+      "caption": ": Atmospheric pressure at sea level averages (equivalent to 1 atm), since the column of air over this",
+      "width": 234,
+      "height": 215
+    },
+    {
+      "page_number": 248,
+      "image_index": 0,
+      "image_path": "images/page0248_img000.jpeg",
+      "caption": ": Pressure due to the weight of a fluid increases with depth since",
+      "width": 259,
+      "height": 275
+    },
+    {
+      "page_number": 248,
+      "image_index": 1,
+      "image_path": "images/page0248_img001.jpeg",
+      "caption": ": (a) Even objects that sink, like this anchor, are partly supported by water when submerged. (b) Submarines have",
+      "width": 550,
+      "height": 209
+    },
+    {
+      "page_number": 249,
+      "image_index": 0,
+      "image_path": "images/page0249_img000.jpeg",
+      "caption": ": (a) An object submerged in a fluid experiences a buoyant force",
+      "width": 356,
+      "height": 256
+    },
+    {
+      "page_number": 251,
+      "image_index": 0,
+      "image_path": "images/page0251_img000.jpeg",
+      "caption": ": This hydrometer is floating in a fluid of specific gravity 0.87. The glass hydrometer is filled with air and weighted",
+      "width": 183,
+      "height": 183
+    },
+    {
+      "page_number": 251,
+      "image_index": 1,
+      "image_path": "images/page0251_img001.jpeg",
+      "caption": ": An unloaded ship (a) floats higher in the water than a loaded ship (b).",
+      "width": 550,
+      "height": 194
+    },
+    {
+      "page_number": 252,
+      "image_index": 0,
+      "image_path": "images/page0252_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46195 : (a) A coin is weighed in air. (b) The apparent weight of the coin is determined while it is completely submerged in a",
+      "width": 553,
+      "height": 174
+    },
+    {
+      "page_number": 252,
+      "image_index": 1,
+      "image_path": "images/page0252_img001.jpeg",
+      "caption": ": Subject in a “fat tank,” where he is weighed while completely submerged as part of a body density determination. The",
+      "width": 187,
+      "height": 315
+    },
+    {
+      "page_number": 256,
+      "image_index": 0,
+      "image_path": "images/page0256_img000.jpeg",
+      "caption": ": When a tube narrows, the same volume occupies a greater length. For the same volume to pass points 1 and 2 in a",
+      "width": 550,
+      "height": 160
+    },
+    {
+      "page_number": 259,
+      "image_index": 0,
+      "image_path": "images/page0259_img000.jpeg",
+      "caption": ": An overhead view of a car passing a truck on a highway. Air passing between the vehicles flows in a narrower channel",
+      "width": 210,
+      "height": 194
+    },
+    {
+      "page_number": 261,
+      "image_index": 0,
+      "image_path": "images/page0261_img000.jpeg",
+      "caption": ": Examples of entrainment devices that use increased fluid speed to create low pressures, which then entrain one fluid",
+      "width": 550,
+      "height": 182
+    },
+    {
+      "page_number": 262,
+      "image_index": 0,
+      "image_path": "images/page0262_img000.jpeg",
+      "caption": ": Measurement of fluid speed based on Bernoulli’s principle. (a) A manometer is connected to two tubes that are close",
+      "width": 550,
+      "height": 180
+    },
+    {
+      "page_number": 262,
+      "image_index": 1,
+      "image_path": "images/page0262_img001.jpeg",
+      "caption": ": (a) The Bernoulli principle helps explain lift generated by a wing. (b) Sails use the same technique to generate part of",
+      "width": 550,
+      "height": 304
+    },
+    {
+      "page_number": 265,
+      "image_index": 0,
+      "image_path": "images/page0265_img000.jpeg",
+      "caption": ": Because the river level is very high, it has started to leak under the levee. Sandbags are placed around the leak, and",
+      "width": 275,
+      "height": 151
+    },
+    {
+      "page_number": 270,
+      "image_index": 1,
+      "image_path": "images/page0270_img001.jpeg",
+      "caption": ": The welder’s gloves and helmet protect him from the electric arc that transfers enough thermal energy to melt the rod,",
+      "width": 1000,
+      "height": 528
+    },
+    {
+      "page_number": 272,
+      "image_index": 0,
+      "image_path": "images/page0272_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46200 : Relationships between the Fahrenheit, Celsius, and Kelvin temperature scales, rounded to the nearest degree. The",
+      "width": 550,
+      "height": 292
+    },
+    {
+      "page_number": 272,
+      "image_index": 1,
+      "image_path": "images/page0272_img001.jpeg",
+      "caption": ": Fireman Jason Ormand uses a pyrometer to check the temperature of an aircraft carrier’s ventilation system. Infrared",
+      "width": 164,
+      "height": 252
+    },
+    {
+      "page_number": 273,
+      "image_index": 0,
+      "image_path": "images/page0273_img000.jpeg",
+      "caption": ": Each increment on this logarithmic scale indicates an increase by a factor of ten, and thus illustrates the tremendous",
+      "width": 182,
+      "height": 550
+    },
+    {
+      "page_number": 273,
+      "image_index": 1,
+      "image_path": "images/page0273_img001.jpeg",
+      "caption": ": This image of radiation from a person’s body (an infrared thermograph) shows the location of temperature",
+      "width": 250,
+      "height": 248
+    },
+    {
+      "page_number": 274,
+      "image_index": 0,
+      "image_path": "images/page0274_img000.jpeg",
+      "caption": ": Graph of pressure versus temperature for various gases kept at a constant volume. Note that all of the graphs",
+      "width": 234,
+      "height": 239
+    },
+    {
+      "page_number": 276,
+      "image_index": 1,
+      "image_path": "images/page0276_img001.jpeg",
+      "caption": ": The air inside this hot air balloon flying over Putrajaya, Malaysia, is hotter than the ambient air. As a result, the",
+      "width": 198,
+      "height": 275
+    },
+    {
+      "page_number": 280,
+      "image_index": 0,
+      "image_path": "images/page0280_img000.jpeg",
+      "caption": ": In figure (a) the soft drink and the ice have different temperatures,",
+      "width": 234,
+      "height": 228
+    },
+    {
+      "page_number": 281,
+      "image_index": 0,
+      "image_path": "images/page0281_img000.jpeg",
+      "caption": ": Schematic depiction of Joule’s experiment that established the equivalence of heat and work.",
+      "width": 328,
+      "height": 292
+    },
+    {
+      "page_number": 283,
+      "image_index": 0,
+      "image_path": "images/page0283_img000.jpeg",
+      "caption": ": In a fireplace, heat transfer occurs by all three methods: conduction, convection, and radiation. Radiation is",
+      "width": 275,
+      "height": 229
+    },
+    {
+      "page_number": 285,
+      "image_index": 0,
+      "image_path": "images/page0285_img000.jpeg",
+      "caption": ": The heat transferred to cause a temperature change depends on the magnitude of the temperature change, the mass",
+      "width": 227,
+      "height": 275
+    },
+    {
+      "page_number": 286,
+      "image_index": 0,
+      "image_path": "images/page0286_img000.jpeg",
+      "caption": "https://phys libretexts org/@go/page/46204 : The smoking brakes on this truck are a visible evidence of the mechanical equivalent of heat.",
+      "width": 275,
+      "height": 218
+    },
+    {
+      "page_number": 291,
+      "image_index": 0,
+      "image_path": "images/page0291_img000.jpeg",
+      "caption": ": Heat from the air transfers to the ice causing it to melt. (credit: Mike Brand)",
+      "width": 256,
+      "height": 214
+    },
+    {
+      "page_number": 292,
+      "image_index": 0,
+      "image_path": "images/page0292_img000.jpeg",
+      "caption": ": (a) Energy is required to partially overcome the attractive forces between molecules in a solid to form a liquid. That",
+      "width": 550,
+      "height": 543
+    },
+    {
+      "page_number": 294,
+      "image_index": 0,
+      "image_path": "images/page0294_img000.jpeg",
+      "caption": ": A graph of temperature versus energy added. The system is constructed so that no vapor evaporates while ice warms",
+      "width": 550,
+      "height": 358
+    },
+    {
+      "page_number": 295,
+      "image_index": 0,
+      "image_path": "images/page0295_img000.png",
+      "caption": ": The ice on these trees released large amounts of energy when it froze, helping to prevent the temperature of the",
+      "width": 328,
+      "height": 219
+    },
+    {
+      "page_number": 295,
+      "image_index": 1,
+      "image_path": "images/page0295_img001.jpeg",
+      "caption": ": Condensation forms on this glass of iced tea because the temperature of the nearby air is reduced to below the dew",
+      "width": 274,
+      "height": 275
+    },
+    {
+      "page_number": 296,
+      "image_index": 0,
+      "image_path": "images/page0296_img000.jpeg",
+      "caption": ": Direct transitions between solid and vapor are common, sometimes useful, and even beautiful. (a) Dry ice sublimates",
+      "width": 200,
+      "height": 329
+    },
+    {
+      "page_number": 298,
+      "image_index": 0,
+      "image_path": "images/page0298_img000.jpeg",
+      "caption": ": The first law of thermodynamics is the conservation-of-energy principle stated for a system where heat and work are",
+      "width": 550,
+      "height": 165
+    },
+    {
+      "page_number": 298,
+      "image_index": 1,
+      "image_path": "images/page0298_img001.jpeg",
+      "caption": ": This boiling tea kettle represents energy in motion. The water in the kettle is turning to water vapor because heat is",
+      "width": 334,
+      "height": 400
+    },
+    {
+      "page_number": 301,
+      "image_index": 0,
+      "image_path": "images/page0301_img000.jpeg",
+      "caption": ": Schematic representation of a heat engine, governed, of course, by the first law of thermodynamics (and other laws of",
+      "width": 188,
+      "height": 256
+    },
+    {
+      "page_number": 301,
+      "image_index": 1,
+      "image_path": "images/page0301_img001.jpeg",
+      "caption": ": Beginning with the Industrial Revolution, humans have harnessed power through the use of the first law of",
+      "width": 550,
+      "height": 361
+    },
+    {
+      "page_number": 302,
+      "image_index": 0,
+      "image_path": "images/page0302_img000.jpeg",
+      "caption": ": An isobaric expansion of a gas requires heat transfer to keep the pressure constant. Since pressure is constant, the",
+      "width": 187,
+      "height": 260
+    },
+    {
+      "page_number": 302,
+      "image_index": 1,
+      "image_path": "images/page0302_img001.jpeg",
+      "caption": ": (a) Heat transfer to the gas in a cylinder increases the internal energy of the gas, creating higher pressure and",
+      "width": 227,
+      "height": 550
+    },
+    {
+      "page_number": 304,
+      "image_index": 0,
+      "image_path": "images/page0304_img000.jpeg",
+      "caption": ": (a) The upper curve is an isothermal process ( ), whereas the lower curve is an adiabatic process (",
+      "width": 187,
+      "height": 338
+    },
+    {
+      "page_number": 306,
+      "image_index": 0,
+      "image_path": "images/page0306_img000.jpeg",
+      "caption": ": Examples of one-way processes in nature. (a) Heat transfer occurs spontaneously from hot to cold and not from cold",
+      "width": 538,
+      "height": 550
+    },
+    {
+      "page_number": 306,
+      "image_index": 1,
+      "image_path": "images/page0306_img001.jpeg",
+      "caption": ": These ice floes melt during the Arctic summer. Some of them refreeze in the winter, but the second law of",
+      "width": 329,
+      "height": 218
+    },
+    {
+      "page_number": 307,
+      "image_index": 0,
+      "image_path": "images/page0307_img000.jpeg",
+      "caption": ": (a) Heat transfer occurs spontaneously from a hot object to a cold one, consistent with the second law of",
+      "width": 328,
+      "height": 259
+    },
+    {
+      "page_number": 310,
+      "image_index": 0,
+      "image_path": "images/page0310_img000.jpeg",
+      "caption": ": This Otto cycle produces a greater work output than the one in Figure",
+      "width": 275,
+      "height": 171
+    },
+    {
+      "page_number": 310,
+      "image_index": 1,
+      "image_path": "images/page0310_img001.jpeg",
+      "caption": "diagram for a simplified Otto cycle, analogous to that employed in an internal combustion engine. Point A",
+      "width": 550,
+      "height": 295
+    },
+    {
+      "page_number": 310,
+      "image_index": 2,
+      "image_path": "images/page0310_img002.jpeg",
+      "caption": ": In the four-stroke internal combustion gasoline engine, heat transfer into work takes place in the cyclical process",
+      "width": 328,
+      "height": 173
+    },
+    {
+      "page_number": 312,
+      "image_index": 0,
+      "image_path": "images/page0312_img000.jpeg",
+      "caption": ": This novelty toy, known as the drinking bird, is an example of Carnot’s engine. It contains methylene chloride",
+      "width": 375,
+      "height": 281
+    },
+    {
+      "page_number": 313,
+      "image_index": 0,
+      "image_path": "images/page0313_img000.jpeg",
+      "caption": "diagram for a Carnot cycle, employing only reversible isothermal and adiabatic processes. Heat transfer",
+      "width": 550,
+      "height": 339
+    },
+    {
+      "page_number": 314,
+      "image_index": 0,
+      "image_path": "images/page0314_img000.jpeg",
+      "caption": ": Schematic diagram of a pressurized water nuclear reactor and the steam turbines that convert work into electrical",
+      "width": 550,
+      "height": 411
+    },
+    {
+      "page_number": 315,
+      "image_index": 0,
+      "image_path": "images/page0315_img000.jpeg",
+      "caption": ": Real heat engines are less efficient than Carnot engines. (a) Real engines use irreversible processes, reducing the",
+      "width": 550,
+      "height": 410
+    },
+    {
+      "page_number": 315,
+      "image_index": 1,
+      "image_path": "images/page0315_img001.jpeg",
+      "caption": ": (a) A nuclear power station (credit: BlatantWorld.com) and (b) a coal-fired power station. Both have cooling towers",
+      "width": 355,
+      "height": 550
+    },
+    {
+      "page_number": 317,
+      "image_index": 0,
+      "image_path": "images/page0317_img000.jpeg",
+      "caption": ": Heat pumps, air conditioners, and refrigerators are heat engines operated backward. The one shown here is based on",
+      "width": 550,
+      "height": 335
+    },
+    {
+      "page_number": 317,
+      "image_index": 1,
+      "image_path": "images/page0317_img001.jpeg",
+      "caption": ": Almost every home contains a refrigerator. Most people don’t realize they are also sharing their homes with a heat",
+      "width": 275,
+      "height": 206
+    },
+    {
+      "page_number": 318,
+      "image_index": 0,
+      "image_path": "images/page0318_img000.jpeg",
+      "caption": ": A simple heat pump has four basic components: (1) condenser, (2) expansion valve, (3) evaporator, and",
+      "width": 234,
+      "height": 259
+    },
+    {
+      "page_number": 319,
+      "image_index": 0,
+      "image_path": "images/page0319_img000.jpeg",
+      "caption": ": When a real heat engine is run backward, some of the intended work input (",
+      "width": 187,
+      "height": 229
+    },
+    {
+      "page_number": 320,
+      "image_index": 1,
+      "image_path": "images/page0320_img001.jpeg",
+      "caption": ": Heat transfer from the outside to the inside, along with work done to run the pump, takes place in the heat pump",
+      "width": 275,
+      "height": 204
+    },
+    {
+      "page_number": 322,
+      "image_index": 0,
+      "image_path": "images/page0322_img000.jpeg",
+      "caption": ": The ice in this drink is slowly melting. Eventually the liquid will reach thermal equilibrium, as predicted by the",
+      "width": 187,
+      "height": 249
+    },
+    {
+      "page_number": 323,
+      "image_index": 0,
+      "image_path": "images/page0323_img000.jpeg",
+      "caption": ": When a system goes from state 1 to state 2, its entropy changes by the same amount",
+      "width": 275,
+      "height": 239
+    },
+    {
+      "page_number": 324,
+      "image_index": 0,
+      "image_path": "images/page0324_img000.jpeg",
+      "caption": ": (a) Heat transfer from a hot object to a cold one is an irreversible process that produces an overall increase in",
+      "width": 328,
+      "height": 306
+    },
+    {
+      "page_number": 325,
+      "image_index": 0,
+      "image_path": "images/page0325_img000.jpeg",
+      "caption": ": When ice melts, it becomes more disordered and less structured. The systematic arrangement of molecules in a",
+      "width": 550,
+      "height": 301
+    },
+    {
+      "page_number": 327,
+      "image_index": 0,
+      "image_path": "images/page0327_img000.jpeg",
+      "caption": ": When you toss a coin a large number of times, heads and tails tend to come up in roughly equal numbers. Why",
+      "width": 329,
+      "height": 246
+    },
+    {
+      "page_number": 330,
+      "image_index": 0,
+      "image_path": "images/page0330_img000.jpeg",
+      "caption": ": (a) The ordinary state of gas in a container is a disorderly, random distribution of atoms or molecules with a",
+      "width": 206,
+      "height": 332
+    },
+    {
+      "page_number": 333,
+      "image_index": 0,
+      "image_path": "images/page0333_img000.jpeg",
+      "caption": ": The construction of a thermos bottle is designed to inhibit all methods of heat transfer.",
+      "width": 200,
+      "height": 237
+    },
+    {
+      "page_number": 335,
+      "image_index": 0,
+      "image_path": "images/page0335_img000.jpeg",
+      "caption": "Figure 35. Would the previous question make any sense for an isochoric process? Explain your answer. 36. We ordinarily say that for an isothermal process. Does this assume no phase change takes place? Explain your answer. 37. The temperature of a rapidly expanding gas decreases Explain why in terms of the first law of thermodynamics (Hint:",
+      "width": 227,
+      "height": 550
+    },
+    {
+      "page_number": 345,
+      "image_index": 0,
+      "image_path": "images/page0345_img000.jpeg",
+      "caption": ": When Benjamin Franklin demonstrated that lightning was related to static electricity, he made a connection that is",
+      "width": 257,
+      "height": 306
+    },
+    {
+      "page_number": 345,
+      "image_index": 1,
+      "image_path": "images/page0345_img001.jpeg",
+      "caption": ": Static electricity from this plastic slide causes the child’s hair to stand on end. The sliding motion stripped electrons",
+      "width": 750,
+      "height": 362
+    },
+    {
+      "page_number": 347,
+      "image_index": 1,
+      "image_path": "images/page0347_img001.jpeg",
+      "caption": ": Borneo amber was mined in Sabah, Malaysia, from shale-sandstone-mudstone veins. When a piece of amber is",
+      "width": 275,
+      "height": 206
+    },
+    {
+      "page_number": 348,
+      "image_index": 0,
+      "image_path": "images/page0348_img000.jpeg",
+      "caption": ": This simplified (and not to scale) view of an atom is called the planetary model of the atom. Negative electrons orbit a",
+      "width": 235,
+      "height": 253
+    },
+    {
+      "page_number": 349,
+      "image_index": 1,
+      "image_path": "images/page0349_img001.jpeg",
+      "caption": ": Artist’s conception of fractional quark charges inside a proton. A group of three quark charges add up to the single",
+      "width": 187,
+      "height": 231
+    },
+    {
+      "page_number": 349,
+      "image_index": 2,
+      "image_path": "images/page0349_img002.jpeg",
+      "caption": ": When this person touches a Van de Graaff generator, she receives an excess of positive charge, causing her hair to",
+      "width": 234,
+      "height": 234
+    },
+    {
+      "page_number": 350,
+      "image_index": 0,
+      "image_path": "images/page0350_img000.jpeg",
+      "caption": ": (a) When enough energy is present, it can be converted into matter. Here the matter created is an electron–antielectron",
+      "width": 234,
+      "height": 348
+    },
+    {
+      "page_number": 352,
+      "image_index": 1,
+      "image_path": "images/page0352_img001.jpeg",
+      "caption": ": This NASA image of Arp 87 shows the result of a strong gravitational attraction between two galaxies. In contrast, at",
+      "width": 328,
+      "height": 167
+    },
+    {
+      "page_number": 355,
+      "image_index": 0,
+      "image_path": "images/page0355_img000.jpeg",
+      "caption": ": The Coulomb force field due to a positive charge is shown acting on two different charges. Both charges are the",
+      "width": 187,
+      "height": 203
+    },
+    {
+      "page_number": 359,
+      "image_index": 0,
+      "image_path": "images/page0359_img000.jpeg",
+      "caption": ": (a) Two negative charges produce the fields shown. It is very similar to the field produced by two positive charges,",
+      "width": 187,
+      "height": 298
+    },
+    {
+      "page_number": 359,
+      "image_index": 1,
+      "image_path": "images/page0359_img001.jpeg",
+      "caption": ": Two positive point charges produce the resultant electric field shown. The field is calculated at",
+      "width": 188,
+      "height": 240
+    },
+    {
+      "page_number": 361,
+      "image_index": 0,
+      "image_path": "images/page0361_img000.jpeg",
+      "caption": ": A charge accelerated by an electric field is analogous to a mass going down a hill. In both cases potential energy is",
+      "width": 187,
+      "height": 205
+    },
+    {
+      "page_number": 363,
+      "image_index": 0,
+      "image_path": "images/page0363_img000.jpeg",
+      "caption": ": A battery moves negative charge from its negative terminal through a headlight to its positive terminal. Appropriate",
+      "width": 210,
+      "height": 192
+    },
+    {
+      "page_number": 364,
+      "image_index": 0,
+      "image_path": "images/page0364_img000.jpeg",
+      "caption": ": A typical electron gun accelerates electrons using a potential difference between two metal plates. The energy of the",
+      "width": 187,
+      "height": 296
+    },
+    {
+      "page_number": 367,
+      "image_index": 1,
+      "image_path": "images/page0367_img001.jpeg",
+      "caption": ": When an electric field is applied to a conductor, free charges inside the conductor move until the field is",
+      "width": 200,
+      "height": 298
+    },
+    {
+      "page_number": 368,
+      "image_index": 1,
+      "image_path": "images/page0368_img001.jpeg",
+      "caption": ": The mutual repulsion of excess positive charges on a spherical conductor distributes them uniformly on its",
+      "width": 199,
+      "height": 199
+    },
+    {
+      "page_number": 369,
+      "image_index": 0,
+      "image_path": "images/page0369_img000.jpeg",
+      "caption": ": A very pointed conductor has a large charge concentration at the point. The electric field is very strong at the point",
+      "width": 174,
+      "height": 331
+    },
+    {
+      "page_number": 370,
+      "image_index": 0,
+      "image_path": "images/page0370_img000.jpeg",
+      "caption": ": Schematic of Van de Graaff generator. A battery (A) supplies excess positive charge to a pointed conductor, the points",
+      "width": 200,
+      "height": 351
+    },
+    {
+      "page_number": 370,
+      "image_index": 1,
+      "image_path": "images/page0370_img001.jpeg",
+      "caption": ": (a) A lightning rod is pointed to facilitate the transfer of charge. (credit: Romaine, Wikimedia Commons) (b) This Van",
+      "width": 550,
+      "height": 226
+    },
+    {
+      "page_number": 371,
+      "image_index": 0,
+      "image_path": "images/page0371_img000.jpeg",
+      "caption": ": In a laser printer, a laser beam is scanned across a photoconducting drum, leaving a positive charge image. The other",
+      "width": 550,
+      "height": 261
+    },
+    {
+      "page_number": 371,
+      "image_index": 1,
+      "image_path": "images/page0371_img001.jpeg",
+      "caption": ": Xerography is a dry copying process based on electrostatics. The major steps in the process are the charging of the",
+      "width": 550,
+      "height": 309
+    },
+    {
+      "page_number": 372,
+      "image_index": 0,
+      "image_path": "images/page0372_img000.jpeg",
+      "caption": ": (a) Schematic of an electrostatic precipitator. Air is passed through grids of opposite charge. The first grid charges",
+      "width": 671,
+      "height": 309
+    },
+    {
+      "page_number": 372,
+      "image_index": 1,
+      "image_path": "images/page0372_img001.jpeg",
+      "caption": ": The nozzle of an ink-jet printer produces small ink droplets, which are sprayed with electrostatic charge. Various",
+      "width": 550,
+      "height": 352
+    },
+    {
+      "page_number": 375,
+      "image_index": 0,
+      "image_path": "images/page0375_img000.jpeg",
+      "caption": ": (a) A simple electric circuit. A closed path for current to flow through is supplied by conducting wires connecting a",
+      "width": 200,
+      "height": 335
+    },
+    {
+      "page_number": 376,
+      "image_index": 0,
+      "image_path": "images/page0376_img000.jpeg",
+      "caption": ": Current is the rate at which charge moves through an area , such as the cross-section of a wire. Conventional",
+      "width": 200,
+      "height": 239
+    },
+    {
+      "page_number": 381,
+      "image_index": 0,
+      "image_path": "images/page0381_img000.jpeg",
+      "caption": ": (a) Which of these lightbulbs, the 25-W bulb (upper left) or the 60-W bulb (upper right), has the higher resistance?",
+      "width": 200,
+      "height": 326
+    },
+    {
+      "page_number": 385,
+      "image_index": 0,
+      "image_path": "images/page0385_img000.jpeg",
+      "caption": ": A short circuit is an undesired low-resistance path across a voltage source. (a) Worn insulation on the wires of a",
+      "width": 249,
+      "height": 188
+    },
+    {
+      "page_number": 386,
+      "image_index": 1,
+      "image_path": "images/page0386_img001.jpeg",
+      "caption": ": (a) A fuse has a metal strip with a low melting point that, when overheated by an excessive current, permanently",
+      "width": 231,
+      "height": 332
+    },
+    {
+      "page_number": 387,
+      "image_index": 0,
+      "image_path": "images/page0387_img000.jpeg",
+      "caption": ": An electric current can cause muscular contractions with varying effects. (a) The victim is “thrown” backward by",
+      "width": 331,
+      "height": 160
+    },
+    {
+      "page_number": 388,
+      "image_index": 0,
+      "image_path": "images/page0388_img000.jpeg",
+      "caption": ": Graph of average values for the threshold of sensation and the “can’t let go” current as a function of frequency. The",
+      "width": 340,
+      "height": 261
+    },
+    {
+      "page_number": 389,
+      "image_index": 0,
+      "image_path": "images/page0389_img000.jpeg",
+      "caption": ": Is this electric arc dangerous? The answer depends on the AC frequency and the power involved. (credit: Khimich",
+      "width": 360,
+      "height": 214
+    },
+    {
+      "page_number": 390,
+      "image_index": 0,
+      "image_path": "images/page0390_img000.jpeg",
+      "caption": ": Schematic representation of the outer electron cloud of a neutral water molecule. The electrons spend more time near",
+      "width": 201,
+      "height": 282
+    },
+    {
+      "page_number": 391,
+      "image_index": 0,
+      "image_path": "images/page0391_img000.jpeg",
+      "caption": ": Four point charges , , , and lie on the corners of a square and is located at its center.",
+      "width": 204,
+      "height": 190
+    },
+    {
+      "page_number": 392,
+      "image_index": 0,
+      "image_path": "images/page0392_img000.jpeg",
+      "caption": ": A switch is ordinarily in series with a resistance and voltage source. Ideally, the switch has nearly zero resistance",
+      "width": 200,
+      "height": 179
+    },
+    {
+      "page_number": 396,
+      "image_index": 0,
+      "image_path": "images/page0396_img000.jpeg",
+      "caption": "Figure 10.4.4 (a) and (b) 89. Figure shows the electric field lines near two charges and . What is the ratio of their magnitudes? (b) Sketch the electric field lines a long distance from the charges shown in the figure.",
+      "width": 199,
+      "height": 199
+    },
+    {
+      "page_number": 400,
+      "image_index": 0,
+      "image_path": "images/page0400_img000.jpeg",
+      "caption": ": The strip of solar cells just above the keys of this calculator convert light to electricity to supply its energy needs.",
+      "width": 199,
+      "height": 195
+    },
+    {
+      "page_number": 402,
+      "image_index": 0,
+      "image_path": "images/page0402_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/57078 : High-voltage (240-kV) transmission line carrying",
+      "width": 200,
+      "height": 210
+    },
+    {
+      "page_number": 406,
+      "image_index": 0,
+      "image_path": "images/page0406_img000.jpeg",
+      "caption": ": The magnificent spectacle of the Aurora Borealis, or northern lights, glows in the northern sky above Bear Lake near",
+      "width": 1000,
+      "height": 481
+    },
+    {
+      "page_number": 407,
+      "image_index": 0,
+      "image_path": "images/page0407_img000.jpeg",
+      "caption": ": Engineering of technology like iPods would not be possible without a deep understanding magnetism. (credit: Jesse!",
+      "width": 259,
+      "height": 173
+    },
+    {
+      "page_number": 408,
+      "image_index": 0,
+      "image_path": "images/page0408_img000.jpeg",
+      "caption": ": One end of a bar magnet is suspended from a thread that points toward north. The magnet’s two poles are labeled N",
+      "width": 275,
+      "height": 251
+    },
+    {
+      "page_number": 408,
+      "image_index": 1,
+      "image_path": "images/page0408_img001.jpeg",
+      "caption": ": Magnets come in various shapes, sizes, and strengths. All have both a north pole and a south pole. There is never an",
+      "width": 275,
+      "height": 176
+    },
+    {
+      "page_number": 409,
+      "image_index": 0,
+      "image_path": "images/page0409_img000.jpeg",
+      "caption": ": North and south poles always occur in pairs. Attempts to separate them result in more pairs of poles. If we continue",
+      "width": 269,
+      "height": 346
+    },
+    {
+      "page_number": 409,
+      "image_index": 1,
+      "image_path": "images/page0409_img001.jpeg",
+      "caption": ": Unlike poles attract, whereas like poles repel.",
+      "width": 275,
+      "height": 255
+    },
+    {
+      "page_number": 411,
+      "image_index": 0,
+      "image_path": "images/page0411_img000.jpeg",
+      "caption": ": (a) An unmagnetized piece of iron (or other ferromagnetic material) has randomly oriented domains. (b) When",
+      "width": 550,
+      "height": 195
+    },
+    {
+      "page_number": 411,
+      "image_index": 1,
+      "image_path": "images/page0411_img001.jpeg",
+      "caption": ": An unmagnetized piece of iron is placed between two magnets, heated, and then cooled, or simply tapped when cold.",
+      "width": 550,
+      "height": 175
+    },
+    {
+      "page_number": 412,
+      "image_index": 1,
+      "image_path": "images/page0412_img001.jpeg",
+      "caption": ": Iron filings near (a) a current-carrying coil and (b) a magnet act like tiny compass needles, showing the shape of",
+      "width": 259,
+      "height": 200
+    },
+    {
+      "page_number": 412,
+      "image_index": 2,
+      "image_path": "images/page0412_img002.jpeg",
+      "caption": ": Instrument for magnetic resonance imaging (MRI). The device uses a superconducting cylindrical coil for the main",
+      "width": 275,
+      "height": 206
+    },
+    {
+      "page_number": 413,
+      "image_index": 1,
+      "image_path": "images/page0413_img001.jpeg",
+      "caption": ": An electromagnet induces regions of permanent magnetism on a floppy disk coated with a ferromagnetic material.",
+      "width": 272,
+      "height": 359
+    },
+    {
+      "page_number": 415,
+      "image_index": 0,
+      "image_path": "images/page0415_img000.jpeg",
+      "caption": ": Small compasses could be used to map the fields shown here. (a) The magnetic field of a circular current loop is",
+      "width": 606,
+      "height": 164
+    },
+    {
+      "page_number": 415,
+      "image_index": 1,
+      "image_path": "images/page0415_img001.jpeg",
+      "caption": ": Magnetic field lines are defined to have the direction that a small compass points when placed at a location. (a) If",
+      "width": 550,
+      "height": 189
+    },
+    {
+      "page_number": 418,
+      "image_index": 0,
+      "image_path": "images/page0418_img000.jpeg",
+      "caption": ": Magnetic fields exert forces on moving charges. This force is one of the most basic known. The direction of the",
+      "width": 251,
+      "height": 275
+    },
+    {
+      "page_number": 420,
+      "image_index": 0,
+      "image_path": "images/page0420_img000.jpeg",
+      "caption": ": The force on a current-carrying wire in a magnetic field is",
+      "width": 224,
+      "height": 239
+    },
+    {
+      "page_number": 420,
+      "image_index": 1,
+      "image_path": "images/page0420_img001.jpeg",
+      "caption": ": The magnetic field exerts a force on a current-carrying wire in a direction given by the right hand rule 1 (the same",
+      "width": 550,
+      "height": 259
+    },
+    {
+      "page_number": 421,
+      "image_index": 0,
+      "image_path": "images/page0421_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46223 : An MHD propulsion system in a nuclear submarine could produce significantly less turbulence than propellers and",
+      "width": 550,
+      "height": 309
+    },
+    {
+      "page_number": 421,
+      "image_index": 1,
+      "image_path": "images/page0421_img001.jpeg",
+      "caption": ": Magnetohydrodynamics. The magnetic force on the current passed through this fluid can be used as a nonmechanical",
+      "width": 347,
+      "height": 190
+    },
+    {
+      "page_number": 423,
+      "image_index": 0,
+      "image_path": "images/page0423_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46224 : Meters are very similar to motors but only rotate through a part of a revolution. The magnetic poles of this meter are",
+      "width": 303,
+      "height": 185
+    },
+    {
+      "page_number": 423,
+      "image_index": 1,
+      "image_path": "images/page0423_img001.jpeg",
+      "caption": ": (a) As the momentum of the coil carries it through",
+      "width": 348,
+      "height": 217
+    },
+    {
+      "page_number": 423,
+      "image_index": 2,
+      "image_path": "images/page0423_img002.jpeg",
+      "caption": ": Force on a current loop. A current-carrying loop of wire attached to a vertically rotating shaft feels magnetic forces",
+      "width": 290,
+      "height": 167
+    },
+    {
+      "page_number": 425,
+      "image_index": 0,
+      "image_path": "images/page0425_img000.jpeg",
+      "caption": ": (a) Compasses placed near a long straight current-carrying wire indicate that field lines form circular loops centered",
+      "width": 190,
+      "height": 320
+    },
+    {
+      "page_number": 426,
+      "image_index": 0,
+      "image_path": "images/page0426_img000.jpeg",
+      "caption": ": (a) RHR-2 gives the direction of the magnetic field inside and outside a current-carrying loop. (b) More detailed",
+      "width": 356,
+      "height": 200
+    },
+    {
+      "page_number": 427,
+      "image_index": 0,
+      "image_path": "images/page0427_img000.jpeg",
+      "caption": ": (a) Because of its shape, the field inside a solenoid of length is remarkably uniform in magnitude and direction, as",
+      "width": 550,
+      "height": 263
+    },
+    {
+      "page_number": 430,
+      "image_index": 0,
+      "image_path": "images/page0430_img000.jpeg",
+      "caption": ": Movement of a magnet relative to a coil produces voltage as shown. The same voltages are produced if the coil is",
+      "width": 550,
+      "height": 205
+    },
+    {
+      "page_number": 431,
+      "image_index": 0,
+      "image_path": "images/page0431_img000.jpeg",
+      "caption": ": Magnetic flux is related to the magnetic field and the area over which it exists. Only the portion of the magnetic",
+      "width": 192,
+      "height": 195
+    },
+    {
+      "page_number": 431,
+      "image_index": 1,
+      "image_path": "images/page0431_img001.jpeg",
+      "caption": ": Rotation of a coil in a magnetic field produces a voltage. This is the basic construction of a generator, where work",
+      "width": 198,
+      "height": 275
+    },
+    {
+      "page_number": 433,
+      "image_index": 0,
+      "image_path": "images/page0433_img000.jpeg",
+      "caption": ": (a) When this bar magnet is thrust into the coil, the strength of the magnetic field increases in the coil. The current",
+      "width": 347,
+      "height": 292
+    },
+    {
+      "page_number": 436,
+      "image_index": 0,
+      "image_path": "images/page0436_img000.jpeg",
+      "caption": ": Transformers change voltages at several points in a power distribution system. Electric power is usually generated",
+      "width": 574,
+      "height": 179
+    },
+    {
+      "page_number": 436,
+      "image_index": 1,
+      "image_path": "images/page0436_img001.jpeg",
+      "caption": ": The plug-in transformer has become increasingly familiar with the proliferation of electronic devices that operate",
+      "width": 203,
+      "height": 203
+    },
+    {
+      "page_number": 437,
+      "image_index": 0,
+      "image_path": "images/page0437_img000.jpeg",
+      "caption": ": A typical construction of a simple transformer has two coils wound on a ferromagnetic core that is laminated to",
+      "width": 236,
+      "height": 275
+    },
+    {
+      "page_number": 440,
+      "image_index": 0,
+      "image_path": "images/page0440_img000.jpeg",
+      "caption": ": The potential difference between the terminals of an AC voltage source fluctuates as shown.",
+      "width": 203,
+      "height": 236
+    },
+    {
+      "page_number": 440,
+      "image_index": 1,
+      "image_path": "images/page0440_img001.jpeg",
+      "caption": ": (a) DC voltage and current are constant in time, once the current is established. (b) A graph of voltage and current",
+      "width": 200,
+      "height": 239
+    },
+    {
+      "page_number": 444,
+      "image_index": 0,
+      "image_path": "images/page0444_img000.jpeg",
+      "caption": ": The magnetic field exerts a force on a current-carrying wire in a direction given by the right hand rule 1 (the same",
+      "width": 550,
+      "height": 259
+    },
+    {
+      "page_number": 445,
+      "image_index": 1,
+      "image_path": "images/page0445_img001.jpeg",
+      "caption": ": Movement of a magnet relative to a coil produces voltage as shown. The same voltages are produced if the coil is",
+      "width": 550,
+      "height": 205
+    },
+    {
+      "page_number": 445,
+      "image_index": 3,
+      "image_path": "images/page0445_img003.jpeg",
+      "caption": ": Magnetohydrodynamics. The magnetic force on the current passed through this fluid can be used as a",
+      "width": 347,
+      "height": 190
+    },
+    {
+      "page_number": 446,
+      "image_index": 1,
+      "image_path": "images/page0446_img001.jpeg",
+      "caption": "(a) Left (West) (b) Into the page",
+      "width": 201,
+      "height": 181
+    },
+    {
+      "page_number": 447,
+      "image_index": 0,
+      "image_path": "images/page0447_img000.jpeg",
+      "caption": "(a) west (left) (b) into page",
+      "width": 199,
+      "height": 173
+    },
+    {
+      "page_number": 453,
+      "image_index": 1,
+      "image_path": "images/page0453_img001.jpeg",
+      "caption": ": Image seen as a result of reflection of light on a plane smooth surface. (credit: NASA Goddard Photo and Video, via",
+      "width": 1000,
+      "height": 666
+    },
+    {
+      "page_number": 454,
+      "image_index": 0,
+      "image_path": "images/page0454_img000.jpeg",
+      "caption": ": James Clerk Maxwell, a 19th-century physicist, developed a theory that explained the relationship between",
+      "width": 166,
+      "height": 199
+    },
+    {
+      "page_number": 455,
+      "image_index": 0,
+      "image_path": "images/page0455_img000.jpeg",
+      "caption": ": The apparatus used by Hertz in 1887 to generate and detect electromagnetic waves. An AC circuit connected to the",
+      "width": 550,
+      "height": 206
+    },
+    {
+      "page_number": 457,
+      "image_index": 0,
+      "image_path": "images/page0457_img000.jpeg",
+      "caption": ": This long straight gray wire with an AC generator at its center becomes a broadcast antenna for electromagnetic",
+      "width": 273,
+      "height": 275
+    },
+    {
+      "page_number": 458,
+      "image_index": 0,
+      "image_path": "images/page0458_img000.jpeg",
+      "caption": ": A part of the electromagnetic wave sent out from the antenna at one instant in time. The electric and magnetic fields (",
+      "width": 275,
+      "height": 189
+    },
+    {
+      "page_number": 458,
+      "image_index": 1,
+      "image_path": "images/page0458_img001.jpeg",
+      "caption": ": (a) The current in the antenna produces the circular magnetic field lines. The current ( ) produces the separation of",
+      "width": 550,
+      "height": 170
+    },
+    {
+      "page_number": 459,
+      "image_index": 0,
+      "image_path": "images/page0459_img000.jpeg",
+      "caption": ": Electric and magnetic fields of an electromagnetic wave can combine to produce a force in the direction of",
+      "width": 533,
+      "height": 371
+    },
+    {
+      "page_number": 460,
+      "image_index": 0,
+      "image_path": "images/page0460_img000.jpeg",
+      "caption": ": Evaporation of material being warmed by the Sun forms two tails, as shown in this photo of Comet Ison. (credit:",
+      "width": 585,
+      "height": 488
+    },
+    {
+      "page_number": 460,
+      "image_index": 1,
+      "image_path": "images/page0460_img001.jpeg",
+      "caption": ": Simplified diagram of the central part of the apparatus Nichols and Hull used to precisely measure radiation pressure",
+      "width": 397,
+      "height": 250
+    },
+    {
+      "page_number": 461,
+      "image_index": 0,
+      "image_path": "images/page0461_img000.jpeg",
+      "caption": ": A 1:64 scale model of the IKAROS spacecraft at the 61st International Astronautical Congress in Prague, Czech",
+      "width": 275,
+      "height": 232
+    },
+    {
+      "page_number": 464,
+      "image_index": 0,
+      "image_path": "images/page0464_img000.jpeg",
+      "caption": ": The electromagnetic spectrum, showing the major categories of electromagnetic waves. The range of frequencies",
+      "width": 617,
+      "height": 232
+    },
+    {
+      "page_number": 466,
+      "image_index": 0,
+      "image_path": "images/page0466_img000.jpeg",
+      "caption": ": This high-voltage traction power line running to Eutingen Railway Substation in Germany radiates electromagnetic",
+      "width": 249,
+      "height": 187
+    },
+    {
+      "page_number": 466,
+      "image_index": 1,
+      "image_path": "images/page0466_img001.jpeg",
+      "caption": ": The electromagnetic spectrum, showing the major categories of electromagnetic waves. The range of frequencies",
+      "width": 613,
+      "height": 231
+    },
+    {
+      "page_number": 467,
+      "image_index": 0,
+      "image_path": "images/page0467_img000.jpeg",
+      "caption": ": Frequency modulation for FM radio. (a) A carrier wave at the station’s basic frequency. (b) An audio signal at much",
+      "width": 221,
+      "height": 275
+    },
+    {
+      "page_number": 467,
+      "image_index": 1,
+      "image_path": "images/page0467_img001.jpeg",
+      "caption": ": Amplitude modulation for AM radio. (a) A carrier wave at the station’s basic frequency. (b) An audio signal at much",
+      "width": 550,
+      "height": 239
+    },
+    {
+      "page_number": 467,
+      "image_index": 2,
+      "image_path": "images/page0467_img002.jpeg",
+      "caption": ": Very long wavelength radio waves are needed to reach this submarine, requiring extremely low frequency signals",
+      "width": 200,
+      "height": 199
+    },
+    {
+      "page_number": 469,
+      "image_index": 0,
+      "image_path": "images/page0469_img000.jpeg",
+      "caption": ": (a) A large tower is used to broadcast TV signals. The actual antennas are small structures on top of the tower—they",
+      "width": 246,
+      "height": 201
+    },
+    {
+      "page_number": 470,
+      "image_index": 0,
+      "image_path": "images/page0470_img000.jpeg",
+      "caption": ": An image of Sif Mons with lava flows on Venus, based on Magellan synthetic aperture radar data combined with",
+      "width": 241,
+      "height": 189
+    },
+    {
+      "page_number": 473,
+      "image_index": 0,
+      "image_path": "images/page0473_img000.jpeg",
+      "caption": ": This map of ozone concentration over Antarctica in October 2011 shows severe depletion suspected to be caused by",
+      "width": 215,
+      "height": 247
+    },
+    {
+      "page_number": 474,
+      "image_index": 0,
+      "image_path": "images/page0474_img000.jpeg",
+      "caption": ": Artist’s conception of an electron being slowed by collisions in a material and emitting X-ray radiation. This",
+      "width": 211,
+      "height": 199
+    },
+    {
+      "page_number": 474,
+      "image_index": 1,
+      "image_path": "images/page0474_img001.jpeg",
+      "caption": ": Artist’s conception of an electron ionizing an atom followed by the recapture of an electron and emission of an",
+      "width": 228,
+      "height": 305
+    },
+    {
+      "page_number": 475,
+      "image_index": 0,
+      "image_path": "images/page0475_img000.jpeg",
+      "caption": ": This shadow X-ray image shows many interesting features, such as artificial heart valves, a pacemaker, and the",
+      "width": 203,
+      "height": 216
+    },
+    {
+      "page_number": 476,
+      "image_index": 0,
+      "image_path": "images/page0476_img000.jpeg",
+      "caption": ": This is an image of the rays emitted by nuclei in a compound that is concentrated in the bones and eliminated",
+      "width": 165,
+      "height": 550
+    },
+    {
+      "page_number": 479,
+      "image_index": 0,
+      "image_path": "images/page0479_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46235 : A mirror illuminated by many parallel rays reflects them in only one direction, since its surface is very smooth. Only",
+      "width": 247,
+      "height": 178
+    },
+    {
+      "page_number": 479,
+      "image_index": 1,
+      "image_path": "images/page0479_img001.jpeg",
+      "caption": ": When a sheet of paper is illuminated with many parallel incident rays, it can be seen at many different angles,",
+      "width": 247,
+      "height": 171
+    },
+    {
+      "page_number": 479,
+      "image_index": 3,
+      "image_path": "images/page0479_img003.jpeg",
+      "caption": ": The law of reflection states that the angle of reflection equals the angle of incidence—",
+      "width": 241,
+      "height": 207
+    },
+    {
+      "page_number": 480,
+      "image_index": 0,
+      "image_path": "images/page0480_img000.jpeg",
+      "caption": ": Our image in a mirror is behind the mirror. The two rays shown are those that strike the mirror at just the correct",
+      "width": 275,
+      "height": 222
+    },
+    {
+      "page_number": 480,
+      "image_index": 1,
+      "image_path": "images/page0480_img001.jpeg",
+      "caption": ": Moonlight is spread out when it is reflected by the lake, since the surface is shiny but uneven. (credit: Diego Torres",
+      "width": 275,
+      "height": 206
+    },
+    {
+      "page_number": 482,
+      "image_index": 0,
+      "image_path": "images/page0482_img000.jpeg",
+      "caption": ": Looking at the fish tank as shown, we can see the same fish in two different locations, because light changes",
+      "width": 178,
+      "height": 207
+    },
+    {
+      "page_number": 483,
+      "image_index": 0,
+      "image_path": "images/page0483_img000.jpeg",
+      "caption": ": A schematic of early apparatus used by Michelson and others to determine the speed of light. As the mirrors rotate,",
+      "width": 510,
+      "height": 550
+    },
+    {
+      "page_number": 485,
+      "image_index": 0,
+      "image_path": "images/page0485_img000.jpeg",
+      "caption": ": The change in direction of a light ray depends on how the speed of light changes when it crosses from one medium",
+      "width": 550,
+      "height": 247
+    },
+    {
+      "page_number": 487,
+      "image_index": 1,
+      "image_path": "images/page0487_img001.jpeg",
+      "caption": ": The colors of the rainbow (a) and those produced by a prism (b) are identical. (credit: Alfredo55, Wikimedia",
+      "width": 198,
+      "height": 275
+    },
+    {
+      "page_number": 488,
+      "image_index": 0,
+      "image_path": "images/page0488_img000.jpeg",
+      "caption": ": (a) A pure wavelength of light falls onto a prism and is refracted at both surfaces. (b) White light is dispersed by the",
+      "width": 200,
+      "height": 334
+    },
+    {
+      "page_number": 489,
+      "image_index": 0,
+      "image_path": "images/page0489_img000.jpeg",
+      "caption": ": (a) Different colors emerge in different directions, and so you must look at different locations to see the various",
+      "width": 265,
+      "height": 625
+    },
+    {
+      "page_number": 489,
+      "image_index": 1,
+      "image_path": "images/page0489_img001.jpeg",
+      "caption": ": Part of the light falling on this water drop enters and is reflected from the back of the drop. This light is refracted and",
+      "width": 201,
+      "height": 176
+    },
+    {
+      "page_number": 491,
+      "image_index": 0,
+      "image_path": "images/page0491_img000.jpeg",
+      "caption": ": Rays of light entering a converging lens parallel to its axis converge at its focal point F. (Ray 2 lies on the axis of the",
+      "width": 550,
+      "height": 211
+    },
+    {
+      "page_number": 492,
+      "image_index": 0,
+      "image_path": "images/page0492_img000.jpeg",
+      "caption": ": Sunlight focused by a converging magnifying glass can burn paper. Light rays from the sun are nearly parallel and",
+      "width": 200,
+      "height": 222
+    },
+    {
+      "page_number": 493,
+      "image_index": 1,
+      "image_path": "images/page0493_img001.jpeg",
+      "caption": ": Rays of light entering a diverging lens parallel to its axis are diverged, and all appear to originate at its focal point .",
+      "width": 253,
+      "height": 261
+    },
+    {
+      "page_number": 494,
+      "image_index": 1,
+      "image_path": "images/page0494_img001.jpeg",
+      "caption": ": Thin lenses have the same focal length on either side. (a) Parallel light rays entering a converging lens from the right",
+      "width": 229,
+      "height": 313
+    },
+    {
+      "page_number": 495,
+      "image_index": 0,
+      "image_path": "images/page0495_img000.jpeg",
+      "caption": ": Ray tracing is used to locate the image formed by a lens. Rays originating from the same point on the object are",
+      "width": 252,
+      "height": 550
+    },
+    {
+      "page_number": 496,
+      "image_index": 0,
+      "image_path": "images/page0496_img000.jpeg",
+      "caption": ": Real images can be projected. (a) A real image of the person is projected onto film. (b) The converging nature of the",
+      "width": 215,
+      "height": 275
+    },
+    {
+      "page_number": 497,
+      "image_index": 0,
+      "image_path": "images/page0497_img000.jpeg",
+      "caption": ": A light bulb placed 0.750 m from a lens having a 0.500 m focal length produces a real image on a poster board",
+      "width": 550,
+      "height": 213
+    },
+    {
+      "page_number": 498,
+      "image_index": 0,
+      "image_path": "images/page0498_img000.jpeg",
+      "caption": ": (a) When a converging lens is held farther away from the face than the lens’s focal length, an inverted image is",
+      "width": 176,
+      "height": 275
+    },
+    {
+      "page_number": 499,
+      "image_index": 0,
+      "image_path": "images/page0499_img000.jpeg",
+      "caption": ": Ray tracing predicts the image location and size for an object held closer to a converging lens than its focal length.",
+      "width": 215,
+      "height": 338
+    },
+    {
+      "page_number": 500,
+      "image_index": 0,
+      "image_path": "images/page0500_img000.jpeg",
+      "caption": ": Ray tracing predicts the image location and size for a concave or diverging lens. Ray 1 enters parallel to the axis",
+      "width": 455,
+      "height": 550
+    },
+    {
+      "page_number": 503,
+      "image_index": 0,
+      "image_path": "images/page0503_img000.jpeg",
+      "caption": ": Two sets of rays from common points on an object are reflected by a flat mirror into the eye of an observer. The",
+      "width": 550,
+      "height": 314
+    },
+    {
+      "page_number": 504,
+      "image_index": 0,
+      "image_path": "images/page0504_img000.jpeg",
+      "caption": ": Parallel rays of light reflected from a convex spherical mirror (small in size compared with its radius of curvature)",
+      "width": 234,
+      "height": 333
+    },
+    {
+      "page_number": 504,
+      "image_index": 1,
+      "image_path": "images/page0504_img001.jpeg",
+      "caption": ": (a) Parallel rays reflected from a large spherical mirror do not all cross at a common point. (b) If a spherical mirror",
+      "width": 550,
+      "height": 248
+    },
+    {
+      "page_number": 505,
+      "image_index": 0,
+      "image_path": "images/page0505_img000.jpeg",
+      "caption": ": A case 1 image for a mirror. An object is farther from the converging mirror than its focal length. Rays from a",
+      "width": 275,
+      "height": 188
+    },
+    {
+      "page_number": 507,
+      "image_index": 0,
+      "image_path": "images/page0507_img000.jpeg",
+      "caption": ": (a) Case 2 images for mirrors are formed when a converging mirror has an object closer to it than its focal",
+      "width": 404,
+      "height": 550
+    },
+    {
+      "page_number": 507,
+      "image_index": 1,
+      "image_path": "images/page0507_img001.jpeg",
+      "caption": ": Parabolic trough collectors are used to generate electricity in southern California. (credit: kjkolb, Wikimedia",
+      "width": 297,
+      "height": 160
+    },
+    {
+      "page_number": 508,
+      "image_index": 0,
+      "image_path": "images/page0508_img000.jpeg",
+      "caption": ": Case 3 images for mirrors are formed by any convex mirror. Ray 1 approaches parallel to the axis, ray 2 strikes",
+      "width": 334,
+      "height": 550
+    },
+    {
+      "page_number": 510,
+      "image_index": 0,
+      "image_path": "images/page0510_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46963 : The transverse oscillations in one rope are in a vertical plane, and those in the other rope are in a horizontal plane.",
+      "width": 362,
+      "height": 181
+    },
+    {
+      "page_number": 510,
+      "image_index": 2,
+      "image_path": "images/page0510_img002.jpeg",
+      "caption": ": These two photographs of a river show the effect of a polarizing filter in reducing glare in light reflected from the",
+      "width": 550,
+      "height": 226
+    },
+    {
+      "page_number": 511,
+      "image_index": 0,
+      "image_path": "images/page0511_img000.jpeg",
+      "caption": ": The effect of rotating two polarizing filters, where the first polarizes the light. (a) All of the polarized light is passed",
+      "width": 550,
+      "height": 340
+    },
+    {
+      "page_number": 511,
+      "image_index": 1,
+      "image_path": "images/page0511_img001.jpeg",
+      "caption": ": A polarizing filter has a polarization axis that acts as a slit passing through electric fields parallel to its direction.",
+      "width": 550,
+      "height": 255
+    },
+    {
+      "page_number": 511,
+      "image_index": 2,
+      "image_path": "images/page0511_img002.jpeg",
+      "caption": ": The slender arrow represents a ray of unpolarized light. The bold arrows represent the direction of polarization of",
+      "width": 218,
+      "height": 196
+    },
+    {
+      "page_number": 512,
+      "image_index": 0,
+      "image_path": "images/page0512_img000.jpeg",
+      "caption": "https://phys libretexts org/@go/page/46963 : Long molecules are aligned perpendicular to the axis of a polarizing filter. The component of the electric field",
+      "width": 275,
+      "height": 224
+    },
+    {
+      "page_number": 512,
+      "image_index": 1,
+      "image_path": "images/page0512_img001.jpeg",
+      "caption": ": Polarization by reflection. Unpolarized light has equal amounts of vertical and horizontal polarization. After",
+      "width": 275,
+      "height": 236
+    },
+    {
+      "page_number": 513,
+      "image_index": 0,
+      "image_path": "images/page0513_img000.jpeg",
+      "caption": ": Polarization by scattering. Unpolarized light scattering from air molecules shakes their electrons perpendicular to",
+      "width": 550,
+      "height": 415
+    },
+    {
+      "page_number": 513,
+      "image_index": 1,
+      "image_path": "images/page0513_img001.jpeg",
+      "caption": ": Artist’s conception of an electron in a long molecule oscillating parallel to the molecule. The oscillation of the",
+      "width": 490,
+      "height": 550
+    },
+    {
+      "page_number": 514,
+      "image_index": 0,
+      "image_path": "images/page0514_img000.jpeg",
+      "caption": ": (a) Polarized light is rotated by a liquid crystal and then passed by a polarizing filter that has its axis",
+      "width": 289,
+      "height": 550
+    },
+    {
+      "page_number": 515,
+      "image_index": 1,
+      "image_path": "images/page0515_img001.jpeg",
+      "caption": ": Optical stress analysis of a plastic lens placed between crossed polarizers. (credit: Infopro, Wikimedia Commons)",
+      "width": 211,
+      "height": 237
+    },
+    {
+      "page_number": 515,
+      "image_index": 2,
+      "image_path": "images/page0515_img002.jpeg",
+      "caption": ": Optical activity is the ability of some substances to rotate the plane of polarization of light passing through them.",
+      "width": 550,
+      "height": 288
+    },
+    {
+      "page_number": 518,
+      "image_index": 0,
+      "image_path": "images/page0518_img000.jpeg",
+      "caption": ": The curved surface of the thermometer serves a purpose.",
+      "width": 200,
+      "height": 170
+    },
+    {
+      "page_number": 524,
+      "image_index": 1,
+      "image_path": "images/page0524_img001.jpeg",
+      "caption": ": A black fly imaged by an electron microscope is as monstrous as any science-fiction creature. (credit: U.S.",
+      "width": 550,
+      "height": 402
+    },
+    {
+      "page_number": 526,
+      "image_index": 0,
+      "image_path": "images/page0526_img000.jpeg",
+      "caption": ": Graphs of blackbody radiation (from an ideal radiator) at three different radiator temperatures. The intensity or rate",
+      "width": 443,
+      "height": 368
+    },
+    {
+      "page_number": 527,
+      "image_index": 0,
+      "image_path": "images/page0527_img000.jpeg",
+      "caption": ": The German physicist Max Planck had a major influence on the early development of quantum mechanics, being the",
+      "width": 312,
+      "height": 222
+    },
+    {
+      "page_number": 529,
+      "image_index": 0,
+      "image_path": "images/page0529_img000.jpeg",
+      "caption": ": A photo of a photoelectric effect experiment vacuum tube is shown above. (Credit: P.P. Urone)",
+      "width": 183,
+      "height": 160
+    },
+    {
+      "page_number": 529,
+      "image_index": 1,
+      "image_path": "images/page0529_img001.jpeg",
+      "caption": ": The photoelectric effect can be observed by allowing light to fall on the metal plate in an evacuated tube. Electrons",
+      "width": 550,
+      "height": 433
+    },
+    {
+      "page_number": 531,
+      "image_index": 0,
+      "image_path": "images/page0531_img000.jpeg",
+      "caption": ": Photoelectric effect. A graph of the kinetic energy of an ejected electron,",
+      "width": 234,
+      "height": 212
+    },
+    {
+      "page_number": 534,
+      "image_index": 0,
+      "image_path": "images/page0534_img000.jpeg",
+      "caption": ": This diffraction pattern was obtained for electrons diffracted by crystalline silicon. Bright regions are those of",
+      "width": 243,
+      "height": 240
+    },
+    {
+      "page_number": 535,
+      "image_index": 0,
+      "image_path": "images/page0535_img000.jpeg",
+      "caption": ": Schematic of a scanning electron microscope (SEM) (a) used to observe small details, such as those seen in this",
+      "width": 607,
+      "height": 298
+    },
+    {
+      "page_number": 537,
+      "image_index": 0,
+      "image_path": "images/page0537_img000.jpeg",
+      "caption": ": Double-slit interference for electrons (a) and protons (b) is identical for equal wavelengths and equal slit separations.",
+      "width": 550,
+      "height": 284
+    },
+    {
+      "page_number": 537,
+      "image_index": 1,
+      "image_path": "images/page0537_img001.jpeg",
+      "caption": ": The building up of the diffraction pattern of electrons scattered from a crystal surface. Each electron arrives at a",
+      "width": 317,
+      "height": 253
+    },
+    {
+      "page_number": 538,
+      "image_index": 0,
+      "image_path": "images/page0538_img000.jpeg",
+      "caption": ": Werner Heisenberg was one of the best of those physicists who developed early quantum mechanics. Not only did",
+      "width": 201,
+      "height": 296
+    },
+    {
+      "page_number": 542,
+      "image_index": 0,
+      "image_path": "images/page0542_img000.jpeg",
+      "caption": ": A gas discharge tube glows when a high voltage is applied to it. Electrons emitted from the cathode are accelerated",
+      "width": 215,
+      "height": 227
+    },
+    {
+      "page_number": 543,
+      "image_index": 0,
+      "image_path": "images/page0543_img000.jpeg",
+      "caption": ": This schematic shows the electron beam in a CRT passing through crossed electric and magnetic fields and causing",
+      "width": 550,
+      "height": 315
+    },
+    {
+      "page_number": 543,
+      "image_index": 2,
+      "image_path": "images/page0543_img002.jpeg",
+      "caption": ": J. J. Thomson (credit: www.firstworldwar.com, via Wikimedia Commons)",
+      "width": 166,
+      "height": 260
+    },
+    {
+      "page_number": 544,
+      "image_index": 0,
+      "image_path": "images/page0544_img000.jpeg",
+      "caption": ": Rutherford’s experiment gave direct evidence for the size and mass of the nucleus by scattering alpha particles from",
+      "width": 550,
+      "height": 265
+    },
+    {
+      "page_number": 545,
+      "image_index": 0,
+      "image_path": "images/page0545_img000.jpeg",
+      "caption": ": An expanded view of the atoms in the gold foil in Rutherford’s experiment. Circles represent the atoms (about",
+      "width": 243,
+      "height": 224
+    },
+    {
+      "page_number": 547,
+      "image_index": 0,
+      "image_path": "images/page0547_img000.jpeg",
+      "caption": ": Part (a) shows, from left to right, a discharge tube, slit, and diffraction grating producing a line spectrum. Part (b)",
+      "width": 550,
+      "height": 312
+    },
+    {
+      "page_number": 547,
+      "image_index": 1,
+      "image_path": "images/page0547_img001.jpeg",
+      "caption": ": Niels Bohr, Danish physicist, used the planetary model of the atom to explain the atomic spectrum and size of the",
+      "width": 293,
+      "height": 210
+    },
+    {
+      "page_number": 548,
+      "image_index": 0,
+      "image_path": "images/page0548_img000.jpeg",
+      "caption": ": A schematic of the hydrogen spectrum shows several series named for those who contributed most to their",
+      "width": 626,
+      "height": 203
+    },
+    {
+      "page_number": 549,
+      "image_index": 0,
+      "image_path": "images/page0549_img000.jpeg",
+      "caption": ": An energy-level diagram plots energy vertically and is useful in visualizing the energy states of a system and the",
+      "width": 275,
+      "height": 320
+    },
+    {
+      "page_number": 549,
+      "image_index": 1,
+      "image_path": "images/page0549_img001.jpeg",
+      "caption": ": The planetary model of the atom, as modified by Bohr, has the orbits of the electrons quantized. Only certain orbits",
+      "width": 272,
+      "height": 275
+    },
+    {
+      "page_number": 550,
+      "image_index": 0,
+      "image_path": "images/page0550_img000.jpeg",
+      "caption": ": Energy-level diagram for hydrogen showing the Lyman, Balmer, and Paschen series of transitions. The orbital",
+      "width": 324,
+      "height": 550
+    },
+    {
+      "page_number": 553,
+      "image_index": 0,
+      "image_path": "images/page0553_img000.jpeg",
+      "caption": ": (a) Waves on a string have a wavelength related to the length of the string, allowing them to interfere constructively.",
+      "width": 550,
+      "height": 305
+    },
+    {
+      "page_number": 554,
+      "image_index": 0,
+      "image_path": "images/page0554_img000.jpeg",
+      "caption": ": The ground state of a hydrogen atom has a probability cloud describing the position of its electron. The probability",
+      "width": 261,
+      "height": 209
+    },
+    {
+      "page_number": 554,
+      "image_index": 1,
+      "image_path": "images/page0554_img001.jpeg",
+      "caption": ": The third and fourth allowed circular orbits have three and four wavelengths, respectively, in their circumferences.",
+      "width": 232,
+      "height": 246
+    },
+    {
+      "page_number": 565,
+      "image_index": 0,
+      "image_path": "images/page0565_img000.jpeg",
+      "caption": ": Many people think that Albert Einstein (1879–1955) was the greatest physicist of the 20th century. Not only did he",
+      "width": 190,
+      "height": 247
+    },
+    {
+      "page_number": 565,
+      "image_index": 1,
+      "image_path": "images/page0565_img001.jpeg",
+      "caption": ": Special relativity explains why traveling to other star systems, such as these in the Orion Nebula, is unreasonable",
+      "width": 556,
+      "height": 235
+    },
+    {
+      "page_number": 566,
+      "image_index": 0,
+      "image_path": "images/page0566_img000.jpeg",
+      "caption": ": Special relativity resembles trigonometry in that both are reliable because they are based on postulates that flow one",
+      "width": 344,
+      "height": 257
+    },
+    {
+      "page_number": 569,
+      "image_index": 0,
+      "image_path": "images/page0569_img000.jpeg",
+      "caption": ": Elapsed time for a foot race is the same for all observers, but at relativistic speeds, elapsed time depends on the",
+      "width": 349,
+      "height": 233
+    },
+    {
+      "page_number": 570,
+      "image_index": 0,
+      "image_path": "images/page0570_img000.jpeg",
+      "caption": ": Observer B measures the elapsed time between the arrival of light flashes as described in the text. Observer A moves",
+      "width": 503,
+      "height": 520
+    },
+    {
+      "page_number": 571,
+      "image_index": 0,
+      "image_path": "images/page0571_img000.jpeg",
+      "caption": ": (a) An astronaut measures the time for light to cross her ship using an electronic timer. Light travels a distance",
+      "width": 550,
+      "height": 439
+    },
+    {
+      "page_number": 573,
+      "image_index": 0,
+      "image_path": "images/page0573_img000.jpeg",
+      "caption": ": A muon in the Earth’s atmosphere lives longer as measured by an Earth-bound observer than measured by the",
+      "width": 424,
+      "height": 550
+    },
+    {
+      "page_number": 577,
+      "image_index": 0,
+      "image_path": "images/page0577_img000.jpeg",
+      "caption": ": People might describe distances differently, but at relativistic speeds, the distances really are different. (credit: Corey",
+      "width": 336,
+      "height": 224
+    },
+    {
+      "page_number": 578,
+      "image_index": 0,
+      "image_path": "images/page0578_img000.jpeg",
+      "caption": ": (a) The Earth-bound observer sees the muon travel 2.01 km between clouds. (b) The muon sees itself travel the same",
+      "width": 621,
+      "height": 156
+    },
+    {
+      "page_number": 579,
+      "image_index": 0,
+      "image_path": "images/page0579_img000.jpeg",
+      "caption": ": (a) The Earth-bound observer measures the proper distance between the Earth and the Alpha Centauri. (b) The",
+      "width": 927,
+      "height": 607
+    },
+    {
+      "page_number": 580,
+      "image_index": 0,
+      "image_path": "images/page0580_img000.jpeg",
+      "caption": ": The electric field lines of a high-velocity charged particle are compressed along the direction of motion by length",
+      "width": 259,
+      "height": 178
+    },
+    {
+      "page_number": 582,
+      "image_index": 0,
+      "image_path": "images/page0582_img000.jpeg",
+      "caption": ": The total velocity of a kayak, like this one on the Deerfield River in Massachusetts, is its velocity relative to the",
+      "width": 550,
+      "height": 367
+    },
+    {
+      "page_number": 583,
+      "image_index": 0,
+      "image_path": "images/page0583_img000.jpeg",
+      "caption": ": Classically, velocities add like ordinary numbers in one-dimensional motion. Here the girl throws a snowball forward",
+      "width": 709,
+      "height": 618
+    },
+    {
+      "page_number": 584,
+      "image_index": 0,
+      "image_path": "images/page0584_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46977",
+      "width": 610,
+      "height": 348
+    },
+    {
+      "page_number": 584,
+      "image_index": 1,
+      "image_path": "images/page0584_img001.jpeg",
+      "caption": ":According to experiment and the second postulate of relativity, light from the car’s headlights moves away from the",
+      "width": 1000,
+      "height": 467
+    },
+    {
+      "page_number": 585,
+      "image_index": 0,
+      "image_path": "images/page0585_img000.jpeg",
+      "caption": "Because the canister and the spaceship are moving at relativistic speeds, we must determine the speed of the canister by an",
+      "width": 1051,
+      "height": 315
+    },
+    {
+      "page_number": 589,
+      "image_index": 0,
+      "image_path": "images/page0589_img000.jpeg",
+      "caption": ": Momentum is an important concept for these football players from the University of California at Berkeley and the",
+      "width": 578,
+      "height": 386
+    },
+    {
+      "page_number": 590,
+      "image_index": 0,
+      "image_path": "images/page0590_img000.jpeg",
+      "caption": ": Relativistic momentum approaches infinity as the velocity of an object approaches the speed of light.",
+      "width": 401,
+      "height": 327
+    },
+    {
+      "page_number": 592,
+      "image_index": 0,
+      "image_path": "images/page0592_img000.jpeg",
+      "caption": ": The National Spherical Torus Experiment (NSTX) has a fusion reactor in which hydrogen isotopes undergo fusion to",
+      "width": 550,
+      "height": 441
+    },
+    {
+      "page_number": 594,
+      "image_index": 0,
+      "image_path": "images/page0594_img000.jpeg",
+      "caption": ": The Sun (a) and the Susquehanna Steam Electric Station (b) both convert mass into energy—the Sun via nuclear",
+      "width": 403,
+      "height": 642
+    },
+    {
+      "page_number": 596,
+      "image_index": 0,
+      "image_path": "images/page0596_img000.jpeg",
+      "caption": ": This graph of versus velocity shows how kinetic energy approaches infinity as velocity approaches the speed",
+      "width": 550,
+      "height": 435
+    },
+    {
+      "page_number": 598,
+      "image_index": 0,
+      "image_path": "images/page0598_img000.jpeg",
+      "caption": ": The Fermi National Accelerator Laboratory, near Batavia, Illinois, was a subatomic particle collider that",
+      "width": 1000,
+      "height": 651
+    },
+    {
+      "page_number": 612,
+      "image_index": 1,
+      "image_path": "images/page0612_img001.jpeg",
+      "caption": ": Part of the Large Hadron Collider at CERN, on the border of Switzerland and France. The LHC is a particle",
+      "width": 750,
+      "height": 398
+    },
+    {
+      "page_number": 613,
+      "image_index": 0,
+      "image_path": "images/page0613_img000.jpeg",
+      "caption": ": The dials of this World War II aircraft will glow in the dark, because they are painted with radium-doped",
+      "width": 321,
+      "height": 217
+    },
+    {
+      "page_number": 614,
+      "image_index": 0,
+      "image_path": "images/page0614_img000.jpeg",
+      "caption": ": Alpha, beta, and gamma rays are passed through a magnetic field on the way to a phosphorescent screen. The s and",
+      "width": 489,
+      "height": 550
+    },
+    {
+      "page_number": 615,
+      "image_index": 0,
+      "image_path": "images/page0615_img000.jpeg",
+      "caption": ": These dosimeters (literally, dose meters) are personal radiation monitors that detect the amount of radiation by the",
+      "width": 290,
+      "height": 225
+    },
+    {
+      "page_number": 616,
+      "image_index": 0,
+      "image_path": "images/page0616_img000.jpeg",
+      "caption": ": The penetration or range of radiation depends on its energy, the material it encounters, and the type of radiation. (a)",
+      "width": 607,
+      "height": 267
+    },
+    {
+      "page_number": 617,
+      "image_index": 0,
+      "image_path": "images/page0617_img000.jpeg",
+      "caption": ": This image of the concentration of a radioactive tracer in a patient’s body reveals where the most active bone cells",
+      "width": 550,
+      "height": 497
+    },
+    {
+      "page_number": 619,
+      "image_index": 0,
+      "image_path": "images/page0619_img000.jpeg",
+      "caption": ": (a) Geiger counters such as this one are used for prompt monitoring of radiation levels, generally giving only relative intensity and not",
+      "width": 458,
+      "height": 550
+    },
+    {
+      "page_number": 619,
+      "image_index": 1,
+      "image_path": "images/page0619_img001.jpeg",
+      "caption": ": Film badges contain film similar to that used in this dental x-ray film and is sandwiched between various absorbers to determine the",
+      "width": 208,
+      "height": 156
+    },
+    {
+      "page_number": 620,
+      "image_index": 0,
+      "image_path": "images/page0620_img000.jpeg",
+      "caption": ": Photomultipliers use the photoelectric effect on the photocathode to convert the light output of a scintillator into an electrical signal. Each",
+      "width": 396,
+      "height": 550
+    },
+    {
+      "page_number": 622,
+      "image_index": 0,
+      "image_path": "images/page0622_img000.jpeg",
+      "caption": ": Why is most of the carbon in this coal stable (a), while the uranium in the disk (b) slowly decays over billions of",
+      "width": 550,
+      "height": 167
+    },
+    {
+      "page_number": 625,
+      "image_index": 0,
+      "image_path": "images/page0625_img000.jpeg",
+      "caption": ": Simplified chart of the nuclides, a graph of versus for known nuclides. The patterns of stable and unstable",
+      "width": 409,
+      "height": 550
+    },
+    {
+      "page_number": 626,
+      "image_index": 0,
+      "image_path": "images/page0626_img000.jpeg",
+      "caption": ": The German-born American physicist Maria Goeppert Mayer (1906–1972) shared the 1963 Nobel Prize in physics",
+      "width": 156,
+      "height": 221
+    },
+    {
+      "page_number": 628,
+      "image_index": 0,
+      "image_path": "images/page0628_img000.jpeg",
+      "caption": ": The decay series produced by , the most common uranium isotope. Nuclides are graphed in the same manner as",
+      "width": 374,
+      "height": 550
+    },
+    {
+      "page_number": 631,
+      "image_index": 1,
+      "image_path": "images/page0631_img001.jpeg",
+      "caption": ": Enrico Fermi was nearly unique among 20th-century physicists—he made significant contributions both as an",
+      "width": 193,
+      "height": 240
+    },
+    {
+      "page_number": 632,
+      "image_index": 0,
+      "image_path": "images/page0632_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46257 decay is the emission of a positron that eventually finds an electron to annihilate, characteristically producing",
+      "width": 271,
+      "height": 154
+    },
+    {
+      "page_number": 636,
+      "image_index": 0,
+      "image_path": "images/page0636_img000.jpeg",
+      "caption": ": Radioactive decay reduces the number of radioactive nuclei over time. In one half-life",
+      "width": 550,
+      "height": 438
+    },
+    {
+      "page_number": 638,
+      "image_index": 0,
+      "image_path": "images/page0638_img000.jpeg",
+      "caption": ": Part of the Shroud of Turin, which shows a remarkable negative imprint likeness of Jesus complete with evidence of",
+      "width": 275,
+      "height": 181
+    },
+    {
+      "page_number": 640,
+      "image_index": 0,
+      "image_path": "images/page0640_img000.jpeg",
+      "caption": ": The Chernobyl reactor. More than 100 people died soon after its meltdown, and there will be thousands of deaths",
+      "width": 256,
+      "height": 181
+    },
+    {
+      "page_number": 644,
+      "image_index": 0,
+      "image_path": "images/page0644_img000.jpeg",
+      "caption": ": An Anger or gamma camera consists of a lead collimator and an array of detectors. Gamma rays produce light flashes in the scintillators. The light output is converted to an electrical",
+      "width": 275,
+      "height": 156
+    },
+    {
+      "page_number": 648,
+      "image_index": 0,
+      "image_path": "images/page0648_img000.jpeg",
+      "caption": ": The image shows ionization created in cells by and radiation. Because of its shorter range, the ionization and",
+      "width": 571,
+      "height": 153
+    },
+    {
+      "page_number": 652,
+      "image_index": 0,
+      "image_path": "images/page0652_img000.jpeg",
+      "caption": ": A lead apron is placed over the dental patient and shielding surrounds the X-ray tube to limit exposure to tissue other",
+      "width": 324,
+      "height": 286
+    },
+    {
+      "page_number": 655,
+      "image_index": 0,
+      "image_path": "images/page0655_img000.jpeg",
+      "caption": ": Fusion of light nuclei to form medium-mass nuclei destroys mass, because",
+      "width": 550,
+      "height": 427
+    },
+    {
+      "page_number": 655,
+      "image_index": 1,
+      "image_path": "images/page0655_img001.jpeg",
+      "caption": ": The Sun’s energy is produced by nuclear fusion. (credit: Spiralz)",
+      "width": 275,
+      "height": 206
+    },
+    {
+      "page_number": 656,
+      "image_index": 0,
+      "image_path": "images/page0656_img000.jpeg",
+      "caption": ": (a) Two nuclei heading toward each other slow down, then stop, and then fly away without touching or fusing. (b) At",
+      "width": 550,
+      "height": 214
+    },
+    {
+      "page_number": 656,
+      "image_index": 1,
+      "image_path": "images/page0656_img001.jpeg",
+      "caption": ": Potential energy between two light nuclei graphed as a function of distance between them. If the nuclei have enough",
+      "width": 350,
+      "height": 254
+    },
+    {
+      "page_number": 657,
+      "image_index": 0,
+      "image_path": "images/page0657_img000.jpeg",
+      "caption": ": Supernovas are the source of elements heavier than iron. Energy released powers nucleosynthesis. Spectroscopic",
+      "width": 275,
+      "height": 206
+    },
+    {
+      "page_number": 657,
+      "image_index": 1,
+      "image_path": "images/page0657_img001.jpeg",
+      "caption": ": This array of photomultiplier tubes is part of the large solar neutrino detector at the Fermi National Accelerator",
+      "width": 259,
+      "height": 171
+    },
+    {
+      "page_number": 657,
+      "image_index": 2,
+      "image_path": "images/page0657_img002.jpeg",
+      "caption": ": Nuclear fusion in the Sun converts hydrogen nuclei into helium; fusion occurs primarily at the boundary of the",
+      "width": 275,
+      "height": 255
+    },
+    {
+      "page_number": 658,
+      "image_index": 0,
+      "image_path": "images/page0658_img000.jpeg",
+      "caption": ": (a) Artist’s rendition of ITER, a tokamak-type fusion reactor being built in southern France. It is hoped that this",
+      "width": 312,
+      "height": 234
+    },
+    {
+      "page_number": 659,
+      "image_index": 0,
+      "image_path": "images/page0659_img000.jpeg",
+      "caption": ": National Ignition Facility (CA). This image shows a laser bay where 192 laser beams will focus onto a small D-T",
+      "width": 309,
+      "height": 232
+    },
+    {
+      "page_number": 661,
+      "image_index": 0,
+      "image_path": "images/page0661_img000.jpeg",
+      "caption": ": The people living near this nuclear power plant have no measurable exposure to radiation that is traceable to the",
+      "width": 275,
+      "height": 206
+    },
+    {
+      "page_number": 663,
+      "image_index": 0,
+      "image_path": "images/page0663_img000.jpeg",
+      "caption": ": A chain reaction can produce self-sustained fission if each fission produces enough neutrons to induce at least one",
+      "width": 459,
+      "height": 550
+    },
+    {
+      "page_number": 663,
+      "image_index": 1,
+      "image_path": "images/page0663_img001.jpeg",
+      "caption": ": Neutron-induced fission is shown. First, energy is put into this large nucleus when it absorbs a neutron. Acting like",
+      "width": 212,
+      "height": 321
+    },
+    {
+      "page_number": 664,
+      "image_index": 0,
+      "image_path": "images/page0664_img000.jpeg",
+      "caption": ": A pressurized water reactor is cleverly designed to control the fission of large amounts of",
+      "width": 585,
+      "height": 358
+    },
+    {
+      "page_number": 667,
+      "image_index": 0,
+      "image_path": "images/page0667_img000.jpeg",
+      "caption": "https://phys.libretexts.org/@go/page/46992 : A gun-type fission bomb for",
+      "width": 550,
+      "height": 286
+    },
+    {
+      "page_number": 668,
+      "image_index": 0,
+      "image_path": "images/page0668_img000.jpeg",
+      "caption": ": Trinity test (1945), the first nuclear bomb (credit: United States Department of Energy)",
+      "width": 275,
+      "height": 218
+    },
+    {
+      "page_number": 668,
+      "image_index": 1,
+      "image_path": "images/page0668_img001.jpeg",
+      "caption": ": An implosion created by high explosives compresses a sphere of",
+      "width": 342,
+      "height": 550
+    },
+    {
+      "page_number": 669,
+      "image_index": 0,
+      "image_path": "images/page0669_img000.jpeg",
+      "caption": ": This schematic of a fusion bomb (H-bomb) gives some idea of how the",
+      "width": 315,
+      "height": 550
+    },
+    {
+      "page_number": 669,
+      "image_index": 1,
+      "image_path": "images/page0669_img001.jpeg",
+      "caption": ": Destruction in Hiroshima (credit: United States Federal Government)",
+      "width": 550,
+      "height": 300
+    },
+    {
+      "page_number": 670,
+      "image_index": 0,
+      "image_path": "images/page0670_img000.jpeg",
+      "caption": ": Approximate fractions of energy output by conventional and two types of nuclear weapons. In addition to yielding",
+      "width": 243,
+      "height": 695
+    },
+    {
+      "page_number": 674,
+      "image_index": 0,
+      "image_path": "images/page0674_img000.jpeg",
+      "caption": ": The Feynman diagram for the exchange of a virtual photon between two positive charges illustrates how the",
+      "width": 250,
+      "height": 275
+    },
+    {
+      "page_number": 674,
+      "image_index": 1,
+      "image_path": "images/page0674_img001.jpeg",
+      "caption": ": The first image shows the exchange of a virtual photon transmitting the electromagnetic force between charges, just",
+      "width": 550,
+      "height": 226
+    },
+    {
+      "page_number": 675,
+      "image_index": 0,
+      "image_path": "images/page0675_img000.jpeg",
+      "caption": ": The image shows a Feynman diagram for the exchange of a",
+      "width": 265,
+      "height": 291
+    },
+    {
+      "page_number": 676,
+      "image_index": 0,
+      "image_path": "images/page0676_img000.jpeg",
+      "caption": ": P.A.M. Dirac’s theory of relativistic quantum mechanics not only explained a great deal of what was known, it also",
+      "width": 171,
+      "height": 214
+    },
+    {
+      "page_number": 677,
+      "image_index": 0,
+      "image_path": "images/page0677_img000.jpeg",
+      "caption": ": When a particle encounters its antiparticle, they annihilate, often producing pure energy in the form of photons. In this case,",
+      "width": 215,
+      "height": 205
+    },
+    {
+      "page_number": 684,
+      "image_index": 0,
+      "image_path": "images/page0684_img000.jpeg",
+      "caption": ": Murray Gell-Mann (b. 1929) proposed quarks as a substructure of hadrons in 1963 and was already known for his work on",
+      "width": 153,
+      "height": 264
+    },
+    {
+      "page_number": 686,
+      "image_index": 0,
+      "image_path": "images/page0686_img000.jpeg",
+      "caption": "Table 15.11.1]), its effects on atomic levels can be measured given the extreme precision of modern techniques. Since electrons spend some time in the nucleus, their energies are",
+      "width": 319,
+      "height": 328
+    },
+    {
+      "page_number": 687,
+      "image_index": 0,
+      "image_path": "images/page0687_img000.jpeg",
+      "caption": "Figure 15.11.3], but it shows the quark and gluon details of the strong force interaction.",
+      "width": 550,
+      "height": 529
+    },
+    {
+      "page_number": 687,
+      "image_index": 1,
+      "image_path": "images/page0687_img001.jpeg",
+      "caption": ": In figure (a), the eight types of gluons that carry the strong nuclear force are divided into a group of six that carry",
+      "width": 595,
+      "height": 248
+    },
+    {
+      "page_number": 688,
+      "image_index": 0,
+      "image_path": "images/page0688_img000.jpeg",
+      "caption": "Table 15.11.1]. However, at energies available at accelerators, the weak and EM forces become identical, or unified. Unfortunately, the energies at which the strong and electroweak forces become the same are unreachable even in principle at any conceivable accelerator. The universe may provide a laboratory, and nature may show effects at ordinary energies that give us clues about the validity of this graph. The small distances and high energies at which the electroweak force becomes identical wi",
+      "width": 550,
+      "height": 278
+    },
+    {
+      "page_number": 689,
+      "image_index": 0,
+      "image_path": "images/page0689_img000.jpeg",
+      "caption": ": In the Tevatron accelerator at Fermilab, protons and antiprotons collide at high energies, and some of those",
+      "width": 550,
+      "height": 413
+    },
+    {
+      "page_number": 691,
+      "image_index": 0,
+      "image_path": "images/page0691_img000.jpeg",
+      "caption": ": Alpha, beta, and gamma rays are passed through a magnetic field on the way to a phosphorescent screen. The s",
+      "width": 489,
+      "height": 550
+    },
+    {
+      "page_number": 693,
+      "image_index": 0,
+      "image_path": "images/page0693_img000.jpeg",
+      "caption": ": (a) This X-ray fluorescence machine is one of the thousands used in shoe stores to produce images of feet as a check",
+      "width": 203,
+      "height": 275
+    },
+    {
+      "page_number": 694,
+      "image_index": 0,
+      "image_path": "images/page0694_img000.jpeg",
+      "caption": ": This schematic of a fusion bomb (H-bomb) gives some idea of how the",
+      "width": 315,
+      "height": 550
+    }
+  ]
+}
