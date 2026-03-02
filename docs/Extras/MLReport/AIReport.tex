@@ -78,7 +78,6 @@
 % \end{abstract}
 
 \section{Introduction}
-
 Here, write a brief introduction to the problem you are solving. This can be adapted from your problem description and motivation from the original proposal. This should be around 0.25-0.5 pages.
 
 \section{Related Work}
@@ -86,14 +85,26 @@ Here, write a brief introduction to the problem you are solving. This can be ada
 Here, talk about the related work you encountered for your approach. Cite at least 5 references. Refer to item 2. No one has done exactly your task? Write about the most similar thing you can find. This should be around 0.25-0.5 pages.
 
 \subsection{Vision-Language Models}
+BLIP, Pix2Struct, etc. 
 
 \section{Dataset}
 
 You should write about your dataset here, following the guidelines regarding item 1. This section may be 0.5-1 pages. Depending on your specific dataset, you may want to include subsections for the preprocessing, annotation, etc.
 
 \subsection{Dataset Overview}
+Talk about: 
+\begin{itemize}
+    \item Initial Dataset Size (Revision 0)
+    \item Expanded dataset (Revision 1)
+    \item Domains (Physics Subsets, Graphs, etc.)
+\end{itemize}
 
 \subsection{Annotation Structure}
+Talk about: 
+\begin{itemize}
+    \item CSV fields
+    \item Physics category grouping
+\end{itemize}
 
 \subsection{Preprocessing}
 
@@ -102,29 +113,72 @@ You should write about your dataset here, following the guidelines regarding ite
 Describe any features you used for your model, or how your data was input to your model. Are you doing feature engineering or feature selection? Are you learning embeddings? Is it all part of one neural network? Refer to item 3. This may range from 0.25 pages to 0.5 pages.
 
 \subsection{Baseline (Revision 0)}
+Talk about:
+\begin{itemize}
+    \item BLIP 
+    \item Pix2Struct 
+\end{itemize}
 
 \subsection{Revision 1}
+Talk about whatever the final model includes i.e:
+\begin{itemize}
+    \item Physics subset label added 
+    \item Routing classifier
+    \item LLM post-processing
+    \item etc. 
+\end{itemize}
 
 \section{Implementation}
 
 Describe your model and implementation here. Refer to item 4. This may take around a page.
 
 \subsection{Revision 0 Pipeline}
+Talks about:
+\begin{itemize}
+    \item state the pipeline
+    \item model version 
+    \item epochs
+    \item hosting 
+    \item inference time
+    \item limitations observed
+\end{itemize}
 
 \subsection{Revision 1 Experiments}
+
+\subsubsection{BLIP Retraining for Expanded Dataset}
+\subsubsection{Category Routing System}
+\subsubsection{LLM Polisher Post-Processing}
+\subsubsection{Alternative Model Testing}
 
 \section{Results and Evaluation}
 
 How are you evaluating your model? What results do you have so far? What are your baselines? Refer to item 5. This may take around 0.5 pages.
 
+\subsection{Evaluation Metrics}
+\subsection{Revision 0 Results}
+\subsection{Revision 1 Comparisons}
+\subsection{Qualitative Examples}
+
 \section{Feedback and Plans}
 
 Write about your plans for the remainder of the project. This should include a discussion of the feedback you received from your TA, and how you plan to improve your approach. Reflect on your implementation and areas for improvement. Refer to item 6. This may be around 0.5 pages.
+\subsection{Revision 0 Feedback}
+\subsection{Revision 1 Plan}
+\subsection{Revision 1 Improvement}
 
 
 \section*{Team Contributions}
 
 Write in this section a few sentences describing the contributions of each team member. What did each member work on? Refer to item 7.
+\\ 
+Note: Split work here
+\begin{itemize}
+    \item Casey Francine Bulaclac:
+    \item Fiza Sehar:
+    \item Moly Mikhail:
+    \item Dhruv Sardana: 
+    \item Nawaal Fatima:
+\end{itemize}
 
 % Bibliography entries for the entire Anthology, followed by custom entries
 %\bibliography{custom,anthology-overleaf-1,anthology-overleaf-2}
