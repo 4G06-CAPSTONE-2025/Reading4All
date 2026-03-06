@@ -1,7 +1,7 @@
-from services.image_validation import ImageValidation
-
 import io
 from PIL import Image
+
+from services.image_validation import ImageValidation
 
 
 def test_missing_image():
@@ -30,12 +30,12 @@ def test_invalid_file_type():
 
 
 def test_file_size_invalid():
-    
+
     validator = ImageValidation()
 
     large_image = io.BytesIO(b"fake image data here that exceeds size limit")
     large_image.content_type = "image/png"
-    large_image.size = 200000000  
+    large_image.size = 200000000
 
     uploaded_file = {"image": large_image}
 
@@ -48,7 +48,7 @@ def test_corrupted_image():
 
     validator = ImageValidation()
 
-    corrupted_image = io.BytesIO(b"This is not a valid image file, but has the correct content type and size")
+    corrupted_image = io.BytesIO(b"This is not a valid image file")
     corrupted_image.content_type = "image/png"
     corrupted_image.size = 100
 
@@ -60,7 +60,7 @@ def test_corrupted_image():
 
 
 def test_valid_image():
-    
+
     validator = ImageValidation()
 
     valid_image = Image.new("RGB", (100, 100), color="blue")
