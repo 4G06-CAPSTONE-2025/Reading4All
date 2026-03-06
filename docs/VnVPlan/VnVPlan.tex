@@ -986,15 +986,53 @@ the functional and non-functional requirements in our SRS document.
 \section{Unit Test Description}
 \label{Unit Test Desc}
 This section is not currently applicable and will be completed at a later time. 
-\subsection{Unit Testing Scope}
+\subsection{ImageValidation Module}
+\textbf{Goal}:
+The ImageValidation module ensures that uploaded images meet the systems requirements before they are processed by the
+\texttt{Reading4All} system. It verifies that an image file is present in the request, checks whether 
+the file type and size meet the defined requirements and confirms that the image is not corrupted and can successfully be opened. 
+The following unit tests verify the correctness of this functionality. 
 
-\subsection{Tests for Functional Requirements}
+The tests validate proper handling of image uploads, including detection of missing files during uploads, incorrect file types, 
+incorrect sized files, and corrupted or inaccessible images. 
 
+\textbf{Target requirements(s)}: FR3, FR4
 
-\subsection{Tests for Non-Functional Requirements}
+\begin{itemize}
 
+  \item \textbf{Valid Image Upload}:
+  \begin{itemize}
+    \item Ensures that the validation module successfully process a correctly formatted image upload request. 
+    \item Verifies that the image meets type and size requirements.
+    \item Confirms that the module returns \texttt{SUCCESS} when all validation checks pass.
+  \end{itemize}
 
-\subsection{Traceability Between Test Cases and Modules}
+  \item \textbf{Handling Missing Image Upload}:
+  \begin{itemize}
+    \item Ensures that the validation module correctly identifies when no image is provided in the request. 
+    \item Verifies that the image module returns \texttt{MISSING\_IMAGE} when the expected image is missing. 
+  \end{itemize}
+
+  \item \textbf{Detecting Invalid File Types}
+  \begin{itemize}
+    \item  Ensures that the validation module correctly identifies when no an invalid file type is provided in the request. 
+    \item Verifies that images whose content\_type is not within the allowed list (PNG or JPEG) that \texttt{INVALID\_FILE\_TYPE} is returned .
+  \end{itemize}
+
+  \item \textbf{Detecting Oversized Images}
+  \begin{itemize}
+    \item Ensures that the module correctly rejects images exceeding the maximum allowed size of 10 MB.
+    \item Verifies that the module returns \texttt{FILE\_SIZE\_INVALID} when the inputted file exceeds allowed size.
+  \end{itemize}
+
+  \item \textbf{Handling Corrupted or Unauthorized Image Files}
+  \begin{itemize}
+    \item Ensures that the module correctly detects images that cannot be opened due to corruption or access issues.
+    \item Verifies that the module returns  \texttt{UNAUTHORIZED\_ACCESS\_OR\_CORRUPTED} when an image cannot be opened.
+  \end{itemize}
+\end{itemize}
+
+The test cases for this module can be found here.
 
 
 \newpage
