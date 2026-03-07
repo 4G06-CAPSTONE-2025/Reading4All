@@ -1034,6 +1034,50 @@ incorrect sized files, and corrupted or inaccessible images.
 
 The test cases for this module can be found here.
 
+\subsection{BackendController Module}
+\textbf{Goal}:
+The Backend Controller module is responsible for coordination between the API endpoints and the service modules. 
+It receives requests from the application and communicates them to the appropriate service modules, such as the ImageValidation, 
+AltText Generation, SessionManagement modules. The controller ensures that requests are routed correctly and 
+that the results from each service are properly handled and returned to the user. 
+
+The following unit tests verify that the controller correctly routes requests and returns the expected responses. 
+The tests validate the interaction between the controller and service modules, ensuring that image validation, 
+alt text generation, alt text history retrievals, alt text editing and user sign up requests are handled correctly.
+
+Target requirements(s): FR1, FR2, FR3, FR5, FR6
+
+\begin{itemize}
+  \item \textbf{Validating Uploaded Images}
+  \begin{itemize}
+    \item Ensures that the controller correctly calls the image validation module when an image upload request is received.
+    \item Verifies that the validation result returned by the \texttt{ImageValidation} service is correctly returned to the caller.
+  \end{itemize}
+
+  \item \textbf{Generating Alt Text}
+  \begin{itemize}
+    \item Ensures that the controller correctly calls the alt text generation module when a valid image upload request is received.
+    \item Verifies that the generated alt text returned by \texttt{GenAltText} service is correctly returned to the caller.
+  \end{itemize}
+
+  \item \textbf{Retrieving Alt Text History}
+  \begin{itemize}
+    \item Ensures that the controller correctly calls the the alt text history module when a request to retrieve past alt text is received.
+    \item Verifies that the alt text history results returned by the \texttt{GetAltTextHistory} service is correctly returned to the caller.
+  \end{itemize}
+
+  \item \textbf{Editing Generated Alt Text}
+  \begin{itemize}
+    \item Ensures that the controller correctly calls the alt text editing module when a request to edit generated alt text is received.
+    \item Verifies that the response returned by the \texttt{EditAltText} service is correctly returned to the caller.
+  \end{itemize}
+
+  \item \textbf{Handling User Sign Up Requests}
+  \begin{itemize} 
+    \item Ensures that the controller correctly calls the user authentication module when a user sign up request is received.
+    \item Verifies that the response returned by the \texttt{UserSignUp} service is correctly returned to the caller.
+\end{itemize}
+\end{itemize}
 
 \newpage
 
