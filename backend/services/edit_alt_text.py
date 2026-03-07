@@ -2,7 +2,6 @@ import json
 from services.alt_text_history import AltTextHistory
 
 # get history service to interact with Supabase history table
-history = None
 
 
 def edit_alt_text(request):

@@ -51,7 +51,9 @@ def test_get_alt_text_history_routing():
         "fake_session_id"
         )
 
-    controller.history_info.get_alt_text_history.assert_called_once_with("fake_session_id")
+    controller.history_info.get_alt_text_history.assert_called_once_with(
+        "fake_session_id"
+        )
     assert result == ["Alt text 1", "Alt text 2"]
 
 def test_edit_alt_text_routing():

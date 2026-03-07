@@ -6,7 +6,7 @@ from services.auth_service import AuthService
 
 class BackendController:
     # pylint: disable=too-many-arguments
-    def __init__( 
+    def __init__(
                 self,
                 img_validator=None,
                 history_info=None,
