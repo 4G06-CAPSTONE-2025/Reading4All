@@ -54,7 +54,7 @@ def test_signup_short_password():
 
 
 def test_signup_empty_email_and_password():
-    
+
     mock_supabase = MagicMock()
     auth_service = AuthService(supabase=mock_supabase)
 
@@ -76,7 +76,7 @@ def test_signup_none_email_and_password():
         assert False, "Value Error should be raised when email and password are None"
     except ValueError as e:
         assert str(e) == "Email must be a @mcmaster.ca address"
-    mock_supabase.auth.sign_up.assert_not_called()  
+    mock_supabase.auth.sign_up.assert_not_called()
 
 
 def test_signup_capital_letter_email():
