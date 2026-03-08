@@ -1,4 +1,6 @@
 from unittest.mock import MagicMock
+
+from sympy import limit
 from services.alt_text_history import AltTextHistory
 
 
@@ -15,7 +17,16 @@ def test_get_alt_text_history_one_entry():
             "edited_alt_text": None
         }
     ]
-    mock_supabase.table().select().eq().order().limit().execute.return_value = mock_response
+    query = mock_supabase.table().select().eq().order().limit()
+    query.execute.return_value = mock_response
+    get_history_service = AltTextHistory(supabase=mock_supabase)
+
+
+    history = get_history_service.get_alt_text_history("test_session_id")
+
+    assert len(history) == 1
+    assert history[0]["image"] == "test_image.png"
+    assert history[0]["altText"] == "generated alt text"
     get_history_service = AltTextHistory(supabase=mock_supabase)
 
 
@@ -33,7 +44,8 @@ def test_get_alt_text_history_zero_entries():
 
     mock_response.data = []
 
-    mock_supabase.table().select().eq().order().limit().execute.return_value = mock_response
+    query = mock_supabase.table().select().eq().order().limit()
+    query.execute.return_value = mock_response   
     get_history_service = AltTextHistory(supabase=mock_supabase)
 
     history = get_history_service.get_alt_text_history("test_session_id")
@@ -53,7 +65,8 @@ def test_get_alt_text_history_edited_entry():
             "edited_alt_text": "edited alt text"
         }
     ]
-    mock_supabase.table().select().eq().order().limit().execute.return_value = mock_response
+    query = mock_supabase.table().select().eq().order().limit()
+    query.execute.return_value = mock_response       
     get_history_service = AltTextHistory(supabase=mock_supabase)
 
     history = get_history_service.get_alt_text_history("test_session_id")
@@ -75,7 +88,8 @@ def test_get_alt_text_history_null_string_edited_entry():
             "edited_alt_text": "NULL"
         }
     ]
-    mock_supabase.table().select().eq().order().limit().execute.return_value = mock_response
+    query = mock_supabase.table().select().eq().order().limit()
+    query.execute.return_value = mock_response       
     get_history_service = AltTextHistory(supabase=mock_supabase)
 
     history = get_history_service.get_alt_text_history("test_session_id")
@@ -102,7 +116,8 @@ def test_get_alt_text_history_multiple_entries():
             "edited_alt_text": "edited alt text 2"
         }
     ]
-    mock_supabase.table().select().eq().order().limit().execute.return_value = mock_response
+    query = mock_supabase.table().select().eq().order().limit()
+    query.execute.return_value = mock_response       
     get_history_service = AltTextHistory(supabase=mock_supabase)
 
     history = get_history_service.get_alt_text_history("test_session_id")
