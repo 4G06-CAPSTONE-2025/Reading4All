@@ -1,4 +1,4 @@
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import HistoryPage from "./HistoryPage";
 
@@ -60,11 +60,9 @@ test("shows message when no history exists", async () => {
 
   render(<HistoryPage />);
 
-  await waitFor(() =>
-    expect(
-      screen.getByText("No alternative text has been generated yet!")
-    ).toBeInTheDocument()
-  );
+  expect(
+    await screen.findByText("No alternative text has been generated yet!")
+  ).toBeInTheDocument();
 });
 
 test("shows error if history fails to load", async () => {
@@ -72,11 +70,9 @@ test("shows error if history fails to load", async () => {
 
   render(<HistoryPage />);
 
-  await waitFor(() =>
-    expect(
-      screen.getByText("Failed to Load History. Please try again!")
-    ).toBeInTheDocument()
-  );
+  expect(
+    await screen.findByText("Failed to Load History. Please try again!")
+  ).toBeInTheDocument();
 });
 
 test("copies all alt text to clipboard", async () => {
@@ -158,9 +154,7 @@ test("shows error if clipboard copy fails", async () => {
 
   fireEvent.click(copyButton);
 
-  await waitFor(() =>
-    expect(
-      screen.getByText("Failed to copy to clipboard.")
-    ).toBeInTheDocument()
-  );
+  expect(
+    await screen.findByText("Failed to copy to clipboard.")
+  ).toBeInTheDocument();
 });
