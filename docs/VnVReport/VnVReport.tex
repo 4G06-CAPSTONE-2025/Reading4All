@@ -502,7 +502,61 @@ The following are the manual tests for this module.
     {\bf Failure Condition:} Arrow keys do not work, focus movement is inconsistent, or activation fails. \\
 
 \end{enumerate}
+The following table shows the evaluation of the userinterfaceaccessibility
+module’s manual tests.
 
+\newcounter{uiamantestcase}
+\newcommand{\uiamantestcount}{\stepcounter{uiamantestcase}\theuiamantestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{UserInterfaceAccessibility Manual Testing Evaluation}
+  \label{table:uii-man-eval}
+  \endlastfoot
+
+  UIA-MT\uiamantestcount & Verify that the loaded screen contains a valid main landmark for primary content & 
+  Main content area is identified by a valid main landmark & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+  UIA-MT\uiamantestcount & Load the screen and check automatic keyboard focus placement & 
+  Focus is placed on the intended first interactive element & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+  UIA-MT\uiamantestcount & Trigger a UI change while a screen reader is enabled & 
+  Screen reader announces the interface change clearly & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+  UIA-MT\uiamantestcount & Use arrow keys, Home/End, and Enter/Space to navigate and activate controls & 
+  Keyboard navigation works correctly within the interface scope & 
+evaluate &
+  \cellcolor{green}Pass \\ 
+
+
+\end{longtable}
 
 
 
