@@ -437,19 +437,26 @@ The following are the evaluation of the unit tests per module.
   AUTH-UT\mthreetestcount & Send a request with empty email and password to the AuthenticationService. & 
   The authentication service raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address". The Supabase client is not called. &
   The authentication service correctly raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address" and the Supabase client is not called. &
-  \cellcolor{green}Pass \\ 
+  \cellcolor{green}Pass \\  \midrule
 
 
   AUTH-UT\mthreetestcount & Send a request with \texttt{STUDENT@mcmaster.ca} as the email to the AuthenticationService. & 
   The authentication service correctly converts the email to lowercase before processing. &
   The authentication service correctly converts the email to lowercase before processing. 
   The Supabase client is called with \texttt{student@mcmaster. ca} &
-  \cellcolor{green}Pass \\ 
+  \cellcolor{green}Pass \\ \midrule
+
+
+
+  AUTH-UT\mthreetestcount & Send a request with an existing email to the AuthenticationService. & 
+  The authentication service raises a \texttt{ValueError} with the message "Email is already in use". A verification email is not sent to the user&
+  No error was raised and the user received a Verification email.&
+  \cellcolor{red}Fail \\
 \end{longtable}
 
 
 
-\subsubsection{Module 4}
+\subsection{Module 4}
 
 \newcounter{modulefourtestcase}
 \newcommand{\mfourtestcount}{\stepcounter{modulefourtestcase}\themodulefourtestcase}
