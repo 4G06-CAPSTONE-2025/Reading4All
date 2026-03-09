@@ -312,7 +312,7 @@ The following are the evaluation of the unit tests per module.
 \end{longtable}
 
 \section{Manual Testing}
-\subsubsection{UserInterfaceInteractions Module}
+\subsection{UserInterfaceInteractions Module}
 The following are the manual tests for this module. 
 
 \begin{enumerate}[label=UII-MT \arabic*., wide=0pt, leftmargin=*]
@@ -386,6 +386,7 @@ The following are the manual tests for this module.
     {\bf Failure Condition:} The user remains logged in or can continue accessing the system without logging in again. \\
 \end{enumerate}
 
+\noindent The following table shows the evaluation of the userinterfaceinteractions module's manual tests.
 \newcounter{uiimantestcase}
 \newcommand{\uiimantestcount}{\stepcounter{uiimantestcase}\theuiimantestcase}
 
@@ -413,7 +414,7 @@ The following are the manual tests for this module.
 
   \bottomrule
   \caption{UserInterfaceInterfactions Manual Testing Evaluation}
-  \label{table:module-unit-eval}
+  \label{table:uii-man-eval}
   \endlastfoot
 
 UII-MT\uiimantestcount & Upload a valid image file (.png or .jpeg) using the Choose File button & 
@@ -445,6 +446,65 @@ User session ends and login screen is displayed &
 User session ended and system returned to the login screen &
 \cellcolor{green}Pass \\
 \end{longtable}
+
+\subsection{UserInterfaceAccessibility Module}
+The following are the manual tests for this module.
+
+\begin{enumerate}[label=UIA-MT \arabic*., wide=0pt, leftmargin=*]
+  \item{}
+    {\bf Initial State:} A system screen such as the login screen, main screen, or history screen is loaded. \\
+    {\bf Input:} The tester inspects the rendered page structure using browser accessibility tools or screen reader landmarks. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Open a system screen.
+      \item Inspect the page structure using accessibility inspector or a screen reader landmark list.
+      \item Verify that the main content area is identified as the page's main landmark.
+    \end{enumerate}
+    {\bf Expected Results:} The screen contains a valid main landmark ({\tt <main>} or equivalent) for the primary content area. \\
+    {\bf Failure Condition:} No main landmark is present, or the primary content is not identified correctly. \\
+
+  \item{}
+    {\bf Initial State:} The login screen or another screen (main or history screen )has just loaded. \\
+    {\bf Input:} The tester loads the screen and checks where keyboard focus is placed. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Open the login screen.
+      \item Do not click the mouse.
+      \item Observe which element receives focus automatically.
+      \item Press {\tt Tab} to continue keyboard navigation if needed.
+    \end{enumerate}
+    {\bf Expected Results:} Keyboard focus is moved to the intended first interactive element, such as the username field on the login screen. \\
+    {\bf Failure Condition:} Focus is missing, placed on a non-interactive element, or placed on the wrong control. \\
+
+  \item{}
+    {\bf Initial State:} A screen reader is enabled and the user performs an action that changes the UI. \\
+    {\bf Input:} Trigger a UI change such as loading the login screen, generating alt text, or navigating to history. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Enable a screen reader such as NVDA, JAWS, or VoiceOver.
+      \item Perform an action that changes the interface.
+      \item Listen for the announcement made by the system.
+    \end{enumerate}
+    {\bf Expected Results:} A clear announcement describing the UI change is read by the screen reader through the live region. \\
+    {\bf Failure Condition:} No announcement is made, the message is incomplete, or the announcement is unclear. \\
+
+  \item{}
+    {\bf Initial State:} A screen containing multiple interactive elements is open. \\
+    {\bf Input:} The tester uses only the keyboard to navigate within the interface. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Open a screen with interactive controls.
+      \item Use {\tt ArrowLeft}, {\tt ArrowRight}, {\tt ArrowUp}, and {\tt ArrowDown} to move between elements where applicable.
+      \item Use {\tt Home} and {\tt End} to move to the first and last items.
+      \item Use {\tt Enter} or {\tt Space} to activate the selected control.
+    \end{enumerate}
+    {\bf Expected Results:} Keyboard navigation works correctly within the defined scope. Focus moves predictably and activation occurs without changing application state unexpectedly. \\
+    {\bf Failure Condition:} Arrow keys do not work, focus movement is inconsistent, or activation fails. \\
+
+\end{enumerate}
+
+
+
 
 \section{Changes Due to Testing}
 
