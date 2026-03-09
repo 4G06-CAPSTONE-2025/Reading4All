@@ -263,7 +263,7 @@ This section will not be appropriate for every project.
 \section{Unit Testing}
 The following are the evaluation of the unit tests per module. 
 
-\subsubsection{ImageValidation Module}
+\subsection{ImageValidation Module}
 
 \newcounter{moduleonetestcase}
 \newcommand{\monetestcount}{\stepcounter{moduleonetestcase}\themoduleonetestcase}
@@ -324,7 +324,7 @@ The following are the evaluation of the unit tests per module.
   \cellcolor{green}Pass \\ 
 \end{longtable}
 
-\subsubsection{BackendController Module}
+\subsection{BackendController Module}
 
 \newcounter{moduletwotestcase}
 \newcommand{\mtwotestcount}{\stepcounter{moduletwotestcase}\themoduletwotestcase}
@@ -382,7 +382,7 @@ The following are the evaluation of the unit tests per module.
 
 
 
-\subsubsection{AuthenticationService Module}
+\subsection{AuthenticationService Module}
 
 \newcounter{modulethreetestcase}
 \newcommand{\mthreetestcount}{\stepcounter{modulethreetestcase}\themodulethreetestcase}
@@ -416,7 +416,8 @@ The following are the evaluation of the unit tests per module.
 
   AUTH-UT\mthreetestcount & Send a request with a valid email and password to the AuthenticationService. & 
   The authentication service successfully creates a new user account and returns the user ID and access token. & 
-  The authentication service correctly returns the user ID and access token, i.e., \texttt{\{"user\_id": "test\_user\_id", "access\_token": "test\_access\_token "\}} &
+  The authentication service correctly returns the user ID and access token, i.e.,
+   \texttt{\{"user\_id": "test\_user\_id", "access\_token": "test\_access\_token "\}} &
   \cellcolor{green}Pass \\ \midrule
 
 
@@ -427,21 +428,22 @@ The following are the evaluation of the unit tests per module.
 
 
   AUTH-UT\mthreetestcount & Send a request with a password shorter than 8 characters to the AuthenticationService. & 
-  The authentication service raises a \texttt{ValueError} with the message "Password must be at least 8 characters". The supabase client is not called. &
-  The authentication service correctly raises a \texttt{ValueError} with the message "Password must be at least 8 characters" and the supabase client is not called. &
+  The authentication service raises a \texttt{ValueError} with the message "Password must be at least 8 characters". The Supabase client is not called. &
+  The authentication service correctly raises a \texttt{ValueError} with the message "Password must be at least 8 characters" and the Supabase client is not called. &
   \cellcolor{green}Pass \\ \midrule
 
 
 
   AUTH-UT\mthreetestcount & Send a request with empty email and password to the AuthenticationService. & 
-  The authentication service raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address". The supabase client is not called. &
-  The authentication service correctly raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address" and the supabase client is not called. &
+  The authentication service raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address". The Supabase client is not called. &
+  The authentication service correctly raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address" and the Supabase client is not called. &
   \cellcolor{green}Pass \\ 
 
 
   AUTH-UT\mthreetestcount & Send a request with \texttt{STUDENT@mcmaster.ca} as the email to the AuthenticationService. & 
   The authentication service correctly converts the email to lowercase before processing. &
-  The authentication service correctly converts the email to lowercase before processing. The supabase client is called with \texttt{student@mcmaster. ca} &
+  The authentication service correctly converts the email to lowercase before processing. 
+  The Supabase client is called with \texttt{student@mcmaster. ca} &
   \cellcolor{green}Pass \\ 
 \end{longtable}
 
