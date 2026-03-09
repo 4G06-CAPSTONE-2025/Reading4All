@@ -166,7 +166,56 @@ The functionality of this module was evaluated through the manual tests describe
 No dedicated unit tests were implemented for this module. Instead, its behavior was verified through the manual tests in Section~7 (IMC-MT1), where generated captions were evaluated against the system’s internal quality metrics.
 \section{Manual Testing}
 
+The following section outlines the manual tests performed for the AI modules.
 
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{4.5cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{Test ID} & \textbf{Module} &
+  \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{Test ID} & \textbf{Module} &
+  \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{Manual Testing Summary for AI Modules}
+  \label{table:manual-ai-tests}
+  \endlastfoot
+
+
+MO-MT1 & ModelOutput Module &
+Verify generated alt-text is correctly formatted and displayed to the user. &
+All assertions pass &
+\cellcolor{green}Pass \\ \midrule
+
+AI-MT1 & AIModelTraining Module &
+Verify that the model training process successfully produces a trained model. &
+All assertions pass &
+\cellcolor{green}Pass \\ \midrule
+
+CG-MT1 & CaptionGeneration Module &
+Verify that the system generates descriptive alt-text for uploaded images. &
+All assertions pass &
+\cellcolor{green}Pass \\ \midrule
+
+IMC-MT1 & InternalMetricCompliance Module &
+Verify that generated captions satisfy internal quality evaluation metrics. &
+All assertions pass &
+\cellcolor{green}Pass \\
+
+\end{longtable}
 \subsection{ModelOutput Module}
 
 The following are the manual tests for this module.
