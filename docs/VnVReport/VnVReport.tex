@@ -3,6 +3,9 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[table]{xcolor}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -68,11 +71,78 @@ This document ...
 
 \section{Nonfunctional Requirements Evaluation}
 
-\subsection{Usability}
-		
-\subsection{Performance}
+The following section outlines the evaluation of the system tests created for the 
+nonfunctional requirements. 
 
-\subsection{etc.}
+\newcounter{nfrtestcase}
+\newcommand{\nfrtestcount}{\stepcounter{nfrtestcase}\thenfrtestcase}
+
+% Start numbering at 15
+\setcounter{nfrtestcase}{14}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{System Tests Non-Functional Requirements Evaluation}
+  \label{table:NFR-ST-eval}
+  \endlastfoot
+
+
+  NFR-ST\nfrtestcount & Test device and browser compatibility &
+  System runs correctly on supported operating systems and browsers &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Evaluate alt text accuracy metrics &
+  Generated alt text meets sufficiency, length, and usability thresholds &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Verify image privacy protection &
+  Uploaded images are deleted after processing and not permanently stored &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Check for biased or offensive alt text &
+  Generated alt text contains no harmful, biased, or inappropriate content &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Perform WCAG accessibility audit &
+  Interface satisfies WCAG 2.1 accessibility guidelines &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Test screen reader compatibility &
+  Screen readers correctly read generated alt text &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Test supported image formats &
+  System successfully processes JPG, JPEG, and PNG images &
+  All assertions pass &
+  \cellcolor{green}Pass \\
+
+\end{longtable}
 	
 \section{Comparison to Existing Implementation}	
 
