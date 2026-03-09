@@ -110,8 +110,9 @@ functional requirements.
   FR-ST\testcount & User uploads test diagrams (diagram1.png, diagram2.jpeg) to the system and generate alternative 
   text descriptions. Evaluate the generated alt text using the evaluation metrics defined in Appendix 6.1. & 
   The system generates alternative text descriptions for each uploaded image. The descriptions meet the evaluation metrics in Appendix 6.1. & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
+  Alt text generated but did not meet the required evaluation metric thresholds. Specifically, the Learning Impact metric 
+  scored \texttt{<} 2.  &
+  \cellcolor{red}Fail \\ \midrule
 
   FR-ST\testcount & Generate alternative text for an uploaded image, then use screen readers (NVDA, JAWS, and VoiceOver) to read 
   the generated alternative text aloud. & 
@@ -132,15 +133,19 @@ functional requirements.
   Recent uploads up to the limit were displayed correctly. &
   \cellcolor{green}Pass \\ \midrule
 
-   FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
+  FR-ST\testcount & Attempt to log in using both valid McMaster credentials (McMaster email and password) and invalid credentials 
+  (non-McMaster email or incorrect password). & 
+  Users with valid McMaster University credentials are granted access to the system. Login attempts 
+  with invalid credentials are rejected and an error message is displayed. & 
+  Login with valid McMaster credentials was successful and access to the system was granted. Login attempts 
+  using invalid credentials were rejected and an error message was displayed. &
   \cellcolor{green}Pass \\ \midrule
 
-  FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ 
+  FR-ST\testcount & Log into the system and remain inactive for longer than \texttt{SESSION\_TIMEOUT}, then attempt to access the system again. & 
+  After \texttt{SESSION\_TIMEOUT} of inactivity, the session expires automatically. The user is redirected or prompted to log in again 
+  before accessing the Reading4All system. & 
+  Session did not expire and system remained accessible after \texttt{SESSION\_TIMEOUT} of inactivity. &
+  \cellcolor{red}Fail \\ 
 \end{longtable}
 
 \section{Nonfunctional Requirements Evaluation}
