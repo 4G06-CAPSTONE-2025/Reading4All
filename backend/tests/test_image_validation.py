@@ -15,7 +15,7 @@ def test_missing_image():
     assert result == "MISSING_IMAGE"
 
 
-#IMGVAL-UT 2: Test invalid file type 
+#IMGVAL-UT 2: Test invalid file type
 def test_invalid_file_type():
 
     validator = ImageValidation()
