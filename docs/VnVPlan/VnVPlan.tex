@@ -1079,6 +1079,53 @@ Target requirements(s): FR1, FR2, FR3, FR5, FR6
 \end{itemize}
 \end{itemize}
 
+
+\subsection{AuthenticationService Module}
+\textbf{Goal}:
+The Authentication Service module is responsible for managing user authentication and authorization. 
+It validates user credentials and communicates with the Supabase authentication service to create new user accounts. 
+The module ensures that user emails use the McMaster University domain and that passwords meet the defined length requirements. 
+
+The following unit tests verify that the authentication service correctly validates user credentials, interacts with the 
+Supabase authentication service and returns the expected responses for user sign up requests. 
+The tests validate that invalid inputs for emails and passwords are correctly handled and that users can successfully sign up when they meet the requirements. 
+
+Target requirements(s): FR 6
+
+\begin{itemize}
+  \item \textbf{Creating a New User Account}
+  \begin{itemize}
+    \item Ensures that the authentication service correctly validates the email and password provided in a user sign up request.
+    \item Ensures that the authentication service correctly calls the Supabase authentication service to create a new user account when valid credentials are provided.
+    \item Verifies that the response returned by Supabase containing the \texttt{userID and accessToken} are correctly returned to the caller.
+  \end{itemize}
+
+  \item \textbf{Validating Email Domain}
+  \begin{itemize}
+    \item Ensures that the authentication service correctly validates that the email provided in a sign up request uses the McMaster University domain.
+    \item Verifies that a \texttt{ValueError} is raised when an email from a different domain is provided.  
+  \end{itemize}
+
+  \item \textbf{Validating Password Length}
+  \begin{itemize}
+    \item Ensures that the authentication service correctly validates that the password provided in a sign up request meets the minimum length requirements.
+    \item Verifies that a \texttt{ValueError} is raised when a password is inputted that does not meet the length requirements.
+  \end{itemize}
+
+  \item \textbf{Handling Capitalized Email Address Inputs}
+  \begin{itemize}
+    \item Ensures that the authentication service correctly converts capitalized emails to lowercase before communicating with the Supabase authentication service.
+    \item Verifies that the service returns the expected response when a capitalized email is provided.
+  \end{itemize}
+
+  \item \textbf{Handling Existing User Sign Up Requests}
+  \begin{itemize} 
+    \item Ensures that the authentication service correctly handles requests from users who already have an account.
+    \item Verifies that the request is not sent to Supabase and that an appropriate error message is returned to the caller. 
+\end{itemize}
+\end{itemize}
+The test cases for this module can be found here.
+
 \newpage
 
 \bibliographystyle{plainnat}
