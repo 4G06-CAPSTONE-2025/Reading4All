@@ -11,7 +11,7 @@ with (
     from controller.backend_controller import BackendController
 
 
-# BCONT-UT1: Tests that the backend controller correctly 
+# BCONT-UT1: Tests that the backend controller correctly
 # routes image validation requests to the Image Validation module.
 def test_validate_image_routing():
     controller = BackendController()
@@ -25,7 +25,7 @@ def test_validate_image_routing():
     controller.image_validator.validate_image.assert_called_once_with("Fake image data")
     assert result == "Success"
 
-# BCONT-UT2: Tests that the backend controller correctly routes alt text generation 
+# BCONT-UT2: Tests that the backend controller correctly routes alt text generation
 # requests to the Gen Alt Text module and returns the generated alt text.
 def test_gen_alt_text_routing():
 
@@ -42,8 +42,9 @@ def test_gen_alt_text_routing():
         )
     assert result == "Generated alt text"
 
-# BCONT-UT3: Tests that the backend controller correctly routes alt text history retrieval requests 
-# to the Alt Text History module and returns the retrieved history.
+# BCONT-UT3: Tests that the backend controller correctly routes alt text history
+# retrieval requests to the Alt Text History module
+# and returns the retrieved history.
 def test_get_alt_text_history_routing():
 
     controller = BackendController()
@@ -61,7 +62,7 @@ def test_get_alt_text_history_routing():
         )
     assert result == ["Alt text 1", "Alt text 2"]
 
-# BCONT-UT4: Tests that the backend controller correctly routes 
+# BCONT-UT4: Tests that the backend controller correctly routes
 # alt text editing requests to the Edit Alt Text module
 # and returns the editing results.
 def test_edit_alt_text_routing():
