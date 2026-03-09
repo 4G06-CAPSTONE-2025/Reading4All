@@ -13,6 +13,7 @@
 % \usepackage[round]{natbib}
 \usepackage{longtable}
 \usepackage{colortbl}
+\usepackage{enumitem}
 
 \input{../Comments}
 \input{../Common}
@@ -311,6 +312,79 @@ The following are the evaluation of the unit tests per module.
 \end{longtable}
 
 \section{Manual Testing}
+\subsubsection{UserInterfaceInteractions Module}
+The following are the manual tests for this module. 
+
+\begin{enumerate}[label=UII-MT \arabic*., wide=0pt, leftmargin=*]
+  \item{}
+    {\bf Initial State:} User is logged in and the main screen is displayed. \\
+    {\bf Input:} User selects and uploads an image file using the upload button. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Click the Choose File button.
+      \item Select a valid image file (.png or .jpeg).
+      \item Submit the upload.
+    \end{enumerate}
+    {\bf  Expected Results:} The system accepts the image and sends it to the backend 
+    for processing. The uploaded image appears in the interface and alt-text generation begins. \\
+    {\bf Failure Condition:} The image fails to upload, the UI freezes, or the system does 
+    not start alt-text generation.\\
+
+  \item{}
+    {\bf Initial State:} User is logged in and the main screen is displayed. \\
+    {\bf Input:} User attempts to upload an unsupported file type or file exceeding the maximum size. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Click the Choose File button.
+      \item Select an unsupported file (e.g., .gif, .pdf) or a file larger than the allowed size.
+      \item Submit the upload.
+    \end{enumerate}
+    {\bf  Expected Results:} The system rejects the file and displays an error message such as “File type
+     not supported” or “File too large.” \\
+    {\bf Failure Condition:} The system accepts unsupported files or fails to display an error message.\\
+
+  \item{}
+    {\bf Initial State:} Generated alt text is displayed on the screen. \\
+    {\bf Input:} User presses the Copy button to copy the generated alt text. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Generate alt text for an uploaded image.
+      \item Click the Copy Alt Text button.
+      \item Paste the clipboard contents into another application (e.g., a text editor).
+    \end{enumerate}
+    {\bf Expected Results:} The copied text matches the generated alt text exactly. \\
+    {\bf Failure Condition:} The clipboard is empty or the copied text is incomplete or incorrect. \\
+
+  \item{}
+    {\bf Initial State:} Generated alt text is visible and editable on the screen. \\
+    {\bf Input:} User edits the alt text and saves the changes. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Modify the alt text by adding, deleting, or changing words.
+      \item Click the Save Edits button.
+    \end{enumerate}
+    {\bf Expected Results:} The updated alt text is displayed and stored correctly without formatting issues. \\
+    {\bf Failure Condition:} The edits are not saved, the text reverts to its original version, or formatting errors occur. \\
+  \item{}
+    {\bf Initial State:} Login screen is displayed. \\
+    {\bf Input:} User enters valid credentials and attempts to sign in. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Enter valid login credentials.
+      \item Click the Sign In button.
+    \end{enumerate}
+    {\bf Expected Results:} The user is authenticated and redirected to the main system interface. \\
+    {\bf Failure Condition:} Valid credentials are rejected or no response occurs after clicking Sign In. \\
+  \item{}
+    {\bf Initial State:} User is logged into the system. \\
+    {\bf Input:} User presses the Sign Out button. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Click the Sign Out button.
+    \end{enumerate}
+    {\bf Expected Results:} The user session ends and the system redirects the user to the login screen. \\
+    {\bf Failure Condition:} The user remains logged in or can continue accessing the system without logging in again. \\
+\end{enumerate}
 
 \section{Changes Due to Testing}
 
