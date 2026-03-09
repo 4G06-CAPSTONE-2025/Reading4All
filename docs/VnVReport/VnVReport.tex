@@ -386,6 +386,66 @@ The following are the manual tests for this module.
     {\bf Failure Condition:} The user remains logged in or can continue accessing the system without logging in again. \\
 \end{enumerate}
 
+\newcounter{uiimantestcase}
+\newcommand{\uiimantestcount}{\stepcounter{uiimantestcase}\theuiimantestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{UserInterfaceInterfactions Manual Testing Evaluation}
+  \label{table:module-unit-eval}
+  \endlastfoot
+
+UII-MT\uiimantestcount & Upload a valid image file (.png or .jpeg) using the Choose File button & 
+Image is accepted and alt-text generation begins & 
+Image uploaded successfully and alt-text generation initiated &
+\cellcolor{green}Pass \\ \midrule
+
+UII-MT\uiimantestcount & Upload an unsupported file type or file exceeding the allowed size & 
+System rejects file and displays an appropriate error message & 
+Unsupported file was rejected and an error message was displayed &
+\cellcolor{green}Pass \\ \midrule
+
+UII-MT\uiimantestcount & Copy generated alt text using the Copy Alt Text button & 
+Alt text is copied to clipboard accurately & 
+Alt text copied successfully and matched the generated output when pasted &
+\cellcolor{green}Pass \\ \midrule
+
+UII-MT\uiimantestcount & Edit generated alt text and save changes & 
+System saves and displays updated alt text without formatting issues & 
+Edits were saved correctly and updated text was displayed &
+\cellcolor{green}Pass \\ \midrule
+UII-MT\uiimantestcount & Enter valid credentials and click Sign In & 
+User is authenticated and redirected to the main interface & 
+Login successful and user was redirected to the main screen &
+\cellcolor{green}Pass \\ \midrule
+
+UII-MT\uiimantestcount & Click the Sign Out button & 
+User session ends and login screen is displayed & 
+User session ended and system returned to the login screen &
+\cellcolor{green}Pass \\
+\end{longtable}
+
 \section{Changes Due to Testing}
 
 \wss{This section should highlight how feedback from the users and from 
