@@ -494,12 +494,11 @@ The following are the manual tests for this module.
     {\bf Test Steps:}
     \begin{enumerate}
       \item Open a screen with interactive controls.
-      \item Use {\tt ArrowLeft}, {\tt ArrowRight}, {\tt ArrowUp}, and {\tt ArrowDown} to move between elements where applicable.
-      \item Use {\tt Home} and {\tt End} to move to the first and last items.
+      \item Use \texttt{tab} to move between elements where applicable.
       \item Use {\tt Enter} or {\tt Space} to activate the selected control.
     \end{enumerate}
     {\bf Expected Results:} Keyboard navigation works correctly within the defined scope. Focus moves predictably and activation occurs without changing application state unexpectedly. \\
-    {\bf Failure Condition:} Arrow keys do not work, focus movement is inconsistent, or activation fails. \\
+    {\bf Failure Condition:} Tab key do not work, focus movement is inconsistent, or activation fails. \\
 
 \end{enumerate}
 The following table shows the evaluation of the userinterfaceaccessibility
@@ -537,25 +536,135 @@ module’s manual tests.
 
   UIA-MT\uiamantestcount & Verify that the loaded screen contains a valid main landmark for primary content & 
   Main content area is identified by a valid main landmark & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
+  Main landmark was not present and did not identify the primary content area &
+  \cellcolor{red}Fail \\ \midrule
 
   UIA-MT\uiamantestcount & Load the screen and check automatic keyboard focus placement & 
   Focus is placed on the intended first interactive element & 
-  evaluate &
+  Initial focus was correctly placed on the expected interactive control &
   \cellcolor{green}Pass \\ \midrule
 
   UIA-MT\uiamantestcount & Trigger a UI change while a screen reader is enabled & 
   Screen reader announces the interface change clearly & 
-  evaluate &
+  Announcement was read clearly by the screen reader after any UI update &
   \cellcolor{green}Pass \\ \midrule
 
   UIA-MT\uiamantestcount & Use arrow keys, Home/End, and Enter/Space to navigate and activate controls & 
   Keyboard navigation works correctly within the interface scope & 
-evaluate &
+  Keyboard navigation and activation worked as expected without unexpected state changes &
   \cellcolor{green}Pass \\ 
 
+\end{longtable}
 
+\subsection{DataPreProcess Module}
+The following are the manual tests for this module.
+
+\begin{enumerate}[label=DP-MT \arabic*., wide=0pt, leftmargin=*]
+  \item{}
+    {\bf Initial State:} The preprocessing function is available and ready to process dataset examples. \\
+    {\bf Input:} A dataset example containing valid image paths and modified alt text. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Provide a dataset example containing valid image paths and alt text.
+      \item Run the preprocess function.
+      \item Inspect the returned encoded output.
+    \end{enumerate}
+    {\bf Expected Results:} The function successfully loads images and text and returns encoded tensors containing image and text representations. \\
+    {\bf Failure Condition:} The preprocessing function fails to return encoded outputs or raises an unexpected error. \\
+
+  \item{}
+    {\bf Initial State:} The preprocessing function is ready to process input images. \\
+    {\bf Input:} Image files that may not originally be in RGB format. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Provide image paths to the preprocess function.
+      \item Run preprocessing.
+      \item Inspect the processed images.
+    \end{enumerate}
+    {\bf Expected Results:} All images are converted to RGB format before being passed to the processor. \\
+    {\bf Failure Condition:} Images remain in their original format and are not converted to RGB. \\
+
+  \item{}
+    {\bf Initial State:} The preprocessing function receives alt text label with leading or trailing whitespace. \\
+    {\bf Input:} Alt text label containing extra whitespace characters. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Provide alt text label with leading or trailing spaces.
+      \item Run preprocessing.
+      \item Inspect the processed text values.
+    \end{enumerate}
+    {\bf Expected Results:} Leading and trailing whitespace is removed from the alt text. \\
+    {\bf Failure Condition:} Whitespace remains in the processed alt text. \\
+
+  \item{}
+    {\bf Initial State:} The preprocessing function is ready to process dataset examples. \\
+    {\bf Input:} A dataset example containing an invalid or unreadable image path. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Provide a dataset example containing an invalid image path.
+      \item Run the preprocess function.
+      \item Observe the system response.
+    \end{enumerate}
+    {\bf Expected Results:} The function raises an error indicating that the image cannot be opened or read. \\
+    {\bf Failure Condition:} The function silently proceeds or produces invalid encoded output. \\
+eeds the maximum length. \\
+\end{enumerate}
+
+The following table shows the evaluation of the datapreprocess
+module’s manual tests.
+
+\newcounter{dpmantestcase}
+\newcommand{\dpmantestcount}{\stepcounter{dpmantestcase}\thedpmantestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{DataPreprocess Manual Testing Evaluation}
+  \label{table:dp-man-eval}
+  \endlastfoot
+
+  DPP-MT\dpmantestcount & Process valid image paths and alt text labels through the preprocess function & 
+  Valid images and text are encoded successfully & 
+  Images and alt text were processed successfully and encoded tensors were returned &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  DPP-MT\dpmantestcount & Provide image paths and run preprocessing to verify RGB conversion & 
+  Images are converted to RGB format before encoding & 
+  Images were successfully converted to RGB format before processing &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  DPP-MT\dpmantestcount & Provide alt text containing leading or trailing whitespace & 
+  Whitespace is removed from alt text & 
+  Alt text whitespace was successfully stripped before encoding &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  DPP-MT\dpmantestcount & Provide an invalid or unreadable image path to preprocessing & 
+  Function raises an error indicating the image cannot be opened & 
+  Invalid image path correctly triggered an error during preprocessing &
+  \cellcolor{green}Pass \\ 
 \end{longtable}
 
 
