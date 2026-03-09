@@ -4,6 +4,7 @@ from PIL import Image
 from services.image_validation import ImageValidation
 
 
+#IMGVAL-UT 1: Test missing image in the request
 def test_missing_image():
     validator = ImageValidation()
 
@@ -14,6 +15,7 @@ def test_missing_image():
     assert result == "MISSING_IMAGE"
 
 
+#IMGVAL-UT 2: Test invalid file type 
 def test_invalid_file_type():
 
     validator = ImageValidation()
@@ -29,6 +31,7 @@ def test_invalid_file_type():
     assert result == "INVALID_FILE_TYPE"
 
 
+#IMGVAL-UT 3: Test file size exceeding the limit
 def test_file_size_invalid():
 
     validator = ImageValidation()
@@ -44,6 +47,7 @@ def test_file_size_invalid():
     assert result == "FILE_SIZE_INVALID"
 
 
+#IMGVAL-UT 4: Test corrupted image file
 def test_corrupted_image():
 
     validator = ImageValidation()
@@ -59,7 +63,8 @@ def test_corrupted_image():
     assert result == "UNAUTHORIZED_ACCESS_OR_CORRUPTED"
 
 
-def test_valid_image():
+#IMGVAL-UT 5: Test valid image file
+def test_valid_image_success():
 
     validator = ImageValidation()
 
