@@ -324,10 +324,68 @@ The following are the evaluation of the unit tests per module.
   \cellcolor{green}Pass \\ 
 \end{longtable}
 
-\subsubsection{Module 2}
+\subsubsection{Backend Controller Module}
 
 \newcounter{moduletwotestcase}
 \newcommand{\mtwotestcount}{\stepcounter{moduletwotestcase}\themoduletwotestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{Backend Controller Module Unit Testing Evaluation}
+  \label{table:module2-unit-eval}
+  \endlastfoot
+
+  BCONT-UT\mtwotestcount & Send image validation request with valid image data through the backend controller. & 
+  The backend controller forwards the image to the Image Validation module and returns the validation results. & 
+  The backend controller correctly returns \texttt{Success} after calling the image validation module. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  BCONT-UT\mtwotestcount & Send alt text generation request with image data and a valid session ID through the backend controller.& 
+  The backend controller forwards the request to the Alt Text Generation module and returns the generated alt text.  & 
+  The backend controller correctly returns the generated alt text of \texttt{"Generated alt text"}. &
+  \cellcolor{green}Pass \\ \midrule
+
+  BCONT-UT\mtwotestcount & Send alt text history retrieval request with a valid session ID through the backend controller. &
+  The backend controller forwards the session ID to the Alt Text History module and returns the retrieved history. & 
+  The backend controller correctly returns the retrieved history of \texttt{["Alt text 1", "Alt text 2"]}. &
+  \cellcolor{green}Pass \\ \midrule
+  
+
+  BCONT-UT\mtwotestcount & Send alt text editing request through the backend controller. & 
+  The backend controller forwards the request to the Edit Alt Text module and returns the result. & 
+  The backend controller correctly returns the editing result of \texttt{"Success"}. &
+  \cellcolor{green}Pass \\ 
+
+\end{longtable}
+
+
+
+\subsubsection{Module 3}
+
+\newcounter{modulethreetestcase}
+\newcommand{\mthreetestcount}{\stepcounter{modulethreetestcase}\themodulethreetestcase}
 
 \begin{longtable}{@{}c
     >{\raggedright\arraybackslash}p{4.0cm}
