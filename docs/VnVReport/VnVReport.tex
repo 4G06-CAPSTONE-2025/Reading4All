@@ -13,6 +13,7 @@
 % \usepackage[round]{natbib}
 \usepackage{longtable}
 \usepackage{colortbl}
+\usepackage{enumitem}
 
 \input{../Comments}
 \input{../Common}
@@ -110,33 +111,42 @@ functional requirements.
   FR-ST\testcount & User uploads test diagrams (diagram1.png, diagram2.jpeg) to the system and generate alternative 
   text descriptions. Evaluate the generated alt text using the evaluation metrics defined in Appendix 6.1. & 
   The system generates alternative text descriptions for each uploaded image. The descriptions meet the evaluation metrics in Appendix 6.1. & 
-  evaluate &
+  Alt text generated but did not meet the required evaluation metric thresholds. Specifically, the Learning Impact metric 
+  scored \texttt{<} 2.  &
+  \cellcolor{red}Fail \\ \midrule
+
+  FR-ST\testcount & Generate alternative text for an uploaded image, then use screen readers (NVDA, JAWS, and VoiceOver) to read 
+  the generated alternative text aloud. & 
+  The generated alternative text is fully read aloud by common screen readers (NVDA, JAWS, VoiceOver) without truncation, 
+  misreading, or formatting errors. & 
+  The screen reader VoiceOver successfully read the generated alternative text fully and clearly. &
   \cellcolor{green}Pass \\ \midrule
 
-  FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
+  FR-ST\testcount & Edit the generated alternative text by adding words, deleting sentences, and modifying phrasing, then save the changes. & 
+  The system accurately reflects all user edits and stores the updated alternative text without data loss or formatting errors. & 
+  The user’s edits (added, deleted, and modified text) were correctly reflected and saved. The updated alternative text was stored 
+  without data loss or formatting issues. &
   \cellcolor{green}Pass \\ \midrule
 
-  FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
+  FR-ST\testcount & Upload more than \texttt{SESSION\_HISTORY\_MAX} images sequentially in the same session, then navigate or refresh the session 
+  interface to view the upload history. & 
+  Only the \texttt{SESSION\_HISTORY} \texttt{\_MAX} most recent uploads and alt text are visible. & 
+  Recent uploads up to the limit were displayed correctly. &
   \cellcolor{green}Pass \\ \midrule
 
-   FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
+  FR-ST\testcount & Attempt to log in using both valid McMaster credentials (McMaster email and password) and invalid credentials 
+  (non-McMaster email or incorrect password). & 
+  Users with valid McMaster University credentials are granted access to the system. Login attempts 
+  with invalid credentials are rejected and an error message is displayed. & 
+  Login with valid McMaster credentials was successful and access to the system was granted. Login attempts 
+  using invalid credentials were rejected and an error message was displayed. &
   \cellcolor{green}Pass \\ \midrule
 
-   FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
-
-  FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ 
+  FR-ST\testcount & Log into the system and remain inactive for longer than \texttt{SESSION\_TIMEOUT}, then attempt to access the system again. & 
+  After \texttt{SESSION\_TIMEOUT} of inactivity, the session expires automatically. The user is redirected or prompted to log in again 
+  before accessing the Reading4All system. & 
+  Session did not expire and system remained accessible after \texttt{SESSION\_TIMEOUT} of inactivity. &
+  \cellcolor{red}Fail \\ 
 \end{longtable}
 
 \section{Nonfunctional Requirements Evaluation}
@@ -302,6 +312,253 @@ The following are the evaluation of the unit tests per module.
 \end{longtable}
 
 \section{Manual Testing}
+\subsection{UserInterfaceInteractions Module}
+The following are the manual tests for this module. 
+
+\begin{enumerate}[label=UII-MT \arabic*., wide=0pt, leftmargin=*]
+  \item{}
+    {\bf Initial State:} User is logged in and the main screen is displayed. \\
+    {\bf Input:} User selects and uploads an image file using the upload button. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Click the Choose File button.
+      \item Select a valid image file (.png or .jpeg).
+      \item Submit the upload.
+    \end{enumerate}
+    {\bf  Expected Results:} The system accepts the image and sends it to the backend 
+    for processing. The uploaded image appears in the interface and alt-text generation begins. \\
+    {\bf Failure Condition:} The image fails to upload, the UI freezes, or the system does 
+    not start alt-text generation.\\
+
+  \item{}
+    {\bf Initial State:} User is logged in and the main screen is displayed. \\
+    {\bf Input:} User attempts to upload an unsupported file type or file exceeding the maximum size. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Click the Choose File button.
+      \item Select an unsupported file (e.g., .gif, .pdf) or a file larger than the allowed size.
+      \item Submit the upload.
+    \end{enumerate}
+    {\bf  Expected Results:} The system rejects the file and displays an error message such as “File type
+     not supported” or “File too large.” \\
+    {\bf Failure Condition:} The system accepts unsupported files or fails to display an error message.\\
+
+  \item{}
+    {\bf Initial State:} Generated alt text is displayed on the screen. \\
+    {\bf Input:} User presses the Copy button to copy the generated alt text. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Generate alt text for an uploaded image.
+      \item Click the Copy Alt Text button.
+      \item Paste the clipboard contents into another application (e.g., a text editor).
+    \end{enumerate}
+    {\bf Expected Results:} The copied text matches the generated alt text exactly. \\
+    {\bf Failure Condition:} The clipboard is empty or the copied text is incomplete or incorrect. \\
+
+  \item{}
+    {\bf Initial State:} Generated alt text is visible and editable on the screen. \\
+    {\bf Input:} User edits the alt text and saves the changes. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Modify the alt text by adding, deleting, or changing words.
+      \item Click the Save Edits button.
+    \end{enumerate}
+    {\bf Expected Results:} The updated alt text is displayed and stored correctly without formatting issues. \\
+    {\bf Failure Condition:} The edits are not saved, the text reverts to its original version, or formatting errors occur. \\
+  \item{}
+    {\bf Initial State:} Login screen is displayed. \\
+    {\bf Input:} User enters valid credentials and attempts to sign in. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Enter valid login credentials.
+      \item Click the Sign In button.
+    \end{enumerate}
+    {\bf Expected Results:} The user is authenticated and redirected to the main system interface. \\
+    {\bf Failure Condition:} Valid credentials are rejected or no response occurs after clicking Sign In. \\
+  \item{}
+    {\bf Initial State:} User is logged into the system. \\
+    {\bf Input:} User presses the Sign Out button. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Click the Sign Out button.
+    \end{enumerate}
+    {\bf Expected Results:} The user session ends and the system redirects the user to the login screen. \\
+    {\bf Failure Condition:} The user remains logged in or can continue accessing the system without logging in again. \\
+\end{enumerate}
+
+\noindent The following table shows the evaluation of the userinterfaceinteractions module's manual tests.
+\newcounter{uiimantestcase}
+\newcommand{\uiimantestcount}{\stepcounter{uiimantestcase}\theuiimantestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{UserInterfaceInterfactions Manual Testing Evaluation}
+  \label{table:uii-man-eval}
+  \endlastfoot
+
+UII-MT\uiimantestcount & Upload a valid image file (.png or .jpeg) using the Choose File button & 
+Image is accepted and alt-text generation begins & 
+Image uploaded successfully and alt-text generation initiated &
+\cellcolor{green}Pass \\ \midrule
+
+UII-MT\uiimantestcount & Upload an unsupported file type or file exceeding the allowed size & 
+System rejects file and displays an appropriate error message & 
+Unsupported file was rejected and an error message was displayed &
+\cellcolor{green}Pass \\ \midrule
+
+UII-MT\uiimantestcount & Copy generated alt text using the Copy Alt Text button & 
+Alt text is copied to clipboard accurately & 
+Alt text copied successfully and matched the generated output when pasted &
+\cellcolor{green}Pass \\ \midrule
+
+UII-MT\uiimantestcount & Edit generated alt text and save changes & 
+System saves and displays updated alt text without formatting issues & 
+Edits were saved correctly and updated text was displayed &
+\cellcolor{green}Pass \\ \midrule
+UII-MT\uiimantestcount & Enter valid credentials and click Sign In & 
+User is authenticated and redirected to the main interface & 
+Login successful and user was redirected to the main screen &
+\cellcolor{green}Pass \\ \midrule
+
+UII-MT\uiimantestcount & Click the Sign Out button & 
+User session ends and login screen is displayed & 
+User session ended and system returned to the login screen &
+\cellcolor{green}Pass \\
+\end{longtable}
+
+\subsection{UserInterfaceAccessibility Module}
+The following are the manual tests for this module.
+
+\begin{enumerate}[label=UIA-MT \arabic*., wide=0pt, leftmargin=*]
+  \item{}
+    {\bf Initial State:} A system screen such as the login screen, main screen, or history screen is loaded. \\
+    {\bf Input:} The tester inspects the rendered page structure using browser accessibility tools or screen reader landmarks. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Open a system screen.
+      \item Inspect the page structure using accessibility inspector or a screen reader landmark list.
+      \item Verify that the main content area is identified as the page's main landmark.
+    \end{enumerate}
+    {\bf Expected Results:} The screen contains a valid main landmark ({\tt <main>} or equivalent) for the primary content area. \\
+    {\bf Failure Condition:} No main landmark is present, or the primary content is not identified correctly. \\
+
+  \item{}
+    {\bf Initial State:} The login screen or another screen (main or history screen )has just loaded. \\
+    {\bf Input:} The tester loads the screen and checks where keyboard focus is placed. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Open the login screen.
+      \item Do not click the mouse.
+      \item Observe which element receives focus automatically.
+      \item Press {\tt Tab} to continue keyboard navigation if needed.
+    \end{enumerate}
+    {\bf Expected Results:} Keyboard focus is moved to the intended first interactive element, such as the username field on the login screen. \\
+    {\bf Failure Condition:} Focus is missing, placed on a non-interactive element, or placed on the wrong control. \\
+
+  \item{}
+    {\bf Initial State:} A screen reader is enabled and the user performs an action that changes the UI. \\
+    {\bf Input:} Trigger a UI change such as loading the login screen, generating alt text, or navigating to history. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Enable a screen reader such as NVDA, JAWS, or VoiceOver.
+      \item Perform an action that changes the interface.
+      \item Listen for the announcement made by the system.
+    \end{enumerate}
+    {\bf Expected Results:} A clear announcement describing the UI change is read by the screen reader through the live region. \\
+    {\bf Failure Condition:} No announcement is made, the message is incomplete, or the announcement is unclear. \\
+
+  \item{}
+    {\bf Initial State:} A screen containing multiple interactive elements is open. \\
+    {\bf Input:} The tester uses only the keyboard to navigate within the interface. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Open a screen with interactive controls.
+      \item Use {\tt ArrowLeft}, {\tt ArrowRight}, {\tt ArrowUp}, and {\tt ArrowDown} to move between elements where applicable.
+      \item Use {\tt Home} and {\tt End} to move to the first and last items.
+      \item Use {\tt Enter} or {\tt Space} to activate the selected control.
+    \end{enumerate}
+    {\bf Expected Results:} Keyboard navigation works correctly within the defined scope. Focus moves predictably and activation occurs without changing application state unexpectedly. \\
+    {\bf Failure Condition:} Arrow keys do not work, focus movement is inconsistent, or activation fails. \\
+
+\end{enumerate}
+The following table shows the evaluation of the userinterfaceaccessibility
+module’s manual tests.
+
+\newcounter{uiamantestcase}
+\newcommand{\uiamantestcount}{\stepcounter{uiamantestcase}\theuiamantestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{UserInterfaceAccessibility Manual Testing Evaluation}
+  \label{table:uii-man-eval}
+  \endlastfoot
+
+  UIA-MT\uiamantestcount & Verify that the loaded screen contains a valid main landmark for primary content & 
+  Main content area is identified by a valid main landmark & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+  UIA-MT\uiamantestcount & Load the screen and check automatic keyboard focus placement & 
+  Focus is placed on the intended first interactive element & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+  UIA-MT\uiamantestcount & Trigger a UI change while a screen reader is enabled & 
+  Screen reader announces the interface change clearly & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+  UIA-MT\uiamantestcount & Use arrow keys, Home/End, and Enter/Space to navigate and activate controls & 
+  Keyboard navigation works correctly within the interface scope & 
+evaluate &
+  \cellcolor{green}Pass \\ 
+
+
+\end{longtable}
+
+
 
 \section{Changes Due to Testing}
 
