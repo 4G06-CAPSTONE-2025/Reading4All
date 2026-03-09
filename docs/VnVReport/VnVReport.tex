@@ -184,31 +184,47 @@ nonfunctional requirements.
   \label{table:NFR-ST-eval}
   \endlastfoot
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
+  NFR-ST1 &
+  User adjusts browser zoom to maximum and evaluates color contrast using accessibility tools &
+  Text resizes correctly without overlap; contrast meets WCAG 2.1 AA accessibility requirements; images include alternative text &
+  Tester confirms accessibility compliance using zoom tests, contrast checkers, and screen readers &
   \cellcolor{green}Pass \\ \midrule
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
+  NFR-ST2 &
+  Tester visually inspects layout, typography, colors, and branding elements of the interface &
+  Interface maintains consistent styling; McMaster branding is present and does not interfere with usability; design aligns with Norman’s principles &
+  Tester verifies UI against style guide, branding rules, and Norman’s usability principles &
+  \cellcolor{green}Pass \\ \midrule
+  NFR-ST3 &
+  Users perform key tasks such as login, image upload, and alt-text generation &
+  Tasks are completed efficiently; feedback is received within FEEDBACK\_TIME; users can recall steps and correct errors easily &
+  Tester evaluates usability through timed task completion, feedback monitoring, and observation of user error recovery &
   \cellcolor{green}Pass \\ \midrule
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
+  NFR-ST4 &
+User generates alt text and selects the copy or storage option &
+Alt text is successfully copied to the clipboard or stored as requested &
+Tester verifies each option by generating alt text and confirming correct execution of the selected storage method &
+\cellcolor{green}Pass \\ \midrule
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
+NFR-ST5 &
+Screen reader users upload images and generate alt text using assistive technologies such as NVDA, JAWS, or VoiceOver &
+Users successfully generate and obtain alt text within the time limit and navigate the interface efficiently using screen readers &
+Tester conducts usability sessions with screen reader tools and measures task completion time and navigation success &
+\cellcolor{green}Pass \\ \midrule
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ 
+NFR-ST6 &
+Images of different sizes were uploaded under typical system conditions to evaluate alt-text generation time &
+Alt text should be generated within the specified performance threshold while the UI remains responsive &
+Image validity was unit tested, while generation time was measured manually during testing; the UI responsiveness and model response time were observed and recorded &
+\cellcolor{red}Fail \\ \midrule
+NFR-ST7 &
+Tester simulates long-running or stalled image processing to trigger a timeout condition &
+User is notified of the timeout with an option to retry; incomplete data is deleted and no technical details are exposed in messages &
+Tester verifies timeout notifications, retry option, proper data cleanup, and absence of sensitive technical information in error messages &
+\cellcolor{green}Pass \\ \midrule
 \end{longtable}
+
 
 \subsection{Usability}
 		
@@ -223,7 +239,7 @@ This section will not be appropriate for every project.
 \section{Unit Testing}
 The following are the evaluation of the unit tests per module. 
 
-\subsubsection{Module 1}
+\subsubsection{MainScreen Module}
 
 \newcounter{moduleonetestcase}
 \newcommand{\monetestcount}{\stepcounter{moduleonetestcase}\themoduleonetestcase}
@@ -251,23 +267,102 @@ The following are the evaluation of the unit tests per module.
   \endfoot
 
   \bottomrule
-  \caption{Module 1 Unit Testing Evaluation}
+  \caption{MainScreen Module Unit Testing Evaluation}
   \label{table:module-unit-eval}
   \endlastfoot
 
-  M-UT\monetestcount & action & 
-  expected result & 
-  evaluate &
+  M-UT\monetestcount & Render HomeScreen page &
+  Homepage title is displayed &
+  Homepage title displayed successfully &
   \cellcolor{green}Pass \\ \midrule
-
-
-  M-UT\monetestcount & action & 
-  expected result & 
-  evaluate &
+  
+  M-UT\monetestcount & Render HomeScreen subtitle &
+  Homepage subtitle describing system purpose is visible &
+  Subtitle displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Display signup button on homepage &
+  Signup button is visible for new users &
+  Signup button rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Display login button on homepage &
+  Login button is visible for returning users &
+  Login button rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Render UploadScreen title &
+  Upload page title is visible &
+  Title displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Render UploadScreen subtitle &
+  Upload page subtitle guiding users is visible &
+  Subtitle displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Verify upload instructions accessibility &
+  Upload instructions accessible through ARIA label &
+  ARIA label detected successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Verify upload input accessibility label &
+  Upload input field contains accessible label &
+  Label detected successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Display Choose File button &
+  Choose File button is visible for uploading images &
+  Button displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Upload valid image file &
+  Image successfully uploaded and backend request triggered &
+  Image uploaded and confirmation displayed &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Upload image using drag-and-drop &
+  Image uploaded using drag-and-drop functionality &
+  Drag-and-drop upload completed successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Remove uploaded image &
+  Uploaded image removed from interface &
+  Image removed successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Generate alt text after image upload &
+  Generated alt text displayed in output field &
+  Alt text generated and displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Upload new image after generation &
+  Previous alt text resets when new image uploaded &
+  Alt text reset confirmed &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Copy generated alt text &
+  Alt text copied to clipboard successfully &
+  Clipboard copy function executed successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Keyboard accessibility for file upload &
+  Pressing Enter opens file selection dialog &
+  File input triggered successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Handle image upload error &
+  Error message displayed when upload fails &
+  Error message displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Handle alt text generation failure &
+  Error message displayed when alt text generation fails &
+  Error message displayed correctly &
   \cellcolor{green}Pass \\ 
 \end{longtable}
 
-\subsubsection{Module 2}
+\subsubsection{ShowHistory Module}
 
 \newcounter{moduletwotestcase}
 \newcommand{\mtwotestcount}{\stepcounter{moduletwotestcase}\themoduletwotestcase}
@@ -295,20 +390,146 @@ The following are the evaluation of the unit tests per module.
   \endfoot
 
   \bottomrule
-  \caption{Module 2 Unit Testing Evaluation}
+  \caption{ShowHistory Module Unit Testing Evaluation}
   \label{table:module2-unit-eval}
   \endlastfoot
 
-  M-UT\mtwotestcount & action & 
-  expected result & 
-  evaluate &
+  M-UT\monetestcount & Render ShowHistory page &
+  History page title and navigation button are displayed &
+  Title and back button displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Display history entries &
+  Uploaded image history entries are listed on the page &
+  History entries rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & View history entry preview &
+  Clicking a history entry displays the image preview and alt text &
+  Preview image and alt text displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Navigate back to upload screen &
+  Clicking the back button navigates to the upload page &
+  Navigation executed successfully &
+  \cellcolor{green}Pass \\
+\end{longtable}
+
+\subsubsection{LoginScreen Module}
+
+\newcounter{logintestcase}
+\newcommand{\logintestcount}{\stepcounter{logintestcase}\thelogintestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{LoginScreen Module Unit Testing Evaluation}
+  \label{table:login-module-unit-eval}
+  \endlastfoot
+
+
+  M-UT\logintestcount & Render login interface &
+  Login page title and input fields are visible &
+  Login interface rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Submit login with empty fields &
+  System rejects login attempt and displays validation error &
+  Validation error displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Enter email and password credentials &
+  User can type and update values in email and password fields &
+  Input fields accept user input correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Login with valid credentials &
+  System sends authentication request and redirects user to upload page &
+  Authentication request successful and navigation executed &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Login with invalid credentials &
+  System displays authentication error message &
+  Error message displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Network failure during login &
+  System displays network error message &
+  Network error message displayed successfully &
   \cellcolor{green}Pass \\ \midrule
 
 
-  M-UT\mtwotestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ 
+  M-UT\logintestcount & Render signup form interface &
+  Signup form fields and instructions are displayed &
+  Signup interface rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Signup validation with missing email &
+  System displays validation error when email is not provided &
+  Validation error displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Signup validation for short password &
+  System rejects passwords shorter than minimum length &
+  Password validation message displayed &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Signup validation for mismatched passwords &
+  System rejects mismatched password entries &
+  Mismatch validation error displayed &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Send verification code &
+  Verification code request sent to backend and OTP field enabled &
+  Verification request executed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Signup attempt without OTP &
+  System prevents signup and displays OTP required error &
+  OTP validation error displayed &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Complete successful signup &
+  System verifies OTP and completes account registration &
+  Signup process completed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  M-UT\logintestcount & RequireAuth loading state &
+  Protected content not rendered until authentication check completes &
+  Content hidden during authentication check &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & RequireAuth authenticated access &
+  Authenticated users can access protected content &
+  Protected content rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & RequireAuth unauthorized access &
+  Unauthenticated users are redirected to login page &
+  Unauthorized access prevented and redirect executed &
+  \cellcolor{green}Pass \\
+
 \end{longtable}
 
 \section{Manual Testing}
