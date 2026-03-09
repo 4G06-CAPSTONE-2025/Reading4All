@@ -10,7 +10,9 @@
     linkcolor=red,
     urlcolor=blue
 }
-\usepackage[round]{natbib}
+% \usepackage[round]{natbib}
+\usepackage{longtable}
+\usepackage{colortbl}
 
 \input{../Comments}
 \input{../Common}
@@ -65,8 +67,138 @@ Date 2 & 1.1 & Notes\\
 This document ...
 
 \section{Functional Requirements Evaluation}
+The following section outlines the evaluation of the system tests created for the 
+functional requirements. 
+
+\newcounter{testcase}
+\newcommand{\testcount}{\stepcounter{testcase}\thetestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{System Tests Functional Requirements Evaluation}
+  \label{table:FR-ST-eval}
+  \endlastfoot
+
+  FR-ST\testcount & User uploads image files in different formats to the system 
+  (i.e: png, jpeg, pdf, gif)& The system accepts .jpeg and .png files for processing. 
+  Files with unsupported formats (.gif, .pdf) are rejected and an error message is displayed. & 
+ The system successfully accepted and processed the .jpeg and .png files. The .gif and .pdf files 
+ were rejected, and an error message was displayed. &
+  \cellcolor{green}Pass \\ \midrule
+
+  FR-ST\testcount & User uploads test diagrams (diagram1.png, diagram2.jpeg) to the system and generate alternative 
+  text descriptions. Evaluate the generated alt text using the evaluation metrics defined in Appendix 6.1. & 
+  The system generates alternative text descriptions for each uploaded image. The descriptions meet the evaluation metrics in Appendix 6.1. & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+  FR-ST\testcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+  FR-ST\testcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+   FR-ST\testcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+   FR-ST\testcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+  FR-ST\testcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ 
+\end{longtable}
 
 \section{Nonfunctional Requirements Evaluation}
+
+The following section outlines the evaluation of the system tests created for the 
+nonfunctional requirements. 
+
+\newcounter{nfrtestcase}
+\newcommand{\nfrtestcount}{\stepcounter{nfrtestcase}\thenfrtestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{System Tests Non-Functional Requirements Evaluation}
+  \label{table:NFR-ST-eval}
+  \endlastfoot
+
+  NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ 
+\end{longtable}
 
 \subsection{Usability}
 		
@@ -79,6 +211,97 @@ This document ...
 This section will not be appropriate for every project.
 
 \section{Unit Testing}
+The following are the evaluation of the unit tests per module. 
+
+\subsubsection{Module 1}
+
+\newcounter{moduleonetestcase}
+\newcommand{\monetestcount}{\stepcounter{moduleonetestcase}\themoduleonetestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{Module 1 Unit Testing Evaluation}
+  \label{table:module-unit-eval}
+  \endlastfoot
+
+  M-UT\monetestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  M-UT\monetestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ 
+\end{longtable}
+
+\subsubsection{Module 2}
+
+\newcounter{moduletwotestcase}
+\newcommand{\mtwotestcount}{\stepcounter{moduletwotestcase}\themoduletwotestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{Module 2 Unit Testing Evaluation}
+  \label{table:module2-unit-eval}
+  \endlastfoot
+
+  M-UT\mtwotestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  M-UT\mtwotestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ 
+\end{longtable}
+
+\section{Manual Testing}
 
 \section{Changes Due to Testing}
 
