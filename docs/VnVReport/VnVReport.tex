@@ -113,19 +113,23 @@ functional requirements.
   evaluate &
   \cellcolor{green}Pass \\ \midrule
 
-  FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
+  FR-ST\testcount & Generate alternative text for an uploaded image, then use screen readers (NVDA, JAWS, and VoiceOver) to read 
+  the generated alternative text aloud. & 
+  The generated alternative text is fully read aloud by common screen readers (NVDA, JAWS, VoiceOver) without truncation, 
+  misreading, or formatting errors. & 
+  The screen reader VoiceOver successfully read the generated alternative text fully and clearly. &
   \cellcolor{green}Pass \\ \midrule
 
-  FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
+  FR-ST\testcount & Edit the generated alternative text by adding words, deleting sentences, and modifying phrasing, then save the changes. & 
+  The system accurately reflects all user edits and stores the updated alternative text without data loss or formatting errors. & 
+  The user’s edits (added, deleted, and modified text) were correctly reflected and saved. The updated alternative text was stored 
+  without data loss or formatting issues. &
   \cellcolor{green}Pass \\ \midrule
 
-   FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
+  FR-ST\testcount & Upload more than \texttt{SESSION\_HISTORY\_MAX} images sequentially in the same session, then navigate or refresh the session 
+  interface to view the upload history. & 
+  Only the \texttt{SESSION\_HISTORY} \texttt{\_MAX} most recent uploads and alt text are visible. & 
+  Recent uploads up to the limit were displayed correctly. &
   \cellcolor{green}Pass \\ \midrule
 
    FR-ST\testcount & action & 
