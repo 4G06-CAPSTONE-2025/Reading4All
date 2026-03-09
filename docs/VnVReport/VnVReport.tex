@@ -197,7 +197,51 @@ nonfunctional requirements.
   NFR-ST\nfrtestcount & action & 
   expected result & 
   evaluate &
-  \cellcolor{green}Pass \\ 
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+
+    NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+
+    NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\  \midrule
+
+   NFR-ST\nfrtestcount & Uploads unsupported fil or corrupted files and simulate backend process failures in order to evaluate system error handling and recovery. & 
+   System displays a clear error message and recovers within T\_RECOVERY seconds. & System displays to user a clear error message and recovers in 1.8 seconds, which is within the required threshold of T\_RECOVERY  &
+  \cellcolor{green}Pass \\  \midrule
+
+  NFR-ST\nfrtestcount & Simulate multiple users logged into the system simultaneously, each uploading different images and requesting alt text.  & 
+  System supports CAP\_CONCURRENT users with response times less than CAPACITY\_RTIME and sucessfullly handles datasets up to CAP\_STORAGE. & 
+  System handles concurrent users uploading images with response times within the required threshold and stored the uploaded data successfully. &
+  \cellcolor{green}Pass \\  \midrule
+
+    NFR-ST\nfrtestcount & Replace the AI model with a different one and update any required configuration (ex, API endpoint) while keeping the rest of the system unchanged. Run tests to verify functionality. & 
+  System continues functioning correctly. The new AI model integrates with only minimal configuration changes and does not break existing components.& 
+  The new AI model was integrated successfully with only API endpoint changes, and all main functionalities work as expected. &
+  \cellcolor{green}Pass \\ \midrule
+
+    NFR-ST\nfrtestcount & Attempt logins from non-mcmaster accounts, upload unsupported files, verify HTTPS encryption and confirm system logs access is restricted.  & 
+  Only McMaster users can sign-up and access the system, unsupported files are rejected; communication is encrypted and system logs are restricted & 
+  Login and sign up attempts from users outside the McMaster domain are rejected, unsupported files are rejected, and the application is access through HTTPS, 
+  confirming encrypted communication. Logs are currently only accessible by authorized individuals. &
+  \cellcolor{green}Pass \\  \midrule
+
+
+    NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\  \midrule
+  
 \end{longtable}
 
 \subsection{Usability}
