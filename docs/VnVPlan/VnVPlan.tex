@@ -986,17 +986,269 @@ the functional and non-functional requirements in our SRS document.
 \section{Unit Test Description}
 \label{Unit Test Desc}
 This section is not currently applicable and will be completed at a later time. 
-\subsection{Unit Testing Scope}
 
-\subsection{Tests for Functional Requirements}
+\subsection{LoginScreen Module}
+
+\subsubsection{Login Component}
+
+\textbf{Goal:}
+The login component allows users to authenticate using their email and password.
+It verifies user credentials with the backend authentication service and redirects
+authenticated users to the main upload page.
+
+\textbf{Target requirement(s):} FR6
+
+\begin{itemize}
+
+\item \textbf{Rendering Login Interface}
+\begin{itemize}
+\item Ensures the login page renders correctly.
+\item Verifies that the email and password input fields are visible.
+\end{itemize}
+
+\item \textbf{Login Form Validation}
+\begin{itemize}
+\item Ensures that login attempts with empty fields are rejected.
+\item Verifies that an appropriate validation message is displayed.
+\end{itemize}
+
+\item \textbf{Credential Input Handling}
+\begin{itemize}
+\item Confirms that users are able to type and update values in the email and password fields.
+\end{itemize}
+
+\item \textbf{Successful Authentication}
+\begin{itemize}
+\item Ensures valid credentials trigger a backend authentication request.
+\item Verifies that authenticated users are redirected to the upload page.
+\end{itemize}
+
+\item \textbf{Authentication Error Handling}
+\begin{itemize}
+\item Ensures backend authentication errors are displayed correctly.
+\item Verifies network failures produce an appropriate error message.
+\end{itemize}
+
+\end{itemize}
 
 
-\subsection{Tests for Non-Functional Requirements}
+\subsubsection{Signup Component}
+
+\textbf{Goal:}
+The signup component allows new users to create an account using their email
+address and password. The system validates user inputs and requires a
+verification code before account creation is completed.
+
+\textbf{Target requirement(s):} FR6
+
+\begin{itemize}
+
+\item \textbf{Rendering Signup Interface}
+\begin{itemize}
+\item Ensures the signup form renders correctly.
+\item Verifies that email, password, and confirm password fields are present.
+\end{itemize}
+
+\item \textbf{Signup Input Validation}
+\begin{itemize}
+\item Ensures an error message appears if the email field is empty.
+\item Ensures passwords shorter than the required length are rejected.
+\item Verifies mismatched passwords generate an error message.
+\end{itemize}
+
+\item \textbf{Verification Code Request}
+\begin{itemize}
+\item Ensures the system successfully sends a verification code when valid
+signup information is provided.
+\end{itemize}
+
+\item \textbf{Verification Code Validation}
+\begin{itemize}
+\item Ensures the signup process cannot proceed without entering the
+verification code.
+\end{itemize}
+
+\item \textbf{Successful Signup}
+\begin{itemize}
+\item Ensures that entering a valid verification code completes account creation.
+\item Verifies that a success message is displayed after verification.
+\end{itemize}
+
+\end{itemize}
 
 
-\subsection{Traceability Between Test Cases and Modules}
+\subsubsection{Authentication Protection Component (RequireAuth)}
+
+\textbf{Goal:}
+The authentication protection component ensures that only authenticated
+users can access protected pages of the system. If a user is not authenticated,
+they are redirected to the login page.
+
+\textbf{Target requirement(s):} FR6
+
+\begin{itemize}
+
+\item \textbf{Authentication Check}
+\begin{itemize}
+\item Ensures the system checks authentication status before rendering protected content.
+\end{itemize}
+
+\item \textbf{Authorized Access}
+\begin{itemize}
+\item Ensures authenticated users can access protected pages successfully.
+\end{itemize}
+
+\item \textbf{Unauthorized Access Handling}
+\begin{itemize}
+\item Ensures unauthenticated users attempting to access protected routes are redirected to the login page.
+\end{itemize}
+
+\end{itemize}
+
+\subsection{ShowHistory Module}
+
+\subsubsection{History Display Component}
+
+\textbf{Goal:}
+
+The history display component presents previously generated images and their
+associated alternative text descriptions. This functionality allows users to
+review past outputs produced by the system during earlier sessions.
+
+\textbf{Target requirement(s):} FR4, UHR-PIR1
+
+\begin{itemize}
+
+\item \textbf{Rendering History Interface}
+\begin{itemize}
+\item Ensures that the history page title is displayed when the component loads.
+\item Verifies that the navigation button for returning to the main screen is visible.
+\end{itemize}
+
+\item \textbf{Displaying History Entries}
+\begin{itemize}
+\item Ensures that previously generated history entries are displayed correctly.
+\item Verifies that each entry shows the associated image file name.
+\item Confirms that the generated alternative text is visible to the user.
+\end{itemize}
+
+\end{itemize}
+
+\subsubsection{History Preview Interaction}
+
+\textbf{Goal:}
+
+The history preview functionality allows users to select a previously generated
+entry and view the corresponding image preview and its alternative text
+description.
+
+\textbf{Target requirement(s):} FR4, UHR-PIR1
+
+\begin{itemize}
+
+\item \textbf{Image Preview Display}
+\begin{itemize}
+\item Ensures that selecting a history entry displays the associated image preview.
+\item Verifies that the previewed image element appears correctly in the interface.
+\item Confirms that the image contains the correct alternative text attribute.
+\end{itemize}
+
+\end{itemize}
+
+\subsubsection{History Navigation}
+
+\textbf{Goal:}
+
+The navigation functionality allows users to return from the history page to the
+main upload interface, ensuring smooth interaction between system screens.
+
+\textbf{Target requirement(s):} UHR-PIR1
+
+\begin{itemize}
+
+\item \textbf{Return to Main Screen}
+\begin{itemize}
+\item Ensures the back button redirects the user to the upload page.
+\item Verifies that the navigation function is triggered when the button is clicked.
+\end{itemize}
+
+\end{itemize}
+\subsection{MainScreen Module}
+
+\subsubsection{HomeScreen Component}
+
+\textbf{Goal:} The HomeScreen component provides the entry point of the system and introduces the purpose of the application. It allows users to understand the system functionality and provides navigation options to sign up or log in.
+
+\textbf{Target requirement(s):} LFR-AR1, LFR-SR1, LFR-SR2, LFR-SR3
+
+\begin{itemize}
+
+\item \textbf{Rendering Home Interface}
+
+\begin{itemize}
+\item Ensures that the homepage title ``Physics Alternative Text Generation'' is displayed clearly.
+\item Verifies that the homepage subtitle explaining the system purpose is visible to the user.
+\end{itemize}
+
+\item \textbf{Navigation Options Visibility}
+
+\begin{itemize}
+\item Ensures that the sign-up button for first-time users is displayed on the homepage.
+\item Verifies that the login button for returning users is visible and accessible.
+\end{itemize}
+
+\end{itemize}
 
 
+
+\subsubsection{UploadScreen Component}
+
+\textbf{Goal:} The UploadScreen component enables authenticated users to upload physics diagrams and generate alternative text descriptions using the system’s AI model. The interface supports uploading images, generating alternative text, copying results, and handling user errors.
+
+\textbf{Target requirement(s):} FR1, FR3, UHR-PIR1, LFR-AR4, LFR-SR1
+
+\begin{itemize}
+
+\item \textbf{Rendering Upload Interface}
+
+\begin{itemize}
+\item Ensures that the upload page title and subtitle are displayed correctly.
+\item Verifies that upload instructions are accessible through ARIA labels.
+\item Confirms that the upload area contains accessible labels for screen readers.
+\end{itemize}
+
+\item \textbf{Image Upload Functionality}
+
+\begin{itemize}
+\item Ensures that the ``Choose File'' button is visible to allow users to upload images.
+\item Verifies that JPEG or PNG images can be uploaded successfully.
+\item Confirms that drag-and-drop functionality allows users to upload image files.
+\item Ensures that users can remove an uploaded image before generating alt text.
+\end{itemize}
+
+\item \textbf{Alt Text Generation}
+
+\begin{itemize}
+\item Ensures that the system generates alternative text after an image is uploaded.
+\item Verifies that generated alt text is displayed in a format compatible with screen readers.
+\item Confirms that uploading a new image resets previously generated alternative text.
+\end{itemize}
+
+\item \textbf{User Interaction Features}
+
+\begin{itemize}
+\item Verifies that users can copy generated alternative text to the clipboard.
+\item Confirms that keyboard accessibility allows the file selection dialog to open using the Enter key.
+\end{itemize}
+
+\item \textbf{Error Handling}
+
+\begin{itemize}
+\item Ensures the system displays an appropriate error message when image upload fails.
+\item Verifies that the system displays an error message when alternative text generation fails.
+\end{itemize}
+
+\end{itemize}
 \newpage
 
 \bibliographystyle{plainnat}
