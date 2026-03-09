@@ -94,3 +94,23 @@ def test_signup_capital_letter_email():
             "password": "passwordABC123"
         }
     )
+
+# AUTH-UT6: Tests user signup with email that is already in use.
+def test_signup_with_existing_email():
+
+    mock_supabase = MagicMock()
+    mock_user = MagicMock()
+    mock_user.id = "this user id already exists"
+    
+    mock_response = MagicMock()
+    mock_response.user = mock_user
+    mock_response.session = None
+
+    mock_supabase.auth.sign_up.return_value = mock_response
+
+    auth_service = AuthService(supabase=mock_supabase)
+    try: 
+        auth_service.signup("student@mcmaster.ca", "passwordABC123")
+        assert False, "Value Error should be raised when email is already in use"
+    except ValueError as e:
+        assert str(e) == "Email is already in use"
