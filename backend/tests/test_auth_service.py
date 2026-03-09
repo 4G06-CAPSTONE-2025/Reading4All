@@ -3,7 +3,7 @@ from services.auth_service import AuthService
 
 
 
-
+# AUTH-UT1: Tests successful user signup with valid email and password
 def test_signup_user_success():
 
     mock_supabase = MagicMock()
@@ -27,6 +27,7 @@ def test_signup_user_success():
         "access_token": "test_access_token"
     }
 
+# AUTH-UT2: Tests user signup with invalid email format (not @mcmaster.ca)
 def test_signup_invalid_email():
 
     mock_supabase = MagicMock()
@@ -39,7 +40,7 @@ def test_signup_invalid_email():
         assert str(e) == "Email must be a @mcmaster.ca address"
     mock_supabase.auth.sign_up.assert_not_called()
 
-
+# AUTH-UT3: Tests user signup with password shorter than 8 characters
 def test_signup_short_password():
 
     mock_supabase = MagicMock()
@@ -52,7 +53,7 @@ def test_signup_short_password():
         assert str(e) == "Password must be at least 8 characters"
     mock_supabase.auth.sign_up.assert_not_called()
 
-
+# AUTH-UT4: Tests user signup with empty email and password
 def test_signup_empty_email_and_password():
 
     mock_supabase = MagicMock()
@@ -65,7 +66,7 @@ def test_signup_empty_email_and_password():
         assert str(e) == "Email must be a @mcmaster.ca address"
     mock_supabase.auth.sign_up.assert_not_called()
 
-
+# AUTH-UT4.1: Tests user signup with empty email and password
 def test_signup_none_email_and_password():
 
     mock_supabase = MagicMock()
@@ -78,7 +79,7 @@ def test_signup_none_email_and_password():
         assert str(e) == "Email must be a @mcmaster.ca address"
     mock_supabase.auth.sign_up.assert_not_called()
 
-
+# AUTH-UT5: Tests user signup with capital letters in email
 def test_signup_capital_letter_email():
 
     mock_supabase = MagicMock()
