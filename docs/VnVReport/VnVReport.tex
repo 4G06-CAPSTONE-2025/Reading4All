@@ -14,6 +14,8 @@
 \usepackage{longtable}
 \usepackage{colortbl}
 \usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{float} % Enables the [H] float option
 
 \input{../Comments}
 \input{../Common}
@@ -98,7 +100,7 @@ functional requirements.
 
   \bottomrule
   \caption{System Tests Functional Requirements Evaluation}
-  \label{table:FR-ST-eval}
+  \label{table:FR-ST-eval-1}
   \endlastfoot
 
   FR-ST\testcount & User uploads image files in different formats to the system 
@@ -181,7 +183,7 @@ nonfunctional requirements.
 
   \bottomrule
   \caption{System Tests Non-Functional Requirements Evaluation}
-  \label{table:NFR-ST-eval}
+  \label{table:NFR-ST-eval-1}
   \endlastfoot
 
   NFR-ST1 &
@@ -268,7 +270,7 @@ The following are the evaluation of the unit tests per module.
 
   \bottomrule
   \caption{MainScreen Module Unit Testing Evaluation}
-  \label{table:module-unit-eval}
+  \label{table:module-unit-eval-1}
   \endlastfoot
 
   M-UT\monetestcount & Render HomeScreen page &
@@ -391,7 +393,7 @@ The following are the evaluation of the unit tests per module.
 
   \bottomrule
   \caption{ShowHistory Module Unit Testing Evaluation}
-  \label{table:module2-unit-eval}
+  \label{table:module2-unit-eval-1}
   \endlastfoot
 
   M-UT\monetestcount & Render ShowHistory page &
@@ -444,7 +446,7 @@ The following are the evaluation of the unit tests per module.
 
   \bottomrule
   \caption{LoginScreen Module Unit Testing Evaluation}
-  \label{table:login-module-unit-eval}
+  \label{table:login-module-unit-eval-1}
   \endlastfoot
 
 
@@ -635,7 +637,7 @@ The following are the manual tests for this module.
 
   \bottomrule
   \caption{UserInterfaceInterfactions Manual Testing Evaluation}
-  \label{table:uii-man-eval}
+  \label{table:uii-man-eval-1}
   \endlastfoot
 
 UII-MT\uiimantestcount & Upload a valid image file (.png or .jpeg) using the Choose File button & 
@@ -793,11 +795,22 @@ should be highlighted.}
 \section{Trace to Requirements}
 		
 \section{Trace to Modules}		
-
 \section{Code Coverage Metrics}
+
+The following analyzes the code coverage metrics for the React frontend of the system. The analysis is based on the coverage data generated using Jest and React Testing Library as shown in Figure~\ref{fig:FrontendCoverage}. Code coverage is a measure of how well the codebase is tested, and it helps identify areas that may require additional testing.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{FrontendCoverage.png}
+\caption{Coverage Report of the React Frontend}
+\label{fig:FrontendCoverage}
+\end{figure}
 
 \bibliographystyle{plainnat}
 \bibliography{../../refs/References}
+
+% Example citation added to resolve the "no \citation commands" error
+This is an example citation: \cite{exampleReference}.
 
 \newpage{}
 \section*{Appendix --- Reflection}
