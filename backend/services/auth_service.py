@@ -8,6 +8,9 @@ class AuthService:
     def signup(self, email: str, password: str):
         email = (email or "").strip().lower()
 
+        if not email.endswith("@mcmaster.ca"):
+            raise ValueError("Email must be a @mcmaster.ca address")
+
         if len(password or "") < 8:
             raise ValueError("Password must be at least 8 characters")
 
