@@ -1,5 +1,8 @@
 \documentclass[12pt, titlepage]{article}
 
+
+
+
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
@@ -40,9 +43,9 @@
 \section{Revision History}
 
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Name} & {\bf Created initial draft of VnV Report}\\
+\toprule {\bf Date} & {\bf Name} & {\bf Notes}\\
 \midrule
-March 9, 2026 & All & Notes\\
+March 9, 2026 & All & Created initial draft of VnV Report\\
 \bottomrule
 \end{tabularx}
 
@@ -1229,74 +1232,6 @@ module’s manual tests.
   \cellcolor{green}Pass \\ 
 \end{longtable}
 
-
-\subsection{ModelOutput Module}
-
-No automated unit tests were implemented for this module. Its behavior was verified through the manual tests described in Section~7 (MO-MT1), which confirm that generated alt-text is correctly formatted and displayed to the user.
-
-\subsection{AIModelTraining Module}
-
-Unit tests were not implemented for this module because the training process operates as part of the model training pipeline rather than as isolated functions. Validation was performed through the manual testing procedures described in Section~7 (AI-MT1).
-
-\subsection{CaptionGeneration Module}
-
-The functionality of this module was evaluated through the manual tests described in Section~7 (CG-MT1), where uploaded images were used to verify that the system generates meaningful alt-text descriptions.
-
-\subsection{InternalMetricCompliance Module}
-
-No dedicated unit tests were implemented for this module. Instead, its behavior was verified through the manual tests in Section~7 (IMC-MT1), where generated captions were evaluated against the system’s internal quality metrics.
-\section{Manual Testing}
-
-The following section outlines the manual tests performed for the AI modules.
-
-\begin{longtable}{@{}c
-    >{\raggedright\arraybackslash}p{4.0cm}
-    >{\raggedright\arraybackslash}p{4.5cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\centering\arraybackslash}p{1.2cm}@{}}
-  \toprule
-  \textbf{Test ID} & \textbf{Module} &
-  \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
-  \midrule
-  \endfirsthead
-
-  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
-  \toprule
-  \textbf{Test ID} & \textbf{Module} &
-  \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
-  \midrule
-  \endhead
-
-  \multicolumn{5}{r}{\textit{Continued on next page}} \\
-  \endfoot
-
-  \bottomrule
-  \caption{Manual Testing Summary for AI Modules}
-  \label{table:manual-ai-tests}
-  \endlastfoot
-
-
-MO-MT1 & ModelOutput Module &
-Verify generated alt-text is correctly formatted and displayed to the user. &
-All assertions pass &
-\cellcolor{green}Pass \\ \midrule
-
-AI-MT1 & AIModelTraining Module &
-Verify that the model training process successfully produces a trained model. &
-All assertions pass &
-\cellcolor{green}Pass \\ \midrule
-
-CG-MT1 & CaptionGeneration Module &
-Verify that the system generates descriptive alt-text for uploaded images. &
-All assertions pass &
-\cellcolor{green}Pass \\ \midrule
-
-IMC-MT1 & InternalMetricCompliance Module &
-Verify that generated captions satisfy internal quality evaluation metrics. &
-All assertions pass &
-\cellcolor{green}Pass \\
-
-\end{longtable}
 \subsection{ModelOutput Module}
 
 The following are the manual tests for this module.
@@ -1317,6 +1252,34 @@ MO-MT 1. \textbf{Initial State:} The system has successfully generated alt-text 
 
 \textbf{Failure Condition:} The generated alt-text is missing, incorrectly formatted, or not displayed to the user.
 
+\begin{longtable}{@{}c
+>{\raggedright\arraybackslash}p{4.0cm}
+>{\raggedright\arraybackslash}p{4.5cm}
+>{\raggedright\arraybackslash}p{3.6cm}
+>{\centering\arraybackslash}p{1.2cm}@{}}
+
+\toprule
+\textbf{Test ID} & \textbf{Module} & \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Test ID} & \textbf{Module} & \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
+\midrule
+\endhead
+
+\bottomrule
+\caption{Manual Testing Evaluation for ModelOutput Module}
+\label{table:mo-manual}
+\endlastfoot
+
+MO-MT1 & ModelOutput Module &
+Verify generated alt-text is correctly formatted and displayed to the user. &
+All assertions pass &
+\cellcolor{green}Pass \\
+
+\end{longtable}
+
 
 \subsection{AIModelTraining Module}
 
@@ -1325,7 +1288,6 @@ The following are the manual tests for this module.
 AI-MT 1. \textbf{Initial State:} The training dataset and configuration parameters are available.
 
 \textbf{Input:} The model training process is initiated using the dataset.
-
 
 \textbf{Test Steps:}
 
@@ -1338,6 +1300,34 @@ AI-MT 1. \textbf{Initial State:} The training dataset and configuration paramete
 \textbf{Expected Results:} The model successfully completes training and produces a trained model artifact used for caption generation.
 
 \textbf{Failure Condition:} Training fails to complete, produces errors, or does not generate a usable trained model.
+
+\begin{longtable}{@{}c
+>{\raggedright\arraybackslash}p{4.0cm}
+>{\raggedright\arraybackslash}p{4.5cm}
+>{\raggedright\arraybackslash}p{3.6cm}
+>{\centering\arraybackslash}p{1.2cm}@{}}
+
+\toprule
+\textbf{Test ID} & \textbf{Module} & \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Test ID} & \textbf{Module} & \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
+\midrule
+\endhead
+
+\bottomrule
+\caption{Manual Testing Evaluation for AIModelTraining Module}
+\label{table:ai-training-manual}
+\endlastfoot
+
+AI-MT1 & AIModelTraining Module &
+Verify that the model training process successfully produces a trained model. &
+All assertions pass &
+\cellcolor{green}Pass \\
+
+\end{longtable}
 
 
 \subsection{CaptionGeneration Module}
@@ -1360,6 +1350,34 @@ CG-MT 1. \textbf{Initial State:} A trained model exists and a valid image has be
 
 \textbf{Failure Condition:} The system fails to generate alt-text, produces irrelevant text, or returns an error.
 
+\begin{longtable}{@{}c
+>{\raggedright\arraybackslash}p{4.0cm}
+>{\raggedright\arraybackslash}p{4.5cm}
+>{\raggedright\arraybackslash}p{3.6cm}
+>{\centering\arraybackslash}p{1.2cm}@{}}
+
+\toprule
+\textbf{Test ID} & \textbf{Module} & \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Test ID} & \textbf{Module} & \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
+\midrule
+\endhead
+
+\bottomrule
+\caption{Manual Testing Evaluation for CaptionGeneration Module}
+\label{table:captiongen-manual}
+\endlastfoot
+
+CG-MT1 & CaptionGeneration Module &
+Verify that the system generates descriptive alt-text for uploaded images. &
+All assertions pass &
+\cellcolor{green}Pass \\
+
+\end{longtable}
+
 
 \subsection{InternalMetricCompliance Module}
 
@@ -1381,6 +1399,33 @@ IMC-MT 1. \textbf{Initial State:} A caption has been generated by the CaptionGen
 
 \textbf{Failure Condition:} The caption fails validation checks or the system does not evaluate the generated caption.
 
+\begin{longtable}{@{}c
+>{\raggedright\arraybackslash}p{4.0cm}
+>{\raggedright\arraybackslash}p{4.5cm}
+>{\raggedright\arraybackslash}p{3.6cm}
+>{\centering\arraybackslash}p{1.2cm}@{}}
+
+\toprule
+\textbf{Test ID} & \textbf{Module} & \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Test ID} & \textbf{Module} & \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
+\midrule
+\endhead
+
+\bottomrule
+\caption{Manual Testing Evaluation for InternalMetricCompliance Module}
+\label{table:metric-manual}
+\endlastfoot
+
+IMC-MT1 & InternalMetricCompliance Module &
+Verify that generated captions satisfy internal quality evaluation metrics. &
+All assertions pass &
+\cellcolor{green}Pass \\
+
+\end{longtable}
 \section{Changes Due to Testing}
 During the internal testing phase, several changes were made to the tool based on feedback from the TA, professor, supervisor and from Team 22.
 A brief description of each change and its implementation is listed below:
@@ -1420,9 +1465,53 @@ These automated checks helped the team detect issues early in the development pr
 Additionally, the CI/CD pipeline supported reproducibility by ensuring that the same build and testing procedures were executed consistently for each update. This contributed to a more stable and reliable development process for the Reading4All system.
 		
 \section{Trace to Requirements}
+The following table (Table \ref{table:test-requirement-trace}) shows the relationship between the tests performed and
+the requirements deﬁned in the \citet{SRS}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+\textbf{Test ID} & \textbf{SRS Requirement(s) Satisfied} \\ \hline
+
+IMGVAL-UT1 -- IMGVAL-UT5 & FR 1, MD-SL 3, SR-IM 1 \\ \hline
+
+BCONT-UT1 -- BCONT-UT4 & FR 1, FR 2, FR 4, FR 5 \\ \hline
+
+AUTH-UT1 -- AUTH-UT6 & FR 6, SR-AR 1, SR-IM 2 \\ \hline
+
+MAIN-UT1 -- MAIN-UT18 & FR 1, FR 2, FR 4, UHR-EUR 1, UHR-EUR 2 \\ \hline
+
+HIST-UT1 -- HIST-UT4 & FR 5, UHR-EUR 2 \\ \hline
+
+LOGIN-UT1 -- LOGIN-UT16 & FR 6, SR-AR 1, SR-PR 1 \\ \hline
+
+UII-MT1 -- UII-MT6 & FR 1, FR 2, FR 4, FR 6, UHR-PIR 1 \\ \hline
+
+UIA-MT1 -- UIA-MT4 & LFR-AR 1, LFR-AR 3, LFR-AR 4, UHR-AR 2 \\ \hline
+
+DPP-MT1 -- DPP-MT4 & PR-SL 1, PR-SL 2, PR-PAR 1 \\ \hline
+
+MO-MT1 & FR 2, PR-PAR 2 \\ \hline
+
+AI-MT1 & PR-PAR 3 \\ \hline
+
+CG-MT1 & FR 2, PR-PAR 1 \\ \hline
+
+IMC-MT1 & PR-PAR 1, PR-PAR 2, PR-PAR 3 \\ \hline
+
+FR-ST1 -- FR-ST7 & FR 1 -- FR 6 \\ \hline
+
+NFR-ST1 -- NFR-ST24 & LFR-AR 1 -- LFR-AR 4, UHR-EUR 1 -- UHR-EUR 4, PR-SL 1 -- PR-SL 2, SR-AR 1, SR-PR 1 \\ \hline
+
+\end{tabular}
+\caption{Traceability Between Tests and Requirements}
+\label{table:test-requirement-trace}
+\end{table}
+
 		\section{Trace to Modules}
 
-The following table shows the relationship between the tests performed
+The following table (Table \ref{table:test-module-trace}) shows the relationship between the tests performed
 and the modules defined in the Module Guide. Each test verifies the
 correct functionality of the corresponding module in the Reading4All system.
 
@@ -1468,7 +1557,19 @@ The following analyzes the code coverage metrics for the React frontend of the s
 \caption{Coverage Report of the React Frontend}
 \label{fig:FrontendCoverage}
 \end{figure}
- 
+
+The following analyzes the code coverage for the backend of the system. 
+This analysis was performed using \texttt{pytest-cov} and shows how key features 
+such as authentication, image validation, session history of the system are unit tested. 
+Please refer to the Figure~\ref{fig:BackendCoverage} for more detail and insight. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.1 \textwidth]{BackendCoverage.png}
+\caption{Coverage Report of the Backend}
+\label{fig:BackendCoverage}
+\end{figure}
+
 \bibliographystyle{plainnat}
 \bibliography{../../refs/References}
 
@@ -1479,7 +1580,7 @@ The information in this section will be used to evaluate the team members on the
 graduate attribute of Reflection.
 
 \input{../Reflection.tex}
-
+None.
 
 \textbf{Team Reflection}
 \begin{enumerate}
@@ -1575,6 +1676,27 @@ The team was better prepared to work together. We split the doc as per usual and
 did you resolve them?
 My VSCode decided to crash every time I tried to work with it, so I had to ask my teammates to make my edits for me which was really annoying :(
 The tests we wrote for the VnV Plan didn't accurately encompass the solution we ended up building. They seemed disconnected from the solution itself as some parts had vastly changed from how we thought we'd implement it. This was frustrating because we knew our product worked, we just couldn't show it based on a plan we made before we started coding. 
+\end{enumerate}
+
+\textbf{Casey Francine Bulaclac's Reflection}
+
+\begin{enumerate}
+\item What went well while writing this deliverable? \\
+One aspect that went well while writing the Verification and Validation report was being able to directly test our implemented modules and observe 
+the outcomes of the test cases. Running the tests allowed us to clearly see which tests passed and which failed, which helped us better understand the current 
+performance of our tool. This process was valuable because it highlighted areas where the system was functioning correctly as well as areas that could be improved for Revision 1.
+Another positive aspect was conducting user testing. Gathering feedback from users helped us identify what parts of the tool were working well and which parts needed improvement. 
+Seeing how users interacted with the system provided practical insight and helped validate whether the tool behaved as expected from a user perspective.
+
+\item What pain points did you experience during this deliverable, and how
+did you resolve them? \\
+One challenge we encountered was that some modules originally described in the design documentation were not fully implemented in the final system. Because of this, we could 
+not create meaningful verification tests for those modules as originally planned. This required us to revisit the testing plan and modify the VnV report so that the test 
+cases only covered modules that were actually implemented and testable.
+To resolve this issue, we updated the relevant documentation to ensure consistency across all project deliverables. This involved adjusting parts of the MIS and MG documents so that 
+they accurately reflected the system that was ultimately implemented. Although this required additional revisions, it ensured that the documentation, design descriptions, and testing 
+procedures were all aligned with the final state of the project.
+
 \end{enumerate}
 
 \end{document}
