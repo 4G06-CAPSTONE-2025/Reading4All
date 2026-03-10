@@ -8,15 +8,11 @@ class AuthService:
     def signup(self, email: str, password: str):
         email = (email or "").strip().lower()
 
-        # Removed domain restriction ✅
-
         if len(password or "") < 8:
             raise ValueError("Password must be at least 8 characters")
 
-        # Supabase Auth signup
         resp = self.supabase.auth.sign_up({"email": email, "password": password})
 
-        # supabase-py return formats can differ; support both
         user = getattr(resp, "user", None) or (
             resp.get("user") if isinstance(resp, dict) else None
         )
