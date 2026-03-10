@@ -10,6 +10,7 @@
 \usepackage{bm}
 \usepackage{float}
 \usepackage{caption}
+\usepackage{graphicx}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -195,6 +196,37 @@ functional requirements.
 
 \section{Nonfunctional Requirements Evaluation}
 
+The following section reports on the nonfunctional requirements Team 22 evaluated and its results.
+
+\subsection{Internal Testing Results}
+
+Five evaluators assessed the generated alt text using the metrics defined in Table~\ref{tab:internal_results}. Each evaluator rated the output on Sufficiency of Description, Length Appropriateness, Accessibility/Usability, and Learning Impact. Table~\ref{tab:internal_results} summarizes the scores collected.
+
+\begin{table}[h]
+\centering
+\caption{Internal Evaluation Scores per Evaluator}
+\label{tab:internal_results}
+\begin{tabular}{|l|c|c|c|c|l|}
+\hline
+\textbf{Evaluator} & \textbf{Sufficiency} & \textbf{Length} & \textbf{Accessibility} & \textbf{Learning} & \textbf{Notes} \\
+ & \textbf{(1--3)} & \textbf{(1--3)} & \textbf{(0--3)} & \textbf{(0--3)} & \\
+\hline
+Person 1 & 2 & 3 & 3 & 1 & N/A \\
+Person 2 & 2 & 3 & 3 & 2 & N/A \\
+Person 3 & 2 & 3 & 3 & 1 & N/A \\
+Person 4 & 2 & 2 & 3 & 1 & N/A \\
+Person 5 & 2 & 2 & 3 & 1 & N/A \\
+\hline
+\textbf{Mean}  & \textbf{2.0} & \textbf{2.6} & \textbf{3.0} & \textbf{1.2} & --- \\
+\hline
+\textbf{Acceptable} & $\geq 3$ & $\geq 3$ & $\geq 2$ & $\geq 2$ & --- \\
+\hline
+\end{tabular}
+\end{table}
+
+The results indicate that Accessibility/Usability consistently met or exceeded the acceptable threshold across all evaluators, with a mean score of 3.0. Length Appropriateness averaged 2.6, falling slightly below the acceptable threshold of 3. Sufficiency of Description scored uniformly at 2.0, below the acceptable threshold of 3, suggesting that the generated alt text does not yet convey sufficient information to fully achieve the intended objective. Learning Impact averaged 1.2, also below the acceptable threshold of 2, indicating that improvements are needed to better support user understanding in learning contexts.
+
+\subsection{System Tests}
 The following section outlines the evaluation of the system tests created for the 
 nonfunctional requirements. 
 
@@ -1004,6 +1036,24 @@ During testing, Team 22 had found that some user navigation processes were not a
 While our testing showed us many faults in our solution, not all of them could be fixed. For future revisions, Team 22 plans to further increase alt-text quality by adding more specificity and context to generation (using AI hypertuning methods). Conducting user testing has given us sufficient data to know what features and system modules to improve for better usability. 
 
 \section{Automated Testing}
+
+\subsection{Accessibility Checker - Axe}
+The accessibility checks were done using a third-party website, Axe, which helped Team 22 understand gaps in user navigation for people with disabilities. An example of a generated report can be seen below:
+\begin{figure}[H] % or [htbp] + \FloatBarrier below
+  \centering
+  \includegraphics[width=\textwidth]{R4A_VnVRep_autoTest.png}
+  \caption{Automated Report for "Upload Page" in R4A System}
+  \label{fig:work-context}
+\end{figure}
+Reports like these made it easier for the team to identify accessibility oversights and best practices we might have missed and fix them.
+
+\subsection{CI/CD}
+
+Continuous Integration and Continuous Deployment (CI/CD) practices were used to ensure that changes to the Reading4All system could be integrated and tested efficiently. Whenever updates were pushed to the repository, automated workflows were triggered to verify that the system built successfully and that core components continued to function as expected.
+
+These automated checks helped the team detect issues early in the development process and prevented unstable code from being merged into the main branch. By incorporating CI/CD into the development workflow, Team 22 was able to maintain code quality, streamline collaboration, and ensure that new features or fixes did not unintentionally break existing functionality.
+
+Additionally, the CI/CD pipeline supported reproducibility by ensuring that the same build and testing procedures were executed consistently for each update. This contributed to a more stable and reliable development process for the Reading4All system.
 		
 \section{Trace to Requirements}
 		
