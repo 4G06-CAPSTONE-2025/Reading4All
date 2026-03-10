@@ -13,6 +13,7 @@
 % \usepackage[round]{natbib}
 \usepackage{longtable}
 \usepackage{colortbl}
+\usepackage{enumitem}
 
 \input{../Comments}
 \input{../Common}
@@ -110,33 +111,42 @@ functional requirements.
   FR-ST\testcount & User uploads test diagrams (diagram1.png, diagram2.jpeg) to the system and generate alternative 
   text descriptions. Evaluate the generated alt text using the evaluation metrics defined in Appendix 6.1. & 
   The system generates alternative text descriptions for each uploaded image. The descriptions meet the evaluation metrics in Appendix 6.1. & 
-  evaluate &
+  Alt text generated but did not meet the required evaluation metric thresholds. Specifically, the Learning Impact metric 
+  scored \texttt{<} 2.  &
+  \cellcolor{red}Fail \\ \midrule
+
+  FR-ST\testcount & Generate alternative text for an uploaded image, then use screen readers (NVDA, JAWS, and VoiceOver) to read 
+  the generated alternative text aloud. & 
+  The generated alternative text is fully read aloud by common screen readers (NVDA, JAWS, VoiceOver) without truncation, 
+  misreading, or formatting errors. & 
+  The screen reader VoiceOver successfully read the generated alternative text fully and clearly. &
   \cellcolor{green}Pass \\ \midrule
 
-  FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
+  FR-ST\testcount & Edit the generated alternative text by adding words, deleting sentences, and modifying phrasing, then save the changes. & 
+  The system accurately reflects all user edits and stores the updated alternative text without data loss or formatting errors. & 
+  The user’s edits (added, deleted, and modified text) were correctly reflected and saved. The updated alternative text was stored 
+  without data loss or formatting issues. &
   \cellcolor{green}Pass \\ \midrule
 
-  FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
+  FR-ST\testcount & Upload more than \texttt{SESSION\_HISTORY\_MAX} images sequentially in the same session, then navigate or refresh the session 
+  interface to view the upload history. & 
+  Only the \texttt{SESSION\_HISTORY} \texttt{\_MAX} most recent uploads and alt text are visible. & 
+  Recent uploads up to the limit were displayed correctly. &
   \cellcolor{green}Pass \\ \midrule
 
-   FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
+  FR-ST\testcount & Attempt to log in using both valid McMaster credentials (McMaster email and password) and invalid credentials 
+  (non-McMaster email or incorrect password). & 
+  Users with valid McMaster University credentials are granted access to the system. Login attempts 
+  with invalid credentials are rejected and an error message is displayed. & 
+  Login with valid McMaster credentials was successful and access to the system was granted. Login attempts 
+  using invalid credentials were rejected and an error message was displayed. &
   \cellcolor{green}Pass \\ \midrule
 
-   FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
-
-  FR-ST\testcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ 
+  FR-ST\testcount & Log into the system and remain inactive for longer than \texttt{SESSION\_TIMEOUT}, then attempt to access the system again. & 
+  After \texttt{SESSION\_TIMEOUT} of inactivity, the session expires automatically. The user is redirected or prompted to log in again 
+  before accessing the Reading4All system. & 
+  Session did not expire and system remained accessible after \texttt{SESSION\_TIMEOUT} of inactivity. &
+  \cellcolor{red}Fail \\ 
 \end{longtable}
 
 \section{Nonfunctional Requirements Evaluation}
@@ -197,7 +207,57 @@ nonfunctional requirements.
   NFR-ST\nfrtestcount & action & 
   expected result & 
   evaluate &
-  \cellcolor{green}Pass \\ 
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+
+    NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+
+    NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\  \midrule
+
+   NFR-ST\nfrtestcount & Uploads unsupported fil or corrupted files and simulate backend process failures in order to evaluate system error handling and recovery. & 
+   System displays a clear error message and recovers within T\_RECOVERY seconds. & System displays to user a clear error message and recovers in 1.8 seconds, which is within the required threshold of T\_RECOVERY  &
+  \cellcolor{green}Pass \\  \midrule
+
+  NFR-ST\nfrtestcount & Simulate multiple users logged into the system simultaneously, each uploading different images and requesting alt text.  & 
+  System supports CAP\_CONCURRENT users with response times less than CAPACITY\_RTIME and sucessfullly handles datasets up to CAP\_STORAGE. & 
+  System handles concurrent users uploading images with response times within the required threshold and stored the uploaded data successfully. &
+  \cellcolor{green}Pass \\  \midrule
+
+    NFR-ST\nfrtestcount & Replace the AI model with a different one and update any required configuration (ex, API endpoint) while keeping the rest of the system unchanged. Run tests to verify functionality. & 
+  System continues functioning correctly. The new AI model integrates with only minimal configuration changes and does not break existing components.& 
+  The new AI model was integrated successfully with only API endpoint changes, and all main functionalities work as expected. &
+  \cellcolor{green}Pass \\ \midrule
+
+    NFR-ST\nfrtestcount & Attempt logins from non-mcmaster accounts, upload unsupported files, verify HTTPS encryption and confirm system logs access is restricted.  & 
+  Only McMaster users can sign-up and access the system, unsupported files are rejected; communication is encrypted and system logs are restricted & 
+  Login and sign up attempts from users outside the McMaster domain are rejected, unsupported files are rejected, and the application is access through HTTPS, 
+  confirming encrypted communication. Logs are currently only accessible by authorized individuals. &
+  \cellcolor{green}Pass \\  \midrule
+
+
+    NFR-ST\nfrtestcount & Generate alt text for mutliple physics diagrams (ex, circuits, force diagrams and scenarios involving people) and manually review the text generated for bias, cultural references and tone. & 
+  Generated alt text is neutral, inclusive, contextually accurate and written in a professional tone without any cultural references. & 
+  The generated alt text remained neutral and focused on physics concepts and did not introduce any bias.  &
+  \cellcolor{green}Pass \\  \midrule
+  
+
+    NFR-ST\nfrtestcount & Generate alt text for multiple diagrams and review outputs and system documentation for compliance with accessibility standards. & 
+  Generated alt text meets accessibility standards, uploaded files are handling according to policy and documentation is available to stakeholders.  & 
+  Generated alt text met accessibility standards, uploaded files were handles correctly; however, application instructions are not available to stakeholders yet.  &
+  \cellcolor{red}Fail \\ 
+
 \end{longtable}
 
 \subsection{Usability}
@@ -213,7 +273,7 @@ This section will not be appropriate for every project.
 \section{Unit Testing}
 The following are the evaluation of the unit tests per module. 
 
-\subsubsection{Module 1}
+\subsection{ImageValidation Module}
 
 \newcounter{moduleonetestcase}
 \newcommand{\monetestcount}{\stepcounter{moduleonetestcase}\themoduleonetestcase}
@@ -241,23 +301,40 @@ The following are the evaluation of the unit tests per module.
   \endfoot
 
   \bottomrule
-  \caption{Module 1 Unit Testing Evaluation}
+  \caption{ImageValidation Unit Testing Evaluation}
   \label{table:module-unit-eval}
   \endlastfoot
 
-  M-UT\monetestcount & action & 
-  expected result & 
-  evaluate &
+  IMGVAL-UT\monetestcount & Validate request with missing image. & 
+  The module returns \texttt{"MISSING\_IMAGE"} to indicate the missing image. & 
+  The module returned \texttt{"MISSING\_IMAGE"}. &
   \cellcolor{green}Pass \\ \midrule
 
 
-  M-UT\monetestcount & action & 
-  expected result & 
-  evaluate &
+  IMGVAL-UT\monetestcount & Validate request with invalid file type. & 
+  The module returns \texttt{"INVALID\_FILE\_TYPE"} to indicate that the uploaded file is not a valid image type. & 
+  The module returned \texttt{"INVALID\_FILE\_TYPE"}. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  IMGVAL-UT\monetestcount & Validate request with an image that exceeds the size limit. & 
+  The module returns \texttt{"FILE\_SIZE\_INVALID"} to indicate that the uploaded image exceeds the size limit. & 
+  The module returned \texttt{"FILE\_SIZE\_INVALID"}. &
+  \cellcolor{green}Pass \\  \midrule
+
+  IMGVAL-UT\monetestcount & Validate request with a corrupted image file. & 
+  The module returns \texttt{"UNAUTHORIZED} \texttt{\_ACCESS} \texttt{\_OR\_CORRUPTED"} to indicate that the uploaded image cannot be accessed. & 
+  The module returned \texttt{"UNAUTHORIZED} \texttt{\_ACCESS} \texttt{\_OR\_CORRUPTED"}. &
+  \cellcolor{green}Pass \\  \midrule
+
+
+  IMGVAL-UT\monetestcount & Validate request with a valid image file. & 
+  The module returns \texttt{"Success"} to indicate that the uploaded image meets system requirements and has been successfully uploaded. & 
+  The module returned \texttt{"Success"}. &
   \cellcolor{green}Pass \\ 
 \end{longtable}
 
-\subsubsection{Module 2}
+\subsection{BackendController Module}
 
 \newcounter{moduletwotestcase}
 \newcommand{\mtwotestcount}{\stepcounter{moduletwotestcase}\themoduletwotestcase}
@@ -285,23 +362,511 @@ The following are the evaluation of the unit tests per module.
   \endfoot
 
   \bottomrule
-  \caption{Module 2 Unit Testing Evaluation}
+  \caption{BackendController Module Unit Testing Evaluation}
   \label{table:module2-unit-eval}
   \endlastfoot
 
-  M-UT\mtwotestcount & action & 
+  BCONT-UT\mtwotestcount & Send image validation request with valid image data through the backend controller. & 
+  The backend controller forwards the image to the Image Validation module and returns the validation results. & 
+  The backend controller correctly returns \texttt{Success} after calling the image validation module. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  BCONT-UT\mtwotestcount & Send alt text generation request with image data and a valid session ID through the backend controller.& 
+  The backend controller forwards the request to the Alt Text Generation module and returns the generated alt text.  & 
+  The backend controller correctly returns the generated alt text of \texttt{"Generated alt text"}. &
+  \cellcolor{green}Pass \\ \midrule
+
+  BCONT-UT\mtwotestcount & Send alt text history retrieval request with a valid session ID through the backend controller. &
+  The backend controller forwards the session ID to the Alt Text History module and returns the retrieved history. & 
+  The backend controller correctly returns the retrieved history of \texttt{["Alt text 1", "Alt text 2"]}. &
+  \cellcolor{green}Pass \\ \midrule
+  
+
+  BCONT-UT\mtwotestcount & Send alt text editing request through the backend controller. & 
+  The backend controller forwards the request to the Edit Alt Text module and returns the result. & 
+  The backend controller correctly returns the editing result of \texttt{"Success"}. &
+  \cellcolor{green}Pass \\ 
+
+\end{longtable}
+
+
+
+\subsection{AuthenticationService Module}
+
+\newcounter{modulethreetestcase}
+\newcommand{\mthreetestcount}{\stepcounter{modulethreetestcase}\themodulethreetestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{AuthenticationService Module Unit Testing Evaluation}
+  \label{table:module3-unit-eval}
+  \endlastfoot
+
+  AUTH-UT\mthreetestcount & Send a request with a valid email and password to the AuthenticationService. & 
+  The authentication service successfully creates a new user account and returns the user ID and access token. & 
+  The authentication service correctly returns the user ID and access token, i.e.,
+   \texttt{\{"user\_id": "test\_user\_id", "access\_token": "test\_access\_token "\}} &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  AUTH-UT\mthreetestcount & Send request with invalid email format to the AuthenticationService & 
+  The authentication service raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address". The supabase client is not called. &
+  The authentication service correctly raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address" and the supabase client is not called. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  AUTH-UT\mthreetestcount & Send a request with a password shorter than 8 characters to the AuthenticationService. & 
+  The authentication service raises a \texttt{ValueError} with the message "Password must be at least 8 characters". The Supabase client is not called. &
+  The authentication service correctly raises a \texttt{ValueError} with the message "Password must be at least 8 characters" and the Supabase client is not called. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+
+  AUTH-UT\mthreetestcount & Send a request with empty email and password to the AuthenticationService. & 
+  The authentication service raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address". The Supabase client is not called. &
+  The authentication service correctly raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address" and the Supabase client is not called. &
+  \cellcolor{green}Pass \\  \midrule
+
+
+  AUTH-UT\mthreetestcount & Send a request with \texttt{STUDENT@mcmaster.ca} as the email to the AuthenticationService. & 
+  The authentication service correctly converts the email to lowercase before processing. &
+  The authentication service correctly converts the email to lowercase before processing. 
+  The Supabase client is called with \texttt{student@mcmaster. ca} &
+  \cellcolor{green}Pass \\ \midrule
+
+
+
+  AUTH-UT\mthreetestcount & Send a request with an existing email to the AuthenticationService. & 
+  The authentication service raises a \texttt{ValueError} with the message "Email is already in use". A verification email is not sent to the user&
+  No error was raised and the user received a Verification email.&
+  \cellcolor{red}Fail \\
+\end{longtable}
+
+
+
+\subsection{Module 4}
+
+\newcounter{modulefourtestcase}
+\newcommand{\mfourtestcount}{\stepcounter{modulefourtestcase}\themodulefourtestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{Module 4 Unit Testing Evaluation}
+  \label{table:module4-unit-eval}
+  \endlastfoot
+
+  M-UT\mfourtestcount & action & 
   expected result & 
   evaluate &
   \cellcolor{green}Pass \\ \midrule
 
 
-  M-UT\mtwotestcount & action & 
+  M-UT\mfourtestcount & action & 
   expected result & 
   evaluate &
   \cellcolor{green}Pass \\ 
 \end{longtable}
 
 \section{Manual Testing}
+\subsection{UserInterfaceInteractions Module}
+The following are the manual tests for this module. 
+
+\begin{enumerate}[label=UII-MT \arabic*., wide=0pt, leftmargin=*]
+  \item{}
+    {\bf Initial State:} User is logged in and the main screen is displayed. \\
+    {\bf Input:} User selects and uploads an image file using the upload button. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Click the Choose File button.
+      \item Select a valid image file (.png or .jpeg).
+      \item Submit the upload.
+    \end{enumerate}
+    {\bf  Expected Results:} The system accepts the image and sends it to the backend 
+    for processing. The uploaded image appears in the interface and alt-text generation begins. \\
+    {\bf Failure Condition:} The image fails to upload, the UI freezes, or the system does 
+    not start alt-text generation.\\
+
+  \item{}
+    {\bf Initial State:} User is logged in and the main screen is displayed. \\
+    {\bf Input:} User attempts to upload an unsupported file type or file exceeding the maximum size. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Click the Choose File button.
+      \item Select an unsupported file (e.g., .gif, .pdf) or a file larger than the allowed size.
+      \item Submit the upload.
+    \end{enumerate}
+    {\bf  Expected Results:} The system rejects the file and displays an error message such as “File type
+     not supported” or “File too large.” \\
+    {\bf Failure Condition:} The system accepts unsupported files or fails to display an error message.\\
+
+  \item{}
+    {\bf Initial State:} Generated alt text is displayed on the screen. \\
+    {\bf Input:} User presses the Copy button to copy the generated alt text. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Generate alt text for an uploaded image.
+      \item Click the Copy Alt Text button.
+      \item Paste the clipboard contents into another application (e.g., a text editor).
+    \end{enumerate}
+    {\bf Expected Results:} The copied text matches the generated alt text exactly. \\
+    {\bf Failure Condition:} The clipboard is empty or the copied text is incomplete or incorrect. \\
+
+  \item{}
+    {\bf Initial State:} Generated alt text is visible and editable on the screen. \\
+    {\bf Input:} User edits the alt text and saves the changes. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Modify the alt text by adding, deleting, or changing words.
+      \item Click the Save Edits button.
+    \end{enumerate}
+    {\bf Expected Results:} The updated alt text is displayed and stored correctly without formatting issues. \\
+    {\bf Failure Condition:} The edits are not saved, the text reverts to its original version, or formatting errors occur. \\
+  \item{}
+    {\bf Initial State:} Login screen is displayed. \\
+    {\bf Input:} User enters valid credentials and attempts to sign in. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Enter valid login credentials.
+      \item Click the Sign In button.
+    \end{enumerate}
+    {\bf Expected Results:} The user is authenticated and redirected to the main system interface. \\
+    {\bf Failure Condition:} Valid credentials are rejected or no response occurs after clicking Sign In. \\
+  \item{}
+    {\bf Initial State:} User is logged into the system. \\
+    {\bf Input:} User presses the Sign Out button. \\
+    {\bf Test Steps:} 
+    \begin{enumerate}
+      \item Click the Sign Out button.
+    \end{enumerate}
+    {\bf Expected Results:} The user session ends and the system redirects the user to the login screen. \\
+    {\bf Failure Condition:} The user remains logged in or can continue accessing the system without logging in again. \\
+\end{enumerate}
+
+\noindent The following table shows the evaluation of the userinterfaceinteractions module's manual tests.
+\newcounter{uiimantestcase}
+\newcommand{\uiimantestcount}{\stepcounter{uiimantestcase}\theuiimantestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{UserInterfaceInterfactions Manual Testing Evaluation}
+  \label{table:uii-man-eval}
+  \endlastfoot
+
+UII-MT\uiimantestcount & Upload a valid image file (.png or .jpeg) using the Choose File button & 
+Image is accepted and alt-text generation begins & 
+Image uploaded successfully and alt-text generation initiated &
+\cellcolor{green}Pass \\ \midrule
+
+UII-MT\uiimantestcount & Upload an unsupported file type or file exceeding the allowed size & 
+System rejects file and displays an appropriate error message & 
+Unsupported file was rejected and an error message was displayed &
+\cellcolor{green}Pass \\ \midrule
+
+UII-MT\uiimantestcount & Copy generated alt text using the Copy Alt Text button & 
+Alt text is copied to clipboard accurately & 
+Alt text copied successfully and matched the generated output when pasted &
+\cellcolor{green}Pass \\ \midrule
+
+UII-MT\uiimantestcount & Edit generated alt text and save changes & 
+System saves and displays updated alt text without formatting issues & 
+Edits were saved correctly and updated text was displayed &
+\cellcolor{green}Pass \\ \midrule
+UII-MT\uiimantestcount & Enter valid credentials and click Sign In & 
+User is authenticated and redirected to the main interface & 
+Login successful and user was redirected to the main screen &
+\cellcolor{green}Pass \\ \midrule
+
+UII-MT\uiimantestcount & Click the Sign Out button & 
+User session ends and login screen is displayed & 
+User session ended and system returned to the login screen &
+\cellcolor{green}Pass \\
+\end{longtable}
+
+\subsection{UserInterfaceAccessibility Module}
+The following are the manual tests for this module.
+
+\begin{enumerate}[label=UIA-MT \arabic*., wide=0pt, leftmargin=*]
+  \item{}
+    {\bf Initial State:} A system screen such as the login screen, main screen, or history screen is loaded. \\
+    {\bf Input:} The tester inspects the rendered page structure using browser accessibility tools or screen reader landmarks. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Open a system screen.
+      \item Inspect the page structure using accessibility inspector or a screen reader landmark list.
+      \item Verify that the main content area is identified as the page's main landmark.
+    \end{enumerate}
+    {\bf Expected Results:} The screen contains a valid main landmark ({\tt <main>} or equivalent) for the primary content area. \\
+    {\bf Failure Condition:} No main landmark is present, or the primary content is not identified correctly. \\
+
+  \item{}
+    {\bf Initial State:} The login screen or another screen (main or history screen )has just loaded. \\
+    {\bf Input:} The tester loads the screen and checks where keyboard focus is placed. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Open the login screen.
+      \item Do not click the mouse.
+      \item Observe which element receives focus automatically.
+      \item Press {\tt Tab} to continue keyboard navigation if needed.
+    \end{enumerate}
+    {\bf Expected Results:} Keyboard focus is moved to the intended first interactive element, such as the username field on the login screen. \\
+    {\bf Failure Condition:} Focus is missing, placed on a non-interactive element, or placed on the wrong control. \\
+
+  \item{}
+    {\bf Initial State:} A screen reader is enabled and the user performs an action that changes the UI. \\
+    {\bf Input:} Trigger a UI change such as loading the login screen, generating alt text, or navigating to history. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Enable a screen reader such as NVDA, JAWS, or VoiceOver.
+      \item Perform an action that changes the interface.
+      \item Listen for the announcement made by the system.
+    \end{enumerate}
+    {\bf Expected Results:} A clear announcement describing the UI change is read by the screen reader through the live region. \\
+    {\bf Failure Condition:} No announcement is made, the message is incomplete, or the announcement is unclear. \\
+
+  \item{}
+    {\bf Initial State:} A screen containing multiple interactive elements is open. \\
+    {\bf Input:} The tester uses only the keyboard to navigate within the interface. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Open a screen with interactive controls.
+      \item Use \texttt{tab} to move between elements where applicable.
+      \item Use {\tt Enter} or {\tt Space} to activate the selected control.
+    \end{enumerate}
+    {\bf Expected Results:} Keyboard navigation works correctly within the defined scope. Focus moves predictably and activation occurs without changing application state unexpectedly. \\
+    {\bf Failure Condition:} Tab key do not work, focus movement is inconsistent, or activation fails. \\
+
+\end{enumerate}
+The following table shows the evaluation of the userinterfaceaccessibility
+module’s manual tests.
+
+\newcounter{uiamantestcase}
+\newcommand{\uiamantestcount}{\stepcounter{uiamantestcase}\theuiamantestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{UserInterfaceAccessibility Manual Testing Evaluation}
+  \label{table:uii-man-eval}
+  \endlastfoot
+
+  UIA-MT\uiamantestcount & Verify that the loaded screen contains a valid main landmark for primary content & 
+  Main content area is identified by a valid main landmark & 
+  Main landmark was not present and did not identify the primary content area &
+  \cellcolor{red}Fail \\ \midrule
+
+  UIA-MT\uiamantestcount & Load the screen and check automatic keyboard focus placement & 
+  Focus is placed on the intended first interactive element & 
+  Initial focus was correctly placed on the expected interactive control &
+  \cellcolor{green}Pass \\ \midrule
+
+  UIA-MT\uiamantestcount & Trigger a UI change while a screen reader is enabled & 
+  Screen reader announces the interface change clearly & 
+  Announcement was read clearly by the screen reader after any UI update &
+  \cellcolor{green}Pass \\ \midrule
+
+  UIA-MT\uiamantestcount & Use arrow keys, Home/End, and Enter/Space to navigate and activate controls & 
+  Keyboard navigation works correctly within the interface scope & 
+  Keyboard navigation and activation worked as expected without unexpected state changes &
+  \cellcolor{green}Pass \\ 
+
+\end{longtable}
+
+\subsection{DataPreProcess Module}
+The following are the manual tests for this module.
+
+\begin{enumerate}[label=DP-MT \arabic*., wide=0pt, leftmargin=*]
+  \item{}
+    {\bf Initial State:} The preprocessing function is available and ready to process dataset examples. \\
+    {\bf Input:} A dataset example containing valid image paths and modified alt text. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Provide a dataset example containing valid image paths and alt text.
+      \item Run the preprocess function.
+      \item Inspect the returned encoded output.
+    \end{enumerate}
+    {\bf Expected Results:} The function successfully loads images and text and returns encoded tensors containing image and text representations. \\
+    {\bf Failure Condition:} The preprocessing function fails to return encoded outputs or raises an unexpected error. \\
+
+  \item{}
+    {\bf Initial State:} The preprocessing function is ready to process input images. \\
+    {\bf Input:} Image files that may not originally be in RGB format. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Provide image paths to the preprocess function.
+      \item Run preprocessing.
+      \item Inspect the processed images.
+    \end{enumerate}
+    {\bf Expected Results:} All images are converted to RGB format before being passed to the processor. \\
+    {\bf Failure Condition:} Images remain in their original format and are not converted to RGB. \\
+
+  \item{}
+    {\bf Initial State:} The preprocessing function receives alt text label with leading or trailing whitespace. \\
+    {\bf Input:} Alt text label containing extra whitespace characters. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Provide alt text label with leading or trailing spaces.
+      \item Run preprocessing.
+      \item Inspect the processed text values.
+    \end{enumerate}
+    {\bf Expected Results:} Leading and trailing whitespace is removed from the alt text. \\
+    {\bf Failure Condition:} Whitespace remains in the processed alt text. \\
+
+  \item{}
+    {\bf Initial State:} The preprocessing function is ready to process dataset examples. \\
+    {\bf Input:} A dataset example containing an invalid or unreadable image path. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Provide a dataset example containing an invalid image path.
+      \item Run the preprocess function.
+      \item Observe the system response.
+    \end{enumerate}
+    {\bf Expected Results:} The function raises an error indicating that the image cannot be opened or read. \\
+    {\bf Failure Condition:} The function silently proceeds or produces invalid encoded output. \\
+eeds the maximum length. \\
+\end{enumerate}
+
+The following table shows the evaluation of the datapreprocess
+module’s manual tests.
+
+\newcounter{dpmantestcase}
+\newcommand{\dpmantestcount}{\stepcounter{dpmantestcase}\thedpmantestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{DataPreprocess Manual Testing Evaluation}
+  \label{table:dp-man-eval}
+  \endlastfoot
+
+  DPP-MT\dpmantestcount & Process valid image paths and alt text labels through the preprocess function & 
+  Valid images and text are encoded successfully & 
+  Images and alt text were processed successfully and encoded tensors were returned &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  DPP-MT\dpmantestcount & Provide image paths and run preprocessing to verify RGB conversion & 
+  Images are converted to RGB format before encoding & 
+  Images were successfully converted to RGB format before processing &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  DPP-MT\dpmantestcount & Provide alt text containing leading or trailing whitespace & 
+  Whitespace is removed from alt text & 
+  Alt text whitespace was successfully stripped before encoding &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  DPP-MT\dpmantestcount & Provide an invalid or unreadable image path to preprocessing & 
+  Function raises an error indicating the image cannot be opened & 
+  Invalid image path correctly triggered an error during preprocessing &
+  \cellcolor{green}Pass \\ 
+\end{longtable}
+
+
 
 \section{Changes Due to Testing}
 
