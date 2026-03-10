@@ -190,19 +190,15 @@ None.
 
 \subsubsection{Exported Constants}
 \texttt{SUPPORTED\_IMAGE\_TYPES}: \texttt{List[String]} -- Accepted input formats (e.g., \{"PNG","JPEG"\}).\\
-\texttt{TARGET\_WIDTH}: $\mathbb{N}$ -- Desired output width in pixels (may be hardcoded in early versions).\\
-\texttt{TARGET\_HEIGHT}: $\mathbb{N}$ -- Desired output height in pixels (may be hardcoded in early versions).\\
-\texttt{NORMALIZE\_MODE}: String -- Normalization scheme (e.g., \{"none","imagenet"\}); may be hardcoded.
+\texttt{COLOR\_MODE}: String -- image color mode used before encoding (e.g. "RGB") 
 
 \subsubsection{Exported Access Programs}
 \begin{center}
-  \begin{tabular}{p{2cm} p{4cm} p{6cm} p{4cm}}
+  \begin{tabular}{p{2cm} p{4cm} p{4cm} p{4cm}}
   \hline
   \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
   \hline
-  initialize & configPath:String & - & ConfigFileNotFoundException \\
-  \hline
-  filterInput & imageFilePath:String & PreprocessedImagePath:String & InvalidInputException \\
+  preprocess & dataset:Map[String, List[String]] & enc: EncodedBatch & InvalidInputException \\
   \hline
   \end{tabular}
 \end{center}
@@ -210,53 +206,38 @@ None.
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-\texttt{lastInputPath}: String -- (Optional) caches most recently processed input path for debugging/traceability.\\
-\texttt{lastOutputPath}: String -- (Optional) caches most recently produced output path for debugging/traceability.
+None.
 
 \subsubsection{Environment Variables}
-\texttt{InputImage}: Image -- Image loaded from \texttt{imageFilePath} via the filesystem.\\
-\texttt{OutputImage}: Image -- Processed image produced by this module and made available to downstream modules in the system.\\
-\texttt{Filesystem} -- Used to read input images and write preprocessed outputs.\\
-\texttt{ImageCodec} -- System/library support for decoding and encoding image formats.
+\texttt{Filesystem}: used to read image files from the paths.\\
+\texttt{PIL/Image Library}: used to open images and convert them to RGB\\
+\texttt{processor}:  external processor used to encode images and text.\\
+\texttt{tokenizer}:  tokenizer used by \texttt{processor} to identify pad token IDs (i.e. \texttt{processor.tokenizer}).
 
 \subsubsection{Assumptions}
 \begin{itemize}
-  \item \texttt{initialize} is called before \texttt{filterInput}.
-  \item Constants may be hardcoded in the current implementation and moved to configuration later.
-  \item State variables are optional; omitting them does not affect functional correctness.
+  \item \texttt{dataset} contains a list of image paths and a list of the alt text labels
+  \item each image path refers to a readable image file
+  \item \texttt{processor} and \texttt{processor.tokenizer} are initialized and available
+  \item image paths and alt text lists are aligned by index
 \end{itemize}
 
 \subsubsection{Access Routine Semantics}
-\noindent \textbf{initialize(configPath):}
+\noindent \textbf{preprocess(dataset):}
 \begin{itemize}
-  \item transition:
+  \item \textbf{transition}:
   \begin{itemize}
-    \item Load preprocessing configuration parameters (image size, normalization mode)
-    \item Initialize filesystem and image codec dependencies
+    \item Extract image and text data from the input examples
+    \item Load and prepare the input images for downstream processing
+    \item Clean and standardize the associated text inputs
+    \item Apply the required preprocessing and encoding operations to the image-text pairs
+    \item Construct the output data structure in the format required by downstream modules
+    \item Apply any label formatting or masking needed for training or inference
   \end{itemize}
-  \item output: None.
-  \item exception: Raises \texttt{ConfigFileNotFoundException} if configuration cannot be loaded.
+  \item \textbf{output:} Returns the preprocessed and encoded representation of the input examples.
+  \item \textbf{exception:} Raises an \texttt{InvalidInputException} exception if the input examples are missing required fields, contain unreadable image data, or cannot be processed successfully.
 \end{itemize}
 
-\noindent \textbf{filterInput(imageFilePath):}
-\begin{itemize}
-  \item transition:
-  \begin{itemize}
-    \item (Optional) \texttt{lastInputPath} := imageFilePath
-    \item Read \texttt{InputImage} from \texttt{Filesystem} using \texttt{ImageCodec}
-    \item Verify that \texttt{InputImage} is readable and its format is in \texttt{SUPPORTED\_IMAGE\_TYPES}
-    \item Transform \texttt{InputImage} by:
-    \begin{itemize}
-      \item resizing it to (\texttt{TARGET\_WIDTH}, \texttt{TARGET\_HEIGHT})
-      \item applying pixel-value normalization according to \texttt{NORMALIZE\_MODE}
-    \end{itemize}
-    \item Assign the transformed image to \texttt{OutputImage}
-    \item Make \texttt{OutputImage} available to downstream modules
-    \item (Optional) update internal state to reflect successful preprocessing
-  \end{itemize}
-  \item output: Returns \texttt{OutputImage}.
-  \item exception: Raises \texttt{InvalidInputException} if the input image is unsupported, unreadable, or corrupt.
-\end{itemize}
 
 \subsubsection{Local Functions}
 None.
