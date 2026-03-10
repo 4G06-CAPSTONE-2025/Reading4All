@@ -228,47 +228,52 @@ nonfunctional requirements.
   \label{table:NFR-ST-eval}
   \endlastfoot
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
+  NFR-ST\nfrtestcount & 
+  User adjusts browser zoom to maximum and evaluates color contrast using accessibility tools &
+  Text resizes correctly without overlap; contrast meets WCAG 2.1 AA accessibility requirements; images include alternative text &
+  Tester confirms accessibility compliance using zoom tests, contrast checkers, and screen readers &
   \cellcolor{green}Pass \\ \midrule
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
+  NFR-ST\nfrtestcount &
+  Tester visually inspects layout, typography, colors, and branding elements of the interface &
+  Interface maintains consistent styling; McMaster branding is present and does not interfere with usability; design aligns with Norman’s principles &
+  Tester verifies UI against style guide, branding rules, and Norman’s usability principles &
   \cellcolor{green}Pass \\ \midrule
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
+  NFR-ST\nfrtestcount &
+  Users perform key tasks such as login, image upload, and alt-text generation &
+  Tasks are completed efficiently; feedback is received within FEEDBACK\_TIME; users can recall steps and correct errors easily &
+  Tester evaluates usability through timed task completion, feedback monitoring, and observation of user error recovery &
   \cellcolor{green}Pass \\ \midrule
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
+  NFR-ST\nfrtestcount &
+User generates alt text and selects the copy or storage option &
+Alt text is successfully copied to the clipboard or stored as requested &
+Tester verifies each option by generating alt text and confirming correct execution of the selected storage method &
+\cellcolor{green}Pass \\ \midrule
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
+  NFR-ST\nfrtestcount &
+Screen reader users upload images and generate alt text using assistive technologies such as NVDA, JAWS, or VoiceOver &
+Users successfully generate and obtain alt text within the time limit and navigate the interface efficiently using screen readers &
+Tester conducts usability sessions with screen reader tools and measures task completion time and navigation success &
+\cellcolor{green}Pass \\ \midrule
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
-
-
-    NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
+  NFR-ST\nfrtestcount &
+Images of different sizes were uploaded under typical system conditions to evaluate alt-text generation time &
+Alt text should be generated within the specified performance threshold while the UI remains responsive &
+Image validity was unit tested, while generation time was measured manually during testing; the UI responsiveness and model response time were observed and recorded &
+\cellcolor{red}Fail \\ \midrule
 
 
-    NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\  \midrule
+    NFR-ST\nfrtestcount &
+Tester simulates long-running or stalled image processing to trigger a timeout condition &
+User is notified of the timeout with an option to retry; incomplete data is deleted and no technical details are exposed in messages &
+Tester verifies timeout notifications, retry option, proper data cleanup, and absence of sensitive technical information in error messages &
+\cellcolor{green}Pass \\ \midrule
+
+
+    NFR-ST\nfrtestcount & Conduct user evaluation of generated alt text using defined rating metrics (sufficiency, length, accessibility, learning impact) & 
+  Average ratings meeting required thresholds: R\_SUFFICIENCY, R\_LENGTH, and R\_USABILITY \_MEDIAN  & Average ratings: sufficiency= 2.0, length= 3.0, learning impact= 1.33. Only length and accessibility met thresholds  & \cellcolor{red}Fail \\  \midrule
 
    NFR-ST\nfrtestcount & Uploads unsupported fil or corrupted files and simulate backend process failures in order to evaluate system error handling and recovery. & 
    System displays a clear error message and recovers within T\_RECOVERY seconds. & System displays to user a clear error message and recovers in 1.8 seconds, which is within the required threshold of T\_RECOVERY  &
