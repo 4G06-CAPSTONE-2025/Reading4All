@@ -142,7 +142,7 @@ functional requirements.
 
   \bottomrule
   \caption{System Tests Functional Requirements Evaluation}
-  \label{table:FR-ST-eval}
+  \label{table:FR-ST-eval-1}
   \endlastfoot
 
   FR-ST\testcount & User uploads image files in different formats to the system 
@@ -225,8 +225,142 @@ nonfunctional requirements.
 
   \bottomrule
   \caption{System Tests Non-Functional Requirements Evaluation}
-  \label{table:NFR-ST-eval}
+  \label{table:NFR-ST-eval-1}
   \endlastfoot
+
+  NFR-ST1 &
+  User adjusts browser zoom to maximum and evaluates color contrast using accessibility tools &
+  Text resizes correctly without overlap; contrast meets WCAG 2.1 AA accessibility requirements; images include alternative text &
+  Tester confirms accessibility compliance using zoom tests, contrast checkers, and screen readers &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST2 &
+  Tester visually inspects layout, typography, colors, and branding elements of the interface &
+  Interface maintains consistent styling; McMaster branding is present and does not interfere with usability; design aligns with Norman’s principles &
+  Tester verifies UI against style guide, branding rules, and Norman’s usability principles &
+  \cellcolor{green}Pass \\ \midrule
+  NFR-ST3 &
+  Users perform key tasks such as login, image upload, and alt-text generation &
+  Tasks are completed efficiently; feedback is received within FEEDBACK\_TIME; users can recall steps and correct errors easily &
+  Tester evaluates usability through timed task completion, feedback monitoring, and observation of user error recovery &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST4 &
+User generates alt text and selects the copy or storage option &
+Alt text is successfully copied to the clipboard or stored as requested &
+Tester verifies each option by generating alt text and confirming correct execution of the selected storage method &
+\cellcolor{green}Pass \\ \midrule
+
+NFR-ST5 &
+Screen reader users upload images and generate alt text using assistive technologies such as NVDA, JAWS, or VoiceOver &
+Users successfully generate and obtain alt text within the time limit and navigate the interface efficiently using screen readers &
+Tester conducts usability sessions with screen reader tools and measures task completion time and navigation success &
+\cellcolor{green}Pass \\ \midrule
+
+NFR-ST6 &
+Images of different sizes were uploaded under typical system conditions to evaluate alt-text generation time &
+Alt text should be generated within the specified performance threshold while the UI remains responsive &
+Image validity was unit tested, while generation time was measured manually during testing; the UI responsiveness and model response time were observed and recorded &
+\cellcolor{red}Fail \\ \midrule
+NFR-ST7 &
+Tester simulates long-running or stalled image processing to trigger a timeout condition &
+User is notified of the timeout with an option to retry; incomplete data is deleted and no technical details are exposed in messages &
+Tester verifies timeout notifications, retry option, proper data cleanup, and absence of sensitive technical information in error messages &
+\cellcolor{green}Pass \\ \midrule
+\end{longtable}
+
+
+\subsection{Usability}
+		
+\subsection{Performance}
+  NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+
+    NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+
+    NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\  \midrule
+
+   NFR-ST\nfrtestcount & Uploads unsupported fil or corrupted files and simulate backend process failures in order to evaluate system error handling and recovery. & 
+   System displays a clear error message and recovers within T\_RECOVERY seconds. & System displays to user a clear error message and recovers in 1.8 seconds, which is within the required threshold of T\_RECOVERY  &
+  \cellcolor{green}Pass \\  \midrule
+
+  NFR-ST\nfrtestcount & Simulate multiple users logged into the system simultaneously, each uploading different images and requesting alt text.  & 
+  System supports CAP\_CONCURRENT users with response times less than CAPACITY\_RTIME and sucessfullly handles datasets up to CAP\_STORAGE. & 
+  System handles concurrent users uploading images with response times within the required threshold and stored the uploaded data successfully. &
+  \cellcolor{green}Pass \\  \midrule
+
+    NFR-ST\nfrtestcount & Replace the AI model with a different one and update any required configuration (ex, API endpoint) while keeping the rest of the system unchanged. Run tests to verify functionality. & 
+  System continues functioning correctly. The new AI model integrates with only minimal configuration changes and does not break existing components.& 
+  The new AI model was integrated successfully with only API endpoint changes, and all main functionalities work as expected. &
+  \cellcolor{green}Pass \\ \midrule
+
+    NFR-ST\nfrtestcount & Attempt logins from non-mcmaster accounts, upload unsupported files, verify HTTPS encryption and confirm system logs access is restricted.  & 
+  Only McMaster users can sign-up and access the system, unsupported files are rejected; communication is encrypted and system logs are restricted & 
+  Login and sign up attempts from users outside the McMaster domain are rejected, unsupported files are rejected, and the application is access through HTTPS, 
+  confirming encrypted communication. Logs are currently only accessible by authorized individuals. &
+  \cellcolor{green}Pass \\  \midrule
+
+
+    NFR-ST\nfrtestcount & Generate alt text for mutliple physics diagrams (ex, circuits, force diagrams and scenarios involving people) and manually review the text generated for bias, cultural references and tone. & 
+  Generated alt text is neutral, inclusive, contextually accurate and written in a professional tone without any cultural references. & 
+  The generated alt text remained neutral and focused on physics concepts and did not introduce any bias.  &
+  \cellcolor{green}Pass \\  \midrule
+  
+
+    NFR-ST\nfrtestcount & Generate alt text for multiple diagrams and review outputs and system documentation for compliance with accessibility standards. & 
+  Generated alt text meets accessibility standards, uploaded files are handling according to policy and documentation is available to stakeholders.  & 
+  Generated alt text met accessibility standards, uploaded files were handles correctly; however, application instructions are not available to stakeholders yet.  &
+  \cellcolor{red}Fail \\ \midrule
+
+  NFR-ST\nfrtestcount & Test device and browser compatibility &
+  System runs correctly on supported operating systems and browsers &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Evaluate alt text accuracy metrics &
+  Generated alt text meets sufficiency, length, and usability thresholds &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Verify image privacy protection &
+  Uploaded images are deleted after processing and not permanently stored &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Check for biased or offensive alt text &
+  Generated alt text contains no harmful, biased, or inappropriate content &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Perform WCAG accessibility audit &
+  Interface satisfies WCAG 2.1 accessibility guidelines &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Test screen reader compatibility &
+  Screen readers correctly read generated alt text &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Test supported image formats &
+  System successfully processes JPG, JPEG, and PNG images &
+  All assertions pass &
+  \cellcolor{green}Pass \\
 
   NFR-ST\nfrtestcount & Run the system website through Axe (third-party service) to check for WCAG 2.1 AA compliance. & There are no issues for all website pages & Some JSON results reported 'moderate' or 'best practices' issues in the summary. & \cellcolor{red}Fail \\ \midrule
   NFR-ST\nfrtestcount & System website is hosted on Vercel (third-party service). & Website is in service and usable with minimal to no crashes. & Website is fully functional on the Vercel server. No crashing detected. & \cellcolor{green}Pass \\ \midrule
@@ -243,6 +377,7 @@ This section will not be appropriate for every project.
 \section{Unit Testing}
 The following are the evaluation of the unit tests per module. 
 
+\subsubsection{MainScreen Module}
 \subsection{ImageValidation Module}
 
 \newcounter{moduleonetestcase}
@@ -271,37 +406,157 @@ The following are the evaluation of the unit tests per module.
   \endfoot
 
   \bottomrule
-  \caption{ImageValidation Unit Testing Evaluation}
-  \label{table:module-unit-eval}
+  \caption{MainScreen Module Unit Testing Evaluation}
+  \label{table:module-unit-eval-1}
   \endlastfoot
 
-  IMGVAL-UT\monetestcount & Validate request with missing image. & 
-  The module returns \texttt{"MISSING\_IMAGE"} to indicate the missing image. & 
-  The module returned \texttt{"MISSING\_IMAGE"}. &
+  M-UT\monetestcount & Render HomeScreen page &
+  Homepage title is displayed &
+  Homepage title displayed successfully &
   \cellcolor{green}Pass \\ \midrule
-
-
-  IMGVAL-UT\monetestcount & Validate request with invalid file type. & 
-  The module returns \texttt{"INVALID\_FILE\_TYPE"} to indicate that the uploaded file is not a valid image type. & 
-  The module returned \texttt{"INVALID\_FILE\_TYPE"}. &
+  
+  M-UT\monetestcount & Render HomeScreen subtitle &
+  Homepage subtitle describing system purpose is visible &
+  Subtitle displayed correctly &
   \cellcolor{green}Pass \\ \midrule
-
-
-  IMGVAL-UT\monetestcount & Validate request with an image that exceeds the size limit. & 
-  The module returns \texttt{"FILE\_SIZE\_INVALID"} to indicate that the uploaded image exceeds the size limit. & 
-  The module returned \texttt{"FILE\_SIZE\_INVALID"}. &
-  \cellcolor{green}Pass \\  \midrule
-
-  IMGVAL-UT\monetestcount & Validate request with a corrupted image file. & 
-  The module returns \texttt{"UNAUTHORIZED} \texttt{\_ACCESS} \texttt{\_OR\_CORRUPTED"} to indicate that the uploaded image cannot be accessed. & 
-  The module returned \texttt{"UNAUTHORIZED} \texttt{\_ACCESS} \texttt{\_OR\_CORRUPTED"}. &
-  \cellcolor{green}Pass \\  \midrule
-
-
-  IMGVAL-UT\monetestcount & Validate request with a valid image file. & 
-  The module returns \texttt{"Success"} to indicate that the uploaded image meets system requirements and has been successfully uploaded. & 
-  The module returned \texttt{"Success"}. &
+  
+  M-UT\monetestcount & Display signup button on homepage &
+  Signup button is visible for new users &
+  Signup button rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Display login button on homepage &
+  Login button is visible for returning users &
+  Login button rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Render UploadScreen title &
+  Upload page title is visible &
+  Title displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Render UploadScreen subtitle &
+  Upload page subtitle guiding users is visible &
+  Subtitle displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Verify upload instructions accessibility &
+  Upload instructions accessible through ARIA label &
+  ARIA label detected successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Verify upload input accessibility label &
+  Upload input field contains accessible label &
+  Label detected successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Display Choose File button &
+  Choose File button is visible for uploading images &
+  Button displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Upload valid image file &
+  Image successfully uploaded and backend request triggered &
+  Image uploaded and confirmation displayed &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Upload image using drag-and-drop &
+  Image uploaded using drag-and-drop functionality &
+  Drag-and-drop upload completed successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Remove uploaded image &
+  Uploaded image removed from interface &
+  Image removed successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Generate alt text after image upload &
+  Generated alt text displayed in output field &
+  Alt text generated and displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Upload new image after generation &
+  Previous alt text resets when new image uploaded &
+  Alt text reset confirmed &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Copy generated alt text &
+  Alt text copied to clipboard successfully &
+  Clipboard copy function executed successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Keyboard accessibility for file upload &
+  Pressing Enter opens file selection dialog &
+  File input triggered successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Handle image upload error &
+  Error message displayed when upload fails &
+  Error message displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Handle alt text generation failure &
+  Error message displayed when alt text generation fails &
+  Error message displayed correctly &
   \cellcolor{green}Pass \\ 
+\end{longtable}
+
+\subsubsection{ShowHistory Module}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+
+\toprule
+\textbf{ID} & \textbf{Action} &
+\textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+\midrule
+\endfirsthead
+
+\multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
+\toprule
+\textbf{ID} & \textbf{Action} &
+\textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+\midrule
+\endhead
+
+\multicolumn{5}{r}{\textit{Continued on next page}} \\
+\endfoot
+
+\bottomrule
+\caption{ImageValidation Unit Testing Evaluation}
+\label{table:module-unit-eval}
+\endlastfoot
+
+
+IMGVAL-UT\monetestcount & Validate request with missing image. & 
+The module returns \texttt{"MISSING\_IMAGE"} to indicate the missing image. & 
+The module returned \texttt{"MISSING\_IMAGE"}. &
+\cellcolor{green}Pass \\ \midrule
+
+IMGVAL-UT\monetestcount & Validate request with invalid file type. & 
+The module returns \texttt{"INVALID\_FILE\_TYPE"} to indicate that the uploaded file is not a valid image type. & 
+The module returned \texttt{"INVALID\_FILE\_TYPE"}. &
+\cellcolor{green}Pass \\ \midrule
+
+IMGVAL-UT\monetestcount & Validate request with an image that exceeds the size limit. & 
+The module returns \texttt{"FILE\_SIZE\_INVALID"} to indicate that the uploaded image exceeds the size limit. & 
+The module returned \texttt{"FILE\_SIZE\_INVALID"}. &
+\cellcolor{green}Pass \\  \midrule
+
+IMGVAL-UT\monetestcount & Validate request with a corrupted image file. & 
+The module returns \texttt{"UNAUTHORIZED\_ACCESS\_OR\_CORRUPTED"} to indicate that the uploaded image cannot be accessed. & 
+The module returned \texttt{"UNAUTHORIZED\_ACCESS\_OR\_CORRUPTED"}. &
+\cellcolor{green}Pass \\  \midrule
+
+IMGVAL-UT\monetestcount & Validate request with a valid image file. & 
+The module returns \texttt{"Success"} to indicate that the uploaded image meets system requirements and has been successfully uploaded. & 
+The module returned \texttt{"Success"}. &
+\cellcolor{green}Pass \\
+
 \end{longtable}
 
 \subsection{BackendController Module}
@@ -332,6 +587,23 @@ The following are the evaluation of the unit tests per module.
   \endfoot
 
   \bottomrule
+  \caption{ShowHistory Module Unit Testing Evaluation}
+  \label{table:module2-unit-eval-1}
+  \endlastfoot
+
+  M-UT\monetestcount & Render ShowHistory page &
+  History page title and navigation button are displayed &
+  Title and back button displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Display history entries &
+  Uploaded image history entries are listed on the page &
+  History entries rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & View history entry preview &
+  Clicking a history entry displays the image preview and alt text &
+  Preview image and alt text displayed correctly &
   \caption{BackendController Module Unit Testing Evaluation}
   \label{table:module2-unit-eval}
   \endlastfoot
@@ -472,7 +744,127 @@ The following are the evaluation of the unit tests per module.
   expected result & 
   evaluate &
   \cellcolor{green}Pass \\ \midrule
+  
+  M-UT\monetestcount & Navigate back to upload screen &
+  Clicking the back button navigates to the upload page &
+  Navigation executed successfully &
+  \cellcolor{green}Pass \\
+\end{longtable}
 
+\subsubsection{LoginScreen Module}
+
+\newcounter{logintestcase}
+\newcommand{\logintestcount}{\stepcounter{logintestcase}\thelogintestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{LoginScreen Module Unit Testing Evaluation}
+  \label{table:login-module-unit-eval-1}
+  \endlastfoot
+
+
+  M-UT\logintestcount & Render login interface &
+  Login page title and input fields are visible &
+  Login interface rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Submit login with empty fields &
+  System rejects login attempt and displays validation error &
+  Validation error displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Enter email and password credentials &
+  User can type and update values in email and password fields &
+  Input fields accept user input correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Login with valid credentials &
+  System sends authentication request and redirects user to upload page &
+  Authentication request successful and navigation executed &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Login with invalid credentials &
+  System displays authentication error message &
+  Error message displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Network failure during login &
+  System displays network error message &
+  Network error message displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  M-UT\logintestcount & Render signup form interface &
+  Signup form fields and instructions are displayed &
+  Signup interface rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Signup validation with missing email &
+  System displays validation error when email is not provided &
+  Validation error displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Signup validation for short password &
+  System rejects passwords shorter than minimum length &
+  Password validation message displayed &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Signup validation for mismatched passwords &
+  System rejects mismatched password entries &
+  Mismatch validation error displayed &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Send verification code &
+  Verification code request sent to backend and OTP field enabled &
+  Verification request executed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Signup attempt without OTP &
+  System prevents signup and displays OTP required error &
+  OTP validation error displayed &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & Complete successful signup &
+  System verifies OTP and completes account registration &
+  Signup process completed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  M-UT\logintestcount & RequireAuth loading state &
+  Protected content not rendered until authentication check completes &
+  Content hidden during authentication check &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & RequireAuth authenticated access &
+  Authenticated users can access protected content &
+  Protected content rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  M-UT\logintestcount & RequireAuth unauthorized access &
+  Unauthenticated users are redirected to login page &
+  Unauthorized access prevented and redirect executed &
+  \cellcolor{green}Pass \\
 
   M-UT\mfourtestcount & action & 
   expected result & 
@@ -583,7 +975,7 @@ The following are the manual tests for this module.
 
   \bottomrule
   \caption{UserInterfaceInterfactions Manual Testing Evaluation}
-  \label{table:uii-man-eval}
+  \label{table:uii-man-eval-1}
   \endlastfoot
 
 UII-MT\uiimantestcount & Upload a valid image file (.png or .jpeg) using the Choose File button & 
@@ -1033,8 +1425,20 @@ IMC-MT1 & InternalMetricCompliance Module \\ \hline
 
 \section{Code Coverage Metrics}
 
+The following analyzes the code coverage metrics for the React frontend of the system. The analysis is based on the coverage data generated using Jest and React Testing Library as shown in Figure~\ref{fig:FrontendCoverage}. Code coverage is a measure of how well the codebase is tested, and it helps identify areas that may require additional testing.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{FrontendCoverage.png}
+\caption{Coverage Report of the React Frontend}
+\label{fig:FrontendCoverage}
+\end{figure}
+
 \bibliographystyle{plainnat}
 \bibliography{../../refs/References}
+
+% Example citation added to resolve the "no \citation commands" error
+This is an example citation: \cite{exampleReference}.
 
 \newpage{}
 \section*{Appendix --- Reflection}
