@@ -228,122 +228,12 @@ nonfunctional requirements.
   \label{table:NFR-ST-eval}
   \endlastfoot
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
-
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
-
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
-
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
-
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
-
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
-
-
-    NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
-
-
-    NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\  \midrule
-
-   NFR-ST\nfrtestcount & Uploads unsupported fil or corrupted files and simulate backend process failures in order to evaluate system error handling and recovery. & 
-   System displays a clear error message and recovers within T\_RECOVERY seconds. & System displays to user a clear error message and recovers in 1.8 seconds, which is within the required threshold of T\_RECOVERY  &
-  \cellcolor{green}Pass \\  \midrule
-
-  NFR-ST\nfrtestcount & Simulate multiple users logged into the system simultaneously, each uploading different images and requesting alt text.  & 
-  System supports CAP\_CONCURRENT users with response times less than CAPACITY\_RTIME and sucessfullly handles datasets up to CAP\_STORAGE. & 
-  System handles concurrent users uploading images with response times within the required threshold and stored the uploaded data successfully. &
-  \cellcolor{green}Pass \\  \midrule
-
-    NFR-ST\nfrtestcount & Replace the AI model with a different one and update any required configuration (ex, API endpoint) while keeping the rest of the system unchanged. Run tests to verify functionality. & 
-  System continues functioning correctly. The new AI model integrates with only minimal configuration changes and does not break existing components.& 
-  The new AI model was integrated successfully with only API endpoint changes, and all main functionalities work as expected. &
-  \cellcolor{green}Pass \\ \midrule
-
-    NFR-ST\nfrtestcount & Attempt logins from non-mcmaster accounts, upload unsupported files, verify HTTPS encryption and confirm system logs access is restricted.  & 
-  Only McMaster users can sign-up and access the system, unsupported files are rejected; communication is encrypted and system logs are restricted & 
-  Login and sign up attempts from users outside the McMaster domain are rejected, unsupported files are rejected, and the application is access through HTTPS, 
-  confirming encrypted communication. Logs are currently only accessible by authorized individuals. &
-  \cellcolor{green}Pass \\  \midrule
-
-
-    NFR-ST\nfrtestcount & Generate alt text for mutliple physics diagrams (ex, circuits, force diagrams and scenarios involving people) and manually review the text generated for bias, cultural references and tone. & 
-  Generated alt text is neutral, inclusive, contextually accurate and written in a professional tone without any cultural references. & 
-  The generated alt text remained neutral and focused on physics concepts and did not introduce any bias.  &
-  \cellcolor{green}Pass \\  \midrule
-  
-
-    NFR-ST\nfrtestcount & Generate alt text for multiple diagrams and review outputs and system documentation for compliance with accessibility standards. & 
-  Generated alt text meets accessibility standards, uploaded files are handling according to policy and documentation is available to stakeholders.  & 
-  Generated alt text met accessibility standards, uploaded files were handles correctly; however, application instructions are not available to stakeholders yet.  &
-  \cellcolor{red}Fail \\ \midrule
-
-  NFR-ST\nfrtestcount & Test device and browser compatibility &
-  System runs correctly on supported operating systems and browsers &
-  All assertions pass &
-  \cellcolor{green}Pass \\ \midrule
-
-  NFR-ST\nfrtestcount & Evaluate alt text accuracy metrics &
-  Generated alt text meets sufficiency, length, and usability thresholds &
-  All assertions pass &
-  \cellcolor{green}Pass \\ \midrule
-
-  NFR-ST\nfrtestcount & Verify image privacy protection &
-  Uploaded images are deleted after processing and not permanently stored &
-  All assertions pass &
-  \cellcolor{green}Pass \\ \midrule
-
-  NFR-ST\nfrtestcount & Check for biased or offensive alt text &
-  Generated alt text contains no harmful, biased, or inappropriate content &
-  All assertions pass &
-  \cellcolor{green}Pass \\ \midrule
-
-  NFR-ST\nfrtestcount & Perform WCAG accessibility audit &
-  Interface satisfies WCAG 2.1 accessibility guidelines &
-  All assertions pass &
-  \cellcolor{green}Pass \\ \midrule
-
-  NFR-ST\nfrtestcount & Test screen reader compatibility &
-  Screen readers correctly read generated alt text &
-  All assertions pass &
-  \cellcolor{green}Pass \\ \midrule
-
-  NFR-ST\nfrtestcount & Test supported image formats &
-  System successfully processes JPG, JPEG, and PNG images &
-  All assertions pass &
-  \cellcolor{green}Pass \\
-
   NFR-ST\nfrtestcount & Run the system website through Axe (third-party service) to check for WCAG 2.1 AA compliance. & There are no issues for all website pages & Some JSON results reported 'moderate' or 'best practices' issues in the summary. & \cellcolor{red}Fail \\ \midrule
   NFR-ST\nfrtestcount & System website is hosted on Vercel (third-party service). & Website is in service and usable with minimal to no crashes. & Website is fully functional on the Vercel server. No crashing detected. & \cellcolor{green}Pass \\ \midrule
   NFR-ST\nfrtestcount & System website is hosted on a testing environment. & Core functions (uploading an image, text generation, and user navigation) function as intended. & Core functionality remains intact on testing environment. & \cellcolor{green}Pass \\ \midrule
   NFR-ST\nfrtestcount & System website is deployed into staging environment. & System is fully ready for DEMO deliverable as per Capstone's March timeline. & Some tests failed, indicating system is not ready for staging environment. & \cellcolor{red}Fail \\ \midrule
   NFR-ST\nfrtestcount & When executing actions in the system, logs are available for API interactions and standard workflows & Logs are visible for any crash or API call. & Logging module was implemented and appropriate level of logs are shown. & \cellcolor{green}Pass \\ \midrule
  
-
 \end{longtable}
 	
 \section{Comparison to Existing Implementation}	
@@ -1098,11 +988,20 @@ IMC-MT 1. \textbf{Initial State:} A caption has been generated by the CaptionGen
 \textbf{Failure Condition:} The caption fails validation checks or the system does not evaluate the generated caption.
 
 \section{Changes Due to Testing}
+During the internal testing phase, several changes were made to the tool based on feedback from the TA, professor, supervisor and from Team 22.
+A brief description of each change and its implementation is listed below:
 
-\wss{This section should highlight how feedback from the users and from 
-the supervisor (when one exists) shaped the final product.  In particular 
-the feedback from the Rev 0 demo to the supervisor (or to potential users) 
-should be highlighted.}
+\subsection{Narrowing the Scope}
+While the team had the ambition to make a STEM-alt text generator, this proved to be very expensive in terms of time needed for training and constraints on available computers for AI model tuning. To make up for this, Team 22 narrowed the scope to only "Physics" based diagrams, with a plan to further narrow the image types to a select list. This change would help our AI model learn better, contextual text and in turn produce higher quality, specific alt text that is usable for several stakeholders like students and teachers.\\
+
+\subsection{Shortening Alt-Text Generation Time}
+The AI model initially took five minutes or more to generate text for one image. After talking to our supervisor, Team 22 was able to decide on a faster model that provided mediocre alt-text generation while adding in indicators for user navigations and processes. We were able to cut down from approximately five minutes per image to ~1-2 minutes per image, which significantly reduced user frustration. \\
+
+\subsection{Clearer User Navigation}
+During testing, Team 22 had found that some user navigation processes were not as clear to a screen-reader user or someone with a visual impairment. Examples include no descriptive 'aria' labels or a misplaced page navigation. To fix this, we tried testing both automatically and manually in several ways including testing the solution with just the keyboard and voice assist. This significantly improved our solution, reduced tester frustration and gave users a clear indication of what was going on behind the scenes. \\
+
+\subsection{Future Work}
+While our testing showed us many faults in our solution, not all of them could be fixed. For future revisions, Team 22 plans to further increase alt-text quality by adding more specificity and context to generation (using AI hypertuning methods). Conducting user testing has given us sufficient data to know what features and system modules to improve for better usability. 
 
 \section{Automated Testing}
 		
