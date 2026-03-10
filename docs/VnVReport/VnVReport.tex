@@ -182,6 +182,13 @@ nonfunctional requirements.
   All assertions pass &
   \cellcolor{green}Pass \\
 
+  NFR-ST\nfrtestcount & Run the system website through Axe (third-party service) to check for WCAG 2.1 AA compliance. & There are no issues for all website pages & Some JSON results reported 'moderate' or 'best practices' issues in the summary. & \cellcolor{red}Fail \\ \midrule
+  NFR-ST\nfrtestcount & System website is hosted on Vercel (third-party service). & Website is in service and usable with minimal to no crashes. & Website is fully functional on the Vercel server. No crashing detected. & \cellcolor{green}Pass \\ \midrule
+  NFR-ST\nfrtestcount & System website is hosted on a testing environment. & Core functions (uploading an image, text generation, and user navigation) function as intended. & Core functionality remains intact on testing environment. & \cellcolor{green}Pass \\ \midrule
+  NFR-ST\nfrtestcount & System website is deployed into staging environment. & System is fully ready for DEMO deliverable as per Capstone's March timeline. & Some tests failed, indicating system is not ready for staging environment. & \cellcolor{red}Fail \\ \midrule
+  NFR-ST\nfrtestcount & When executing actions in the system, logs are available for API interactions and standard workflows & Logs are visible for any crash or API call. & Logging module was implemented and appropriate level of logs are shown. & \cellcolor{green}Pass \\ \midrule
+ 
+
 \end{longtable}
 	
 \section{Comparison to Existing Implementation}	
