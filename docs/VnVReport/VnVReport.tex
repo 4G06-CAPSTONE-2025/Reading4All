@@ -207,7 +207,57 @@ nonfunctional requirements.
   NFR-ST\nfrtestcount & action & 
   expected result & 
   evaluate &
-  \cellcolor{green}Pass \\ 
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+
+    NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+
+    NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\  \midrule
+
+   NFR-ST\nfrtestcount & Uploads unsupported fil or corrupted files and simulate backend process failures in order to evaluate system error handling and recovery. & 
+   System displays a clear error message and recovers within T\_RECOVERY seconds. & System displays to user a clear error message and recovers in 1.8 seconds, which is within the required threshold of T\_RECOVERY  &
+  \cellcolor{green}Pass \\  \midrule
+
+  NFR-ST\nfrtestcount & Simulate multiple users logged into the system simultaneously, each uploading different images and requesting alt text.  & 
+  System supports CAP\_CONCURRENT users with response times less than CAPACITY\_RTIME and sucessfullly handles datasets up to CAP\_STORAGE. & 
+  System handles concurrent users uploading images with response times within the required threshold and stored the uploaded data successfully. &
+  \cellcolor{green}Pass \\  \midrule
+
+    NFR-ST\nfrtestcount & Replace the AI model with a different one and update any required configuration (ex, API endpoint) while keeping the rest of the system unchanged. Run tests to verify functionality. & 
+  System continues functioning correctly. The new AI model integrates with only minimal configuration changes and does not break existing components.& 
+  The new AI model was integrated successfully with only API endpoint changes, and all main functionalities work as expected. &
+  \cellcolor{green}Pass \\ \midrule
+
+    NFR-ST\nfrtestcount & Attempt logins from non-mcmaster accounts, upload unsupported files, verify HTTPS encryption and confirm system logs access is restricted.  & 
+  Only McMaster users can sign-up and access the system, unsupported files are rejected; communication is encrypted and system logs are restricted & 
+  Login and sign up attempts from users outside the McMaster domain are rejected, unsupported files are rejected, and the application is access through HTTPS, 
+  confirming encrypted communication. Logs are currently only accessible by authorized individuals. &
+  \cellcolor{green}Pass \\  \midrule
+
+
+    NFR-ST\nfrtestcount & Generate alt text for mutliple physics diagrams (ex, circuits, force diagrams and scenarios involving people) and manually review the text generated for bias, cultural references and tone. & 
+  Generated alt text is neutral, inclusive, contextually accurate and written in a professional tone without any cultural references. & 
+  The generated alt text remained neutral and focused on physics concepts and did not introduce any bias.  &
+  \cellcolor{green}Pass \\  \midrule
+  
+
+    NFR-ST\nfrtestcount & Generate alt text for multiple diagrams and review outputs and system documentation for compliance with accessibility standards. & 
+  Generated alt text meets accessibility standards, uploaded files are handling according to policy and documentation is available to stakeholders.  & 
+  Generated alt text met accessibility standards, uploaded files were handles correctly; however, application instructions are not available to stakeholders yet.  &
+  \cellcolor{red}Fail \\ 
+
 \end{longtable}
 
 \subsection{Usability}
@@ -223,7 +273,7 @@ This section will not be appropriate for every project.
 \section{Unit Testing}
 The following are the evaluation of the unit tests per module. 
 
-\subsubsection{Module 1}
+\subsection{ImageValidation Module}
 
 \newcounter{moduleonetestcase}
 \newcommand{\monetestcount}{\stepcounter{moduleonetestcase}\themoduleonetestcase}
@@ -251,23 +301,40 @@ The following are the evaluation of the unit tests per module.
   \endfoot
 
   \bottomrule
-  \caption{Module 1 Unit Testing Evaluation}
+  \caption{ImageValidation Unit Testing Evaluation}
   \label{table:module-unit-eval}
   \endlastfoot
 
-  M-UT\monetestcount & action & 
-  expected result & 
-  evaluate &
+  IMGVAL-UT\monetestcount & Validate request with missing image. & 
+  The module returns \texttt{"MISSING\_IMAGE"} to indicate the missing image. & 
+  The module returned \texttt{"MISSING\_IMAGE"}. &
   \cellcolor{green}Pass \\ \midrule
 
 
-  M-UT\monetestcount & action & 
-  expected result & 
-  evaluate &
+  IMGVAL-UT\monetestcount & Validate request with invalid file type. & 
+  The module returns \texttt{"INVALID\_FILE\_TYPE"} to indicate that the uploaded file is not a valid image type. & 
+  The module returned \texttt{"INVALID\_FILE\_TYPE"}. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  IMGVAL-UT\monetestcount & Validate request with an image that exceeds the size limit. & 
+  The module returns \texttt{"FILE\_SIZE\_INVALID"} to indicate that the uploaded image exceeds the size limit. & 
+  The module returned \texttt{"FILE\_SIZE\_INVALID"}. &
+  \cellcolor{green}Pass \\  \midrule
+
+  IMGVAL-UT\monetestcount & Validate request with a corrupted image file. & 
+  The module returns \texttt{"UNAUTHORIZED} \texttt{\_ACCESS} \texttt{\_OR\_CORRUPTED"} to indicate that the uploaded image cannot be accessed. & 
+  The module returned \texttt{"UNAUTHORIZED} \texttt{\_ACCESS} \texttt{\_OR\_CORRUPTED"}. &
+  \cellcolor{green}Pass \\  \midrule
+
+
+  IMGVAL-UT\monetestcount & Validate request with a valid image file. & 
+  The module returns \texttt{"Success"} to indicate that the uploaded image meets system requirements and has been successfully uploaded. & 
+  The module returned \texttt{"Success"}. &
   \cellcolor{green}Pass \\ 
 \end{longtable}
 
-\subsubsection{Module 2}
+\subsection{BackendController Module}
 
 \newcounter{moduletwotestcase}
 \newcommand{\mtwotestcount}{\stepcounter{moduletwotestcase}\themoduletwotestcase}
@@ -295,17 +362,149 @@ The following are the evaluation of the unit tests per module.
   \endfoot
 
   \bottomrule
-  \caption{Module 2 Unit Testing Evaluation}
+  \caption{BackendController Module Unit Testing Evaluation}
   \label{table:module2-unit-eval}
   \endlastfoot
 
-  M-UT\mtwotestcount & action & 
+  BCONT-UT\mtwotestcount & Send image validation request with valid image data through the backend controller. & 
+  The backend controller forwards the image to the Image Validation module and returns the validation results. & 
+  The backend controller correctly returns \texttt{Success} after calling the image validation module. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  BCONT-UT\mtwotestcount & Send alt text generation request with image data and a valid session ID through the backend controller.& 
+  The backend controller forwards the request to the Alt Text Generation module and returns the generated alt text.  & 
+  The backend controller correctly returns the generated alt text of \texttt{"Generated alt text"}. &
+  \cellcolor{green}Pass \\ \midrule
+
+  BCONT-UT\mtwotestcount & Send alt text history retrieval request with a valid session ID through the backend controller. &
+  The backend controller forwards the session ID to the Alt Text History module and returns the retrieved history. & 
+  The backend controller correctly returns the retrieved history of \texttt{["Alt text 1", "Alt text 2"]}. &
+  \cellcolor{green}Pass \\ \midrule
+  
+
+  BCONT-UT\mtwotestcount & Send alt text editing request through the backend controller. & 
+  The backend controller forwards the request to the Edit Alt Text module and returns the result. & 
+  The backend controller correctly returns the editing result of \texttt{"Success"}. &
+  \cellcolor{green}Pass \\ 
+
+\end{longtable}
+
+
+
+\subsection{AuthenticationService Module}
+
+\newcounter{modulethreetestcase}
+\newcommand{\mthreetestcount}{\stepcounter{modulethreetestcase}\themodulethreetestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{AuthenticationService Module Unit Testing Evaluation}
+  \label{table:module3-unit-eval}
+  \endlastfoot
+
+  AUTH-UT\mthreetestcount & Send a request with a valid email and password to the AuthenticationService. & 
+  The authentication service successfully creates a new user account and returns the user ID and access token. & 
+  The authentication service correctly returns the user ID and access token, i.e.,
+   \texttt{\{"user\_id": "test\_user\_id", "access\_token": "test\_access\_token "\}} &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  AUTH-UT\mthreetestcount & Send request with invalid email format to the AuthenticationService & 
+  The authentication service raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address". The supabase client is not called. &
+  The authentication service correctly raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address" and the supabase client is not called. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  AUTH-UT\mthreetestcount & Send a request with a password shorter than 8 characters to the AuthenticationService. & 
+  The authentication service raises a \texttt{ValueError} with the message "Password must be at least 8 characters". The Supabase client is not called. &
+  The authentication service correctly raises a \texttt{ValueError} with the message "Password must be at least 8 characters" and the Supabase client is not called. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+
+  AUTH-UT\mthreetestcount & Send a request with empty email and password to the AuthenticationService. & 
+  The authentication service raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address". The Supabase client is not called. &
+  The authentication service correctly raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address" and the Supabase client is not called. &
+  \cellcolor{green}Pass \\  \midrule
+
+
+  AUTH-UT\mthreetestcount & Send a request with \texttt{STUDENT@mcmaster.ca} as the email to the AuthenticationService. & 
+  The authentication service correctly converts the email to lowercase before processing. &
+  The authentication service correctly converts the email to lowercase before processing. 
+  The Supabase client is called with \texttt{student@mcmaster. ca} &
+  \cellcolor{green}Pass \\ \midrule
+
+
+
+  AUTH-UT\mthreetestcount & Send a request with an existing email to the AuthenticationService. & 
+  The authentication service raises a \texttt{ValueError} with the message "Email is already in use". A verification email is not sent to the user&
+  No error was raised and the user received a Verification email.&
+  \cellcolor{red}Fail \\
+\end{longtable}
+
+
+
+\subsection{Module 4}
+
+\newcounter{modulefourtestcase}
+\newcommand{\mfourtestcount}{\stepcounter{modulefourtestcase}\themodulefourtestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{Module 4 Unit Testing Evaluation}
+  \label{table:module4-unit-eval}
+  \endlastfoot
+
+  M-UT\mfourtestcount & action & 
   expected result & 
   evaluate &
   \cellcolor{green}Pass \\ \midrule
 
 
-  M-UT\mtwotestcount & action & 
+  M-UT\mfourtestcount & action & 
   expected result & 
   evaluate &
   \cellcolor{green}Pass \\ 

@@ -986,17 +986,191 @@ the functional and non-functional requirements in our SRS document.
 \section{Unit Test Description}
 \label{Unit Test Desc}
 This section is not currently applicable and will be completed at a later time. 
-\subsection{Unit Testing Scope}
+\subsection{ImageValidation Module}
+\textbf{Goal}:
+The ImageValidation module ensures that uploaded images meet the systems requirements before they are processed by the
+\texttt{Reading4All} system. It verifies that an image file is present in the request, checks whether 
+the file type and size meet the defined requirements and confirms that the image is not corrupted and can successfully be opened. 
+The following unit tests verify the correctness of this functionality. 
 
-\subsection{Tests for Functional Requirements}
+The tests validate proper handling of image uploads, including detection of missing files during uploads, incorrect file types, 
+incorrect sized files, and corrupted or inaccessible images. 
+
+\textbf{Target requirements(s)}: FR3, FR4
+
+\begin{itemize}
+
+  \item \textbf{Valid Image Upload}:
+  \begin{itemize}
+    \item Ensures that the validation module successfully process a correctly formatted image upload request. 
+    \item Verifies that the image meets type and size requirements.
+    \item Confirms that the module returns \texttt{SUCCESS} when all validation checks pass.
+  \end{itemize}
+
+  \item \textbf{Handling Missing Image Upload}:
+  \begin{itemize}
+    \item Ensures that the validation module correctly identifies when no image is provided in the request. 
+    \item Verifies that the image module returns \texttt{MISSING\_IMAGE} when the expected image is missing. 
+  \end{itemize}
+
+  \item \textbf{Detecting Invalid File Types}
+  \begin{itemize}
+    \item  Ensures that the validation module correctly identifies when no an invalid file type is provided in the request. 
+    \item Verifies that images whose content\_type is not within the allowed list (PNG or JPEG) that \texttt{INVALID\_FILE\_TYPE} is returned .
+  \end{itemize}
+
+  \item \textbf{Detecting Oversized Images}
+  \begin{itemize}
+    \item Ensures that the module correctly rejects images exceeding the maximum allowed size of 10 MB.
+    \item Verifies that the module returns \texttt{FILE\_SIZE\_INVALID} when the inputted file exceeds allowed size.
+  \end{itemize}
+
+  \item \textbf{Handling Corrupted or Unauthorized Image Files}
+  \begin{itemize}
+    \item Ensures that the module correctly detects images that cannot be opened due to corruption or access issues.
+    \item Verifies that the module returns  \texttt{UNAUTHORIZED\_ACCESS\_OR\_CORRUPTED} when an image cannot be opened.
+  \end{itemize}
+\end{itemize}
+
+The test cases for this module can be found here.
+
+\subsection{BackendController Module}
+\textbf{Goal}:
+The Backend Controller module is responsible for coordination between the API endpoints and the service modules. 
+It receives requests from the application and communicates them to the appropriate service modules, such as the ImageValidation, 
+AltText Generation, SessionManagement modules. The controller ensures that requests are routed correctly and 
+that the results from each service are properly handled and returned to the user. 
+
+The following unit tests verify that the controller correctly routes requests and returns the expected responses. 
+The tests validate the interaction between the controller and service modules, ensuring that image validation, 
+alt text generation, alt text history retrievals, alt text editing and user sign up requests are handled correctly.
+
+Target requirements(s): FR1, FR2, FR3, FR5, FR6
+
+\begin{itemize}
+  \item \textbf{Validating Uploaded Images}
+  \begin{itemize}
+    \item Ensures that the controller correctly calls the image validation module when an image upload request is received.
+    \item Verifies that the validation result returned by the \texttt{ImageValidation} service is correctly returned to the caller.
+  \end{itemize}
+
+  \item \textbf{Generating Alt Text}
+  \begin{itemize}
+    \item Ensures that the controller correctly calls the alt text generation module when a valid image upload request is received.
+    \item Verifies that the generated alt text returned by \texttt{GenAltText} service is correctly returned to the caller.
+  \end{itemize}
+
+  \item \textbf{Retrieving Alt Text History}
+  \begin{itemize}
+    \item Ensures that the controller correctly calls the the alt text history module when a request to retrieve past alt text is received.
+    \item Verifies that the alt text history results returned by the \texttt{GetAltTextHistory} service is correctly returned to the caller.
+  \end{itemize}
+
+  \item \textbf{Editing Generated Alt Text}
+  \begin{itemize}
+    \item Ensures that the controller correctly calls the alt text editing module when a request to edit generated alt text is received.
+    \item Verifies that the response returned by the \texttt{EditAltText} service is correctly returned to the caller.
+  \end{itemize}
+
+  \item \textbf{Handling User Sign Up Requests}
+  \begin{itemize} 
+    \item Ensures that the controller correctly calls the user authentication module when a user sign up request is received.
+    \item Verifies that the response returned by the \texttt{UserSignUp} service is correctly returned to the caller.
+\end{itemize}
+\end{itemize}
 
 
-\subsection{Tests for Non-Functional Requirements}
+\subsection{AuthenticationService Module}
+\textbf{Goal}:
+The Authentication Service module is responsible for managing user authentication and authorization. 
+It validates user credentials and communicates with the Supabase authentication service to create new user accounts. 
+The module ensures that user emails use the McMaster University domain and that passwords meet the defined length requirements. 
+
+The following unit tests verify that the authentication service correctly validates user credentials, interacts with the 
+Supabase authentication service and returns the expected responses for user sign up requests. 
+The tests validate that invalid inputs for emails and passwords are correctly handled and that users can successfully sign up when they meet the requirements. 
+
+Target requirements(s): FR 6
+
+\begin{itemize}
+  \item \textbf{Creating a New User Account}
+  \begin{itemize}
+    \item Ensures that the authentication service correctly validates the email and password provided in a user sign up request.
+    \item Ensures that the authentication service correctly calls the Supabase authentication service to create a new user account when valid credentials are provided.
+    \item Verifies that the response returned by Supabase containing the \texttt{userID and accessToken} are correctly returned to the caller.
+  \end{itemize}
+
+  \item \textbf{Validating Email Domain}
+  \begin{itemize}
+    \item Ensures that the authentication service correctly validates that the email provided in a sign up request uses the McMaster University domain.
+    \item Verifies that a \texttt{ValueError} is raised when an email from a different domain is provided.  
+  \end{itemize}
+
+  \item \textbf{Validating Password Length}
+  \begin{itemize}
+    \item Ensures that the authentication service correctly validates that the password provided in a sign up request meets the minimum length requirements.
+    \item Verifies that a \texttt{ValueError} is raised when a password is inputted that does not meet the length requirements.
+  \end{itemize}
+
+  \item \textbf{Handling Capitalized Email Address Inputs}
+  \begin{itemize}
+    \item Ensures that the authentication service correctly converts capitalized emails to lowercase before communicating with the Supabase authentication service.
+    \item Verifies that the service returns the expected response when a capitalized email is provided.
+  \end{itemize}
+
+  \item \textbf{Handling Existing User Sign Up Requests}
+  \begin{itemize} 
+    \item Ensures that the authentication service correctly handles requests from users who already have an account.
+    \item Verifies that the request is not sent to Supabase and that an appropriate error message is returned to the caller. 
+\end{itemize}
+\end{itemize}
+The test cases for this module can be found here.
 
 
-\subsection{Traceability Between Test Cases and Modules}
 
+\subsection{SessionManagement Module}
+\textbf{Goal}:
+The Session Management module is responsible for managing session alt text history. 
+It retrieves previously generated alt text within a user session and ensures any edits to the generated alt text are properly saved and associated with the correct session.
+The module ensures that only the most recent predefined number of alt text generations (with any edits) are retrieved and displayed to the user.  
 
+The following unit tests verify that the module correctly retrieves alt text history for a user's session 
+and stores any edits made to the generated alt text. The tests validate that the changes are correctly saved and returned when needed, and that history entries are correctly returned. 
+Target requirements(s): FR 3, FR 5
+
+\begin{itemize}
+  \item \textbf{Retrieving Alt Text History with a One Entry}
+  \begin{itemize}
+    \item Ensures that the module correctly retrieves a single alt text history entry for a session ID.
+    \item Verifies that the returned entry contains the expected alt text and image.
+  \end{itemize}
+
+  \item \textbf{Retrieving Alt Text History with No Entries}
+  \begin{itemize}
+    \item Ensures that the module correctly handles requests for alt text history when no entries are available.
+    \item Verifies that the module returns an appropriate response when no history entries are found for a session ID.
+  \end{itemize}
+
+  \item \textbf{Returning History Entries with Edits}
+  \begin{itemize}
+    \item Ensures that when an edited alt text value exists, the edited alt text is returned in the history rather than the generated version.
+    \item Verifies that the returned history entry contains the expected edited alt text and image.
+  \end{itemize}
+
+  \item \textbf{Handling empty/NULL edited Alt Text Values}
+  \begin{itemize}
+    \item Ensures that when an edited alt text value is empty or NULL, the originally generated alt text is returned in the history.
+    \item Verifies that the returned history entry contains the expected generated alt text and image.
+  \end{itemize}
+
+  \item \textbf{Retrieving Multiple Alt Text History Entries}
+  \begin{itemize} 
+    \item Ensures that the module correctly retrieves multiple alt text history entries for a session ID.
+    \item Verifies that each entry returned contains the expected alt text (edited or generated appropriately) and images.
+  \end{itemize}
+\end{itemize}
+
+The test cases for this module can be found here.
 \newpage
 
 \bibliographystyle{plainnat}
@@ -1223,7 +1397,7 @@ in the \textit{Reading4All} system.
   MOST\_COMMON\_SR & top 3 screen readers \\
   SFWR\_RELEASES & previous 2 releases \\
   FEEDBACK\_TIME & 1 second \\
-  CAPACITY\_RTIME & 10 seconds \\
+  CAPACITY\_RTIME & 3 minutes \\
   SESSION\_TIMEOUT & 2 hours \\
   SESSION\_HISTORY\_MAX & 10 images \\
 
