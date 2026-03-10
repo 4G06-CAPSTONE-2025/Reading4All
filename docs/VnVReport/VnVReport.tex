@@ -265,12 +265,12 @@ nonfunctional requirements.
   \cellcolor{green}Pass \\ \midrule
 
 
-    NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\  \midrule
+    NFR-ST\nfrtestcount & Conduct user evaluation of generated alt text using defined rating metrics (sufficiency, length, accessibility, learning impact) & 
+  Average ratings meeting required thresholds: R\_SUFFICIENCY, R\_LENGTH, and R\_USABILITY \_MEDIAN  & 
+  Average ratings: sufficiency= 2.0, length= 3.0, learning impact= 1.33. Only length and accessibility met thresholds & 
+  \cellcolor{red}Fail \\  \midrule
 
-   NFR-ST\nfrtestcount & Uploads unsupported fil or corrupted files and simulate backend process failures in order to evaluate system error handling and recovery. & 
+   NFR-ST\nfrtestcount & Uploads unsupported file or corrupted files and simulate backend process failures in order to evaluate system error handling and recovery. & 
    System displays a clear error message and recovers within T\_RECOVERY seconds. & System displays to user a clear error message and recovers in 1.8 seconds, which is within the required threshold of T\_RECOVERY  &
   \cellcolor{green}Pass \\  \midrule
 
