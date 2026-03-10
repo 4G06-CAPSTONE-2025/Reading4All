@@ -10,7 +10,10 @@
 \usepackage{bm}
 \usepackage{float}
 \usepackage{caption}
-\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{enumitem}
+\usepackage[round]{natbib}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -18,12 +21,6 @@
     linkcolor=red,
     urlcolor=blue
 }
-% \usepackage[round]{natbib}
-\usepackage{longtable}
-\usepackage{colortbl}
-\usepackage{enumitem}
-\usepackage[round]{natbib}
-
 
 \input{../Comments}
 \input{../Common}
@@ -41,10 +38,9 @@
 \section{Revision History}
 
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\toprule {\bf Date} & {\bf Name} & {\bf Created initial draft of VnV Report}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+March 9, 2026 & All & Notes\\
 \bottomrule
 \end{tabularx}
 
@@ -978,7 +974,7 @@ The following are the manual tests for this module.
 
   \bottomrule
   \caption{UserInterfaceInterfactions Manual Testing Evaluation}
-  \label{table:uii-man-eval}
+  \label{table:UII-MT-eval}
   \endlastfoot
 
 UII-MT\uiimantestcount & Upload a valid image file (.png or .jpeg) using the Choose File button & 
