@@ -14,10 +14,7 @@ class AuthService:
             raise ValueError("Password must be at least 8 characters")
 
         # Supabase Auth signup
-        resp = supabase.auth.sign_up({
-            "email": email,
-            "password": password
-        })
+         resp = self.supabase.auth.sign_up({"email": email, "password": password})
 
         # supabase-py return formats can differ; support both
         user = getattr(resp, "user", None) or (
@@ -34,3 +31,4 @@ class AuthService:
             "user_id": user_id,
             "access_token": access_token
         }
+        
