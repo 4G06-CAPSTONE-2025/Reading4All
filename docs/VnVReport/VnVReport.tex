@@ -503,37 +503,61 @@ The following are the evaluation of the unit tests per module.
 \end{longtable}
 
 \subsubsection{ShowHistory Module}
-  \caption{ImageValidation Unit Testing Evaluation}
-  \label{table:module-unit-eval}
-  \endlastfoot
 
-  IMGVAL-UT\monetestcount & Validate request with missing image. & 
-  The module returns \texttt{"MISSING\_IMAGE"} to indicate the missing image. & 
-  The module returned \texttt{"MISSING\_IMAGE"}. &
-  \cellcolor{green}Pass \\ \midrule
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+
+\toprule
+\textbf{ID} & \textbf{Action} &
+\textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+\midrule
+\endfirsthead
+
+\multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
+\toprule
+\textbf{ID} & \textbf{Action} &
+\textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+\midrule
+\endhead
+
+\multicolumn{5}{r}{\textit{Continued on next page}} \\
+\endfoot
+
+\bottomrule
+\caption{ImageValidation Unit Testing Evaluation}
+\label{table:module-unit-eval}
+\endlastfoot
 
 
-  IMGVAL-UT\monetestcount & Validate request with invalid file type. & 
-  The module returns \texttt{"INVALID\_FILE\_TYPE"} to indicate that the uploaded file is not a valid image type. & 
-  The module returned \texttt{"INVALID\_FILE\_TYPE"}. &
-  \cellcolor{green}Pass \\ \midrule
+IMGVAL-UT\monetestcount & Validate request with missing image. & 
+The module returns \texttt{"MISSING\_IMAGE"} to indicate the missing image. & 
+The module returned \texttt{"MISSING\_IMAGE"}. &
+\cellcolor{green}Pass \\ \midrule
 
+IMGVAL-UT\monetestcount & Validate request with invalid file type. & 
+The module returns \texttt{"INVALID\_FILE\_TYPE"} to indicate that the uploaded file is not a valid image type. & 
+The module returned \texttt{"INVALID\_FILE\_TYPE"}. &
+\cellcolor{green}Pass \\ \midrule
 
-  IMGVAL-UT\monetestcount & Validate request with an image that exceeds the size limit. & 
-  The module returns \texttt{"FILE\_SIZE\_INVALID"} to indicate that the uploaded image exceeds the size limit. & 
-  The module returned \texttt{"FILE\_SIZE\_INVALID"}. &
-  \cellcolor{green}Pass \\  \midrule
+IMGVAL-UT\monetestcount & Validate request with an image that exceeds the size limit. & 
+The module returns \texttt{"FILE\_SIZE\_INVALID"} to indicate that the uploaded image exceeds the size limit. & 
+The module returned \texttt{"FILE\_SIZE\_INVALID"}. &
+\cellcolor{green}Pass \\  \midrule
 
-  IMGVAL-UT\monetestcount & Validate request with a corrupted image file. & 
-  The module returns \texttt{"UNAUTHORIZED} \texttt{\_ACCESS} \texttt{\_OR\_CORRUPTED"} to indicate that the uploaded image cannot be accessed. & 
-  The module returned \texttt{"UNAUTHORIZED} \texttt{\_ACCESS} \texttt{\_OR\_CORRUPTED"}. &
-  \cellcolor{green}Pass \\  \midrule
+IMGVAL-UT\monetestcount & Validate request with a corrupted image file. & 
+The module returns \texttt{"UNAUTHORIZED\_ACCESS\_OR\_CORRUPTED"} to indicate that the uploaded image cannot be accessed. & 
+The module returned \texttt{"UNAUTHORIZED\_ACCESS\_OR\_CORRUPTED"}. &
+\cellcolor{green}Pass \\  \midrule
 
+IMGVAL-UT\monetestcount & Validate request with a valid image file. & 
+The module returns \texttt{"Success"} to indicate that the uploaded image meets system requirements and has been successfully uploaded. & 
+The module returned \texttt{"Success"}. &
+\cellcolor{green}Pass \\
 
-  IMGVAL-UT\monetestcount & Validate request with a valid image file. & 
-  The module returns \texttt{"Success"} to indicate that the uploaded image meets system requirements and has been successfully uploaded. & 
-  The module returned \texttt{"Success"}. &
-  \cellcolor{green}Pass \\ 
 \end{longtable}
 
 \subsection{BackendController Module}
