@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./UploadScreen.css";
 
-export default function HomeScreen(){
+export default function UploadScreen(){
 
     const [isDragging, setIsDragging] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
@@ -308,20 +308,20 @@ export default function HomeScreen(){
             </p>
 
             <input
-				type="file"
+                type="file"
                 ref={fileInputRef}
-				accept="image/png, image/jpeg, image/jpg"
-				onChange={handleFileSelect}
+                accept="image/png, image/jpeg, image/jpg"
+                onChange={handleFileSelect}
                 className="hiding-classic-button"
                 aria-label="Upload image for alt text generation"
-			/>
+            />
 
             <button
             className="upload-button"
             onClick={()=>fileInputRef.current?.click()}
             >
-				Choose File
-			</button>
+                Choose File
+            </button>
 
             <p className="upload-info-text">
                 Supported formats: JPG, PNG or JPEG files up to 10 Megabytes
@@ -368,14 +368,18 @@ export default function HomeScreen(){
                
 
                 {!hasAltText ? (
+                    <>
                     <button className="gen-alt-text-button"
                         onClick={handleGenerateAltText}
                         disabled={isGeneratingAltText}
                         aria-disabled={isGeneratingAltText}
                     >
                         {isGeneratingAltText? "Generating Alt Text..." :   "Generate Alt Text"}
-                  
                     </button>
+                    <p className="edit-info-text">
+                        You can review and edit the generated alt text before copying.
+                    </p>
+                    </>
 
                 ): ""}
                 

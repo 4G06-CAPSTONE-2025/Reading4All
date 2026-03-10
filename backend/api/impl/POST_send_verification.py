@@ -19,9 +19,10 @@ def send_verification(request):
 
     email = (body.get("email") or "").strip().lower()
 
-    if not email.endswith("@mcmaster.ca"):
+    # Basic validation (optional but recommended)
+    if not email:
         return JsonResponse(
-            {"error": "Email must be a @mcmaster.ca address"},
+            {"error": "Email is required"},
             status=400,
         )
 
