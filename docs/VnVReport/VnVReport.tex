@@ -3,6 +3,13 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{bm}
+\usepackage{float}
+\usepackage{caption}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -14,6 +21,8 @@
 \usepackage{longtable}
 \usepackage{colortbl}
 \usepackage{enumitem}
+\usepackage[round]{natbib}
+
 
 \input{../Comments}
 \input{../Common}
@@ -40,19 +49,54 @@ Date 2 & 1.1 & Notes\\
 
 ~\newpage
 
-\section{Symbols, Abbreviations and Acronyms}
+\section{Symbols, Abbreviations, and Acronyms}
 
-\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{l l} 
-  \toprule		
-  \textbf{symbol} & \textbf{description}\\
-  \midrule 
-  T & Test\\
-  \bottomrule
-\end{tabular}\\
-
-\wss{symbols, abbreviations or acronyms -- you can reference the SRS tables if needed}
-
+\begin{table}[H]
+\centering
+\caption{Abbreviations and Acronyms Used in the Verification and Validation Plan}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Acronym} & \textbf{Definition} \\
+\hline
+AI & Artificial Intelligence \\
+API & Application Programming Interface \\
+AODA & Accessibility for Ontarians with Disabilities Act \\
+AR & Accessibility Requirement \\
+CAD & Canadian Dollar \\
+CI & Continuous Integration \\
+CD & Continuous Development \\
+CR & Cultural/Regulatory Requirement \\
+DP & Development Plan \\
+FR & Functional Requirement \\
+GUI & Graphical User Interface \\
+HA & Hazard Analysis \\
+LFR & Look and Feel Requirement \\
+LR & Legal Requirement \\
+MG & Module Guide \\
+MIS & Module Interface Specification \\
+ML & Machine Learning \\
+MS & Maintenance Support Requirement \\
+NFR & Nonfunctional Requirement \\
+NVDA & NonVisual Desktop Access (screen reader) \\
+OER & Operational and Environmental Requirement \\
+OCR & Optical Character Recognition \\
+PII & Personally Identifiable Information \\
+PR & Performance Requirement \\
+R & Requirement \\
+RL & Release Requirement \\
+RFT & Reliability and Fault Tolerance Requirement \\
+SCR & Safety-Critical Requirement \\
+SRS & Software Requirements Specification \\
+SR & Security Requirement \\
+SSO & Single Sign-On \\
+TLS & Transport Layer Security \\
+UI & User Interface \\
+UHR & Usability and Humanity Requirement \\
+VnV & Verification and Validation \\
+WCAG & Web Content Accessibility Guidelines \\
+\hline
+\end{tabular}
+\end{table}
 \newpage
 
 \tableofcontents
@@ -256,15 +300,51 @@ nonfunctional requirements.
     NFR-ST\nfrtestcount & Generate alt text for multiple diagrams and review outputs and system documentation for compliance with accessibility standards. & 
   Generated alt text meets accessibility standards, uploaded files are handling according to policy and documentation is available to stakeholders.  & 
   Generated alt text met accessibility standards, uploaded files were handles correctly; however, application instructions are not available to stakeholders yet.  &
-  \cellcolor{red}Fail \\ 
+  \cellcolor{red}Fail \\ \midrule
+
+  NFR-ST\nfrtestcount & Test device and browser compatibility &
+  System runs correctly on supported operating systems and browsers &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Evaluate alt text accuracy metrics &
+  Generated alt text meets sufficiency, length, and usability thresholds &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Verify image privacy protection &
+  Uploaded images are deleted after processing and not permanently stored &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Check for biased or offensive alt text &
+  Generated alt text contains no harmful, biased, or inappropriate content &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Perform WCAG accessibility audit &
+  Interface satisfies WCAG 2.1 accessibility guidelines &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Test screen reader compatibility &
+  Screen readers correctly read generated alt text &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Test supported image formats &
+  System successfully processes JPG, JPEG, and PNG images &
+  All assertions pass &
+  \cellcolor{green}Pass \\
+
+  NFR-ST\nfrtestcount & Run the system website through Axe (third-party service) to check for WCAG 2.1 AA compliance. & There are no issues for all website pages & Some JSON results reported 'moderate' or 'best practices' issues in the summary. & \cellcolor{red}Fail \\ \midrule
+  NFR-ST\nfrtestcount & System website is hosted on Vercel (third-party service). & Website is in service and usable with minimal to no crashes. & Website is fully functional on the Vercel server. No crashing detected. & \cellcolor{green}Pass \\ \midrule
+  NFR-ST\nfrtestcount & System website is hosted on a testing environment. & Core functions (uploading an image, text generation, and user navigation) function as intended. & Core functionality remains intact on testing environment. & \cellcolor{green}Pass \\ \midrule
+  NFR-ST\nfrtestcount & System website is deployed into staging environment. & System is fully ready for DEMO deliverable as per Capstone's March timeline. & Some tests failed, indicating system is not ready for staging environment. & \cellcolor{red}Fail \\ \midrule
+  NFR-ST\nfrtestcount & When executing actions in the system, logs are available for API interactions and standard workflows & Logs are visible for any crash or API call. & Logging module was implemented and appropriate level of logs are shown. & \cellcolor{green}Pass \\ \midrule
+ 
 
 \end{longtable}
-
-\subsection{Usability}
-		
-\subsection{Performance}
-
-\subsection{etc.}
 	
 \section{Comparison to Existing Implementation}	
 
@@ -867,6 +947,155 @@ module’s manual tests.
 \end{longtable}
 
 
+\subsection{ModelOutput Module}
+
+No automated unit tests were implemented for this module. Its behavior was verified through the manual tests described in Section~7 (MO-MT1), which confirm that generated alt-text is correctly formatted and displayed to the user.
+
+\subsection{AIModelTraining Module}
+
+Unit tests were not implemented for this module because the training process operates as part of the model training pipeline rather than as isolated functions. Validation was performed through the manual testing procedures described in Section~7 (AI-MT1).
+
+\subsection{CaptionGeneration Module}
+
+The functionality of this module was evaluated through the manual tests described in Section~7 (CG-MT1), where uploaded images were used to verify that the system generates meaningful alt-text descriptions.
+
+\subsection{InternalMetricCompliance Module}
+
+No dedicated unit tests were implemented for this module. Instead, its behavior was verified through the manual tests in Section~7 (IMC-MT1), where generated captions were evaluated against the system’s internal quality metrics.
+\section{Manual Testing}
+
+The following section outlines the manual tests performed for the AI modules.
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{4.5cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{Test ID} & \textbf{Module} &
+  \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{Test ID} & \textbf{Module} &
+  \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{Manual Testing Summary for AI Modules}
+  \label{table:manual-ai-tests}
+  \endlastfoot
+
+
+MO-MT1 & ModelOutput Module &
+Verify generated alt-text is correctly formatted and displayed to the user. &
+All assertions pass &
+\cellcolor{green}Pass \\ \midrule
+
+AI-MT1 & AIModelTraining Module &
+Verify that the model training process successfully produces a trained model. &
+All assertions pass &
+\cellcolor{green}Pass \\ \midrule
+
+CG-MT1 & CaptionGeneration Module &
+Verify that the system generates descriptive alt-text for uploaded images. &
+All assertions pass &
+\cellcolor{green}Pass \\ \midrule
+
+IMC-MT1 & InternalMetricCompliance Module &
+Verify that generated captions satisfy internal quality evaluation metrics. &
+All assertions pass &
+\cellcolor{green}Pass \\
+
+\end{longtable}
+\subsection{ModelOutput Module}
+
+The following are the manual tests for this module.
+
+MO-MT 1. \textbf{Initial State:} The system has successfully generated alt-text for an uploaded image.
+
+\textbf{Input:} The backend returns the generated caption to be displayed to the user.
+
+\textbf{Test Steps:}
+
+(a) Upload a valid diagram image.
+
+(b) Wait for the alt-text generation process to complete.
+
+(c) Observe the output displayed on the user interface.
+
+\textbf{Expected Results:} The generated alt-text is correctly formatted and displayed to the user through the interface.
+
+\textbf{Failure Condition:} The generated alt-text is missing, incorrectly formatted, or not displayed to the user.
+
+
+\subsection{AIModelTraining Module}
+
+The following are the manual tests for this module.
+
+AI-MT 1. \textbf{Initial State:} The training dataset and configuration parameters are available.
+
+\textbf{Input:} The model training process is initiated using the dataset.
+
+\textbf{Test Steps:}
+
+(a) Start the training pipeline.
+
+(b) Load the dataset used for training the model.
+
+(c) Monitor the training process for completion.
+
+\textbf{Expected Results:} The model successfully completes training and produces a trained model artifact used for caption generation.
+
+\textbf{Failure Condition:} Training fails to complete, produces errors, or does not generate a usable trained model.
+
+
+\subsection{CaptionGeneration Module}
+
+The following are the manual tests for this module.
+
+CG-MT 1. \textbf{Initial State:} A trained model exists and a valid image has been uploaded.
+
+\textbf{Input:} The system processes the uploaded image using the trained model.
+
+\textbf{Test Steps:}
+
+(a) Upload a valid diagram image.
+
+(b) Submit the image for caption generation.
+
+(c) Wait for the caption generation process.
+
+\textbf{Expected Results:} The system generates descriptive alt-text that reflects the content of the image.
+
+\textbf{Failure Condition:} The system fails to generate alt-text, produces irrelevant text, or returns an error.
+
+
+\subsection{InternalMetricCompliance Module}
+
+The following are the manual tests for this module.
+
+IMC-MT 1. \textbf{Initial State:} A caption has been generated by the CaptionGeneration module.
+
+\textbf{Input:} The generated caption is evaluated using internal quality metrics.
+
+\textbf{Test Steps:}
+
+(a) Generate alt-text from an uploaded image.
+
+(b) Allow the system to run internal metric validation checks.
+
+(c) Observe whether the caption passes the internal quality checks.
+
+\textbf{Expected Results:} The caption is evaluated against internal metrics and confirmed to meet clarity and quality standards.
+
+\textbf{Failure Condition:} The caption fails validation checks or the system does not evaluate the generated caption.
 
 \section{Changes Due to Testing}
 
@@ -879,7 +1108,29 @@ should be highlighted.}
 		
 \section{Trace to Requirements}
 		
-\section{Trace to Modules}		
+\section{Trace to Modules}
+
+The following table shows the relationship between the tests performed
+and the modules defined in the Module Guide. Each test verifies the
+correct functionality of the corresponding module.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Test ID} & \textbf{Module} \\ \hline
+
+MO-MT1 & ModelOutput Module \\ \hline
+AI-MT1 & AIModelTraining Module \\ \hline
+CG-MT1 & CaptionGeneration Module \\ \hline
+IMC-MT1 & InternalMetricCompliance Module \\ \hline
+
+
+\end{tabular}
+\caption{Traceability Between Tests and Modules}
+\label{table:test-module-trace}
+\end{table}
+
 
 \section{Code Coverage Metrics}
 
@@ -894,10 +1145,18 @@ graduate attribute of Reflection.
 
 \input{../Reflection.tex}
 
+\textbf{Fiza's Reflection}
+
 \begin{enumerate}
-  \item What went well while writing this deliverable? 
-  \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
+\item What went well while writing this deliverable? 
+  
+One aspect that went well while writing this deliverable was the clear structure provided by the VnV template and the previous planning documents. Since the system architecture, modules, and test plans were already defined in earlier deliverables such as the Module Guide and VnV Plan, it was easier to connect the implemented tests to the system components. 
+Collaboration within the team also worked well, as each member was responsible for specific modules and testing sections, which allowed the work to be divided efficiently and integrated into a consistent report format.
+
+\item What pain points did you experience during this deliverable, and how
+did you resolve them?
+
+    One challenge during this deliverable was ensuring consistency between the different sections of the report, such as aligning manual tests, system tests, and module traceability with the modules defined in the Module Guide. Another difficulty was formatting complex LaTeX tables and ensuring they compiled correctly while maintaining a consistent style across the document. These issues were resolved through iterative debugging of the LaTeX code and by coordinating with teammates to ensure the testing sections aligned with the previously defined modules and test cases.
   \item Which parts of this document stemmed from speaking to your client(s) or
   a proxy (e.g. your peers)? Which ones were not, and why?
   \item In what ways was the Verification and Validation (VnV) Plan different
