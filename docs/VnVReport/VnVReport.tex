@@ -3,6 +3,13 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{bm}
+\usepackage{float}
+\usepackage{caption}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -14,8 +21,8 @@
 \usepackage{longtable}
 \usepackage{colortbl}
 \usepackage{enumitem}
-\usepackage{graphicx}
-\usepackage{float} % Enables the [H] float option
+\usepackage[round]{natbib}
+
 
 \input{../Comments}
 \input{../Common}
@@ -42,19 +49,54 @@ Date 2 & 1.1 & Notes\\
 
 ~\newpage
 
-\section{Symbols, Abbreviations and Acronyms}
+\section{Symbols, Abbreviations, and Acronyms}
 
-\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{l l} 
-  \toprule		
-  \textbf{symbol} & \textbf{description}\\
-  \midrule 
-  T & Test\\
-  \bottomrule
-\end{tabular}\\
-
-\wss{symbols, abbreviations or acronyms -- you can reference the SRS tables if needed}
-
+\begin{table}[H]
+\centering
+\caption{Abbreviations and Acronyms Used in the Verification and Validation Plan}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Acronym} & \textbf{Definition} \\
+\hline
+AI & Artificial Intelligence \\
+API & Application Programming Interface \\
+AODA & Accessibility for Ontarians with Disabilities Act \\
+AR & Accessibility Requirement \\
+CAD & Canadian Dollar \\
+CI & Continuous Integration \\
+CD & Continuous Development \\
+CR & Cultural/Regulatory Requirement \\
+DP & Development Plan \\
+FR & Functional Requirement \\
+GUI & Graphical User Interface \\
+HA & Hazard Analysis \\
+LFR & Look and Feel Requirement \\
+LR & Legal Requirement \\
+MG & Module Guide \\
+MIS & Module Interface Specification \\
+ML & Machine Learning \\
+MS & Maintenance Support Requirement \\
+NFR & Nonfunctional Requirement \\
+NVDA & NonVisual Desktop Access (screen reader) \\
+OER & Operational and Environmental Requirement \\
+OCR & Optical Character Recognition \\
+PII & Personally Identifiable Information \\
+PR & Performance Requirement \\
+R & Requirement \\
+RL & Release Requirement \\
+RFT & Reliability and Fault Tolerance Requirement \\
+SCR & Safety-Critical Requirement \\
+SRS & Software Requirements Specification \\
+SR & Security Requirement \\
+SSO & Single Sign-On \\
+TLS & Transport Layer Security \\
+UI & User Interface \\
+UHR & Usability and Humanity Requirement \\
+VnV & Verification and Validation \\
+WCAG & Web Content Accessibility Guidelines \\
+\hline
+\end{tabular}
+\end{table}
 \newpage
 
 \tableofcontents
@@ -231,8 +273,103 @@ Tester verifies timeout notifications, retry option, proper data cleanup, and ab
 \subsection{Usability}
 		
 \subsection{Performance}
+  NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
 
-\subsection{etc.}
+  NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+
+    NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ \midrule
+
+
+    NFR-ST\nfrtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\  \midrule
+
+   NFR-ST\nfrtestcount & Uploads unsupported fil or corrupted files and simulate backend process failures in order to evaluate system error handling and recovery. & 
+   System displays a clear error message and recovers within T\_RECOVERY seconds. & System displays to user a clear error message and recovers in 1.8 seconds, which is within the required threshold of T\_RECOVERY  &
+  \cellcolor{green}Pass \\  \midrule
+
+  NFR-ST\nfrtestcount & Simulate multiple users logged into the system simultaneously, each uploading different images and requesting alt text.  & 
+  System supports CAP\_CONCURRENT users with response times less than CAPACITY\_RTIME and sucessfullly handles datasets up to CAP\_STORAGE. & 
+  System handles concurrent users uploading images with response times within the required threshold and stored the uploaded data successfully. &
+  \cellcolor{green}Pass \\  \midrule
+
+    NFR-ST\nfrtestcount & Replace the AI model with a different one and update any required configuration (ex, API endpoint) while keeping the rest of the system unchanged. Run tests to verify functionality. & 
+  System continues functioning correctly. The new AI model integrates with only minimal configuration changes and does not break existing components.& 
+  The new AI model was integrated successfully with only API endpoint changes, and all main functionalities work as expected. &
+  \cellcolor{green}Pass \\ \midrule
+
+    NFR-ST\nfrtestcount & Attempt logins from non-mcmaster accounts, upload unsupported files, verify HTTPS encryption and confirm system logs access is restricted.  & 
+  Only McMaster users can sign-up and access the system, unsupported files are rejected; communication is encrypted and system logs are restricted & 
+  Login and sign up attempts from users outside the McMaster domain are rejected, unsupported files are rejected, and the application is access through HTTPS, 
+  confirming encrypted communication. Logs are currently only accessible by authorized individuals. &
+  \cellcolor{green}Pass \\  \midrule
+
+
+    NFR-ST\nfrtestcount & Generate alt text for mutliple physics diagrams (ex, circuits, force diagrams and scenarios involving people) and manually review the text generated for bias, cultural references and tone. & 
+  Generated alt text is neutral, inclusive, contextually accurate and written in a professional tone without any cultural references. & 
+  The generated alt text remained neutral and focused on physics concepts and did not introduce any bias.  &
+  \cellcolor{green}Pass \\  \midrule
+  
+
+    NFR-ST\nfrtestcount & Generate alt text for multiple diagrams and review outputs and system documentation for compliance with accessibility standards. & 
+  Generated alt text meets accessibility standards, uploaded files are handling according to policy and documentation is available to stakeholders.  & 
+  Generated alt text met accessibility standards, uploaded files were handles correctly; however, application instructions are not available to stakeholders yet.  &
+  \cellcolor{red}Fail \\ \midrule
+
+  NFR-ST\nfrtestcount & Test device and browser compatibility &
+  System runs correctly on supported operating systems and browsers &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Evaluate alt text accuracy metrics &
+  Generated alt text meets sufficiency, length, and usability thresholds &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Verify image privacy protection &
+  Uploaded images are deleted after processing and not permanently stored &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Check for biased or offensive alt text &
+  Generated alt text contains no harmful, biased, or inappropriate content &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Perform WCAG accessibility audit &
+  Interface satisfies WCAG 2.1 accessibility guidelines &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Test screen reader compatibility &
+  Screen readers correctly read generated alt text &
+  All assertions pass &
+  \cellcolor{green}Pass \\ \midrule
+
+  NFR-ST\nfrtestcount & Test supported image formats &
+  System successfully processes JPG, JPEG, and PNG images &
+  All assertions pass &
+  \cellcolor{green}Pass \\
+
+  NFR-ST\nfrtestcount & Run the system website through Axe (third-party service) to check for WCAG 2.1 AA compliance. & There are no issues for all website pages & Some JSON results reported 'moderate' or 'best practices' issues in the summary. & \cellcolor{red}Fail \\ \midrule
+  NFR-ST\nfrtestcount & System website is hosted on Vercel (third-party service). & Website is in service and usable with minimal to no crashes. & Website is fully functional on the Vercel server. No crashing detected. & \cellcolor{green}Pass \\ \midrule
+  NFR-ST\nfrtestcount & System website is hosted on a testing environment. & Core functions (uploading an image, text generation, and user navigation) function as intended. & Core functionality remains intact on testing environment. & \cellcolor{green}Pass \\ \midrule
+  NFR-ST\nfrtestcount & System website is deployed into staging environment. & System is fully ready for DEMO deliverable as per Capstone's March timeline. & Some tests failed, indicating system is not ready for staging environment. & \cellcolor{red}Fail \\ \midrule
+  NFR-ST\nfrtestcount & When executing actions in the system, logs are available for API interactions and standard workflows & Logs are visible for any crash or API call. & Logging module was implemented and appropriate level of logs are shown. & \cellcolor{green}Pass \\ \midrule
+ 
+
+\end{longtable}
 	
 \section{Comparison to Existing Implementation}	
 
@@ -242,6 +379,7 @@ This section will not be appropriate for every project.
 The following are the evaluation of the unit tests per module. 
 
 \subsubsection{MainScreen Module}
+\subsection{ImageValidation Module}
 
 \newcounter{moduleonetestcase}
 \newcommand{\monetestcount}{\stepcounter{moduleonetestcase}\themoduleonetestcase}
@@ -365,6 +503,40 @@ The following are the evaluation of the unit tests per module.
 \end{longtable}
 
 \subsubsection{ShowHistory Module}
+  \caption{ImageValidation Unit Testing Evaluation}
+  \label{table:module-unit-eval}
+  \endlastfoot
+
+  IMGVAL-UT\monetestcount & Validate request with missing image. & 
+  The module returns \texttt{"MISSING\_IMAGE"} to indicate the missing image. & 
+  The module returned \texttt{"MISSING\_IMAGE"}. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  IMGVAL-UT\monetestcount & Validate request with invalid file type. & 
+  The module returns \texttt{"INVALID\_FILE\_TYPE"} to indicate that the uploaded file is not a valid image type. & 
+  The module returned \texttt{"INVALID\_FILE\_TYPE"}. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  IMGVAL-UT\monetestcount & Validate request with an image that exceeds the size limit. & 
+  The module returns \texttt{"FILE\_SIZE\_INVALID"} to indicate that the uploaded image exceeds the size limit. & 
+  The module returned \texttt{"FILE\_SIZE\_INVALID"}. &
+  \cellcolor{green}Pass \\  \midrule
+
+  IMGVAL-UT\monetestcount & Validate request with a corrupted image file. & 
+  The module returns \texttt{"UNAUTHORIZED} \texttt{\_ACCESS} \texttt{\_OR\_CORRUPTED"} to indicate that the uploaded image cannot be accessed. & 
+  The module returned \texttt{"UNAUTHORIZED} \texttt{\_ACCESS} \texttt{\_OR\_CORRUPTED"}. &
+  \cellcolor{green}Pass \\  \midrule
+
+
+  IMGVAL-UT\monetestcount & Validate request with a valid image file. & 
+  The module returns \texttt{"Success"} to indicate that the uploaded image meets system requirements and has been successfully uploaded. & 
+  The module returned \texttt{"Success"}. &
+  \cellcolor{green}Pass \\ 
+\end{longtable}
+
+\subsection{BackendController Module}
 
 \newcounter{moduletwotestcase}
 \newcommand{\mtwotestcount}{\stepcounter{moduletwotestcase}\themoduletwotestcase}
@@ -409,6 +581,145 @@ The following are the evaluation of the unit tests per module.
   M-UT\monetestcount & View history entry preview &
   Clicking a history entry displays the image preview and alt text &
   Preview image and alt text displayed correctly &
+  \caption{BackendController Module Unit Testing Evaluation}
+  \label{table:module2-unit-eval}
+  \endlastfoot
+
+  BCONT-UT\mtwotestcount & Send image validation request with valid image data through the backend controller. & 
+  The backend controller forwards the image to the Image Validation module and returns the validation results. & 
+  The backend controller correctly returns \texttt{Success} after calling the image validation module. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  BCONT-UT\mtwotestcount & Send alt text generation request with image data and a valid session ID through the backend controller.& 
+  The backend controller forwards the request to the Alt Text Generation module and returns the generated alt text.  & 
+  The backend controller correctly returns the generated alt text of \texttt{"Generated alt text"}. &
+  \cellcolor{green}Pass \\ \midrule
+
+  BCONT-UT\mtwotestcount & Send alt text history retrieval request with a valid session ID through the backend controller. &
+  The backend controller forwards the session ID to the Alt Text History module and returns the retrieved history. & 
+  The backend controller correctly returns the retrieved history of \texttt{["Alt text 1", "Alt text 2"]}. &
+  \cellcolor{green}Pass \\ \midrule
+  
+
+  BCONT-UT\mtwotestcount & Send alt text editing request through the backend controller. & 
+  The backend controller forwards the request to the Edit Alt Text module and returns the result. & 
+  The backend controller correctly returns the editing result of \texttt{"Success"}. &
+  \cellcolor{green}Pass \\ 
+
+\end{longtable}
+
+
+
+\subsection{AuthenticationService Module}
+
+\newcounter{modulethreetestcase}
+\newcommand{\mthreetestcount}{\stepcounter{modulethreetestcase}\themodulethreetestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{AuthenticationService Module Unit Testing Evaluation}
+  \label{table:module3-unit-eval}
+  \endlastfoot
+
+  AUTH-UT\mthreetestcount & Send a request with a valid email and password to the AuthenticationService. & 
+  The authentication service successfully creates a new user account and returns the user ID and access token. & 
+  The authentication service correctly returns the user ID and access token, i.e.,
+   \texttt{\{"user\_id": "test\_user\_id", "access\_token": "test\_access\_token "\}} &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  AUTH-UT\mthreetestcount & Send request with invalid email format to the AuthenticationService & 
+  The authentication service raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address". The supabase client is not called. &
+  The authentication service correctly raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address" and the supabase client is not called. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  AUTH-UT\mthreetestcount & Send a request with a password shorter than 8 characters to the AuthenticationService. & 
+  The authentication service raises a \texttt{ValueError} with the message "Password must be at least 8 characters". The Supabase client is not called. &
+  The authentication service correctly raises a \texttt{ValueError} with the message "Password must be at least 8 characters" and the Supabase client is not called. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+
+  AUTH-UT\mthreetestcount & Send a request with empty email and password to the AuthenticationService. & 
+  The authentication service raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address". The Supabase client is not called. &
+  The authentication service correctly raises a \texttt{ValueError} with the message "Email must be a @mcmaster.ca address" and the Supabase client is not called. &
+  \cellcolor{green}Pass \\  \midrule
+
+
+  AUTH-UT\mthreetestcount & Send a request with \texttt{STUDENT@mcmaster.ca} as the email to the AuthenticationService. & 
+  The authentication service correctly converts the email to lowercase before processing. &
+  The authentication service correctly converts the email to lowercase before processing. 
+  The Supabase client is called with \texttt{student@mcmaster. ca} &
+  \cellcolor{green}Pass \\ \midrule
+
+
+
+  AUTH-UT\mthreetestcount & Send a request with an existing email to the AuthenticationService. & 
+  The authentication service raises a \texttt{ValueError} with the message "Email is already in use". A verification email is not sent to the user&
+  No error was raised and the user received a Verification email.&
+  \cellcolor{red}Fail \\
+\end{longtable}
+
+
+
+\subsection{Module 4}
+
+\newcounter{modulefourtestcase}
+\newcommand{\mfourtestcount}{\stepcounter{modulefourtestcase}\themodulefourtestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{Module 4 Unit Testing Evaluation}
+  \label{table:module4-unit-eval}
+  \endlastfoot
+
+  M-UT\mfourtestcount & action & 
+  expected result & 
+  evaluate &
   \cellcolor{green}Pass \\ \midrule
   
   M-UT\monetestcount & Navigate back to upload screen &
@@ -532,6 +843,10 @@ The following are the evaluation of the unit tests per module.
   Unauthorized access prevented and redirect executed &
   \cellcolor{green}Pass \\
 
+  M-UT\mfourtestcount & action & 
+  expected result & 
+  evaluate &
+  \cellcolor{green}Pass \\ 
 \end{longtable}
 
 \section{Manual Testing}
@@ -717,12 +1032,11 @@ The following are the manual tests for this module.
     {\bf Test Steps:}
     \begin{enumerate}
       \item Open a screen with interactive controls.
-      \item Use {\tt ArrowLeft}, {\tt ArrowRight}, {\tt ArrowUp}, and {\tt ArrowDown} to move between elements where applicable.
-      \item Use {\tt Home} and {\tt End} to move to the first and last items.
+      \item Use \texttt{tab} to move between elements where applicable.
       \item Use {\tt Enter} or {\tt Space} to activate the selected control.
     \end{enumerate}
     {\bf Expected Results:} Keyboard navigation works correctly within the defined scope. Focus moves predictably and activation occurs without changing application state unexpectedly. \\
-    {\bf Failure Condition:} Arrow keys do not work, focus movement is inconsistent, or activation fails. \\
+    {\bf Failure Condition:} Tab key do not work, focus movement is inconsistent, or activation fails. \\
 
 \end{enumerate}
 The following table shows the evaluation of the userinterfaceaccessibility
@@ -760,28 +1074,287 @@ module’s manual tests.
 
   UIA-MT\uiamantestcount & Verify that the loaded screen contains a valid main landmark for primary content & 
   Main content area is identified by a valid main landmark & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
+  Main landmark was not present and did not identify the primary content area &
+  \cellcolor{red}Fail \\ \midrule
 
   UIA-MT\uiamantestcount & Load the screen and check automatic keyboard focus placement & 
   Focus is placed on the intended first interactive element & 
-  evaluate &
+  Initial focus was correctly placed on the expected interactive control &
   \cellcolor{green}Pass \\ \midrule
 
   UIA-MT\uiamantestcount & Trigger a UI change while a screen reader is enabled & 
   Screen reader announces the interface change clearly & 
-  evaluate &
+  Announcement was read clearly by the screen reader after any UI update &
   \cellcolor{green}Pass \\ \midrule
 
   UIA-MT\uiamantestcount & Use arrow keys, Home/End, and Enter/Space to navigate and activate controls & 
   Keyboard navigation works correctly within the interface scope & 
-evaluate &
+  Keyboard navigation and activation worked as expected without unexpected state changes &
   \cellcolor{green}Pass \\ 
-
 
 \end{longtable}
 
+\subsection{DataPreProcess Module}
+The following are the manual tests for this module.
 
+\begin{enumerate}[label=DP-MT \arabic*., wide=0pt, leftmargin=*]
+  \item{}
+    {\bf Initial State:} The preprocessing function is available and ready to process dataset examples. \\
+    {\bf Input:} A dataset example containing valid image paths and modified alt text. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Provide a dataset example containing valid image paths and alt text.
+      \item Run the preprocess function.
+      \item Inspect the returned encoded output.
+    \end{enumerate}
+    {\bf Expected Results:} The function successfully loads images and text and returns encoded tensors containing image and text representations. \\
+    {\bf Failure Condition:} The preprocessing function fails to return encoded outputs or raises an unexpected error. \\
+
+  \item{}
+    {\bf Initial State:} The preprocessing function is ready to process input images. \\
+    {\bf Input:} Image files that may not originally be in RGB format. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Provide image paths to the preprocess function.
+      \item Run preprocessing.
+      \item Inspect the processed images.
+    \end{enumerate}
+    {\bf Expected Results:} All images are converted to RGB format before being passed to the processor. \\
+    {\bf Failure Condition:} Images remain in their original format and are not converted to RGB. \\
+
+  \item{}
+    {\bf Initial State:} The preprocessing function receives alt text label with leading or trailing whitespace. \\
+    {\bf Input:} Alt text label containing extra whitespace characters. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Provide alt text label with leading or trailing spaces.
+      \item Run preprocessing.
+      \item Inspect the processed text values.
+    \end{enumerate}
+    {\bf Expected Results:} Leading and trailing whitespace is removed from the alt text. \\
+    {\bf Failure Condition:} Whitespace remains in the processed alt text. \\
+
+  \item{}
+    {\bf Initial State:} The preprocessing function is ready to process dataset examples. \\
+    {\bf Input:} A dataset example containing an invalid or unreadable image path. \\
+    {\bf Test Steps:}
+    \begin{enumerate}
+      \item Provide a dataset example containing an invalid image path.
+      \item Run the preprocess function.
+      \item Observe the system response.
+    \end{enumerate}
+    {\bf Expected Results:} The function raises an error indicating that the image cannot be opened or read. \\
+    {\bf Failure Condition:} The function silently proceeds or produces invalid encoded output. \\
+eeds the maximum length. \\
+\end{enumerate}
+
+The following table shows the evaluation of the datapreprocess
+module’s manual tests.
+
+\newcounter{dpmantestcase}
+\newcommand{\dpmantestcount}{\stepcounter{dpmantestcase}\thedpmantestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} &  \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{DataPreprocess Manual Testing Evaluation}
+  \label{table:dp-man-eval}
+  \endlastfoot
+
+  DPP-MT\dpmantestcount & Process valid image paths and alt text labels through the preprocess function & 
+  Valid images and text are encoded successfully & 
+  Images and alt text were processed successfully and encoded tensors were returned &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  DPP-MT\dpmantestcount & Provide image paths and run preprocessing to verify RGB conversion & 
+  Images are converted to RGB format before encoding & 
+  Images were successfully converted to RGB format before processing &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  DPP-MT\dpmantestcount & Provide alt text containing leading or trailing whitespace & 
+  Whitespace is removed from alt text & 
+  Alt text whitespace was successfully stripped before encoding &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  DPP-MT\dpmantestcount & Provide an invalid or unreadable image path to preprocessing & 
+  Function raises an error indicating the image cannot be opened & 
+  Invalid image path correctly triggered an error during preprocessing &
+  \cellcolor{green}Pass \\ 
+\end{longtable}
+
+
+\subsection{ModelOutput Module}
+
+No automated unit tests were implemented for this module. Its behavior was verified through the manual tests described in Section~7 (MO-MT1), which confirm that generated alt-text is correctly formatted and displayed to the user.
+
+\subsection{AIModelTraining Module}
+
+Unit tests were not implemented for this module because the training process operates as part of the model training pipeline rather than as isolated functions. Validation was performed through the manual testing procedures described in Section~7 (AI-MT1).
+
+\subsection{CaptionGeneration Module}
+
+The functionality of this module was evaluated through the manual tests described in Section~7 (CG-MT1), where uploaded images were used to verify that the system generates meaningful alt-text descriptions.
+
+\subsection{InternalMetricCompliance Module}
+
+No dedicated unit tests were implemented for this module. Instead, its behavior was verified through the manual tests in Section~7 (IMC-MT1), where generated captions were evaluated against the system’s internal quality metrics.
+\section{Manual Testing}
+
+The following section outlines the manual tests performed for the AI modules.
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{4.5cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{Test ID} & \textbf{Module} &
+  \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{Test ID} & \textbf{Module} &
+  \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{Manual Testing Summary for AI Modules}
+  \label{table:manual-ai-tests}
+  \endlastfoot
+
+
+MO-MT1 & ModelOutput Module &
+Verify generated alt-text is correctly formatted and displayed to the user. &
+All assertions pass &
+\cellcolor{green}Pass \\ \midrule
+
+AI-MT1 & AIModelTraining Module &
+Verify that the model training process successfully produces a trained model. &
+All assertions pass &
+\cellcolor{green}Pass \\ \midrule
+
+CG-MT1 & CaptionGeneration Module &
+Verify that the system generates descriptive alt-text for uploaded images. &
+All assertions pass &
+\cellcolor{green}Pass \\ \midrule
+
+IMC-MT1 & InternalMetricCompliance Module &
+Verify that generated captions satisfy internal quality evaluation metrics. &
+All assertions pass &
+\cellcolor{green}Pass \\
+
+\end{longtable}
+\subsection{ModelOutput Module}
+
+The following are the manual tests for this module.
+
+MO-MT 1. \textbf{Initial State:} The system has successfully generated alt-text for an uploaded image.
+
+\textbf{Input:} The backend returns the generated caption to be displayed to the user.
+
+\textbf{Test Steps:}
+
+(a) Upload a valid diagram image.
+
+(b) Wait for the alt-text generation process to complete.
+
+(c) Observe the output displayed on the user interface.
+
+\textbf{Expected Results:} The generated alt-text is correctly formatted and displayed to the user through the interface.
+
+\textbf{Failure Condition:} The generated alt-text is missing, incorrectly formatted, or not displayed to the user.
+
+
+\subsection{AIModelTraining Module}
+
+The following are the manual tests for this module.
+
+AI-MT 1. \textbf{Initial State:} The training dataset and configuration parameters are available.
+
+\textbf{Input:} The model training process is initiated using the dataset.
+
+\textbf{Test Steps:}
+
+(a) Start the training pipeline.
+
+(b) Load the dataset used for training the model.
+
+(c) Monitor the training process for completion.
+
+\textbf{Expected Results:} The model successfully completes training and produces a trained model artifact used for caption generation.
+
+\textbf{Failure Condition:} Training fails to complete, produces errors, or does not generate a usable trained model.
+
+
+\subsection{CaptionGeneration Module}
+
+The following are the manual tests for this module.
+
+CG-MT 1. \textbf{Initial State:} A trained model exists and a valid image has been uploaded.
+
+\textbf{Input:} The system processes the uploaded image using the trained model.
+
+\textbf{Test Steps:}
+
+(a) Upload a valid diagram image.
+
+(b) Submit the image for caption generation.
+
+(c) Wait for the caption generation process.
+
+\textbf{Expected Results:} The system generates descriptive alt-text that reflects the content of the image.
+
+\textbf{Failure Condition:} The system fails to generate alt-text, produces irrelevant text, or returns an error.
+
+
+\subsection{InternalMetricCompliance Module}
+
+The following are the manual tests for this module.
+
+IMC-MT 1. \textbf{Initial State:} A caption has been generated by the CaptionGeneration module.
+
+\textbf{Input:} The generated caption is evaluated using internal quality metrics.
+
+\textbf{Test Steps:}
+
+(a) Generate alt-text from an uploaded image.
+
+(b) Allow the system to run internal metric validation checks.
+
+(c) Observe whether the caption passes the internal quality checks.
+
+\textbf{Expected Results:} The caption is evaluated against internal metrics and confirmed to meet clarity and quality standards.
+
+\textbf{Failure Condition:} The caption fails validation checks or the system does not evaluate the generated caption.
 
 \section{Changes Due to Testing}
 
@@ -794,7 +1367,30 @@ should be highlighted.}
 		
 \section{Trace to Requirements}
 		
-\section{Trace to Modules}		
+\section{Trace to Modules}
+
+The following table shows the relationship between the tests performed
+and the modules defined in the Module Guide. Each test verifies the
+correct functionality of the corresponding module.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Test ID} & \textbf{Module} \\ \hline
+
+MO-MT1 & ModelOutput Module \\ \hline
+AI-MT1 & AIModelTraining Module \\ \hline
+CG-MT1 & CaptionGeneration Module \\ \hline
+IMC-MT1 & InternalMetricCompliance Module \\ \hline
+
+
+\end{tabular}
+\caption{Traceability Between Tests and Modules}
+\label{table:test-module-trace}
+\end{table}
+
+
 \section{Code Coverage Metrics}
 
 The following analyzes the code coverage metrics for the React frontend of the system. The analysis is based on the coverage data generated using Jest and React Testing Library as shown in Figure~\ref{fig:FrontendCoverage}. Code coverage is a measure of how well the codebase is tested, and it helps identify areas that may require additional testing.
@@ -820,10 +1416,18 @@ graduate attribute of Reflection.
 
 \input{../Reflection.tex}
 
+\textbf{Fiza's Reflection}
+
 \begin{enumerate}
-  \item What went well while writing this deliverable? 
-  \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
+\item What went well while writing this deliverable? 
+  
+One aspect that went well while writing this deliverable was the clear structure provided by the VnV template and the previous planning documents. Since the system architecture, modules, and test plans were already defined in earlier deliverables such as the Module Guide and VnV Plan, it was easier to connect the implemented tests to the system components. 
+Collaboration within the team also worked well, as each member was responsible for specific modules and testing sections, which allowed the work to be divided efficiently and integrated into a consistent report format.
+
+\item What pain points did you experience during this deliverable, and how
+did you resolve them?
+
+    One challenge during this deliverable was ensuring consistency between the different sections of the report, such as aligning manual tests, system tests, and module traceability with the modules defined in the Module Guide. Another difficulty was formatting complex LaTeX tables and ensuring they compiled correctly while maintaining a consistent style across the document. These issues were resolved through iterative debugging of the LaTeX code and by coordinating with teammates to ensure the testing sections aligned with the previously defined modules and test cases.
   \item Which parts of this document stemmed from speaking to your client(s) or
   a proxy (e.g. your peers)? Which ones were not, and why?
   \item In what ways was the Verification and Validation (VnV) Plan different
