@@ -13,6 +13,7 @@
 \usepackage{longtable}
 \usepackage{colortbl}
 \usepackage{enumitem}
+\usepackage{graphicx}
 \usepackage[round]{natbib}
 \hypersetup{
     colorlinks,
@@ -1395,15 +1396,17 @@ During testing, Team 22 had found that some user navigation processes were not a
 While our testing showed us many faults in our solution, not all of them could be fixed. For future revisions, Team 22 plans to further increase alt-text quality by adding more specificity and context to generation (using AI hypertuning methods). Conducting user testing has given us sufficient data to know what features and system modules to improve for better usability. 
 
 \section{Automated Testing}
-
 \subsection{Accessibility Checker - Axe}
-The accessibility checks were done using a third-party website, Axe, which helped Team 22 understand gaps in user navigation for people with disabilities. An example of a generated report can be seen below:
-\begin{figure}[H] % or [htbp] + \FloatBarrier below
-  \centering
-  \includegraphics[width=\textwidth]{R4A_VnVRep_autoTest.png}
-  \caption{Automated Report for "Upload Page" in R4A System}
-  \label{fig:work-context}
+
+The accessibility checks were done using a third-party website, Axe, which helped Team 22 understand gaps in user navigation for people with disabilities. An example of a generated report can be seen below.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{R4A_VnVRep_autoTest.png}
+\caption{Automated Report for ``Upload Page'' in the Reading4All System}
+\label{fig:work-context}
 \end{figure}
+
 Reports like these made it easier for the team to identify accessibility oversights and best practices we might have missed and fix them.
 
 \subsection{CI/CD}
