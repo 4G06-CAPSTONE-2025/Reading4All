@@ -41,10 +41,9 @@
 \section{Revision History}
 
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\toprule {\bf Date} & {\bf Name} & {\bf Created initial draft of VnV Report}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+March 9, 2026 & All & Notes\\
 \bottomrule
 \end{tabularx}
 
@@ -978,7 +977,7 @@ The following are the manual tests for this module.
 
   \bottomrule
   \caption{UserInterfaceInterfactions Manual Testing Evaluation}
-  \label{table:uii-man-eval}
+  \label{table:UII-MT-eval}
   \endlastfoot
 
 UII-MT\uiimantestcount & Upload a valid image file (.png or .jpeg) using the Choose File button & 
@@ -1419,30 +1418,43 @@ These automated checks helped the team detect issues early in the development pr
 Additionally, the CI/CD pipeline supported reproducibility by ensuring that the same build and testing procedures were executed consistently for each update. This contributed to a more stable and reliable development process for the Reading4All system.
 		
 \section{Trace to Requirements}
-		
-\section{Trace to Modules}
+		\section{Trace to Modules}
 
 The following table shows the relationship between the tests performed
 and the modules defined in the Module Guide. Each test verifies the
-correct functionality of the corresponding module.
+correct functionality of the corresponding module in the Reading4All system.
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
-\begin{tabular}{|c|c|}
+\begin{tabular}{|c|l|}
 \hline
 \textbf{Test ID} & \textbf{Module} \\ \hline
+
+IMGVAL-UT1 -- IMGVAL-UT5 & ImageValidation Module \\ \hline
+BCONT-UT1 -- BCONT-UT4 & BackendController Module \\ \hline
+AUTH-UT1 -- AUTH-UT6 & AuthenticationService Module \\ \hline
+
+MAIN-UT1 -- MAIN-UT18 & MainScreen Module \\ \hline
+HIST-UT1 -- HIST-UT4 & ShowHistory Module \\ \hline
+LOGIN-UT1 -- LOGIN-UT16 & LoginScreen Module \\ \hline
+
+UII-MT1 -- UII-MT6 & UserInterfaceInteractions Module \\ \hline
+UIA-MT1 -- UIA-MT4 & UserInterfaceAccessibility Module \\ \hline
+
+DPP-MT1 -- DPP-MT4 & DataPreProcess Module \\ \hline
 
 MO-MT1 & ModelOutput Module \\ \hline
 AI-MT1 & AIModelTraining Module \\ \hline
 CG-MT1 & CaptionGeneration Module \\ \hline
 IMC-MT1 & InternalMetricCompliance Module \\ \hline
 
+FR-ST1 -- FR-ST7 & System Functional Tests (cross-module verification) \\ \hline
+NFR-ST1 -- NFR-ST24 & System Nonfunctional Tests (cross-module verification) \\ \hline
 
 \end{tabular}
 \caption{Traceability Between Tests and Modules}
 \label{table:test-module-trace}
 \end{table}
-
 
 \section{Code Coverage Metrics}
 
