@@ -1420,6 +1420,50 @@ These automated checks helped the team detect issues early in the development pr
 Additionally, the CI/CD pipeline supported reproducibility by ensuring that the same build and testing procedures were executed consistently for each update. This contributed to a more stable and reliable development process for the Reading4All system.
 		
 \section{Trace to Requirements}
+The following table (Table \ref{table:test-requirement-trace}) shows the relationship between the tests performed and
+the requirements deﬁned in the \citet{SRS}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+\textbf{Test ID} & \textbf{SRS Requirement(s) Satisfied} \\ \hline
+
+IMGVAL-UT1 -- IMGVAL-UT5 & FR 1, MD-SL 3, SR-IM 1 \\ \hline
+
+BCONT-UT1 -- BCONT-UT4 & FR 1, FR 2, FR 4, FR 5 \\ \hline
+
+AUTH-UT1 -- AUTH-UT6 & FR 6, SR-AR 1, SR-IM 2 \\ \hline
+
+MAIN-UT1 -- MAIN-UT18 & FR 1, FR 2, FR 4, UHR-EUR 1, UHR-EUR 2 \\ \hline
+
+HIST-UT1 -- HIST-UT4 & FR 5, UHR-EUR 2 \\ \hline
+
+LOGIN-UT1 -- LOGIN-UT16 & FR 6, SR-AR 1, SR-PR 1 \\ \hline
+
+UII-MT1 -- UII-MT6 & FR 1, FR 2, FR 4, FR 6, UHR-PIR 1 \\ \hline
+
+UIA-MT1 -- UIA-MT4 & LFR-AR 1, LFR-AR 3, LFR-AR 4, UHR-AR 2 \\ \hline
+
+DPP-MT1 -- DPP-MT4 & PR-SL 1, PR-SL 2, PR-PAR 1 \\ \hline
+
+MO-MT1 & FR 2, PR-PAR 2 \\ \hline
+
+AI-MT1 & PR-PAR 3 \\ \hline
+
+CG-MT1 & FR 2, PR-PAR 1 \\ \hline
+
+IMC-MT1 & PR-PAR 1, PR-PAR 2, PR-PAR 3 \\ \hline
+
+FR-ST1 -- FR-ST7 & FR 1 -- FR 6 \\ \hline
+
+NFR-ST1 -- NFR-ST24 & LFR-AR 1 -- LFR-AR 4, UHR-EUR 1 -- UHR-EUR 4, PR-SL 1 -- PR-SL 2, SR-AR 1, SR-PR 1 \\ \hline
+
+\end{tabular}
+\caption{Traceability Between Tests and Requirements}
+\label{table:test-requirement-trace}
+\end{table}
+
 		\section{Trace to Modules}
 
 The following table shows the relationship between the tests performed
