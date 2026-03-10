@@ -27,4 +27,3 @@ class AuthService:
             "user_id": user_id,
             "access_token": access_token
         }
-
