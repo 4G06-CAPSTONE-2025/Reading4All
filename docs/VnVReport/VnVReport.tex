@@ -192,6 +192,37 @@ functional requirements.
 
 \section{Nonfunctional Requirements Evaluation}
 
+The following section reports on the nonfunctional requirements Team 22 evaluated and its results.
+
+\subsection{Internal Testing Results}
+
+Five evaluators assessed the generated alt text using the metrics defined in Table~\ref{tab:internal_results}. Each evaluator rated the output on Sufficiency of Description, Length Appropriateness, Accessibility/Usability, and Learning Impact. Table~\ref{tab:internal_results} summarizes the scores collected.
+
+\begin{table}[h]
+\centering
+\caption{Internal Evaluation Scores per Evaluator}
+\label{tab:internal_results}
+\begin{tabular}{|l|c|c|c|c|l|}
+\hline
+\textbf{Evaluator} & \textbf{Sufficiency} & \textbf{Length} & \textbf{Accessibility} & \textbf{Learning} & \textbf{Notes} \\
+ & \textbf{(1--3)} & \textbf{(1--3)} & \textbf{(0--3)} & \textbf{(0--3)} & \\
+\hline
+Person 1 & 2 & 3 & 3 & 1 & N/A \\
+Person 2 & 2 & 3 & 3 & 2 & N/A \\
+Person 3 & 2 & 3 & 3 & 1 & N/A \\
+Person 4 & 2 & 2 & 3 & 1 & N/A \\
+Person 5 & 2 & 2 & 3 & 1 & N/A \\
+\hline
+\textbf{Mean}  & \textbf{2.0} & \textbf{2.6} & \textbf{3.0} & \textbf{1.2} & --- \\
+\hline
+\textbf{Acceptable} & $\geq 3$ & $\geq 3$ & $\geq 2$ & $\geq 2$ & --- \\
+\hline
+\end{tabular}
+\end{table}
+
+The results indicate that Accessibility/Usability consistently met or exceeded the acceptable threshold across all evaluators, with a mean score of 3.0. Length Appropriateness averaged 2.6, falling slightly below the acceptable threshold of 3. Sufficiency of Description scored uniformly at 2.0, below the acceptable threshold of 3, suggesting that the generated alt text does not yet convey sufficient information to fully achieve the intended objective. Learning Impact averaged 1.2, also below the acceptable threshold of 2, indicating that improvements are needed to better support user understanding in learning contexts.
+
+\subsection{System Tests}
 The following section outlines the evaluation of the system tests created for the 
 nonfunctional requirements. 
 
@@ -225,47 +256,52 @@ nonfunctional requirements.
   \label{table:NFR-ST-eval}
   \endlastfoot
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
+  NFR-ST\nfrtestcount & 
+  User adjusts browser zoom to maximum and evaluates color contrast using accessibility tools &
+  Text resizes correctly without overlap; contrast meets WCAG 2.1 AA accessibility requirements; images include alternative text &
+  Tester confirms accessibility compliance using zoom tests, contrast checkers, and screen readers &
   \cellcolor{green}Pass \\ \midrule
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
+  NFR-ST\nfrtestcount &
+  Tester visually inspects layout, typography, colors, and branding elements of the interface &
+  Interface maintains consistent styling; McMaster branding is present and does not interfere with usability; design aligns with Norman’s principles &
+  Tester verifies UI against style guide, branding rules, and Norman’s usability principles &
   \cellcolor{green}Pass \\ \midrule
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
+  NFR-ST\nfrtestcount &
+  Users perform key tasks such as login, image upload, and alt-text generation &
+  Tasks are completed efficiently; feedback is received within FEEDBACK\_TIME; users can recall steps and correct errors easily &
+  Tester evaluates usability through timed task completion, feedback monitoring, and observation of user error recovery &
   \cellcolor{green}Pass \\ \midrule
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
+  NFR-ST\nfrtestcount &
+User generates alt text and selects the copy or storage option &
+Alt text is successfully copied to the clipboard or stored as requested &
+Tester verifies each option by generating alt text and confirming correct execution of the selected storage method &
+\cellcolor{green}Pass \\ \midrule
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
+  NFR-ST\nfrtestcount &
+Screen reader users upload images and generate alt text using assistive technologies such as NVDA, JAWS, or VoiceOver &
+Users successfully generate and obtain alt text within the time limit and navigate the interface efficiently using screen readers &
+Tester conducts usability sessions with screen reader tools and measures task completion time and navigation success &
+\cellcolor{green}Pass \\ \midrule
 
-  NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
-
-
-    NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ \midrule
+  NFR-ST\nfrtestcount &
+Images of different sizes were uploaded under typical system conditions to evaluate alt-text generation time &
+Alt text should be generated within the specified performance threshold while the UI remains responsive &
+Image validity was unit tested, while generation time was measured manually during testing; the UI responsiveness and model response time were observed and recorded &
+\cellcolor{red}Fail \\ \midrule
 
 
-    NFR-ST\nfrtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\  \midrule
+    NFR-ST\nfrtestcount &
+Tester simulates long-running or stalled image processing to trigger a timeout condition &
+User is notified of the timeout with an option to retry; incomplete data is deleted and no technical details are exposed in messages &
+Tester verifies timeout notifications, retry option, proper data cleanup, and absence of sensitive technical information in error messages &
+\cellcolor{green}Pass \\ \midrule
+
+
+    NFR-ST\nfrtestcount & Conduct user evaluation of generated alt text using defined rating metrics (sufficiency, length, accessibility, learning impact) & 
+  Average ratings meeting required thresholds: R\_SUFFICIENCY, R\_LENGTH, and R\_USABILITY \_MEDIAN  & Average ratings: sufficiency= 2.0, length= 3.0, learning impact= 1.33. Only length and accessibility met thresholds  & \cellcolor{red}Fail \\  \midrule
 
    NFR-ST\nfrtestcount & Uploads unsupported fil or corrupted files and simulate backend process failures in order to evaluate system error handling and recovery. & 
    System displays a clear error message and recovers within T\_RECOVERY seconds. & System displays to user a clear error message and recovers in 1.8 seconds, which is within the required threshold of T\_RECOVERY  &
@@ -541,12 +577,10 @@ The following are the evaluation of the unit tests per module.
   \cellcolor{red}Fail \\
 \end{longtable}
 
+\subsection{MainScreen Module}
 
-
-\subsection{Module 4}
-
-\newcounter{modulefourtestcase}
-\newcommand{\mfourtestcount}{\stepcounter{modulefourtestcase}\themodulefourtestcase}
+\newcounter{mainscreentestcase}
+\newcommand{\mainscreentestcount}{\stepcounter{mainscreentestcase}\themainscreentestcase}
 
 \begin{longtable}{@{}c
     >{\raggedright\arraybackslash}p{4.0cm}
@@ -562,7 +596,7 @@ The following are the evaluation of the unit tests per module.
 
   \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
   \toprule
-  \textbf{ID} &  \textbf{Action} &
+  \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endhead
@@ -571,21 +605,271 @@ The following are the evaluation of the unit tests per module.
   \endfoot
 
   \bottomrule
-  \caption{Module 4 Unit Testing Evaluation}
-  \label{table:module4-unit-eval}
+  \caption{MainScreen Unit Testing Evaluation}
+  \label{table:mainscreen-unit-eval}
   \endlastfoot
 
-  M-UT\mfourtestcount & action & 
-  expected result & 
-  evaluate &
+  MAIN-UT\mainscreentestcount & Render HomeScreen page &
+  Homepage title is displayed &
+  Homepage title displayed successfully &
   \cellcolor{green}Pass \\ \midrule
 
+  MAIN-UT\mainscreentestcount & Render HomeScreen subtitle &
+  Homepage subtitle describing system purpose is visible &
+  Subtitle displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
 
-  M-UT\mfourtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ 
+  MAIN-UT\mainscreentestcount & Display signup button on homepage &
+  Signup button is visible for new users &
+  Signup button rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Display login button on homepage &
+  Login button is visible for returning users &
+  Login button rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Render UploadScreen title &
+  Upload page title is visible &
+  Title displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Render UploadScreen subtitle &
+  Upload page subtitle guiding users is visible &
+  Subtitle displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Verify upload instructions accessibility &
+  Upload instructions accessible through ARIA label &
+  ARIA label detected successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Verify upload input accessibility label &
+  Upload input field contains accessible label &
+  Label detected successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Display Choose File button &
+  Choose File button is visible for uploading images &
+  Button displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Upload valid image file &
+  Image successfully uploaded and backend request triggered &
+  Image uploaded and confirmation displayed &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Upload image using drag-and-drop &
+  Image uploaded using drag-and-drop functionality &
+  Drag-and-drop upload completed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Remove uploaded image &
+  Uploaded image removed from interface &
+  Image removed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Generate alt text after image upload &
+  Generated alt text displayed in output field &
+  Alt text generated and displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Upload new image after generation &
+  Previous alt text resets when new image uploaded &
+  Alt text reset confirmed &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Copy generated alt text &
+  Alt text copied to clipboard successfully &
+  Clipboard copy function executed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Keyboard accessibility for file upload &
+  Pressing Enter opens file selection dialog &
+  File input triggered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Handle image upload error &
+  Error message displayed when upload fails &
+  Error message displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Handle alt text generation failure &
+  Error message displayed when alt text generation fails &
+  Error message displayed correctly &
+  \cellcolor{green}Pass \\
 \end{longtable}
+
+
+
+\subsection{ShowHistory Module}
+
+\newcounter{showhistorytestcase}
+\newcommand{\showhistorytestcount}{\stepcounter{showhistorytestcase}\theshowhistorytestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{ShowHistory Unit Testing Evaluation}
+  \label{table:showhistory-unit-eval}
+  \endlastfoot
+
+  HIST-UT\showhistorytestcount & Render ShowHistory page &
+  History page title and navigation button are displayed &
+  Title and back button displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  HIST-UT\showhistorytestcount & Display history entries &
+  Uploaded image history entries are listed on the page &
+  History entries rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  HIST-UT\showhistorytestcount & View history entry preview &
+  Clicking a history entry displays the image preview and alt text &
+  Preview image and alt text displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  HIST-UT\showhistorytestcount & Navigate back to upload screen &
+  Clicking the back button navigates to the upload page &
+  Navigation executed successfully &
+  \cellcolor{green}Pass \\
+\end{longtable}
+
+
+
+\subsection{LoginScreen Module}
+
+\newcounter{loginscreentestcase}
+\newcommand{\loginscreentestcount}{\stepcounter{loginscreentestcase}\theloginscreentestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{LoginScreen Unit Testing Evaluation}
+  \label{table:loginscreen-unit-eval}
+  \endlastfoot
+
+  LOGIN-UT\loginscreentestcount & Render login interface &
+  Login page title and input fields are visible &
+  Login interface rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Submit login with empty fields &
+  System rejects login attempt and displays validation error &
+  Validation error displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Enter email and password credentials &
+  User can type and update values in email and password fields &
+  Input fields accept user input correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Login with valid credentials &
+  System sends authentication request and redirects user to upload page &
+  Authentication request successful and navigation executed &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Login with invalid credentials &
+  System displays authentication error message &
+  Error message displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Network failure during login &
+  System displays network error message &
+  Network error message displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Render signup form interface &
+  Signup form fields and instructions are displayed &
+  Signup interface rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Signup validation with missing email &
+  System displays validation error when email is not provided &
+  Validation error displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Signup validation for short password &
+  System rejects passwords shorter than minimum length &
+  Password validation message displayed &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Signup validation for mismatched passwords &
+  System rejects mismatched password entries &
+  Mismatch validation error displayed &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Send verification code &
+  Verification code request sent to backend and OTP field enabled &
+  Verification request executed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Signup attempt without OTP &
+  System prevents signup and displays OTP required error &
+  OTP validation error displayed &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Complete successful signup &
+  System verifies OTP and completes account registration &
+  Signup process completed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & RequireAuth loading state &
+  Protected content not rendered until authentication check completes &
+  Content hidden during authentication check &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & RequireAuth authenticated access &
+  Authenticated users can access protected content &
+  Protected content rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & RequireAuth unauthorized access &
+  Unauthenticated users are redirected to login page &
+  Unauthorized access prevented and redirect executed &
+  \cellcolor{green}Pass \\
+\end{longtable}
+
 
 \section{Manual Testing}
 \subsection{UserInterfaceInteractions Module}
@@ -1095,42 +1379,91 @@ IMC-MT 1. \textbf{Initial State:} A caption has been generated by the CaptionGen
 \textbf{Failure Condition:} The caption fails validation checks or the system does not evaluate the generated caption.
 
 \section{Changes Due to Testing}
+During the internal testing phase, several changes were made to the tool based on feedback from the TA, professor, supervisor and from Team 22.
+A brief description of each change and its implementation is listed below:
 
-\wss{This section should highlight how feedback from the users and from 
-the supervisor (when one exists) shaped the final product.  In particular 
-the feedback from the Rev 0 demo to the supervisor (or to potential users) 
-should be highlighted.}
+\subsection{Narrowing the Scope}
+While the team had the ambition to make a STEM-alt text generator, this proved to be very expensive in terms of time needed for training and constraints on available computers for AI model tuning. To make up for this, Team 22 narrowed the scope to only "Physics" based diagrams, with a plan to further narrow the image types to a select list. This change would help our AI model learn better, contextual text and in turn produce higher quality, specific alt text that is usable for several stakeholders like students and teachers.\\
+
+\subsection{Shortening Alt-Text Generation Time}
+The AI model initially took five minutes or more to generate text for one image. After talking to our supervisor, Team 22 was able to decide on a faster model that provided mediocre alt-text generation while adding in indicators for user navigations and processes. We were able to cut down from approximately five minutes per image to ~1-2 minutes per image, which significantly reduced user frustration. \\
+
+\subsection{Clearer User Navigation}
+During testing, Team 22 had found that some user navigation processes were not as clear to a screen-reader user or someone with a visual impairment. Examples include no descriptive 'aria' labels or a misplaced page navigation. To fix this, we tried testing both automatically and manually in several ways including testing the solution with just the keyboard and voice assist. This significantly improved our solution, reduced tester frustration and gave users a clear indication of what was going on behind the scenes. \\
+
+\subsection{Future Work}
+While our testing showed us many faults in our solution, not all of them could be fixed. For future revisions, Team 22 plans to further increase alt-text quality by adding more specificity and context to generation (using AI hypertuning methods). Conducting user testing has given us sufficient data to know what features and system modules to improve for better usability. 
 
 \section{Automated Testing}
+
+\subsection{Accessibility Checker - Axe}
+The accessibility checks were done using a third-party website, Axe, which helped Team 22 understand gaps in user navigation for people with disabilities. An example of a generated report can be seen below:
+\begin{figure}[H] % or [htbp] + \FloatBarrier below
+  \centering
+  \includegraphics[width=\textwidth]{R4A_VnVRep_autoTest.png}
+  \caption{Automated Report for "Upload Page" in R4A System}
+  \label{fig:work-context}
+\end{figure}
+Reports like these made it easier for the team to identify accessibility oversights and best practices we might have missed and fix them.
+
+\subsection{CI/CD}
+
+Continuous Integration and Continuous Deployment (CI/CD) practices were used to ensure that changes to the Reading4All system could be integrated and tested efficiently. Whenever updates were pushed to the repository, automated workflows were triggered to verify that the system built successfully and that core components continued to function as expected.
+
+These automated checks helped the team detect issues early in the development process and prevented unstable code from being merged into the main branch. By incorporating CI/CD into the development workflow, Team 22 was able to maintain code quality, streamline collaboration, and ensure that new features or fixes did not unintentionally break existing functionality.
+
+Additionally, the CI/CD pipeline supported reproducibility by ensuring that the same build and testing procedures were executed consistently for each update. This contributed to a more stable and reliable development process for the Reading4All system.
 		
 \section{Trace to Requirements}
-		
-\section{Trace to Modules}
+		\section{Trace to Modules}
 
 The following table shows the relationship between the tests performed
 and the modules defined in the Module Guide. Each test verifies the
-correct functionality of the corresponding module.
+correct functionality of the corresponding module in the Reading4All system.
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
-\begin{tabular}{|c|c|}
+\begin{tabular}{|c|l|}
 \hline
 \textbf{Test ID} & \textbf{Module} \\ \hline
+
+IMGVAL-UT1 -- IMGVAL-UT5 & ImageValidation Module \\ \hline
+BCONT-UT1 -- BCONT-UT4 & BackendController Module \\ \hline
+AUTH-UT1 -- AUTH-UT6 & AuthenticationService Module \\ \hline
+
+MAIN-UT1 -- MAIN-UT18 & MainScreen Module \\ \hline
+HIST-UT1 -- HIST-UT4 & ShowHistory Module \\ \hline
+LOGIN-UT1 -- LOGIN-UT16 & LoginScreen Module \\ \hline
+
+UII-MT1 -- UII-MT6 & UserInterfaceInteractions Module \\ \hline
+UIA-MT1 -- UIA-MT4 & UserInterfaceAccessibility Module \\ \hline
+
+DPP-MT1 -- DPP-MT4 & DataPreProcess Module \\ \hline
 
 MO-MT1 & ModelOutput Module \\ \hline
 AI-MT1 & AIModelTraining Module \\ \hline
 CG-MT1 & CaptionGeneration Module \\ \hline
 IMC-MT1 & InternalMetricCompliance Module \\ \hline
 
+FR-ST1 -- FR-ST7 & System Functional Tests (cross-module verification) \\ \hline
+NFR-ST1 -- NFR-ST24 & System Nonfunctional Tests (cross-module verification) \\ \hline
 
 \end{tabular}
 \caption{Traceability Between Tests and Modules}
 \label{table:test-module-trace}
 \end{table}
 
-
 \section{Code Coverage Metrics}
 
+The following analyzes the code coverage metrics for the React frontend of the system. The analysis is based on the coverage data generated using Jest and React Testing Library as shown in Figure~\ref{fig:FrontendCoverage}. Code coverage is a measure of how well the codebase is tested, and it helps identify areas that may require additional testing.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{FrontendCoverage.png}
+\caption{Coverage Report of the React Frontend}
+\label{fig:FrontendCoverage}
+\end{figure}
+ 
 \bibliographystyle{plainnat}
 \bibliography{../../refs/References}
 
@@ -1141,6 +1474,42 @@ The information in this section will be used to evaluate the team members on the
 graduate attribute of Reflection.
 
 \input{../Reflection.tex}
+
+
+\textbf{Team Reflection}
+\begin{enumerate}
+\item Which parts of this document stemmed from speaking to your client(s) or
+  a proxy (e.g. your peers)? Which ones were not, and why?
+
+One aspect that stemmed from speaking with our supervisor is the importance of manual testing over automated testing, specifically the user interface. 
+Our supervisor emphasized the importance of ensuring our interface is accessible and this is highlighted through our various nun-functional tests. 
+We tried our best to put ourselves in the users shoes and understand any difficulties or issues they might face while using the Reading4All application. 
+Furthermore, determining which aspects of the system to unit test verses manually test was determined through discussions with our TA supervisor. This was an aspect 
+we were initialling unsure about; however, after discussions we determined that certain aspects such as the system as a whole, the accessibility, and alt text generation might be better manually tested. 
+The Reading4All system implementation was mainly derived from our previous learnings through courses and industry standards, rather than from our clients and peers. 
+
+
+\item In what ways was the Verification and Validation (VnV) Plan different
+  from the activities that were actually conducted for VnV?  If there were
+  differences, what changes required the modification in the plan?  Why did
+  these changes occur?  Would you be able to anticipate these changes in future
+  projects?  If there weren't any differences, how was your team able to clearly
+  predict a feasible amount of effort and the right tasks needed to build the
+  evidence that demonstrates the required quality?  (It is expected that most
+  teams will have had to deviate from their original VnV Plan.)
+
+One way that the VnV plan was different from the activities conducted was that we initially planned to test all our modules, prior to us determining and forming our modules. 
+This caused an issue when trying to actually conduct the VnV, as the modules were designed without having the testing in mind. This led us to have modules that were difficult 
+to directly test and have concrete results for. As a result, one modification to the plan and overall system, is that certain modules had to be refactored as they could not be 
+effectively tested and did not have any code we can point to. 
+Furthermore, our VnV plan was dependent on a specific solution, that was vastly modified throughout the year. The VnV plan should have been written in a more
+generalized manner such that it would be flexible for any solution. For example, earlier in the year our team thought that a feedback module would be an appropriate way to train 
+our AI model, however, through more research and various experiments, we determined that hypertuning would lead to better results. We believe we could not have anticipated this, as based 
+on our AI knowledge at the time, we believed this would lead to the best design and implementation. Looking back, it's important for us to make a testing plan that depends more on the results 
+and functionality that our system will exhibit rather than how it will be implemented as this often changes. 
+
+
+\end{enumerate}
 
 \textbf{Fiza's Reflection}
 
@@ -1154,16 +1523,53 @@ Collaboration within the team also worked well, as each member was responsible f
 did you resolve them?
 
     One challenge during this deliverable was ensuring consistency between the different sections of the report, such as aligning manual tests, system tests, and module traceability with the modules defined in the Module Guide. Another difficulty was formatting complex LaTeX tables and ensuring they compiled correctly while maintaining a consistent style across the document. These issues were resolved through iterative debugging of the LaTeX code and by coordinating with teammates to ensure the testing sections aligned with the previously defined modules and test cases.
-  \item Which parts of this document stemmed from speaking to your client(s) or
-  a proxy (e.g. your peers)? Which ones were not, and why?
-  \item In what ways was the Verification and Validation (VnV) Plan different
-  from the activities that were actually conducted for VnV?  If there were
-  differences, what changes required the modification in the plan?  Why did
-  these changes occur?  Would you be able to anticipate these changes in future
-  projects?  If there weren't any differences, how was your team able to clearly
-  predict a feasible amount of effort and the right tasks needed to build the
-  evidence that demonstrates the required quality?  (It is expected that most
-  teams will have had to deviate from their original VnV Plan.)
+
+\end{enumerate}
+
+\textbf{Moly Mikhail's Reflection}
+
+\begin{enumerate}
+\item What went well while writing this deliverable? 
+  
+I think many aspects went well while writing this deliverable. Writing the unit tests for the backend was a smooth process as
+I was highly familiar with the code base and the different branches to be covered. Another aspect that went well was documenting our unit test results, this also provided another opportunity for me to review the unit 
+tests so far and to determine if any tests were missing and add them. 
+
+\item What pain points did you experience during this deliverable, and how
+did you resolve them?
+
+One pain point I experienced writing this deliverable is determining the difference between the unit test section and automated testing. 
+At first I was confused on the difference; however, after discussing with our TA, it was clearly they are highly related. 
+Furthermore, it was also difficult determining which aspects of the system should be uni tested, verses manual tested. This was also cleared up through 
+discussions with Chris. We decided the for integration testing it would be more effective to do it manually rather than to implement Selenium. 
+
+\end{enumerate}
+
+\textbf{Dhruv Sardana's Reflection}
+
+\begin{enumerate}
+\item What went well while writing this deliverable? 
+I was responsible for writing the frontend modules tests. 
+It helped me understand how to set up tests in Jest and React Testing Library and how to run coverage. 
+Additionally, it helped me identify gaps in the application that were uncovered through testing.
+
+\item What pain points did you experience during this deliverable, and how
+did you resolve them?
+
+The challenges I faced were mainly related to setting up the testing environment and writing tests for React components that involve asynchronous operations, 
+such as mocking API calls. I resolved these issues by referring to documentation and examples for Jest and React Testing Library, 
+to ensure that the tests were correctly structured and covered the necessary functionality. Also another major challenge was to understand how to split up unit tests by modules
+\end{enumerate}
+ 
+\textbf{Nawaal Fatima's Reflection}
+\begin{enumerate}
+\item What went well while writing this deliverable? 
+The team was better prepared to work together. We split the doc as per usual and got to work, updating each other as often as possible. Our communication was stronger with each other this time around.
+
+\item What pain points did you experience during this deliverable, and how
+did you resolve them?
+My VSCode decided to crash every time I tried to work with it, so I had to ask my teammates to make my edits for me which was really annoying :(
+The tests we wrote for the VnV Plan didn't accurately encompass the solution we ended up building. They seemed disconnected from the solution itself as some parts had vastly changed from how we thought we'd implement it. This was frustrating because we knew our product worked, we just couldn't show it based on a plan we made before we started coding. 
 \end{enumerate}
 
 \end{document}

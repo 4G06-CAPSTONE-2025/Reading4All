@@ -14,10 +14,8 @@ class AuthService:
         if len(password or "") < 8:
             raise ValueError("Password must be at least 8 characters")
 
-        # Supabase Auth signup
         resp = self.supabase.auth.sign_up({"email": email, "password": password})
 
-        # supabase-py return formats can differ; support both
         user = getattr(resp, "user", None) or (
             resp.get("user") if isinstance(resp, dict) else None
         )
@@ -28,4 +26,8 @@ class AuthService:
         user_id = getattr(user, "id", None) if user else None
         access_token = getattr(session, "access_token", None) if session else None
 
-        return {"user_id": user_id, "access_token": access_token}
+        return {
+            "user_id": user_id,
+            "access_token": access_token
+        }
+        
