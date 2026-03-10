@@ -6,6 +6,10 @@
 \usepackage{longtable}
 \usepackage{array}
 \usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{bm}
+\usepackage{float}
+\usepackage{caption}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -14,6 +18,7 @@
     urlcolor=blue
 }
 \usepackage[round]{natbib}
+
 
 \input{../Comments}
 \input{../Common}
@@ -40,19 +45,54 @@ Date 2 & 1.1 & Notes\\
 
 ~\newpage
 
-\section{Symbols, Abbreviations and Acronyms}
+\section{Symbols, Abbreviations, and Acronyms}
 
-\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{l l} 
-  \toprule		
-  \textbf{symbol} & \textbf{description}\\
-  \midrule 
-  T & Test\\
-  \bottomrule
-\end{tabular}\\
-
-\wss{symbols, abbreviations or acronyms -- you can reference the SRS tables if needed}
-
+\begin{table}[H]
+\centering
+\caption{Abbreviations and Acronyms Used in the Verification and Validation Plan}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Acronym} & \textbf{Definition} \\
+\hline
+AI & Artificial Intelligence \\
+API & Application Programming Interface \\
+AODA & Accessibility for Ontarians with Disabilities Act \\
+AR & Accessibility Requirement \\
+CAD & Canadian Dollar \\
+CI & Continuous Integration \\
+CD & Continuous Development \\
+CR & Cultural/Regulatory Requirement \\
+DP & Development Plan \\
+FR & Functional Requirement \\
+GUI & Graphical User Interface \\
+HA & Hazard Analysis \\
+LFR & Look and Feel Requirement \\
+LR & Legal Requirement \\
+MG & Module Guide \\
+MIS & Module Interface Specification \\
+ML & Machine Learning \\
+MS & Maintenance Support Requirement \\
+NFR & Nonfunctional Requirement \\
+NVDA & NonVisual Desktop Access (screen reader) \\
+OER & Operational and Environmental Requirement \\
+OCR & Optical Character Recognition \\
+PII & Personally Identifiable Information \\
+PR & Performance Requirement \\
+R & Requirement \\
+RL & Release Requirement \\
+RFT & Reliability and Fault Tolerance Requirement \\
+SCR & Safety-Critical Requirement \\
+SRS & Software Requirements Specification \\
+SR & Security Requirement \\
+SSO & Single Sign-On \\
+TLS & Transport Layer Security \\
+UI & User Interface \\
+UHR & Usability and Humanity Requirement \\
+VnV & Verification and Validation \\
+WCAG & Web Content Accessibility Guidelines \\
+\hline
+\end{tabular}
+\end{table}
 \newpage
 
 \tableofcontents
