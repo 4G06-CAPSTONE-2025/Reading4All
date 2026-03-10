@@ -10,6 +10,7 @@
 \usepackage{bm}
 \usepackage{float}
 \usepackage{caption}
+\usepackage{graphicx}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -549,12 +550,10 @@ The following are the evaluation of the unit tests per module.
   \cellcolor{red}Fail \\
 \end{longtable}
 
+\subsection{MainScreen Module}
 
-
-\subsection{Module 4}
-
-\newcounter{modulefourtestcase}
-\newcommand{\mfourtestcount}{\stepcounter{modulefourtestcase}\themodulefourtestcase}
+\newcounter{mainscreentestcase}
+\newcommand{\mainscreentestcount}{\stepcounter{mainscreentestcase}\themainscreentestcase}
 
 \begin{longtable}{@{}c
     >{\raggedright\arraybackslash}p{4.0cm}
@@ -570,7 +569,7 @@ The following are the evaluation of the unit tests per module.
 
   \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
   \toprule
-  \textbf{ID} &  \textbf{Action} &
+  \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endhead
@@ -579,21 +578,271 @@ The following are the evaluation of the unit tests per module.
   \endfoot
 
   \bottomrule
-  \caption{Module 4 Unit Testing Evaluation}
-  \label{table:module4-unit-eval}
+  \caption{MainScreen Unit Testing Evaluation}
+  \label{table:mainscreen-unit-eval}
   \endlastfoot
 
-  M-UT\mfourtestcount & action & 
-  expected result & 
-  evaluate &
+  MAIN-UT\mainscreentestcount & Render HomeScreen page &
+  Homepage title is displayed &
+  Homepage title displayed successfully &
   \cellcolor{green}Pass \\ \midrule
 
+  MAIN-UT\mainscreentestcount & Render HomeScreen subtitle &
+  Homepage subtitle describing system purpose is visible &
+  Subtitle displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
 
-  M-UT\mfourtestcount & action & 
-  expected result & 
-  evaluate &
-  \cellcolor{green}Pass \\ 
+  MAIN-UT\mainscreentestcount & Display signup button on homepage &
+  Signup button is visible for new users &
+  Signup button rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Display login button on homepage &
+  Login button is visible for returning users &
+  Login button rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Render UploadScreen title &
+  Upload page title is visible &
+  Title displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Render UploadScreen subtitle &
+  Upload page subtitle guiding users is visible &
+  Subtitle displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Verify upload instructions accessibility &
+  Upload instructions accessible through ARIA label &
+  ARIA label detected successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Verify upload input accessibility label &
+  Upload input field contains accessible label &
+  Label detected successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Display Choose File button &
+  Choose File button is visible for uploading images &
+  Button displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Upload valid image file &
+  Image successfully uploaded and backend request triggered &
+  Image uploaded and confirmation displayed &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Upload image using drag-and-drop &
+  Image uploaded using drag-and-drop functionality &
+  Drag-and-drop upload completed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Remove uploaded image &
+  Uploaded image removed from interface &
+  Image removed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Generate alt text after image upload &
+  Generated alt text displayed in output field &
+  Alt text generated and displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Upload new image after generation &
+  Previous alt text resets when new image uploaded &
+  Alt text reset confirmed &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Copy generated alt text &
+  Alt text copied to clipboard successfully &
+  Clipboard copy function executed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Keyboard accessibility for file upload &
+  Pressing Enter opens file selection dialog &
+  File input triggered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Handle image upload error &
+  Error message displayed when upload fails &
+  Error message displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  MAIN-UT\mainscreentestcount & Handle alt text generation failure &
+  Error message displayed when alt text generation fails &
+  Error message displayed correctly &
+  \cellcolor{green}Pass \\
 \end{longtable}
+
+
+
+\subsection{ShowHistory Module}
+
+\newcounter{showhistorytestcase}
+\newcommand{\showhistorytestcount}{\stepcounter{showhistorytestcase}\theshowhistorytestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{ShowHistory Unit Testing Evaluation}
+  \label{table:showhistory-unit-eval}
+  \endlastfoot
+
+  HIST-UT\showhistorytestcount & Render ShowHistory page &
+  History page title and navigation button are displayed &
+  Title and back button displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  HIST-UT\showhistorytestcount & Display history entries &
+  Uploaded image history entries are listed on the page &
+  History entries rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  HIST-UT\showhistorytestcount & View history entry preview &
+  Clicking a history entry displays the image preview and alt text &
+  Preview image and alt text displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  HIST-UT\showhistorytestcount & Navigate back to upload screen &
+  Clicking the back button navigates to the upload page &
+  Navigation executed successfully &
+  \cellcolor{green}Pass \\
+\end{longtable}
+
+
+
+\subsection{LoginScreen Module}
+
+\newcounter{loginscreentestcase}
+\newcommand{\loginscreentestcount}{\stepcounter{loginscreentestcase}\theloginscreentestcase}
+
+\begin{longtable}{@{}c
+    >{\raggedright\arraybackslash}p{4.0cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{3.6cm}
+    >{\raggedright\arraybackslash}p{1.2cm}
+    >{\centering\arraybackslash}p{1.2cm}@{}}
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \toprule
+  \textbf{ID} & \textbf{Action} &
+  \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
+  \midrule
+  \endhead
+
+  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \endfoot
+
+  \bottomrule
+  \caption{LoginScreen Unit Testing Evaluation}
+  \label{table:loginscreen-unit-eval}
+  \endlastfoot
+
+  LOGIN-UT\loginscreentestcount & Render login interface &
+  Login page title and input fields are visible &
+  Login interface rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Submit login with empty fields &
+  System rejects login attempt and displays validation error &
+  Validation error displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Enter email and password credentials &
+  User can type and update values in email and password fields &
+  Input fields accept user input correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Login with valid credentials &
+  System sends authentication request and redirects user to upload page &
+  Authentication request successful and navigation executed &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Login with invalid credentials &
+  System displays authentication error message &
+  Error message displayed correctly &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Network failure during login &
+  System displays network error message &
+  Network error message displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Render signup form interface &
+  Signup form fields and instructions are displayed &
+  Signup interface rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Signup validation with missing email &
+  System displays validation error when email is not provided &
+  Validation error displayed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Signup validation for short password &
+  System rejects passwords shorter than minimum length &
+  Password validation message displayed &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Signup validation for mismatched passwords &
+  System rejects mismatched password entries &
+  Mismatch validation error displayed &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Send verification code &
+  Verification code request sent to backend and OTP field enabled &
+  Verification request executed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Signup attempt without OTP &
+  System prevents signup and displays OTP required error &
+  OTP validation error displayed &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & Complete successful signup &
+  System verifies OTP and completes account registration &
+  Signup process completed successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & RequireAuth loading state &
+  Protected content not rendered until authentication check completes &
+  Content hidden during authentication check &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & RequireAuth authenticated access &
+  Authenticated users can access protected content &
+  Protected content rendered successfully &
+  \cellcolor{green}Pass \\ \midrule
+
+  LOGIN-UT\loginscreentestcount & RequireAuth unauthorized access &
+  Unauthenticated users are redirected to login page &
+  Unauthorized access prevented and redirect executed &
+  \cellcolor{green}Pass \\
+\end{longtable}
+
 
 \section{Manual Testing}
 \subsection{UserInterfaceInteractions Module}
@@ -1139,6 +1388,15 @@ IMC-MT1 & InternalMetricCompliance Module \\ \hline
 
 \section{Code Coverage Metrics}
 
+The following analyzes the code coverage metrics for the React frontend of the system. The analysis is based on the coverage data generated using Jest and React Testing Library as shown in Figure~\ref{fig:FrontendCoverage}. Code coverage is a measure of how well the codebase is tested, and it helps identify areas that may require additional testing.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{FrontendCoverage.png}
+\caption{Coverage Report of the React Frontend}
+\label{fig:FrontendCoverage}
+\end{figure}
+ 
 \bibliographystyle{plainnat}
 \bibliography{../../refs/References}
 
