@@ -1,0 +1,414 @@
+2026-03-02 16:09:37,862 | INFO | ==========================================================================================
+2026-03-02 16:09:37,862 | INFO | RUN | MODEL=google/paligemma-3b-pt-224 | IMAGE_DIR=C:/Users/nawaa/OneDrive/Desktop/capstoneAI/trainSplit/val_data | DEVICE=cuda
+2026-03-02 16:09:37,862 | INFO | ==========================================================================================
+2026-03-02 16:09:37,863 | INFO | Loading PaliGemma processor and model …
+2026-03-02 16:09:45,220 | INFO | Model loaded.
+2026-03-02 16:09:45,223 | INFO | Found 102 images in C:/Users/nawaa/OneDrive/Desktop/capstoneAI/trainSplit/val_data
+2026-03-02 16:09:45,247 | INFO | angularVelocity.png: starting generation
+2026-03-02 16:09:46,008 | INFO | angularVelocity.png: generation finished
+2026-03-02 16:09:46,009 | INFO | angularVelocity.png: caption en
+diagram of a point in space
+2026-03-02 16:09:46,015 | INFO | blockDiagram3.png: starting generation
+2026-03-02 16:09:46,196 | INFO | blockDiagram3.png: generation finished
+2026-03-02 16:09:46,197 | INFO | blockDiagram3.png: caption en
+the forces acting on the block
+2026-03-02 16:09:46,208 | INFO | circuitDiagram4.png: starting generation
+2026-03-02 16:09:46,389 | INFO | circuitDiagram4.png: generation finished
+2026-03-02 16:09:46,389 | INFO | circuitDiagram4.png: caption en
+diagram of the electrical circuit
+2026-03-02 16:09:46,427 | INFO | densityTemperature.png: starting generation
+2026-03-02 16:09:46,680 | INFO | densityTemperature.png: generation finished
+2026-03-02 16:09:46,680 | INFO | densityTemperature.png: caption en
+a plot of density vs temperature at different pressures .
+2026-03-02 16:09:46,693 | INFO | electricField.png: starting generation
+2026-03-02 16:09:46,878 | INFO | electricField.png: generation finished
+2026-03-02 16:09:46,879 | INFO | electricField.png: caption en
+a diagram of the magnetic field
+2026-03-02 16:09:46,902 | INFO | energyTime.png: starting generation
+2026-03-02 16:09:47,108 | INFO | energyTime.png: generation finished
+2026-03-02 16:09:47,108 | INFO | energyTime.png: caption en
+energy as a function of time .
+2026-03-02 16:09:47,116 | INFO | freewayTraffic.png: starting generation
+2026-03-02 16:09:47,311 | INFO | freewayTraffic.png: generation finished
+2026-03-02 16:09:47,312 | INFO | freewayTraffic.png: caption en
+excess density in a - position diagram
+2026-03-02 16:09:47,323 | INFO | image1.png: starting generation
+2026-03-02 16:09:47,524 | INFO | image1.png: generation finished
+2026-03-02 16:09:47,525 | INFO | image1.png: caption en
+schematic diagram of the experimental procedure
+2026-03-02 16:09:47,530 | INFO | image10.png: starting generation
+2026-03-02 16:09:47,751 | INFO | image10.png: generation finished
+2026-03-02 16:09:47,751 | INFO | image10.png: caption en
+schematic diagram of the experimental setup
+2026-03-02 16:09:47,756 | INFO | image11.png: starting generation
+2026-03-02 16:09:47,993 | INFO | image11.png: generation finished
+2026-03-02 16:09:47,994 | INFO | image11.png: caption en
+figure : schematic diagram of an induction motor .
+2026-03-02 16:09:47,999 | INFO | image12.png: starting generation
+2026-03-02 16:09:48,326 | INFO | image12.png: generation finished
+2026-03-02 16:09:48,326 | INFO | image12.png: caption en
+this diagram shows a circular path of current passing through a conducting sphere .
+2026-03-02 16:09:48,330 | INFO | image14.png: starting generation
+2026-03-02 16:09:48,570 | INFO | image14.png: generation finished
+2026-03-02 16:09:48,570 | INFO | image14.png: caption en
+diagram showing the magnetic field lines of a solenoid
+2026-03-02 16:09:48,577 | INFO | image19.png: starting generation
+2026-03-02 16:09:48,761 | INFO | image19.png: generation finished
+2026-03-02 16:09:48,761 | INFO | image19.png: caption en
+figure adding gravitational potential energy .
+2026-03-02 16:09:48,766 | INFO | image20.png: starting generation
+2026-03-02 16:09:49,024 | INFO | image20.png: generation finished
+2026-03-02 16:09:49,025 | INFO | image20.png: caption en
+diagram showing the movement of electrons in a magnetic field
+2026-03-02 16:09:49,031 | INFO | image21.png: starting generation
+2026-03-02 16:09:49,441 | INFO | image21.png: generation finished
+2026-03-02 16:09:49,441 | INFO | image21.png: caption en
+figure : a schematic diagram of the electric circuit .
+2026-03-02 16:09:49,447 | INFO | image23.png: starting generation
+2026-03-02 16:09:49,684 | INFO | image23.png: generation finished
+2026-03-02 16:09:49,685 | INFO | image23.png: caption en
+a diagram of a point in spherical coordinates
+2026-03-02 16:09:49,695 | INFO | image24.png: starting generation
+2026-03-02 16:09:49,877 | INFO | image24.png: generation finished
+2026-03-02 16:09:49,878 | INFO | image24.png: caption en
+figure a cycle of oscillation
+2026-03-02 16:09:49,882 | INFO | image27.png: starting generation
+2026-03-02 16:09:50,123 | INFO | image27.png: generation finished
+2026-03-02 16:09:50,124 | INFO | image27.png: caption en
+diagram of a magnetic field produced by a current
+2026-03-02 16:09:50,128 | INFO | image28.png: starting generation
+2026-03-02 16:09:50,375 | INFO | image28.png: generation finished
+2026-03-02 16:09:50,375 | INFO | image28.png: caption en
+the vector sum of the forces .
+2026-03-02 16:09:50,381 | INFO | image29.png: starting generation
+2026-03-02 16:09:50,636 | INFO | image29.png: generation finished
+2026-03-02 16:09:50,636 | INFO | image29.png: caption en
+this diagram shows the triple bond between the elements .
+2026-03-02 16:09:50,642 | INFO | image3.png: starting generation
+2026-03-02 16:09:50,861 | INFO | image3.png: generation finished
+2026-03-02 16:09:50,861 | INFO | image3.png: caption en
+all optical train is in a vacuum
+2026-03-02 16:09:50,876 | INFO | image30.png: starting generation
+2026-03-02 16:09:51,058 | INFO | image30.png: generation finished
+2026-03-02 16:09:51,058 | INFO | image30.png: caption en
+a plot of a typical problem
+2026-03-02 16:09:51,063 | INFO | image31.png: starting generation
+2026-03-02 16:09:51,294 | INFO | image31.png: generation finished
+2026-03-02 16:09:51,294 | INFO | image31.png: caption en
+a diagram of a three - dimensional space .
+2026-03-02 16:09:51,315 | INFO | image33.png: starting generation
+2026-03-02 16:09:51,515 | INFO | image33.png: generation finished
+2026-03-02 16:09:51,515 | INFO | image33.png: caption en
+the scale - up of the industry
+2026-03-02 16:09:51,523 | INFO | image34.png: starting generation
+2026-03-02 16:09:51,706 | INFO | image34.png: generation finished
+2026-03-02 16:09:51,706 | INFO | image34.png: caption en
+summary of the latest research
+2026-03-02 16:09:51,711 | INFO | image35.png: starting generation
+2026-03-02 16:09:51,896 | INFO | image35.png: generation finished
+2026-03-02 16:09:51,896 | INFO | image35.png: caption en
+a spectral composition of the sun
+2026-03-02 16:09:51,900 | INFO | image40.png: starting generation
+2026-03-02 16:09:52,121 | INFO | image40.png: generation finished
+2026-03-02 16:09:52,121 | INFO | image40.png: caption en
+figure is described in the surrounding text
+2026-03-02 16:09:52,125 | INFO | image41.png: starting generation
+2026-03-02 16:09:52,371 | INFO | image41.png: generation finished
+2026-03-02 16:09:52,372 | INFO | image41.png: caption en
+a plot of the data from the previous figure .
+2026-03-02 16:09:52,377 | INFO | image44.png: starting generation
+2026-03-02 16:09:52,577 | INFO | image44.png: generation finished
+2026-03-02 16:09:52,578 | INFO | image44.png: caption en
+figure is described in the surrounding text
+2026-03-02 16:09:52,583 | INFO | image47.png: starting generation
+2026-03-02 16:09:52,848 | INFO | image47.png: generation finished
+2026-03-02 16:09:52,848 | INFO | image47.png: caption en
+figure : diagram of the experiment .
+2026-03-02 16:09:52,854 | INFO | image6.png: starting generation
+2026-03-02 16:09:53,059 | INFO | image6.png: generation finished
+2026-03-02 16:09:53,059 | INFO | image6.png: caption en
+crystal lattice - types of crystals
+2026-03-02 16:09:53,068 | INFO | image7.png: starting generation
+2026-03-02 16:09:53,327 | INFO | image7.png: generation finished
+2026-03-02 16:09:53,327 | INFO | image7.png: caption en
+diagram of a light ray passing through a glass slab
+2026-03-02 16:09:53,350 | INFO | kineticTheory.png: starting generation
+2026-03-02 16:09:53,636 | INFO | kineticTheory.png: generation finished
+2026-03-02 16:09:53,637 | INFO | kineticTheory.png: caption en
+a diagram of the movement of atoms in a solid .
+2026-03-02 16:09:53,643 | INFO | page0064_img000.png: starting generation
+2026-03-02 16:09:53,906 | INFO | page0064_img000.png: generation finished
+2026-03-02 16:09:53,907 | INFO | page0064_img000.png: caption en
+a graph of temperature change of water over time .
+2026-03-02 16:09:53,913 | INFO | page0091_img000.png: starting generation
+2026-03-02 16:09:54,192 | INFO | page0091_img000.png: generation finished
+2026-03-02 16:09:54,192 | INFO | page0091_img000.png: caption en
+figure - the velocity - time graph of a car .
+2026-03-02 16:09:54,197 | INFO | page0098_img001.png: starting generation
+2026-03-02 16:09:54,415 | INFO | page0098_img001.png: generation finished
+2026-03-02 16:09:54,415 | INFO | page0098_img001.png: caption en
+position - time graph of a particle
+2026-03-02 16:09:54,421 | INFO | page0099_img000.png: starting generation
+2026-03-02 16:09:54,660 | INFO | page0099_img000.png: generation finished
+2026-03-02 16:09:54,660 | INFO | page0099_img000.png: caption en
+a simple position - time graph of a runner
+2026-03-02 16:09:54,666 | INFO | page0103_img000.png: starting generation
+2026-03-02 16:09:54,959 | INFO | page0103_img000.png: generation finished
+2026-03-02 16:09:54,959 | INFO | page0103_img000.png: caption en
+a line graph of position versus time .
+2026-03-02 16:09:54,964 | INFO | page0105_img000.png: starting generation
+2026-03-02 16:09:55,166 | INFO | page0105_img000.png: generation finished
+2026-03-02 16:09:55,166 | INFO | page0105_img000.png: caption en
+linear graph of position vs time .
+2026-03-02 16:09:55,171 | INFO | page0105_img002.png: starting generation
+2026-03-02 16:09:55,440 | INFO | page0105_img002.png: generation finished
+2026-03-02 16:09:55,441 | INFO | page0105_img002.png: caption en
+a typical velocity - time graph for a uniform acceleration .
+2026-03-02 16:09:55,445 | INFO | page0114_img001.png: starting generation
+2026-03-02 16:09:55,775 | INFO | page0114_img001.png: generation finished
+2026-03-02 16:09:55,776 | INFO | page0114_img001.png: caption en
+figure : velocity - time graph for a particle moving in a straight line
+2026-03-02 16:09:55,780 | INFO | page0160_img000.png: starting generation
+2026-03-02 16:09:56,125 | INFO | page0160_img000.png: generation finished
+2026-03-02 16:09:56,125 | INFO | page0160_img000.png: caption en
+measure the length of the line segment using a ruler and a protractor .
+2026-03-02 16:09:56,133 | INFO | page0172_img000.png: starting generation
+2026-03-02 16:09:56,398 | INFO | page0172_img000.png: generation finished
+2026-03-02 16:09:56,399 | INFO | page0172_img000.png: caption en
+figure : a vector formed by adding vectors .
+2026-03-02 16:09:56,403 | INFO | page0177_img001.png: starting generation
+2026-03-02 16:09:56,785 | INFO | page0177_img001.png: generation finished
+2026-03-02 16:09:56,786 | INFO | page0177_img001.png: caption en
+this diagram shows the trajectory of a soccer ball after it is kicked .
+2026-03-02 16:09:56,790 | INFO | page0180_img000.png: starting generation
+2026-03-02 16:09:57,062 | INFO | page0180_img000.png: generation finished
+2026-03-02 16:09:57,063 | INFO | page0180_img000.png: caption en
+figure : a diagram of the motion of fireworks .
+2026-03-02 16:09:57,068 | INFO | page0305_img000.png: starting generation
+2026-03-02 16:09:57,262 | INFO | page0305_img000.png: generation finished
+2026-03-02 16:09:57,262 | INFO | page0305_img000.png: caption en
+schematic diagram of the experiment
+2026-03-02 16:09:57,272 | INFO | page0327_img000.png: starting generation
+2026-03-02 16:09:57,540 | INFO | page0327_img000.png: generation finished
+2026-03-02 16:09:57,541 | INFO | page0327_img000.png: caption en
+figure for the measurement of a light - travel time .
+2026-03-02 16:09:57,546 | INFO | page0329_img000.png: starting generation
+2026-03-02 16:09:57,801 | INFO | page0329_img000.png: generation finished
+2026-03-02 16:09:57,801 | INFO | page0329_img000.png: caption en
+a graph of speed versus momentum
+2026-03-02 16:09:57,806 | INFO | page0350_img000.png: starting generation
+2026-03-02 16:09:58,005 | INFO | page0350_img000.png: generation finished
+2026-03-02 16:09:58,005 | INFO | page0350_img000.png: caption en
+diagram of how a home works
+2026-03-02 16:09:58,009 | INFO | page0375_img000.png: starting generation
+2026-03-02 16:09:58,277 | INFO | page0375_img000.png: generation finished
+2026-03-02 16:09:58,277 | INFO | page0375_img000.png: caption en
+diagram of the flow of heat and work within invention
+2026-03-02 16:09:58,281 | INFO | page0385_img000.png: starting generation
+2026-03-02 16:09:58,586 | INFO | page0385_img000.png: generation finished
+2026-03-02 16:09:58,586 | INFO | page0385_img000.png: caption en
+the schematic representation of the order - disorder - phase transition .
+2026-03-02 16:09:58,590 | INFO | page0405_img001.png: starting generation
+2026-03-02 16:09:58,881 | INFO | page0405_img001.png: generation finished
+2026-03-02 16:09:58,881 | INFO | page0405_img001.png: caption en
+figure of a woman pulling on a spring with both hands .
+2026-03-02 16:09:58,888 | INFO | page0406_img000.png: starting generation
+2026-03-02 16:09:59,211 | INFO | page0406_img000.png: generation finished
+2026-03-02 16:09:59,211 | INFO | page0406_img000.png: caption en
+a man uses his hand to block the sound of a guitar .
+2026-03-02 16:09:59,215 | INFO | page0416_img000.png: starting generation
+2026-03-02 16:09:59,464 | INFO | page0416_img000.png: generation finished
+2026-03-02 16:09:59,464 | INFO | page0416_img000.png: caption en
+a diagram of the resultant wave
+2026-03-02 16:09:59,468 | INFO | page0430_img000.png: starting generation
+2026-03-02 16:09:59,720 | INFO | page0430_img000.png: generation finished
+2026-03-02 16:09:59,721 | INFO | page0430_img000.png: caption en
+schematic diagram of the different types of optical fibers
+2026-03-02 16:09:59,724 | INFO | page0452_img001.png: starting generation
+2026-03-02 16:09:59,887 | INFO | page0452_img001.png: generation finished
+2026-03-02 16:09:59,888 | INFO | page0452_img001.png: caption en
+the length of a pipe
+2026-03-02 16:09:59,892 | INFO | page0478_img001.png: starting generation
+2026-03-02 16:10:00,075 | INFO | page0478_img001.png: generation finished
+2026-03-02 16:10:00,075 | INFO | page0478_img001.png: caption en
+diagram of a polarized light
+2026-03-02 16:10:00,080 | INFO | page0494_img000.png: starting generation
+2026-03-02 16:10:00,432 | INFO | page0494_img000.png: generation finished
+2026-03-02 16:10:00,433 | INFO | page0494_img000.png: caption en
+a diagram of how a flat mirror can be used to change the focal length .
+2026-03-02 16:10:00,437 | INFO | page0496_img000.png: starting generation
+2026-03-02 16:10:00,619 | INFO | page0496_img000.png: generation finished
+2026-03-02 16:10:00,620 | INFO | page0496_img000.png: caption en
+diagram of a converging lens
+2026-03-02 16:10:00,624 | INFO | page0498_img001.png: starting generation
+2026-03-02 16:10:00,805 | INFO | page0498_img001.png: generation finished
+2026-03-02 16:10:00,805 | INFO | page0498_img001.png: caption en
+a diagram of a telescope .
+2026-03-02 16:10:00,810 | INFO | page0498_img002.png: starting generation
+2026-03-02 16:10:01,029 | INFO | page0498_img002.png: generation finished
+2026-03-02 16:10:01,029 | INFO | page0498_img002.png: caption en
+diagram of a parabolic mirror .
+2026-03-02 16:10:01,034 | INFO | page0499_img000.png: starting generation
+2026-03-02 16:10:01,229 | INFO | page0499_img000.png: generation finished
+2026-03-02 16:10:01,230 | INFO | page0499_img000.png: caption en
+diagram of a convex lens
+2026-03-02 16:10:01,234 | INFO | page0508_img001.png: starting generation
+2026-03-02 16:10:01,448 | INFO | page0508_img001.png: generation finished
+2026-03-02 16:10:01,449 | INFO | page0508_img001.png: caption en
+invention - the invention of the telescope
+2026-03-02 16:10:01,456 | INFO | page0519_img000.png: starting generation
+2026-03-02 16:10:01,658 | INFO | page0519_img000.png: generation finished
+2026-03-02 16:10:01,659 | INFO | page0519_img000.png: caption en
+schematic diagram of the optical system
+2026-03-02 16:10:01,663 | INFO | page0544_img000.png: starting generation
+2026-03-02 16:10:01,847 | INFO | page0544_img000.png: generation finished
+2026-03-02 16:10:01,847 | INFO | page0544_img000.png: caption en
+diagram of a diffraction grating
+2026-03-02 16:10:01,850 | INFO | page0550_img001.png: starting generation
+2026-03-02 16:10:02,051 | INFO | page0550_img001.png: generation finished
+2026-03-02 16:10:02,051 | INFO | page0550_img001.png: caption en
+diagram of the working principle .
+2026-03-02 16:10:02,056 | INFO | page0565_img000.png: starting generation
+2026-03-02 16:10:02,289 | INFO | page0565_img000.png: generation finished
+2026-03-02 16:10:02,289 | INFO | page0565_img000.png: caption en
+diagram of the basic structure of an atom
+2026-03-02 16:10:02,293 | INFO | page0567_img001.png: starting generation
+2026-03-02 16:10:02,471 | INFO | page0567_img001.png: generation finished
+2026-03-02 16:10:02,471 | INFO | page0567_img001.png: caption en
+manual application of the tape
+2026-03-02 16:10:02,477 | INFO | page0569_img000.png: starting generation
+2026-03-02 16:10:02,658 | INFO | page0569_img000.png: generation finished
+2026-03-02 16:10:02,659 | INFO | page0569_img000.png: caption en
+a table of electrical properties .
+2026-03-02 16:10:02,662 | INFO | page0570_img000.png: starting generation
+2026-03-02 16:10:02,916 | INFO | page0570_img000.png: generation finished
+2026-03-02 16:10:02,917 | INFO | page0570_img000.png: caption en
+the diagram of the electron distribution in a neutral atom
+2026-03-02 16:10:02,922 | INFO | page0587_img000.png: starting generation
+2026-03-02 16:10:03,124 | INFO | page0587_img000.png: generation finished
+2026-03-02 16:10:03,124 | INFO | page0587_img000.png: caption en
+a diagram of gravitational potential energy
+2026-03-02 16:10:03,128 | INFO | page0618_img000.png: starting generation
+2026-03-02 16:10:03,392 | INFO | page0618_img000.png: generation finished
+2026-03-02 16:10:03,392 | INFO | page0618_img000.png: caption en
+drawing of a wire connected to a positive and negative terminal
+2026-03-02 16:10:03,398 | INFO | page0637_img000.png: starting generation
+2026-03-02 16:10:03,649 | INFO | page0637_img000.png: generation finished
+2026-03-02 16:10:03,649 | INFO | page0637_img000.png: caption en
+examples of equivalent circuits for the ### ohm resistor .
+2026-03-02 16:10:03,653 | INFO | page0643_img000.png: starting generation
+2026-03-02 16:10:03,905 | INFO | page0643_img000.png: generation finished
+2026-03-02 16:10:03,905 | INFO | page0643_img000.png: caption en
+here is an example of a simple electrical circuit .
+2026-03-02 16:10:03,911 | INFO | page0648_img000.png: starting generation
+2026-03-02 16:10:04,130 | INFO | page0648_img000.png: generation finished
+2026-03-02 16:10:04,131 | INFO | page0648_img000.png: caption en
+the power - current - voltage circle
+2026-03-02 16:10:04,134 | INFO | page0653_img004.png: starting generation
+2026-03-02 16:10:04,344 | INFO | page0653_img004.png: generation finished
+2026-03-02 16:10:04,344 | INFO | page0653_img004.png: caption en
+circuit is set to ###v .
+2026-03-02 16:10:04,348 | INFO | page0657_img000.png: starting generation
+2026-03-02 16:10:04,639 | INFO | page0657_img000.png: generation finished
+2026-03-02 16:10:04,639 | INFO | page0657_img000.png: caption en
+diagram of a variable voltage source connected to a light bulb .
+2026-03-02 16:10:04,643 | INFO | page0665_img001.png: starting generation
+2026-03-02 16:10:04,843 | INFO | page0665_img001.png: generation finished
+2026-03-02 16:10:04,843 | INFO | page0665_img001.png: caption en
+the magnetic field of a permanent magnet
+2026-03-02 16:10:04,848 | INFO | page0668_img000.png: starting generation
+2026-03-02 16:10:05,047 | INFO | page0668_img000.png: generation finished
+2026-03-02 16:10:05,047 | INFO | page0668_img000.png: caption en
+a magnet in a magnetic field
+2026-03-02 16:10:05,056 | INFO | page0672_img000.png: starting generation
+2026-03-02 16:10:05,252 | INFO | page0672_img000.png: generation finished
+2026-03-02 16:10:05,252 | INFO | page0672_img000.png: caption en
+magnetic field of a bar magnet
+2026-03-02 16:10:05,256 | INFO | page0682_img000.png: starting generation
+2026-03-02 16:10:05,432 | INFO | page0682_img000.png: generation finished
+2026-03-02 16:10:05,433 | INFO | page0682_img000.png: caption en
+diagram of a rotating square loop
+2026-03-02 16:10:05,437 | INFO | page0683_img000.png: starting generation
+2026-03-02 16:10:05,750 | INFO | page0683_img000.png: generation finished
+2026-03-02 16:10:05,751 | INFO | page0683_img000.png: caption en
+the turbine is the heart of a gas - fired power plant .
+2026-03-02 16:10:05,755 | INFO | page0706_img000.png: starting generation
+2026-03-02 16:10:05,996 | INFO | page0706_img000.png: generation finished
+2026-03-02 16:10:05,997 | INFO | page0706_img000.png: caption en
+spectral distribution of the radiant heat in the range
+2026-03-02 16:10:06,001 | INFO | page0727_img000.png: starting generation
+2026-03-02 16:10:06,240 | INFO | page0727_img000.png: generation finished
+2026-03-02 16:10:06,240 | INFO | page0727_img000.png: caption en
+spectral distribution of the radiant heat in the range
+2026-03-02 16:10:06,244 | INFO | page0737_img000.png: starting generation
+2026-03-02 16:10:06,491 | INFO | page0737_img000.png: generation finished
+2026-03-02 16:10:06,492 | INFO | page0737_img000.png: caption en
+a diagram of how light passes through a glass .
+2026-03-02 16:10:06,497 | INFO | page0739_img001.png: starting generation
+2026-03-02 16:10:06,660 | INFO | page0739_img001.png: generation finished
+2026-03-02 16:10:06,660 | INFO | page0739_img001.png: caption en
+spectrum of the solar spectrum
+2026-03-02 16:10:06,664 | INFO | page0750_img000.png: starting generation
+2026-03-02 16:10:06,998 | INFO | page0750_img000.png: generation finished
+2026-03-02 16:10:06,999 | INFO | page0750_img000.png: caption en
+the number of protons in an atom determines what element it is .
+2026-03-02 16:10:07,002 | INFO | page0751_img000.png: starting generation
+2026-03-02 16:10:07,207 | INFO | page0751_img000.png: generation finished
+2026-03-02 16:10:07,207 | INFO | page0751_img000.png: caption en
+a diagram of a nuclear atom
+2026-03-02 16:10:07,212 | INFO | page0762_img000.png: starting generation
+2026-03-02 16:10:07,451 | INFO | page0762_img000.png: generation finished
+2026-03-02 16:10:07,452 | INFO | page0762_img000.png: caption en
+schematic representation of the electrostatic potential
+2026-03-02 16:10:07,456 | INFO | page0766_img001.png: starting generation
+2026-03-02 16:10:07,662 | INFO | page0766_img001.png: generation finished
+2026-03-02 16:10:07,663 | INFO | page0766_img001.png: caption en
+total potential of the system
+2026-03-02 16:10:07,667 | INFO | page0772_img000.png: starting generation
+2026-03-02 16:10:07,929 | INFO | page0772_img000.png: generation finished
+2026-03-02 16:10:07,929 | INFO | page0772_img000.png: caption en
+a scan of the brain
+2026-03-02 16:10:07,934 | INFO | page0773_img001.png: starting generation
+2026-03-02 16:10:08,119 | INFO | page0773_img001.png: generation finished
+2026-03-02 16:10:08,120 | INFO | page0773_img001.png: caption en
+diagram of the experimental setup .
+2026-03-02 16:10:08,130 | INFO | page0785_img000.png: starting generation
+2026-03-02 16:10:08,289 | INFO | page0785_img000.png: generation finished
+2026-03-02 16:10:08,289 | INFO | page0785_img000.png: caption en
+the power of radio waves
+2026-03-02 16:10:08,293 | INFO | page0789_img000.png: starting generation
+2026-03-02 16:10:08,470 | INFO | page0789_img000.png: generation finished
+2026-03-02 16:10:08,471 | INFO | page0789_img000.png: caption en
+diagram of a virtual photon .
+2026-03-02 16:10:08,475 | INFO | page0790_img000.png: starting generation
+2026-03-02 16:10:08,674 | INFO | page0790_img000.png: generation finished
+2026-03-02 16:10:08,675 | INFO | page0790_img000.png: caption en
+control room at the nuclear power plant
+2026-03-02 16:10:08,680 | INFO | page0791_img000.png: starting generation
+2026-03-02 16:10:08,899 | INFO | page0791_img000.png: generation finished
+2026-03-02 16:10:08,899 | INFO | page0791_img000.png: caption en
+schematic diagram of the experimental apparatus .
+2026-03-02 16:10:08,903 | INFO | page0796_img000.png: starting generation
+2026-03-02 16:10:09,155 | INFO | page0796_img000.png: generation finished
+2026-03-02 16:10:09,156 | INFO | page0796_img000.png: caption en
+figure the third order cross section
+2026-03-02 16:10:09,162 | INFO | page0798_img001.png: starting generation
+2026-03-02 16:10:09,461 | INFO | page0798_img001.png: generation finished
+2026-03-02 16:10:09,462 | INFO | page0798_img001.png: caption en
+schematic diagram of the interaction between a neutron and a proton .
+2026-03-02 16:10:09,473 | INFO | page0807_img000.png: starting generation
+2026-03-02 16:10:09,657 | INFO | page0807_img000.png: generation finished
+2026-03-02 16:10:09,657 | INFO | page0807_img000.png: caption en
+schematic diagram of the universe
+2026-03-02 16:10:09,674 | INFO | page0821_img000.png: starting generation
+2026-03-02 16:10:09,857 | INFO | page0821_img000.png: generation finished
+2026-03-02 16:10:09,857 | INFO | page0821_img000.png: caption en
+periodic table of the elements
+2026-03-02 16:10:09,877 | INFO | vectorAddition2.png: starting generation
+2026-03-02 16:10:10,097 | INFO | vectorAddition2.png: generation finished
+2026-03-02 16:10:10,098 | INFO | vectorAddition2.png: caption en
+vector diagram showing the components of force
+2026-03-02 16:10:10,115 | INFO | voltageCurrent.png: starting generation
+2026-03-02 16:10:10,311 | INFO | voltageCurrent.png: generation finished
+2026-03-02 16:10:10,312 | INFO | voltageCurrent.png: caption en
+voltage vs current of different circuits
