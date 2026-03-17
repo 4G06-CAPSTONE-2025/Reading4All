@@ -1,6 +1,7 @@
 import base64
 import os
 import requests
+import re 
 
 from databases.connect_supabase import get_supabase_admin_client
 
@@ -30,20 +31,25 @@ class GenAltText:
 
 
 
-        alt_text = response.json().get('alt_text')
+        raw_alt_text = response.json().get('alt_text')
 
 
 
         # returns alt text to show user
-        if not alt_text:
+        if not raw_alt_text:
             return None, None
+        
         # after alt text has been successfully generated, the alt text
         # and image is saved to the history
 
         # removing prompt used in model from alt-text returned
-        alt_text = alt_text.split(":", 1)[1].strip()
-        entry_id = self.insert_history(image_bytes, alt_text, session_id)
-        return alt_text, entry_id
+        raw_alt_text = raw_alt_text.split(":", 1)[1].strip()
+
+        # clean up post processing layer 
+        post_alt_text = self.post_process_alt_text(raw_alt_text)
+
+        entry_id = self.insert_history(image_bytes, post_alt_text, session_id)
+        return post_alt_text, entry_id
 
 
 
@@ -129,3 +135,44 @@ class GenAltText:
 
         with open("testing_saving_img_from_db.png", "wb") as f:
             f.write(image_bytes)
+
+    # cleans up raw alt text 
+    def post_process_alt_text(self, alt_text):
+
+        # removes leading/trailing whitespace
+        alt_text = alt_text.strip()
+
+        # replaces multiple spaces (or tabs/newlines) with a single space
+        alt_text = re.sub(r"\s+", " ", alt_text)
+
+        # remove repeated consecutive words, case-insensitive
+        alt_text = re.sub(r"\b(\w+)(\s+\1\b)+", r"\1", alt_text, flags=re.IGNORECASE)
+
+        # remove repeated punctuations
+        alt_text = re.sub(r"([.!?,;:]){2,}", r"\1", alt_text)
+
+        # capitalize first character if needed
+        if alt_text and alt_text[0].islower():
+            alt_text = alt_text[0].upper() + alt_text[1:]
+
+        # ensure sentence ends with punctuation
+        if alt_text and alt_text[-1] not in ".!?":
+            alt_text += "."
+
+        # capitalize the first letter of each sentence
+        sentences = re.split(r'([.!?]\s*)', alt_text)  # keep punctuation
+        capitalized_sentences = []
+
+        for i in range(0, len(sentences), 2):
+            sentence = sentences[i].strip()
+            if sentence:
+                sentence = sentence[0].upper() + sentence[1:]
+            capitalized_sentences.append(sentence)
+
+            # add back punctuation if it exists
+            if i + 1 < len(sentences):
+                capitalized_sentences.append(sentences[i + 1])
+
+        alt_text = "".join(capitalized_sentences)
+
+        return alt_text
