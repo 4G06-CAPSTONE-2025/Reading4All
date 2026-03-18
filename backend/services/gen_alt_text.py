@@ -20,7 +20,7 @@ class GenAltText:
 
         headers = {
             "Authorization": f"Bearer {self.hf_token}",
-            "Content-Type": image.content_type, 
+            "Content-Type": image.content_type,
         }
         response = requests.post(
             self.hf_url,
@@ -35,7 +35,7 @@ class GenAltText:
         # returns alt text to show user
         if not raw_alt_text:
             return None, None
-        
+
         # after alt text has been successfully generated, the alt text
         # and image is saved to the history
 
@@ -43,7 +43,7 @@ class GenAltText:
         raw_alt_text = raw_alt_text.split(":", 1)[1].strip()
         print("Raw Alt Text: ", raw_alt_text)
 
-        # clean up post processing layer 
+        # clean up post processing layer
         post_alt_text = self.post_process_alt_text(raw_alt_text)
 
         entry_id = self.insert_history(image_bytes, post_alt_text, session_id)
@@ -134,7 +134,7 @@ class GenAltText:
         with open("testing_saving_img_from_db.png", "wb") as f:
             f.write(image_bytes)
 
-    # cleans up raw alt text 
+    # cleans up raw alt text
     def post_process_alt_text(self, alt_text):
 
         # removes leading/trailing whitespace
