@@ -29,10 +29,7 @@ class GenAltText:
             timeout=180
         )
 
-
-
         raw_alt_text = response.json().get('alt_text')
-
 
 
         # returns alt text to show user
@@ -44,11 +41,13 @@ class GenAltText:
 
         # removing prompt used in model from alt-text returned
         raw_alt_text = raw_alt_text.split(":", 1)[1].strip()
+        print("Raw Alt Text: ", raw_alt_text)
 
         # clean up post processing layer 
         post_alt_text = self.post_process_alt_text(raw_alt_text)
 
         entry_id = self.insert_history(image_bytes, post_alt_text, session_id)
+
         return post_alt_text, entry_id
 
 
@@ -96,7 +95,6 @@ class GenAltText:
             .eq("entry_id", oldest_entry_id)
             .execute()
         )
-
 
     def insert_history(self, image, alt_text, session_id):
 
