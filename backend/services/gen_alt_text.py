@@ -1,7 +1,7 @@
 import base64
 import os
+import re
 import requests
-import re 
 
 from databases.connect_supabase import get_supabase_admin_client
 
