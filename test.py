@@ -2,29 +2,23 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForCausa
 import re
 
 
-# MODEL_NAME = "google/flan-t5-small"
+MODEL_NAME = "google/flan-t5-small"
 
-# tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-# model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_NAME)
-
-MODEL_NAME = "Qwen/Qwen2.5-1.5B-Instruct"
-
-print("loading tokenizer...")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_NAME)
 
-print("loading model...")
-model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
+# MODEL_NAME = "Qwen/Qwen2.5-1.5B-Instruct"
 
-print("model loaded.")
+# print("loading tokenizer...")
+# tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+
+# print("loading model...")
+# model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
+
+# print("model loaded.")
 
 def build_prompt(alt_text: str) -> str:
-    return f"""Edit the alt text below.
-Do not summarize.
-Do not remove details.
-Do not add details.
-
-Input: {alt_text}
-Output:"""
+    return f"Rewrite this alt text to improve flow and readability. Keep all information from the original. Do not remove any details and do not add new ones: {alt_text}"
 
 def polish_alt_text(alt_text: str) -> str:
     prompt = build_prompt(alt_text)
