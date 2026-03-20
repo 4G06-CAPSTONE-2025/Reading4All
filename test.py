@@ -2,10 +2,20 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForCausa
 import re
 
 
-MODEL_NAME = "google/flan-t5-small"
+# MODEL_NAME = "google/flan-t5-small"
 
+# tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+# model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_NAME)
+
+MODEL_NAME = "Qwen/Qwen2.5-1.5B-Instruct"
+
+print("loading tokenizer...")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_NAME)
+
+print("loading model...")
+model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
+
+print("model loaded.")
 
 def build_prompt(alt_text: str) -> str:
     return f"""Edit the alt text below.
