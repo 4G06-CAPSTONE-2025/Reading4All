@@ -1,15 +1,18 @@
 import { useState } from "react";
 import "./login.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
+
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const sessionExpired = location.state?.sessionExpired;
 
   async function loginApiMock({ email, password }) {
     const loginResult = await fetch(
@@ -71,6 +74,11 @@ export default function Login() {
       </div>
 
       <div className="auth-card">
+        {sessionExpired && (
+          <div className="session-expired-message">
+            Your session expired. Please log in again.
+          </div>
+        )}
         <form className="auth-form" onSubmit={handleSubmit}>
           <label className="auth-label">Email</label>
           <input
