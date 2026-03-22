@@ -1,11 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./UploadScreen.css";
-import { useNavigate } from "react-router-dom";
-
 
 export default function HomeScreen(){
-    const navigate = useNavigate();
-
 
     const [isDragging, setIsDragging] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
@@ -53,11 +49,11 @@ export default function HomeScreen(){
             }
         )
         if(response.status === 401){
-            navigate("/login", 
-                {
-                    state: { sessionExpired: true }
-                });
-            return;
+            window.location.href = "https://reading4-all.vercel.app/#/login";
+            return
+            navigate("/login", {
+  state: { sessionExpired: true }
+});
         }
         if (response.ok){
             return true
