@@ -48,13 +48,14 @@ export default function HomeScreen(){
                 credentials: "include"
             }
         )
+        if(response.status === 401){
+            window.location.href = "https://reading4-all.vercel.app/#/login";
+            return
+        }
         if (response.ok){
             return true
         }
-        if(response.status === 401){
-            window.location.reload();
-            throw new Error("Unauthorized");
-        }
+        
         const msg= await response.json();
         throw new Error(msg.error);
     }
