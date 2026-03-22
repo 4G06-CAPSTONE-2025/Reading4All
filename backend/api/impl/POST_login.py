@@ -61,7 +61,7 @@ def login(request):
             httponly=True,
             samesite="None",
             secure=True,
-            max_age=2 * 60 * 60,
+            max_age=2*60
         )
         print("cookie set")
         return resp_json
