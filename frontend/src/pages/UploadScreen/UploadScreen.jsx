@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./UploadScreen.css";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeScreen(){
 
+    const navigate = useNavigate();
     const [isDragging, setIsDragging] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [previewImg, setPreviewImg] = useState(null)
@@ -52,7 +54,7 @@ export default function HomeScreen(){
             return true
         }
         if(response.status === 401){
-            window.location.hash = "#/login"
+            navigate("/login", {replace:true})
             throw new Error("Unauthorized")
         }
         const msg= await response.json();
