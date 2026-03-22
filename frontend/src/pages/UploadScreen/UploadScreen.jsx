@@ -54,8 +54,8 @@ export default function HomeScreen(){
             return true
         }
         if(response.status === 401){
-            navigate("/login", {replace:true})
-            throw new Error("Unauthorized")
+            navigate("/login")
+            return
         }
         const msg= await response.json();
         throw new Error(msg.error);
