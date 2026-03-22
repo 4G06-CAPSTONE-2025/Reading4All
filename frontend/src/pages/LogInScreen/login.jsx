@@ -51,7 +51,7 @@ export default function Login() {
     setIsLoading(true);
     try {
       const res = await loginApiMock({ email, password });
-
+      console.log("login result", res)
       if (!res.ok) {
         setErrorMsg(res.error);
         return;
