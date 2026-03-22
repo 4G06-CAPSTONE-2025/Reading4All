@@ -51,6 +51,10 @@ export default function HomeScreen(){
         if (response.ok){
             return true
         }
+        if(response.status === 401){
+            window.location.hash = "#/login"
+            throw new Error("Unauthorized")
+        }
         const msg= await response.json();
         throw new Error(msg.error);
     }
