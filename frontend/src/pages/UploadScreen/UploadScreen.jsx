@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./UploadScreen.css";
-import { useNavigate } from "react-router-dom";
 
 export default function HomeScreen(){
 
-    const navigate = useNavigate();
     const [isDragging, setIsDragging] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [previewImg, setPreviewImg] = useState(null)
