@@ -55,6 +55,7 @@ export default function HomeScreen(){
                     message: "Session expired" 
                 }
             });
+            return;
         }
         if (response.ok){
             return true
