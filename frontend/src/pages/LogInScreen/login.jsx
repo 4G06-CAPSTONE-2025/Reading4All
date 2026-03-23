@@ -5,7 +5,6 @@ import { useNavigate, useLocation} from "react-router-dom";
 export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log("location.state", location.state)
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -67,11 +66,8 @@ export default function Login() {
 
   return (
     <div className="auth-page">
-      <p>
-        "TESTING"
-      </p>
       <div className="auth-heading">
-        <h1>Physics ABCCC Alternative Text Generation</h1>
+        <h1>Physics Alternative Text Generation</h1>
         <p>Generate clear, concise alternative text for physics diagrams</p>
       </div>
 
