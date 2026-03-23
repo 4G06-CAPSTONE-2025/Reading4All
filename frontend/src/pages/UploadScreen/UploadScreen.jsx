@@ -52,7 +52,7 @@ export default function HomeScreen(){
         if(response.status === 401){
             navigate("/login", {
                 state: { 
-                    message: "Session expired" 
+                    message: "Your session has expired. Please log in again." 
                 }
             });
             return;
@@ -103,6 +103,15 @@ export default function HomeScreen(){
             }),
         }
     );
+
+    if(editTextResults.status === 401){
+        navigate("/login", {
+            state: { 
+                message: "Your session has expired. Please log in again." 
+            }
+        });
+        return false;
+    }
 
     if(!editTextResults.ok)
     {
@@ -254,6 +263,14 @@ export default function HomeScreen(){
             if (response.ok)
             {
                 return response.json()
+            }
+            if(response.status === 401){
+                navigate("/login", {
+                    state: { 
+                        message: "Your session has expired. Please log in again." 
+                    }
+                });
+                return;
             }
             throw new Error("Unable to get alt text history") 
         })
