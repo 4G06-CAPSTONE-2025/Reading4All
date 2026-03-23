@@ -5,6 +5,7 @@ import { useNavigate, useLocation} from "react-router-dom";
 export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
+  console.log("location.state", location.state)
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
