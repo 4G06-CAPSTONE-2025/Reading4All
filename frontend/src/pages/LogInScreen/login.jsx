@@ -71,7 +71,7 @@ export default function Login() {
         "TESTING"
       </p>
       <div className="auth-heading">
-        <h1>Physics Alternative Text Generation</h1>
+        <h1>Physics ABCCC Alternative Text Generation</h1>
         <p>Generate clear, concise alternative text for physics diagrams</p>
       </div>
 
