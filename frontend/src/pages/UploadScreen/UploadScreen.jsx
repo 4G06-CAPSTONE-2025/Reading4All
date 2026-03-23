@@ -49,8 +49,11 @@ export default function HomeScreen(){
             }
         )
         if(response.status === 401){
-            window.location.href = "https://reading4-all.vercel.app/#/login";
-            return
+            navigate("/login", {
+                state: { 
+                    message: "Session expired" 
+                }
+            });
         }
         if (response.ok){
             return true
