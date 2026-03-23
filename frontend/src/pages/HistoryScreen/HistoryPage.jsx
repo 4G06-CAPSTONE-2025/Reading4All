@@ -65,13 +65,14 @@ export default function HistoryPage(){
             throw new Error("Unable to get alt text history") 
         })
         .then(data => {
+            if(!data) return;
             setHistory(data.history);
             setError("");
         })
         .catch(() =>{
             setError("Failed to Load History. Please try again!");
         });
-        }, []);
+        }, [navigate]);
         
 
     return (
