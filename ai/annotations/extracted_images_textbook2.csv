@@ -179,159 +179,161 @@ Diagram-ID,Image-Path,Category-of-Image,Modified-Alt-Text
 198,images/page0396_img000.jpeg,Waves/Fields,"Electric field lines are shown originating from a positive point charge on the left and interacting with a nearby conducting sphere on the right. The field lines curve toward the sphere and terminate on its surface, indicating that negative charge is induced on the side of the sphere facing the point charge, while positive charge is pushed to the far side. The lines are denser near the sphere’s surface, showing a stronger electric field in that region, and the pattern illustrates how a conductor redistributes charge in response to an external electric field."
 200,images/page0402_img000.jpeg,Waves/Fields,"A power transmission tower carries a high voltage line labeled two hundred forty kilovolts and five hundred amps, supported by a string of insulators that separate the wire from the grounded metal structure. Each insulator provides a large resistance, reducing current flow to the tower and preventing energy loss or short circuits. A ground conductor at the top helps safely redirect excess charge, such as from lightning, into the earth."
 201,images/page0407_img000.jpeg,,
-202,images/page0409_img000.jpeg,,
-203,images/page0409_img001.jpeg,,
-204,images/page0411_img000.jpeg,,
-205,images/page0411_img001.jpeg,,
-206,images/page0412_img001.jpeg,,
-207,images/page0412_img002.jpeg,,
-208,images/page0413_img001.jpeg,,
-209,images/page0415_img000.jpeg,,
-210,images/page0415_img001.jpeg,,
-211,images/page0418_img000.jpeg,,
-212,images/page0420_img000.jpeg,,
-213,images/page0420_img001.jpeg,,
-214,images/page0421_img000.jpeg,,
-215,images/page0421_img001.jpeg,,
-216,images/page0423_img000.jpeg,,
-217,images/page0423_img001.jpeg,,
-218,images/page0423_img002.jpeg,,
-219,images/page0425_img000.jpeg,,
-220,images/page0426_img000.jpeg,,
-221,images/page0427_img000.jpeg,,
-222,images/page0430_img000.jpeg,,
-223,images/page0431_img000.jpeg,,
-224,images/page0431_img001.jpeg,,
-225,images/page0433_img000.jpeg,,
-226,images/page0436_img000.jpeg,,
-227,images/page0437_img000.jpeg,,
-228,images/page0440_img000.jpeg,,
-229,images/page0440_img001.jpeg,,
-230,images/page0444_img000.jpeg,,
-231,images/page0445_img001.jpeg,,
-232,images/page0445_img003.jpeg,,
-233,images/page0446_img001.jpeg,,
-234,images/page0447_img000.jpeg,,
-235,images/page0453_img001.jpeg,,
-236,images/page0454_img000.jpeg,,
-237,images/page0455_img000.jpeg,,
-238,images/page0457_img000.jpeg,,
-239,images/page0458_img000.jpeg,,
-240,images/page0458_img001.jpeg,,
-241,images/page0459_img000.jpeg,,
-242,images/page0460_img000.jpeg,,
-243,images/page0460_img001.jpeg,,
-244,images/page0461_img000.jpeg,,
-245,images/page0464_img000.jpeg,,
-246,images/page0466_img000.jpeg,,
-247,images/page0466_img001.jpeg,,
-248,images/page0467_img000.jpeg,,
-249,images/page0467_img001.jpeg,,
-250,images/page0467_img002.jpeg,,
-251,images/page0469_img000.jpeg,,
-252,images/page0470_img000.jpeg,,
-253,images/page0473_img000.jpeg,,
-254,images/page0474_img000.jpeg,,
-255,images/page0474_img001.jpeg,,
-256,images/page0475_img000.jpeg,,
-257,images/page0476_img000.jpeg,,
-258,images/page0479_img000.jpeg,,
-259,images/page0479_img001.jpeg,,
-260,images/page0479_img003.jpeg,,
-261,images/page0480_img000.jpeg,,
-262,images/page0480_img001.jpeg,,
-263,images/page0482_img000.jpeg,,
-264,images/page0483_img000.jpeg,,
-265,images/page0485_img000.jpeg,,
-266,images/page0487_img001.jpeg,,
-267,images/page0488_img000.jpeg,,
-268,images/page0489_img000.jpeg,,
-269,images/page0489_img001.jpeg,,
-270,images/page0491_img000.jpeg,,
-271,images/page0492_img000.jpeg,,
-272,images/page0493_img001.jpeg,,
-273,images/page0494_img001.jpeg,,
-274,images/page0495_img000.jpeg,,
-275,images/page0496_img000.jpeg,,
-276,images/page0497_img000.jpeg,,
-277,images/page0498_img000.jpeg,,
-278,images/page0499_img000.jpeg,,
-279,images/page0500_img000.jpeg,,
-280,images/page0503_img000.jpeg,,
-281,images/page0504_img000.jpeg,,
-282,images/page0504_img001.jpeg,,
-283,images/page0505_img000.jpeg,,
-284,images/page0507_img000.jpeg,,
-285,images/page0507_img001.jpeg,,
-286,images/page0508_img000.jpeg,,
-287,images/page0510_img000.jpeg,,
-288,images/page0510_img002.jpeg,,
-289,images/page0511_img000.jpeg,,
-290,images/page0511_img001.jpeg,,
-291,images/page0511_img002.jpeg,,
-292,images/page0512_img000.jpeg,,
-293,images/page0512_img001.jpeg,,
-294,images/page0513_img000.jpeg,,
-295,images/page0513_img001.jpeg,,
-296,images/page0514_img000.jpeg,,
-297,images/page0515_img001.jpeg,,
-298,images/page0515_img002.jpeg,,
-299,images/page0518_img000.jpeg,,
-300,images/page0526_img000.jpeg,,
-301,images/page0527_img000.jpeg,,
-302,images/page0529_img001.jpeg,,
-303,images/page0531_img000.jpeg,,
-304,images/page0535_img000.jpeg,,
-305,images/page0537_img001.jpeg,,
-306,images/page0542_img000.jpeg,,
-307,images/page0543_img000.jpeg,,
-308,images/page0544_img000.jpeg,,
-309,images/page0545_img000.jpeg,,
-310,images/page0547_img000.jpeg,,
-311,images/page0548_img000.jpeg,,
-312,images/page0549_img000.jpeg,,
-313,images/page0549_img001.jpeg,,
-314,images/page0550_img000.jpeg,,
-315,images/page0553_img000.jpeg,,
-316,images/page0554_img000.jpeg,,
-317,images/page0554_img001.jpeg,,
-318,images/page0565_img000.jpeg,,
-319,images/page0566_img000.jpeg,,
-320,images/page0571_img000.jpeg,,
-321,images/page0573_img000.jpeg,,
-322,images/page0578_img000.jpeg,,
-323,images/page0579_img000.jpeg,,
-324,images/page0580_img000.jpeg,,
-325,images/page0582_img000.jpeg,,
-326,images/page0584_img000.jpeg,,
-327,images/page0585_img000.jpeg,,
-328,images/page0590_img000.jpeg,,
-329,images/page0596_img000.jpeg,,
-330,images/page0614_img000.jpeg,,
-331,images/page0616_img000.jpeg,,
-332,images/page0619_img000.jpeg,,
-333,images/page0620_img000.jpeg,,
-334,images/page0625_img000.jpeg,,
-335,images/page0628_img000.jpeg,,
-336,images/page0632_img000.jpeg,,
-337,images/page0636_img000.jpeg,,
-338,images/page0638_img000.jpeg,,
-339,images/page0644_img000.jpeg,,
-340,images/page0648_img000.jpeg,,
-341,images/page0655_img000.jpeg,,
-342,images/page0656_img001.jpeg,,
-343,images/page0668_img001.jpeg,,
-344,images/page0669_img000.jpeg,,
-345,images/page0670_img000.jpeg,,
-346,images/page0674_img000.jpeg,,
-347,images/page0674_img001.jpeg,,
-348,images/page0675_img000.jpeg,,
-349,images/page0676_img000.jpeg,,
-350,images/page0684_img000.jpeg,,
-351,images/page0686_img000.jpeg,,
-352,images/page0687_img000.jpeg,,
-353,images/page0687_img001.jpeg,,
-354,images/page0688_img000.jpeg,,
+202,images/page0409_img000.jpeg,Magnetism,"A cylindrical bar magnet labeled south on the left and north on the right is shown being divided into smaller sections. Each smaller piece becomes a magnet with its own south and north poles. Arrows indicate repeated splitting into many smaller magnets, and the final small magnet is shown near an atomic symbol to indicate magnetism at microscopic scale."
+203,images/page0409_img001.jpeg,Magnetism,"Two sets of cylindrical bar magnets are shown. In the first set, opposite poles face each other, with the north pole of one magnet aligned with the south pole of another and arrows pointing inward indicating attraction. In the second set, like poles face each other, with north facing north and south facing south, and arrows pointing outward indicating repulsion between the magnets."
+204,images/page0411_img000.jpeg,Magnetism,"Three panels illustrate magnetic domains in a material. The first panel shows many small regions with arrows labeled north and south pointing in different directions, representing randomly oriented domains. The second panel shows larger regions with several arrows aligned in similar directions, indicating partial alignment of domains. The third panel shows a single arrow with north at the top and south at the bottom, representing a fully aligned magnetized material."
+205,images/page0411_img001.jpeg,Magnetism,"A sequence of three diagrams shows a soft iron bar placed between opposite poles of two magnets. In the first diagram the iron bar is unmagnetized. In the second diagram heat and mechanical tapping are applied to the bar while it remains in the magnetic field. In the third diagram the bar becomes magnetized with opposite poles induced on each end due to alignment within the external magnetic field."
+206,images/page0412_img001.jpeg,Magnetism,"Two panels show magnetic field patterns using iron filings. The first panel shows filings around stacked metallic pieces with irregular field lines indicating weak or unaligned magnetization. The second panel shows a single bar magnet with filings forming curved lines from the north pole to the south pole, illustrating an organized magnetic field."
+207,images/page0412_img002.jpeg,Magnetism,"A photograph of a magnetic resonance imaging scanner in a medical room, showing a large cylindrical magnet with a patient table extending into the opening, illustrating an application of strong magnetic fields in medical imaging."
+208,images/page0413_img001.jpeg,Magnetism,"A diagram showing magnetic data storage. A rotating magnetic disk with a read and write head is moved by a voice coil positioner. Below, a recording head with a coil around an iron core produces a magnetic field that magnetizes a moving tape with ferromagnetic coating. Alternating north and south regions on the tape represent stored information."
+209,images/page0415_img000.jpeg,Magnetism,"Three panels illustrate magnetic fields produced by electric current. The first shows moving charges forming circular magnetic loops. The second shows a straight current carrying wire with concentric circular magnetic field lines. The third shows the right hand rule indicating the relationship between current direction and magnetic field direction."
+210,images/page0415_img001.jpeg,Magnetism,"Three panels show a cylindrical bar magnet. The first panel uses small compass needles arranged around the magnet to indicate magnetic field direction. The second panel shows curved magnetic field lines leaving the north pole and entering the south pole outside the magnet. The third panel shows closed magnetic field loops including lines inside the magnet from south to north and outside from north to south."
+211,images/page0418_img000.jpeg,Magnetism,"A right hand rule diagram showing a hand with three perpendicular directions. The thumb indicates current direction, the fingers indicate magnetic field direction, and the palm shows the direction of force. The arrows demonstrate that magnetic force is perpendicular to both current and magnetic field."
+212,images/page0420_img000.jpeg,Magnetism,"A right hand rule diagram illustrating the relationship between current, magnetic field, and force. A hand is shown with arrows labeled current, magnetic field, and force, indicating that the force is perpendicular to the plane formed by current and magnetic field."
+213,images/page0420_img001.jpeg,Magnetism,"A diagram of a current carrying conductor placed in a magnetic field between the poles of a magnet. Arrows show magnetic field direction, current direction, and resulting force on the conductor. A small inset shows the right hand rule used to determine the force direction."
+214,images/page0421_img000.jpeg,Magnetism,"A magnetohydrodynamic thruster diagram showing magnetic coils wrapped around a duct. Magnetic field lines pass through the duct while electric current flows between electrodes. The interaction of current and magnetic field produces a force that drives liquid through the tube."
+215,images/page0421_img001.jpeg,Magnetism,"A current carrying conductor placed between magnetic poles with a battery connected. Arrows show current, magnetic field, and resulting force on the conductor. The right hand rule is illustrated to determine the force direction and the formula F = IℓB is indicated."
+216,images/page0423_img000.jpeg,Magnetism,"A moving coil galvanometer style device with a coil between magnetic poles attached to a spring and scale. When current flows through the coil, magnetic forces cause rotation and the pointer deflects to indicate current."
+217,images/page0423_img001.jpeg,Magnetism,"A simple electric motor diagram with a coil between north and south poles connected to a battery. Commutator and brushes reverse current each half rotation, maintaining continuous rotation of the coil."
+218,images/page0423_img002.jpeg,Magnetism,"A current loop between magnetic poles showing forces on opposite sides of the loop. Equal and opposite forces produce torque causing rotation, illustrating the principle behind electric motors."
+219,images/page0425_img000.jpeg,Magnetism,"Magnetic field lines around a straight current carrying conductor. Concentric circular field lines surround the wire and the right hand rule is used to determine direction."
+220,images/page0426_img000.jpeg,Magnetism,"Two parallel current carrying wires showing magnetic forces between them. Currents in the same direction attract while currents in opposite directions repel due to interacting magnetic fields."
+221,images/page0427_img000.jpeg,Magnetism,"A solenoid connected to a battery producing a magnetic field similar to a bar magnet. The right hand rule determines field direction and the solenoid has north and south poles."
+222,images/page0430_img000.jpeg,Magnetism,"A galvanometer showing electromagnetic induction as a magnet moves into and out of a coil. The meter deflects when the magnetic field changes and remains zero when the magnet is stationary."
+223,images/page0431_img000.jpeg,Magnetism,"Magnetic flux through a surface showing area vector and magnetic field components. The flux is proportional to the component of the magnetic field perpendicular to the surface."
+224,images/page0431_img001.jpeg,Magnetism,"A rotating coil generator between magnetic poles connected to brushes. Mechanical rotation of the coil induces alternating current due to changing magnetic flux."
+225,images/page0433_img000.jpeg,Magnetism,"Changing magnetic field near a coil inducing current. Diagrams show direction of induced current determined by Lenz’s law and right hand rule."
+226,images/page0436_img000.jpeg,Electricity,"Electric power transmission system showing power plant, step up transformer, high voltage transmission lines, substation, and step down transformers delivering electricity to homes."
+227,images/page0437_img000.jpeg,Electricity,"Transformer with primary and secondary coils wound around a core. Magnetic flux in the core links both coils enabling voltage transformation."
+228,images/page0440_img000.jpeg,Electricity,"Alternating voltage waveform across a load. The sinusoidal output varies between positive and negative peaks over time."
+229,images/page0440_img001.jpeg,Electricity,"Comparison of DC and AC voltage and current versus time. DC remains constant while AC varies sinusoidally around zero."
+230,images/page0444_img000.jpeg,Magnetism,"Current and magnetic field direction diagrams using dots and crosses to indicate into and out of page directions."
+231,images/page0445_img001.jpeg,Magnetism,"A sequence showing electromagnetic induction. A magnet is moved toward and away from a coil connected to a galvanometer. The meter deflects when the magnet moves, indicating induced current, and shows zero when the magnet is stationary."
+232,images/page0445_img003.jpeg,Magnetism,"A current carrying conductor placed between magnetic poles. The magnetic field, current direction, and resulting force are shown using the right hand rule. The force on the conductor is labeled F = IℓB.
+233,images/page0446_img001.jpeg,Magnetism,"Diagrams using dots and crosses to represent magnetic fields into and out of the page. Arrows indicate directions of force, current, and magnetic field for various configurations."
+234,images/page0447_img000.jpeg,Magnetism,"Multiple vector diagrams illustrating relationships between current, magnetic field, and force. The right hand rule is used to determine directions for each case."
+235,images/page0453_img001.jpeg,Technology,"Technicians wearing protective cleanroom suits inspect a reflective surface using flashlights. The reflection of workers and equipment is visible, indicating a high precision manufacturing or laboratory environment."
+236,images/page0454_img000.jpeg,Waves/Fields,"A black and white portrait illustration of a bearded scientist in profile view, representing historical development in electromagnetism."
+237,images/page0455_img000.jpeg,Waves/Fields,"An LC circuit connected to a transformer and spark gap transmitter with a receiver loop and tuner, illustrating early wireless radio transmission and resonance."
+238,images/page0457_img000.jpeg,Waves/Fields,"Sinusoidal graphs showing electric field variation over time at different phases, demonstrating oscillating electric field behavior in electromagnetic waves."
+239,images/page0458_img000.jpeg,Waves/Fields,"Diagram of perpendicular electric and magnetic fields forming an electromagnetic wave propagating through space."
+240,images/page0458_img001.jpeg,Waves/Fields,"Illustration showing alternating electric and magnetic fields generated by oscillating charges forming an electromagnetic wave."
+241,images/page0459_img000.jpeg,Waves/Fields,"Diagram of electric and magnetic field vectors oscillating while the wave propagates in the direction of energy flow."
+242,images/page0460_img000.jpeg,Waves/Fields,"Photograph of a comet labeled with nucleus, coma, gas tail, and dust tail showing effects of solar radiation."
+243,images/page0460_img001.jpeg,Waves/Fields,"Diagram of an interferometer with mirrors and fiber showing incident light splitting into two paths."
+244,images/page0461_img000.jpeg,Technology,"Photograph of a square reflective experimental apparatus mounted on a stand used for light interference experiments."
+245,images/page0464_img000.jpeg,Waves/Fields,"Electromagnetic spectrum diagram showing radio waves through gamma rays with wavelength and frequency scales."
+246,images/page0466_img000.jpeg,Technology,"Photograph of power transmission lines running across a rural landscape illustrating large scale electromagnetic transmission."
+247,images/page0466_img001.jpeg,Waves/Fields,"Electromagnetic spectrum diagram highlighting regions from radio waves to gamma rays."
+248,images/page0467_img000.jpeg,Waves/Fields,"Graph showing carrier wave, audio signal, and resulting frequency modulated wave."
+249,images/page0467_img001.jpeg,Waves/Fields,"Graph showing carrier wave, audio signal, and resulting amplitude modulated wave."
+250,images/page0467_img002.jpeg,Technology,"Illustration of extremely low frequency radio wave emitted from a submarine traveling upward through water."
+Here is the **full text version (251–354)** with your corrected categories applied:
+
+251,images/page0469_img000.jpeg,Waves/Fields,"Two photographs of tall radio transmission towers, one lattice tower near trees and another steel tower with circular antenna structure at the top."
+252,images/page0470_img000.jpeg,Waves/Fields,"False color image of a planetary surface showing temperature variations in infrared or radar mapping."
+253,images/page0473_img000.jpeg,Waves/Fields,"Circular color map of ozone concentration over Antarctica with a central region indicating ozone depletion."
+254,images/page0474_img000.jpeg,Waves/Fields,"Diagram showing an incoming electron interacting with atoms and emitting X ray radiation after scattering."
+255,images/page0474_img001.jpeg,Waves/Fields,"Atomic model diagrams showing electron transitions that produce X ray emission."
+256,images/page0475_img000.jpeg,Technology,"Medical chest X ray image showing ribs, lungs, and implanted electronic medical device."
+257,images/page0476_img000.jpeg,Technology,"Full body nuclear medicine scan showing skeletal structure and tracer distribution."
+258,images/page0479_img000.jpeg,Optics,"Diagram showing reflection of light from a surface illustrating the law of reflection."
+259,images/page0479_img001.jpeg,Optics,"Diagram showing incident light reflecting from a surface with multiple rays indicating reflection behavior."
+260,images/page0479_img003.jpeg,Optics,"Diagram showing incident and reflected rays with normal to surface illustrating law of reflection angles."
+261,images/page0480_img000.jpeg,Optics,"Ray diagram showing image formation in a plane mirror with observer and reflected rays."
+262,images/page0480_img001.jpeg,Optics,"Photograph of sun reflecting off water surface demonstrating reflection of light."
+263,images/page0482_img000.jpeg,Optics,"Diagram illustrating apparent position of object in water due to refraction."
+264,images/page0483_img000.jpeg,Optics,"Diagram of rotating mirror experiment for measuring speed of light."
+265,images/page0485_img000.jpeg,Optics,"Diagram showing refraction of light between sidewalk and grass analogy."
+266,images/page0487_img001.jpeg,Optics,"Photograph showing natural rainbow and prism dispersion comparison."
+267,images/page0488_img000.jpeg,Optics,"Diagram showing dispersion of white light through a glass prism."
+268,images/page0489_img000.jpeg,Optics,"Diagram and photograph showing formation of rainbow from refraction and reflection of sunlight in raindrops."
+269,images/page0489_img001.jpeg,Optics,"Diagram showing dispersion of sunlight in a water droplet producing spectrum."
+270,images/page0491_img000.jpeg,Optics,"Ray diagram showing light passing through converging lens and focusing at focal point."
+271,images/page0492_img000.jpeg,Optics,"Diagram showing magnifying glass focusing sunlight to ignite material."
+272,images/page0493_img001.jpeg,Optics,"Ray diagram showing light refraction through diverging lens and focal points."
+273,images/page0494_img001.jpeg,Optics,"Comparison of converging and diverging lens focal points using parallel rays."
+274,images/page0495_img000.jpeg,Optics,"Step by step ray tracing diagram showing image formation by converging lens."
+275,images/page0496_img000.jpeg,Optics,"Diagram comparing a camera lens focusing an image onto a sensor and rays entering the human eye forming an image on the retina."
+276,images/page0497_img000.jpeg,Optics,"Ray diagram showing a converging lens focusing light from a light bulb onto a screen with object and image distances labeled."
+277,images/page0498_img000.jpeg,Optics,"Two photographs showing a person using a small lens and a magnifying glass to enlarge the appearance of an object."
+278,images/page0499_img000.jpeg,Optics,"Ray diagrams illustrating image formation by a converging lens for different object positions."
+279,images/page0500_img000.jpeg,Optics,"Ray diagram showing image formation by a diverging lens with focal length and image distance labeled."
+280,images/page0503_img000.jpeg,Optics,"Ray diagram showing reflection in a flat mirror with object and virtual image distances labeled."
+281,images/page0504_img000.jpeg,Optics,"Ray diagram showing parallel rays reflecting from a convex mirror diverging from a focal point behind the mirror."
+282,images/page0504_img001.jpeg,Optics,"Diagram comparing concave and convex mirrors showing reflected parallel rays and focal points."
+283,images/page0505_img000.jpeg,Optics,"Ray diagram showing image formation by a concave mirror with object distance and image distance labeled."
+284,images/page0507_img000.jpeg,Optics,"Ray diagram and photograph showing a concave mirror producing a magnified upright image as seen in a cosmetic mirror."
+285,images/page0507_img001.jpeg,Optics,"Photograph of a long parabolic solar reflector concentrating sunlight along a central receiver structure."
+286,images/page0508_img000.jpeg,Optics,"Ray diagram and photograph showing a convex mirror forming a wide field of view image used for surveillance."
+287,images/page0510_img000.jpeg,Optics,"Diagram showing polarization of light with electric field oscillations filtered by a polarizing sheet."
+288,images/page0510_img002.jpeg,Optics,"Two photographs comparing glare on water surface with and without polarization filtering."
+289,images/page0511_img000.jpeg,Optics,"Series of diagrams showing light passing through multiple polarizing filters at different orientations."
+290,images/page0511_img001.jpeg,Optics,"Diagram showing electric field components of light after passing through a single polarizing filter."
+291,images/page0511_img002.jpeg,Optics,"Diagram illustrating randomly oriented electric field vectors representing unpolarized light."
+292,images/page0512_img000.jpeg,Optics,"Molecular model showing alignment of long molecules in a polarizing material."
+293,images/page0512_img001.jpeg,Optics,"Diagram showing partial polarization of light reflected from a glass surface."
+294,images/page0513_img000.jpeg,Optics,"Diagram showing scattering of unpolarized sunlight by molecules producing polarized light in different directions."
+295,images/page0513_img001.jpeg,Optics,"Diagram showing anisotropic molecules in a polarizing material responding differently to electric field directions."
+296,images/page0514_img000.jpeg,Optics,"Diagram of LCD display using polarized light rotation with and without applied voltage, with laptop example."
+297,images/page0515_img001.jpeg,Optics,"Photograph of stress-induced birefringence in a transparent material viewed between crossed polarizers."
+298,images/page0515_img002.jpeg,Optics,"Diagram showing optically active material rotating polarization between polarizer and analyzer."
+299,images/page0518_img000.jpeg,Optics,"Photograph of liquid crystal thermometer strip indicating temperature by reflected color."
+300,images/page0526_img000.jpeg,Graphs,"Graph of blackbody radiation curves at different temperatures showing UV, visible, and infrared regions."
+301,images/page0527_img000.jpeg,Others,"Historical photograph of scientist working at desk associated with development of quantum theory."
+302,images/page0529_img001.jpeg,Others,"Diagram of photoelectric effect apparatus with light source, vacuum tube, and measuring instruments."
+303,images/page0531_img000.jpeg,Graphs,"Graph showing maximum kinetic energy of emitted electrons versus frequency for photoelectric effect."
+304,images/page0535_img000.jpeg,Technology,"Diagram of scanning electron microscope and resulting high-resolution micrograph."
+305,images/page0537_img001.jpeg,Others,"Electron interference pattern building up from individual electron detections showing wave-particle duality."
+306,images/page0542_img000.jpeg,Others,"Photograph of neon discharge tube glowing due to excited gas atoms emitting light."
+307,images/page0543_img000.jpeg,Magnetism,"Diagram of velocity selector showing crossed electric and magnetic fields acting on charged particles."
+308,images/page0544_img000.jpeg,Others,"Rutherford gold foil experiment showing alpha particle scattering and nuclear atom model."
+309,images/page0545_img000.jpeg,Others,"Diagram of atomic spacing illustrating scale of atoms and path of scattered particles."
+310,images/page0547_img000.jpeg,Optics,"Spectrometer setup with diffraction grating producing emission spectrum lines."
+311,images/page0548_img000.jpeg,Graphs,"Hydrogen spectral series showing Lyman, Balmer, and Paschen wavelengths."
+312,images/page0549_img000.jpeg,Others,"Energy level diagram showing electron transition emitting photon."
+313,images/page0549_img001.jpeg,Others,"Bohr model circular orbits with photon emission between energy levels."
+314,images/page0550_img000.jpeg,Others,"Hydrogen atom energy level diagram labeling Lyman, Balmer, and Paschen series."
+315,images/page0553_img000.jpeg,Waves/Fields,"Standing wave condition for electron orbits showing constructive and destructive interference."
+316,images/page0554_img000.jpeg,Waves/Fields,"Electron probability cloud for hydrogen ground state showing most probable radius."
+317,images/page0554_img001.jpeg,Waves/Fields,"Wave representation of electron orbit illustrating de Broglie wavelength fitting condition."
+318,images/page0565_img000.jpeg,Others,"Portrait photograph of Albert Einstein."
+319,images/page0566_img000.jpeg,Others,"Calculator and notes representing practical calculations in modern physics."
+320,images/page0571_img000.jpeg,Waves/Fields,"Light clock thought experiment illustrating time dilation for moving observer."
+321,images/page0573_img000.jpeg,Waves/Fields,"Moving muon example showing time dilation between proper time and observed time."
+322,images/page0578_img000.jpeg,Waves/Fields,"Muon travel distance in atmosphere demonstrating relativistic time dilation."
+323,images/page0579_img000.jpeg,Waves/Fields,"Length contraction example for spaceship traveling between Earth and Alpha Centauri."
+324,images/page0580_img000.jpeg,Waves/Fields,"Electric and magnetic field transformation around moving charge."
+325,images/page0582_img000.jpeg,Mechanics,"Kayaker paddling in river illustrating motion through fluid and relative velocity."
+326,images/page0584_img000.jpeg,Waves/Fields,"Laser light emitted from moving spacecraft demonstrating invariance of speed of light."
+327,images/page0585_img000.jpeg,Mechanics,"Relativistic velocity addition showing canister speed toward and away from Earth."
+328,images/page0590_img000.jpeg,Work and Energy,"Relativistic momentum increasing rapidly as speed approaches speed of light."
+329,images/page0596_img000.jpeg,Work and Energy,"Relativistic kinetic energy compared with classical kinetic energy versus speed."
+330,images/page0614_img000.jpeg,Magnetism,"Charged particle deflection in magnetic field separating alpha beta and gamma radiation."
+331,images/page0616_img000.jpeg,Properties of Matter,"Penetration of alpha beta gamma radiation through different materials."
+332,images/page0619_img000.jpeg,Properties of Matter,"Geiger counter device and ionization chamber detecting radiation."
+333,images/page0620_img000.jpeg,Properties of Matter,"Scintillation detector using photomultiplier tube for radiation detection."
+334,images/page0625_img000.jpeg,Graphs,"Chart of stable and unstable nuclei showing neutron to proton ratio."
+335,images/page0628_img000.jpeg,Others,"Radioactive decay series showing alpha and beta decay path to stable lead."
+336,images/page0632_img000.jpeg,Others,"Beta plus decay converting proton into neutron emitting positron and neutrino."
+337,images/page0636_img000.jpeg,Graphs,"Exponential radioactive decay curve illustrating half life intervals."
+338,images/page0638_img000.jpeg,Technology,"Radiographic image comparison of object using penetrating radiation."
+339,images/page0644_img000.jpeg,Technology,"Gamma camera imaging system using scintillator and photomultiplier tubes."
+340,images/page0648_img000.jpeg,Others,"Ionization density comparison for alpha beta gamma radiation in cells."
+341,images/page0655_img000.jpeg,Graphs,"Binding energy per nucleon curve showing fusion and fission energy regions."
+342,images/page0656_img001.jpeg,Others,"Nuclear potential energy showing strong nuclear attraction and Coulomb repulsion."
+343,images/page0668_img001.jpeg,Technology,"Implosion type nuclear device using plutonium and explosive lenses."
+344,images/page0669_img000.jpeg,Technology,"Thermonuclear device structure with fusion fuel and fission trigger."
+345,images/page0670_img000.jpeg,Graphs,"Energy distribution comparison of conventional nuclear and neutron bombs."
+346,images/page0674_img000.jpeg,Waves/Fields,"Feynman diagram showing particle interaction via virtual photon."
+347,images/page0674_img001.jpeg,Waves/Fields,"Photon interacting with charged particles causing pair production and scattering."
+348,images/page0675_img000.jpeg,Waves/Fields,"Feynman diagram showing nucleon interaction via virtual particle exchange."
+349,images/page0676_img000.jpeg,Others,"Black and white portrait of physicist associated with particle physics research."
+350,images/page0684_img000.jpeg,Others,"Color photograph of elderly physicist standing indoors wearing glasses and jacket."
+351,images/page0686_img000.jpeg,Waves/Fields,"Electron positron interaction via neutral Z boson producing neutrinos."
+352,images/page0687_img000.jpeg,Waves/Fields,"Quark exchange between proton and neutron mediated by pion."
+353,images/page0687_img001.jpeg,Waves/Fields,"Color charge combinations showing gluon exchange in quantum chromodynamics."
+354,images/page0688_img000.jpeg,Graphs,"Graph showing unification of fundamental forces versus energy scale."
 355,images/page0689_img000.jpeg,,
 356,images/page0691_img000.jpeg,,
 357,images/page0693_img000.jpeg,,
