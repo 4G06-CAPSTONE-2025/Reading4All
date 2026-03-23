@@ -15,4 +15,4 @@ class UserSession(models.Model):
 
     @staticmethod
     def expiry_2h():
-        return timezone.now() + timedelta(minutes=2)
+        return timezone.now() + timedelta(hours=2)
