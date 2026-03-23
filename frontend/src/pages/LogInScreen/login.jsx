@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./login.css";
 import { useNavigate, useLocation} from "react-router-dom";
 
@@ -11,13 +11,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
-
-  useEffect (()=>{
-    if(location.state?.message){
-      setErrorMsg(location.state.message)
-    }
-  }, [location.state])
+  const [errorMsg, setErrorMsg] = useState(location.state?.message || "");
 
   async function loginApiMock({ email, password }) {
     const loginResult = await fetch(
@@ -73,6 +67,9 @@ export default function Login() {
 
   return (
     <div className="auth-page">
+      <p>
+        "TESTING"
+      </p>
       <div className="auth-heading">
         <h1>Physics Alternative Text Generation</h1>
         <p>Generate clear, concise alternative text for physics diagrams</p>
