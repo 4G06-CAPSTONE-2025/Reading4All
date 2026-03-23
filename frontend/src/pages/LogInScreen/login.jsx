@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./login.css";
 import { useNavigate, useLocation} from "react-router-dom";
 
@@ -17,7 +17,7 @@ export default function Login() {
       setErrorMsg(location.state.message)
     }
   }, [location.state])
-  
+
   async function loginApiMock({ email, password }) {
     const loginResult = await fetch(
       "https://reading4all-backend.onrender.com/api/login/",
