@@ -52,6 +52,14 @@ export default function HistoryPage(){
             {
                 return response.json()
             }
+            if(response.status === 401){
+                navigate("/login", {
+                    state: { 
+                        message: "Your session has expired. Please log in again." 
+                    }
+                });
+                return;
+            }
             throw new Error("Unable to get alt text history") 
         })
         .then(data => {
