@@ -10,11 +10,14 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState(
-    location.state?.message || ""
-  )
+  const [errorMsg, setErrorMsg] = useState("");
 
-
+  useEffect (()=>{
+    if(location.state?.message){
+      setErrorMsg(location.state.message)
+    }
+  }, [location.state])
+  
   async function loginApiMock({ email, password }) {
     const loginResult = await fetch(
       "https://reading4all-backend.onrender.com/api/login/",
