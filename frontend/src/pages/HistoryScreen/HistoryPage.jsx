@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./HistoryPage.css";
-import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function HistoryPage(){
+    const navigate = useNavigate();
 
     const [history, setHistory] = useState([]);
     const [copiedAllHistory, setCopiedAllHistory] = useState(false);
