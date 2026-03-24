@@ -403,16 +403,18 @@ export default function HomeScreen(){
                     >
                         {isGeneratingAltText? "Generating Alt Text..." :   "Generate Alt Text"}
                     </button>
-                    <p className="edit-info-text">
-                        You can review and edit the generated alt text before copying.
-                    </p>
+                  
                     </>
 
                 ): ""}
                 
                 {hasGeneratedAltText ? (
+                    <>
+                    <p className="edit-info-text">
+                        You can review and edit the generated alt text before copying.
+                    </p>
 
-                 <textarea
+                    <textarea
                     className="computed-alt-text-box"
                     onChange = {(e) => {
                         setAltText(e.target.value)
@@ -424,6 +426,7 @@ export default function HomeScreen(){
                     aria-label="Generated alt text for the uploaded image that can be edited"
                 />
                 
+                </>
                     
                 ) : "" }
                
