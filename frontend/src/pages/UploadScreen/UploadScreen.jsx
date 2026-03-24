@@ -335,20 +335,20 @@ export default function HomeScreen(){
             </p>
 
             <input
-				type="file"
+                type="file"
                 ref={fileInputRef}
-				accept="image/png, image/jpeg, image/jpg"
-				onChange={handleFileSelect}
+                accept="image/png, image/jpeg, image/jpg"
+                onChange={handleFileSelect}
                 className="hiding-classic-button"
                 aria-label="Upload image for alt text generation"
-			/>
+            />
 
             <button
             className="upload-button"
             onClick={()=>fileInputRef.current?.click()}
             >
-				Choose File
-			</button>
+                Choose File
+            </button>
 
             <p className="upload-info-text">
                 Supported formats: JPG, PNG or JPEG files up to 10 Megabytes

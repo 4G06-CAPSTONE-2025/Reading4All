@@ -77,7 +77,7 @@ export default function Login() {
           <input
             className="auth-input"
             type="email"
-            placeholder="student@mcmaster.ca"
+            placeholder="johndoe@email.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />

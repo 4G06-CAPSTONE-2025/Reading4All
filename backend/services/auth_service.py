@@ -2,6 +2,9 @@ from databases.connect_supabase import get_supabase_client
 
 
 class AuthService:
+    def __init__(self, supabase=None):
+        self.supabase = supabase or get_supabase_client()
+
     def signup(self, email: str, password: str):
         email = (email or "").strip().lower()
 
@@ -11,12 +14,8 @@ class AuthService:
         if len(password or "") < 8:
             raise ValueError("Password must be at least 8 characters")
 
-        supabase = get_supabase_client()
+        resp = self.supabase.auth.sign_up({"email": email, "password": password})
 
-        # Supabase Auth signup
-        resp = supabase.auth.sign_up({"email": email, "password": password})
-
-        # supabase-py return formats can differ; support both
         user = getattr(resp, "user", None) or (
             resp.get("user") if isinstance(resp, dict) else None
         )
@@ -27,4 +26,7 @@ class AuthService:
         user_id = getattr(user, "id", None) if user else None
         access_token = getattr(session, "access_token", None) if session else None
 
-        return {"user_id": user_id, "access_token": access_token}
+        return {
+            "user_id": user_id,
+            "access_token": access_token
+        }
