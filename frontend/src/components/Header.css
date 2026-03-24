@@ -21,6 +21,25 @@
    align-items: center;
 }
 
+.history-nav-button{
+    font-size: 17px;
+    font-weight : 505;
+
+    background-color:#7A003C;
+    border:none;
+
+    color:white;
+    cursor: pointer;
+    height: fit-content;
+
+
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    padding: 5px 12px;
+
+}
+
 .navigation-button{
 
     font-size: 18px;
