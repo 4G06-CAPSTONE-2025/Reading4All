@@ -4,57 +4,59 @@ import torch
 import pandas as pd
 import os
 
-model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
-processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+device = "cuda" if torch.cuda.is_available() else "cpu"
 
-labels = [
-    "graph",
-    "waves and fields diagram",
-    "mechanics diagram",
-    "crystal lattice diagram",
-    "general physics diagram"
-]
+clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(device)
+clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 IMAGE_DIR = os.path.join(BASE_DIR, "Images")
+CSV_PATH = os.path.join(BASE_DIR, "annotations", "combinedData.csv")
 
-def find_file(name):
-    for f in os.listdir(IMAGE_DIR):
-        if name in f:
-            return f
-    return None
+df = pd.read_csv(CSV_PATH)
 
-def classify_image(image_path):
-    real_name = find_file(image_path)
-    if real_name is None:
-        return "error"
+labels = df["Category-of-Image"].unique().tolist()
 
-    full_path = os.path.join(IMAGE_DIR, real_name)
+optimizer = torch.optim.AdamW(clip_model.parameters(), lr=5e-6)
 
-    try:
-        image = Image.open(full_path).convert("RGB")
-    except:
-        return "error"
+clip_model.train()
 
-    inputs = processor(
-        text=labels,
-        images=image,
-        return_tensors="pt",
-        padding=True
-    )
+for epoch in range(3):
+    print("Epoch:", epoch + 1)
 
-    outputs = model(**inputs)
-    probs = outputs.logits_per_image.softmax(dim=1)
+    for _, row in df.iterrows():
+        image_name = row["Image-Path"]
+        label = row["Category-of-Image"]
 
-    return labels[probs.argmax().item()]
+        image_path = os.path.join(IMAGE_DIR, image_name)
 
-csv_path = os.path.join(BASE_DIR, "annotations", "combinedData.csv")
-df = pd.read_csv(csv_path)
+        try:
+            image = Image.open(image_path).convert("RGB")
+        except:
+            continue
 
-files = sorted([f for f in os.listdir(IMAGE_DIR) if not f.startswith('.')])
-df["Image-Path"] = files[:len(df)]
+        inputs = clip_processor(
+            text=labels,
+            images=image,
+            return_tensors="pt",
+            padding=True
+        ).to(device)
 
-df["Predicted-Type"] = df["Image-Path"].apply(classify_image)
-df.to_csv(os.path.join(BASE_DIR, "classified_output.csv"), index=False)
+        outputs = clip_model(**inputs)
+        logits = outputs.logits_per_image
 
-print(df[["Image-Path", "Category-of-Image", "Predicted-Type"]].head())
+        target = torch.tensor([labels.index(label)]).to(device)
+        loss = torch.nn.functional.cross_entropy(logits, target)
+
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+# save trained model
+MODEL_DIR = os.path.join(BASE_DIR, "models", "clip-physics")
+os.makedirs(MODEL_DIR, exist_ok=True)
+
+clip_model.save_pretrained(MODEL_DIR)
+clip_processor.save_pretrained(MODEL_DIR)
+
+print("Training complete. Model saved to:", MODEL_DIR)
