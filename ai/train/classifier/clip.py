@@ -21,7 +21,7 @@ optimizer = torch.optim.AdamW(clip_model.parameters(), lr=5e-6)
 
 clip_model.train()
 
-for epoch in range(3):
+for epoch in range(5):
     print("Epoch:", epoch + 1)
 
     for _, row in df.iterrows():
