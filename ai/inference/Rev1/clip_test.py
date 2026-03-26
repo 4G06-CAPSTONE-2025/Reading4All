@@ -1,14 +1,14 @@
 from transformers import BlipProcessor, BlipForConditionalGeneration
 from transformers import CLIPProcessor, CLIPModel
 from PIL import Image
+BLIP_PATH = "/Users/fizasehar/GitHub/Reading4All/ai/models/blip-physics"
+CLIP_PATH = "/Users/fizasehar/GitHub/Reading4All/ai/models/clip-physics"
 
-blip_processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
-blip_model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
+blip_processor = BlipProcessor.from_pretrained(BLIP_PATH)
+blip_model = BlipForConditionalGeneration.from_pretrained(BLIP_PATH)
 
-MODEL_PATH = "/Users/fizasehar/GitHub/Reading4All/ai/models/clip-physics"
-
-clip_processor = CLIPProcessor.from_pretrained(MODEL_PATH)
-clip_model = CLIPModel.from_pretrained(MODEL_PATH)
+clip_processor = CLIPProcessor.from_pretrained(CLIP_PATH)
+clip_model = CLIPModel.from_pretrained(CLIP_PATH)
 
 labels = [
     "a graph or chart",
@@ -56,6 +56,5 @@ caption = generate_caption(image, prompt)
 
 final_caption = f"{label}. {caption}"
 
+print("Image:", image_path)
 print("Predicted Type:", label)
-print("Prompt Used:", prompt)
-print("Final Caption:", final_caption)
