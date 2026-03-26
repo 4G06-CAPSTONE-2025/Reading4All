@@ -12,7 +12,7 @@ class GenAltText:
         self.max_entries = 10
         self.hf_token = os.getenv("HUGGINGFACE_READ_TOKEN")
         # pylint: disable=line-too-long
-        self.hf_url = "https://adexn5i2xzlhi5pn.us-east-1.aws.endpoints.huggingface.cloud"
+        self.hf_url = "https://k9bc45ad5ye954id.us-east-1.aws.endpoints.huggingface.cloud"
 
 
     def trigger_model(self, image, session_id):
