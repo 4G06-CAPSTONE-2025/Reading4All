@@ -151,7 +151,7 @@ export default function HomeScreen(){
         catch (err)
         {
             clearTimeout(timer)
-            setShowValidationMessage(false);
+            setShowValidationMssg(false);
             handleUploadError(err.message)
             setIsValidatingImage(false)
             return
@@ -166,7 +166,7 @@ export default function HomeScreen(){
         setError("");
         setSelectedFile(image_uploaded);
         setIsValidatingImage(false)
-        setShowValidationMessage(false);
+        setShowValidationMssg(false);
         clearTimeout(timer)
         setPreviewImg(url);
         resetAltTextGenProcess();
@@ -202,7 +202,7 @@ export default function HomeScreen(){
         catch (err)
         {
             setIsValidatingImage(false)
-            setShowValidationMessage(false);
+            setShowValidationMssg(false);
             clearTimeout(timer)
             handleUploadError(err.message)
             return
@@ -215,7 +215,7 @@ export default function HomeScreen(){
         
         const url = URL.createObjectURL(image_uploaded)
         setError("");
-        setShowValidationMessage(false);
+        setShowValidationMssg(false);
 
         setIsValidatingImage(false)
         clearTimeout(timer)
