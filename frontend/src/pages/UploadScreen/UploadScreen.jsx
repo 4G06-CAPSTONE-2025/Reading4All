@@ -25,11 +25,14 @@ export default function HomeScreen(){
     const hasAltText = altText && altText.trim().length > 0;
     const [hasGeneratedAltText, setHasGeneratedAltText] = useState(false)
     const [isGeneratingAltText, setIsGeneratingAltText] = useState(false)
+    const [isValidatingImage, setIsValidatingImage] = useState(false)
+    const [showValidationMssg, setShowValidationMssg] = useState(false)
 
     const fileInputRef = useRef(null);
     
     const handleDragOver = (e) => {
     e.preventDefault();
+    if(isValidatingImage) return;
     setIsDragging(true);
     };
 
@@ -122,8 +125,9 @@ export default function HomeScreen(){
     }
 
     const handleImageDrop = async (e) =>{
-
+        if (isValidatingImage) return;
         e.preventDefault();
+        if (isValidatingImage) return;
         setIsDragging(false)
         let image_uploaded = null;
 
@@ -137,14 +141,18 @@ export default function HomeScreen(){
         }
 
         if (!image_uploaded) return;
-
+        const timer = setTimeout( () => {
+            setIsValidatingImage(true);
+        },5000);
         try 
         {
             await handleImageValidationBackend(image_uploaded)
         }
         catch (err)
         {
+            clearTimeout(timer)
             handleUploadError(err.message)
+            setIsValidatingImage(false)
             return
         }
 
@@ -156,6 +164,8 @@ export default function HomeScreen(){
         const url = URL.createObjectURL(image_uploaded)
         setError("");
         setSelectedFile(image_uploaded);
+        setIsValidatingImage(false)
+        clearTimeout(timer)
         setPreviewImg(url);
         resetAltTextGenProcess();
         if (fileInputRef.current)
@@ -165,7 +175,7 @@ export default function HomeScreen(){
     };
 
     const handleFileSelect = async (e) => {
-       
+        if (isValidatingImage) return;
         let image_uploaded = null;
 
         if (e.target.files && e.target.files.length >0)
@@ -178,6 +188,10 @@ export default function HomeScreen(){
         }
         
         if (!image_uploaded) return;
+        
+        const timer = setTimeout( () => {
+            setIsValidatingImage(true);
+        },5000);
 
         try
         {
@@ -185,6 +199,8 @@ export default function HomeScreen(){
         }
         catch (err)
         {
+            setIsValidatingImage(false)
+            clearTimeout(timer)
             handleUploadError(err.message)
             return
         }
@@ -196,6 +212,9 @@ export default function HomeScreen(){
         
         const url = URL.createObjectURL(image_uploaded)
         setError("");
+        setIsValidatingImage(false)
+        clearTimeout(timer)
+
         setSelectedFile(image_uploaded);
         setPreviewImg(url);
         resetAltTextGenProcess();
@@ -341,13 +360,15 @@ export default function HomeScreen(){
                 onChange={handleFileSelect}
                 className="hiding-classic-button"
                 aria-label="Upload image for alt text generation"
+                disabled={isValidatingImage}
             />
 
             <button
             className="upload-button"
             onClick={()=>fileInputRef.current?.click()}
+            disabled={isValidatingImage}
             >
-                Choose File
+                { isValidatingImage ? "Validating Image...." : "Choose File" }
             </button>
 
             <p className="upload-info-text">
