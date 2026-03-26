@@ -151,6 +151,7 @@ export default function HomeScreen(){
         catch (err)
         {
             clearTimeout(timer)
+            setShowValidationMessage(false);
             handleUploadError(err.message)
             setIsValidatingImage(false)
             return
@@ -165,6 +166,7 @@ export default function HomeScreen(){
         setError("");
         setSelectedFile(image_uploaded);
         setIsValidatingImage(false)
+        setShowValidationMessage(false);
         clearTimeout(timer)
         setPreviewImg(url);
         resetAltTextGenProcess();
@@ -200,6 +202,7 @@ export default function HomeScreen(){
         catch (err)
         {
             setIsValidatingImage(false)
+            setShowValidationMessage(false);
             clearTimeout(timer)
             handleUploadError(err.message)
             return
@@ -212,6 +215,8 @@ export default function HomeScreen(){
         
         const url = URL.createObjectURL(image_uploaded)
         setError("");
+        setShowValidationMessage(false);
+
         setIsValidatingImage(false)
         clearTimeout(timer)
 
@@ -368,7 +373,7 @@ export default function HomeScreen(){
             onClick={()=>fileInputRef.current?.click()}
             disabled={isValidatingImage}
             >
-                { isValidatingImage ? "Validating Image...." : "Choose File" }
+                { showValidationMssg ? "Validating Image...." : "Choose File" }
             </button>
 
             <p className="upload-info-text">
