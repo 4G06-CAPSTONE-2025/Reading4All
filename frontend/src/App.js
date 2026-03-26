@@ -9,6 +9,7 @@ import UploadScreen from "./pages/UploadScreen/UploadScreen";
 import HistoryPage from "./pages/HistoryScreen/HistoryPage";
 
 function App() {
+  console.log("current build 1")
   return (
     <Router>
       <Header />

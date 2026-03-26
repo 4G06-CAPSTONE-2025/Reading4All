@@ -11,29 +11,35 @@ from api.models import UserSession
 @csrf_exempt
 def login(request):
     if request.method != "POST":
+        print("wrong method", request.method)
         return JsonResponse({"error": "Method not allowed"}, status=405)
 
     try:
         body = json.loads(request.body.decode("utf-8"))
+        print("body retrieved")
     except Exception:
         return JsonResponse({"error": "Invalid JSON"}, status=400)
 
     email = (body.get("email") or "").strip().lower()
     password = body.get("password") or ""
+    print("EMAIL", email)
 
     if not email or not password:
+        print("Missing email or password")
         return JsonResponse({"error": "Email and password are required"}, status=400)
 
     try:
+        print("before supabase")
         supabase = get_supabase_client()
         resp = supabase.auth.sign_in_with_password({"email": email, "password": password})
-
+        print("after supabase")
         user = getattr(resp, "user", None) or (resp.get("user") if isinstance(resp, dict) else None)
         if not user:
+            print("no user found")
             return JsonResponse({"error": "Invalid credentials"}, status=401)
 
         user_id = getattr(user, "id", None)
-
+        print("user id:", user_id)
         # Create YOUR app session token (2 hours)
         session_token = secrets.token_urlsafe(32)
         expires_at = UserSession.expiry_2h()
@@ -44,6 +50,7 @@ def login(request):
             expires_at=expires_at,
         )
 
+        print("session created")
         # Set cookie (frontend-friendly)
         resp_json = JsonResponse({"ok": True, "user_id": user_id, "expires_at": expires_at.isoformat()}, status=200)
 
@@ -56,7 +63,9 @@ def login(request):
             secure=True,
             max_age=2 * 60 * 60,
         )
+        print("cookie set")
         return resp_json
 
     except Exception as e:
+        print("login error ", str(e))
         return JsonResponse({"error": str(e)}, status=400)

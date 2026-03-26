@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./UploadScreen.css";
+import { useNavigate } from "react-router-dom";
 
-export default function UploadScreen(){
-
+export default function HomeScreen(){
+    const navigate = useNavigate();
     const [isDragging, setIsDragging] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [previewImg, setPreviewImg] = useState(null)
@@ -48,9 +49,18 @@ export default function UploadScreen(){
                 credentials: "include"
             }
         )
+        if(response.status === 401){
+            navigate("/login", {
+                state: { 
+                    message: "Your session has expired. Please log in again." 
+                }
+            });
+            return;
+        }
         if (response.ok){
             return true
         }
+        
         const msg= await response.json();
         throw new Error(msg.error);
     }
@@ -93,6 +103,15 @@ export default function UploadScreen(){
             }),
         }
     );
+
+    if(editTextResults.status === 401){
+        navigate("/login", {
+            state: { 
+                message: "Your session has expired. Please log in again." 
+            }
+        });
+        return false;
+    }
 
     if(!editTextResults.ok)
     {
@@ -245,6 +264,14 @@ export default function UploadScreen(){
             {
                 return response.json()
             }
+            if(response.status === 401){
+                navigate("/login", {
+                    state: { 
+                        message: "Your session has expired. Please log in again." 
+                    }
+                });
+                return;
+            }
             throw new Error("Unable to get alt text history") 
         })
         .then(data => {
@@ -376,16 +403,18 @@ export default function UploadScreen(){
                     >
                         {isGeneratingAltText? "Generating Alt Text..." :   "Generate Alt Text"}
                     </button>
-                    <p className="edit-info-text">
-                        You can review and edit the generated alt text before copying.
-                    </p>
+                  
                     </>
 
                 ): ""}
                 
                 {hasGeneratedAltText ? (
+                    <>
+                    <p className="edit-info-text">
+                        You can review and edit the generated alt text before copying.
+                    </p>
 
-                 <textarea
+                    <textarea
                     className="computed-alt-text-box"
                     onChange = {(e) => {
                         setAltText(e.target.value)
@@ -397,6 +426,7 @@ export default function UploadScreen(){
                     aria-label="Generated alt text for the uploaded image that can be edited"
                 />
                 
+                </>
                     
                 ) : "" }
                

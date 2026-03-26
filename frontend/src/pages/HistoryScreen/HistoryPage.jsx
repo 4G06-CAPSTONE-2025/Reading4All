@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./HistoryPage.css";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function HistoryPage(){
+    const navigate = useNavigate();
 
     const [history, setHistory] = useState([]);
     const [copiedAllHistory, setCopiedAllHistory] = useState(false);
@@ -52,16 +54,25 @@ export default function HistoryPage(){
             {
                 return response.json()
             }
+            if(response.status === 401){
+                navigate("/login", {
+                    state: { 
+                        message: "Your session has expired. Please log in again." 
+                    }
+                });
+                return;
+            }
             throw new Error("Unable to get alt text history") 
         })
         .then(data => {
+            if(!data) return;
             setHistory(data.history);
             setError("");
         })
         .catch(() =>{
             setError("Failed to Load History. Please try again!");
         });
-        }, []);
+        }, [navigate]);
         
 
     return (
