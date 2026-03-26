@@ -167,11 +167,11 @@ gap: 32px;
 
 
 .upload-success-view .edit-info-text {
-    font-size: 16px;
+    font-size: 20px;
     color: black;
     font-weight: 500;
     margin-top: 2px;
-    text-align: left;
+    align-items: flex-start;
 }
 
 .upload-view-of-img{
@@ -284,7 +284,7 @@ gap: 32px;
   border-radius: 20px;
   border: 2.5px solid #7A003C;  
   width: 80%;
-  margin: 20px 20px;
+  margin: 20px 0px;
   padding: 20px;
 }
 .save-changes-copy-alt-text-buttons{

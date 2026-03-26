@@ -410,10 +410,6 @@ export default function HomeScreen(){
                 
                 {hasGeneratedAltText ? (
                     <>
-                    <p className="edit-info-text">
-                        You can review and edit the generated alt text before copying.
-                    </p>
-
                     <textarea
                     className="computed-alt-text-box"
                     onChange = {(e) => {
@@ -425,6 +421,10 @@ export default function HomeScreen(){
                     cols={70}
                     aria-label="Generated alt text for the uploaded image that can be edited"
                 />
+                 <p className="edit-info-text">
+                        You can review and edit the generated alt text before copying.
+                </p>
+
                 
                 </>
                     
