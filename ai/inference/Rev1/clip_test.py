@@ -11,10 +11,10 @@ clip_processor = CLIPProcessor.from_pretrained(CLIP_PATH)
 clip_model = CLIPModel.from_pretrained(CLIP_PATH)
 
 labels = [
-    "a graph or chart",
-    "a waves or fields diagram",
-    "a mechanics forces and motion diagram",
-    "a general physics diagram"
+    "Graphs",
+    "Waves/Fields",
+    "Mechanics (Forces & Motion)",
+    "Other"
 ]
 
 def classify_image(image):
@@ -29,13 +29,13 @@ def classify_image(image):
     return labels[probs.argmax().item()]
 
 def generate_prompt(label):
-    if "graph" in label:
+    if "Graph" in label:
         return "Describe the graph including axes, variables, and trends."
     
-    elif "waves" in label or "fields" in label:
+    elif "Waves" in label or "Fields" in label:
         return "Describe the wave or field diagram and relationships."
 
-    elif "mechanics" in label:
+    elif "Mechanics" in label:
         return "Explain the forces, motion, and physical setup."
 
     else:
@@ -46,7 +46,7 @@ def generate_caption(image, prompt):
     output_ids = blip_model.generate(**inputs, max_length=120)
     return blip_processor.decode(output_ids[0], skip_special_tokens=True)
 
-image_path = "ai/Images/page0643_img002.png"
+image_path = "/Users/fizasehar/GitHub/Reading4All/ai/Images/page0092_img000.png"
 image = Image.open(image_path).convert("RGB")
 
 label = classify_image(image)
