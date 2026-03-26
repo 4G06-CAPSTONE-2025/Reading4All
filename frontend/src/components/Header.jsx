@@ -27,7 +27,7 @@ export default function Header() {
       <div className="header-navigation">
         {currLocation === "/upload" && (
           <button
-            className="navigation-button"
+            className="history-nav-button"
             onClick={() => navigate("/session-history")}
           >
             View History
