@@ -64,9 +64,9 @@
 \section{Introduction}
 
 \subsection{Problem Statement}
-Students with disabilities face major challenges to reading technical diagrams, which are often given in the form of static images that screen readers cannot interpret. Manually developing alternative (alt) text is possible, but it is resource-intensive, inconsistent, and not scalable for huge volumes of course content. This generates disparities in access to learning materials in postsecondary education.
+Students with disabilities face major challenges to reading technical diagrams, which are often given in the form of static images that screen readers cannot interpret. Manually developing alternative (alt) text is possible, but it is resource-intensive, inconsistent, and not scalable for large volumes of course content. This generates disparities in access to learning materials in postsecondary education.
 
-To address this issue, this project proposes creating an Artificial Intelligence (AI) / Machine Learning (ML) powered application that automatically generates clear and detailed alt text for technical diagrams. The tool intends to increase accessibility, assure compliance with Accessibility for Ontarians with Disabilities Act (AODA) regulations, and promote greater inclusion in higher education.
+To address this issue, this project proposes creating an Artificial Intelligence (AI) / Machine Learning (ML) powered application that automatically generates clear and detailed alt text for technical diagrams. The tool intends to increase accessibility, assure compliance with Accessibility for Ontarians with Disabilities Act (AODA) regulations, and promote inclusion in higher education.
 
 \subsection{Hazard Analysis Introduction}
 A hazard is a system state or combination of conditions that, when paired with specific environmental or contextual factors, can result in an unwanted or adverse event in the system or its surroundings. Hazards in software and AI development encompass not only physical threats but also usability, ethical, and technological issues.
@@ -80,7 +80,7 @@ The objective of this hazard analysis is to analyze the potential hazards and da
 
 \begin{itemize}
     \item \textbf{Technical Flaws:} Incorrect or inadequate alt text may mislead students, impair comprehension, or violate accessibility guidelines. This could result in a loss of confidence in the tool and poor results in education.
-    \item \textbf{User Insensitivity:} Alt text that is excessively technical, unsophisticated, or inconsistent may not meet the needs of students. This may result in a loss of usefulness, reducing participation among students, teachers, and accessibility professionals.
+    \item \textbf{User Insensitivity:} Alt text that is excessively technical, overly simplified, or inconsistent may not meet the needs of students. This may reduce usability and participation among students, teachers, and accessibility professionals.
     \item \textbf{External Dependencies:} Relying on third-party libraries, Application Programming Interfaces (APIs), or screen reader compatibility can lead to external failures. Interruptions in these functions may result in a loss of functionality or downtime.
 \end{itemize}
 
@@ -91,7 +91,7 @@ The purpose of this hazard study is to systematically identify these hazards, es
 \subsection{System Overview}
 The system is a web-based AI tool that generates alt text
 for uploaded images or figures
-and integrated with screen readers to improve accessibility for
+and integrates seamlessly with screen readers to improve accessibility for
 visually impaired users.
 \subsection{System Boundaries}
 \begin{itemize}
@@ -183,7 +183,7 @@ conditions under which the system is expected to operate safely.
     instructors, teaching assistants, or accessibility specialists before
     being used in educational contexts.
   
-  \item \textbf{Assumption 4: Network Stability.} The system is assumed to operate in an environment 
+  \item \textbf{Assumption 5: Network Stability.} The system is assumed to operate in an environment 
   with stable and sufficient network connectivity to support uninterrupted communication 
   between the different system components. Network interruptions are assumed to be 
   minimal and not severe enough to impact system safety.
@@ -225,7 +225,7 @@ The \autoref{tab:fmea-reading4all} below outlines the hazards found within our s
     \endlastfoot   
     
     HA-1 & Frontend UI &
-    All user interface components cannot be controlled using keyboard &
+    Not all user interface components can be controlled using a keyboard &
     Users using assistive technology cannot operate all features &
     Missing Accessible Rich Internet Applications (ARIA) roles, incorrect tab order &
     WCAG~2.1 Level~AA evaluation; fix focus order and ARIA; add additional tests for accessibility needs &
@@ -321,7 +321,7 @@ The \autoref{tab:fmea-reading4all} below outlines the hazards found within our s
     {\bf Fit Criterion:} When a timeout occurs, the system must stop processing and delete the users data and any incomplete alt text that has been generated.\\
     {\bf Priority:} High\\
     {\bf Hazard Analysis Connected}: HA4
-  \item \emph{The system must ensure that messages notifying the user of failure, do not reveal any system code or data. }\\[2mm]
+  \item \emph{The system must ensure that messages notifying the user of failure do not reveal any system code or data. }\\[2mm]
     {\bf Rationale:} This will prevent internal data from being shown to users, which may lead to system and user security issues. \\
     {\bf Fit Criterion:} All error messages shown to the user only display the necessary information and do not contain any technical information.\\
     {\bf Priority:} High \\
