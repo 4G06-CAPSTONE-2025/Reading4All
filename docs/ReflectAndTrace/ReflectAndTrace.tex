@@ -2,6 +2,7 @@
 
 \usepackage{tabularx}
 \usepackage{booktabs}
+\usepackage{longtable}
 
 \title{Reflection and Traceability Report on \progname}
 
@@ -10,6 +11,7 @@
 \date{}
 
 \input{../Comments}
+
 \input{../Common}
 
 \begin{document}
@@ -62,6 +64,31 @@ document, and likely the Revision 1 versions of the other documents will be
 low.} 
 
 \subsection{SRS and Hazard Analysis}
+
+\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{|p{2cm}|p{3.5cm}|p{4.5cm}|p{3cm}|}
+    \caption{SRS Feedback Tracking and Implementation} \label{tab:srs-feedback-tracking} \\
+    \hline
+    \textbf{Feedback Source} & \textbf{Feedback Summary} & \textbf{Changes Made} & \textbf{Related Commits/Issues} \\
+    \hline
+    \endfirsthead
+    
+    \multicolumn{4}{c}{{\bfseries Table \thetable\ continued from previous page}} \\
+    \hline
+    \textbf{Feedback Source} & \textbf{Feedback Summary} & \textbf{Changes Made} & \textbf{Related Commits/Issues} \\
+    \hline
+    \endhead
+    
+    \hline \multicolumn{4}{|r|}{{Continued on next page}} \\ \hline
+    \endfoot
+    
+    \hline
+    \endlastfoot
+    
+TA & Source of constraints was unclear  & addressed in issue & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/644}{Issue \#644} \\
+\hline
+\end{longtable}
+
 
 \subsection{Design and Design Documentation}
 
