@@ -106,7 +106,7 @@ supports fine-tuning and post-processing, which further improves readability and
 
 BLIP provides a strong and flexible foundation for generating accessible image descriptions, aligning well with the goals of this project.
 
-\subsubsection{Pix2Struct}
+\subsubsection{Pix2Struct} \textcolor{red}{TO DO}
 
 \section{Dataset}
 
@@ -129,7 +129,7 @@ which serves as the ground truth for training the model. These descriptions are 
 In Revision 1, an additional field called Category-of-Image was introduced to further refine the categorization of the dataset. This field groups diagrams into more specific types, such as graphs, 
 waves, mechanics, and others. Adding this column allowed for better control and specificity in prompting the model, ultimately improving the relevance and consistency of the generated alt text.
 
-\subsection{Preprocessing}
+\subsection{Preprocessing} \textcolor{red}{TO DO}
 
 \section{Features}
 
@@ -153,15 +153,15 @@ quick implementation, the outputs often lacked consistency, structure, and domai
 BLIP in Revision 0 served as a strong starting point by providing automatic caption generation, but it highlighted 
 the need for further improvements in dataset quality, domain specificity, and output formatting in later revisions.
 
-\subsubsection{Pix2Struct}
+\subsubsection{Pix2Struct} \textcolor{red}{TO DO}
 
 \subsection{Revision 1}
 In Revision 1, we conducted different experiments highlighted below to see if we can improve our 
 AI model from Revision 0.
 
-\subsubsection{Addition of More Data}
-\subsubsection{Addition of Physics Subset Label}
-\subsubsection{LLM Post Processing and Clean-Up}
+\subsubsection{BLIP Re-training for Expanded Dataset} \textcolor{red}{TO DO}
+\subsubsection{Category Routing System} \textcolor{red}{TO DO}
+\subsubsection{LLM Polisher Post-Processing}
 
 In Revision 1, we experimented with incorporating a large language model, FLAN-T5, as a post-processing 
 step to improve the quality of the generated alt text. The idea was to take the raw output from the BLIP model 
@@ -174,7 +174,7 @@ embeddings rather than visual features. FLAN-T5 was prompted to rephrase or clea
 effectively acting as a text refinement module rather than a primary generator. This can be seen as a form 
 of feature enhancement at the language level, where the semantic quality of the output is improved without modifying 
 the underlying visual features.
-\subsubsection{Model Experimentation}
+\subsubsection{Alternative Model Testing} \textcolor{red}{TO DO}
 
 
 \section{Implementation}
@@ -182,22 +182,34 @@ the underlying visual features.
 Describe your model and implementation here. Refer to item 4. This may take around a page.
 
 \subsection{Revision 0 Pipeline}
-Talks about:
-\begin{itemize}
-    \item state the pipeline
-    \item model version 
-    \item epochs
-    \item hosting 
-    \item inference time
-    \item limitations observed
-\end{itemize}
+In Revision 0, the pipeline consisted of using a pretrained BLIP model to generate alt text directly from input 
+physics diagrams. Images from the dataset were passed into the model, which processed them through a vision encoder 
+to extract visual features. These features were then fed into a language model to generate a corresponding textual description. 
+The model used for this implementation was \texttt{Salesforce/blip-image-captioning-base}, which was selected for its 
+strong baseline performance on image captioning tasks.
+
+The model was fine-tuned for 3 epochs using the training configuration shown in Section 4. A relatively small batch size of 
+1 was used due to hardware constraints, along with a learning rate of 0.00005. No advanced optimization techniques such as mixed precision or large-scale parallelization were applied in this revision. 
+The training process focused on adapting the pretrained model to better handle physics-specific diagrams.
+
+For deployment, the model was hosted using Hugging Face Inference, allowing for accessible and scalable testing. However, 
+the inference time was approximately 2 minutes per image, which is relatively slow and not ideal for real-time applications.
+
+Several limitations were observed in this baseline implementation. The generated alt text often lacked detail and structure, 
+especially for complex STEM diagrams. In some cases, the model produced hallucinations, where it introduced incorrect or irrelevant 
+information not present in the image. For example, diagrams involving forces or motion were sometimes described with incorrect labels or relationships, 
+and technical concepts such as angular momentum were misrepresented or overly simplified. Additionally, the model struggled to capture deeper 
+meaning or accurately describe relationships between components, resulting in descriptions that were either vague or partially incorrect.
+
+Overall, while Revision 0 established a functional end-to-end pipeline for generating alt text, it highlighted key issues in accuracy, consistency, 
+and inference efficiency that motivated further improvements in later revisions.
 
 \subsection{Revision 1 Experiments}
 
-\subsubsection{BLIP Retraining for Expanded Dataset}
-\subsubsection{Category Routing System}
+\subsubsection{BLIP Re-training for Expanded Dataset} \textcolor{red}{TO DO}
+\subsubsection{Category Routing System} \textcolor{red}{TO DO}
 \subsubsection{LLM Polisher Post-Processing}
-\subsubsection{Alternative Model Testing}
+\subsubsection{Alternative Model Testing} \textcolor{red}{TO DO}
 
 \section{Results and Evaluation}
 
