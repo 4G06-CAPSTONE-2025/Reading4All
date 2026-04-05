@@ -95,7 +95,18 @@ This report details the progression throghout the different revisions from initi
 Here, talk about the related work you encountered for your approach. Cite at least 5 references. Refer to item 2. No one has done exactly your task? Write about the most similar thing you can find. This should be around 0.25-0.5 pages.
 
 \subsection{Vision-Language Models}
-BLIP, Pix2Struct, etc.
+\subsubsection{BLIP}
+Bootstrapping Language-Image Pretraining (BLIP) is a vision-language model designed for tasks that require joint understanding of images and text, such as image captioning and visual question answering. 
+It is particularly relevant to this project because it generates natural language descriptions from visual inputs, making it well-suited for automatic alt-text generation.
+
+BLIP uses a unified architecture that combines a vision encoder with a language model, allowing it to handle both image-text understanding and text generation. It is trained using multiple objectives, 
+including image-text contrastive learning, matching, and language modeling, which help it learn strong and generalizable representations.
+In this project, BLIP was selected after multiple iterations and experiments due to its ability to generate more coherent, detailed, and structured alt text for complex STEM diagrams. It also 
+supports fine-tuning and post-processing, which further improves readability and consistency.
+
+BLIP provides a strong and flexible foundation for generating accessible image descriptions, aligning well with the goals of this project.
+
+\subsubsection{Pix2Struct}
 
 \section{Dataset}
 
