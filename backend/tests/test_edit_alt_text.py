@@ -1,6 +1,6 @@
-from services.edit_alt_text import edit_alt_text
 from unittest.mock import MagicMock, patch
 import json
+from services.edit_alt_text import edit_alt_text
 
 @patch("services.edit_alt_text.AltTextHistory")
 def test_edit_alt_text_success(mock_history_class):

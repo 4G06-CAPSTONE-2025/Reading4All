@@ -1,6 +1,6 @@
-from services.gen_alt_text import GenAltText
 from unittest.mock import MagicMock, patch
 from io import BytesIO
+from services.gen_alt_text import GenAltText
 
 @patch("services.gen_alt_text.get_supabase_admin_client")
 def test_post_process_alt_text_extra_spaces(mock_supabase):
@@ -16,7 +16,7 @@ def test_post_process_alt_text_extra_spaces(mock_supabase):
 @patch("services.gen_alt_text.get_supabase_admin_client")
 def test_post_process_alt_text_repeat_words(mock_supabase):
     mock_supabase.return_value = MagicMock()
-    
+
     cleanup = GenAltText()
     input_text = "Repeat Repeat here."
 
@@ -27,7 +27,7 @@ def test_post_process_alt_text_repeat_words(mock_supabase):
 @patch("services.gen_alt_text.get_supabase_admin_client")
 def test_post_process_alt_text_lower_case(mock_supabase):
     mock_supabase.return_value = MagicMock()
-    
+
     cleanup = GenAltText()
     input_text = "lowercase  here."
 
@@ -38,7 +38,7 @@ def test_post_process_alt_text_lower_case(mock_supabase):
 @patch("services.gen_alt_text.get_supabase_admin_client")
 def test_post_process_alt_text_missing_period(mock_supabase):
     mock_supabase.return_value = MagicMock()
-    
+
     cleanup = GenAltText()
     input_text = "Missing period"
 
@@ -49,7 +49,7 @@ def test_post_process_alt_text_missing_period(mock_supabase):
 @patch("services.gen_alt_text.get_supabase_admin_client")
 def test_post_process_alt_text_multiple_sentences(mock_supabase):
     mock_supabase.return_value = MagicMock()
-    
+
     cleanup = GenAltText()
     input_text = "this is the first sentence. second here."
 
