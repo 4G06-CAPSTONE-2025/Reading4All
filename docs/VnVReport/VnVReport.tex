@@ -52,7 +52,7 @@ March 9, 2026 & All & Created initial draft of VnV Report\\
 ~\newpage
 
 \section{Symbols, Abbreviations, and Acronyms}
-
+\subsection{Acronyms}
 \begin{table}[H]
 \centering
 \caption{Abbreviations and Acronyms Used in the Verification and Validation Plan}
@@ -99,6 +99,61 @@ WCAG & Web Content Accessibility Guidelines \\
 \hline
 \end{tabular}
 \end{table}
+
+\subsection{Symbolic Constants}
+\begin{longtable}{|p{8.0cm}|p{8.0cm}|}
+\toprule
+{\textbf{Name}} & {\textbf{Value}}\\
+\midrule
+T\_ALT\_GEN\_SMALL & 3 seconds(s) \\
+T\_ALT\_GEN\_LARGE & 8 s \\
+T\_UI\_RESP & 300 miliseconds (ms) \\
+R\_SUFFICIENCY & 85\% \\
+R\_LENGTH & 90\% \\
+R\_USABILITY\_MEDIAN & 3 (rating) \\
+R\_USABILITY\_MIN & 2 (rating) \\
+T\_ERROR\_HANDLE & 2 s \\
+T\_RECOVERY & 5 s \\
+CAP\_CONCURRENT & 2 requests \\
+CAP\_STORAGE & 500 images/day \\
+MAINT\_TIME & 2 person-days/quarter \\
+COMPAT\_VERSIONS & 2 releases \\
+IMG\_SIZE\_BIG & 10 MEGABYTES (MB) \\
+IMG\_SIZE\_SMALL & 2 MEGABYTES \\
+TLS\_VERSION & 1.2 \\ 
+FILE\_DELETE\_TIME & 60 s \\
+FILE\_TYPES & .png, .jpg, .jpeg, .svg, .webp \\
+NETWORK\_SOURCE\_POLICY & McMaster SSO tokens or IP ranges only\\
+TEAM\_SIZE & 5 students \\
+HOURS\_RESEARCH & 40 hours \\
+HOURS\_BACKEND & 120 hours \\
+HOURS\_FRONTEND & 80 hours \\
+HOURS\_TESTING & 60 hours \\
+HOURS\_DOCS & 30 hours \\
+HOURS\_TOTAL & 330 hours \\
+HOURS\_PROJECT & 1,320 person-hours \\
+COST\_PER\_HOUR & \$20/hour \\
+COST\_TOTAL & \$26,400 CAD \\
+COST\_ACTUAL & \$0 CAD \\
+COST\_INCENTIVE\_MIN & \$100 CAD \\
+COST\_INCENTIVE\_MAX & \$150 CAD \qquad\textit{Table continues on next page}\\
+MAX\_ZOOM\_PERCENTAGE & 200\% \\
+MIN\_CONTRAST\_RATIO & 4.5:1\\
+MAX\_UPLOAD\_STEPS & 5 steps\\
+MAX\_MINUTES & 5 minutes\\
+USERS\_SUCCESS\_PERCENT & 80\%\\
+MAX\_ERROR\_RECOVER & 2 seconds \\
+LEARNING\_PERCENT & 90\% \\
+MAX\_LEARNING\_MINUTES & 5 minutes \\
+MIN\_COMPENSATION\_DOLLARS & \$100 CAD \\ 
+MAX\_COMPENSATION\_DOLLARS & \$150 CAD \\ 
+LATEST\_RELEASES\_NUM & 3 \\
+MOST\_COMMON\_SR & 3 \\
+SFWR\_RELEASES & 2 \\
+
+
+\bottomrule
+\end{longtable}
 \newpage
 
 \tableofcontents
@@ -1014,7 +1069,7 @@ The following are the manual tests for this module.
   \endfoot
 
   \bottomrule
-  \caption{UserInterfaceInterfactions Manual Testing Evaluation}
+  \caption{UserInterfaceInteractions Manual Testing Evaluation}
   \label{table:UII-MT-eval}
   \endlastfoot
 
