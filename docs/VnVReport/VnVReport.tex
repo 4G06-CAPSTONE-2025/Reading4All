@@ -194,6 +194,16 @@ functional requirements.
   Session did not expire and system remained accessible after \texttt{SESSION\_TIMEOUT} of inactivity. &
   \cellcolor{red}Fail \\ 
 \end{longtable}
+\textbf{Analysis of Failed Tests:}
+\begin{itemize}
+  \item \textbf{FR-ST2}: These failures were primarily due to limitations in the AI model’s training data and tuning. The model generated descriptions 
+  that were syntactically correct but lacked sufficient detail and educational value, leading to low scores in sufficiency and learning impact. 
+  This issue was not related to code correctness but rather to model performance and requirement expectations. Improvements such as additional training data 
+  and hypertuning are required to address this.
+  \item \textbf{FR-ST7}: The session timeout functionality did not trigger as expected, indicating an issue in session lifecycle handling. This failure is 
+  likely due to incomplete implementation or missing backend logic for enforcing session expiration rather than unclear requirements. This highlights a gap 
+  in implementation completeness and integration testing.
+\end{itemize}
 
 \section{Nonfunctional Requirements Evaluation}
 
@@ -387,6 +397,19 @@ Tester verifies timeout notifications, retry option, proper data cleanup, and ab
  
 
 \end{longtable}
+
+\textbf{Analysis of Failest Tests:}
+\begin{itemize}
+  \item \textbf{NFR-ST6:} The system did not meet the required performance threshold for alt-text generation time. This was caused by the computational 
+  cost of the AI model and lack of optimization rather than poor code quality. The issue was partially addressed by switching to a faster model, as described in Section 8.2.
+  \item \textbf{NFR-ST8:} These failures were primarily due to limitations in the AI model’s training data and tuning. The model generated descriptions that were syntactically 
+  correct but lacked sufficient detail and educational value, leading to low scores in sufficiency and learning impact. This issue was not related to code correctness but rather to 
+  model performance and requirement expectations. Improvements such as additional training data and hypertuning are required to address this.
+  \item \textbf{NFR-ST14 and NFR-ST22:} These failures were due to missing UI elements (e.g., main landmark) and incomplete implementation of accessibility documentation and best 
+  practices. The issues stem from implementation gaps and evolving requirements rather than fundamental design flaws. Automated tools (e.g., Axe) helped identify these gaps for future correction.
+  \item \textbf{NFR-ST25:} Failures in staging readiness were due to incomplete integration and unresolved issues from earlier failed tests. This indicates that the system was not fully stabilized 
+  before deployment rather than issues with individual modules.
+\end{itemize}
 	
 \section{Comparison to Existing Implementation}	
 
@@ -585,6 +608,15 @@ The following are the evaluation of the unit tests per module.
   No error was raised and the user received a Verification email.&
   \cellcolor{red}Fail \\
 \end{longtable}
+
+\textbf{Analysis of Failed Tests:}
+\begin{itemize}
+  \item \textbf{AUTH-UT6: }The failure in AUTH-UT6 occurred because the system allowed account creation using an email that already exists, 
+  instead of raising an error as expected. This indicates that duplicate account prevention was not properly enforced at the application level. 
+  The issue is likely due to reliance on the external authentication service (Supabase), which may not restrict duplicate sign-up attempts by default, 
+  or the absence of an explicit validation check before account creation. This reflects an implementation gap rather than a requirement ambiguity or 
+  code quality issue. Future improvements should include enforcing unique user constraints and validating existing accounts prior to registration.
+\end{itemize}
 
 \subsection{MainScreen Module}
 
@@ -1124,6 +1156,14 @@ module’s manual tests.
   \cellcolor{green}Pass \\ 
 
 \end{longtable}
+
+\textbf{Analysis of Failed Tests:}
+\begin{itemize}
+  \item \textbf{UIA-MT1: } These failures were due to missing UI elements (e.g., main landmark) and 
+  incomplete implementation of accessibility documentation and best practices. The issues stem from 
+  implementation gaps and evolving requirements rather than fundamental design flaws. Automated tools 
+  helped identify these gaps for future correction.
+\end{itemize}
 
 \subsection{DataPreProcess Module}
 The following are the manual tests for this module.
