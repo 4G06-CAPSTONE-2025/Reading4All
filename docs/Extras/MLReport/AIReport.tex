@@ -233,20 +233,62 @@ ensured that important technical details were preserved, while still improving r
 
 How are you evaluating your model? What results do you have so far? What are your baselines? Refer to item 5. This may take around 0.5 pages.
 
-\subsection{Evaluation Metrics}
-\subsection{Revision 0 Results}
-\subsection{Revision 1 Comparisons}
-\subsection{Qualitative Examples}
+\subsection{Evaluation Metrics} \textcolor{red}{TO DO}
+\subsection{Revision 0 Results} \textcolor{red}{TO DO}
+\subsection{Revision 1 Comparisons} \textcolor{red}{TO DO}
 
 \section{Feedback and Plans}
 
 Write about your plans for the remainder of the project. This should include a discussion of the feedback you received from your TA, and how you plan to improve your approach. Reflect on your implementation and areas for improvement. Refer to item 6. This may be around 0.5 pages.
-\subsection{Revision 0 Feedback}
-\subsection{Revision 1 Plan}
+\subsection{Revision 0 Feedback} 
+Feedback from the instructor, teaching assistant, and supervisor highlighted several key areas for improvement in Revision 0. 
+Overall, the scope of focusing on physics diagrams was seen as appropriate; however, further narrowing of scope was suggested 
+to improve model performance. A major point of feedback was that the quality of the generated alt text needed improvement, 
+particularly in terms of clarity, flow, and consistency. Issues such as poor capitalization, awkward phrasing, and lack of structure were identified.
+
+The teaching assistant specifically noted that some generated descriptions were unclear or did not fully make sense, indicating 
+that the model struggled with accurately capturing relationships and meaning within complex diagrams. Additionally, it 
+was suggested that the system should make it clearer that instructors can edit or refine the generated alt text before use, 
+improving usability in real-world settings. From a system perspective, feedback also included improving clarity in features such as 
+file handling and making system behaviors (e.g., history sorting) more transparent.
+
+\subsection{Revision 1 Plan} 
+Based on this feedback, our Revision 1 plan focused on conducting a series of targeted experiments to 
+improve the quality, structure, and accuracy of the generated alt text. The work was divided into multiple 
+subteams, each addressing a different aspect of the system.
+
+The first area of focus was dataset expansion and restructuring, where the dataset was organized into 
+physics-specific subsets (e.g., graphs, electric fields, block diagrams) and expanded to improve model generalization. 
+A new subject field was added to support more structured training and enable future improvements.
+
+The second component involved developing a routing and model selection system, where images would first 
+be classified into a physics subset and then routed to a more specialized captioning approach. This aimed to move 
+beyond a single generalized pipeline and instead tailor outputs based on diagram type.
+
+Another key area was output improvement using LLMs, where we explored using models such as FLAN-T5 to refine 
+the generated captions in terms of clarity, readability, and formatting. This was intended to directly address 
+feedback regarding poor structure and flow in the generated alt text.
+
+Finally, we conducted model experimentation and optimization, testing alternative models and configurations 
+(e.g., different training epochs and architectures) to evaluate whether improvements over BLIP could be achieved. All experiments were documented and compared to guide final model selection.
 \subsection{Revision 1 Improvement}
+In Revision 1, several improvements were made to address the issues identified in earlier feedback. One of the most impactful changes was the 
+introduction of a post-processing layer that cleans and standardizes the structure of the generated alt text. After BLIP generates the initial 
+caption, a backend function is applied to correct formatting issues such as inconsistent capitalization, extra whitespace, repeated words, 
+and unnecessary punctuation.
+
+These improvements significantly enhanced the readability and professionalism of the generated descriptions without altering their original meaning. 
+This was especially important for accessibility, as clearer and more structured text improves the experience for screen reader users.
+
+In addition to structural improvements, minor enhancements were made to the quality of the alt text itself, resulting in slightly more detailed 
+and coherent descriptions compared to Revision 0. While the core model remained similar, these refinements demonstrate how post-processing and data 
+improvements can meaningfully improve output quality.
+
+Revision 1 shows clear progress in addressing feedback by improving both the presentation and clarity of the generated alt text, while also laying 
+the groundwork for further model and pipeline enhancements.
 
 
-\section*{Team Contributions}
+\section*{Team Contributions} \textcolor{red}{TO DO}
 
 Write in this section a few sentences describing the contributions of each team member. What did each member work on? Refer to item 7.
 \\ 
