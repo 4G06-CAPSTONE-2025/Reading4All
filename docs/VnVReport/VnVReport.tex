@@ -1508,6 +1508,16 @@ These automated checks helped the team detect issues early in the development pr
 
 Additionally, the CI/CD pipeline supported reproducibility by ensuring that the same build and testing procedures were executed consistently for each update. This contributed to a more stable and reliable development process for the Reading4All system.
 		
+
+\subsection{Mutation Testing}
+Mutation testing was originally proposed in the VnV Plan as a method to evaluate the effectiveness of unit tests by introducing small faults (mutations) into the code and verifying whether the existing tests could detect them. \\
+
+However, mutation testing was not fully implemented in this project due to time constraints and the additional setup complexity required for integrating mutation testing tools with both the React frontend and Python backend environments. 
+Additionally, the team prioritized functional correctness, accessibility testing, and integration validation, which were more critical to the system’s goals. \\
+
+Despite not conducting formal mutation testing, test effectiveness was indirectly assessed through code coverage analysis and the ability of unit tests to detect real defects during development. Future work could include incorporating 
+mutation testing tools to further evaluate and strengthen the robustness of the test suite.
+
 \section{Trace to Requirements}
 The following table (Table \ref{table:test-requirement-trace}) shows the relationship between the tests performed and
 the requirements deﬁned in the \citet{SRS}.
