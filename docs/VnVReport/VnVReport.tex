@@ -1671,11 +1671,14 @@ The following analyzes the code coverage metrics for the React frontend of the s
 The following analyzes the code coverage for the backend of the system. 
 This analysis was performed using \texttt{pytest-cov} and shows how key features 
 such as authentication, image validation, session history of the system are unit tested. 
-Please refer to the Figure~\ref{fig:BackendCoverage} for more detail and insight. 
+Furthermore, files such as \texttt{alt\_text\_history.py} and \texttt{gen\_alt\_text.py}
+have lower unit test coverage due to their reliance on Supabase database services. As a result, 
+their functionality was additionally tested manually to ensure correct 
+integration with Supabase and to ensure the expected behavior. Please refer to the Figure~\ref{fig:BackendCoverage} for more detail and insight. 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.1 \textwidth]{BackendCoverage.png}
+\includegraphics[width=1.1 \textwidth]{BackendCoverage_Updated.png}
 \caption{Coverage Report of the Backend}
 \label{fig:BackendCoverage}
 \end{figure}
