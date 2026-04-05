@@ -209,6 +209,24 @@ and inference efficiency that motivated further improvements in later revisions.
 \subsubsection{BLIP Re-training for Expanded Dataset} \textcolor{red}{TO DO}
 \subsubsection{Category Routing System} \textcolor{red}{TO DO}
 \subsubsection{LLM Polisher Post-Processing}
+In Revision 1, we explored enhancing the pipeline by introducing a post-processing step using a large language model, specifically FLAN-T5, 
+to improve the quality of the generated alt text. In this approach, the output from the BLIP model was passed into FLAN-T5, which was 
+prompted to refine the text by improving sentence structure, clarity, and overall readability. This created a two-stage pipeline: 
+image input (1) BLIP caption generation (2) FLAN-T5 text refinement.
+
+Unlike the base pipeline, this additional step operated purely on textual embeddings, focusing on improving linguistic quality rather 
+than extracting new visual features. The intention was to address issues observed in Revision 0, such as inconsistent formatting, 
+repetition, and lack of fluency in the generated descriptions.
+
+However, several limitations were identified during experimentation. FLAN-T5 often over-simplified or shortened the generated descriptions, 
+removing important technical details that are critical for accurately describing STEM diagrams. In some cases, it cut sentences or omitted 
+key relationships between components, reducing the usefulness of the alt text. Additionally, a broader limitation of using large language 
+models is that many are either not fully open-source or require paid access for scalable usage, making them less practical for integration into a capstone-level system.
+
+It is important to note that after experimenting with this, this approach was not included in the final implementation. Instead, a rule-based post-processing function was developed 
+in the backend to manually clean and standardize the structure of the generated alt text. This method provided more control over formatting and 
+ensured that important technical details were preserved, while still improving readability and consistency.
+
 \subsubsection{Alternative Model Testing} \textcolor{red}{TO DO}
 
 \section{Results and Evaluation}
