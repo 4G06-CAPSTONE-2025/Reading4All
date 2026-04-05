@@ -101,7 +101,7 @@ It is particularly relevant to this project because it generates natural languag
 
 BLIP uses a unified architecture that combines a vision encoder with a language model, allowing it to handle both image-text understanding and text generation. It is trained using multiple objectives, 
 including image-text contrastive learning, matching, and language modeling, which help it learn strong and generalizable representations.
-In this project, BLIP was selected after multiple iterations and experiments due to its ability to generate more coherent, detailed, and structured alt text for complex STEM diagrams. It also 
+In this project, BLIP was selected after multiple iterations and experiments due to its ability to generate more coherent, detailed, and structured alt text for complex physics diagrams. It also 
 supports fine-tuning and post-processing, which further improves readability and consistency.
 
 BLIP provides a strong and flexible foundation for generating accessible image descriptions, aligning well with the goals of this project.
@@ -113,19 +113,21 @@ BLIP provides a strong and flexible foundation for generating accessible image d
 You should write about your dataset here, following the guidelines regarding item 1. This section may be 0.5-1 pages. Depending on your specific dataset, you may want to include subsections for the preprocessing, annotation, etc.
 
 \subsection{Dataset Overview}
-Talk about: 
-\begin{itemize}
-    \item Initial Dataset Size (Revision 0)
-    \item Expanded dataset (Revision 1)
-    \item Domains (Physics Subsets, Graphs, etc.)
-\end{itemize}
+
+The dataset focused exclusively on physics-related diagrams to align with the goals of the project. The domains covered included topics such as magnetic fields, mechanics, and various types of graphs. By limiting the dataset to 
+these specific areas, the model was better able to learn relevant patterns and produce more precise and context-aware alt text for physics content.
+
+In Revision 0, the initial dataset consisted of approximately 500 images. These images were primarily physics diagrams used to establish a baseline for training and evaluating the model. In Revision 1, the dataset was expanded 
+by adding approximately 300 additional images, bringing the total to around 800 images. This expansion helped improve the model’s ability to generalize and generate more accurate descriptions.
 
 \subsection{Annotation Structure}
-Talk about: 
-\begin{itemize}
-    \item CSV fields
-    \item Physics category grouping
-\end{itemize}
+In Revision 0, the dataset annotations were stored in a CSV file with four main fields: Diagram-ID, Image-Path, Category-of-Image, and Modified-Alt-Text. The Diagram-ID serves as 
+a unique identifier for each image, allowing for easy tracking and referencing. The Image-Path specifies the file location of the corresponding diagram. The Modified-Alt-Text contains 
+the descriptive text associated with each image, 
+which serves as the ground truth for training the model. These descriptions are detailed and structured to capture key components, relationships, and annotations present in the diagrams.
+
+In Revision 1, an additional field called Category-of-Image was introduced to further refine the categorization of the dataset. This field groups diagrams into more specific types, such as graphs, 
+waves, mechanics, and others. Adding this column allowed for better control and specificity in prompting the model, ultimately improving the relevance and consistency of the generated alt text.
 
 \subsection{Preprocessing}
 
