@@ -59,6 +59,7 @@
   \midrule
   November 13 2025 & 1.0 & Rev-1 Design Document\\
   January 21 2026 & 2.0 & Rev-0 Design Document\\
+  April 4, 2026 & 2.1 & Address Peer Review \texttt{\#236} \\ 
   \bottomrule
 \end{tabularx}
 
@@ -368,7 +369,9 @@ The \texttt{AuthenticationService} module is responsible for verifying user cred
 It guarantees that only authenticated users can upload images or retrieve generated alt text, fulfilling the security and privacy requirements defined in the SRS. 
 Supporting this, the \texttt{SessionManagement} module manages each user’s active session lifecycle by creating, validating, refreshing, and terminating session tokens. 
 It also maintains a short-term record of user interactions during the active session, such as image uploads and model outputs, ensuring that users can view their recent activity while preserving system integrity and confidentiality. 
-Together, these two backend modules ensure that all authentication, authorization, and session tracking processes are handled transparently and securely, thereby supporting reliability, data protection, and user trust across the Reading4All system.
+Together, these two backend modules ensure that all authentication, authorization, and session tracking processes are handled transparently and securely, thereby supporting reliability, data protection, and user trust across the Reading4All system. The \texttt{AuthenticationService} 
+module handles identity verification and token generation, while the \texttt{SessionManagement} module is solely responsible for managing session state and lifecycle. \texttt{AuthenticationService} does not directly create or delete sessions 
+but instead signals \texttt{SessionManagement} to perform these actions.
 \section{Module Decomposition} \label{SecMD}
 
 Modules are decomposed according to the principle of ``information hiding''
@@ -458,9 +461,9 @@ The modules are defined as their own subsection and follow the following format:
     thresholds, and interactions with external authentication providers.
     Includes error classification for authentication failures and
     audit-safe handling of sensitive data.
-  \item[Services:] Verifies user credentials, issues and refreshes
-    authentication tokens, validates tokens on incoming requests,
-    resolves current user identity (userID/role) for access control.
+  \item[Services:] Verifies user credentials and generates authentication tokens upon successful login.
+    Delegates session creation and termination to the SessionManagement module.
+    Validates user identity and access permissions for incoming requests.
     This module is used to sign up new users, log in existing users. 
     This is also used to protect user data and ensure only necessary sign up information
     is collected and stored. 
@@ -552,10 +555,11 @@ The modules are defined as their own subsection and follow the following format:
     (interaction entries and Reading4All data references), and
     eviction/cleanup strategies. Includes indexing strategies for
     fast token lookups and privacy rules for session-scoped logs.
-  \item[Services:] Creates, validates, refreshes, and deletes
-    sessions; appends interaction entries; links session activity to
-    Reading4All data records; retrieves filtered session history and
-    recent data references for the current session.
+  \item[Services:] Solely responsible for the lifecycle of user sessions, 
+  including creation, validation, refresh, and termination of session records. 
+  Receives authenticated user information from the AuthenticationService module 
+  to initialize or terminate sessions. Maintains session state and history 
+  independent of authentication logic.
   \item[Implemented By:] Reading4All
   \item[Type of Module:] Abstract Data Type
 \end{description}
