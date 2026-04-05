@@ -136,20 +136,46 @@ waves, mechanics, and others. Adding this column allowed for better control and 
 Describe any features you used for your model, or how your data was input to your model. Are you doing feature engineering or feature selection? Are you learning embeddings? Is it all part of one neural network? Refer to item 3. This may range from 0.25 pages to 0.5 pages.
 
 \subsection{Baseline (Revision 0)}
-Talk about:
-\begin{itemize}
-    \item BLIP 
-    \item Pix2Struct 
-\end{itemize}
+In revision 0, we experimented with either using BLIP or Pix2Struct for our AI model. 
+
+\subsubsection{BLIP}
+In Revision 0, BLIP was used as the baseline model for generating alt text from physics diagrams. The model takes an 
+image as input and processes it through a vision encoder to extract visual features such as shapes, text, and spatial 
+relationships within the diagram. These features are then passed to a language model, which generates a natural 
+language description of the image. This process relies on learned embeddings, where both visual and textual information 
+are represented in a shared feature space, allowing the model to effectively connect image content with descriptive text.
+
+No explicit feature engineering or manual feature selection was performed, as BLIP inherently learns relevant features 
+during training through its pretraining objectives. The model was used in a zero-shot or minimally fine-tuned setting 
+in Revision 0, meaning it relied primarily on its pretrained knowledge to generate descriptions. While this allowed for 
+quick implementation, the outputs often lacked consistency, structure, and domain-specific detail for complex physics diagrams.
+
+BLIP in Revision 0 served as a strong starting point by providing automatic caption generation, but it highlighted 
+the need for further improvements in dataset quality, domain specificity, and output formatting in later revisions.
+
+\subsubsection{Pix2Struct}
 
 \subsection{Revision 1}
-Talk about whatever the final model includes i.e:
-\begin{itemize}
-    \item Physics subset label added 
-    \item Routing classifier
-    \item LLM post-processing
-    \item etc. 
-\end{itemize}
+In Revision 1, we conducted different experiments highlighted below to see if we can improve our 
+AI model from Revision 0.
+
+\subsubsection{Addition of More Data}
+\subsubsection{Addition of Physics Subset Label}
+\subsubsection{LLM Post Processing and Clean-Up}
+
+In Revision 1, we experimented with incorporating a large language model, FLAN-T5, as a post-processing 
+step to improve the quality of the generated alt text. The idea was to take the raw output from the BLIP model 
+and pass it through FLAN-T5 to refine the structure, improve clarity, and enhance readability. This approach 
+leveraged the strong text understanding and generation capabilities of FLAN-T5 to correct grammatical issues, 
+remove redundancies, and produce more polished descriptions.
+
+Unlike the baseline, this introduced an additional layer of processing where the model operates purely on text 
+embeddings rather than visual features. FLAN-T5 was prompted to rephrase or clean the generated captions, 
+effectively acting as a text refinement module rather than a primary generator. This can be seen as a form 
+of feature enhancement at the language level, where the semantic quality of the output is improved without modifying 
+the underlying visual features.
+\subsubsection{Model Experimentation}
+
 
 \section{Implementation}
 
