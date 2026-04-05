@@ -10,7 +10,7 @@
 
 \date{}
 
-\input{../Comments}
+\input{../Comments} 
 
 \input{../Common}
 
@@ -84,8 +84,9 @@ low.}
     \hline
     \endlastfoot
     
-TA & Source of constraints was unclear  & addressed in issue & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/644}{Issue \#644} \\
-\hline
+TA & Source of constraints was unclear  & addressed in issue & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/644}{Issue \#644} \\ \hline
+TA & Business rules section was misunderstood & rewrote section as system constraints and domain rules & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/638}{Issue \#638} \\ \hline
+TA & Include more than course deliverables in schedule constraints & goes beyond course deadlines, shows when requirements are implemented & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/646}{Issue \#646} \\ \hline
 \end{longtable}
 
 
@@ -111,11 +112,72 @@ TA & Source of constraints was unclear  & addressed in issue & \href{https://git
     
 TA & Grammar should be more precise & addressed in issue & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/649}{Issue \#649} \\
 \hline
+Peer Review & Backend Server needs to be more precise & clarify backend server in section 3.3 & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/155}{Issue \#155} \\
+\hline
+Peer Review & Missing network stability assumption & revise assumptions in section 4 of HA & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/151}{Issue \#151} \\
+\hline
+Peer Review & Missing network stability assumption & revise assumptions in section 4 of HA & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/151}{Issue \#151} \\
+\hline
 \end{longtable}
 
-\subsection{Design and Design Documentation}
+\subsection{Module Guide and Module Interface Specification}
+
+
+\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{|p{2cm}|p{3.5cm}|p{4.5cm}|p{3cm}|}
+    \caption{MIS Feedback Tracking and Implementation} \label{tab:DD-feedback-tracking} \\
+    \hline
+    \textbf{Feedback Source} & \textbf{Feedback Summary} & \textbf{Changes Made} & \textbf{Related Commits/Issues} \\
+    \hline
+    \endfirsthead
+    
+    \multicolumn{4}{c}{{\bfseries Table \thetable\ continued from previous page}} \\
+    \hline
+    \textbf{Feedback Source} & \textbf{Feedback Summary} & \textbf{Changes Made} & \textbf{Related Commits/Issues} \\
+    \hline
+    \endhead
+    
+    \hline \multicolumn{4}{|r|}{{Continued on next page}} \\ \hline
+    \endfoot
+    
+    \hline
+    \endlastfoot
+    
+Peer Review & Not all modules in MG match the MIS & added missing module definitions & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/241}{Issue \#241} \\
+\hline
+Peer Review & Misalignment of \texttt{userinteface-} \texttt{interactions} module in MIS and MG & clarify module in MIS to reflect MG  & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/239}{Issue \#239} \\
+\hline
+\end{longtable}
 
 \subsection{VnV Plan and Report}
+
+\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{|p{2cm}|p{3.5cm}|p{4.5cm}|p{3cm}|}
+    \caption{VnV Plan Feedback Tracking and Implementation} \label{tab:DD-feedback-tracking} \\
+    \hline
+    \textbf{Feedback Source} & \textbf{Feedback Summary} & \textbf{Changes Made} & \textbf{Related Commits/Issues} \\
+    \hline
+    \endfirsthead
+    
+    \multicolumn{4}{c}{{\bfseries Table \thetable\ continued from previous page}} \\
+    \hline
+    \textbf{Feedback Source} & \textbf{Feedback Summary} & \textbf{Changes Made} & \textbf{Related Commits/Issues} \\
+    \hline
+    \endhead
+    
+    \hline \multicolumn{4}{|r|}{{Continued on next page}} \\ \hline
+    \endfoot
+    
+    \hline
+    \endlastfoot
+    
+Peer Review & Specify the metric used in FR-ST2 system test  & specified evaluation metrix in appendix 6.1 for FR-ST2 & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/149}{Issue \#149} \\
+\hline
+Peer Review & Addition of additional checklists & none; addressed in issue comments & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/148}{Issue \#148} \\
+\hline
+Peer Review & Addition of next steps in the NFR section & added next steps in NFR section & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/146}{Issue \#146} \\
+\hline
+\end{longtable}
 
 \renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{2cm}|p{3.5cm}|p{4.5cm}|p{3cm}|}
@@ -140,7 +202,13 @@ TA & Grammar should be more precise & addressed in issue & \href{https://github.
 Peer Review & NFR section is missing an introduction to outline purpose, scope, etc.   & addressed in issue & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/604}{Issue \#604} \\
 \hline
 TA & No plan in place for if roles need to be switched. & addressed in issue & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/642}{Issue \#642} \\
-
+\hline 
+Peer Review & Failed tests were reported but not analyzed and lacked explanation of why modules/tests failed   & added analysis sections under the tables of where tests failed  & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/597}{Issue \#597} \\
+\hline
+Peer Review & Mutation testing was mentioned in the VnV Plan but not discussed in the VnV Report   & Added a subsection explaining why mutation testing was not implemented & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/600}{Issue \#600} \\
+\hline
+Peer Review & Symbolic constants not defined and typos  & Added the symbolic constants table and fixed typos & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/605}{Issue \#605} \\
+\hline
 \end{longtable}
 
 \section{Extras}

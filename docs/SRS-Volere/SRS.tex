@@ -113,6 +113,7 @@ SFWR\_RELEASES & 2 \\
   \toprule {\textbf{Date}} & {\textbf{Version}} & {\textbf{Notes}}\\
   \midrule
   October 10 2025 & 1.0 & Initial Version of SRS\\
+  April 1, 2026 & 1.1 & Address TA Feedback \texttt{\#638}, \texttt{\#646} \\
   \bottomrule
 \end{tabularx}
 
@@ -495,15 +496,43 @@ coursework and study materials.
     {\bf Fit Criterion:} All deliverables are submitted, and the
     final product is tested and operable by April 2026. \\
     {\bf Priority:} High.
+
+    \item \emph{High-priority functional requirements must be implemented before system integration begins.}\\[2mm]
+    {\bf Rationale:} This is to ensure that the final product is
+    functional and meets all requirements
+    at the end of the academic year.\\
+    {\bf Fit Criterion:} High-priority requirements (FR1, FR2, FR3, FR6) are implemented by the end of January 2026. \\
+    {\bf Priority:} High.
+
+    \item \emph{Medium-priority functional and usability requirements must be implemented after core 
+    functionality is established.}\\[2mm]
+    {\bf Rationale:} Once core features are complete, additional functionality can be layered to 
+    improve usability and system completeness.\\
+    {\bf Fit Criterion:} Medium-priority requirements (FR4, FR5 and usability/accessibility enhancements) 
+    are implemented by the end of February 2026. \\
+    {\bf Priority:} Medium.
+
+    \item \emph{Performance, robustness, and system testing requirements must be completed prior to final system delivery.}\\[2mm]
+    {\bf Rationale:} Ensuring system reliability and performance before final delivery reduces the risk of 
+    failure and improves user experience.\\
+    {\bf Fit Criterion:} Performance and robustness requirements are implemented and full system testing is completed by March 2026. \\
+    {\bf Priority:} High.
+
+     \item \emph{Final system validation and documentation must be completed before project submission.}\\[2mm]
+    {\bf Rationale:} Proper validation and documentation ensure the system meets all requirements and is 
+    ready for deployment and evaluation.\\
+    {\bf Fit Criterion:} Final validation and documentation are completed before April 2026. \\
+    {\bf Priority:} High.
+
+
 \end{enumerate}
 \subsection{Budget Constraints}
 \begin{enumerate}[label=MD-BC \arabic*., wide=0pt, leftmargin=*]
   \item \emph{The project budget must include compensation for user
       testers, set at maximum MAX\_COMPENSATION\_DOLLARS canadian dollars per participant for two rounds
     of usability testing.}\\[2mm]
-    {\bf Rationale:} This is to ensure that user testers are
-    compensated for their meaningful feedback,
-    and that our testing aligns with ethical practices.\\
+    {\bf Rationale:} Implementing core features first ensures that the system has a stable foundation before 
+    integrating additional components.\\ 
     {\bf Fit Criterion:} There must be record of participants being
     compensated between the range of MIN\_COMPENSATION\_DOLLARS and MAX\_COMPENSATION\_DOLLARS for
     two rounds of testing. \\
@@ -633,26 +662,14 @@ Assistive technology that reads text aloud.
     environments, but can later be extended for mobile platforms use.
 \end{itemize}
 \subsection{Business Rules}
-The business rules established among the team are as follows:
+The business rules regarding the system are as follows:
 \begin{itemize}
-  \item \textbf{Adherence to Project Schedule}: All deliverables and
-    milestones must be
-    completed according to the established project schedule. Any
-    anticipated delays must be communicated
-    in advance.
-  \item \textbf{Pull Request Requirement}: All pull requests made by
-    a team member must be reviewed by
-    three other members before being merged into the \texttt{main}
-    branch. The reviewers must provide approval
-    or feedback within 24 hours of the pull request.
-  \item \textbf{Team Communication Standard}: All team members must
-    communicate respectfully and professionally during
-    all discussions, meetings, and written communication.
-  \item \textbf{Testing Requirements}: All code contributions must
-    include appropriate unit, intergration, and
-    functionality tests to ensure correctness and reliability.
-    Accessibility testing must also be performed for all
-    product features.
+  \item Only authenticated users (McMaster Students) can access system functionality.
+  \item The system must only accept supported image formats (e.g., JPEG, PNG).
+  \item Generated alternative text must comply with WCAG 2.1 Level AA standards.
+  \item User session data must be temporary and deleted after session termination.
+  \item The system must not store or expose personally identifiable information (PII).
+  \item Generated outputs must not contain harmful, biased, or offensive content.
 \end{itemize}
 
 \subsection{Assumptions}

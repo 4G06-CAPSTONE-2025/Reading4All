@@ -46,13 +46,14 @@
 \toprule {\bf Date} & {\bf Name} & {\bf Notes}\\
 \midrule
 March 9, 2026 & All & Created initial draft of VnV Report\\
+April 4, 2026 & Francine B & Address Peer Feedback \texttt{\#597}, \texttt{\#600}, \texttt{\#605} \\ 
 \bottomrule
 \end{tabularx}
 
 ~\newpage
 
 \section{Symbols, Abbreviations, and Acronyms}
-
+\subsection{Acronyms}
 \begin{table}[H]
 \centering
 \caption{Abbreviations and Acronyms Used in the Verification and Validation Plan}
@@ -99,6 +100,61 @@ WCAG & Web Content Accessibility Guidelines \\
 \hline
 \end{tabular}
 \end{table}
+
+\subsection{Symbolic Constants}
+\begin{longtable}{|p{8.0cm}|p{8.0cm}|}
+\toprule
+{\textbf{Name}} & {\textbf{Value}}\\
+\midrule
+T\_ALT\_GEN\_SMALL & 3 seconds(s) \\
+T\_ALT\_GEN\_LARGE & 8 s \\
+T\_UI\_RESP & 300 miliseconds (ms) \\
+R\_SUFFICIENCY & 85\% \\
+R\_LENGTH & 90\% \\
+R\_USABILITY\_MEDIAN & 3 (rating) \\
+R\_USABILITY\_MIN & 2 (rating) \\
+T\_ERROR\_HANDLE & 2 s \\
+T\_RECOVERY & 5 s \\
+CAP\_CONCURRENT & 2 requests \\
+CAP\_STORAGE & 500 images/day \\
+MAINT\_TIME & 2 person-days/quarter \\
+COMPAT\_VERSIONS & 2 releases \\
+IMG\_SIZE\_BIG & 10 MEGABYTES (MB) \\
+IMG\_SIZE\_SMALL & 2 MEGABYTES \\
+TLS\_VERSION & 1.2 \\ 
+FILE\_DELETE\_TIME & 60 s \\
+FILE\_TYPES & .png, .jpg, .jpeg, .svg, .webp \\
+NETWORK\_SOURCE\_POLICY & McMaster SSO tokens or IP ranges only\\
+TEAM\_SIZE & 5 students \\
+HOURS\_RESEARCH & 40 hours \\
+HOURS\_BACKEND & 120 hours \\
+HOURS\_FRONTEND & 80 hours \\
+HOURS\_TESTING & 60 hours \\
+HOURS\_DOCS & 30 hours \\
+HOURS\_TOTAL & 330 hours \\
+HOURS\_PROJECT & 1,320 person-hours \\
+COST\_PER\_HOUR & \$20/hour \\
+COST\_TOTAL & \$26,400 CAD \\
+COST\_ACTUAL & \$0 CAD \\
+COST\_INCENTIVE\_MIN & \$100 CAD \\
+COST\_INCENTIVE\_MAX & \$150 CAD \qquad\textit{Table continues on next page}\\
+MAX\_ZOOM\_PERCENTAGE & 200\% \\
+MIN\_CONTRAST\_RATIO & 4.5:1\\
+MAX\_UPLOAD\_STEPS & 5 steps\\
+MAX\_MINUTES & 5 minutes\\
+USERS\_SUCCESS\_PERCENT & 80\%\\
+MAX\_ERROR\_RECOVER & 2 seconds \\
+LEARNING\_PERCENT & 90\% \\
+MAX\_LEARNING\_MINUTES & 5 minutes \\
+MIN\_COMPENSATION\_DOLLARS & \$100 CAD \\ 
+MAX\_COMPENSATION\_DOLLARS & \$150 CAD \\ 
+LATEST\_RELEASES\_NUM & 3 \\
+MOST\_COMMON\_SR & 3 \\
+SFWR\_RELEASES & 2 \\
+
+
+\bottomrule
+\end{longtable}
 \newpage
 
 \tableofcontents
@@ -194,6 +250,16 @@ functional requirements.
   Session did not expire and system remained accessible after \texttt{SESSION\_TIMEOUT} of inactivity. &
   \cellcolor{red}Fail \\ 
 \end{longtable}
+\textbf{Analysis of Failed Tests:}
+\begin{itemize}
+  \item \textbf{FR-ST2}: These failures were primarily due to limitations in the AI model’s training data and tuning. The model generated descriptions 
+  that were syntactically correct but lacked sufficient detail and educational value, leading to low scores in sufficiency and learning impact. 
+  This issue was not related to code correctness but rather to model performance and requirement expectations. Improvements such as additional training data 
+  and hypertuning are required to address this.
+  \item \textbf{FR-ST7}: The session timeout functionality did not trigger as expected, indicating an issue in session lifecycle handling. This failure is 
+  likely due to incomplete implementation or missing backend logic for enforcing session expiration rather than unclear requirements. This highlights a gap 
+  in implementation completeness and integration testing.
+\end{itemize}
 
 \section{Nonfunctional Requirements Evaluation}
 
@@ -387,6 +453,19 @@ Tester verifies timeout notifications, retry option, proper data cleanup, and ab
  
 
 \end{longtable}
+
+\textbf{Analysis of Failest Tests:}
+\begin{itemize}
+  \item \textbf{NFR-ST6:} The system did not meet the required performance threshold for alt-text generation time. This was caused by the computational 
+  cost of the AI model and lack of optimization rather than poor code quality. The issue was partially addressed by switching to a faster model, as described in Section 8.2.
+  \item \textbf{NFR-ST8:} These failures were primarily due to limitations in the AI model’s training data and tuning. The model generated descriptions that were syntactically 
+  correct but lacked sufficient detail and educational value, leading to low scores in sufficiency and learning impact. This issue was not related to code correctness but rather to 
+  model performance and requirement expectations. Improvements such as additional training data and hypertuning are required to address this.
+  \item \textbf{NFR-ST14 and NFR-ST22:} These failures were due to missing UI elements (e.g., main landmark) and incomplete implementation of accessibility documentation and best 
+  practices. The issues stem from implementation gaps and evolving requirements rather than fundamental design flaws. Automated tools (e.g., Axe) helped identify these gaps for future correction.
+  \item \textbf{NFR-ST25:} Failures in staging readiness were due to incomplete integration and unresolved issues from earlier failed tests. This indicates that the system was not fully stabilized 
+  before deployment rather than issues with individual modules.
+\end{itemize}
 	
 \section{Comparison to Existing Implementation}	
 
@@ -585,6 +664,15 @@ The following are the evaluation of the unit tests per module.
   No error was raised and the user received a Verification email.&
   \cellcolor{red}Fail \\
 \end{longtable}
+
+\textbf{Analysis of Failed Tests:}
+\begin{itemize}
+  \item \textbf{AUTH-UT6: }The failure in AUTH-UT6 occurred because the system allowed account creation using an email that already exists, 
+  instead of raising an error as expected. This indicates that duplicate account prevention was not properly enforced at the application level. 
+  The issue is likely due to reliance on the external authentication service (Supabase), which may not restrict duplicate sign-up attempts by default, 
+  or the absence of an explicit validation check before account creation. This reflects an implementation gap rather than a requirement ambiguity or 
+  code quality issue. Future improvements should include enforcing unique user constraints and validating existing accounts prior to registration.
+\end{itemize}
 
 \subsection{MainScreen Module}
 
@@ -982,7 +1070,7 @@ The following are the manual tests for this module.
   \endfoot
 
   \bottomrule
-  \caption{UserInterfaceInterfactions Manual Testing Evaluation}
+  \caption{UserInterfaceInteractions Manual Testing Evaluation}
   \label{table:UII-MT-eval}
   \endlastfoot
 
@@ -1124,6 +1212,14 @@ module’s manual tests.
   \cellcolor{green}Pass \\ 
 
 \end{longtable}
+
+\textbf{Analysis of Failed Tests:}
+\begin{itemize}
+  \item \textbf{UIA-MT1: } These failures were due to missing UI elements (e.g., main landmark) and 
+  incomplete implementation of accessibility documentation and best practices. The issues stem from 
+  implementation gaps and evolving requirements rather than fundamental design flaws. Automated tools 
+  helped identify these gaps for future correction.
+\end{itemize}
 
 \subsection{DataPreProcess Module}
 The following are the manual tests for this module.
@@ -1468,6 +1564,16 @@ These automated checks helped the team detect issues early in the development pr
 
 Additionally, the CI/CD pipeline supported reproducibility by ensuring that the same build and testing procedures were executed consistently for each update. This contributed to a more stable and reliable development process for the Reading4All system.
 		
+
+\subsection{Mutation Testing}
+Mutation testing was originally proposed in the VnV Plan as a method to evaluate the effectiveness of unit tests by introducing small faults (mutations) into the code and verifying whether the existing tests could detect them. \\
+
+However, mutation testing was not fully implemented in this project due to time constraints and the additional setup complexity required for integrating mutation testing tools with both the React frontend and Python backend environments. 
+Additionally, the team prioritized functional correctness, accessibility testing, and integration validation, which were more critical to the system’s goals. \\
+
+Despite not conducting formal mutation testing, test effectiveness was indirectly assessed through code coverage analysis and the ability of unit tests to detect real defects during development. Future work could include incorporating 
+mutation testing tools to further evaluate and strengthen the robustness of the test suite.
+
 \section{Trace to Requirements}
 The following table (Table \ref{table:test-requirement-trace}) shows the relationship between the tests performed and
 the requirements deﬁned in the \citet{SRS}.
