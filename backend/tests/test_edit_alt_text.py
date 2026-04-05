@@ -5,7 +5,7 @@ from services.edit_alt_text import edit_alt_text
 @patch("services.edit_alt_text.AltTextHistory")
 def test_edit_alt_text_success(mock_history_class):
     mock_history = MagicMock()
-    mock_history.update_edited_alt_text.return_value = True 
+    mock_history.update_edited_alt_text.return_value = True
     mock_history_class.return_value = mock_history
 
     request = MagicMock()
@@ -31,7 +31,7 @@ def test_edit_alt_text_success(mock_history_class):
 @patch("services.edit_alt_text.AltTextHistory")
 def test_edit_alt_text_unable_to_save(mock_history_class):
     mock_history = MagicMock()
-    mock_history.update_edited_alt_text.return_value = False 
+    mock_history.update_edited_alt_text.return_value = False
     mock_history_class.return_value = mock_history
 
     request = MagicMock()
@@ -71,7 +71,7 @@ def test_edit_alt_text_invalid_missing_entry_id(mock_history_class):
 
 @patch("services.edit_alt_text.AltTextHistory")
 def test_edit_alt_text_invalid_missing_alt_text(mock_history_class):
-   
+
     request = MagicMock()
     request.body = json.dumps(
         {
@@ -88,7 +88,7 @@ def test_edit_alt_text_invalid_missing_alt_text(mock_history_class):
 @patch("services.edit_alt_text.AltTextHistory")
 def test_edit_alt_text_exception_thrown(mock_history_class):
     mock_history = MagicMock()
-    mock_history.update_edited_alt_text.side_effect = Exception("SUPABASE ERROR") 
+    mock_history.update_edited_alt_text.side_effect = Exception("SUPABASE ERROR")
     mock_history_class.return_value= mock_history
 
     request = MagicMock()
