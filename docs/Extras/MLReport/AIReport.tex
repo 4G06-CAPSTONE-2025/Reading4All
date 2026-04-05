@@ -78,112 +78,234 @@
 % \end{abstract}
 
 \section{Introduction}
-Here, write a brief introduction to the problem you are solving. This can be adapted from your problem description and motivation from the original proposal. This should be around 0.25-0.5 pages.
+This report outlines the development of the artificial intelligence component of the Reading4All capstone project, which focuses on generating descriptive alternative text for physics diagrams to 
+improve accessibility for visually impaired users.
+
+To achieve this goal, we explored and evaluated multiple approaches, going through several iterations and experiments to refine our model’s performance and output quality. Early stages involved 
+testing different model architectures, preprocessing techniques, and training strategies to better understand how to generate accurate and readable descriptions for technical diagrams.
+
+Through this iterative process, we identified key limitations in initial outputs, such as lack of detail, inconsistency, and formatting issues. These insights guided further experimentation 
+and improvements, including dataset refinement, training adjustments, and post-processing enhancements.
+
+The final model selected for this project is based on BLIP (Bootstrapping Language-Image Pretraining), which provided the best balance between descriptive accuracy and generalization. 
+This report details the progression throghout the different revisions from initial experimentation to the finalized model, highlighting the design decisions, challenges, and improvements made along the way.
 
 \section{Related Work}
 
 Here, talk about the related work you encountered for your approach. Cite at least 5 references. Refer to item 2. No one has done exactly your task? Write about the most similar thing you can find. This should be around 0.25-0.5 pages.
 
 \subsection{Vision-Language Models}
-BLIP, Pix2Struct, etc. 
+\subsubsection{BLIP}
+Bootstrapping Language-Image Pretraining (BLIP) is a vision-language model designed for tasks that require joint understanding of images and text, such as image captioning and visual question answering. 
+It is particularly relevant to this project because it generates natural language descriptions from visual inputs, making it well-suited for automatic alt-text generation.
+
+BLIP uses a unified architecture that combines a vision encoder with a language model, allowing it to handle both image-text understanding and text generation. It is trained using multiple objectives, 
+including image-text contrastive learning, matching, and language modeling, which help it learn strong and generalizable representations.
+In this project, BLIP was selected after multiple iterations and experiments due to its ability to generate more coherent, detailed, and structured alt text for complex physics diagrams. It also 
+supports fine-tuning and post-processing, which further improves readability and consistency.
+
+BLIP provides a strong and flexible foundation for generating accessible image descriptions, aligning well with the goals of this project.
+
+\subsubsection{Pix2Struct} \textcolor{red}{TO DO}
 
 \section{Dataset}
 
 You should write about your dataset here, following the guidelines regarding item 1. This section may be 0.5-1 pages. Depending on your specific dataset, you may want to include subsections for the preprocessing, annotation, etc.
 
 \subsection{Dataset Overview}
-Talk about: 
-\begin{itemize}
-    \item Initial Dataset Size (Revision 0)
-    \item Expanded dataset (Revision 1)
-    \item Domains (Physics Subsets, Graphs, etc.)
-\end{itemize}
+
+The dataset focused exclusively on physics-related diagrams to align with the goals of the project. The domains covered included topics such as magnetic fields, mechanics, and various types of graphs. By limiting the dataset to 
+these specific areas, the model was better able to learn relevant patterns and produce more precise and context-aware alt text for physics content.
+
+In Revision 0, the initial dataset consisted of approximately 500 images. These images were primarily physics diagrams used to establish a baseline for training and evaluating the model. In Revision 1, the dataset was expanded 
+by adding approximately 300 additional images, bringing the total to around 800 images. This expansion helped improve the model’s ability to generalize and generate more accurate descriptions.
 
 \subsection{Annotation Structure}
-Talk about: 
-\begin{itemize}
-    \item CSV fields
-    \item Physics category grouping
-\end{itemize}
+In Revision 0, the dataset annotations were stored in a CSV file with four main fields: Diagram-ID, Image-Path, Category-of-Image, and Modified-Alt-Text. The Diagram-ID serves as 
+a unique identifier for each image, allowing for easy tracking and referencing. The Image-Path specifies the file location of the corresponding diagram. The Modified-Alt-Text contains 
+the descriptive text associated with each image, 
+which serves as the ground truth for training the model. These descriptions are detailed and structured to capture key components, relationships, and annotations present in the diagrams.
 
-\subsection{Preprocessing}
+In Revision 1, an additional field called Category-of-Image was introduced to further refine the categorization of the dataset. This field groups diagrams into more specific types, such as graphs, 
+waves, mechanics, and others. Adding this column allowed for better control and specificity in prompting the model, ultimately improving the relevance and consistency of the generated alt text.
+
+\subsection{Preprocessing} \textcolor{red}{TO DO}
 
 \section{Features}
 
 Describe any features you used for your model, or how your data was input to your model. Are you doing feature engineering or feature selection? Are you learning embeddings? Is it all part of one neural network? Refer to item 3. This may range from 0.25 pages to 0.5 pages.
 
 \subsection{Baseline (Revision 0)}
-Talk about:
-\begin{itemize}
-    \item BLIP 
-    \item Pix2Struct 
-\end{itemize}
+In revision 0, we experimented with either using BLIP or Pix2Struct for our AI model. 
+
+\subsubsection{BLIP}
+In Revision 0, BLIP was used as the baseline model for generating alt text from physics diagrams. The model takes an 
+image as input and processes it through a vision encoder to extract visual features such as shapes, text, and spatial 
+relationships within the diagram. These features are then passed to a language model, which generates a natural 
+language description of the image. This process relies on learned embeddings, where both visual and textual information 
+are represented in a shared feature space, allowing the model to effectively connect image content with descriptive text.
+
+No explicit feature engineering or manual feature selection was performed, as BLIP inherently learns relevant features 
+during training through its pretraining objectives. The model was used in a zero-shot or minimally fine-tuned setting 
+in Revision 0, meaning it relied primarily on its pretrained knowledge to generate descriptions. While this allowed for 
+quick implementation, the outputs often lacked consistency, structure, and domain-specific detail for complex physics diagrams.
+
+BLIP in Revision 0 served as a strong starting point by providing automatic caption generation, but it highlighted 
+the need for further improvements in dataset quality, domain specificity, and output formatting in later revisions.
+
+\subsubsection{Pix2Struct} \textcolor{red}{TO DO}
 
 \subsection{Revision 1}
-Talk about whatever the final model includes i.e:
-\begin{itemize}
-    \item Physics subset label added 
-    \item Routing classifier
-    \item LLM post-processing
-    \item etc. 
-\end{itemize}
+In Revision 1, we conducted different experiments highlighted below to see if we can improve our 
+AI model from Revision 0.
+
+\subsubsection{BLIP Re-training for Expanded Dataset} \textcolor{red}{TO DO}
+\subsubsection{Category Routing System} \textcolor{red}{TO DO}
+\subsubsection{LLM Polisher Post-Processing}
+
+In Revision 1, we experimented with incorporating a large language model, FLAN-T5, as a post-processing 
+step to improve the quality of the generated alt text. The idea was to take the raw output from the BLIP model 
+and pass it through FLAN-T5 to refine the structure, improve clarity, and enhance readability. This approach 
+leveraged the strong text understanding and generation capabilities of FLAN-T5 to correct grammatical issues, 
+remove redundancies, and produce more polished descriptions.
+
+Unlike the baseline, this introduced an additional layer of processing where the model operates purely on text 
+embeddings rather than visual features. FLAN-T5 was prompted to rephrase or clean the generated captions, 
+effectively acting as a text refinement module rather than a primary generator. This can be seen as a form 
+of feature enhancement at the language level, where the semantic quality of the output is improved without modifying 
+the underlying visual features.
+\subsubsection{Alternative Model Testing} \textcolor{red}{TO DO}
+
 
 \section{Implementation}
 
 Describe your model and implementation here. Refer to item 4. This may take around a page.
 
 \subsection{Revision 0 Pipeline}
-Talks about:
-\begin{itemize}
-    \item state the pipeline
-    \item model version 
-    \item epochs
-    \item hosting 
-    \item inference time
-    \item limitations observed
-\end{itemize}
+In Revision 0, the pipeline consisted of using a pretrained BLIP model to generate alt text directly from input 
+physics diagrams. Images from the dataset were passed into the model, which processed them through a vision encoder 
+to extract visual features. These features were then fed into a language model to generate a corresponding textual description. 
+The model used for this implementation was \texttt{Salesforce/blip-image-captioning-base}, which was selected for its 
+strong baseline performance on image captioning tasks.
+
+The model was fine-tuned for 3 epochs using the training configuration shown in Section 4. A relatively small batch size of 
+1 was used due to hardware constraints, along with a learning rate of 0.00005. No advanced optimization techniques such as mixed precision or large-scale parallelization were applied in this revision. 
+The training process focused on adapting the pretrained model to better handle physics-specific diagrams.
+
+For deployment, the model was hosted using Hugging Face Inference, allowing for accessible and scalable testing. However, 
+the inference time was approximately 2 minutes per image, which is relatively slow and not ideal for real-time applications.
+
+Several limitations were observed in this baseline implementation. The generated alt text often lacked detail and structure, 
+especially for complex STEM diagrams. In some cases, the model produced hallucinations, where it introduced incorrect or irrelevant 
+information not present in the image. For example, diagrams involving forces or motion were sometimes described with incorrect labels or relationships, 
+and technical concepts such as angular momentum were misrepresented or overly simplified. Additionally, the model struggled to capture deeper 
+meaning or accurately describe relationships between components, resulting in descriptions that were either vague or partially incorrect.
+
+Overall, while Revision 0 established a functional end-to-end pipeline for generating alt text, it highlighted key issues in accuracy, consistency, 
+and inference efficiency that motivated further improvements in later revisions.
 
 \subsection{Revision 1 Experiments}
 
-\subsubsection{BLIP Retraining for Expanded Dataset}
-\subsubsection{Category Routing System}
+\subsubsection{BLIP Re-training for Expanded Dataset} \textcolor{red}{TO DO}
+\subsubsection{Category Routing System} \textcolor{red}{TO DO}
 \subsubsection{LLM Polisher Post-Processing}
-\subsubsection{Alternative Model Testing}
+In Revision 1, we explored enhancing the pipeline by introducing a post-processing step using a large language model, specifically FLAN-T5, 
+to improve the quality of the generated alt text. In this approach, the output from the BLIP model was passed into FLAN-T5, which was 
+prompted to refine the text by improving sentence structure, clarity, and overall readability. This created a two-stage pipeline: 
+image input (1) BLIP caption generation (2) FLAN-T5 text refinement.
+
+Unlike the base pipeline, this additional step operated purely on textual embeddings, focusing on improving linguistic quality rather 
+than extracting new visual features. The intention was to address issues observed in Revision 0, such as inconsistent formatting, 
+repetition, and lack of fluency in the generated descriptions.
+
+However, several limitations were identified during experimentation. FLAN-T5 often over-simplified or shortened the generated descriptions, 
+removing important technical details that are critical for accurately describing STEM diagrams. In some cases, it cut sentences or omitted 
+key relationships between components, reducing the usefulness of the alt text. Additionally, a broader limitation of using large language 
+models is that many are either not fully open-source or require paid access for scalable usage, making them less practical for integration into a capstone-level system.
+
+It is important to note that after experimenting with this, this approach was not included in the final implementation. Instead, a rule-based post-processing function was developed 
+in the backend to manually clean and standardize the structure of the generated alt text. This method provided more control over formatting and 
+ensured that important technical details were preserved, while still improving readability and consistency.
+
+\subsubsection{Alternative Model Testing} \textcolor{red}{TO DO}
 
 \section{Results and Evaluation}
 
 How are you evaluating your model? What results do you have so far? What are your baselines? Refer to item 5. This may take around 0.5 pages.
 
-\subsection{Evaluation Metrics}
-\subsection{Revision 0 Results}
-\subsection{Revision 1 Comparisons}
-\subsection{Qualitative Examples}
+\subsection{Evaluation Metrics} \textcolor{red}{TO DO}
+\subsection{Revision 0 Results} \textcolor{red}{TO DO}
+\subsection{Revision 1 Comparisons} \textcolor{red}{TO DO}
 
 \section{Feedback and Plans}
 
 Write about your plans for the remainder of the project. This should include a discussion of the feedback you received from your TA, and how you plan to improve your approach. Reflect on your implementation and areas for improvement. Refer to item 6. This may be around 0.5 pages.
-\subsection{Revision 0 Feedback}
-\subsection{Revision 1 Plan}
+\subsection{Revision 0 Feedback} 
+Feedback from the instructor, teaching assistant, and supervisor highlighted several key areas for improvement in Revision 0. 
+Overall, the scope of focusing on physics diagrams was seen as appropriate; however, further narrowing of scope was suggested 
+to improve model performance. A major point of feedback was that the quality of the generated alt text needed improvement, 
+particularly in terms of clarity, flow, and consistency. Issues such as poor capitalization, awkward phrasing, and lack of structure were identified.
+
+The teaching assistant specifically noted that some generated descriptions were unclear or did not fully make sense, indicating 
+that the model struggled with accurately capturing relationships and meaning within complex diagrams. Additionally, it 
+was suggested that the system should make it clearer that instructors can edit or refine the generated alt text before use, 
+improving usability in real-world settings. From a system perspective, feedback also included improving clarity in features such as 
+file handling and making system behaviors (e.g., history sorting) more transparent.
+
+\subsection{Revision 1 Plan} 
+Based on this feedback, our Revision 1 plan focused on conducting a series of targeted experiments to 
+improve the quality, structure, and accuracy of the generated alt text. The work was divided into multiple 
+subteams, each addressing a different aspect of the system.
+
+The first area of focus was dataset expansion and restructuring, where the dataset was organized into 
+physics-specific subsets (e.g., graphs, electric fields, block diagrams) and expanded to improve model generalization. 
+A new subject field was added to support more structured training and enable future improvements.
+
+The second component involved developing a routing and model selection system, where images would first 
+be classified into a physics subset and then routed to a more specialized captioning approach. This aimed to move 
+beyond a single generalized pipeline and instead tailor outputs based on diagram type.
+
+Another key area was output improvement using LLMs, where we explored using models such as FLAN-T5 to refine 
+the generated captions in terms of clarity, readability, and formatting. This was intended to directly address 
+feedback regarding poor structure and flow in the generated alt text.
+
+Finally, we conducted model experimentation and optimization, testing alternative models and configurations 
+(e.g., different training epochs and architectures) to evaluate whether improvements over BLIP could be achieved. All experiments were documented and compared to guide final model selection.
 \subsection{Revision 1 Improvement}
+In Revision 1, several improvements were made to address the issues identified in earlier feedback. One of the most impactful changes was the 
+introduction of a post-processing layer that cleans and standardizes the structure of the generated alt text. After BLIP generates the initial 
+caption, a backend function is applied to correct formatting issues such as inconsistent capitalization, extra whitespace, repeated words, 
+and unnecessary punctuation.
+
+These improvements significantly enhanced the readability and professionalism of the generated descriptions without altering their original meaning. 
+This was especially important for accessibility, as clearer and more structured text improves the experience for screen reader users.
+
+In addition to structural improvements, minor enhancements were made to the quality of the alt text itself, resulting in slightly more detailed 
+and coherent descriptions compared to Revision 0. While the core model remained similar, these refinements demonstrate how post-processing and data 
+improvements can meaningfully improve output quality.
+
+Revision 1 shows clear progress in addressing feedback by improving both the presentation and clarity of the generated alt text, while also laying 
+the groundwork for further model and pipeline enhancements.
 
 
-\section*{Team Contributions}
+\section*{Team Contributions} \textcolor{red}{TO DO}
 
 Write in this section a few sentences describing the contributions of each team member. What did each member work on? Refer to item 7.
 \\ 
 Note: Split work here
 \begin{itemize}
-    \item Casey Francine Bulaclac:
-    \item Fiza Sehar:
-    \item Moly Mikhail:
-    \item Dhruv Sardana: 
-    \item Nawaal Fatima:
+    \item \textbf{Casey Francine Bulaclac:} REV 0 Blip Training, Rev 0 Annotating images, Rev 1 LLM Polisher Post Processing
+    \item \textbf{Fiza Sehar:}
+    \item \textbf{Moly Mikhail:}
+    \item \textbf{Dhruv Sardana:}
+    \item \textbf{Nawaal Fatima:}
 \end{itemize}
 
 % Bibliography entries for the entire Anthology, followed by custom entries
 %\bibliography{custom,anthology-overleaf-1,anthology-overleaf-2}
 
 % Custom bibliography entries only
+\bibliographystyle{ieeetr}
 \bibliography{custom}
 
 % \appendix
