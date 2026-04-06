@@ -1,3 +1,11 @@
+"""
+Author: Moly Mikhail and Casey Francine Bulaclac
+Date: Jan 2026
+Purpose: Calls the AI model on Hugging Face, post-processes the 
+generated alt text to clean up the format and structure. 
+Finally, stores the generated output in Supabase.
+"""
+
 import base64
 import os
 import re
@@ -5,12 +13,6 @@ import requests
 
 from databases.connect_supabase import get_supabase_admin_client
 
-"""
-Author: Moly Mikhail and Casey Francine Bulaclac
-Date: Jan 2026
-Purpose: Calls the AI model on Hugging Face, post-processes the generated alt text to clean up the format and structure. 
-Finally, stores the generated output in Supabase.
-"""
 
 class GenAltText:
     def __init__(self):
@@ -43,9 +45,10 @@ class GenAltText:
         if not raw_alt_text:
             return None, None
 
-        # removing prompt used in model from alt-text returned which is stated before the the colon
+        # removing prompt used in model from alt-text returned 
+        # which is stated before the the colon
         raw_alt_text = raw_alt_text.split(":", 1)[1].strip()
-    
+
         # clean up post processing layer
         post_alt_text = self.post_process_alt_text(raw_alt_text)
 
@@ -106,7 +109,7 @@ class GenAltText:
 
         # checks if session entries stored is at limit
         if self.session_entries_count(session_id) == self.max_entries:
-            
+
             # finds oldest entry in history
             oldest_entry_id = self.find_oldest_entry(session_id)
 

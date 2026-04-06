@@ -1,10 +1,13 @@
-from databases.connect_supabase import get_supabase_admin_client
-
 """
 Author: Moly Mikhail
 Date: Jan 2026
-Purpose: Retrieves and updates alt text history entries stored in Supabase for a user session. 
+Purpose: Retrieves and updates alt text history entries stored in Supabase
+for a user session. 
 """
+
+from databases.connect_supabase import get_supabase_admin_client
+
+
 class AltTextHistory:
 
     def __init__(self, supabase=None):
@@ -59,7 +62,7 @@ class AltTextHistory:
 
             entry_id = response.data[0]["entry_id"]
 
-            # updates the edited_alt_text col in database 
+            # updates the edited_alt_text col in database
             self.supabase.table("history").update(
                 {"edited_alt_text": edited_alt_text}
             ).eq("entry_id", entry_id).execute()
