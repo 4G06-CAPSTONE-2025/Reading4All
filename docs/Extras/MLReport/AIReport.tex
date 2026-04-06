@@ -169,7 +169,16 @@ In Revision 1, we conducted different experiments highlighted below to see if we
 AI model from Revision 0.
 
 \subsubsection{BLIP Re-training for Expanded Dataset} \textcolor{red}{TO DO}
-\subsubsection{Category Routing System} \textcolor{red}{TO DO}
+
+\subsubsection{Category Routing System}
+
+To improve the relevance of generated alt text, a category routing system was introduced in Revision 1. The dataset contained multiple diagram categories representing different physics concepts, and a single captioning model often struggled to generate accurate descriptions across all diagram types.
+
+To address this, a CLIP-based classifier was trained to categorize each input diagram before caption generation. The goal of this approach was to first identify the diagram type using the CLIP model and then use this category information to guide the prompt provided to the BLIP model. By conditioning the prompt on the predicted category, the system was able to generate more context-aware and structured alt text tailored to each diagram type.
+
+Additionally, a subject field was incorporated into the dataset to provide further contextual guidance. This subject information, combined with the predicted category, helped refine the prompting strategy and improved consistency when generating descriptions for visually similar diagrams belonging to different conceptual domains.
+
+This routing strategy allowed the system to leverage CLIP for category prediction and BLIP for caption generation, improving descriptive accuracy and reducing overly generic outputs.
 \subsubsection{LLM Polisher Post-Processing}
 
 In Revision 1, we experimented with incorporating a large language model, FLAN-T5, as a post-processing 
@@ -216,7 +225,15 @@ and inference efficiency that motivated further improvements in later revisions.
 \subsection{Revision 1 Experiments}
 
 \subsubsection{BLIP Re-training for Expanded Dataset} \textcolor{red}{TO DO}
-\subsubsection{Category Routing System} \textcolor{red}{TO DO}
+\subsubsection{Category Routing System}
+
+The category routing system was implemented as a preprocessing step in the pipeline. For each input image, the CLIP model first predicted the diagram category. This predicted category was then used to construct a category-specific prompt that guided the BLIP captioning model, enabling more structured and domain-specific alt text generation.
+
+The addition of a subject field further enhanced this process by providing additional semantic context for prompt conditioning. This helped differentiate between diagrams with similar visual layouts but different conceptual meanings. By combining CLIP-based classification with prompt-guided BLIP caption generation, the system produced more consistent and relevant descriptions.
+
+Overall, placing the CLIP classifier before the BLIP model introduced a lightweight routing mechanism that improved both prompt quality and caption accuracy while maintaining an efficient pipeline.
+
+
 \subsubsection{LLM Polisher Post-Processing}
 In Revision 1, we explored enhancing the pipeline by introducing a post-processing step using a large language model, specifically FLAN-T5, 
 to improve the quality of the generated alt text. In this approach, the output from the BLIP model was passed into FLAN-T5, which was 
@@ -304,9 +321,7 @@ Write in this section a few sentences describing the contributions of each team 
 Note: Split work here
 \begin{itemize}
     \item \textbf{Casey Francine Bulaclac:} REV 0 Blip Training, Rev 0 Annotating images, Rev 1 LLM Polisher Post Processing
-    \item \textbf{Fiza Sehar:}
-    \item \textbf{Moly Mikhail:}
-    \item \textbf{Dhruv Sardana:}
+    \item \textbf{Fiza Sehar:} BLIP research, Training Revision 0 and Revision 1 models, Dataset preprocessing, Alt text annotation and refinement, CLIP-based category routing, Prompt conditioning, User testing analysis    \item \textbf{Dhruv Sardana:}
     \item \textbf{Nawaal Fatima:}
 \end{itemize}
 
