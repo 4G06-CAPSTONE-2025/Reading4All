@@ -129,8 +129,17 @@ which serves as the ground truth for training the model. These descriptions are 
 In Revision 1, an additional field called Category-of-Image was introduced to further refine the categorization of the dataset. This field groups diagrams into more specific types, such as graphs, 
 waves, mechanics, and others. Adding this column allowed for better control and specificity in prompting the model, ultimately improving the relevance and consistency of the generated alt text.
 
-\subsection{Preprocessing} \textcolor{red}{TO DO}
+\subsection{Preprocessing}
 
+Minimal preprocessing was applied to preserve the original structure and details of the physics diagrams. Images were not manually resized or normalized, as maintaining the original resolution helped retain fine-grained elements such as labels, arrows, and annotations that are important for accurate alt-text generation. However, the BLIP processor automatically handled resizing and normalization internally to match the model’s expected input format during training.
+
+The primary preprocessing effort focused on cleaning and refining the alt-text annotations. Existing alt text descriptions were reviewed and reformatted to improve consistency, readability, and structure. This included correcting formatting issues, standardizing phrasing, and ensuring that descriptions clearly captured relationships between diagram components.
+
+User feedback played an important role in this process. Approximately 150 images had previously written alt text that was evaluated by users. Based on this feedback, the alt text was modified to improve clarity, accessibility, and descriptive quality. In addition to these refined annotations, approximately 700 additional images were added to the dataset with alt text generated from scratch. These new descriptions were written following the same structured format to maintain consistency across the dataset.
+
+Additionally, the dataset was filtered to remove duplicate or low-quality images that could negatively impact training. This helped maintain dataset consistency and reduced noise during model learning.
+
+Finally, the dataset was split into training, validation, and testing sets to support structured experimentation and evaluation. This split allowed for performance monitoring while preventing overfitting and ensuring that the model was evaluated on unseen data.
 \section{Features}
 
 Describe any features you used for your model, or how your data was input to your model. Are you doing feature engineering or feature selection? Are you learning embeddings? Is it all part of one neural network? Refer to item 3. This may range from 0.25 pages to 0.5 pages.
