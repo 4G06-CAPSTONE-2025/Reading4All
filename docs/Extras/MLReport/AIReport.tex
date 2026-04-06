@@ -245,7 +245,32 @@ ensured that important technical details were preserved, while still improving r
 
 How are you evaluating your model? What results do you have so far? What are your baselines? Refer to item 5. This may take around 0.5 pages.
 
-\subsection{Evaluation Metrics} \textcolor{red}{TO DO}
+\subsection{Evaluation Metrics} 
+To evaluate the quality and effectiveness of the generated alt text, a combination of categorical, numerical, and qualitative metrics was used. 
+These metrics were designed to assess not only the correctness of the descriptions but also their usability and impact for accessibility purposes.
+
+The first metric, Sufficiency of Description, is a categorical measure rated on a scale from 1 to 3. It evaluates whether the generated alt text 
+provides enough relevant information to convey the intended meaning of the diagram. A score of 3 is considered acceptable, indicating that 
+the description is sufficiently detailed for user understanding.
+
+The second metric, Length Appropriateness, is also a categorical measure on a 1 to 3 scale. This metric assesses whether the alt text is concise yet 
+complete, avoiding descriptions that are either too brief or unnecessarily verbose. A score of 3 indicates that the description achieves a proper 
+balance between completeness and conciseness.
+
+The Accessibility and Usability metric is evaluated on a numerical scale from 0 to 3. This measures how well the generated alt text aligns with 
+accessibility standards, particularly in terms of clarity and compatibility with assistive technologies such as screen readers. A score of 2 or higher 
+is considered acceptable, reflecting that the output meets basic usability requirements aligned with WCAG 2.1 Level AA guidelines.
+
+The fourth metric, Learning Impact, is also rated on a numerical scale from 0 to 3. This evaluates whether the generated alt text supports or enhances 
+user understanding, particularly in educational contexts. A score of 2 or higher indicates that the description provides meaningful educational value.
+
+Finally, Qualitative Feedback Notes are collected as free-form textual responses. This allows evaluators to provide detailed comments on aspects such 
+as clarity, tone, structure, and any suggested improvements. These qualitative insights complement the quantitative metrics by capturing nuances that 
+numerical scores may not fully reflect.
+
+These metrics provide a comprehensive evaluation framework that balances technical accuracy, readability, accessibility, and educational 
+usefulness, ensuring that the generated alt text meets the goals of the Reading4All project.
+
 \subsection{Revision 0 Results} \textcolor{red}{TO DO}
 \subsection{Revision 1 Comparisons} \textcolor{red}{TO DO}
 
