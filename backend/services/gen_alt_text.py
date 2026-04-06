@@ -45,7 +45,7 @@ class GenAltText:
         if not raw_alt_text:
             return None, None
 
-        # removing prompt used in model from alt-text returned 
+        # removing prompt used in model from alt-text returned
         # which is stated before the the colon
         raw_alt_text = raw_alt_text.split(":", 1)[1].strip()
 
