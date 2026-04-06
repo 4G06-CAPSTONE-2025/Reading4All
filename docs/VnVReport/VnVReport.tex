@@ -53,7 +53,8 @@
 March 9, 2026 & All & Created initial draft of VnV Report\\
 April 4, 2026 & Dhruv & Added brief introductory text under sections before subsections, and updated report formatting based on feedback.\\
 April 5, 2026 & Dhruv & Added short lead-in paragraphs before subsection groups in sections that previously had no introductory text, to improve document flow and address formatting feedback.\\
-April 6, 2026 & Dhruv & Peer Review \texttt{\#602} Applied
+April 6, 2026 & Dhruv & Peer Review \texttt{\#602} Applied\\
+April 7, 2026 & Dhruv & Peer Review \texttt{\#594} Applied\\
 \end{tabularx}
 \end{table}
 
@@ -201,8 +202,8 @@ functional requirements. Table~\ref{table:FR-ST-eval} summarizes the functional 
   FR-ST\testcount & Log into the system and remain inactive for longer than \texttt{SESSION\_TIMEOUT}, then attempt to access the system again. & 
   After \texttt{SESSION\_TIMEOUT} of inactivity, the session expires automatically. The user is redirected or prompted to log in again 
   before accessing the Reading4All system. & 
-  Session did not expire and system remained accessible after \texttt{SESSION\_TIMEOUT} of inactivity. &
-  \cellcolor{red}Fail \\ 
+  Session expired automatically after \texttt{SESSION\_TIMEOUT} of inactivity. The user was redirected to the login page and required to authenticate again. &
+  \cellcolor{green}Pass \\
 \end{xltabular}
 
 \section{Nonfunctional Requirements Evaluation}
@@ -391,7 +392,7 @@ Tester verifies timeout notifications, retry option, proper data cleanup, and ab
   NFR-ST\nfrtestcount & Run the system website through Axe (third-party service) to check for WCAG 2.1 AA compliance. & There are no issues for all website pages & Some JSON results reported 'moderate' or 'best practices' issues in the summary. & \cellcolor{red}Fail \\ \midrule
   NFR-ST\nfrtestcount & System website is hosted on Vercel (third-party service). & Website is in service and usable with minimal to no crashes. & Website is fully functional on the Vercel server. No crashing detected. & \cellcolor{green}Pass \\ \midrule
   NFR-ST\nfrtestcount & System website is hosted on a testing environment. & Core functions (uploading an image, text generation, and user navigation) function as intended. & Core functionality remains intact on testing environment. & \cellcolor{green}Pass \\ \midrule
-  NFR-ST\nfrtestcount & System website is deployed into staging environment. & System is fully ready for DEMO deliverable as per Capstone's March timeline. & Some tests failed, indicating system is not ready for staging environment. & \cellcolor{red}Fail \\ \midrule
+  NFR-ST\nfrtestcount & System website is deployed into staging environment. & System is fully ready for DEMO deliverable as per Capstone's March timeline. & The final prototype was finised as per the requirements and a DEMO was conducted successfully. & \cellcolor{green}Pass \\ \midrule
   NFR-ST\nfrtestcount & When executing actions in the system, logs are available for API interactions and standard workflows & Logs are visible for any crash or API call. & Logging module was implemented and appropriate level of logs are shown. & \cellcolor{green}Pass \\ \midrule
  
 
@@ -1432,6 +1433,9 @@ All assertions pass &
 \section{Changes Due to Testing}
 During the internal testing phase, several changes were made to the tool based on feedback from the TA, professor, supervisor and from Team 22.
 A brief description of each change and its implementation is listed below:
+
+\subsection{Fixing Session Timeout Handling}
+During testing, it was observed that user sessions did not expire after the defined \texttt{SESSION\_TIMEOUT} period of inactivity. This posed a potential security risk, as inactive users could remain logged into the system indefinitely. To address this issue, the session management logic was updated to properly track user inactivity and automatically terminate sessions once the timeout threshold was reached. The system now redirects users to the login page and requires re-authentication after inactivity exceeds \texttt{SESSION\_TIMEOUT}. This change improves system security and ensures compliance with authentication and session management requirements.
 
 \subsection{Narrowing the Scope}
 While the team had the ambition to make a STEM-alt text generator, this proved to be very expensive in terms of time needed for training and constraints on available computers for AI model tuning. To make up for this, Team 22 narrowed the scope to only "Physics" based diagrams, with a plan to further narrow the image types to a select list. This change would help our AI model learn better, contextual text and in turn produce higher quality, specific alt text that is usable for several stakeholders like students and teachers.\\
