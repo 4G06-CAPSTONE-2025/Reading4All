@@ -1,3 +1,11 @@
+"""
+Author: Moly Mikhail
+Date: March 2026
+Purpose: Unit tests for the ImageValidation module,
+specifically handling of invalid file types, image size limits, 
+corrupted images and successful uploads. 
+"""
+
 import io
 from PIL import Image
 
@@ -12,6 +20,7 @@ def test_missing_image():
 
     result = validator.validate_image(empty_request)
 
+    # checks that result is correct error message
     assert result == "MISSING_IMAGE"
 
 
@@ -20,6 +29,7 @@ def test_invalid_file_type():
 
     validator = ImageValidation()
 
+    # creating a file of invalid type
     text_file = io.BytesIO(b"Testing inputting invalid file type, using a txt file")
     text_file.content_type = "text/plain"
     text_file.size = 100
@@ -28,6 +38,7 @@ def test_invalid_file_type():
 
     result = validator.validate_image(uploaded_file)
 
+    # checks that result is correct error message
     assert result == "INVALID_FILE_TYPE"
 
 
@@ -38,12 +49,13 @@ def test_file_size_invalid():
 
     large_image = io.BytesIO(b"fake image data here that exceeds size limit")
     large_image.content_type = "image/png"
-    large_image.size = 200000000
+    large_image.size = 200000000 # greater than allowed size
 
     uploaded_file = {"image": large_image}
 
     result = validator.validate_image(uploaded_file)
 
+    # checks that result is correct error message
     assert result == "FILE_SIZE_INVALID"
 
 
@@ -52,6 +64,7 @@ def test_corrupted_image():
 
     validator = ImageValidation()
 
+    # creating an invalid image
     corrupted_image = io.BytesIO(b"This is not a valid image file")
     corrupted_image.content_type = "image/png"
     corrupted_image.size = 100
@@ -60,6 +73,7 @@ def test_corrupted_image():
 
     result = validator.validate_image(uploaded_file)
 
+    # checks that result is correct error message
     assert result == "UNAUTHORIZED_ACCESS_OR_CORRUPTED"
 
 
@@ -68,15 +82,16 @@ def test_valid_image_success():
 
     validator = ImageValidation()
 
+    # creating a valid image that can be stored into a file object
     valid_image = Image.new("RGB", (100, 100), color="blue")
-    valid_image_bytes = io.BytesIO()
-    valid_image.save(valid_image_bytes, format="PNG")
-    valid_image_bytes.seek(0)
+    file = io.BytesIO()
+    valid_image.save(file, format="PNG")
+    file.seek(0) 
 
-    valid_image_bytes.content_type = "image/png"
-    valid_image_bytes.size = valid_image_bytes.getbuffer().nbytes
+    file.content_type = "image/png"
+    file.size = file.getbuffer().nbytes
 
-    uploaded_file = {"image": valid_image_bytes}
+    uploaded_file = {"image": file}
 
     result = validator.validate_image(uploaded_file)
 

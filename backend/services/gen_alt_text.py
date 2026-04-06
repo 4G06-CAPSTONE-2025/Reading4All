@@ -15,8 +15,8 @@ from databases.connect_supabase import get_supabase_admin_client
 
 
 class GenAltText:
-    def __init__(self):
-        self.supabase = get_supabase_admin_client()
+    def __init__(self, supabase=None):
+        self.supabase = supabase or get_supabase_admin_client()
         self.max_entries = 10
         self.hf_token = os.getenv("HUGGINGFACE_READ_TOKEN")
         # pylint: disable=line-too-long
