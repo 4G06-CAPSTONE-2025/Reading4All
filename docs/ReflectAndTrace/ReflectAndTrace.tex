@@ -63,6 +63,29 @@ document, and likely the Revision 1 versions of the other documents will be
 low.} 
 
 \subsection{SRS and Hazard Analysis}
+\subsubsection{Hazard Analysis}
+
+Based on feedback from peer reviews and the teaching assistant, the Hazard Analysis
+document was refined to improve clarity and completeness. The wording throughout the
+document was revised to ensure that hazards were described precisely and consistently.
+This improved the readability of the document and reduced ambiguity in hazard
+descriptions.
+
+Feedback also indicated that the backend server component required clearer definition.
+This was addressed by expanding the system components section to explicitly describe
+the backend server responsibilities, including input validation, communication between
+modules, and error handling. This clarification improved the understanding of how failures
+within the backend could impact overall system safety.
+
+Additionally, feedback highlighted missing assumptions related to network stability.
+A network stability assumption was added to the Critical Assumptions section to reflect
+the system’s dependence on reliable communication between components. Including this
+assumption helped capture hazards related to connectivity issues and ensured that system
+limitations were properly documented.
+
+These revisions strengthened the hazard identification process and improved traceability
+between assumptions, system components, and potential risks.
+
 
 \renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{2cm}|p{3.5cm}|p{4.5cm}|p{3cm}|}
@@ -262,9 +285,28 @@ it led to.}
 
 \section{Design Decisions (LO12)}
 
-\plt{Reflect and justify your design decisions.  How did limitations,
- assumptions, and constraints influence your decisions?  Discuss each of these
- separately.}
+Several frontend design decisions were made to improve accessibility and usability. 
+We designed the interface using appropriate contrast ratios and colour selections 
+based on WCAG and AODA accessibility guidelines. This decision was made to ensure 
+that the application is usable by individuals with visual impairments and complies 
+with accessibility standards. Following these guidelines also improves readability 
+and overall user experience.
+
+Another key decision was implementing a tab-based navigation system for the frontend. 
+This structure allows users to easily switch between different functionalities without 
+overwhelming the interface. The tab-based layout improves organization and reduces 
+cognitive load, making the system more intuitive to navigate.
+
+We also decided to include a session history feature to allow users to view previous 
+interactions. This functionality helps users track past generated content and improves 
+workflow efficiency by allowing them to reference earlier results without repeating 
+actions.
+
+Additional functionalities such as editing alt text and copying generated output were 
+added later in the design process. These features were introduced based on usability 
+considerations to give users more control over the generated content and make it easier 
+to reuse results in other applications. These improvements enhanced flexibility and 
+overall usability of the system.
 
 \section{Economic Considerations (LO23)}
 
