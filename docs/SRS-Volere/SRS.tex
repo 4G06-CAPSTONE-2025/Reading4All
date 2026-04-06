@@ -17,15 +17,18 @@
 \usepackage{float}
 \usepackage{placeins}
 \usepackage{hanging}
+\usepackage{footmisc}
+\setlength{\footskip}{20pt}
+
 
 \hypersetup{
   bookmarks=true,         % show bookmarks bar?
-  colorlinks=true,      % false: boxed links; true: colored links
-  linkcolor=red,          % color of internal links (change box color
-  % with linkbordercolor)
-  citecolor=green,        % color of links to bibliography
-  filecolor=magenta,      % color of file links
-  urlcolor=cyan           % color of external links
+  colorlinks=true,      % false: boxed links; true: coloured links
+  linkcolor=red,          % colour of internal links (change box colour
+  % with linkbordercolour)
+  citecolor=green,        % colour of links to bibliography
+  filecolor=magenta,      % colour of file links
+  urlcolor=cyan           % colour of external links
 }
 
 \newcommand{\lips}{\textit{Insert your content here.}}
@@ -49,7 +52,7 @@
 ~\newpage
 
 \section*{Symbolic Constants}
-\begin{longtable}{|p{8.0cm}|p{8.0cm}|}
+\begin{longtable}{p{8.0cm}|p{8.0cm}}
 \toprule
 {\textbf{Name}} & {\textbf{Value}}\\
 \midrule
@@ -70,7 +73,7 @@ IMG\_SIZE\_BIG & 10 MEGABYTES (MB) \\
 IMG\_SIZE\_SMALL & 2 MEGABYTES \\
 TLS\_VERSION & 1.2 \\ 
 FILE\_DELETE\_TIME & 60 s \\
-FILE\_TYPES & .png, .jpg, .jpeg, .svg, .webp \\
+FILE\_TYPES & .pdf, .pdf, .pdf, .svg, .webp \\
 NETWORK\_SOURCE\_POLICY & McMaster SSO tokens or IP ranges only\\
 TEAM\_SIZE & 5 students \\
 HOURS\_RESEARCH & 40 hours \\
@@ -100,7 +103,7 @@ MOST\_COMMON\_SR & 3 \\
 SFWR\_RELEASES & 2 \\
 
 
-\bottomrule
+\bottomrule\endlastfoot
 \end{longtable}
     
 
@@ -114,7 +117,8 @@ SFWR\_RELEASES & 2 \\
   \midrule
   October 10 2025 & 1.0 & Initial Version of SRS\\
   April 4 2026 & 1.1 & Added explicit table references, corrected table numbering, and updated formatting to ensure all tables are properly labeled and referenced.\\
-
+  April 6, 2026 & 1.2 & Converted large tables to longtable to prevent footer overlap; added introductory text to Sections 4 and 5; replaced bitmap figures with PDF versions; updated table formatting. \\
+  \bottomrule
   \bottomrule
 \end{tabularx}
 
@@ -127,7 +131,7 @@ SFWR\_RELEASES & 2 \\
 This Software Requirements Specification (SRS) defines the functional
 and non-functional requirements for the \progname{} system,
 \textbf{Reading4All}. The document explains the project's aims,
-context, restrictions, and expected behavior in order to ensure that
+context, restrictions, and expected behaviour in order to ensure that
 developers, accessibility professionals, instructors, and project
 stakeholders all have a shared understanding.
 
@@ -184,7 +188,7 @@ development, and fundamental machine learning techniques.
 Accessibility reviewers should understand digital accessibility
 principles and standards.
 
-\subsection{Organization of Document}
+\subsection{Organisation of Document}
 This Software Requirements Specification (SRS) is divided into
 twenty-six sections following the IEEE standard structure.
 \begin{itemize}
@@ -200,7 +204,7 @@ twenty-six sections following the IEEE standard structure.
     including open issues, off-the-shelf components, project tasks,
     migration plans, documentation, and solution ideas.
 \end{itemize}
-This organization ensures logical flow from project background to
+This organisation ensures logical flow from project background to
 detailed requirements and supporting documentation.
 
 \subsection{System Context}
@@ -501,7 +505,7 @@ coursework and study materials.
 \subsection{Budget Constraints}
 \begin{enumerate}[label=MD-BC \arabic*., wide=0pt, leftmargin=*]
   \item \emph{The project budget must include compensation for user
-      testers, set at maximum MAX\_COMPENSATION\_DOLLARS canadian dollars per participant for two rounds
+      testers, set at maximum MAX\_COMPENSATION\_DOLLARS Canadian dollars per participant for two rounds
     of usability testing.}\\[2mm]
     {\bf Rationale:} This is to ensure that user testers are
     compensated for their meaningful feedback,
@@ -526,6 +530,9 @@ coursework and study materials.
 \end{enumerate}
 
 \section{Naming Conventions and Terminology}
+
+This section defines the terminology, acronyms, and naming conventions used throughout the document to ensure consistent interpretation of requirements.
+
 \subsection{Glossary of All Terms, Including Acronyms, Used by Stakeholders
 involved in the Project}
 
@@ -627,6 +634,9 @@ Assistive technology that reads text aloud.
 
 
 \section{Relevant Facts And Assumptions}
+
+This section outlines known facts, assumptions, and business rules that influence the design and scope of the Reading4All system.
+
 \subsection{Relevant Facts}
 \begin{itemize}
   \item This project is being developed for a Software Engineering
@@ -708,7 +718,7 @@ how the product will integrate with existing screen readers.
 
 \begin{figure}[H] % or [htbp] + \FloatBarrier below
   \centering
-  \includegraphics[width=\textwidth]{images/work-context-diagram.png}
+  \includegraphics[width=\textwidth]{images/work-context-diagram.pdf}
   \caption{Work Context Diagram}
   \label{fig:work-context}
 \end{figure}
@@ -724,29 +734,29 @@ their inputs and outputs, and the summary of the event.
   \centering
   \caption{Work Partition for the System}
   \label{tab:work-partition}
-  \begin{tabular}{ |p{3cm}|p{3cm}|p{3cm}|p{4cm}| }
-    \hline
+  \begin{tabular}{p{3cm}|p{3cm}|p{3cm}|p{4cm}}
+    \midrule
     \textbf{Event Name} & \textbf{Input} & \textbf{Output} & \textbf{Summary} \\
-    \hline
+    \midrule
     Login & Username, Password &  & User logs in using their McMaster account \\
-    \hline
+    \midrule
     Upload \mbox{Images/Figures} & PNG/JPEG files & Uploaded File
     Reference & User uploads their files to generate alternative text \\
-    \hline
+    \midrule
     Optical Character Recognition \mbox{OCR Text} \mbox{Extraction} & Uploaded
     \mbox{Images/Figures} & Detected Text & System reads the text
     embedded in the uploaded files \\
-    \hline
+    \midrule
     Generate \mbox{Alternative Text} & Uploaded
     \mbox{Images/Figures}, Extracted OCR, Model Parameters &
     Generated Alt Text & System analyzes the image and extracted OCR data to
     generate accurate alternative text \\
-    \hline
+    \midrule
     View History & \mbox{User Login,} Stored Uploads and Generated
     Alt Text & List of Previously Generated Alt Text & The system
     retrieves and displays a user’s history of uploaded images along
     with their associated generated alt text \\
-    \hline
+    \midrule
   \end{tabular} 
 \end{table}
 
@@ -825,7 +835,7 @@ generated during the current session.\\
 
 
 \section{Business Data Model and Data Dictionary}
-This section describes the structure and organization of the data flow throughout the system. It explains how the system’s components interact with the stored data, ensuring a consistent and well-defined understanding of the information processed by the tool.
+This section describes the structure and organisation of the data flow throughout the system. It explains how the system’s components interact with the stored data, ensuring a consistent and well-defined understanding of the information processed by the tool.
 
 \subsection{Business Data Model}
 The following diagram (Figure~\ref{fig:business_data_model}) illustrates the relationships between key components of the system as well as their interactions with external components.
@@ -833,7 +843,7 @@ The following diagram (Figure~\ref{fig:business_data_model}) illustrates the rel
 \begin{figure}[h!]
     \centering
     % Export the draw.io diagram below as PNG and save it to this path:
-    \includegraphics[width=0.85\textwidth]{images/business-data-model.png}
+    \includegraphics[width=0.85\textwidth]{images/business-data-model.pdf}
     \caption{Business Data Model of alt text Generation System}
     \label{fig:business_data_model}
 \end{figure}
@@ -842,48 +852,67 @@ The following diagram (Figure~\ref{fig:business_data_model}) illustrates the rel
 
 Table~\ref{tab:data-dictionary-reading4all} presents the data dictionary for the Reading4All system and describes the key components and their roles.
 
-\begin{table}[H]
-    \centering
-    \caption{Data Dictionary for the Reading4All System}
-    \label{tab:data-dictionary-reading4all}
-    \begin{tabular}{ |p{3.6cm}|p{7.4cm}|p{3.0cm}| }
-      \hline
-      \textbf{Name} & \textbf{Content} & \textbf{Type} \\
-      \hline
-      Reading4All (container) &
-      Logical package that contains the core components of the system (Frontend UI, Backend Controller, Model Service, Session Storage Component, Evaluation Service). &
-      Package \\
-      \hline
-      Frontend User Interface (UI) &
-      Uploads images, shows generated alt text, and captures tester evaluations. Provides keyboard/ARIA navigation and WCAG~2.1 Level~AA compliant views. &
-      Module \\
-      \hline
-      Backend Controller &
-      Orchestrates requests: validates inputs (images/type/size), routes to the Model Service, manages temporary/session storage, records events, and returns results to the user interface (UI). &
-      Module \\
-      \hline
-      Model Service &
-      Machine-learning inference service that generates alt text from uploaded images and returns text plus timing/quality metadata. Exposed via an internal Application Programmable Interface (API). &
-      External Service / Module \\
-      \hline
-      Session Storage Component &
-      Short term temporary storage for uploaded image bytes and short-lived artifacts used during inference; configured to auto-delete shortly after processing. &
-      Storage \\
-      \hline
-      Evaluation Service &
-      Collects and persists pilot-testing ratings (sufficiency, length, accessibility/usability, learning impact) and optional notes for analysis. &
-      Module / Dataset \\
-      \hline
-      McMaster Single Sign On (SSO) &
-      Institutional authentication provider used to restrict access to McMaster users; issues and validates user sessions for the web application. &
-      External Service Provider \\
-      \hline
-      Web Tool (deployment) &
-      Deployed application entry point that exposes the Reading4All system to end users over web protocols such as Hypertext Transfer Protocol Secure (HTTPS); integrates Single Sign On (SSO) and serves the User/Application Interfaces. &
-      Package / Deployment Target \\
-      \hline
-    \end{tabular}
-  \end{table}
+\begin{longtable}{p{3.6cm}p{7.4cm}p{3.0cm}}
+  \caption{Data Dictionary for the Reading4All System}
+  \label{tab:data-dictionary-reading4all} \\
+  
+  \toprule
+  \textbf{Name} & \textbf{Content} & \textbf{Type} \\
+  \midrule
+  \endfirsthead
+  
+  \toprule
+  \textbf{Name} & \textbf{Content} & \textbf{Type} \\
+  \midrule
+  \endhead
+  
+  \bottomrule
+  \endfoot
+  
+  \bottomrule
+  \endlastfoot
+  
+  Reading4All (container) &
+  Logical package that contains the core components of the system (Frontend UI, Backend Controller, Model Service, Session Storage Component, Evaluation Service). &
+  Package \\
+  \midrule
+  
+  Frontend User Interface (UI) &
+  Uploads images, shows generated alt text, and captures tester evaluations. Provides keyboard/ARIA navigation and WCAG~2.1 Level~AA compliant views. &
+  Module \\
+  \midrule
+  
+  Backend Controller &
+  Orchestrates requests: validates inputs (images/type/size), routes to the Model Service, manages temporary/session storage, records events, and returns results to the user interface (UI). &
+  Module \\
+  \midrule
+  
+  Model Service &
+  Machine-learning inference service that generates alt text from uploaded images and returns text plus timing/quality metadata. Exposed via an internal Application Programmable Interface (API). &
+  External Service / Module \\
+  \midrule
+  
+  Session Storage Component &
+  Short term temporary storage for uploaded image bytes and short-lived artifacts used during inference; configured to auto-delete shortly after processing. &
+  Storage \\
+  \midrule
+  
+  Evaluation Service &
+  Collects and persists pilot-testing ratings (sufficiency, length, accessibility/usability, learning impact) and optional notes for analysis. &
+  Module / Dataset \\
+  \midrule
+  
+  McMaster Single Sign On (SSO) &
+  Institutional authentication provider used to restrict access to McMaster users; issues and validates user sessions for the web application. &
+  External Service Provider \\
+  \midrule
+  
+  Web Tool (deployment) &
+  Deployed application entry point that exposes the Reading4All system to end users over web protocols such as Hypertext Transfer Protocol Secure (HTTPS); integrates Single Sign On (SSO) and serves the User/Application Interfaces. &
+  Package / Deployment Target \\
+  
+  \bottomrule
+  \end{longtable}
   
 
 \section{The Scope of the Product}
@@ -892,7 +921,7 @@ Table~\ref{tab:data-dictionary-reading4all} presents the data dictionary for the
 \label{tab:product-boundary} 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{images/Product_Boundary_Diagram.jpg}
+    \includegraphics[width=1.0\textwidth]{images/Product_Boundary_Diagram.pdf}
     \caption{Product Boundary Diagram}
     \label{fig:product-boundary}
 \end{figure}
@@ -905,31 +934,31 @@ inputs and outputs to the system and the related requirements.
   \centering
   \caption{Product Use Case Table}
   \label{tab:product-use}
-  \begin{tabular}{|p{1.3cm}|p{2.5cm}|p{3.5cm}|p{4cm}|p{2.6cm}|}
-    \hline
+  \begin{tabular}{p{1.3cm}|p{2.5cm}|p{3.5cm}|p{4cm}|p{2.6cm}}
+    \midrule
     \textbf{PUC\#} & \textbf{PUC Name} & \textbf{Actor(s)} &
     \textbf{Input \& Output(s)} & \textbf{Requirement} \\
-    \hline
+    \midrule
     PUC 1 & Login Using McMaster Credentials &  McMaster Student and
     Faculty , McMaster Authentication System, UI, Backend Component & User Credentials
     (input), Authentication Results (output) & FR 6, SR-AR 1\\
-    \hline
+    \midrule
     PUC 2 & Upload Image & McMaster Student and Faculty, UI, Backend Component & JPEG or PNG
     (input), Image upload status (output) & FR 1, UHR-EUR 3 \\
-    \hline
+    \midrule
     PUC 3 & Generate Alternative Text &  McMaster Student and
     Faculty, Alt Text Generation ML Model, UI, Backend Component & Uploaded image
     (input), Generated alternative text  & FR 2, FR 3\\
-    \hline
+    \midrule
     PUC 4 & Copy Alt Text & McMaster Student and Faculty, UI, Backend Component &
     User decision to copy (input), text copied to
     clipboard & UHR-PIR 1\\
-    \hline
+    \midrule
     PUC 5 & View History of Inputted Images and their Alternative
     Text& McMaster Student and Faculty, UI, Backend Component, Session History Manager & User request to view
     history (input), Display of previously inputted images and their
     generated text within a session & FR 5\\
-    \hline
+    \midrule
   \end{tabular}
 \end{table}
 
@@ -1078,17 +1107,17 @@ inputs and outputs to the system and the related requirements.
     User verification will ensure that only McMaster University students have access to the system, ensuring that the system is used by the intended users.  \\
     {\bf Fit Criterion:} All text, excluding any captions and images of text can be enlarged to MAX\_ZOOM\_PERCENTAGE on a standard browser zoom (ex. Google Chrome) without any overlapping, hidden content, or broken features.  \\
     {\bf Priority:} High
-  \item \emph{The system must not use color as the only method to
+  \item \emph{The system must not use colour as the only method to
     provide information, indicate actions or prompt user input.}\\[2mm]
-    {\bf Rationale:} Users with color vision deficiencies or other
-    visual impairments may not detect color differences accurately.
+    {\bf Rationale:} Users with colour vision deficiencies or other
+    visual impairments may not detect colour differences accurately.
     This also ensures the system meets WCAG 2.1 Success Criterion
-    1.4.1 Use of Color.\\
-    {\bf Fit Criterion:} Any use of color communicates information to
+    1.4.1 Use of Colour.\\
+    {\bf Fit Criterion:} Any use of colour communicates information to
     the user or requests information from he user must be appear with text.  \\
     {\bf Priority:} High
   \item \emph{The system must ensure sufficient contrasts of text and images of text.}\\[2mm] 
-    {\bf Rationale:} Sufficient color contrast is important as it enables users with low vision or color vision deficiencies to easily read any system text. This also ensures the system meets WCAG Success Criterion 1.4.3 Contrast (Minimum)\\
+    {\bf Rationale:} Sufficient colour contrast is important as it enables users with low vision or colour vision deficiencies to easily read any system text. This also ensures the system meets WCAG Success Criterion 1.4.3 Contrast (Minimum)\\
     {\bf Fit Criterion:}  All text and images of text in the system interfaces has a contrast ratio of at least MIN\_CONTRAST\_RATIO.  \\
     {\bf Priority:} High
   \item \emph{The system must provide alternative text for all
@@ -1111,7 +1140,7 @@ inputs and outputs to the system and the related requirements.
     usability as it better highlights the system's features, while
     also ensuring the system is visually appealing.\\
     {\bf Fit Criterion:} The system uses a clean layout with a
-    maximum of three colors, consistent font styles and sizes, as
+    maximum of three colours, consistent font styles and sizes, as
     well as only has key design elements that support usability. \\
     {\bf Priority:} High
 \item \emph{The system interface must use McMaster University branding while maintaining accessibility standards and a modern style.}\\[2mm] 
@@ -1855,7 +1884,7 @@ phases.
     independently before progressing to the next.\\
     \textbf{Priority:} High
 
-  \item \emph{The organization shall operate
+  \item \emph{The organisation shall operate
       the new system in parallel with the old product for a defined
     transition period.}\\
     \textbf{Rationale:} Ensures continuity and confirms correct
@@ -2045,35 +2074,35 @@ Table~\ref{tab:evaluation-metrics-summary} summarizes the evaluation metrics tha
     \centering
     \caption{Evaluation Metrics Summary}
     \label{tab:evaluation-metrics-summary}
-    \begin{tabular}{ |p{3.5cm}|p{3cm}|p{3cm}|p{4cm}| }
-      \hline
+    \begin{tabular}{p{3.5cm}|p{3cm}|p{3cm}|p{4cm}}
+      \midrule
       \textbf{Metric Name} & \textbf{Scale Type} & \textbf{Acceptable Range} & \textbf{Summary Description} \\
-      \hline
+      \midrule
       Sufficiency of Description
         & Categorical (1--3)
         & $\geq$ 3 (Sufficient)
         & Does the alt text convey enough information to achieve the intended objective? \\
-      \hline
+      \midrule
       Length Appropriateness
         & Categorical (1--3)
         & $\geq$ 3 (Proper Length)
         & Is the alt text concise yet complete (not too short or overly verbose)? \\
-      \hline
+      \midrule
       Accessibility / Usability
         & Numerical (0--3)
         & $\geq$ 2 (Acceptable)
         & Assistive-technology compatibility and clarity; aligns with WCAG 2.1 Level~AA use. \\
-      \hline
+      \midrule
       Learning Impact
         & Numerical (0--3)
         & $\geq$ 2 (Positive)
         & Does the alt text support or enhance user understanding in learning contexts? \\
-      \hline
+      \midrule
       Qualitative Feedback Notes
         & Textual
         & N/A
         & Free-form comments on clarity, tone, and suggested improvements. \\
-      \hline
+      \midrule
     \end{tabular}
   \end{table}
   
