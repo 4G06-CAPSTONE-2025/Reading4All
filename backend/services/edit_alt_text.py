@@ -4,8 +4,8 @@ from services.alt_text_history import AltTextHistory
 # get history service to interact with Supabase history table
 
 
-def edit_alt_text(request):
-    history = AltTextHistory()
+def edit_alt_text(request, history=None):
+    history = history or AltTextHistory()
     try:
         # parse request
         body = json.loads(request.body)

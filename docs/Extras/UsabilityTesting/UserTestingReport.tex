@@ -1,0 +1,143 @@
+\documentclass{article}
+
+
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\hypersetup{
+  colorlinks,
+  citecolor=blue,
+  filecolor=black,
+  linkcolor=blue,
+  urlcolor=blue
+}
+
+
+\title{User Testing Report:\\Bridging Gaps: AI for Diagram Accessibility}
+
+
+\author{Nawaal Fatima, Casey Francine Bulaclac, Moly Mikhail, Fiza Sehar, Dhruv Sardana \\
+  \texttt{\{macid1,bulacc1,macid3,macid4,macid5\}@mcmaster.ca} }
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Goals for User Testing}
+
+The purpose of user testing in the Reading4All system is to evaluate the effectiveness, usability, 
+and accessibility of the AI-generated alternative text for physics diagrams. Since the system is 
+designed to support users with visual impairments, particularly those relying on screen readers, 
+it is essential to ensure that the generated descriptions are clear, accurate, and meaningful in 
+conveying the content of complex physics diagrams. \\
+
+The primary goal of user testing is to assess whether users can successfully interact with the 
+system and complete key tasks, such as uploading images, generating alt text, and reviewing or 
+editing the output. This includes evaluating both functional performance and accessibility features. \\
+
+In addition to the generated alt text, user testing also evaluates the user interface to ensure it 
+is fully accessible. This includes verifying that the system is compatible with screen readers, 
+supports effective keyboard navigation, and that all interactive elements are reachable and 
+usable without a mouse. Furthermore, the interface is assessed against WCAG 2.1 Level AA guidelines 
+to ensure it meets standard accessibility requirements. \\
+
+Another key objective is to evaluate the quality of the generated alt text, specifically whether it 
+provides sufficient detail, maintains clarity, and supports user understanding of physics concepts. 
+This involves identifying issues such as unclear descriptions, missing information, or incorrect 
+interpretations of diagrams. \\
+
+Additionally, user testing aims to gather feedback on the overall user experience, including 
+interface usability, workflow efficiency, and any barriers encountered during interaction. The insights 
+gained from testing are used to identify areas for improvement and guide refinements to both the AI model 
+and system design. \\
+
+Overall, user testing ensures that the Reading4All system meets its goal of providing accessible, 
+high-quality alternative text that enhances learning and accessibility for users engaging with physics diagrams.
+
+\section{List of User Tasks and Evaluation Rationale}
+User testing was conducted through two structured test scenarios: a functional workflow test that focused on screen reader
+compatibility and a keyboard navigation accessibility test. 
+These tests were designed to evaluate the usability and accessibility of the \texttt{Reading4All} system, 
+with a focus on ensuring that users with visual impairments can seamlessly navigate  the interface and access all features without any barriers. \\
+
+The tasks  for both types of testing were outlined step by step in an Excel file so that testers had a structured procedure to follow and could easily record 
+any comments/feedback for each step. For each test case, the tester documented the actual observation and had the option to include screenshots for any failed test. 
+This allowed us to collect data in a consistent manner and made it easier to analyze the results. Figure \ref{UserTestingExcel} shows an example of the Excel testing sheet used. \\
+
+These test cases and their wording were developed and reviewed with guidance from our supervisor, who has extensive 
+experience conducting user testing, particularly with visually impaired individuals. 
+This helped us ensure that the instructions were clear, accessible and appropriate for one of our main target user groups. 
+Additionally, the structure of the test was designed to balance data collection and ease of use, ensuring that 
+testers can complete the tasks in a convenient and accessible manner. \\
+
+Finally, users were asked to evaluate the quality of the generated alt text by answering two follow-up questions. 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1\textwidth]{UserTestingExcel.png}
+  \caption{Example of Excel testing sheet used during user testing.}
+  \label{UserTestingExcel}
+\end{figure}
+
+\subsection{Functional and Screen Reader Testing}
+Users were first asked to complete a full end-to-end interaction with the system while using their screen reader. 
+This test aimed to evaluate both the functionality and compatibility with screen readers. \\
+
+The tasks began with navigating today the \texttt{Reading4All} homepage and completing the sign-up process. This included entering a valid email, password and receiving a verification code to confirm their 
+account was registered. Users then logged into the system with their credentials. 
+Users were then asked to upload a valid image file and verify that the image preview was displayed correctly. 
+They then began the alt text generation process and observed system feedback such as loading and generation button becoming disabled. After generation, users were instructed to review, edit and save the alt text. They also tested copying the generated text to the clipboard and pasting it into an external application such as  
+\texttt{Word}. Next, users navigated to the history page to confirm that the previously generated entries and their edits were displayed correctly and in the expected order. 
+They also tested copying alt text directly from this page. Finally, users logged out of the system and confirmed they were redirected to the homepage. 
+
+Ultimately, these testcases allowed us to determine if users could successfully complete all key tasks using as screen reader and to identify and barriers in navigation and system feedback. 
+
+\subsection{Keyboard Navigation Testing}
+Users were also asked to evaluate the system using only keyboard navigation. 
+Furthermore, users were asked to navigate to the homepage using the Tab key 
+to ensure all interactive elements are reachable. They then completed the login process, uploaded an image, generated alt text, edited the text and copied it to their clipboard
+using only keyboard inputs. 
+Users also verified that key interface elements such as buttons and input fields could be operated without a mouse.
+Finally, users tested the interface at 200\% zoom to ensure the layout remained readable and did not break. 
+
+\subsection{Alternative Text Evaluation}
+
+To evaluate the quality of the generated alternative text, users were asked two questions after completing their testing. 
+These questions were designed to assess the usefulness and quality of the generated descriptions. 
+The first question, \texttt{"Does the generated alt text convey sufficient information to achieve the stated objective?"} aims to determine whether 
+the description purposed a sufficient amount of details for the user to understand the purpose and meaning of the image. 
+The second question, \texttt{"Is the alt text detailed enough for understanding the image?"} helped us assess whether the generated text goes beyond a general summary and focuses on 
+the technical details required when learning physics.
+
+These questions were chosen in order to gather feedback from users about on  any missing aspects from the generated text and to identify any key issues. 
+
+\section{Internal Development Testing}
+\textcolor{red}{how the group rated the eval metrics against alt text}
+
+\section{Results Summary}
+\textcolor{red}{highlight good and bad stuff}
+
+\section{Analysis and Insights}
+The results from user testing indicate that users were generally able to 
+complete the primary workflow successfully, including uploading images, 
+generating alternative text, and navigating through the system. This suggests 
+that the core functionality of the Reading4All system is effective and that 
+the interface supports task completion. The positive results related to screen reader compatibility and keyboard 
+navigation demonstrate that the system meets its accessibility goals. Users 
+were able to interact with most interface components without requiring a mouse, 
+indicating good compliance with accessibility guidelines.\\
+
+However, the results also highlighted several usability issues. Some users 
+experienced difficulty identifying certain buttons and interactive elements, 
+which caused hesitation during navigation. This suggests that visual cues and 
+button styling should be improved to make actions more intuitive. Additionally, feedback from alt text evaluation showed that while descriptions 
+were generally helpful, some outputs lacked sufficient technical detail for 
+complex physics diagrams. This indicates that further improvements to the 
+model or prompting strategy may be required. Overall, the testing results show that the system is functional and accessible, 
+but refinements to interface clarity and alt text detail will improve usability 
+and better support user needs.
+
+\end{document}

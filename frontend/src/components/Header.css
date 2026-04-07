@@ -1,3 +1,10 @@
+/*
+Author: Moly Mikhail and Dhruv Sardana
+Date: Jan 2026
+Purpose: Handles the styling of the navigation header component, including 
+the layout, styling of navigation buttons and McMaster logo.
+*/
+
 .Reading4All-header{
     width:100%;
     display: flex;
