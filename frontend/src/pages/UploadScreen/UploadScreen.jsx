@@ -1,3 +1,10 @@
+/*
+Author: Moly Mikhail 
+Date: Jan 2026
+Purpose: Handles the frontend page that includes image upload, alt text generation
+and editing the generated text.
+*/
+
 import React, { useState, useRef, useEffect } from "react";
 import "./UploadScreen.css";
 import { useNavigate } from "react-router-dom";

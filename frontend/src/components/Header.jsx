@@ -1,3 +1,10 @@
+/*
+Author: Moly Mikhail and Dhruv Sardana
+Date: Jan 2026
+Purpose: Handles the navigation header component, including routing between pages,
+and sign-out functionality.
+*/
+
 import "./Header.css";
 import mac_logo from "./mcmaster-logo.png";
 import { useLocation, useNavigate } from "react-router-dom";
