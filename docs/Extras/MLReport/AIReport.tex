@@ -168,7 +168,13 @@ the need for further improvements in dataset quality, domain specificity, and ou
 In Revision 1, we conducted different experiments highlighted below to see if we can improve our 
 AI model from Revision 0.
 
-\subsubsection{BLIP Re-training for Expanded Dataset} \textcolor{red}{TO DO}
+\subsubsection{BLIP Re-training for Expanded Dataset} 
+In Revision 1, we aimed to improve our model by expanding our training dataset. 
+As new images were annotated, we iteratively retrained the model using larger datasets
+(100, 150 and 200 new images). This allowed us to compare the model's output on 
+test images and observe gradual improvements in performance. 
+Through this process, we were able to experiment with different dataset sizes
+and evaluate the trade-off between additional data and performance increases. 
 
 \subsubsection{Category Routing System}
 
@@ -224,7 +230,13 @@ and inference efficiency that motivated further improvements in later revisions.
 
 \subsection{Revision 1 Experiments}
 
-\subsubsection{BLIP Re-training for Expanded Dataset} \textcolor{red}{TO DO}
+
+\subsubsection{BLIP Re-training for Expanded Dataset} 
+To expand the dataset, additional images were collected from an open-source physics textbook and preprocessed to 
+remove irrelevant or low-quality images. 
+Following this, the BLIP model was retrained multiple times on larger versions of the dataset.
+We experimented with training configurations using 3 and 5 epochs, and evaluated performance across different categories of test images. 
+We found that 3 epochs resulted in more accurate and consistent results. Ultimately, 3 epochs was chosen for training on the expanded dataset of 200 additional annotated images. 
 \subsubsection{Category Routing System}
 
 The category routing system was implemented as a preprocessing step in the pipeline. For each input image, the CLIP model first predicted the diagram category. This predicted category was then used to construct a category-specific prompt that guided the BLIP captioning model, enabling more structured and domain-specific alt text generation.
