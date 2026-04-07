@@ -72,7 +72,7 @@ def test_post_process_alt_text_multiple_sentences():
     result = cleanup.post_process_alt_text(input_text)
     assert result == "This is the first sentence. Second here."
 
-# GEN-UT6: Tests when model returns no alt text 
+# GEN-UT6: Tests when model returns no alt text
 # mocks API post to hugging face AI Model
 @patch("services.gen_alt_text.requests.post")
 def test_trigger_model_no_alt_text(mock_post):
