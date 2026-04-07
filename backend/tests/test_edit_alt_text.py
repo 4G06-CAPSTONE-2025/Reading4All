@@ -98,7 +98,7 @@ def test_edit_alt_text_invalid_missing_alt_text():
     assert result == "INVALID_REQUEST"
     mock_history.return_value.update_edited_alt_text.assert_not_called()
 
-# EDIT-UT5: Tests that when Supabase throws an 
+# EDIT-UT5: Tests that when Supabase throws an
 # exception that the appropriate error is returned
 def test_edit_alt_text_exception_thrown():
     # mock AltTextHistory client as its not being tested
