@@ -1,7 +1,8 @@
 """
 Author: Moly Mikhail, Casey Francine Bulaclac and Dhruv Sardana
 Date: Jan 2026
-Purpose: Routes communication between the APIs and services that handle the core backend logic. 
+Purpose: Routes communication between the APIs and 
+services that handle the core backend logic.
 """
 from services.alt_text_history import AltTextHistory
 from services.gen_alt_text import GenAltText
