@@ -17,7 +17,7 @@ def test_post_process_alt_text_extra_spaces():
     cleanup = GenAltText(supabase=mock_supabase)
     input_text = "     Text  here.  "
 
-    # checks that extra spaces are removed 
+    # checks that extra spaces are removed
     result = cleanup.post_process_alt_text(input_text)
     assert result == "Text here."
 

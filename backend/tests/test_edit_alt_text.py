@@ -5,14 +5,14 @@ Purpose: Unit tests for the editing alt text,
 specifically verifying valid and invalid edit requests handling. 
 """
 
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 import json
 from services.edit_alt_text import edit_alt_text
 
 
 def test_edit_alt_text_success():
 
-    # mock AltTextHistory client as its not being tested 
+    # mock AltTextHistory client as its not being tested
     mock_history = MagicMock()
     mock_history.update_edited_alt_text.return_value = True
 
@@ -37,7 +37,7 @@ def test_edit_alt_text_success():
 
 
 def test_edit_alt_text_unable_to_save():
-    # mock AltTextHistory client as its not being tested 
+    # mock AltTextHistory client as its not being tested
     mock_history = MagicMock()
     mock_history.update_edited_alt_text.return_value = False
 
@@ -63,7 +63,7 @@ def test_edit_alt_text_unable_to_save():
 
 
 def test_edit_alt_text_invalid_missing_entry_id():
-    # mock AltTextHistory client as its not being tested 
+    # mock AltTextHistory client as its not being tested
     mock_history = MagicMock()
     request = MagicMock()
     request.body = json.dumps(
@@ -81,7 +81,7 @@ def test_edit_alt_text_invalid_missing_entry_id():
 
 
 def test_edit_alt_text_invalid_missing_alt_text():
-    # mock AltTextHistory client as its not being tested 
+    # mock AltTextHistory client as its not being tested
     mock_history = MagicMock()
     request = MagicMock()
     request.body = json.dumps(
@@ -99,7 +99,7 @@ def test_edit_alt_text_invalid_missing_alt_text():
 
 
 def test_edit_alt_text_exception_thrown():
-    # mock AltTextHistory client as its not being tested 
+    # mock AltTextHistory client as its not being tested
     mock_history = MagicMock()
     mock_history.update_edited_alt_text.side_effect = Exception("SUPABASE ERROR")
 

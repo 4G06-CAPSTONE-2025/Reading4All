@@ -86,7 +86,7 @@ def test_valid_image_success():
     valid_image = Image.new("RGB", (100, 100), color="blue")
     file = io.BytesIO()
     valid_image.save(file, format="PNG")
-    file.seek(0) 
+    file.seek(0)
 
     file.content_type = "image/png"
     file.size = file.getbuffer().nbytes

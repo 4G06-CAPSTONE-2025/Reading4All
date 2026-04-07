@@ -87,7 +87,7 @@ def test_signup_none_email_and_password():
     # mock supabase client as its needed to initialize AuthService
     mock_supabase = MagicMock()
     auth_service = AuthService(supabase=mock_supabase)
-    
+
     # checks that an error is raised for empty email
     try:
         auth_service.signup(None, None)
@@ -108,7 +108,7 @@ def test_signup_capital_letter_email():
     auth_service = AuthService(supabase=mock_supabase)
     auth_service.signup("STUDENT@MCMASTER.CA", "passwordABC123")
 
-    # checks that signup is called with converted lowercase email 
+    # checks that signup is called with converted lowercase email
     mock_supabase.auth.sign_up.assert_called_once_with(
         {
             "email": "student@mcmaster.ca",
