@@ -118,7 +118,22 @@ These questions were chosen in order to gather feedback from users about on  any
 \textcolor{red}{how the group rated the eval metrics against alt text}
 
 \section{Results Summary}
-\textcolor{red}{highlight good and bad stuff}
+\subsection{Positive Findings}
+The screen reader testing showed that users were able to navigate through the full workflow without errors. All key pages loaded correctly, and users could successfully sign up, log in, upload images, generate alternative text, edit results, and copy text to the clipboard. The system also allowed users to access previously generated alt text through the history page. These results indicate that the application supports end-to-end task completion using assistive technologies.
+
+Keyboard navigation testing further confirmed strong accessibility support. All interactive elements were reachable using the Tab key, and buttons could be activated using Enter or Space. Users were able to upload images, generate alt text, edit content, copy results, and navigate between pages without using a mouse. The interface remained usable and readable at 200\% zoom, demonstrating responsiveness and compatibility with accessibility guidelines. Overall, the keyboard accessibility of the system was effective and consistent.
+
+\subsection{Issues Identified}
+Despite the positive results, several usability issues were observed. During login and alt text generation, there were occasional delays where actions required multiple attempts. This behavior was likely due to backend services waking from inactivity, but it impacted perceived responsiveness.
+
+Some accessibility feedback indicated uncertainty regarding the visibility of focus indicators when navigating using the keyboard. Although navigation was possible, clearer visual focus indicators would improve usability and confidence for keyboard users.
+
+The generated alternative text quality also revealed areas for improvement. In some cases, the descriptions included incorrect or missing information, lacked clarity, or did not fully describe spatial relationships between elements. Certain outputs were fragmented and not written in complete sentences, making them harder to understand. Additionally, important diagram components such as sections, symbols, or spectrum bars were sometimes omitted.
+
+At higher zoom levels (400\%), layout overlap issues were observed, particularly with header content. This indicates that while the interface performs well at 200\% zoom, further adjustments are needed to fully support extreme zoom accessibility requirements.
+
+\subsection{Summary}
+In summary, the system performed well in terms of accessibility and task completion using both screen readers and keyboard navigation. However, improvements are needed in system responsiveness, focus indicator visibility, alt text accuracy and completeness, and layout behavior at higher zoom levels.
 
 \section{Analysis and Insights}
 The results from user testing indicate that users were generally able to 
