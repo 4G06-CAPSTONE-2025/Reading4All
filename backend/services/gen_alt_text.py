@@ -1,3 +1,11 @@
+"""
+Author: Moly Mikhail and Casey Francine Bulaclac
+Date: Jan 2026
+Purpose: Calls the AI model on Hugging Face, post-processes the 
+generated alt text to clean up the format and structure. 
+Finally, stores the generated output in Supabase.
+"""
+
 import base64
 import os
 import re
@@ -7,8 +15,8 @@ from databases.connect_supabase import get_supabase_admin_client
 
 
 class GenAltText:
-    def __init__(self):
-        self.supabase = get_supabase_admin_client()
+    def __init__(self, supabase=None):
+        self.supabase = supabase or get_supabase_admin_client()
         self.max_entries = 10
         self.hf_token = os.getenv("HUGGINGFACE_READ_TOKEN")
         # pylint: disable=line-too-long
@@ -16,7 +24,9 @@ class GenAltText:
 
 
     def trigger_model(self, image, session_id):
-        image_bytes= image.read()
+
+        # sends image as bytes to HuggingFace model to generate alt text
+        image_bytes = image.read()
 
         headers = {
             "Authorization": f"Bearer {self.hf_token}",
@@ -28,24 +38,22 @@ class GenAltText:
             data=image_bytes,
             timeout=180
         )
-
         raw_alt_text = response.json().get('alt_text')
 
 
-        # returns alt text to show user
+        # if no alt text is returned by model
         if not raw_alt_text:
             return None, None
 
-        # after alt text has been successfully generated, the alt text
-        # and image is saved to the history
-
         # removing prompt used in model from alt-text returned
+        # which is stated before the the colon
         raw_alt_text = raw_alt_text.split(":", 1)[1].strip()
-        print("Raw Alt Text: ", raw_alt_text)
 
         # clean up post processing layer
         post_alt_text = self.post_process_alt_text(raw_alt_text)
 
+        # after alt text has been successfully generated, the cleaned up alt text
+        # and image is saved to the history
         entry_id = self.insert_history(image_bytes, post_alt_text, session_id)
 
         return post_alt_text, entry_id
@@ -81,7 +89,7 @@ class GenAltText:
         )
 
         if not response.data:
-            return False
+            return None
 
         return response.data[0]["entry_id"]
 
@@ -96,27 +104,34 @@ class GenAltText:
             .execute()
         )
 
-    def insert_history(self, image, alt_text, session_id):
 
+    def insert_history(self, image_bytes, alt_text, session_id):
+
+        # checks if session entries stored is at limit
         if self.session_entries_count(session_id) == self.max_entries:
 
+            # finds oldest entry in history
             oldest_entry_id = self.find_oldest_entry(session_id)
 
+            # removes oldest entry to make room for new entry
             if oldest_entry_id:
                 self.remove_oldest_entry(oldest_entry_id)
 
-        # need to convert bytes to a string in order to send to superbase with json
-        image_b64 = base64.b64encode(image).decode("utf-8")
+        # need to convert bytes to a string in order to store in Supabase
+        image_b64 = base64.b64encode(image_bytes).decode("utf-8")
 
         # dont need to give time stamp it will by default use current time
         response = (
                 self.supabase.table("history").insert(
-                    {"session_id": session_id,
-                    "image": image_b64, "alt_text":
-                    alt_text, "edited_alt_text": "NULL"}
+                    {
+                        "session_id": session_id,
+                        "image": image_b64, "alt_text":
+                        alt_text, "edited_alt_text": "NULL"
+                    }
                     ).execute()
                 )
         return response.data[0]["entry_id"]
+
 
     # this function is for testing purposes to store images from database
     def save_image(self, entry_id=1):

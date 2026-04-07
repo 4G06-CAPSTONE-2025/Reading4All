@@ -56,6 +56,7 @@ April 5, 2026 & Dhruv & Added short lead-in paragraphs before subsection groups 
 April 6, 2026 & Dhruv & Peer Review \texttt{\#602} Applied\\
 April 7, 2026 & Dhruv & Peer Review \texttt{\#594} Applied\\
 April 4, 2026 & Francine B & Address Peer Feedback \texttt{\#597}, \texttt{\#600}, \texttt{\#605} \\ 
+April 5, 2026 & Moly M & Address Peer Feedback \texttt{\#603}\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -601,7 +602,71 @@ Table~\ref{table:module2-unit-eval} summarizes the unit testing results for the 
   BCONT-UT\mtwotestcount & Send alt text editing request through the backend controller. & 
   The backend controller forwards the request to the Edit Alt Text module and returns the result. & 
   The backend controller correctly returns the editing result of \texttt{"Success"}. &
-  \cellcolor{green}Pass \\ 
+  \cellcolor{green}Pass \\ \midrule
+
+
+  EDIT-UT1 & Submit a valid edit request with valid entry ID, edited alt text and session ID. & 
+  The alt text is updated with the edited text and returns a success message. & 
+  The service correctly returns \texttt{"Success"} after calling the service to update the history data. &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  EDIT-UT2 & Submit a valid edit request but simulate a failed save to the database.& 
+  The service returns and error indicating the change cannot be saved. & 
+  The service correctly returns an error message of \texttt{"UNABLE\_TO\_SAVE"} and does not call the service to update the history data.  &
+  \cellcolor{green}Pass \\ \midrule
+
+  EDIT-UT3 & Submit an edit request with the \texttt{entry\_id} field missing. &
+  The service detects the missing field and returns an error indicating the missing field and does not attempt to update the alt text. & 
+  The service correctly returns an error message of \texttt{"INVALID\_REQUEST"} and does not call the service to update the history data.&
+  \cellcolor{green}Pass \\ \midrule
+  
+
+  EDIT-UT4 & Submit an edit request with the \texttt{edited\_alt\_text} field missing. & 
+  The service detects the missing field and returns an error indicating the missing field and does not attempt to update the alt text. & 
+  The service correctly returns an error message of \texttt{"INVALID\_REQUEST"} and does not call the service to update the history data.&
+  \cellcolor{green}Pass \\ \midrule  
+
+  EDIT-UT5 & Submit an edit request but simulate an exception being thrown by the Supabase client. & 
+  The service catches the exception and returns an error indicating the failure and does not attempt to update the alt text. & 
+  The service correctly returns an error message of \texttt{"UNABLE\_TO\_SAVE"} after the exception is caught &
+  \cellcolor{green}Pass \\ \midrule
+
+
+  GEN-UT1 & Submit alt text with extra spaces for post-processing. &
+  The extra spaces are removed from the alt text and its returned. &
+  The function correctly removes extra spaces from the alt text. &
+  \cellcolor{green}Pass \\ \midrule
+
+  GEN-UT2 & Submit alt text with repeated words for post-processing. &
+  The repeated words are removed from the alt text and it is returned. &
+  The function correctly removes repeated words from the alt text. &
+  \cellcolor{green}Pass \\ \midrule
+
+  GEN-UT3 & Submit alt text starting with a lowercase letter for post-processing. &
+  The first letter is capitalized and it is returned. &
+  The function correctly capitalizes the first letter of the alt text. &
+  \cellcolor{green}Pass \\ \midrule
+
+  GEN-UT4 & Submit alt text with a missing period for post-processing. &
+  A period is added to the end of the alt text and it is returned. &
+  The function correctly adds a period to the end of the alt text. &
+  \cellcolor{green}Pass \\ \midrule
+
+  GEN-UT5 & Submit alt text with multiple sentences beginning with lowercase letters for post-processing. &
+  Each sentence is capitalized and the text is returned. &
+  The function correctly capitalizes each sentence in the alt text. &
+  \cellcolor{green}Pass \\ \midrule
+
+  GEN-UT6 & Trigger the AI model for AI alt text generation and simulate no text is returned &
+  The function returns no alt text and no update to history is completed. & 
+  The function correctly returns \texttt{(None, None)} &
+  \cellcolor{green}Pass \\ \midrule
+
+  GEN-UT7 & Trigger the AI model for AI alt text generation and simulate alt text is returned &
+  The function returns the generated alt text and updates the history. &
+  The function correctly returns the generated alt text and updates the history. &
+  \cellcolor{green}Pass \\
 
 \end{xltabular}
 

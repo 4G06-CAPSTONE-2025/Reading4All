@@ -1,67 +1,85 @@
+"""
+Author: Moly Mikhail
+Date: March 2026
+Purpose: Unit tests for the generating alt text, 
+specifically the clean up post process 
+and handling output from the AI Model.
+"""
+
 from unittest.mock import MagicMock, patch
 from io import BytesIO
 from services.gen_alt_text import GenAltText
 
-@patch("services.gen_alt_text.get_supabase_admin_client")
-def test_post_process_alt_text_extra_spaces(mock_supabase):
-    mock_supabase.return_value = MagicMock()
+# GEN-UT1: Tests post-processing of alt text with extra spaces
+def test_post_process_alt_text_extra_spaces():
+    # mock supabase client as its needed to initialize GenAltTex
+    mock_supabase = MagicMock()
 
-    cleanup = GenAltText()
+    cleanup = GenAltText(supabase=mock_supabase)
     input_text = "     Text  here.  "
 
+    # checks that extra spaces are removed
     result = cleanup.post_process_alt_text(input_text)
     assert result == "Text here."
 
 
-@patch("services.gen_alt_text.get_supabase_admin_client")
-def test_post_process_alt_text_repeat_words(mock_supabase):
-    mock_supabase.return_value = MagicMock()
+# GEN-UT2: Tests post-processing of alt text with repeated words
+def test_post_process_alt_text_repeat_words():
+    # mock supabase client as its needed to initialize GenAltTex
+    mock_supabase = MagicMock()
 
-    cleanup = GenAltText()
+
+    cleanup = GenAltText(supabase=mock_supabase)
     input_text = "Repeat Repeat here."
 
+    # checks that repeat words are removed
     result = cleanup.post_process_alt_text(input_text)
     assert result == "Repeat here."
 
+# GEN-UT3:Tests post-processing of alt text beginning with lowercase letters
+def test_post_process_alt_text_lower_case():
+    # mock supabase client as its needed to initialize GenAltTex
+    mock_supabase = MagicMock()
 
-@patch("services.gen_alt_text.get_supabase_admin_client")
-def test_post_process_alt_text_lower_case(mock_supabase):
-    mock_supabase.return_value = MagicMock()
-
-    cleanup = GenAltText()
+    cleanup = GenAltText(supabase=mock_supabase)
     input_text = "lowercase  here."
 
+    # checks that sentences being with uppercase letters
     result = cleanup.post_process_alt_text(input_text)
     assert result == "Lowercase here."
 
+# GEN-UT4: Tests post-processing of alt text with missing period
+def test_post_process_alt_text_missing_period():
+    # mock supabase client as its needed to initialize GenAltTex
+    mock_supabase = MagicMock()
 
-@patch("services.gen_alt_text.get_supabase_admin_client")
-def test_post_process_alt_text_missing_period(mock_supabase):
-    mock_supabase.return_value = MagicMock()
-
-    cleanup = GenAltText()
+    cleanup = GenAltText(supabase=mock_supabase)
     input_text = "Missing period"
 
+    # checks that missing punctuation is added
     result = cleanup.post_process_alt_text(input_text)
     assert result == "Missing period."
 
+# GEN-UT5: Tests post-processing of alt text with multiple sentences.
+def test_post_process_alt_text_multiple_sentences():
+    # mock supabase client as its needed to initialize GenAltTex
+    mock_supabase = MagicMock()
 
-@patch("services.gen_alt_text.get_supabase_admin_client")
-def test_post_process_alt_text_multiple_sentences(mock_supabase):
-    mock_supabase.return_value = MagicMock()
-
-    cleanup = GenAltText()
+    cleanup = GenAltText(supabase=mock_supabase)
     input_text = "this is the first sentence. second here."
 
+    # checks multiple sentences for capitalization
     result = cleanup.post_process_alt_text(input_text)
     assert result == "This is the first sentence. Second here."
 
-
+# GEN-UT6: Tests when model returns no alt text
+# mocks API post to hugging face AI Model
 @patch("services.gen_alt_text.requests.post")
-@patch("services.gen_alt_text.get_supabase_admin_client")
-def test_trigger_model_no_alt_text(mock_supabase, mock_post):
-    mock_supabase.return_value = MagicMock()
+def test_trigger_model_no_alt_text(mock_post):
+    # mock supabase client as its needed to initialize GenAltTex
+    mock_supabase = MagicMock()
 
+    # mock HuggingFace API Response
     mock_response = MagicMock()
     mock_response.json.return_value = {}
     mock_post.return_value = mock_response
@@ -69,17 +87,20 @@ def test_trigger_model_no_alt_text(mock_supabase, mock_post):
     image = BytesIO(b"Fake Image")
     image.content_type = "image/png"
 
-    gen = GenAltText()
+    # checks if model returns no alt text that the result is also none
+    gen = GenAltText(supabase=mock_supabase)
     result = gen.trigger_model(image,"1")
 
     assert result == (None, None)
 
-
+# GEN-UT7: Tests when model returns alt text successfully
+# mocks API post to hugging face AI Model
 @patch("services.gen_alt_text.requests.post")
-@patch("services.gen_alt_text.get_supabase_admin_client")
-def test_trigger_model_success(mock_supabase, mock_post):
-    mock_supabase.return_value = MagicMock()
+def test_trigger_model_success(mock_post):
+    # mock supabase client as its needed to initialize GenAltTex
+    mock_supabase = MagicMock()
 
+    # mock HuggingFace API Response
     mock_response = MagicMock()
     mock_response.json.return_value = {
         "alt_text":"Physics Diagram: Circuit description here."
@@ -88,7 +109,7 @@ def test_trigger_model_success(mock_supabase, mock_post):
     image = BytesIO(b"Fake Image")
     image.content_type = "image/png"
 
-    gen = GenAltText()
+    gen = GenAltText(supabase=mock_supabase)
     gen.insert_history = MagicMock(return_value="101")
 
     result = gen.trigger_model(image,"1")
@@ -98,4 +119,6 @@ def test_trigger_model_success(mock_supabase, mock_post):
         "Circuit description here.",
         "1"
     )
+
+    # checks that AI model generated text is returned as the result
     assert result == ("Circuit description here.", "101")

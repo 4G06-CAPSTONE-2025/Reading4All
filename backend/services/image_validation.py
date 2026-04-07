@@ -1,3 +1,10 @@
+"""
+Author: Moly Mikhail 
+Date: Jan 2026
+Purpose: Validates uploaded images by checking that an image is present,
+is a valid file type, within the size
+limit and not corrupted. 
+"""
 from PIL import Image, UnidentifiedImageError
 
 
