@@ -1,6 +1,15 @@
+"""
+Author: Moly Mikhail 
+Date: March 2026
+Purpose: Tests for the BackendController module, 
+specifically ensuring the routing to other modules is done
+correctly.
+"""
+
 from unittest.mock import MagicMock, patch
 
-
+# mocking all the external services that
+# backend controller routes data/requests to
 with (
     patch("services.alt_text_history.AltTextHistory", MagicMock()),
     patch("services.gen_alt_text.GenAltText", MagicMock()),

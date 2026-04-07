@@ -39,12 +39,22 @@
   \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
   \midrule
   Oct 27, 2025 & 1.0 & Initial version of document.\\ 
+<<<<<<< HEAD
   Jan 11, 2025 & 1.1 & Peer Review \texttt{\#146,\#149} Applied \\
   April 5th, 2026 & 1.2 & Added section clarifying changes from original VnV Plan\\
   April 4, 2026 & 1.2 & TA Feedback \texttt{\#648} Applied \\
   April 5, 2026 & 1.3 & TA Feedback \texttt{\#645} Applied \\
   April 6, 2026 & 1.4 & TA Feedback \texttt{\#639} Applied \\
   
+=======
+  Jan 5, 2026 & 1.1 & Applied Peer Review \texttt{150}\\
+  Jan 6, 2026 & 1.2 & Applied Peer Review \texttt{147}\\
+  Jan 11, 2026 & 1.3 & Peer Review \texttt{\#146,\#149} Applied \\
+  March 9, 2026 & 1.4 & Added Unit Tests \\
+  April 4, 2026 & 1.5 & Applied Peer Review \texttt{\#642, \#648}\\
+  April 5, 2026 & 1.6 & TA Feedback \texttt{\#645} Applied \\
+  April 6, 2026 & 1.7 & Applied Peer Review \texttt{\#603} and TA Feedback \texttt{\#639} Applied \\  
+>>>>>>> 463a164b109a06c9ae080a13e9cabf270443902b
   \bottomrule
 \end{tabularx}
 \newpage
@@ -1277,6 +1287,8 @@ that the results from each service are properly handled and returned to the user
 The following unit tests verify that the controller correctly routes requests and returns the expected responses. 
 The tests validate the interaction between the controller and service modules, ensuring that image validation, 
 alt text generation, alt text history retrievals, alt text editing and user sign up requests are handled correctly.
+Furthermore, the alt text editing functionality is implemented as a function that is accessed through the \texttt{BackendController}; 
+therefore, it is tested within this section.
 
 Target requirements(s): FR1, FR2, FR3, FR5, FR6
 
@@ -1291,6 +1303,8 @@ Target requirements(s): FR1, FR2, FR3, FR5, FR6
   \begin{itemize}
     \item Ensures that the controller correctly calls the alt text generation module when a valid image upload request is received.
     \item Verifies that the generated alt text returned by \texttt{GenAltText} service is correctly returned to the caller.
+    \item Tests that generated alt text is properly post-processed, including removal of extra whitespace, duplicate words and correct capitalization. 
+    \item Ensures that successful model generations are properly processed and stored stored in session history using the cleaned version of the alt text. 
   \end{itemize}
 
   \item \textbf{Retrieving Alt Text History}
@@ -1303,6 +1317,9 @@ Target requirements(s): FR1, FR2, FR3, FR5, FR6
   \begin{itemize}
     \item Ensures that the controller correctly calls the alt text editing module when a request to edit generated alt text is received.
     \item Verifies that the response returned by the \texttt{EditAltText} service is correctly returned to the caller.
+    \item Tests that a valid edit request successfully updates the stored alt text and returns a \texttt{Success} response.
+    \item Ensures that invalid requests with missing required fields (such as missing \texttt{entry\_id} or \texttt{edited\_alt\_text}) are rejected and \texttt{INVALID\_REQUEST} is returned.
+    \item Ensures that exceptions thrown during the database update process are correctly handled and that a \texttt{UNABLE\_TO\_SAVE} response is returned. 
   \end{itemize}
 
   \item \textbf{Handling User Sign Up Requests}
@@ -1312,10 +1329,11 @@ Target requirements(s): FR1, FR2, FR3, FR5, FR6
 \end{itemize}
 \end{itemize}
 
-The test cases for this module can be found \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/blob/main/backend/tests/test_image_validation.py}{here.}
+The test cases for this module can be found \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/blob/main/backend/tests/test_image_validation.py}{here} for backend controller routing, 
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/blob/main/backend/tests/test_edit_alt_text.py}{here} 
+for alt text editing and \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/blob/main/backend/tests/test_gen_alt_text.py}{here} for alt text generation. 
 
-
-\subsubsection{History Navigation}
+\subsection{History Navigation}
 
 \textbf{Goal:}
 

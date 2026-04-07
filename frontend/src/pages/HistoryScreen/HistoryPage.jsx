@@ -1,3 +1,11 @@
+/*
+Author: Moly Mikhail 
+Date: Jan 2026
+Purpose: Handles the history page frontend which displays to the user
+past alt text generation entries with their edits and their
+associated image. As well as provides functionality to copy each entry and 
+all the entries at once. 
+*/
 import React, { useState } from "react";
 import "./HistoryPage.css";
 import { useEffect } from "react";
