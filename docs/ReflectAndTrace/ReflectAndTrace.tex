@@ -26,6 +26,30 @@ document, along with the changes implemented to address them and the issues used
 The feedback focused on ensuring every section in the SRS is written with a high degree 
 of detail and meeting the course expectations. For example, ensuring the source of constraints 
 in the system is clearly communicated through the documentation. 
+
+Furthermore, based on feedback from peer reviews and the teaching assistant, the Hazard Analysis
+document was refined to improve clarity and completeness. The wording throughout the
+document was revised to ensure that hazards were described precisely and consistently.
+This improved the readability of the document and reduced ambiguity in hazard
+descriptions.
+
+Feedback also indicated that the backend server component required clearer definition.
+This was addressed by expanding the system components section to explicitly describe
+the backend server responsibilities, including input validation, communication between
+modules, and error handling. This clarification improved the understanding of how failures
+within the backend could impact overall system safety.
+
+Additionally, feedback highlighted missing assumptions related to network stability.
+A network stability assumption was added to the Critical Assumptions section to reflect
+the system’s dependence on reliable communication between components. Including this
+assumption helped capture hazards related to connectivity issues and ensured that system
+limitations were properly documented.
+
+These revisions strengthened the hazard identification process and improved traceability
+between assumptions, system components, and potential risks. The details of the changes 
+are outlined in Table \ref{tab:HA-feedback-tracking}.
+
+
 \renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{2cm}|p{3.5cm}|p{4.5cm}|p{3cm}|}
     \caption{SRS Feedback Tracking and Implementation} \label{tab:srs-feedback-tracking} \\
@@ -44,6 +68,22 @@ in the system is clearly communicated through the documentation.
     \endfoot
     
     \hline
+
+    Peer Review & Missing additional BUCs &
+Added partition-specific business use cases. &
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/113}{\#113} \\ \hline
+
+Peer Review & Single BUC too broad &
+Decomposed into multiple supporting BUCs. &
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/118}{\#118} \\ \hline
+
+    Peer Review & Solution introduced in problem statement &
+Refined problem statement to focus strictly on the problem. &
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/26}{\#26} \\ \hline
+
+Peer Review & Goals not clearly measurable &
+Added quantitative metrics to make goals measurable. &
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/27}{\#27} \\ \hline
     \endlastfoot
     
 TA & Source of constraints was unclear  & Clarified the source of the constraints. & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/644}{Issue \#644} \\ \hline
@@ -70,6 +110,22 @@ TA & Include more than course deliverables in schedule constraints & goes beyond
     \endfoot
     
     \hline
+
+    Peer Review & Mitigation does not address what happens if the risk occurs &
+Added fallback strategies to clarify what actions will be taken if a risk materializes. &
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/25}{\#25} \\ \hline
+
+TA Feedback & Mitigation for offensive or biased text was too vague &
+Specified additional filtering and checking before generated text is shown to the user. &
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/152}{\#152} \\ \hline
+
+TA Feedback & Data deletion mitigation needed more detail &
+Clarified deletion-failure handling by adding logging and administrator notification. &
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/153}{\#153} \\ \hline
+
+TA Feedback & Missing hazard related to model degradation over time &
+Added a hazard and mitigation addressing performance decay as new diagram types emerge. &
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/154}{\#154} \\ \hline
     \endlastfoot
     
 TA & Grammar should be more precise & Reviewed grammar and improvements. & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/649}{Issue \#649} \\
@@ -256,9 +312,28 @@ focused on usability, accessibility and alt text quality based on testing, super
 
 \section{Design Decisions (LO12)}
 
-\plt{Reflect and justify your design decisions.  How did limitations,
- assumptions, and constraints influence your decisions?  Discuss each of these
- separately.}
+Several frontend design decisions were made to improve accessibility and usability. 
+We designed the interface using appropriate contrast ratios and colour selections 
+based on WCAG and AODA accessibility guidelines. This decision was made to ensure 
+that the application is usable by individuals with visual impairments and complies 
+with accessibility standards. Following these guidelines also improves readability 
+and overall user experience.
+
+Another key decision was implementing a tab-based navigation system for the frontend. 
+This structure allows users to easily switch between different functionalities without 
+overwhelming the interface. The tab-based layout improves organization and reduces 
+cognitive load, making the system more intuitive to navigate.
+
+We also decided to include a session history feature to allow users to view previous 
+interactions. This functionality helps users track past generated content and improves 
+workflow efficiency by allowing them to reference earlier results without repeating 
+actions.
+
+Additional functionalities such as editing alt text and copying generated output were 
+added later in the design process. These features were introduced based on usability 
+considerations to give users more control over the generated content and make it easier 
+to reuse results in other applications. These improvements enhanced flexibility and 
+overall usability of the system.
 
 \section{Economic Considerations (LO23)}
 
