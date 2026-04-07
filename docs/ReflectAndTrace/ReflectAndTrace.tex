@@ -220,6 +220,7 @@ Peer Review & Missing a plan for tracking created GitHub Issues & Outlined a pla
 Peer Review & Possible missing functional requirement for viewing history & addressed in issue as this is already described in FR 5 & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/114}{Issue \#114} \\
 \end{longtable}
 
+Table \ref{tab:vnvReport-feedback-tracking} summarizes the feedback received from peer reviewers and the teaching assistant on the VnV Report, along with the corresponding improvements made to the document. Several updates focused on improving clarity and traceability, including adding introductions to sections, referencing all tables and figures, and correcting formatting inconsistencies. Performance-related feedback led to the definition of symbolic constants and clearer specification of thresholds for alt-text generation and UI responsiveness. Additional analysis was incorporated for previously failed tests, and mitigation plans were documented, including fixes for session timeout functionality and deployment-related issues. Structural enhancements such as improved code coverage explanations, clarification of mutation testing decisions, and corrections to symbolic constants further strengthened the report. Overall, these changes improved the completeness, readability, and traceability of the VnV Report, ensuring that feedback was clearly addressed and documented.
 \renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{2cm}|p{3.5cm}|p{4.5cm}|p{3cm}|}
     \caption{VnV Report Feedback Tracking and Implementation} \label{tab:vnvReport-feedback-tracking} \\
@@ -251,6 +252,21 @@ Peer Review & Failed tests were reported but not analyzed and lacked explanation
 Peer Review & Mutation testing was mentioned in the VnV Plan but not discussed in the VnV Report   & Added a subsection explaining why mutation testing was not implemented & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/600}{Issue \#600} \\
 \hline
 Peer Review & Symbolic constants not defined and typos  & Added the symbolic constants table and fixed typos & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/605}{Issue \#605} \\
+\hline
+
+Peer Review & Tables/figures not referenced, captions placement, wide tables, and missing section introductions & 
+Referenced all tables in text, moved captions above tables, resized tables to avoid margin overflow, and added introductory sentences to sections/subsections &
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/654}{Issue \#654} \\
+\hline
+
+Peer Review & Unclear performance thresholds and contrast testing specification for NFR-ST1 & 
+Added symbolic constants defining performance thresholds (T\_ALT\_GEN\_SMALL, T\_ALT\_GEN\_LARGE, T\_UI\_RESP) and clarified NFR-ST1 testing environment limitations for quantitative measurement &
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/602}{Issue \#602} \\
+\hline
+
+Peer Review & Missing mitigation plans for failed tests including FR-ST7 and NFR-ST25 & 
+Session timeout failure (FR-ST7) was fixed during testing and documented under Changes Due to Testing; deployment issues (NFR-ST25) were resolved prior to final demo &
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/594}{Issue \#594} \\
 \hline
 \end{longtable}
 
@@ -319,6 +335,36 @@ sell?  What would you charge for your product?  How many units would you have to
 sell to make money? If your product isn't something that would be sold, like an 
 open source project, how would you go about attracting users?  How many potential 
 users currently exist?}
+
+The Reading4All tool is designed to improve accessibility for physics diagrams by automatically generating alternative text. 
+The system is developed with accessibility standards in mind, including WCAG~2.1 and AODA compliance, and supports 
+tab-based keyboard navigation. Creating high-quality alternative text for complex STEM diagrams is often difficult and 
+time-consuming, particularly when balancing appropriate length, level of detail, and contextual accuracy. This tool helps 
+students, teaching assistants, instructors, and academic departments quickly generate descriptive alternative text, providing 
+a strong starting point that can be refined as needed.
+
+Currently, the tool is intended for use within McMaster University. The primary users include students with accessibility needs, 
+instructors preparing course materials, and teaching assistants responsible for ensuring content accessibility. Although the 
+tool is not intended for commercial sale, there is clear institutional value in improving accessibility compliance and reducing 
+manual effort required to generate alternative text.
+
+The system relies on cloud-based infrastructure including Vercel for frontend deployment, Render for backend services, Supabase 
+for database and authentication, and Hugging Face for hosting machine learning models. The estimated operational costs depend 
+on usage scale. For a small institutional deployment, hosting costs are expected to remain relatively low, with frontend hosting 
+typically ranging from \$0--\$20 per month, backend hosting from \$10--\$40 per month, database and storage costs from 
+\$0--\$25 per month, and model hosting or inference costs ranging from \$0--\$50 per month depending on usage.
+
+The primary development-related costs would involve expanding datasets and improving model quality. Collecting and curating 
+physics diagram datasets, including sourcing open-source images, may cost approximately \$200--\$800. Subject matter experts 
+to verify and annotate diagrams could require an estimated \$300--\$1000 depending on the number of images reviewed. Additional 
+costs for user surveys, accessibility testing, and evaluation efforts may range from \$100--\$300. Optional performance upgrades, 
+such as faster inference or GPU-based model hosting, could increase operational costs by approximately \$20--\$100 per month.
+
+Because this project is intended to remain open source and institutionally supported, revenue generation is not the primary goal. 
+Instead, adoption would occur through accessibility initiatives, course integration, and departmental recommendations. The 
+potential user base includes students requiring accessible materials, instructors creating lecture content, and accessibility 
+offices across McMaster University. Future expansion to other academic institutions could further increase the number of potential 
+users while maintaining relatively low operational costs.
 
 \section{Reflection on Project Management (LO24)}
 
