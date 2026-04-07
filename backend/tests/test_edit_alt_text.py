@@ -9,7 +9,7 @@ from unittest.mock import MagicMock
 import json
 from services.edit_alt_text import edit_alt_text
 
-
+# EDIT-UT1: Tests that a valid edit request is routed correctly and returns success
 def test_edit_alt_text_success():
 
     # mock AltTextHistory client as its not being tested
@@ -35,7 +35,7 @@ def test_edit_alt_text_success():
 
     assert result == "Success"
 
-
+# EDIT-UT2: Tests that failing to save to DB returns the appropriate error
 def test_edit_alt_text_unable_to_save():
     # mock AltTextHistory client as its not being tested
     mock_history = MagicMock()
@@ -61,7 +61,7 @@ def test_edit_alt_text_unable_to_save():
     # verify correct error is returned when Supabase cant save
     assert result == "UNABLE_TO_SAVE"
 
-
+# EDIT-UT3: Tests that a request missing entry_id returns the appropriate error
 def test_edit_alt_text_invalid_missing_entry_id():
     # mock AltTextHistory client as its not being tested
     mock_history = MagicMock()
@@ -80,6 +80,7 @@ def test_edit_alt_text_invalid_missing_entry_id():
     mock_history.return_value.update_edited_alt_text.assert_not_called()
 
 
+# EDIT-UT4: Tests that that a request missing alt text returns the appropriate error
 def test_edit_alt_text_invalid_missing_alt_text():
     # mock AltTextHistory client as its not being tested
     mock_history = MagicMock()
@@ -97,7 +98,7 @@ def test_edit_alt_text_invalid_missing_alt_text():
     assert result == "INVALID_REQUEST"
     mock_history.return_value.update_edited_alt_text.assert_not_called()
 
-
+# EDIT-UT5: Tests that when Supabase throws an exception that the appropriate error is returned
 def test_edit_alt_text_exception_thrown():
     # mock AltTextHistory client as its not being tested
     mock_history = MagicMock()

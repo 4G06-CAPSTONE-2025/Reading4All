@@ -10,6 +10,7 @@ from unittest.mock import MagicMock, patch
 from io import BytesIO
 from services.gen_alt_text import GenAltText
 
+# GEN-UT1: Tests post-processing of alt text with extra spaces
 def test_post_process_alt_text_extra_spaces():
     # mock supabase client as its needed to initialize GenAltTex
     mock_supabase = MagicMock()
@@ -22,6 +23,7 @@ def test_post_process_alt_text_extra_spaces():
     assert result == "Text here."
 
 
+# GEN-UT2: Tests post-processing of alt text with repeated words
 def test_post_process_alt_text_repeat_words():
     # mock supabase client as its needed to initialize GenAltTex
     mock_supabase = MagicMock()
@@ -34,7 +36,7 @@ def test_post_process_alt_text_repeat_words():
     result = cleanup.post_process_alt_text(input_text)
     assert result == "Repeat here."
 
-
+# GEN-UT3:Tests post-processing of alt text beginning with lowercase letters
 def test_post_process_alt_text_lower_case():
     # mock supabase client as its needed to initialize GenAltTex
     mock_supabase = MagicMock()
@@ -46,7 +48,7 @@ def test_post_process_alt_text_lower_case():
     result = cleanup.post_process_alt_text(input_text)
     assert result == "Lowercase here."
 
-
+# GEN-UT4: Tests post-processing of alt text with missing period
 def test_post_process_alt_text_missing_period():
     # mock supabase client as its needed to initialize GenAltTex
     mock_supabase = MagicMock()
@@ -58,7 +60,7 @@ def test_post_process_alt_text_missing_period():
     result = cleanup.post_process_alt_text(input_text)
     assert result == "Missing period."
 
-
+# GEN-UT5: Tests post-processing of alt text with multiple sentences.
 def test_post_process_alt_text_multiple_sentences():
     # mock supabase client as its needed to initialize GenAltTex
     mock_supabase = MagicMock()
@@ -70,6 +72,7 @@ def test_post_process_alt_text_multiple_sentences():
     result = cleanup.post_process_alt_text(input_text)
     assert result == "This is the first sentence. Second here."
 
+# GEN-UT6: Tests when model returns no alt text 
 # mocks API post to hugging face AI Model
 @patch("services.gen_alt_text.requests.post")
 def test_trigger_model_no_alt_text(mock_post):
@@ -90,6 +93,7 @@ def test_trigger_model_no_alt_text(mock_post):
 
     assert result == (None, None)
 
+# GEN-UT7: Tests when model returns alt text successfully
 # mocks API post to hugging face AI Model
 @patch("services.gen_alt_text.requests.post")
 def test_trigger_model_success(mock_post):
