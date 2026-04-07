@@ -8,7 +8,8 @@
 \usepackage{bm}
 \usepackage{float}
 \usepackage{caption}
-
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
 \hypersetup{
   colorlinks,
@@ -42,8 +43,9 @@
   Jan 6, 2026 & 1.2 & Applied Peer Review \texttt{147}\\
   Jan 11, 2026 & 1.3 & Peer Review \texttt{\#146,\#149} Applied \\
   March 9, 2026 & 1.4 & Added Unit Tests \\
-  April 4, 2026 & 1.5 & Applied Peer Review \texttt{\#642}\\
-  April 6, 2026 & 1.6 & Applied Peer Review \texttt{\#603} \\
+  April 4, 2026 & 1.5 & Applied Peer Review \texttt{\#642, \#648}\\
+  April 5, 2026 & 1.6 & TA Feedback \texttt{\#645} Applied \\
+  April 6, 2026 & 1.7 & Applied Peer Review \texttt{\#603} and TA Feedback \texttt{\#639} Applied \\  
   \bottomrule
 \end{tabularx}
 \newpage
@@ -55,10 +57,10 @@
 \begin{table}[H]
 \centering
 \caption{Abbreviations and Acronyms Used in the Verification and Validation Plan}
-\begin{tabular}{|l|l|}
-\hline
+\begin{tabular}{ll}
+
 \textbf{Acronym} & \textbf{Definition} \\
-\hline
+
 AI & Artificial Intelligence \\
 API & Application Programming Interface \\
 AODA & Accessibility for Ontarians with Disabilities Act \\
@@ -95,7 +97,7 @@ UI & User Interface \\
 UHR & Usability and Humanity Requirement \\
 VnV & Verification and Validation \\
 WCAG & Web Content Accessibility Guidelines \\
-\hline
+
 \end{tabular}
 \end{table}
 
@@ -173,15 +175,31 @@ as its maintained and run by the university.
 
 \subsection{Challenge Level and Extras}
 
-The challenge level of the project is set at a \textit{general} level
-that will include two additional
-components (extras). The first additional component will be a
-Norman's Principles report that will
-evaluate the design of our final product to ensure that it optimizes
-usability and accessibility. The second additional
-component will be a user manual that will include comprehensive
-documentation to guide users in using the final
-product effectively.
+The challenge level of the project is set at a \textit{general} level and
+includes two additional components (extras) that support both usability
+and technical development.
+
+The first extra is a \textbf{User Testing Report}. This report documents
+user tasks, supervisor feedback, internal testing, and a summary of
+results and insights. It helps evaluate whether the generated alternative
+text is clear, useful, and accessible. The feedback collected from users
+guides improvements to both the interface and the quality of the
+generated descriptions.
+
+The second extra is a \textbf{Machine Learning Report}, which documents
+the dataset, model selection, training iterations, and evaluation of the
+AI system used to generate alternative text. The goal of this component
+is to improve accessibility by generating accurate descriptions for
+physics diagrams. This report also supports further
+development by identifying model limitations, tracking improvements
+across revisions, and guiding future changes such as dataset expansion
+and model optimization.
+
+These extras are important because they address both usability and
+technical performance. The Machine Learning Report improves the AI model,
+while the User Testing Report ensures the improvements are helpful for
+users. Together, they help refine the system and improve the overall
+accessibility and effectiveness of the tool.
 
 \subsection{Relevant Documentation}
 The system's Verification and Validation (VnV) plan will reference the
@@ -209,7 +227,7 @@ the project's assessment and testing:
 
 \section{Plan}
 
-This section outlines the strategies and techniques that will be used for verifying and validating the \textit{Reading4All} system, throughout the varying development phases. 
+This section outlines the strategies and techniques that will be used for verifying and validating the \textit{Reading4All} system, throughout the various development phases. 
 This includes verifying and validating the SRS, the design, the VnV plan, and the implementation. This section also defines the \textit{Reading4All} team's responsibilities in 
 completing this plan and implementing the specified strategies, to ultimately ensure the system meets our requirements and objectives.
 \newpage
@@ -227,22 +245,22 @@ will ensure the other team member can confidently take on the new responsibiliti
     \centering
     \caption{Verification and Validation Responsibility Breakdown}
     \label{tab:data-dictionary-reading4all}
-    \begin{tabular}{ |p{3.0cm}|p{3.8cm}|p{7.3cm}| }
-      \hline
+    \begin{tabular}{p{3.0cm} C{3.8cm} p{7.3cm}}
+    
       \textbf{Name} & \textbf{ Focus Area } & \textbf{Responsibility} \\
-      \hline
+      
       Moly Mikhail and Fiza Sehar & Functional Requirements Leads & Verifies all corresponding requirements in the SRS are thorough, clearly defined, attainable and measurable. Completes manual testing on the software to ensure that the functional requirements are met. Also oversees any written unit tests to ensure they correctly test the system and intended functionality. \\
-      \hline
+      
       Nawaal Fatima & User Testing Preparation Lead & Coordinates the user testing sessions, and oversees the planning and execution of these sessions. \\
-      \hline 
+       
       Casey Francine Bulaclac & Usability and Humanity Requirements Lead & Verifies all corresponding requirements in the SRS are thorough, clearly defined, attainable and measurable. Completes manual testing to ensure all the related requirements are met. Also verifies that WCAG 2.1 crtierias are met, prior to automated testing. \\
-      \hline 
+       
       Dhruv Sardana & Performance, Operational and Environmental Requirements & Verifies that corresponding requirements are thorough, clearly defined, attainable and measurable. Also, validates that the implemented system meets these requirements through extensive testing.  \\
-      \hline 
+       
       All \textit{Reading4All} Team Members & Look and Feel Requirements Lead & All team members are responsible for verifying that the corresponding requrieemnts in the SRS are thorough, clearly defined, attainable and measurable. The team will validate that the final system meets the specified requirements prior to user testing. \\
-      \hline
+      
       Ms. Jingchuan Sui (Supervisor) & Overall Usability and Quality of Alt Text Reviewer, User Testing Material Reviewer& Reviews and provides feedback to team on the overall usability of the system and the quality of the generated alternative text. Reviews user testing materials to ensure they align with accessibility standards and assits the team in completing the automated evaluation of the system against WCAG 2.1 criteria. \\ 
-      \hline
+      
     \end{tabular}
   \end{table}
   
@@ -517,7 +535,7 @@ the requirements.
   \item{}
     {\bf Control:} Manual\\
     {\bf Initial State:} Generated alternative text is visible to the user.\\
-    {\bf Input:}User edits the outputted text (adds words, deletes
+    {\bf Input:} User edits the outputted text (adds words, deletes
     sentences, modifies phrasing) and saves changes. \\
     {\bf Output:} The system reflects the user’s edits accurately and
     stores the updated version without loss of data or formatting errors.\\
@@ -769,17 +787,23 @@ the requirements.
     deletion, validate moderation filters, and verify network
     restrictions and audit log access.
 
-  \item \textbf{Cultural and Professional Content Compliance} \\[2mm]
+    \item \textbf{Cultural and Professional Content Compliance} \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic \\
     \textbf{Covers:} CR1, CR2, CR3 \\
     \textbf{Initial State:} Alt text is generated by the system. \\
     \textbf{Input/Condition:} The generated alt text is reviewed. \\
     \textbf{Output/Result:} Text is neutral, inclusive, contextually
     accurate, and professional. \\[2mm]
-    \textbf{How test will be performed:} Tester inspects a variety of
-    outputs for bias, unnecessary cultural references, and tone appropriateness.
-
-  \item \textbf{Compliance and Regulatory Verification} \\[2mm]
+    \textbf{How test will be performed:} One tester and the project supervisor
+    (digital accessibility specialist) independently review a representative
+    sample of generated outputs. Each output is evaluated for absence of biased
+    or offensive language, culturally appropriate references, professional tone,
+    and contextual accuracy. Each reviewer records a pass/fail decision for each
+    output. The requirement is satisfied if at least 90\% of the reviewed outputs
+    are marked as pass by both reviewers. In case of disagreement, the supervisor's
+    decision is considered final.
+    
+    \item \textbf{Compliance and Regulatory Verification} \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic \\
     \textbf{Covers:} CR-LR1, CR-SCR1, CR-SCR2 \\
     \textbf{Initial State:} System generates alt text and manages
@@ -789,16 +813,22 @@ the requirements.
     \textbf{Output/Result:} Generated alt text meets accessibility
     standards; uploaded files handled per policy; documentation
     available for stakeholders. \\[2mm]
-    \textbf{How test will be performed:} Run accessibility and
-    privacy compliance tests; inspect system logs and documentation
-    for adherence.
+    \textbf{How test will be performed:} Manual verification will be conducted
+    using WCAG 2.1 Level AA and AODA guidelines. The tester evaluates generated
+    alt text against WCAG 2.1 Success Criterion 1.1.1 (Non-text Content),
+    ensuring descriptions are meaningful, concise, and suitable for assistive
+    technologies. Additional checks include clarity of language, avoidance of
+    redundant phrases, and proper contextual description. Privacy and file
+    handling procedures are reviewed against institutional data policies.
+    The requirement is satisfied if all reviewed outputs conform to WCAG 2.1
+    Level AA descriptive requirements and no privacy violations are observed.
 
   \item \textbf{Environmental and Device Compatibility} \\[2mm]
     \textbf{Type:} Non-Functional, Manual, Dynamic \\
     \textbf{Covers:} OER-EP1, OER-EP2, OER-WE1, OER-WE2 \\
     \textbf{Initial State:} System installed on multiple devices and
     OS platforms. \\
-    \textbf{Input/Condition:} System is accessed on varying devices and OS platforms. \\
+    \textbf{Input/Condition:} System is accessed on various devices and OS platforms. \\
     \textbf{Output/Result:} System functions reliably across devices and
     platforms; maintains network connectivity. \\[2mm]
     \textbf{How test will be performed:} Testers access the system on
@@ -947,8 +977,7 @@ the requirements.
 \end{enumerate}
 
 \subsection{Traceability Between Test Cases and Requirements}
-Table \ref{tab:sys-tests} highlights the traceability between each test case listed above and 
-the functional and non-functional requirements in our SRS document. 
+\noindent The traceability matrix in Table~\ref{tab:sys-tests} demonstrates complete coverage between the system tests and the requirements in the SRS. Specifically, 100\% of the functional and non-functional requirements are covered by at least one test case, and 100\% of the test cases listed in this document are traceable to one or more functional or non-functional requirements.
 
 \begin{longtable}{|p{6.0cm}|p{8.0cm}|}
   \captionsetup{justification=raggedright,singlelinecheck=false}
@@ -1475,39 +1504,39 @@ type, acceptable range, and a brief description of its purpose.
   \centering
   \caption{Evaluation Metrics Summary}
   \label{tab:evaluation-metrics-summary}
-  \begin{tabular}{ |p{3.5cm}|p{3cm}|p{3cm}|p{4cm}| }
-    \hline
+  \begin{tabular}{ p{3.5cm}p{3cm}p{3cm}p{4cm} }
+    
     \textbf{Metric Name} & \textbf{Scale Type} & \textbf{Acceptable
     Range} & \textbf{Summary Description} \\
-    \hline
+    
     Sufficiency of Description
     & Categorical (1--3)
     & $\geq$ 3 (Sufficient)
     & Does the alt text convey enough information to achieve the
     intended objective? \\
-    \hline
+    
     Length Appropriateness
     & Categorical (1--3)
     & $\geq$ 3 (Proper Length)
     & Is the alt text concise yet complete (not too short or overly verbose)? \\
-    \hline
+    
     Accessibility / Usability
     & Numerical (0--3)
     & $\geq$ 2 (Acceptable)
     & Assistive-technology compatibility and clarity; aligns with
     WCAG 2.1 Level~AA use. \\
-    \hline
+    
     Learning Impact
     & Numerical (0--3)
     & $\geq$ 2 (Positive)
     & Does the alt text support or enhance user understanding in
     learning contexts? \\
-    \hline
+    
     Qualitative Feedback Notes
     & Textual
     & N/A
     & Free-form comments on clarity, tone, and suggested improvements. \\
-    \hline
+    
   \end{tabular}
 \end{table}
 
