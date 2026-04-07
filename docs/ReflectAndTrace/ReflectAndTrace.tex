@@ -18,49 +18,7 @@
 
 \maketitle
 
-\plt{Reflection is an important component of getting the full benefits from a
-learning experience.  Besides the intrinsic benefits of reflection, this
-document will be used to help the TAs grade how well your team responded to
-feedback.  Therefore, traceability between Revision 0 and Revision 1 is and
-important part of the reflection exercise.  In addition, several CEAB (Canadian
-Engineering Accreditation Board) Learning Outcomes (LOs) will be assessed based
-on your reflections.}
 \section{Changes in Response to Feedback}
-
-\plt{Summarize the changes made over the course of the project in response to
-feedback from TAs, the instructor, teammates, other teams, the project
-supervisor (if present), and from user testers.}
-
-\plt{For those teams with an external supervisor, please highlight how the feedback 
-from the supervisor shaped your project.  In particular, you should highlight the 
-supervisor's response to your Rev 0 demonstration to them.}
-
-\plt{Version control can make the summary relatively easy, if you used issues
-and meaningful commits.  If you feedback is in an issue, and you responded in
-the issue tracker, you can point to the issue as part of explaining your
-changes.  If addressing the issue required changes to code or documentation, you
-can point to the specific commit that made the changes.  Although the links are
-helpful for the details, you should include a label for each item of feedback so
-that the reader has an idea of what each item is about without the need to click
-on everything to find out.}
-
-\plt{If you were not organized with your commits, traceability between feedback
-and commits will not be feasible to capture after the fact.  You will instead
-need to spend time writing down a summary of the changes made in response to
-each item of feedback.}
-
-\plt{You should address EVERY item of feedback.  A table or itemized list is
-recommended.  You should record every item of feedback, along with the source of
-that feedback and the change you made in response to that feedback.  The
-response can be a change to your documentation, code, or development process.
-The response can also be the reason why no changes were made in response to the
-feedback.  To make this information manageable, you will record the feedback and
-response separately for each deliverable in the sections that follow.}
-
-\plt{If the feedback is general or incomplete, the TA (or instructor) will not
-be able to grade your response to feedback.  In that case your grade on this
-document, and likely the Revision 1 versions of the other documents will be
-low.} 
 
 \subsection{SRS and Hazard Analysis}
 Table \ref{tab:srs-feedback-tracking} details the feedback received on the SRS 
@@ -113,19 +71,19 @@ are outlined in Table \ref{tab:HA-feedback-tracking}.
 
     Peer Review & Missing additional BUCs &
 Added partition-specific business use cases. &
-\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/113}{\#113} \\ \hline
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/113}{Issue \#113} \\ \hline
 
 Peer Review & Single BUC too broad &
 Decomposed into multiple supporting BUCs. &
-\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/118}{\#118} \\ \hline
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/118}{Issue \#118} \\ \hline
 
     Peer Review & Solution introduced in problem statement &
 Refined problem statement to focus strictly on the problem. &
-\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/26}{\#26} \\ \hline
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/26}{Issue \#26} \\ \hline
 
 Peer Review & Goals not clearly measurable &
 Added quantitative metrics to make goals measurable. &
-\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/27}{\#27} \\ \hline
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/27}{Issue \#27} \\ \hline
     \endlastfoot
     
 TA & Source of constraints was unclear  & Clarified the source of the constraints. & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/644}{Issue \#644} \\ \hline
@@ -157,19 +115,19 @@ TA & Formatting and style issues (spelling, table borders, missing section intro
 
     Peer Review & Mitigation does not address what happens if the risk occurs &
 Added fallback strategies to clarify what actions will be taken if a risk materializes. &
-\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/25}{\#25} \\ \hline
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/25}{Issue \#25} \\ \hline
 
 TA Feedback & Mitigation for offensive or biased text was too vague &
 Specified additional filtering and checking before generated text is shown to the user. &
-\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/152}{\#152} \\ \hline
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/152}{Issue \#152} \\ \hline
 
 TA Feedback & Data deletion mitigation needed more detail &
 Clarified deletion-failure handling by adding logging and administrator notification. &
-\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/153}{\#153} \\ \hline
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/153}{Issue \#153} \\ \hline
 
 TA Feedback & Missing hazard related to model degradation over time &
 Added a hazard and mitigation addressing performance decay as new diagram types emerge. &
-\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/154}{\#154} \\ \hline
+\href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/154}{Issue \#154} \\ \hline
     \endlastfoot
     
 TA & Grammar should be more precise & Reviewed grammar and improvements. & \href{https://github.com/4G06-CAPSTONE-2025/Reading4All/issues/649}{Issue \#649} \\
@@ -344,11 +302,6 @@ Session timeout failure (FR-ST7) was fixed during testing and documented under C
 
 \section{Extras}
 
-\plt{Summarize the extras that were tackled by this project.  Extras
-can include usability testing, code walkthroughs, user documentation, formal
-proof, GenderMag personas, Design Thinking, etc.  Extras should have already
-been approved by the course instructor as included in your problem statement.}
-
 The extras completed for this project include a Machine Learning (ML) Report and a User Testing Report. Both reports provide 
 additional insight into the development and evaluation of the Reading4All system. The ML Report documents the design, 
 experimentation, and implementation of the machine learning component, including model selection, dataset 
@@ -361,14 +314,6 @@ evaluation, as well as a detailed analysis of the results obtained from testing.
 used to identify usability issues and guide improvements to both the system and the generated alt text.
 
 \section{Design Iteration (LO11 (PrototypeIterate))} 
-
-\plt{Explain how you arrived at your final design and implementation.  How did
-the design evolve from the first version to the final version?} 
-
-\plt{Don't just say what you changed, say why you changed it.  The needs of the
-client should be part of the explanation.  For example, if you made changes in
-response to usability testing, explain what the testing found and what changes
-it led to.}
 
 Our design has evolved from the first version in Rev0 to Rev1. Firstly, looking at our user interface changes, 
 many changes were made to improve the usability and accessibility of the \texttt{Reading4All} application. \\
