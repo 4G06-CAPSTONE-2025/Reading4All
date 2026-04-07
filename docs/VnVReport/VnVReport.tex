@@ -17,6 +17,7 @@
 \usepackage{colortbl}
 \usepackage{enumitem}
 \usepackage{graphicx}
+\usepackage{xltabular}
 \usepackage[round]{natbib}
 \hypersetup{
     colorlinks,
@@ -42,13 +43,22 @@
 
 \section{Revision History}
 
+\begin{table}[H]
+\centering
+\caption{Revision History}
+\label{tab:revision-history}
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Name} & {\bf Notes}\\
 \midrule
 March 9, 2026 & All & Created initial draft of VnV Report\\
+April 4, 2026 & Dhruv & Added brief introductory text under sections before subsections, and updated report formatting based on feedback.\\
+April 5, 2026 & Dhruv & Added short lead-in paragraphs before subsection groups in sections that previously had no introductory text, to improve document flow and address formatting feedback.\\
+April 6, 2026 & Dhruv & Peer Review \texttt{\#602} Applied\\
+April 7, 2026 & Dhruv & Peer Review \texttt{\#594} Applied\\
 April 4, 2026 & Francine B & Address Peer Feedback \texttt{\#597}, \texttt{\#600}, \texttt{\#605} \\ 
 \bottomrule
 \end{tabularx}
+\end{table}
 
 ~\newpage
 
@@ -77,6 +87,7 @@ results.
 \begin{table}[H]
 \centering
 \caption{Abbreviations and Acronyms Used in the Verification and Validation Plan}
+\label{tab:acronyms}
 \begin{tabular}{|l|l|}
 \hline
 \textbf{Acronym} & \textbf{Definition} \\
@@ -186,41 +197,42 @@ SFWR\_RELEASES & 2 \\
 \newpage
 
 \pagenumbering{arabic}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\small
 
-This document ...
+This document summarizes the verification and validation activities completed for the Reading4All system. Table~\ref{tab:revision-history} records the revision history, and Table~\ref{tab:acronyms} lists the abbreviations used throughout the report.
 
 \section{Functional Requirements Evaluation}
 The following section outlines the evaluation of the system tests created for the 
-functional requirements. 
+functional requirements. Table~\ref{table:FR-ST-eval} summarizes the functional system test results.
 
 \newcounter{testcase}
 \newcommand{\testcount}{\stepcounter{testcase}\thetestcase}
 
-\begin{longtable}{@{}c
-    >{\raggedright\arraybackslash}p{4.0cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{1.2cm}
-    >{\centering\arraybackslash}p{1.2cm}@{}}
-  \toprule
+\begin{xltabular}{\textwidth}{@{}>{\centering\arraybackslash}p{0.09\textwidth}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\centering\arraybackslash}p{0.12\textwidth}@{}}
+  \caption{System Tests Functional Requirements Evaluation}\label{table:FR-ST-eval}\\
+\toprule
   \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endfirsthead
 
-  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
   \toprule
   \textbf{ID} &  \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endhead
 
-  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
   \endfoot
 
   \bottomrule
-  \caption{System Tests Functional Requirements Evaluation}
-  \label{table:FR-ST-eval}
   \endlastfoot
 
   FR-ST\testcount & User uploads image files in different formats to the system 
@@ -267,18 +279,20 @@ functional requirements.
   FR-ST\testcount & Log into the system and remain inactive for longer than \texttt{SESSION\_TIMEOUT}, then attempt to access the system again. & 
   After \texttt{SESSION\_TIMEOUT} of inactivity, the session expires automatically. The user is redirected or prompted to log in again 
   before accessing the Reading4All system. & 
-  Session did not expire and system remained accessible after \texttt{SESSION\_TIMEOUT} of inactivity. &
-  \cellcolor{red}Fail \\ 
-\end{longtable}
-\textbf{Analysis of Failed Tests:}
+  Session expired automatically after \texttt{SESSION\_TIMEOUT} of inactivity. The user was redirected to the login page and required to authenticate again. &
+  \cellcolor{green}Pass \\
+\end{xltabular}
+
+\textbf{Analysis of Previous Failed Tests:}
 \begin{itemize}
   \item \textbf{FR-ST2}: These failures were primarily due to limitations in the AI model’s training data and tuning. The model generated descriptions 
   that were syntactically correct but lacked sufficient detail and educational value, leading to low scores in sufficiency and learning impact. 
   This issue was not related to code correctness but rather to model performance and requirement expectations. Improvements such as additional training data 
   and hypertuning are required to address this.
-  \item \textbf{FR-ST7}: The session timeout functionality did not trigger as expected, indicating an issue in session lifecycle handling. This failure is 
-  likely due to incomplete implementation or missing backend logic for enforcing session expiration rather than unclear requirements. This highlights a gap 
-  in implementation completeness and integration testing.
+
+  \item \textbf{FR-ST7}: The session timeout functionality initially did not trigger as expected, indicating an issue in session lifecycle handling. This 
+  failure was likely due to incomplete implementation or missing backend logic for enforcing session expiration rather than unclear requirements. After 
+  correcting the session management logic, the timeout functionality was verified to work as expected in subsequent testing.
 \end{itemize}
 
 \section{Nonfunctional Requirements Evaluation}
@@ -297,7 +311,8 @@ Five evaluators assessed the generated alt text using the metrics defined in Tab
 \centering
 \caption{Internal Evaluation Scores per Evaluator}
 \label{tab:internal_results}
-\begin{tabular}{|l|c|c|c|c|l|}
+\small
+\begin{tabularx}{0.96\textwidth}{|l|c|c|c|c|X|}
 \hline
 \textbf{Evaluator} & \textbf{Sufficiency} & \textbf{Length} & \textbf{Accessibility} & \textbf{Learning} & \textbf{Notes} \\
  & \textbf{(1--3)} & \textbf{(1--3)} & \textbf{(0--3)} & \textbf{(0--3)} & \\
@@ -312,43 +327,41 @@ Person 5 & 2 & 2 & 3 & 1 & N/A \\
 \hline
 \textbf{Acceptable} & $\geq 3$ & $\geq 3$ & $\geq 2$ & $\geq 2$ & --- \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 The results indicate that Accessibility/Usability consistently met or exceeded the acceptable threshold across all evaluators, with a mean score of 3.0. Length Appropriateness averaged 2.6, falling slightly below the acceptable threshold of 3. Sufficiency of Description scored uniformly at 2.0, below the acceptable threshold of 3, suggesting that the generated alt text does not yet convey sufficient information to fully achieve the intended objective. Learning Impact averaged 1.2, also below the acceptable threshold of 2, indicating that improvements are needed to better support user understanding in learning contexts.
 
 \subsection{System Tests}
 The following section outlines the evaluation of the system tests created for the 
-nonfunctional requirements. 
+nonfunctional requirements. Table~\ref{table:NFR-ST-eval} summarizes the nonfunctional system test results.
 
 \newcounter{nfrtestcase}
 \newcommand{\nfrtestcount}{\stepcounter{nfrtestcase}\thenfrtestcase}
 
-\begin{longtable}{@{}c
-    >{\raggedright\arraybackslash}p{4.0cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{1.2cm}
-    >{\centering\arraybackslash}p{1.2cm}@{}}
-  \toprule
+\begin{xltabular}{\textwidth}{@{}>{\centering\arraybackslash}p{0.09\textwidth}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\centering\arraybackslash}p{0.12\textwidth}@{}}
+  \caption{System Tests Non-Functional Requirements Evaluation}\label{table:NFR-ST-eval}\\
+\toprule
   \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endfirsthead
 
-  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
   \toprule
   \textbf{ID} &  \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endhead
 
-  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
   \endfoot
 
   \bottomrule
-  \caption{System Tests Non-Functional Requirements Evaluation}
-  \label{table:NFR-ST-eval}
   \endlastfoot
 
   NFR-ST\nfrtestcount & 
@@ -383,7 +396,7 @@ Tester conducts usability sessions with screen reader tools and measures task co
 
   NFR-ST\nfrtestcount &
 Images of different sizes were uploaded under typical system conditions to evaluate alt-text generation time &
-Alt text should be generated within the specified performance threshold while the UI remains responsive &
+Alt text should be generated within T\_ALT\_GEN\_SMALL and T\_ALT\_GEN\_LARGE thresholds, while UI responsiveness remains within T\_UI\_RESP&
 Image validity was unit tested, while generation time was measured manually during testing; the UI responsiveness and model response time were observed and recorded &
 \cellcolor{red}Fail \\ \midrule
 
@@ -468,21 +481,24 @@ Tester verifies timeout notifications, retry option, proper data cleanup, and ab
   NFR-ST\nfrtestcount & Run the system website through Axe (third-party service) to check for WCAG 2.1 AA compliance. & There are no issues for all website pages & Some JSON results reported 'moderate' or 'best practices' issues in the summary. & \cellcolor{red}Fail \\ \midrule
   NFR-ST\nfrtestcount & System website is hosted on Vercel (third-party service). & Website is in service and usable with minimal to no crashes. & Website is fully functional on the Vercel server. No crashing detected. & \cellcolor{green}Pass \\ \midrule
   NFR-ST\nfrtestcount & System website is hosted on a testing environment. & Core functions (uploading an image, text generation, and user navigation) function as intended. & Core functionality remains intact on testing environment. & \cellcolor{green}Pass \\ \midrule
-  NFR-ST\nfrtestcount & System website is deployed into staging environment. & System is fully ready for DEMO deliverable as per Capstone's March timeline. & Some tests failed, indicating system is not ready for staging environment. & \cellcolor{red}Fail \\ \midrule
+  NFR-ST\nfrtestcount & System website is deployed into staging environment. & System is fully ready for DEMO deliverable as per Capstone's March timeline. & The final prototype was finised as per the requirements and a DEMO was conducted successfully. & \cellcolor{green}Pass \\ \midrule
   NFR-ST\nfrtestcount & When executing actions in the system, logs are available for API interactions and standard workflows & Logs are visible for any crash or API call. & Logging module was implemented and appropriate level of logs are shown. & \cellcolor{green}Pass \\ \midrule
  
 
-\end{longtable}
+\end{xltabular}
 
-\textbf{Analysis of Failest Tests:}
+\textbf{Analysis of Previous Failed Tests:}
 \begin{itemize}
   \item \textbf{NFR-ST6:} The system did not meet the required performance threshold for alt-text generation time. This was caused by the computational 
   cost of the AI model and lack of optimization rather than poor code quality. The issue was partially addressed by switching to a faster model, as described in Section 8.2.
+
   \item \textbf{NFR-ST8:} These failures were primarily due to limitations in the AI model’s training data and tuning. The model generated descriptions that were syntactically 
   correct but lacked sufficient detail and educational value, leading to low scores in sufficiency and learning impact. This issue was not related to code correctness but rather to 
   model performance and requirement expectations. Improvements such as additional training data and hypertuning are required to address this.
+
   \item \textbf{NFR-ST14 and NFR-ST22:} These failures were due to missing UI elements (e.g., main landmark) and incomplete implementation of accessibility documentation and best 
   practices. The issues stem from implementation gaps and evolving requirements rather than fundamental design flaws. Automated tools (e.g., Axe) helped identify these gaps for future correction.
+
   \item \textbf{NFR-ST25:} Failures in staging readiness were due to incomplete integration and unresolved issues from earlier failed tests. This indicates that the system was not fully stabilized 
   before deployment rather than issues with individual modules.
 \end{itemize}
@@ -492,38 +508,37 @@ Tester verifies timeout notifications, retry option, proper data cleanup, and ab
 This section will not be appropriate for every project.
 
 \section{Unit Testing}
-The following are the evaluation of the unit tests per module. 
+The following are the evaluation of the unit tests per module. The module-level unit test results are summarized in the tables throughout this section, beginning with Table~\ref{table:module-unit-eval}.
 
 \subsection{ImageValidation Module}
+Table~\ref{table:module-unit-eval} summarizes the unit testing results for the ImageValidation module.
 
 \newcounter{moduleonetestcase}
 \newcommand{\monetestcount}{\stepcounter{moduleonetestcase}\themoduleonetestcase}
 
-\begin{longtable}{@{}c
-    >{\raggedright\arraybackslash}p{4.0cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{1.2cm}
-    >{\centering\arraybackslash}p{1.2cm}@{}}
-  \toprule
+\begin{xltabular}{\textwidth}{@{}>{\centering\arraybackslash}p{0.09\textwidth}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\centering\arraybackslash}p{0.12\textwidth}@{}}
+  \caption{ImageValidation Unit Testing Evaluation}\label{table:module-unit-eval}\\
+\toprule
   \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endfirsthead
 
-  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
   \toprule
   \textbf{ID} &  \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endhead
 
-  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
   \endfoot
 
   \bottomrule
-  \caption{ImageValidation Unit Testing Evaluation}
-  \label{table:module-unit-eval}
   \endlastfoot
 
   IMGVAL-UT\monetestcount & Validate request with missing image. & 
@@ -553,38 +568,37 @@ The following are the evaluation of the unit tests per module.
   The module returns \texttt{"Success"} to indicate that the uploaded image meets system requirements and has been successfully uploaded. & 
   The module returned \texttt{"Success"}. &
   \cellcolor{green}Pass \\ 
-\end{longtable}
+\end{xltabular}
 
 \subsection{BackendController Module}
+Table~\ref{table:module2-unit-eval} summarizes the unit testing results for the BackendController module.
 
 \newcounter{moduletwotestcase}
 \newcommand{\mtwotestcount}{\stepcounter{moduletwotestcase}\themoduletwotestcase}
 
-\begin{longtable}{@{}c
-    >{\raggedright\arraybackslash}p{4.0cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{1.2cm}
-    >{\centering\arraybackslash}p{1.2cm}@{}}
-  \toprule
+\begin{xltabular}{\textwidth}{@{}>{\centering\arraybackslash}p{0.09\textwidth}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\centering\arraybackslash}p{0.12\textwidth}@{}}
+  \caption{BackendController Module Unit Testing Evaluation}\label{table:module2-unit-eval}\\
+\toprule
   \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endfirsthead
 
-  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
   \toprule
   \textbf{ID} &  \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endhead
 
-  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
   \endfoot
 
   \bottomrule
-  \caption{BackendController Module Unit Testing Evaluation}
-  \label{table:module2-unit-eval}
   \endlastfoot
 
   BCONT-UT\mtwotestcount & Send image validation request with valid image data through the backend controller. & 
@@ -609,40 +623,39 @@ The following are the evaluation of the unit tests per module.
   The backend controller correctly returns the editing result of \texttt{"Success"}. &
   \cellcolor{green}Pass \\ 
 
-\end{longtable}
+\end{xltabular}
 
 
 
 \subsection{AuthenticationService Module}
+Table~\ref{table:module3-unit-eval} summarizes the unit testing results for the AuthenticationService module.
 
 \newcounter{modulethreetestcase}
 \newcommand{\mthreetestcount}{\stepcounter{modulethreetestcase}\themodulethreetestcase}
 
-\begin{longtable}{@{}c
-    >{\raggedright\arraybackslash}p{4.0cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{1.2cm}
-    >{\centering\arraybackslash}p{1.2cm}@{}}
-  \toprule
+\begin{xltabular}{\textwidth}{@{}>{\centering\arraybackslash}p{0.09\textwidth}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\centering\arraybackslash}p{0.12\textwidth}@{}}
+  \caption{AuthenticationService Module Unit Testing Evaluation}\label{table:module3-unit-eval}\\
+\toprule
   \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endfirsthead
 
-  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
   \toprule
   \textbf{ID} &  \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endhead
 
-  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
   \endfoot
 
   \bottomrule
-  \caption{AuthenticationService Module Unit Testing Evaluation}
-  \label{table:module3-unit-eval}
   \endlastfoot
 
   AUTH-UT\mthreetestcount & Send a request with a valid email and password to the AuthenticationService. & 
@@ -683,7 +696,7 @@ The following are the evaluation of the unit tests per module.
   The authentication service raises a \texttt{ValueError} with the message "Email is already in use". A verification email is not sent to the user&
   No error was raised and the user received a Verification email.&
   \cellcolor{red}Fail \\
-\end{longtable}
+\end{xltabular}
 
 \textbf{Analysis of Failed Tests:}
 \begin{itemize}
@@ -695,35 +708,34 @@ The following are the evaluation of the unit tests per module.
 \end{itemize}
 
 \subsection{MainScreen Module}
+Table~\ref{table:mainscreen-unit-eval} summarizes the unit testing results for the MainScreen module.
 
 \newcounter{mainscreentestcase}
 \newcommand{\mainscreentestcount}{\stepcounter{mainscreentestcase}\themainscreentestcase}
 
-\begin{longtable}{@{}c
-    >{\raggedright\arraybackslash}p{4.0cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{1.2cm}
-    >{\centering\arraybackslash}p{1.2cm}@{}}
-  \toprule
+\begin{xltabular}{\textwidth}{@{}>{\centering\arraybackslash}p{0.09\textwidth}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\centering\arraybackslash}p{0.12\textwidth}@{}}
+  \caption{MainScreen Unit Testing Evaluation}\label{table:mainscreen-unit-eval}\\
+\toprule
   \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endfirsthead
 
-  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
   \toprule
   \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endhead
 
-  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
   \endfoot
 
   \bottomrule
-  \caption{MainScreen Unit Testing Evaluation}
-  \label{table:mainscreen-unit-eval}
   \endlastfoot
 
   MAIN-UT\mainscreentestcount & Render HomeScreen page &
@@ -815,40 +827,39 @@ The following are the evaluation of the unit tests per module.
   Error message displayed when alt text generation fails &
   Error message displayed correctly &
   \cellcolor{green}Pass \\
-\end{longtable}
+\end{xltabular}
 
 
 
 \subsection{ShowHistory Module}
+Table~\ref{table:showhistory-unit-eval} summarizes the unit testing results for the ShowHistory module.
 
 \newcounter{showhistorytestcase}
 \newcommand{\showhistorytestcount}{\stepcounter{showhistorytestcase}\theshowhistorytestcase}
 
-\begin{longtable}{@{}c
-    >{\raggedright\arraybackslash}p{4.0cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{1.2cm}
-    >{\centering\arraybackslash}p{1.2cm}@{}}
-  \toprule
+\begin{xltabular}{\textwidth}{@{}>{\centering\arraybackslash}p{0.09\textwidth}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\centering\arraybackslash}p{0.12\textwidth}@{}}
+  \caption{ShowHistory Unit Testing Evaluation}\label{table:showhistory-unit-eval}\\
+\toprule
   \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endfirsthead
 
-  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
   \toprule
   \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endhead
 
-  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
   \endfoot
 
   \bottomrule
-  \caption{ShowHistory Unit Testing Evaluation}
-  \label{table:showhistory-unit-eval}
   \endlastfoot
 
   HIST-UT\showhistorytestcount & Render ShowHistory page &
@@ -870,40 +881,39 @@ The following are the evaluation of the unit tests per module.
   Clicking the back button navigates to the upload page &
   Navigation executed successfully &
   \cellcolor{green}Pass \\
-\end{longtable}
+\end{xltabular}
 
 
 
 \subsection{LoginScreen Module}
+Table~\ref{table:loginscreen-unit-eval} summarizes the unit testing results for the LoginScreen module.
 
 \newcounter{loginscreentestcase}
 \newcommand{\loginscreentestcount}{\stepcounter{loginscreentestcase}\theloginscreentestcase}
 
-\begin{longtable}{@{}c
-    >{\raggedright\arraybackslash}p{4.0cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{1.2cm}
-    >{\centering\arraybackslash}p{1.2cm}@{}}
-  \toprule
+\begin{xltabular}{\textwidth}{@{}>{\centering\arraybackslash}p{0.09\textwidth}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\centering\arraybackslash}p{0.12\textwidth}@{}}
+  \caption{LoginScreen Unit Testing Evaluation}\label{table:loginscreen-unit-eval}\\
+\toprule
   \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endfirsthead
 
-  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
   \toprule
   \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endhead
 
-  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
   \endfoot
 
   \bottomrule
-  \caption{LoginScreen Unit Testing Evaluation}
-  \label{table:loginscreen-unit-eval}
   \endlastfoot
 
   LOGIN-UT\loginscreentestcount & Render login interface &
@@ -985,10 +995,12 @@ The following are the evaluation of the unit tests per module.
   Unauthenticated users are redirected to login page &
   Unauthorized access prevented and redirect executed &
   \cellcolor{green}Pass \\
-\end{longtable}
+\end{xltabular}
 
 
 \section{Manual Testing}
+This section summarizes the manual tests carried out for the major system modules and presents the observed results.
+
 \subsection{UserInterfaceInteractions Module}
 The following are the manual tests for this module. 
 
@@ -1063,35 +1075,32 @@ The following are the manual tests for this module.
     {\bf Failure Condition:} The user remains logged in or can continue accessing the system without logging in again. \\
 \end{enumerate}
 
-\noindent The following table shows the evaluation of the userinterfaceinteractions module's manual tests.
+\noindent The following table shows the evaluation of the userinterfaceinteractions module's manual tests. Table~\ref{table:UII-MT-eval} summarizes the results.
 \newcounter{uiimantestcase}
 \newcommand{\uiimantestcount}{\stepcounter{uiimantestcase}\theuiimantestcase}
 
-\begin{longtable}{@{}c
-    >{\raggedright\arraybackslash}p{4.0cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{1.2cm}
-    >{\centering\arraybackslash}p{1.2cm}@{}}
-  \toprule
+\begin{xltabular}{\textwidth}{@{}>{\centering\arraybackslash}p{0.09\textwidth}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\centering\arraybackslash}p{0.12\textwidth}@{}}
+  \caption{UserInterfaceInterfactions Manual Testing Evaluation}\label{table:UII-MT-eval}\\
+\toprule
   \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endfirsthead
 
-  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
   \toprule
   \textbf{ID} &  \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endhead
 
-  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
   \endfoot
-
   \bottomrule
-  \caption{UserInterfaceInteractions Manual Testing Evaluation}
-  \label{table:UII-MT-eval}
   \endlastfoot
 
 UII-MT\uiimantestcount & Upload a valid image file (.png or .jpeg) using the Choose File button & 
@@ -1122,7 +1131,7 @@ UII-MT\uiimantestcount & Click the Sign Out button &
 User session ends and login screen is displayed & 
 User session ended and system returned to the login screen &
 \cellcolor{green}Pass \\
-\end{longtable}
+\end{xltabular}
 
 \subsection{UserInterfaceAccessibility Module}
 The following are the manual tests for this module.
@@ -1179,36 +1188,34 @@ The following are the manual tests for this module.
 
 \end{enumerate}
 The following table shows the evaluation of the userinterfaceaccessibility
-module’s manual tests.
+module’s manual tests. Table~\ref{table:uii-man-eval} summarizes the results.
 
 \newcounter{uiamantestcase}
 \newcommand{\uiamantestcount}{\stepcounter{uiamantestcase}\theuiamantestcase}
 
-\begin{longtable}{@{}c
-    >{\raggedright\arraybackslash}p{4.0cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{1.2cm}
-    >{\centering\arraybackslash}p{1.2cm}@{}}
-  \toprule
+\begin{xltabular}{\textwidth}{@{}>{\centering\arraybackslash}p{0.09\textwidth}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\centering\arraybackslash}p{0.12\textwidth}@{}}
+  \caption{UserInterfaceAccessibility Manual Testing Evaluation}\label{table:uii-man-eval}\\
+\toprule
   \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endfirsthead
 
-  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
   \toprule
   \textbf{ID} &  \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endhead
 
-  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
   \endfoot
 
   \bottomrule
-  \caption{UserInterfaceAccessibility Manual Testing Evaluation}
-  \label{table:uii-man-eval}
   \endlastfoot
 
   UIA-MT\uiamantestcount & Verify that the loaded screen contains a valid main landmark for primary content & 
@@ -1231,7 +1238,7 @@ module’s manual tests.
   Keyboard navigation and activation worked as expected without unexpected state changes &
   \cellcolor{green}Pass \\ 
 
-\end{longtable}
+\end{xltabular}
 
 \textbf{Analysis of Failed Tests:}
 \begin{itemize}
@@ -1296,36 +1303,34 @@ eeds the maximum length. \\
 \end{enumerate}
 
 The following table shows the evaluation of the datapreprocess
-module’s manual tests.
+module’s manual tests. Table~\ref{table:dp-man-eval} summarizes the results.
 
 \newcounter{dpmantestcase}
 \newcommand{\dpmantestcount}{\stepcounter{dpmantestcase}\thedpmantestcase}
 
-\begin{longtable}{@{}c
-    >{\raggedright\arraybackslash}p{4.0cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{3.6cm}
-    >{\raggedright\arraybackslash}p{1.2cm}
-    >{\centering\arraybackslash}p{1.2cm}@{}}
-  \toprule
+\begin{xltabular}{\textwidth}{@{}>{\centering\arraybackslash}p{0.09\textwidth}
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\raggedright\arraybackslash}X
+    >{\centering\arraybackslash}p{0.12\textwidth}@{}}
+  \caption{DataPreprocess Manual Testing Evaluation}\label{table:dp-man-eval}\\
+\toprule
   \textbf{ID} & \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endfirsthead
 
-  \multicolumn{6}{l}{\textit{(Continued from previous page)}} \\
+  \multicolumn{5}{l}{\textit{(Continued from previous page)}} \\
   \toprule
   \textbf{ID} &  \textbf{Action} &
   \textbf{Expected Result} & \textbf{Actual Result} & \textbf{Result} \\
   \midrule
   \endhead
 
-  \multicolumn{6}{r}{\textit{Continued on next page}} \\
+  \multicolumn{5}{r}{\textit{Continued on next page}} \\
   \endfoot
 
   \bottomrule
-  \caption{DataPreprocess Manual Testing Evaluation}
-  \label{table:dp-man-eval}
   \endlastfoot
 
   DPP-MT\dpmantestcount & Process valid image paths and alt text labels through the preprocess function & 
@@ -1350,9 +1355,10 @@ module’s manual tests.
   Function raises an error indicating the image cannot be opened & 
   Invalid image path correctly triggered an error during preprocessing &
   \cellcolor{green}Pass \\ 
-\end{longtable}
+\end{xltabular}
 
 \subsection{ModelOutput Module}
+Table~\ref{table:mo-manual} summarizes the manual testing result for the ModelOutput module.
 
 The following are the manual tests for this module.
 
@@ -1378,6 +1384,7 @@ MO-MT 1. \textbf{Initial State:} The system has successfully generated alt-text 
 >{\raggedright\arraybackslash}p{3.6cm}
 >{\centering\arraybackslash}p{1.2cm}@{}}
 
+\caption{Manual Testing Evaluation for ModelOutput Module}\label{table:mo-manual}\\
 \toprule
 \textbf{Test ID} & \textbf{Module} & \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
 \midrule
@@ -1389,8 +1396,6 @@ MO-MT 1. \textbf{Initial State:} The system has successfully generated alt-text 
 \endhead
 
 \bottomrule
-\caption{Manual Testing Evaluation for ModelOutput Module}
-\label{table:mo-manual}
 \endlastfoot
 
 MO-MT1 & ModelOutput Module &
@@ -1402,6 +1407,7 @@ All assertions pass &
 
 
 \subsection{AIModelTraining Module}
+Table~\ref{table:ai-training-manual} summarizes the manual testing result for the AIModelTraining module.
 
 The following are the manual tests for this module.
 
@@ -1427,6 +1433,7 @@ AI-MT 1. \textbf{Initial State:} The training dataset and configuration paramete
 >{\raggedright\arraybackslash}p{3.6cm}
 >{\centering\arraybackslash}p{1.2cm}@{}}
 
+\caption{Manual Testing Evaluation for AIModelTraining Module}\label{table:ai-training-manual}\\
 \toprule
 \textbf{Test ID} & \textbf{Module} & \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
 \midrule
@@ -1438,8 +1445,6 @@ AI-MT 1. \textbf{Initial State:} The training dataset and configuration paramete
 \endhead
 
 \bottomrule
-\caption{Manual Testing Evaluation for AIModelTraining Module}
-\label{table:ai-training-manual}
 \endlastfoot
 
 AI-MT1 & AIModelTraining Module &
@@ -1451,6 +1456,7 @@ All assertions pass &
 
 
 \subsection{CaptionGeneration Module}
+Table~\ref{table:captiongen-manual} summarizes the manual testing result for the CaptionGeneration module.
 
 The following are the manual tests for this module.
 
@@ -1476,6 +1482,7 @@ CG-MT 1. \textbf{Initial State:} A trained model exists and a valid image has be
 >{\raggedright\arraybackslash}p{3.6cm}
 >{\centering\arraybackslash}p{1.2cm}@{}}
 
+\caption{Manual Testing Evaluation for CaptionGeneration Module}\label{table:captiongen-manual}\\
 \toprule
 \textbf{Test ID} & \textbf{Module} & \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
 \midrule
@@ -1487,8 +1494,6 @@ CG-MT 1. \textbf{Initial State:} A trained model exists and a valid image has be
 \endhead
 
 \bottomrule
-\caption{Manual Testing Evaluation for CaptionGeneration Module}
-\label{table:captiongen-manual}
 \endlastfoot
 
 CG-MT1 & CaptionGeneration Module &
@@ -1500,6 +1505,7 @@ All assertions pass &
 
 
 \subsection{InternalMetricCompliance Module}
+Table~\ref{table:metric-manual} summarizes the manual testing result for the InternalMetricCompliance module.
 
 The following are the manual tests for this module.
 
@@ -1525,6 +1531,7 @@ IMC-MT 1. \textbf{Initial State:} A caption has been generated by the CaptionGen
 >{\raggedright\arraybackslash}p{3.6cm}
 >{\centering\arraybackslash}p{1.2cm}@{}}
 
+\caption{Manual Testing Evaluation for InternalMetricCompliance Module}\label{table:metric-manual}\\
 \toprule
 \textbf{Test ID} & \textbf{Module} & \textbf{Description} & \textbf{Actual Result} & \textbf{Result} \\
 \midrule
@@ -1536,8 +1543,6 @@ IMC-MT 1. \textbf{Initial State:} A caption has been generated by the CaptionGen
 \endhead
 
 \bottomrule
-\caption{Manual Testing Evaluation for InternalMetricCompliance Module}
-\label{table:metric-manual}
 \endlastfoot
 
 IMC-MT1 & InternalMetricCompliance Module &
@@ -1549,6 +1554,9 @@ All assertions pass &
 \section{Changes Due to Testing}
 During the internal testing phase, several changes were made to the tool based on feedback from the TA, professor, supervisor and from Team 22.
 A brief description of each change and its implementation is listed below:
+
+\subsection{Fixing Session Timeout Handling}
+During testing, it was observed that user sessions did not expire after the defined \texttt{SESSION\_TIMEOUT} period of inactivity. This posed a potential security risk, as inactive users could remain logged into the system indefinitely. To address this issue, the session management logic was updated to properly track user inactivity and automatically terminate sessions once the timeout threshold was reached. The system now redirects users to the login page and requires re-authentication after inactivity exceeds \texttt{SESSION\_TIMEOUT}. This change improves system security and ensures compliance with authentication and session management requirements.
 
 \subsection{Narrowing the Scope}
 While the team had the ambition to make a STEM-alt text generator, this proved to be very expensive in terms of time needed for training and constraints on available computers for AI model tuning. To make up for this, Team 22 narrowed the scope to only "Physics" based diagrams, with a plan to further narrow the image types to a select list. This change would help our AI model learn better, contextual text and in turn produce higher quality, specific alt text that is usable for several stakeholders like students and teachers.\\
@@ -1563,9 +1571,11 @@ During testing, Team 22 had found that some user navigation processes were not a
 While our testing showed us many faults in our solution, not all of them could be fixed. For future revisions, Team 22 plans to further increase alt-text quality by adding more specificity and context to generation (using AI hypertuning methods). Conducting user testing has given us sufficient data to know what features and system modules to improve for better usability. 
 
 \section{Automated Testing}
+This section describes the automated testing approaches used to evaluate the system and support overall verification.
+
 \subsection{Accessibility Checker - Axe}
 
-The accessibility checks were done using a third-party website, Axe, which helped Team 22 understand gaps in user navigation for people with disabilities. An example of a generated report can be seen below.
+The accessibility checks were done using a third-party website, Axe, which helped Team 22 understand gaps in user navigation for people with disabilities. Figure~\ref{fig:work-context} shows an example of a generated accessibility report.
 
 \begin{figure}[H]
 \centering
@@ -1600,7 +1610,10 @@ the requirements deﬁned in the \citet{SRS}.
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|p{5cm}|p{9cm}|}
+\caption{Traceability Between Tests and Requirements}
+\label{table:test-requirement-trace}
+\small
+\begin{tabularx}{0.96\textwidth}{|>{\centering\arraybackslash}p{0.27\textwidth}|X|}
 \hline
 \textbf{Test ID} & \textbf{SRS Requirement(s) Satisfied} \\ \hline
 
@@ -1634,9 +1647,7 @@ FR-ST1 -- FR-ST7 & FR 1 -- FR 6 \\ \hline
 
 NFR-ST1 -- NFR-ST24 & LFR-AR 1 -- LFR-AR 4, UHR-EUR 1 -- UHR-EUR 4, PR-SL 1 -- PR-SL 2, SR-AR 1, SR-PR 1 \\ \hline
 
-\end{tabular}
-\caption{Traceability Between Tests and Requirements}
-\label{table:test-requirement-trace}
+\end{tabularx}
 \end{table}
 
 		\section{Trace to Modules}
@@ -1647,7 +1658,10 @@ correct functionality of the corresponding module in the Reading4All system.
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|c|l|}
+\caption{Traceability Between Tests and Modules}
+\label{table:test-module-trace}
+\small
+\begin{tabularx}{0.96\textwidth}{|>{\centering\arraybackslash}p{0.27\textwidth}|X|}
 \hline
 \textbf{Test ID} & \textbf{Module} \\ \hline
 
@@ -1672,9 +1686,7 @@ IMC-MT1 & InternalMetricCompliance Module \\ \hline
 FR-ST1 -- FR-ST7 & System Functional Tests (cross-module verification) \\ \hline
 NFR-ST1 -- NFR-ST24 & System Nonfunctional Tests (cross-module verification) \\ \hline
 
-\end{tabular}
-\caption{Traceability Between Tests and Modules}
-\label{table:test-module-trace}
+\end{tabularx}
 \end{table}
 
 \section{Code Coverage Metrics}

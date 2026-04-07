@@ -15,6 +15,9 @@
 \usepackage{multirow}
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{array}
+\usepackage{ragged2e}
+
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{hyperref}
@@ -41,6 +44,7 @@
 \newcounter{mnum}
 \newcommand{\mthemnum}{M\themnum}
 \newcommand{\mref}[1]{M\ref{#1}}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
 
 \begin{document}
 
@@ -59,6 +63,7 @@
   \midrule
   November 13 2025 & 1.0 & Rev-1 Design Document\\
   January 21 2026 & 2.0 & Rev-0 Design Document\\
+  April 3 2026 & 2.0 & TA Feedback Fixes on Presentation\\
   April 4, 2026 & 2.1 & Address Peer Review \texttt{\#236} \\ 
   \bottomrule
 \end{tabularx}
@@ -72,9 +77,9 @@ This section records information for easy reference.
 \subsection{Abbreviations and Acronyms}
 
 \renewcommand{\arraystretch}{1.2}
-\begin{tabular}{l l}
+\begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.22\textwidth}Y}
   \toprule
-  \textbf{symbol} & \textbf{description}\\
+  \textbf{Symbol} & \textbf{Description}\\
   \midrule
   AC & Anticipated Change\\
   DAG & Directed Acyclic Graph \\
@@ -94,7 +99,7 @@ This section records information for easy reference.
   ML & Machine Learning \\
   ARIA & Accessible Rich Internet Applications \\
   \bottomrule
-\end{tabular}\\
+\end{tabularx}\\
 
 \newpage
 
@@ -245,93 +250,61 @@ below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
 
 \begin{table}[H]
-  \centering
-  \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}| p{4cm}|}
-    \hline
-    \textbf{AI Model Modules} & \textbf{Backend Modules} &
-    \textbf{Frontend Modules} & \textbf{System Information Modules}\\ \hline
-
-    DataPreprocess Module & AuthenticationService Module &
-    UserInterfaceInteractions Module & Logging Module\\ \hline
-    WCAGCompliance Module & SessionManagement Module & MainScreen
-    Module & ~\\ \hline
-    ModelOutput Module & ImageValidation Module & ShowHistoryScreen
-    Module & ~\\ \hline
-    AIModelTraining Module & BackendController Module & LogInScreen
-    Module & ~\\ \hline
-    CaptionGeneration Module & ~ & UserInterfaceAccessibility Module
-    & ~\\ \hline
-    InternalMetricCompliance Module & ~ & ~ & ~\\ \hline
-    FeedbackMetrics Module & ~ & ~ & ~\\ \hline
-    FeedbackLoop Module & ~ & ~ & ~\\ \hline
-    Feedback Module & ~ & ~ & ~\\ \hline
-
-  \end{tabular}
   \caption{Module Hierarchy by Subsystem}
   \label{TblMHS}
+  \centering
+  \small
+  \begin{tabularx}{\textwidth}{YYYY}
+    \toprule
+    \textbf{AI Model Modules} & \textbf{Backend Modules} &
+    \textbf{Frontend Modules} & \textbf{System Information Modules}\\
+    \midrule
+    DataPreprocess Module & AuthenticationService Module & UserInterfaceInteractions Module & Logging Module\\
+    WCAGCompliance Module & SessionManagement Module & MainScreen Module & --\\
+    ModelOutput Module & ImageValidation Module & ShowHistoryScreen Module & --\\
+    AIModelTraining Module & BackendController Module & LogInScreen Module & --\\
+    CaptionGeneration Module & -- & UserInterfaceAccessibility Module & --\\
+    InternalMetricCompliance Module & -- & -- & --\\
+    FeedbackMetrics Module & -- & -- & --\\
+    FeedbackLoop Module & -- & -- & --\\
+    Feedback Module & -- & -- & --\\
+    \bottomrule
+  \end{tabularx}
 \end{table}
 
 \begin{table}[h!]
+  \caption{Module Hierarchy}
+  \label{TblMH}
   \centering
-  \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.30\textwidth}Y}
     \toprule
     \textbf{Level 1} & \textbf{Level 2}\\
     \midrule
-
     {Hardware-Hiding Module [Section (\ref{hhmmain})]} & N/A \\
     \midrule
-
-    \multirow{13}{0.3\textwidth}{Behaviour-Hiding Module [Section
-    (\ref{bhmmain})]} &
-    {DataPreprocess Module (\refstepcounter{mnum}\mthemnum
-    \label{mod:preprocessing_table}) (see \ref{mod:preprocessing})}\\ &
-    {WCAGCompliance Module (\refstepcounter{mnum}\mthemnum
-    \label{mod:wcagcompliance_table}) (see \ref{mod:wcagcompliance})}\\ &
-    {ModelOutput Module (\refstepcounter{mnum}\mthemnum
-    \label{mod:modeloutput_table}) (see \ref{mod:modeloutput})}\\ &
-    {AuthenticationService Module (\refstepcounter{mnum}\mthemnum
-    \label{mod:auth_table} )(see \ref{mod:auth})}\\ &
-    {SessionManagement Module (\refstepcounter{mnum}\mthemnum
-    \label{mod:mess_table}) (see \ref{mod: mess})}\\ &
-    {BackendController Module (\refstepcounter{mnum}\mthemnum
-    \label{mod:bcm_table}) (see \ref{mod:bcm})}\\ &
-    {Logging Module (\refstepcounter{mnum}\mthemnum
-    \label{mod:logmod_table}) (see \ref{mod:logmod})}\\ &
-    {ImageValidation Module (\refstepcounter{mnum}\mthemnum
-    \label{mod:imgvalidmod_table}) (see \ref{mod:imgvalidmod})}\\ &
-    {UserInterfaceInteractions Module
-      (\refstepcounter{mnum}\mthemnum) \label{mod:uii_table} (see
-    \ref{mod: uii})} \\ &
-    {MainScreen Module (\refstepcounter{mnum}\mthemnum)
-    \label{mod:msm_table} (see \ref{mod: msm})} \\ &
-    {ShowHistoryScreen Module (\refstepcounter{mnum}\mthemnum)
-    \label{mod:showhm_table} (see \ref{mod: showhm})} \\ &
-    {LogInScreen Module (\refstepcounter{mnum}\mthemnum)
-    \label{mod:lis_table} (see \ref{mod: lis})} \\ &
-    {UserInterfaceAccessibility Module
-      (\refstepcounter{mnum}\mthemnum) \label{mod:uia_table} (see
-    \ref{mod: uia})} \\
+    \multirow{13}{0.30\textwidth}{Behaviour-Hiding Module [Section (\ref{bhmmain})]} & {DataPreprocess Module (\refstepcounter{mnum}\mthemnum \label{mod:preprocessing_table}) (see \ref{mod:preprocessing})}\\
+    & {WCAGCompliance Module (\refstepcounter{mnum}\mthemnum \label{mod:wcagcompliance_table}) (see \ref{mod:wcagcompliance})}\\
+    & {ModelOutput Module (\refstepcounter{mnum}\mthemnum \label{mod:modeloutput_table}) (see \ref{mod:modeloutput})}\\
+    & {AuthenticationService Module (\refstepcounter{mnum}\mthemnum \label{mod:auth_table}) (see \ref{mod:auth})}\\
+    & {SessionManagement Module (\refstepcounter{mnum}\mthemnum \label{mod:mess_table}) (see \ref{mod:mess})}\\
+    & {BackendController Module (\refstepcounter{mnum}\mthemnum \label{mod:bcm_table}) (see \ref{mod:bcm})}\\
+    & {Logging Module (\refstepcounter{mnum}\mthemnum \label{mod:logmod_table}) (see \ref{mod:logmod})}\\
+    & {ImageValidation Module (\refstepcounter{mnum}\mthemnum \label{mod:imgvalidmod_table}) (see \ref{mod:imgvalidmod})}\\
+    & {UserInterfaceInteractions Module (\refstepcounter{mnum}\mthemnum \label{mod:uii_table}) (see \ref{mod:uii})}\\
+    & {MainScreen Module (\refstepcounter{mnum}\mthemnum \label{mod:msm_table}) (see \ref{mod:msm})}\\
+    & {ShowHistoryScreen Module (\refstepcounter{mnum}\mthemnum \label{mod:showhm_table}) (see \ref{mod:showhm})}\\
+    & {LogInScreen Module (\refstepcounter{mnum}\mthemnum \label{mod:lis_table}) (see \ref{mod:lis})}\\
+    & {UserInterfaceAccessibility Module (\refstepcounter{mnum}\mthemnum \label{mod:uia_table}) (see \ref{mod:uia})}\\
     \midrule
-
-    \multirow{6}{0.3\textwidth}{Software Decision Module [Section
-    (\ref{mod:sdmmain})]} &
-    {AIModelTraining Module (\refstepcounter{mnum}\mthemnum
-    \label{mod:modeltraining_table}) (see \ref{mod:modeltraining})}\\ &
-    {CaptionGeneration Module (\refstepcounter{mnum}\mthemnum
-    \label{mod:captiongeneration_table}) (see \ref{mod:captiongeneration})}\\ &
-    {InternalMetricCompliance (\refstepcounter{mnum}\mthemnum
-      \label{mod:internalmetriccompliance_table}) (see
-    \ref{mod:internalmetriccompliance})}\\ &
-    {FeedbackMetrics Module (\refstepcounter{mnum}\mthemnum
-    \label{mod:feedbackmetrics_table} )(see \ref{mod:feedbackmetrics})}\\ &
-    {FeedbackLoop Module (\refstepcounter{mnum}\mthemnum
-    \label{mod:feedbackloop_table}) (see \ref{mod:feedbackloop})}\\ &
-    {Feedback Module (\refstepcounter{mnum}\mthemnum
-    \label{mod:feedback_table}) (see \ref{mod:feedback})}\\
+    \multirow{6}{0.30\textwidth}{Software Decision Module [Section (\ref{mod:sdmmain})]} & {AIModelTraining Module (\refstepcounter{mnum}\mthemnum \label{mod:modeltraining_table}) (see \ref{mod:modeltraining})}\\
+    & {CaptionGeneration Module (\refstepcounter{mnum}\mthemnum \label{mod:captiongeneration_table}) (see \ref{mod:captiongeneration})}\\
+    & {InternalMetricCompliance Module (\refstepcounter{mnum}\mthemnum \label{mod:internalmetriccompliance_table}) (see \ref{mod:internalmetriccompliance})}\\
+    & {FeedbackMetrics Module (\refstepcounter{mnum}\mthemnum \label{mod:feedbackmetrics_table}) (see \ref{mod:feedbackmetrics})}\\
+    & {FeedbackLoop Module (\refstepcounter{mnum}\mthemnum \label{mod:feedbackloop_table}) (see \ref{mod:feedbackloop})}\\
+    & {Feedback Module (\refstepcounter{mnum}\mthemnum \label{mod:feedback_table}) (see \ref{mod:feedback})}\\
     \bottomrule
-  \end{tabular}
-  \caption{Module Hierarchy}
-  \label{TblMH}
+  \end{tabularx}
 \end{table}
 
 \section{Connection Between Requirements and Design} \label{SecConnection}
@@ -350,7 +323,7 @@ The front-end modules of the \textit{Reading4All} system collectively ensure tha
 Humanity, and Accessibility requirements through a responsive design and 
 and clear interaction patterns. The \texttt{MainScreen}, \texttt{LogInScreen}, and \texttt{ShowHistoryScreen} modules that are responsible for rendering 
 the different screens of the user interface will use simple and clean layouts, 
-WCAG-compliant contrast ratios, non-colour-dependent cues, and fully descriptive alt text for non-text elements. These display modules present 
+WCAG-compliant contrast ratios, non-color-dependent cues, and fully descriptive alt text for non-text elements. These display modules present 
 only essential information and will remain intuitive to navigate. The \texttt{UserInterfaceInteractions} module will
 ensure usability by providing immediate textual feedback and ensure to support efficient task 
 completion with minimal steps. Lastly, within the frontend modules, the \texttt{UserInterfaceAccessibility} module will ensure compatibility with screen readers and keyboard navigation by 
@@ -472,7 +445,7 @@ The modules are defined as their own subsection and follow the following format:
 \end{description}
 
 \subsubsection{UserInterfaceInteractions Module (\mref{mod:uii_table})}
-\label{mod: uii}
+\label{mod:uii}
 \begin{description}
   \item[Secrets:] The internal logic and mapping of user-triggered
     actions such as clicks and keyboard presses
@@ -487,7 +460,7 @@ The modules are defined as their own subsection and follow the following format:
 \end{description}
 
 \subsubsection{MainScreen Module (\mref{mod:msm_table})}
-\label{mod: msm}
+\label{mod:msm}
 \begin{description}
   \item[Secrets:] The internal layout composition of the main screen.
     This includes how the upload panel and supporting UI elements are
@@ -502,7 +475,7 @@ The modules are defined as their own subsection and follow the following format:
 \end{description}
 
 \subsubsection{ShowHistoryScreen Module (\mref{mod:showhm_table})}
-\label{mod: showhm}
+\label{mod:showhm}
 \begin{description}
   \item[Secrets:] The internal layout composition of the show history
     screen when an authenticated user wants to see their
@@ -517,7 +490,7 @@ The modules are defined as their own subsection and follow the following format:
 \end{description}
 
 \subsubsection{LogInScreen Module (\mref{mod:lis_table})}
-\label{mod: lis}
+\label{mod:lis}
 \begin{description}
   \item[Secrets:] The internal layout composition of the log in
     screen including username/email and password fields, and
@@ -530,7 +503,7 @@ The modules are defined as their own subsection and follow the following format:
 \end{description}
 
 \subsubsection{UserInterfaceAccessibility Module (\mref{mod:uia_table})}
-\label{mod: uia}
+\label{mod:uia}
 \begin{description}
   \item[Secrets:] The internal mechanism for providing screen reader
     and keyboard navigation compatibility in the browser.
@@ -548,7 +521,7 @@ The modules are defined as their own subsection and follow the following format:
   \item[Type of Module:] Library
 \end{description}
 \subsubsection{SessionManagement Module}
-\label{mod: mess}
+\label{mod:mess}
 \begin{description}
   \item[Secrets:] The representation and storage of active sessions,
     expiry/refresh policies, session-history data structures
@@ -708,24 +681,30 @@ subsection and follow the following format:
 
 \section{Traceability Matrix} \label{SecTM}
 
-This section shows below how different requirements connect to our
-modules. This can be seen in Table ~\ref{TblFRT},
-Table ~\ref{TblLFRT}, Table ~\ref{TblLFRT}, Table ~\ref{TblSRT},
-Table ~\ref{TblURT}, Table ~\ref{TblPIRT}, Table ~\ref{TblLRMT},
-Table ~\ref{TblUPRT}, Table ~\ref{TblART}, Table ~\ref{TblPRT}, Table
-~\ref{TblOERT}, Table ~\ref{TblMSRT}, Table ~\ref{TblSRT1},
-Table ~\ref{TblCR}, Table ~\ref{TbltCompR}.
+This section explains how the module design traces back to the requirements in
+our SRS and to the anticipated changes identified earlier in the document.
+These traceability tables are included to demonstrate both completeness and the
+maintainability of the design.
 
-Finally, Table ~\ref{TblACT} shows how our modules connect to the
-anticipated changes
-two traceability matrices: between the modules and the
-requirements and between the modules and the anticipated changes.
+Tables~\ref{TblFRT} to~\ref{TbltCompR} map the functional and nonfunctional
+requirements to the modules responsible for satisfying them. Presenting these
+tables in order makes it easier to verify that the requirements have been
+covered across the frontend, backend, AI, and support components of the
+system.
+
+Table~\ref{TblACT} provides a second form of traceability by mapping the
+anticipated changes to the modules that encapsulate them. This supports the
+information-hiding decomposition by showing where likely future changes are
+isolated in the design.
 
 % the table should use mref, the requirements should be named, use something
 % like fref
 \begin{table}[H]
+  \caption{Trace Between Functional Requirements and Modules}
+  \label{TblFRT}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
@@ -741,14 +720,15 @@ requirements and between the modules and the anticipated changes.
     \mref{mod:showhm_table}\\
     FR6 &  \mref{mod:auth_table}, \mref{mod:bcm_table}\\
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between Functional Requirements and Modules}
-  \label{TblFRT}
+  \end{tabularx}
 \end{table}
 
 \begin{table}[H]
+  \caption{Trace Between Look and Feel Requirements and Modules}
+  \label{TblLFRT}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
@@ -760,16 +740,17 @@ requirements and between the modules and the anticipated changes.
     \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     LFR-AR4 & \mref{mod:internalmetriccompliance_table},
     \mref{mod:msm_table}, \mref{mod:uii_table},
-    \mref{mod:showhm_table}, \mref{mod:lis_table}. \mref{mod:uia_table}\\
+    \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between Look and Feel Requirements and Modules}
-  \label{TblLFRT}
+  \end{tabularx}
 \end{table}
 
 \begin{table}[H]
+  \caption{Trace Between Style Requirements and Modules}
+  \label{TblSRT}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
@@ -780,21 +761,22 @@ requirements and between the modules and the anticipated changes.
     LFR-SR3 & \mref{mod:uii_table}, \mref{mod:msm_table},
     \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between Style Requirements and Modules}
-  \label{TblSRT}
+  \end{tabularx}
 \end{table}
 
 \begin{table}[H]
+  \caption{Trace Between Usability and Humanity Requirements and Modules}
+  \label{TblURT}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
     UHR-EUR1 & \mref{mod:wcagcompliance_table},
     \mref{mod:modeloutput_table}, \mref{mod:uii_table},
     \mref{mod:msm_table}, \mref{mod:showhm_table},
-    \mref{mod:lis_table}. \mref{mod:uia_table}\\
+    \mref{mod:lis_table}, \mref{mod:uia_table}\\
     UHR-EUR2 & \mref{mod:uii_table}, \mref{mod:msm_table},
     \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     UHR-EUR3 & \mref{mod:uii_table}, \mref{mod:msm_table},
@@ -802,58 +784,62 @@ requirements and between the modules and the anticipated changes.
     UHR-EUR4 & \mref{mod:uii_table}, \mref{mod:msm_table},
     \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between Usability and Humanity Requirements and Modules}
-  \label{TblURT}
+  \end{tabularx}
 \end{table}
 
 \begin{table}[H]
+  \caption{Trace Between Personalization and Internationalization
+  Requirements and Modules}
+  \label{TblPIRT}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
     UHR-PIR1 & \mref{mod:uii_table}, \mref{mod:msm_table},
     \mref{mod:uia_table}\\
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between Personalization and Internationalization
-  Requirements and Modules}
-  \label{TblPIRT}
+  \end{tabularx}
 \end{table}
 
 \begin{table}[H]
+  \caption{Trace Between Learning Requirements and Modules}
+  \label{TblLRMT}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
     UHR-LR1 & \mref{mod:uii_table}, \mref{mod:msm_table},
     \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between Learning Requirements and Modules}
-  \label{TblLRMT}
+  \end{tabularx}
 \end{table}
 
 \begin{table}[H]
+  \caption{Trace Between Understandability and Politeness
+  Requirements and Modules}
+  \label{TblUPRT}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
     UHR-UPR1 & \mref{mod:uii_table}, \mref{mod:msm_table},
     \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between Understandability and Politeness
-  Requirements and Modules}
-  \label{TblUPRT}
+  \end{tabularx}
 \end{table}
 
 \begin{table}[H]
+  \caption{Trace Between Accessibility Requirements and Modules}
+  \label{TblART}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
@@ -862,14 +848,15 @@ requirements and between the modules and the anticipated changes.
     UHR-AR2 & \mref{mod:uii_table}, \mref{mod:msm_table},
     \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between Accessibility Requirements and Modules}
-  \label{TblART}
+  \end{tabularx}
 \end{table}
 
 \begin{table}[H]
+  \caption{Trace Between Performance Requirements and Modules}
+  \label{TblPRT}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
@@ -897,14 +884,15 @@ requirements and between the modules and the anticipated changes.
     PR-LR2 & \mref{mod:uii_table}, \mref{mod:msm_table},
     \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table}\\
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between Performance Requirements and Modules}
-  \label{TblPRT}
+  \end{tabularx}
 \end{table}
 
 \begin{table}[H]
+  \caption{Trace Between Operational and Environmental Requirements and Modules}
+  \label{TblOERT}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
@@ -958,14 +946,15 @@ requirements and between the modules and the anticipated changes.
     \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table},
     \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between Operational and Environmental Requirements and Modules}
-  \label{TblOERT}
+  \end{tabularx}
 \end{table}
 
 \begin{table}[H]
+  \caption{Trace Between Maintainability and Support Requirements and Modules}
+  \label{TblMSRT}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
@@ -1009,14 +998,15 @@ requirements and between the modules and the anticipated changes.
     \mref{mod:internalmetriccompliance_table}, \mref{mod:feedbackmetrics_table},
     \mref{mod:feedbackloop_table}, \mref{mod:feedback_table}\\
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between Maintainability and Support Requirements and Modules}
-  \label{TblMSRT}
+  \end{tabularx}
 \end{table}
 
 \begin{table}[H]
+  \caption{Trace Between all Security Requirements and Modules}
+  \label{TblSRT1}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
@@ -1031,14 +1021,15 @@ requirements and between the modules and the anticipated changes.
     SR-IM1 & \mref{mod:imgvalidmod_table}\\
     SR-IM2 & \mref{mod:auth_table}\\
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between all Security Requirements and Modules}
-  \label{TblSRT1}
+  \end{tabularx}
 \end{table}
 
 \begin{table}[H]
+  \caption{Trace Between all Cultural Requirements and Modules}
+  \label{TblCR}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
@@ -1046,14 +1037,15 @@ requirements and between the modules and the anticipated changes.
     CR2 & \mref{mod:internalmetriccompliance_table}\\
     CR3 & \mref{mod:internalmetriccompliance_table}\\
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between all Cultural Requirements and Modules}
-  \label{TblCR}
+  \end{tabularx}
 \end{table}
 
 \begin{table}[H]
+  \caption{Trace Between all Compliance Requirements and Modules}
+  \label{TbltCompR}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{Req.} & \textbf{Modules}\\
     \midrule
@@ -1061,14 +1053,15 @@ requirements and between the modules and the anticipated changes.
     CR-SCR1 & \mref{mod:bcm_table}\\
     CR-SCR2 & \mref{mod:logmod_table}\\
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between all Compliance Requirements and Modules}
-  \label{TbltCompR}
+  \end{tabularx}
 \end{table}
 
 \begin{table}[H]
+  \caption{Trace Between Anticipated Changes and Modules}
+  \label{TblACT}
   \centering
-  \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.18\textwidth}Y}
     \toprule
     \textbf{AC} & \textbf{Modules}\\
     \midrule
@@ -1081,9 +1074,7 @@ requirements and between the modules and the anticipated changes.
     \acref{acPlatform} & \mref{mod:uii_table},  \mref{mod:msm_table}, \mref{mod:showhm_table}, \mref{mod:lis_table}, \mref{mod:uia_table} \\
 
     \bottomrule
-  \end{tabular}
-  \caption{Trace Between Anticipated Changes and Modules}
-  \label{TblACT}
+  \end{tabularx}
 \end{table}
 
 \section{Use Hierarchy Between Modules} \label{SecUse}
@@ -1102,7 +1093,7 @@ because they use modules from the lower levels.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.1\textwidth]{HierachyDiagramFinal.jpg}
+  \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{HierachyDiagramFinal.pdf}
   \caption{Use hierarchy among modules}
   \label{FigUH}
 \end{figure}
@@ -1230,96 +1221,105 @@ and elicitation for the Reading4All system was conducted. The official developme
 end of December 2025.   \\ \\ 
 \textbf{AI Subgroup}
 \begin{table}[H]
-  \centering
   \caption{AI Subgroup Development Schedule}
   \label{tab:ai-dev-schedule}
-  \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|p{4cm}|}
-    \hline
+  \centering
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{2.8cm}YYY}
+    \toprule
     \textbf{Date} &
     \textbf{Task} &
     \textbf{Module Associated} &
-    \textbf{Team Member(s) Responsible} \\ \hline
-
+    \textbf{Team Member(s) Responsible} \\
+    \midrule
     12/25/2025 -- 01/05/2026 & Lock scope of data, set up
-    environments, and acquire datasets & None &  All team members \\ \hline
+    environments, and acquire datasets & None &  All team members \\ 
     01/06/2026 -- 01/11/2026 & Data preprocessing, begin training on
-    dataset, metadata labelling & None &  Nawaal, Fiza, Francine \\ \hline
+    dataset, metadata labelling & None &  Nawaal, Fiza, Francine \\ 
     01/11/2026 -- 01/23/2026 & Model fine-tuning and training using
     Jing's dataset & AIModelTraining, CaptionGeneration &  Nawaal,
-    Fiza, Francine \\ \hline
+    Fiza, Francine \\ 
     01/23/2026 -- 01/30/2026 & Implement WCAG compliance checks, and
-    internal metric compliance & InternalMetric-Compliance,
-    WCAGCompliance &  Nawaal, Fiza, Francine \\ \hline
-    02/02/2026 -- 02/06/2026 & \textbf{Rev0} &  &  All team members \\ \hline
+    internal metric compliance & InternalMetricCompliance,
+    WCAGCompliance &  Nawaal, Fiza, Francine \\ 
+    02/02/2026 -- 02/06/2026 & \textbf{Rev0} & None &  All team members \\ 
     02/09/2026 -- 02/13/2026 & User testing for generated alt text &
-    None &  All team members \\ \hline
+    None &  All team members \\ 
     02/14/2026 -- 02/27/2026 & Implement feedback from user testing
     to AI model & FeedbackMetrics, FeedbackLoop, Feedback &  Nawaal,
-    Fiza, Francine \\ \hline
+    Fiza, Francine \\ 
     02/27/2026 -- 03/15/2026 & Evaluation of metrics, system
     integration with backend/frontend & FeedbackMetrics,
-    FeedbackLoop, Feedback &  Nawaal, Fiza, Francine \\ \hline
+    FeedbackLoop, Feedback &  Nawaal, Fiza, Francine \\ 
 
-  \end{tabular}
+  
+    \bottomrule
+  \end{tabularx}
 \end{table}
 
 \noindent\textbf{Frontend Subgroup}
 
 \begin{table}[H]
-  \centering
   \caption{Frontend Subgroup Development Schedule}
   \label{tab:frontend-dev-schedule}
-  \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|p{4cm}|}
-    \hline
+  \centering
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{2.8cm}YYY}
+    \toprule
     \textbf{Date} &
     \textbf{Task} &
     \textbf{Module Associated} &
-    \textbf{Team Member(s) Responsible} \\ \hline
-
+    \textbf{Team Member(s) Responsible} \\
+    \midrule
     01/05/2026 -- 01/12/2026 & Create figma designs for each page &
-    None & Dhruv, Moly, Francine \\ \hline
+    None & Dhruv, Moly, Francine \\ 
     01/12/2026 -- 01/21/2026 & Implement UI pages and test screen
     reader compatibility & LogInScreen, MainScreen,
-    Show-HistoryScreen, UserInterface-Accessibility,
-    UserInterface-Interactions &  Dhruv and Moly \\ \hline
+    ShowHistoryScreen, UserInterfaceAccessibility,
+    UserInterfaceInteractions &  Dhruv and Moly \\ 
     01/21/2026 -- 01/30/2026 & Integration with backend system and
-    WCAG testing& None &  Dhruv, Moly, Francine \\ \hline
+    WCAG testing& None &  Dhruv, Moly, Francine \\ 
     02/02/2026 -- 02/06/2026 & \textbf{Rev0} & None &  All team
-    members \\ \hline
-    02/09/2026 -- 02/13/2026 & User testing & None &  All team members \\ \hline
+    members \\ 
+    02/09/2026 -- 02/13/2026 & User testing & None &  All team members \\ 
     02/14/2026 -- 02/27/2026 & Revise UI if needed after testing &
-    None &  Dhruv, Moly, Francine \\ \hline
+    None &  Dhruv, Moly, Francine \\ 
 
-  \end{tabular}
+  
+    \bottomrule
+  \end{tabularx}
 \end{table}
 
 \noindent\textbf{Backend Subgroup}
 
 \begin{table}[H]
-  \centering
   \caption{Backend Subgroup Development Schedule}
   \label{tab:backend-dev-schedule}
-  \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|p{4cm}|}
-    \hline
+  \centering
+  \small
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{2.8cm}YYY}
+    \toprule
     \textbf{Date} &
     \textbf{Task} &
     \textbf{Module Associated} &
-    \textbf{Team Member(s) Responsible} \\ \hline
-
+    \textbf{Team Member(s) Responsible} \\
+    \midrule
     01/05/2026 -- 01/12/2026 & Planning APIs and creating schemas &
-    None &  Dhruv, Moly, Francine \\ \hline
+    None &  Dhruv, Moly, Francine \\ 
     01/13/2026 -- 01/21/2026 & Implement APIs and manual testing &
     AuthenticationService, BackendController, SessionManagement,
-    ImageValidation &  Dhruv, Moly, Francine \\ \hline
+    ImageValidation &  Dhruv, Moly, Francine \\ 
     01/21/2026 -- 01/30/2026 & API testing and integration with
-    Frontend and AI systems & Logging  & Dhruv, Moly, Francine \\ \hline
+    Frontend and AI systems & Logging  & Dhruv, Moly, Francine \\ 
     02/02/2026 -- 02/06/2026 & \textbf{Rev0} & None &  All team
-    members \\ \hline
-    02/09/2026 -- 02/13/2026 & User testing & None &  All team members \\ \hline
+    members \\ 
+    02/09/2026 -- 02/13/2026 & User testing & None &  All team members \\ 
     02/14/2026 -- 02/27/2026 & Revise backend logic if needed after
-    user tesing & None &  Dhruv, Moly, Francine \\ \hline
+    user tesing & None &  Dhruv, Moly, Francine \\ 
 
-  \end{tabular}
+  
+    \bottomrule
+  \end{tabularx}
 \end{table}
 
 \newpage
