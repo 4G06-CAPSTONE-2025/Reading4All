@@ -1,32 +1,52 @@
-<Please keep the folder structure as given in the template repo.  We will
-discuss each artifact as we get to it in the course.  In some cases, like for
-the SRS, you should have a file of the same name.  For other cases, like the
-design documentation, you are required to document your design, but it may not
-be via a module guide and module interface specification documents.>
+# docs/
 
-<The files and folders have been set-up with tex files that have external links
-so that cross-referencing is possible between documents.>
+This folder contains all formal documentation produced for the Reading4All capstone project. All documents are written in LaTeX and compiled to PDF. Each subfolder corresponds to a specific deliverable or document type.
 
-<The tex files Common.tex so that they can share definitions.>
+---
 
-<The files use Comments.tex so that the comments package can be used to embed
-comments into the generated pdf.  Comments can be set to false so that they do
-not appear.>
+## Folder Structure
 
-<None of the files are complete templates.  You will need to add extra
-information.  They are just intended to be a starting point.>
+| Folder | Document Type |
+|---|---|
+| `Checklists/` | Capstone milestone checklists (code, dev plan, SRS, VnV, writing, etc.) |
+| `Design/` | Software architecture and detailed design documents |
+| `DevelopmentPlan/` | Project development plan |
+| `Extras/` | Supplementary deliverables — ML report and usability testing |
+| `HazardAnalysis/` | Hazard analysis document |
+| `Presentations/` | Presentation slides and demo materials from all project milestones |
+| `ProblemStatementAndGoals/` | Problem statement and project goals |
+| `ReflectAndTrace/` | Reflection and traceability document |
+| `SRS-Volere/` | Software Requirements Specification (SRS) using the Volere template |
+| `VnVPlan/` | Verification and Validation Plan |
+| `VnVReport/` | Verification and Validation Report (Test Report) |
+| `projMngmnt/` | Team contribution reports across project milestones |
 
-<You should select an SRS template.  Three options are available in the repo, or
-you can introduce another template. You should delete any SRS options that you do
-not need. The folder SRS holds a template for Scientific Computing software;
-the folder SRS-Volere holds the Volere template in LaTeX; the folder SRS-Meyer holds
-the template that Dr. Mosser now uses in the third year requirements course.>
+Root-level files:
 
-<The Makefile assumes the SRS will be in a folder called SRS.  If you use the Makefile
-with a template other than the Scientific Computing template, you will have to delete
-the unnecessary folders and rename your folder to SRS.>
-# Documentation folders
+| File | Description |
+|---|---|
+| `Comments.tex` | Shared LaTeX comment macros used across documents |
+| `Common.tex` | Shared LaTeX preamble and common settings |
+| `Makefile` | Build script for compiling LaTeX documents |
+| `Reflection.tex` | Group reflection document |
+| `SRS_Reflection.tex` | SRS-specific reflection |
 
-The folders and files for this folder are as follows:
+---
 
-Describe ...
+## Building Documents
+
+Each subfolder contains its own `Makefile`. To compile a document, navigate to the subfolder and run:
+
+```bash
+make
+```
+
+PDFs are already compiled and committed alongside the `.tex` source files for convenience.
+
+---
+
+## Notes
+
+- All documents follow the capstone course template structure
+- The SRS uses the Volere template (`SRS-Volere/`)
+- `Common.tex` and `Comments.tex` at the root level are shared across multiple documents — do not delete them
