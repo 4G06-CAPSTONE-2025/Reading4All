@@ -1,69 +1,55 @@
-# BLIP Single-Image Inference
+# ai/
 
+This folder contains all AI-related work for Reading4All — including dataset annotations, model training, inference pipelines, experiment logs, and shared utilities.
 
-## Definitions (Repo Folders / Purpose)
-
-- **Inference**  
-  Used for **pretrained models** to run as a **baseline**.
-
-- **Model**  
-  **OUTPUT only**. Storage location for saved model checkpoints / exported models.
-
-- **Logger**  
-  Contains inference results
-
-- **Train**  
-  Where we train **multiple versions** of our model to compare against inference baselines.
-
-## What this script does (Batch Inference + Logging)
-
-This script runs a saved BLIP captioning model on **every image in a given folder** and writes the generated captions to a log file.
-
-### High-level flow
-1. Loads the BLIP **processor** and **model** from `MODEL_DIR`
-2. Scans `IMAGE_DIR` for image files (`.png`, `.jpg`, `.jpeg`, `.webp`)
-3. For each image:
-   - opens it with PIL
-   - runs BLIP generation using the text prompt in `PROMPT`
-   - decodes the output into a caption string
-   - appends a line to the log: `<image_name>: <caption>`
-4. If any image fails, it logs `ERROR` plus a stack trace (and continues to the next image)
-
-All results are appended to: `logger.txt`
+The final deployed model is a custom fine-tuned vision-language model trained to generate descriptive alt-text for technical and educational diagrams.
 
 ---
 
-### Changeable paths (what they mean + examples)
+## Folder Structure
 
-These variables at the top control where the script reads from and writes to. 
-To run BLIP inference on **one image at a time** and return a caption.
-Users must provide:
+| Folder | Purpose |
+|---|---|
+| `annotations/` | Annotated CSV datasets used for training and evaluation |
+| `inference/` | Inference scripts for running the trained model on new images |
+| `train/` | Training scripts for fine-tuning and comparing model variants |
+| `logger/` | Inference output logs from model runs |
+| `modelExperiment_task4/` | Inference experiment scripts for Task 4 model candidates |
+| `results_log/` | Markdown summaries of training and inference results |
+| `utils/` | Shared utility scripts for data splitting and validation |
+| `largeModelTesting/` | ⚠️ Archived — early experiments with large models (Moondream, PaliGemma). No longer active. |
 
-```python
-MODEL_DIR = "PATH TO THE MODEL FOLDER"
-LOGGER_PATH = "PATH TO A FOLDER FOR LOGS"
-IMAGE_DIR = "IMAGE INPUT PATH"
-PROMPT = "Describe this physics diagram:"
-```
+---
 
-## Where to run the script (file location)
+## Models Explored
 
-The inference script is located at:
+The team evaluated and trained across several vision-language models before arriving at the final fine-tuned model:
 
-`ai/inference/rev0/test.py`
+- **BLIP** (`Salesforce/blip-image-captioning-base`) — primary model, fine-tuned and deployed
+- **Pix2Struct** — trained as a comparison baseline
+- **LLaMAFactory** — tested for inference
+- **Moondream** — tested for inference (archived)
+- **PaliGemma** — tested for inference (archived)
 
-Run it either from the repo root:
+---
 
-```bash
-python ai/inference/rev0/test.py
-```
 ## Requirements
 
-- Python 3.9+ recommended
-
-Install dependencies:
+Python 3.9+ is recommended. Install core dependencies:
 
 ```bash
-pip install torch transformers pillow
+pip install torch torchvision transformers pillow pyyaml
 ```
 
+See individual subfolder READMEs for model-specific dependencies.
+
+---
+
+## Entry Points
+
+| Task | Script |
+|---|---|
+| Run inference on images | `ai/inference/rev1/` |
+| Train / fine-tune a model | `ai/train/train.py` |
+| Split dataset for training | `ai/utils/splitData.py` |
+| Validate image paths | `ai/utils/validateImagePaths.py` |
