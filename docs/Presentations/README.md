@@ -8,7 +8,7 @@ This folder contains all presentation and demo materials produced across the Rea
 
 | Folder | Description |
 |---|---|
-| `D0_ProofOfConceptDemo/` | Proof of Concept demo slides and materials |
+| `D0_ProofOfConceptDemo/` | [Archived - Now an empty folder with note on current status] |
 | `D1_Rev0Demo/` | Revision 0 demo slides, including images used for AI generation |
 | `D2_FinalPresentation/` | Final presentation slides (copy of the PPT used for the final demo) |
 | `D3_EXPO/` | Final EXPO poster |
