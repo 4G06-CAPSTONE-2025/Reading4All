@@ -61,7 +61,7 @@
   November 13, 2025 & 1.0 &  Rev-1 Design Document\\
   January 11, 2025 & 1.1 & Peer Review \texttt{\#239} Applied\\
   January 21 2026 & 2.0 & Rev-0 Design Document\\
-
+  April 21, 2026 & 2.1 & Addresses various issues \texttt{\#657, 661, 655, 659}\\
   \bottomrule
 \end{tabularx}
 
@@ -209,7 +209,8 @@ None.
 None.
 
 \subsubsection{Environment Variables}
-\texttt{Filesystem}: used to read image files from the paths.\\
+\texttt{inputImageFiles}: Filesystem paths used to read image files (provided via dataset).\\
+\texttt{encodedOutputFile}: Output location for the encoded batch produced by preprocessing.\\
 \texttt{PIL/Image Library}: used to open images and convert them to RGB\\
 \texttt{processor}:  external processor used to encode images and text.\\
 \texttt{tokenizer}:  tokenizer used by \texttt{processor} to identify pad token IDs (i.e. \texttt{processor.tokenizer}).
@@ -227,20 +228,26 @@ None.
 \begin{itemize}
   \item \textbf{transition}:
   \begin{itemize}
-    \item Extract image and text data from the input examples
-    \item Load and prepare the input images for downstream processing
-    \item Clean and standardize the associated text inputs
-    \item Apply the required preprocessing and encoding operations to the image-text pairs
+    \item Extract image and text data from the input examples. 
+    \item Load and prepare the input images for downstream processing. 
+    \item Clean and standardize the associated text inputs. 
+    \item Apply the required preprocessing and encoding operations to the image-text pairs. 
     \item Construct the output data structure in the format required by downstream modules
-    \item Apply any label formatting or masking needed for training or inference
+    \item Apply any label formatting or masking needed for training or inference. 
+    \item Write result to encodedOutputFile.
   \end{itemize}
-  \item \textbf{output:} Returns the preprocessed and encoded representation of the input examples.
-  \item \textbf{exception:} Raises an \texttt{InvalidInputException} exception if the input examples are missing required fields, contain unreadable image data, or cannot be processed successfully.
+  \item \textbf{output:} Returns the preprocessed and encoded representation of the input examples. out := enc. 
+  \item \textbf{exception:} Raises an \texttt{InvalidInputException} exception if the input examples are missing required fields, contain unreadable image data, or cannot be processed successfully. exc := InvalidInputException if dataset is missing required fields, any image in inputImageFiles is unreadable, or encoding fails.
 \end{itemize}
 
-
 \subsubsection{Local Functions}
-None.
+\begin{itemize}
+  \item extractFields(dataset: Map[String, List[String]]) to (List[String], List[String]): Extracts the image path list and alt text label list from the dataset map.
+  \item loadAndConvert(paths: List[String]) to List[Image]: Opens each image file referenced in inputImageFiles via \texttt{PIL\_Image} and converts to \texttt{COLOR\_MODE}.
+  \item normalizeText(texts: List[String]) to List[String]: Cleans and standardizes text inputs (e.g., strips whitespace, normalizes Unicode).
+  \item encodeImageTextPairs(images: List[Image], texts: List[String]) to EncodedBatch: Applies processor to produce encoded representations of image–text pairs.
+  \item maskLabels(enc: EncodedBatch) to EncodedBatch: Sets padding token IDs to -100 in the label tensor to exclude them from loss computation.
+\end{itemize}
 
 %----------------------------------------------------------
 \section{MIS of WCAGCompliance Module} \label{wcagc}
@@ -321,9 +328,7 @@ None.
 \texttt{ModOut}
 
 \subsection{Uses}
-Called by the \texttt{WCAGCompliance} module after a caption has been validated,
-or by the \texttt{CaptionGeneration} module when compliance checks are explicitly bypassed.
-Sends the final caption output to the user-facing interface or backend display component.
+Called by the \texttt{WCAGCompliance} module after a caption has been validated as compliant. If compliance checks are explicitly bypassed, may be called directly by the \texttt{CaptionGeneration} module. This module assumes \texttt{FinalCaption} has already passed compliance checking upstream — it does not perform compliance checks itself.
 
 \subsection{Syntax}
 
@@ -432,8 +437,8 @@ saveTrainedModel & - & - & WriteErrorException \\
 
 
 \subsubsection{Environment Variables}
-\texttt{cpu}: Device. This is the CPU execution device.\\
-\texttt{gpu}: Device. This is the GPU execution device (it may be unavailable).\\
+\texttt{cpu}: Device — CPU execution device, always available.\\
+\texttt{gpu}: Device — GPU execution device (may be unavailable).\\
 \texttt{checkpointDir}: String. This is the writable checkpoint directory path.\\
 \texttt{modelSavePath}: String. This is the writable file path for the final trained model.
 
@@ -458,7 +463,7 @@ saveTrainedModel & - & - & WriteErrorException \\
 
 \noindent \textbf{trainModel(trainingData):}
 \begin{itemize}
-  \item transition: Trains the model on provided data and updates \texttt{trainedModel}.
+  \item transition: Trains the model on provided data and on \texttt{Device: = GPU} if it's available, otherwise it uses the \texttt{Device: = CPU}. It also updates the \texttt{trainedModel}.
   \item output: Returns the trained model.
   \item exception: Raises \texttt{TrainingException} if training fails due to invalid data, insufficient resources, or runtime errors.
 \end{itemize}
