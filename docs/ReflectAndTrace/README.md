@@ -1,5 +1,13 @@
-# Development Plan
+# docs/ReflectAndTrace/
 
-The folders and files for this folder are as follows:
+This folder contains the Reflection and Traceability document for Reading4All — a capstone deliverable tracing requirements through to implementation and reflecting on design decisions made throughout the project.
 
-Describe ...
+---
+
+## Files
+
+| File | Description |
+|---|---|
+| `ReflectAndTrace.pdf` | Compiled document — primary reading |
+| `ReflectAndTrace.tex` | LaTeX source |
+| `Makefile` | Build script — run `make` to recompile the PDF |
