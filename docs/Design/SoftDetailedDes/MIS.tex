@@ -166,7 +166,6 @@ for this project.
     {CaptionGeneration Module}\\ &
     {InternalMetricCompliance}\\ &
     {FeedbackMetrics Module}\\ &
-    {FeedbackIntegration Module}\\ &
     {FeedbackLoop Module}\\
     \bottomrule
   \end{tabular}
@@ -207,7 +206,11 @@ None.
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-None.
+\texttt{lastCheckedCaption}: String -- Caches the most recently validated caption; initialized to \texttt{""}.\\
+\begin{itemize}
+  \item transition: lastCheckedCaption := ""; lastReport := []; initialize WCAG rule set and validation thresholds.
+\end{itemize}
+\texttt{lastReport}: List -- Caches the most recently produced compliance report; initialized to \texttt{[]}.
 
 \subsubsection{Environment Variables}
 \texttt{inputImageFiles}: Filesystem paths used to read image files (provided via dataset).\\
@@ -227,17 +230,16 @@ None.
 \subsubsection{Access Routine Semantics}
 \noindent \textbf{preprocess(dataset):}
 \begin{itemize}
-  \item \textbf{transition}:
+  \item transition:
   \begin{itemize}
-    \item Extract image and text data from the input examples. 
-    \item Load and prepare the input images for downstream processing. 
-    \item Clean and standardize the associated text inputs. 
-    \item Apply the required preprocessing and encoding operations to the image-text pairs. 
-    \item Construct the output data structure in the format required by downstream modules
-    \item Apply any label formatting or masking needed for training or inference. 
-    \item Write result to encodedOutputFile.
+  \item Extract image and text data from \texttt{inputImageFiles} and dataset. (images, texts) := extractFields(dataset). 
+  \item Load and convert images referenced by \texttt{inputImageFiles} to \texttt{COLOR\_MODE}. images := loadAndConvert(images). 
+  \item Normalize associated text inputs. texts := normalizeText(texts). 
+  \item Apply encoding via \texttt{processor} to produce \texttt{enc}. enc := encodeImageTextPairs(images, texts). 
+  \item Apply label masking to \texttt{enc}. enc := maskLabels(enc). 
+  \item encodedOutputFile := enc
   \end{itemize}
-  \item \textbf{output:} Returns the preprocessed and encoded representation of the input examples. out := enc. 
+  \item output: enc
   \item \textbf{exception:} Raises an \texttt{InvalidInputException} exception if the input examples are missing required fields, contain unreadable image data, or cannot be processed successfully. exc := InvalidInputException if dataset is missing required fields, any image in inputImageFiles is unreadable, or encoding fails.
 \end{itemize}
 
@@ -328,8 +330,8 @@ None.
 \subsection{Module}
 \texttt{ModOut}
 
-\subsection{Uses}
-Called by the \texttt{WCAGCompliance} module after a caption has been validated as compliant. If compliance checks are explicitly bypassed, may be called directly by the \texttt{CaptionGeneration} module. This module assumes \texttt{FinalCaption} has already passed compliance checking upstream — it does not perform compliance checks itself.
+\subsection{Uses}Called by the \texttt{BackendController} module after \texttt{WCAGCompliance} has validated the caption. If \texttt{FinalCaption} is not compliant (i.e. \texttt{checkCompliance} returns a report with violations), \texttt{generateOutput} is not called and \texttt{BackendController} returns an error to the frontend instead. This module does not compute compliance itself.
+
 
 \subsection{Syntax}
 
@@ -384,7 +386,7 @@ None.
     \item Transmit \texttt{FinalCaption} to \texttt{DisplayChannel} for presentation
   \end{itemize}
   \item output: Returns \texttt{DisplayConfirmation} indicating successful delivery.
-  \item exception: Raises \texttt{OutputException} if transmission to the display channel fails.
+  \item exception: OutputException if transmission to \texttt{DisplayChannel} fails.
 \end{itemize}
 
 \subsubsection{Local Functions}
@@ -438,10 +440,10 @@ saveTrainedModel & - & - & WriteErrorException \\
 
 
 \subsubsection{Environment Variables}
-\texttt{cpu}: Device — CPU execution device, always available.\\
-\texttt{gpu}: Device — GPU execution device (may be unavailable).\\
-\texttt{checkpointDir}: String. This is the writable checkpoint directory path.\\
-\texttt{modelSavePath}: String. This is the writable file path for the final trained model.
+\subsubsection{Environment Variables}
+\texttt{gpu}: Device — GPU execution device (may be unavailable; falls back to \texttt{cpu} if so).\\
+\texttt{checkpointDir}: String. Writable directory path for saving checkpoints.\\
+\texttt{modelSavePath}: String. Writable file path for saving the final trained model.
 
 \subsubsection{Assumptions}
 \begin{itemize}
@@ -479,7 +481,7 @@ saveTrainedModel & - & - & WriteErrorException \\
 \noindent \textbf{saveTrainedModel():}
 \begin{itemize}
   \item transition: Serializes \texttt{trainedModel} to \texttt{modelSavePath}.
-  \item output: None.
+  \item output: trainedModel written to \texttt{modelSavePath}.
   \item exception: Raises \texttt{WriteErrorException} if the model cannot be written to \texttt{modelSavePath}.
 \end{itemize}
 
@@ -523,12 +525,15 @@ generateCaption & image: Image & caption: String & GenerationException \\
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-\texttt{loadedModel}: Stores the active trained model used for caption generation.
+\texttt{loadedModel}: 
+\begin{itemize}
+\item transition: Loads the trained model from \texttt{modelPath} into memory as \texttt{loadedModel}. device := (gpu available $\Rightarrow$ gpu | True $\Rightarrow$ cpu).
+\end{itemize}
 
 \subsubsection{Environment Variables}
-\texttt{cpu}: Device. This is the CPU execution device.\\
-\texttt{gpu}: Device. This is the GPU execution device (it may be unavailable).\\
-\texttt{device}: Device. This is the selected device used for inference.
+\texttt{gpu}: Device. GPU execution device (may be unavailable; falls back to \texttt{cpu} if so).\\
+\texttt{device}: Device. Selected execution device, set as $(gpu \text{ available} \Rightarrow gpu \mid \mathtt{True} \Rightarrow cpu)$.\\
+\texttt{modelPath}: String. File path from which the trained model is loaded.
 
 \subsubsection{Assumptions}
 \begin{itemize}
@@ -1694,7 +1699,7 @@ handle compatibility with screen readers and keyboard navigation.
 \end{itemize}
 
 %---------------------------------------------------------
-\section{MIS of UserInterfaceAccessibility Module}\label{UI_accessibility}
+\section{MIS of UserInterfaceInteractions Module}\label{UI_accessibility}
 
 \subsection{Module}
 
