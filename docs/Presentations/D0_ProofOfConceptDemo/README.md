@@ -1,3 +1,3 @@
 # Proof of Concept Demonstration
 
-The proof of concept demonstration does not typically have any presentation files.  In some cases this folder is the appropriate place to put files related to the proof of concept demonstration.
+Our proof of concept demonstration did not have any presentation files. We had a working website, which is now inactive.
