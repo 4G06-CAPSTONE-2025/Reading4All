@@ -6,6 +6,7 @@
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{booktabs}
 \hypersetup{
   colorlinks,
   citecolor=blue,
@@ -115,7 +116,86 @@ the technical details required when learning physics.
 These questions were chosen in order to gather feedback from users about on  any missing aspects from the generated text and to identify any key issues. 
 
 \section{Internal Development Testing}
-\textcolor{red}{how the group rated the eval metrics against alt text}
+
+Prior to external user testing, the development team — Nawaal Fatima, Dhruv Sardana, 
+Fiza Sehar, Moly Mikhail, and Casey Francine Bulaclac — conducted informal internal 
+evaluations of the generated alternative text across two revision cycles. The diagrams 
+used for internal testing were the same open-source images drawn from Grade 12 physics 
+textbooks that were later used in external user testing.
+
+Each team member independently reviewed the generated alt text and rated it across four 
+metrics: Sufficiency (1--3), Length (1--3), Accessibility (0--3), and Learning (0--3), 
+where Sufficiency measures whether the description conveys enough information, Length 
+assesses whether the output is an appropriate level of detail, Accessibility evaluates 
+how well the text supports users relying on screen readers, and Learning captures whether 
+the description supports understanding of physics concepts.
+
+\subsection{Revision 0 Results}
+
+Table~\ref{tab:rev0} presents the internal evaluation scores collected from five evaluators 
+for the Revision 0 model outputs.
+
+\begin{table*}[t]
+\centering
+\caption{Revision 0 Internal Evaluation Scores per Evaluator}
+\label{tab:rev0}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Evaluator} & \textbf{Sufficiency (1--3)} & \textbf{Length (1--3)} & \textbf{Accessibility (0--3)} & \textbf{Learning (0--3)} \\
+\midrule
+Person 1 & 2 & 3 & 3 & 1 \\
+Person 2 & 2 & 3 & 3 & 2 \\
+Person 3 & 2 & 3 & 3 & 1 \\
+Person 4 & 2 & 2 & 3 & 1 \\
+Person 5 & 2 & 2 & 3 & 1 \\
+\midrule
+\textbf{Mean}       & \textbf{2.0} & \textbf{2.6} & \textbf{3.0} & \textbf{1.2} \\
+\textbf{Acceptable} & $\geq 3$     & $\geq 3$     & $\geq 2$     & $\geq 2$     \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Revision 0 results showed that while Accessibility consistently met the acceptable 
+threshold across all evaluators (mean: 3.0), both Sufficiency (mean: 2.0) and Learning 
+(mean: 1.2) fell below their respective thresholds of $\geq 3$ and $\geq 2$. Length 
+(mean: 2.6) narrowly missed its threshold. These results indicated that while the 
+system produced accessible output, the generated descriptions lacked the technical 
+depth and completeness needed to support physics learning, motivating further refinement 
+of the model and prompting strategy.
+
+\subsection{Revision 1 Results}
+
+Table~\ref{tab:rev1} presents the internal evaluation scores for the Revision 1 model 
+outputs, collected using the same rubric and evaluator pool as Revision 0.
+
+\begin{table*}[t]
+\centering
+\caption{Revision 1 Internal Evaluation Scores per Evaluator}
+\label{tab:rev1}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Evaluator} & \textbf{Sufficiency (1--3)} & \textbf{Length (1--3)} & \textbf{Accessibility (0--3)} & \textbf{Learning (0--3)} \\
+\midrule
+Person 1 & 2 & 3 & 3 & 2 \\
+Person 2 & 3 & 3 & 3 & 2 \\
+Person 3 & 2 & 3 & 3 & 2 \\
+Person 4 & 2 & 3 & 3 & 1 \\
+Person 5 & 3 & 3 & 3 & 2 \\
+\midrule
+\textbf{Mean}       & \textbf{2.4} & \textbf{3.0} & \textbf{3.0} & \textbf{1.8} \\
+\textbf{Acceptable} & $\geq 3$     & $\geq 3$     & $\geq 2$     & $\geq 2$     \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Revision 1 showed measurable improvement across all metrics. Length reached its 
+acceptable threshold (mean: 3.0), and both Sufficiency (mean: 2.4) and Learning 
+(mean: 1.8) improved notably from Revision 0, though neither fully met their 
+thresholds. Accessibility remained consistently strong (mean: 3.0). These results 
+suggest that the prompt refinements made between revisions had a positive effect, 
+particularly in producing more complete and appropriately detailed descriptions. 
+However, the Learning metric indicates that further work is needed to ensure the 
+generated text adequately supports physics comprehension.
 
 \section{Results Summary}
 \subsection{Positive Findings}
