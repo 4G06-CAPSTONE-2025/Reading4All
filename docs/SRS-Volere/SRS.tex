@@ -127,6 +127,7 @@ April 1, 2026 & 1.1 & Address TA Feedback \texttt{\#638}, \texttt{\#646} \\
 April 3, 2026 & 1.2 & Address TA Feedback \texttt{\#644}\\
 April 4, 2026 & 1.3 & Added explicit table references, corrected table numbering, and updated formatting to ensure all tables are properly labeled and referenced. \\
 April 6, 2026 & 1.4 & Converted large tables to longtable to prevent footer overlap; added introductory text to Sections 4 and 5; replaced bitmap figures where needed. \\
+April 22, 2026 & 1.5 & Added requirements traceability matrix (Section~6.4) to address TA Feedback \texttt{\#643}. \\
 \bottomrule
 \end{tabularx}
 
@@ -702,6 +703,100 @@ The following assumptions are made when using the product:
   \item Users will be using the MOST\_COMMON\_SR most commonly used and latest
     versions of screen readers.
 \end{itemize}
+
+\subsection{Requirements Traceability Matrix}
+\label{sec:traceability}
+
+Table~\ref{tab:traceability} maps each functional and non-functional requirement to the Product Use Case(s) (PUC) that implement it, the Business Use Case(s) (BUC) it traces back to, and its priority.
+
+\begin{longtable}{p{2.2cm}p{5.5cm}p{2.2cm}p{2.0cm}p{1.5cm}}
+\caption{Requirements Traceability Matrix}
+\label{tab:traceability} \\
+
+\toprule
+\textbf{Req. ID} & \textbf{Summary} & \textbf{PUC(s)} & \textbf{BUC(s)} & \textbf{Priority} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Req. ID} & \textbf{Summary} & \textbf{PUC(s)} & \textbf{BUC(s)} & \textbf{Priority} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+\multicolumn{5}{l}{\textit{Functional Requirements}} \\
+\midrule
+FR 1   & Accept JPEG/PNG diagrams up to IMG\_SIZE\_BIG              & PUC 2              & BUC-2         & High   \\
+FR 2   & Generate alternative text for uploaded images               & PUC 3              & BUC-4         & High   \\
+FR 3   & Output alt text compatible with screen readers              & PUC 3              & BUC-4         & High   \\
+FR 4   & Allow users to edit outputted alt text                      & PUC 4              & BUC-4         & High   \\
+FR 5   & Store and display images and alt texts within session        & PUC 5              & BUC-5         & Medium \\
+FR 6   & Validate users via McMaster SSO on login                    & PUC 1              & BUC-1         & High   \\
+\midrule
+
+\multicolumn{5}{l}{\textit{Look and Feel Requirements}} \\
+\midrule
+LFR-AR 1 & Text resizable to MAX\_ZOOM\_PERCENTAGE without loss of function & PUC 1--5        & BUC-0         & High   \\
+LFR-AR 2 & Colour not sole method to convey information               & PUC 1--5           & BUC-0         & High   \\
+LFR-AR 3 & Minimum MIN\_CONTRAST\_RATIO contrast ratio for all text    & PUC 1--5           & BUC-0         & High   \\
+LFR-AR 4 & Alt text provided for all non-text UI content               & PUC 1--5           & BUC-0         & High   \\
+LFR-SR 1 & Simple, modern design with $\leq$3 colours                  & PUC 1--5           & BUC-0         & High   \\
+LFR-SR 2 & McMaster branding while meeting WCAG contrast               & PUC 1--5           & BUC-0         & High   \\
+LFR-SR 3 & Interface follows Don Norman's design principles            & PUC 1--5           & BUC-0         & High   \\
+\midrule
+
+\multicolumn{5}{l}{\textit{Usability and Humanity Requirements}} \\
+\midrule
+UHR-EUR 1 & Upload and generate alt text in $\leq$MAX\_UPLOAD\_STEPS steps & PUC 2, PUC 3   & BUC-2, BUC-4  & High   \\
+UHR-EUR 2 & Returning users complete core tasks within MAX\_MINUTES unaided & PUC 1--3      & BUC-0         & Medium \\
+UHR-EUR 3 & Textual feedback within 1\,s of user action                 & PUC 2, PUC 3       & BUC-2, BUC-4  & High   \\
+UHR-EUR 4 & $\geq$USERS\_SUCCESS\_PERCENT complete tasks error-free; errors explained within MAX\_ERROR\_RECOVER & PUC 2, PUC 3 & BUC-0 & High \\
+UHR-PIR 1 & Copy alt text individually or in bulk from history          & PUC 4, PUC 5       & BUC-5         & High   \\
+UHR-LR 1  & $\geq$LEARNING\_PERCENT of first-time low-vision users succeed within MAX\_LEARNING\_MINUTES & PUC 1--3 & BUC-0 & High \\
+UHR-UPR 1 & Only essential information shown; no technical details      & PUC 1--5           & BUC-0         & High   \\
+UHR-AR 1  & System meets WCAG 2.1 Level AA                              & PUC 1--5           & BUC-0         & High   \\
+UHR-AR 2  & All main functions navigable by keyboard                    & PUC 1--5           & BUC-0         & High   \\
+\midrule
+
+\multicolumn{5}{l}{\textit{Performance Requirements}} \\
+\midrule
+PR-SL 1    & Alt text within T\_ALT\_GEN\_SMALL ($\leq$IMG\_SIZE\_SMALL) / T\_ALT\_GEN\_LARGE ($\leq$IMG\_SIZE\_BIG) & PUC 3 & BUC-4 & High \\
+PR-SL 2    & Interactive elements respond within T\_UI\_RESP               & PUC 1--5           & BUC-0         & Medium \\
+PR-SCR 1   & No PII stored; images deleted after session                 & PUC 2, PUC 3       & BUC-2, BUC-4  & High   \\
+PR-SCR 2   & 0\% of outputs contain offensive or biased language         & PUC 3              & BUC-4         & High   \\
+PR-SCR 3   & Interface adheres to WCAG 2.1 AA                            & PUC 1--5           & BUC-0         & High   \\
+PR-SR-HA 1 & User notified with retry option on generation timeout       & PUC 3              & BUC-4         & Medium \\
+PR-SR-HA 2 & System safely exits on timeout; no partial alt text stored  & PUC 3              & BUC-4         & High   \\
+PR-SR-HA 3 & Error messages contain no system code or internal data      & PUC 1--5           & BUC-0         & High   \\
+PR-PAR 1   & $\geq$R\_SUFFICIENCY of outputs rated ``Sufficient'' or higher & PUC 3             & BUC-4         & High   \\
+PR-PAR 2   & $\geq$R\_LENGTH of outputs rated ``Proper Length''           & PUC 3              & BUC-4         & Medium \\
+PR-PAR 3   & Median usability $\geq$R\_USABILITY\_MEDIAN; no output below R\_USABILITY\_MIN & PUC 3 & BUC-4 & Medium \\
+PR-RFT 1   & Invalid inputs trigger error within T\_ERROR\_HANDLE         & PUC 2              & BUC-2         & High   \\
+PR-RFT 2   & Backend recovers within T\_RECOVERY after fault              & PUC 3              & BUC-4         & High   \\
+PR-CR 1    & $\geq$CAP\_CONCURRENT concurrent requests at $\leq$10\,s    & PUC 2, PUC 3       & BUC-4         & Medium \\
+PR-CR 2    & Temporary storage supports up to CAP\_STORAGE               & PUC 2, PUC 5       & BUC-5         & Low    \\
+PR-SER 1   & New ML models integrable without restructuring               & PUC 3              & BUC-4         & Medium \\
+PR-LR 1    & Minor updates require $\leq$MAINT\_TIME                     & PUC 1--5           & BUC-0         & Medium \\
+PR-LR 2    & Compatibility with previous SFWR\_RELEASES releases          & PUC 1--5           & BUC-0         & Low    \\
+\midrule
+
+\multicolumn{5}{l}{\textit{Security Requirements}} \\
+\midrule
+SR-AR 1  & Access restricted to McMaster SSO authenticated users       & PUC 1              & BUC-1         & High   \\
+SR-AR 2  & All actions tied to authenticated session                   & PUC 1--5           & BUC-1         & Medium \\
+SR-IR 1  & All communication over HTTPS (TLS TLS\_VERSION+)            & PUC 1--5           & BUC-0         & High   \\
+SR-IR 2  & Uploaded images remain unmodified (hash-verified)           & PUC 2, PUC 3       & BUC-2, BUC-3  & High   \\
+SR-PR 1  & Images deleted within FILE\_DELETE\_TIME after session ends  & PUC 2, PUC 5       & BUC-2, BUC-5  & High   \\
+SR-PR 2  & Alt text filtered for PII and inappropriate content         & PUC 3              & BUC-4         & Medium \\
+SR-AU 1  & Logs record auth events, uploads, generation (no content)   & PUC 1--5           & BUC-0         & Medium \\
+SR-AU 2  & Audit logs restricted to authorized administrators          & PUC 1--5           & BUC-0         & Medium \\
+SR-IM 1  & Only FILE\_TYPES accepted; scripts rejected                  & PUC 2              & BUC-2         & High   \\
+SR-IM 2  & Access blocked outside NETWORK\_SOURCE\_POLICY              & PUC 1              & BUC-1         & High   \\
+\bottomrule
+
+\end{longtable}
 \section{The Scope of the Work}
 \subsection{The Current Situation}
 Currently, alternative text generation tools are able to provide
