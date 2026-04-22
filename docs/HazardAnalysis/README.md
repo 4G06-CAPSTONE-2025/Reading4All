@@ -1,5 +1,13 @@
-# Hazard Analysis
+# docs/HazardAnalysis/
 
-The folders and files for this folder are as follows:
+This folder contains the Hazard Analysis document for Reading4All — a capstone deliverable identifying potential system hazards, their causes, and the mitigations put in place.
 
-Describe ...
+---
+
+## Files
+
+| File | Description |
+|---|---|
+| `HazardAnalysis.pdf` | Compiled Hazard Analysis — primary reading |
+| `HazardAnalysis.tex` | LaTeX source |
+| `Makefile` | Build script — run `make` to recompile the PDF |
